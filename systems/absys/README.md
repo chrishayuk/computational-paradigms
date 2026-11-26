@@ -51,11 +51,37 @@ program is written, and recorded with it. Absys 1 has arithmetic, and the
 - **Step:** one step of the machine, as its `--steps` budget counts them:
   one equation or one literal elaborated in one derivation.
 - **Alternative:** one derivation. All are live at once under **absys**.
-- **Store:** to be settled before the freeze. The proposal is the number of
-  bindings and suspended relations held across all live derivations. The
-  reconstruction does not yet report this at its peak. Reporting it would
-  be an instrumentation-only change to the absys repository, needing your
-  approval while changes there are on hold.
+  A derivation is not equated with a Prolog choicepoint, or with any
+  other system's unit. Comparable counts come only from quantities a
+  problem defines.
+- **Store:** a vector, from `--measure` on the instrumented commit
+  `f1def9d` (branch `measure`). For each assertion it gives the value at
+  the end and the peak, sampled after every step, so the peak is exact at
+  the granularity of steps:
+
+  | quantity | what it counts |
+  |---|---|
+  | derivations | live derivations of the top-level computation |
+  | sub_derivations | derivations inside `not` and `set` computations |
+  | variables | variables created, in every derivation |
+  | bindings | variables with a value |
+  | susp_equations | suspended equations between two uninstantiated variables |
+  | susp_applications | applications waiting for a definition or their key |
+  | susp_relations | arithmetic and `tout` relations waiting for values |
+  | susp_negations | `not` and `set` waiting to be decided or tried again |
+  | pending | equations, literals and alternatives queued, not yet taken up |
+  | term_nodes | nodes of bound values, counted in every derivation that holds them, without regard to sharing |
+
+  term_nodes is a logical size, not memory. Derivations share structure,
+  so the memory held is smaller.
+
+The instrumented commit changes nothing the machine computes. With
+`--measure` off and on, its output was identical to the baseline
+`7bb61e6`'s, byte for byte: 20 texts in 7 output modes (140 runs), full
+traces included, and the JSON of all 20. Measuring is slow, because the
+whole state is read after every step. Step counts are unaffected; only
+time is. Results report the baseline commit for behaviour and the
+instrumented commit for store.
 
 ## The same computation
 

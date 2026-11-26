@@ -1,16 +1,19 @@
 # Protocol
 
-*Draft 0.2.*
+*Draft 0.3.*
 
 ## Phases
 
 1. **Draft.** `SPECIFICATION.md`, `METRICS.md`, this file and `problems/`
    are written. No system's programs are written.
+   Measurement may be qualified at this phase: establishing what each
+   system can report, and adding instrumentation that changes no result,
+   under the conditions in "Instrumentation" below.
 2. **Independent review.** A reviewer who has not written the draft reads
    it for ambiguity, for errors in the valid outcomes, for language bias,
    and for problems missing from the suite. Findings and responses are kept
-   in `reviews/`. *(Draft 0.1 has had one review. Draft 0.2 answers it, and
-   is awaiting a second.)*
+   in `reviews/`. *(Draft 0.1 had one review, answered in draft 0.2. Draft
+   0.3 is awaiting a second, by a fresh reviewer.)*
 3. **Freeze.** The specification is tagged `spec-1.0`, together with:
    - the pinned version or commit of every system in the first comparison;
    - each systems file's cores, flags and units;
@@ -84,6 +87,21 @@ A reconstruction is pinned at a commit when the specification is frozen.
 Any later change to it, for whatever reason, makes a new configuration,
 reported separately, and never replaces the pinned one.
 
+## Instrumentation
+
+A measurement added to a system must not change what it computes. For a
+reconstruction:
+
+- the unmodified commit is kept as the baseline;
+- instrumentation is made on a separate branch, and recorded as its own
+  commit;
+- it may not change scheduling, search, equality, suspension or any other
+  rule of the machine;
+- the instrumented build, with measurement on and off, must give output
+  identical to the baseline's, byte for byte, on every example and in every
+  output mode, including full traces. The check and its result are
+  recorded.
+
 ## The harness interface
 
 Every harness provides exactly these operations, and nothing that orders,
@@ -135,9 +153,14 @@ system processes.
 - **Budget.** 10⁶ steps in the system's own unit, per stage and per
   computation. In P09, each separate computation has its own budget and its
   own classification.
-- **After budget or error.** If stage k ends in *budget* or *error*, stage
-  k+1 is posed by reposing stages 1 to k+1. That reposing counts under
-  restart cost.
+- **After budget.** If stage k ends in *budget* and the configuration can
+  keep its computation and continue it, stage k+1 is posed into that same
+  computation, with a new budget. Whether it can is recorded, since
+  continuing past an exhausted budget is itself a capability. Stages 1 to
+  k+1 are reposed only when the configuration cannot continue, and the
+  reposing counts under restart cost.
+- **After error.** Stage k+1 is posed by reposing stages 1 to k+1, counted
+  under restart cost.
 - **Safety limit.** A limit of 60 seconds per stage protects the harness.
   It is not a measurement. A stage it stops is classified *timeout* and
   rerun on a faster machine, or with the limit raised, with both recorded.

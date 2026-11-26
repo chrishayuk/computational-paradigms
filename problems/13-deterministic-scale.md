@@ -1,0 +1,66 @@
+# P13. Deterministic scale
+
+**Probes:** how steps and store grow with the size of a computation that has
+no unknowns and no alternatives, so that the bookkeeping cost of each model
+can be seen apart from search and suspension.
+
+The workload depends on the algorithm. Reversing a sequence by repeated
+concatenation is quadratic, and with an accumulator it is linear. So each
+task is posed twice:
+
+- **prescribed:** with the definitions below, which every system
+  transcribes. Differences are then the model's, not the algorithm's;
+- **native:** by whatever means is the system's own idiom. The algorithm
+  used is recorded, and it is not reformulation.
+
+## Vocabulary
+
+range(m, n, s): s = ⟨m, m+1, …, n⟩, or ⟨⟩ if m > n. It is defined, in this
+order, by:
+
+1. range(m, n, ⟨⟩) if m > n
+2. range(m, n, ⟨m⟩ ++ t) if m ≤ n and range(m + 1, n, t)
+
+sum(s, k): k is the sum of the elements of s. It is defined, in this order,
+by:
+
+1. sum(⟨⟩, 0)
+2. sum(⟨h⟩ ++ t, k) if sum(t, j) and k = h + j
+
+rev is as in P03, which is quadratic. revacc(a, b) is the linear one:
+
+1. revacc(a, b) if racc(a, ⟨⟩, b)
+2. racc(⟨⟩, b, b)
+3. racc(⟨h⟩ ++ t, c, b) if racc(t, ⟨h⟩ ++ c, b)
+
+## Queries
+
+Each is one stage. n takes the values 10², 10³, 10⁴ and 10⁵.
+
+| | query | valid outcome |
+|---|---|---|
+| P13a | range(1, n, s) | s = ⟨1, …, n⟩ |
+| P13b | range(1, n, s) and sum(s, k) | k = n(n+1)/2 |
+| P13c | range(1, n, s) and rev(s, r) | r = ⟨n, …, 1⟩ |
+| P13d | range(1, n, s) and revacc(s, r) | r = ⟨n, …, 1⟩ |
+| P13e | native: build ⟨1, …, n⟩ and sum it | k = n(n+1)/2 |
+| P13f | native: build ⟨1, …, n⟩ and reverse it | r = ⟨n, …, 1⟩ |
+
+P13a is measured alone so that the cost of building the input can be taken
+out of the others.
+
+## Budget
+
+This problem's budget is 10⁸ steps per stage and its safety limit 600
+seconds. The other problems' limits would stop most systems at n = 10⁴ on
+P13c, which is the expected result for a quadratic algorithm, not a
+finding. A run stopped by either limit is recorded as such, and the larger
+values of n are not run after it.
+
+## Observations
+
+- Steps and peak store for each n, and how each grows with n, within the
+  system. The growth is compared across systems; the counts are not.
+- The algorithm used in P13e and P13f.
+- Store retained after the answer: for instance suspended relations or
+  bindings that are kept although the computation is determinate.

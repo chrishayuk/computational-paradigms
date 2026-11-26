@@ -1,7 +1,6 @@
 # P10. State replacement
 
-*Proposed in review of draft 0.1. Whether it is kept is decided before the
-freeze.*
+*Added after review 1.*
 
 **Probes:** how a system represents a value that changes, a relation that
 must keep holding while its inputs change, and the withdrawal of

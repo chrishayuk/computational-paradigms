@@ -1,7 +1,6 @@
 # P12. Large alternative space
 
-*Proposed in review of draft 0.1. Whether it is kept is decided before the
-freeze.*
+*Added after review 1.*
 
 **Probes:** what it costs, in steps and in retained alternatives, to search
 one finite space by each system's own strategy, with solutions placed at

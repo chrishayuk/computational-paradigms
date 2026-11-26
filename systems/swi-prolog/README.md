@@ -45,16 +45,38 @@ Flags:
 
 ## Units
 
-- **Step:** one inference, as `statistics(inferences, _)` and
-  `call_with_inference_limit/3` count them.
-- **Alternative:** one open choicepoint. To be settled before the freeze is
-  how it is counted, for instance by `prolog_current_choice/1` and walking
-  `prolog_choice_attribute/3` at each observation point. A choicepoint may
-  yield no solutions or many, so the count is recorded with that caveat.
-- **Store:** the bytes of the global, local and trail stacks in use, from
-  `statistics/2`. They are sampled at stage boundaries and at each answer.
-  A true peak within a stage needs further instrumentation, to be settled
-  before the freeze.
+Qualified on macOS arm64 by the study in
+[`measurement.md`](measurement.md). Not yet checked on the Linux CI
+image.
+
+- **Step:** one inference. The difference of `statistics(inferences, _)`
+  agrees exactly with `call_with_inference_limit/3`, and is the same from
+  run to run. Libraries are loaded before measuring, because autoloading
+  adds 15,000–23,000 inferences, and a limit reached during autoloading
+  leaves the library undefined. Runs are not in debug mode. In *session*,
+  the count is read inside the engine, which keeps its own.
+- **Alternative:** **retained choicepoints**, the open choicepoints newer
+  than a mark taken at the start of the stage, counted by walking
+  `prolog_choice_attribute/3`, by type. Exact at answers and stage
+  boundaries. A choicepoint records that one call has untried alternatives.
+  It may yield no solutions or a million, so it is never equated with one
+  derivation of another system. A comparable count of alternatives comes
+  only from a quantity the problem defines, such as P12's candidates
+  examined.
+- **Store:** a vector, as for Absys:
+  - live global data, read after `garbage_collect/0` at each boundary;
+  - local and trail stack in use;
+  - `table_space_used`, for *tabling*;
+  - attributed variables (`term_attvars/2`, which includes the solvers'
+    internal ones) and projected residual goals (`copy_term/3`), for
+    *coroutines*, *constraints* and *session*.
+
+  SWI-Prolog has no true peak of any of these. A maximum within a stage is
+  taken with the `heartbeat` flag, and reported as a **sampled maximum**
+  with its interval, never as a peak. The sampler misses deterministic
+  tail-recursive loops, and its own inferences are counted. The operating
+  system's maximum resident set size is a true peak, but of the whole
+  process, and is reported as such.
 
 ## The same computation
 

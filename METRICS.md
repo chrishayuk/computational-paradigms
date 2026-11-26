@@ -1,6 +1,6 @@
 # Metrics
 
-*Draft 0.2. The classification rules below are frozen with the specification,
+*Draft 0.3. The classification rules below are frozen with the specification,
 before any system is compared.*
 
 Every metric is recorded per system, per configuration, per problem, and per
@@ -19,14 +19,16 @@ observations, and C, R and S tokens taken relative to P tokens.
 | **reformulation** | resources | tokens of definitions or arguments the problem does not give, and parts moved from the presentation order (class R) |
 | **supporting code** | resources | code that provides a mechanism the configuration lacks (class S), counted once per mechanism per configuration, with the problems that use it listed |
 | **external mechanisms** | resources | libraries, run-time features and extensions used beyond the core of the configuration, listed by name |
-| **answer completeness** | information | see below |
+| **answer completeness** | information, search | see below |
 | **answer latency** | execution | steps to the first valid answer, steps between successive answers, and steps to the end of the stage |
-| **suspended state** | information | unresolved computations held, at each stage boundary and at their peak during the stage, in the system's terms, with a count |
-| **retained alternatives** | alternatives | alternatives held, at each stage boundary and at their peak, in the unit the systems file defines |
-| **peak store** | resources | the peak memory the computation holds during the stage, in the unit the systems file defines |
+| **suspended state** | execution | unresolved computations held, at each stage boundary and at their peak during the stage, in the system's terms, with a count |
+| **retained alternatives** | search | alternatives held, at each stage boundary and at their peak, in the unit the systems file defines |
+| **peak store** | resources | the store the computation holds during the stage, as a vector of quantities the systems file defines, each with its current value at the stage boundary and its peak during the stage. Where a true peak cannot be measured, the sampled maximum is reported and labelled as such |
 | **restart cost** | resources | for a system that cannot receive a stage into its existing computation: the steps of reposing stages 1 to k−1 |
 | **repeated work** | resources | work done again inside one computation after new information: relations examined again, goals re-solved. Measured from a trace |
 | **intervention** | resources | manual actions needed to make progress (see below) |
+| **effects** | commitment | P11's effects class, and when each effect was performed |
+| **coordination** | coordination | in P09, P14 and P15: whether computations progressed independently, what they waited on, and how arbitration was decided |
 
 ### Answer completeness
 

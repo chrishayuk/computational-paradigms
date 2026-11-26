@@ -1,8 +1,9 @@
 # Specification
 
-*Draft 0.2, 26 November 2026. Not frozen. Draft 0.1 was reviewed
+*Draft 0.3, 26 November 2026. Not frozen. Draft 0.1 was reviewed
 independently; the findings and the response to each are in
-[`reviews/`](reviews). See `PROTOCOL.md` for how the specification is
+[`reviews/`](reviews). Draft 0.3 adds the decisions taken on draft 0.2
+(`reviews/decisions-0.2.md`). See `PROTOCOL.md` for how the specification is
 frozen.*
 
 ## The question
@@ -16,17 +17,21 @@ have no definition yet, or some of its alternatives cannot yet be told
 apart. This study poses the same partially specified problems to several
 systems and records what each does with them.
 
-The results are meant to map trade-offs along four dimensions, not to rank
-systems:
+The results are meant to map trade-offs along six dimensions of design, not
+to rank systems:
 
-| dimension | what it covers |
-|---|---|
-| **information** | unknowns, constraints, bindings, partial knowledge |
-| **execution** | order, scheduling, suspension, resumption |
-| **alternatives** | search, contradiction, backtracking, parallel derivations |
-| **resources** | retained state, recomputation, control code, intervention |
+| dimension | what it covers | problems that bear most on it |
+|---|---|---|
+| **information** | how incomplete knowledge is represented | P01, P02, P06, P07 |
+| **execution** | how computations become runnable: order, scheduling, suspension, resumption | P02, P04, P08, P13 |
+| **state** | how information changes over time | P10, P14 |
+| **search** | how alternatives are explored and retained | P03, P04, P05, P12 |
+| **coordination** | how computations communicate and cooperate | P09, P14, P15 |
+| **commitment** | how tentative results become final, and irreversible actions | P11, P15 |
 
-Each metric in `METRICS.md` names the dimension it measures.
+**Resources** cut across all six: retained state, recomputation, control
+code, supporting code and intervention. Each metric in `METRICS.md` names
+the dimension it measures, or resources.
 
 ## What this specification does not assume
 
@@ -57,11 +62,12 @@ implementation effort.
 | P07 | [simultaneous constraints](problems/07-simultaneous-constraints.md) | which sets of equations are solved, and how |
 | P08 | [late definition](problems/08-late-definition.md) | what an application of a relation not yet defined means and does |
 | P09 | [concurrent goals](problems/09-concurrent-goals.md) | independent computations, and computations that share information |
-
-Problems proposed in review, P10 onwards, are listed in
-[`problems/README.md`](problems/README.md) with their status. Which of them
-are kept is decided before the freeze. None will be added after it to the
-frozen suite (`PROTOCOL.md`).
+| P10 | [state replacement](problems/10-state-replacement.md) | values that change, relations that keep holding, information withdrawn |
+| P11 | [irreversible effects](problems/11-irreversible-effects.md) | whether external actions are tied to committed outcomes |
+| P12 | [large alternative space](problems/12-large-alternative-space.md) | the time and store of each search strategy |
+| P13 | [deterministic scale](problems/13-deterministic-scale.md) | how bookkeeping grows with size, apart from search |
+| P14 | [message stream](problems/14-message-stream.md) | a persistent process with state, answering between messages |
+| P15 | [merge and committed choice](problems/15-merge-and-committed-choice.md) | interleaving, fairness and arbitration of a resource |
 
 The problems are stated in mathematical notation only. A definition's
 numbered cases describe a relation; they are not a program, and a program
@@ -198,7 +204,7 @@ recorded.
 
 ### 4. Effects
 
-Only for problems with external effects (P11, proposed), a fourth axis
+Only for problems with external effects (P11), a fourth axis
 records whether the effects performed match the outcome committed to. P11
 defines it.
 
@@ -227,8 +233,12 @@ and some of its decisions were taken because of them
 resemble Absys. Disclosure does not remove that, so:
 
 - P07 includes cases that Absys is known or expected to handle badly.
-- The problems proposed in review (P10 onwards) include revision, effects,
-  large search spaces and scale, where other designs are expected to do
-  well.
+- P10–P15 were added after review: state replacement, effects, large
+  search spaces, scale, persistent processes and arbitration. These are
+  problems where imperative, backtracking and concurrent designs are
+  expected to do well, and Absys may do badly or not at all.
+- The first comparison includes two imperative baselines (Python and
+  ALGOL 60), so that the suite is not only a comparison of declarative
+  systems.
 - Retained state and recomputation are measured as costs, with a
   comparable measure of peak store (`METRICS.md`).
