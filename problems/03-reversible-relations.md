@@ -6,10 +6,7 @@ when it has found every answer.
 
 ## Vocabulary
 
-conc(a, b, c): c = a ++ b. It is defined, in this order, by:
-
-1. conc(⟨⟩, b, b)
-2. conc(⟨h⟩ ++ a, b, ⟨h⟩ ++ c) if conc(a, b, c)
+conc, as in P01, with its cases in that order.
 
 rev(a, b): b is a in reverse order. It is defined, in this order, by:
 
@@ -33,7 +30,8 @@ Each is one stage.
 ## Observations
 
 - Whether every valid outcome is reported, and in what order.
-- After the last valid outcome: whether the computation finishes, or goes
-  on looking (budget). P03f has exactly one solution, so a system that
-  reports it and then runs out of budget is *complete* with *budget*.
-- Whether any program had to be reformulated for a direction, and how.
+- After the last valid outcome: whether the computation finishes, holds
+  alternatives pending, or goes on to the budget. P03f has exactly one
+  solution, so a system that reports it and then runs out of budget is
+  *complete* with *budget*.
+- Whether any direction needed reformulation, and how.

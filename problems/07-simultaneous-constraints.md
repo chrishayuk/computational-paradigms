@@ -1,10 +1,10 @@
 # P07. Simultaneous constraints
 
-**Probes:** which systems of arithmetic relations a system solves, which it
+**Probes:** which sets of arithmetic relations a system solves, which it
 leaves unresolved, and which it gets wrong.
 
-All unknowns are integers. Each system is one stage, its relations in the
-order given.
+All unknowns are integers. Each set of relations is one stage, in the order
+given.
 
 | | relations | valid outcomes |
 |---|---|---|
@@ -16,16 +16,15 @@ order given.
 | P07f | x + y = 10, x + y = 11 | none |
 | P07g | x · x = 9 | x = 3 or x = −3 |
 
-P07a also runs in all six orders of its relations.
+P07a is also posed in all six orders of its relations.
 
 ## Observations
 
-- For each: solved, residual (with the residual recorded), enumerated by
-  search, unresolved, reported as failure, or error.
+- For each: the three classifications, with any residual recorded.
 - P07e and P07f: whether the inconsistency is detected. A system that holds
-  the relations unresolved does not report an invalid outcome, but it does
-  not report the empty outcome either. Record it as *none* with
-  *suspended*, and note that the inconsistency was not detected.
+  the relations unresolved is *undetermined* with *suspended*.
+- P07e: a solver over the rationals that reports w = 15/2 is *unsound*
+  under this problem's integers.
 - P07g: whether both solutions are found.
-- What mechanism solves each case that is solved: elaboration one relation
-  at a time, propagation, elimination, or search.
+- What mechanism solves each case that is solved: one relation at a time as
+  its values become known, propagation, elimination, or search.
