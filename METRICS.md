@@ -1,6 +1,6 @@
 # Metrics
 
-*Draft 0.4. The classification rules below are frozen with the specification,
+*Draft 0.5. The classification rules below are frozen with the specification,
 before any system is compared.*
 
 Every metric is recorded per system, per configuration, per problem, and per
@@ -127,10 +127,21 @@ construct takes the construct's class, including its punctuation.
 
 ### Two classifiers
 
-**Calibration.** Before the freeze, worked and pre-classified programs for
-P03 and P13 are written in each system of the first comparison (Python and
-ALGOL 60 included), and both classifiers class them, so that the rules are
-tested where they are hardest before they are frozen.
+**Calibration.** Before the freeze, programs for P03 and P13 are written in
+each system of the first comparison, Python and ALGOL 60 included, and both
+classifiers class them. They are **development examples, not results**.
+They test whether the rules give consistent classes across different
+styles of program, where the rules are hardest. The calibration record
+(`calibration/`) gives:
+
+- both classifiers' classes, token by token;
+- the rate of agreement, per system and per class;
+- the constructs that caused disagreement;
+- whether the disagreements fall more on one paradigm than another;
+- any amendment to the rules that resulted.
+
+The rules are amended only to make classifications more defensible, never
+to make the systems' totals come out more alike.
 
 Each program is classed independently by two classifiers, who are named,
 are not the program's author, and are not shown each other's classes. For
@@ -179,10 +190,15 @@ in its own terms:
   P12, the candidates examined (sequences s for which accept(s) is
   evaluated) and the partial sequences held, live or kept for
   backtracking. In P15a, the interleavings held.
-- **Growth exponents.** For a problem with a size parameter (P12's n,
-  P13's n), the exponent k of the fit steps ∝ nᵏ, and likewise for each
-  store quantity, within each system. The exponents are compared across
-  systems; the counts are not.
+- **Growth.** For a problem with a size parameter (P12's n, P13's n,
+  P16's n), steps, problem operations and each store quantity are fitted,
+  within each system, by three models: linear (a·n), polynomial (a·nᵏ) and
+  exponential (a·cⁿ). Each fit is reported, with its residuals, and the
+  model that fits best is named. The fitted forms and parameters are
+  compared across systems; the counts are not. P12 is expected to be
+  exponential for some strategies, and is not forced into a power law.
+  Three sizes are evidence of how a cost grows over that range. They do
+  not establish its asymptotic complexity, and no result says they do.
 
 ## Restart cost and repeated work
 
@@ -197,7 +213,7 @@ twice.
   number of times a relation, goal or constraint already examined is
   examined again after new information arrives, and the steps those
   examinations take. For Absys, the trace. For ALGOL 60, the
-  `name_evaluations` count of its measurement build. For SWI-Prolog and
+  `name_repeat_evaluations` count of its measurement build. For SWI-Prolog and
   Python, only problem operations counted by the program; the debugger is
   not used, because it changes the inference count.
 - For every stage, both the *incremental cost* (steps from the end of stage

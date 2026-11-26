@@ -21,6 +21,7 @@ Copies of papers are not kept here. `sources/downloads/` is ignored by git.
 | P13 | written for this study, after review 1, in the manner of TPK: one fixed task in every system |
 | P14 | the counter over a stream of messages, a standard idiom of stream-based concurrent logic programming: E. Y. Shapiro, "A subset of Concurrent Prolog and its interpreter", ICOT TR-003 (1983); and of process networks: G. Kahn, "The semantics of a simple language for parallel programming", IFIP 74 |
 | P15 | merge is the standard example of nondeterminism in the same literature (Shapiro 1983; Kahn and MacQueen, "Coroutines and networks of parallel processes", IFIP 77); the resource grant is written for this study |
+| P16 | written for this study, after review 2, for the case concurrent constraint programming was designed for: many relations told to one store. V. A. Saraswat, *Concurrent Constraint Programming*, MIT Press (1993) |
 
 The absys experiments are in https://github.com/chrishayuk/absys,
 `docs/research.md`. Most problems began there, and this is disclosed in

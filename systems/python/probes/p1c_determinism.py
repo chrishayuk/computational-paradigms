@@ -28,6 +28,9 @@ def find(coll, pred):
     return -1
 
 
+count = meter.count_mon if meter.HAVE_MON else meter.count_trace  # 3.10, 3.11
+
+
 def main():
     lst = list(WORDS)
     st = set(WORDS)
@@ -36,12 +39,12 @@ def main():
     is_w100 = lambda x: x == "w100"
     is_n100 = lambda x: x.k == 100
     out = [
-        ("list of str", meter.count_mon(find, lst, is_w100)),
-        ("set of str", meter.count_mon(find, st, is_w100)),
-        ("set of objects (id hash)", meter.count_mon(find, ns, is_n100)),
+        ("list of str", count(find, lst, is_w100)),
+        ("set of str", count(find, st, is_w100)),
+        ("set of objects (id hash)", count(find, ns, is_n100)),
     ]
     seed = os.environ.get("PYTHONHASHSEED", "unset")
-    print("python", sys.version.split()[0], "PYTHONHASHSEED=" + seed)
+    print("python", sys.version.split()[0], "PYTHONHASHSEED=" + seed, "meter", count.__name__)
     for name, (pos, n) in out:
         print(f"  {name:26} position={pos:4} instructions={n}")
 

@@ -29,6 +29,9 @@ anticipate information it has not received:
   on every entry it emitted. The valid outcomes after commit are computed
   with x = v.
 
+A reposed run replays a commit as the information x = v, with the v first
+selected, so the commitment is preserved (`PROTOCOL.md`).
+
 The log L is kept across every run the harness makes, reposed runs
 included, as `PROTOCOL.md` says. Entries duplicated only by reposing are
 counted separately.

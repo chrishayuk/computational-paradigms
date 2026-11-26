@@ -1,10 +1,11 @@
 # Specification
 
-*Draft 0.4, 26 November 2026. Not frozen. Draft 0.1 was reviewed
+*Draft 0.5, 27 November 2026. Not frozen; the freeze candidate. Draft 0.1 was reviewed
 independently; the findings and the response to each are in
 [`reviews/`](reviews). Draft 0.3 added the decisions taken on draft 0.2
-(`reviews/decisions-0.2.md`). Draft 0.4 answers the second review, of
-draft 0.3 (`reviews/review-2.md`). See `PROTOCOL.md` for how the specification is
+(`reviews/decisions-0.2.md`). Draft 0.4 answered the second review, of
+draft 0.3 (`reviews/review-2.md`). Draft 0.5 applies the decisions on
+draft 0.4 (`reviews/decisions-0.4.md`). See `PROTOCOL.md` for how the specification is
 frozen.*
 
 ## The question
@@ -23,11 +24,11 @@ to rank systems:
 
 | dimension | what it covers | problems that bear most on it |
 |---|---|---|
-| **information** | how incomplete knowledge is represented | P01, P02, P06, P07 |
+| **information** | how incomplete knowledge is represented | P01, P02, P06, P07, P16 |
 | **execution** | how computations become runnable: order, scheduling, suspension, resumption | P02, P04, P08, P13 |
 | **state** | how information changes over time | P10, P14 |
 | **search** | how alternatives are explored and retained | P03, P04, P05, P12 |
-| **coordination** | how computations communicate and cooperate | P09, P14, P15 |
+| **coordination** | how computations communicate and cooperate | P09, P14, P15, P16 |
 | **commitment** | how tentative results become final, and irreversible actions | P11, P15 |
 
 **Resources** cut across all six: retained state, recomputation, control
@@ -69,6 +70,7 @@ implementation effort.
 | P13 | [deterministic scale](problems/13-deterministic-scale.md) | how bookkeeping grows with size, apart from search |
 | P14 | [message stream](problems/14-message-stream.md) | a persistent process with state, answering between messages |
 | P15 | [merge and committed choice](problems/15-merge-and-committed-choice.md) | interleaving, fairness and arbitration of a resource |
+| P16 | [shared information at scale](problems/16-shared-information.md) | propagation, contributors, localised updates and contradiction in a large structure of relations |
 
 The problems are stated in mathematical notation only. A definition's
 numbered cases describe a relation; they are not a program, and a program
@@ -157,7 +159,8 @@ and how the system showed the withdrawal, if it did.
 ## Outcomes
 
 Each stage of each run is classified on three axes, recorded separately,
-and on a fourth, effects, in P11 only.
+and on a fourth, effects, in P11 only. A residual representation also
+records its simplification (below).
 
 Separately from the axes, **expressibility** is recorded once per
 configuration and query (for a relation used in several directions, once
@@ -174,28 +177,35 @@ outcomes.
 | **complete** | the report denotes exactly the valid outcomes. Where the valid outcomes are empty, the system has reported that there are none |
 | **partial** | the report denotes a nonempty proper subset of the valid outcomes. This includes a representation that drops solutions, such as a solver that restricts an unknown to integers when the problem lets it range wider |
 | **unsound** | the report denotes an outcome that is not valid, or reports that there are none where valid outcomes exist |
-| **undetermined** | the report consists of conditions the system has left unresolved, and either they are not equivalent to the valid outcomes, or they are equivalent but a smaller equivalent solved form exists that the system did not reach (below). That includes conditions that denote the empty set, when the system has not reported it empty |
+| **undetermined** | the report consists of conditions whose equivalence to the valid outcomes the classifiers cannot establish |
 | **none reported** | nothing was reported |
 
 A system that reports one answer of several, for a query that asks for one
 (*any one* queries, in later problems), is *complete* for that query.
 
-**Smaller.** One representation is smaller than another if it has fewer
-relations left to decide, or the same number with fewer occurrences of
-unknowns. So:
+**Correctness and simplification are kept apart.** A residual that is
+equivalent to the valid outcomes is *complete*, however unreduced. How far
+the system reduced it is recorded separately, as **simplification**:
 
-- P02, stage 1: u + v = 16, held unresolved, is *complete*, representation
-  *residual*. It is the valid outcome, and no smaller equivalent form
-  exists.
-- P07c: x + y = 10, held, is *complete* / *residual*.
-- P09e: x = y + 1 and y = x − 1, held, are *complete* / *residual*. So is
-  either equation alone, which is equivalent to both. A solved form binds
-  unknowns to terms of values, unknowns, ⟨⟩ and ++, and arithmetic is not
-  among them, so no solved form exists here.
-- P07f: x + y = 10 and x + y = 11, held, is *undetermined*: they denote the
-  empty set, which a smaller form (no solutions) represents.
-- P07b: x + y = 10 and x − y = 4, held, is *undetermined*: the solved form
-  x = 7, y = 3 is smaller.
+| simplification | meaning |
+|---|---|
+| **reduced** | no smaller equivalent representation exists |
+| **reducible** | a smaller equivalent representation exists, which the system did not reach |
+| **inconsistency undetected** | the conditions denote the empty set, and the system has not reported that there are none |
+
+One representation is smaller than another if it has fewer relations left
+to decide, or the same number with fewer occurrences of unknowns. So:
+
+- P02, stage 1: u + v = 16, held, is *complete* / *residual* / *reduced*.
+- P07c: x + y = 10, held, is *complete* / *residual* / *reduced*.
+- P07b: x + y = 10 and x − y = 4, held, is *complete* / *residual* /
+  *reducible*, since x = 7, y = 3 is smaller.
+- P07f: x + y = 10 and x + y = 11, held, is *complete* / *residual* /
+  *inconsistency undetected*.
+
+So a system that does nothing with a set of relations it cannot solve is
+not marked wrong. Its simplification shows what it left undone, and is
+compared alongside the semantic result.
 
 A binding that the system holds is **reported** if the harness's
 `observe()` can read it at the end of the stage, including at the moment

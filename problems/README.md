@@ -1,6 +1,6 @@
 # Problems
 
-| | problem | status in draft 0.3 |
+| | problem | status in draft 0.5 |
 |---|---|---|
 | P01–P09 | the original nine | revised after review 1 |
 | P10 | [state replacement](10-state-replacement.md) | added after review 1 |
@@ -9,10 +9,12 @@
 | P13 | [deterministic scale](13-deterministic-scale.md) | added after review 1, prescribed and native |
 | P14 | [a process over a message stream](14-message-stream.md) | added after review 1 |
 | P15 | [merge and committed choice](15-merge-and-committed-choice.md) | added after review 1 |
+| P16 | [shared information at scale](16-shared-information.md) | added after review 2, for concurrent constraint programming's core case |
 
-All fifteen are in the primary suite. P14 and P15 exercise capabilities
-that Absys is expected to lack, which is why they are included before any
-system has been run. After the freeze, a new problem goes only into a
+All sixteen are in the primary suite. P14, P15 and P16 exercise
+capabilities that Absys is expected to lack or that other models were
+designed for, which is why they are included before any system has been
+run. After the freeze, a new problem goes only into a
 separate, dated supplementary suite (`PROTOCOL.md`).
 
 ## The proposal dropped

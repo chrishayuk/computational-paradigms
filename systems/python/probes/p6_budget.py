@@ -15,6 +15,9 @@ import sys
 import threading
 import time
 
+if not hasattr(sys, "monitoring"):
+    print("python", sys.version.split()[0], ": no sys.monitoring; probe skipped")
+    sys.exit(0)
 mon = sys.monitoring
 E = mon.events
 T = 4
@@ -104,13 +107,12 @@ def paused_run(fn, budgets, *a):
     resume = threading.Event()
     worker = None
     own = {paused_run.__code__}
-    tfile = threading.__file__
+    active = False
     result = []
 
     def cb(code, offset):
         nonlocal used
-        if (threading.current_thread() is not worker or code in own
-                or code.co_filename == tfile):
+        if not active or code in own or threading.current_thread() is not worker:
             return
         used += 1
         if used >= limit:
@@ -119,7 +121,11 @@ def paused_run(fn, budgets, *a):
             resume.clear()
 
     def body():
-        result.append(fn(*a))
+        nonlocal active
+        active = True        # count only fn, not the thread start-up code
+        r = fn(*a)
+        active = False
+        result.append(r)
 
     own.add(body.__code__)
     mon.use_tool_id(T, "budget")
@@ -184,7 +190,7 @@ def main():
     print("  sticky, finally         :", run_with_budget(with_finally, 1000, sticky=True),
           "cleanup ran:", bool(cleanup_ran))
 
-    print("[pause] finite(1000) with budgets 2000, 2000, 2000, then unlimited")
+    print("[pause] finite(1000) pausing at 2000, 4000 and 6000 instructions, then unlimited")
     for entry in paused_run(finite, [2000, 4000, 6000], 1000):
         print("  ", entry)
     import meter

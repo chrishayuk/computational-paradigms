@@ -51,7 +51,7 @@ same encoding.
   Exactly what one step covers is to be stated from the interpreter's
   source before the freeze.
 - **Store:** a vector, from `--measure` on the instrumented commit
-  `2589d00` (branch `measure`). Each quantity has its value at the end of
+  `151cdff` (branch `measure`). Each quantity has its value at the end of
   the run and its peak, updated as objects are made and dropped, so the
   peak is exact:
 
@@ -64,6 +64,7 @@ same encoding.
   | names | name parameters alive, each an expression with its environment |
   | call_depth | procedure calls in progress |
   | frames_made, calls, name_uses, name_evaluations | totals over the run |
+  | name_first_evaluations, name_repeat_evaluations | evaluations of an actual parameter for the first time, and again, for the same parameter of the same call |
 
   Temporary values are not measured: the tree-walking interpreter holds
   them on its own call stack, which cannot be counted without changing how
@@ -71,11 +72,14 @@ same encoding.
 
   The instrumented commit's stdout, stderr and exit code were identical to
   the baseline's on all 100 programs in the repository, in both dialects,
-  with measurement on and off (200 runs). That is observational
-  equivalence over that corpus.
-- **Repeated work:** `name_evaluations`. Call by name evaluates an actual
-  parameter again at every use. Jensen's device makes 8 procedure calls and
-  392 name evaluations.
+  with measurement on and off (200 runs, checked for `2589d00` and again
+  for `151cdff`). That is observational equivalence over that corpus.
+- **Repeated work:** `name_repeat_evaluations`. Call by name evaluates an
+  actual parameter again at every use, and each actual parameter keeps its
+  own count, so a repeat is told apart from a first evaluation. Jensen's
+  device makes 8 procedure calls and 392 name evaluations: 16 first, 376
+  repeats. A repeat is not always wasted work. Jensen's device relies on
+  it, since the parameter's value changes between evaluations.
 - **Alternative:** as Python: whatever structure the program keeps, named.
 - **x1sim:** the X1 simulator's own instruction count, if it reports one;
   to be established before the freeze, or x1sim is run for behaviour only.

@@ -5,7 +5,7 @@ A comparative study of computational models. The study asks:
 > **How do different computational models represent, retain and resolve
 > partially specified computations?**
 
-The same fifteen problems are posed to each system, most of them in stages. A stage
+The same sixteen problems are posed to each system, most of them in stages. A stage
 adds information, or in a few problems replaces or withdraws it. The study
 records:
 
@@ -21,7 +21,7 @@ of trade-offs, not a ranking.
 
 ## Status
 
-**Draft 0.4. No system has been compared.**
+**Draft 0.5, the freeze candidate. No system has been compared.**
 
 - Draft 0.1 was reviewed independently. Draft 0.2 answered every finding
   ([`reviews/review-1.md`](reviews/review-1.md)). Draft 0.3 applied the
@@ -39,7 +39,7 @@ Programs come after the freeze (`PROTOCOL.md`).
 | file | what it is |
 |---|---|
 | [`SPECIFICATION.md`](SPECIFICATION.md) | the question, the conventions, the classes of outcome, and what is not assumed |
-| [`problems/`](problems) | the fifteen problems, in mathematical notation, with their valid outcomes |
+| [`problems/`](problems) | the sixteen problems, in mathematical notation, with their valid outcomes |
 | [`METRICS.md`](METRICS.md) | what is measured, and the frozen rules for classing tokens |
 | [`PROTOCOL.md`](PROTOCOL.md) | phases, amendments, evidence classes, configurations, how programs are written, run and recorded |
 | [`systems/`](systems) | each system's configurations and evidence class |

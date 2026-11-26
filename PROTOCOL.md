@@ -1,6 +1,6 @@
 # Protocol
 
-*Draft 0.4.*
+*Draft 0.5.*
 
 ## Phases
 
@@ -43,6 +43,29 @@ the new version.
 A problem proposed after the freeze does not join the frozen suite. It goes
 into a separate, dated supplementary suite, reported apart from the frozen
 one, with the date it was proposed and the results that existed then.
+
+## Roles
+
+| role | does | has access to |
+|---|---|---|
+| **specification author** | writes the problems and the protocol | the public repository |
+| **variant custodian** | writes the hidden variants and their valid outcomes | the specification, and the private variants |
+| **implementation author** | writes the programs | the public repository only |
+| **classifier A** | classes the programs' constructs | the specification, the metrics and the programs |
+| **classifier B** | classes them independently | the same, without A's classes |
+| **verifier** | runs the programs on the hidden variants | the programs, the variants and their outcomes |
+
+Each role is a separate agent or person, with its own context, and its
+provenance is recorded. The two classifiers are of different origin (for
+instance Claude and Codex), and neither wrote the program it classes.
+
+**Hidden variants** are made inaccessible, not merely placed where an
+implementation author is told not to look. The custodian writes them
+before the freeze and encrypts them with a key the project's owner holds.
+Only the ciphertext and the SHA-256 hash of the plaintext are committed.
+The key is given to the verifier only after every primary program and its
+results are committed. The verifier publishes the plaintext, and anyone can
+check it against the hash.
 
 ## Evidence classification
 
@@ -133,6 +156,11 @@ collecting answers would end or alter the computation that the next stage
 extends (exhausting a backtracking search, for instance), the observation
 of stage k is taken on a separate run of stages 1 to k. The incremental
 run is left as it was.
+
+**Commitments are preserved when a run is reposed.** When a commit stage
+has selected an outcome v (P11), a reposed run replays it as the
+information x = v. It does not ask the system to select again, which could
+commit to a different outcome.
 
 **External effects** (P11) are written to one log per problem, never reset,
 across every run the harness makes for classification, reposed runs
