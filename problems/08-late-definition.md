@@ -36,10 +36,24 @@ describes, and the withdrawal is recorded.
 |---|---|---|---|
 | 1 | a = ⟨x, y, z⟩ | a = ⟨x, y, z⟩ | the same |
 | 2 | rev(a, b) | none | a = ⟨x, y, z⟩; b free; rev(a, b) pending |
-| 3 | x = y | none | a = ⟨y, y, z⟩; b free; pending |
-| 4 | the definitions of rev and conc | a = ⟨y, y, z⟩, b = ⟨z, y, y⟩ | the same |
+| 3 | x = y | none | x = y, a = ⟨y, y, z⟩; b free; pending |
+| 4 | the definitions of rev and conc | x = y, a = ⟨y, y, z⟩, b = ⟨z, y, y⟩ | the same |
 | 5 | y = z | x = y = z, a = b = ⟨z, z, z⟩ | the same |
 | 6 | b = ⟨42⟩ ++ c | x = y = z = 42, a = b = ⟨42, 42, 42⟩, c = ⟨42, 42⟩ | the same |
+
+Under the open reading, before the definition arrives:
+
+- a system that holds rev(a, b) as a pending application, and reports the
+  equations, is *complete* / *residual*;
+- a system that reports the equations and has silently dropped rev(a, b)
+  is also *complete*, with representation *solved form*, and the dropping
+  is recorded, since it will lose the application when the definition
+  comes;
+- a system that reports no solutions is *unsound* under the open reading,
+  and *complete* under the closed one.
+
+A declaration that changes how an undefined relation behaves (`:- dynamic`,
+the `unknown` flag) is control, and is listed (`METRICS.md`, rule 11).
 
 ## P08b. A definition that never arrives
 

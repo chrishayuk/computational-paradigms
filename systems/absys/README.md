@@ -39,18 +39,33 @@ rules 6, 18 and 19 are partly decisions where the sources are silent.
 | absys-depth-first | `--search depth-first`: the backtracking reading of Elcock (1982) | reconstructed, alternative reading |
 | absys-wake-back | `--wake back`: returned relations appended, as the word of Elcock (1982) says | reconstructed, alternative reading |
 
+## The core
+
+The machine as `docs/decisions.md` describes it, in the pinned commit:
+equality as a process, with suspension of equations between unknowns;
+`lambda` procedures applied in any direction; `or`, distributed into
+derivations; `not` and `set`; `key`; arithmetic as relations over
+integers, taken up when two of three values are known; `tout`; and the
+incremental acceptance of assertions. Nothing else exists to be imported,
+so every Absys configuration has no external mechanisms.
+
 ## Notation
 
 Absys is known in three notations: Absys 1 (1969), the 1982 paper's, and
-the 1990 retrospective's. One notation is fixed per problem before any
-program is written, and recorded with it. Absys 1 has arithmetic, and the
-1990 notation has `not` and `set`.
+the 1990 retrospective's. Absys 1 has arithmetic, and the 1990 notation has
+`not` and `set`. The notation for each problem is fixed by a rule, not
+chosen: the **earliest** notation that has every construct the problem
+needs. A problem that needs constructs found in no single notation is
+recorded as such, with the notation used.
 
 ## Units
 
 - **Step:** one step of the machine, as its `--steps` budget counts them:
   one equation or one literal elaborated in one derivation.
 - **Alternative:** one derivation. All are live at once under **absys**.
+  Under **absys-depth-first**, all are held too, but only the first is
+  elaborated until it hibernates or fails, so the count is of derivations
+  held, of which one is live.
   A derivation is not equated with a Prolog choicepoint, or with any
   other system's unit. Comparable counts come only from quantities a
   problem defines.
@@ -63,7 +78,7 @@ program is written, and recorded with it. Absys 1 has arithmetic, and the
   |---|---|
   | derivations | live derivations of the top-level computation |
   | sub_derivations | derivations inside `not` and `set` computations |
-  | variables | variables created, in every derivation |
+  | variables | variables created, in every derivation. Derivations only gain variables, so for one derivation this is cumulative; it falls only when a derivation fails. It is listed, but it is not retained store in the sense the others are |
   | bindings | variables with a value |
   | susp_equations | suspended equations between two uninstantiated variables |
   | susp_applications | applications waiting for a definition or their key |
@@ -75,7 +90,12 @@ program is written, and recorded with it. Absys 1 has arithmetic, and the
   term_nodes is a logical size, not memory. Derivations share structure,
   so the memory held is smaller.
 
-The instrumented commit changes nothing the machine computes. With
+The state is also sampled right after an assertion is added and before the
+first step, so a peak at a stage boundary is not missed.
+
+The instrumented commit changes nothing the machine computes on the texts
+tested. That is observational equivalence over that corpus, not a proof
+for every workload. With
 `--measure` off and on, its output was identical to the baseline
 `7bb61e6`'s, byte for byte: 20 texts in 7 output modes (140 runs), full
 traces included, and the JSON of all 20. Measuring is slow, because the

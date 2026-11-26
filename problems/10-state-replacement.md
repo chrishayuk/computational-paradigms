@@ -22,6 +22,8 @@ designed to do.
 
 The valid outcomes after a replacing or retracting stage are computed from
 the current values and the information not withdrawn (`SPECIFICATION.md`).
+A system that reposes replays every stage, replacements and withdrawals
+included (`PROTOCOL.md`).
 
 ## P10a. Absolute and relative replacement
 
@@ -33,9 +35,12 @@ the current values and the information not withdrawn (`SPECIFICATION.md`).
 
 ## P10b. A standing relation
 
+Here d is not given values by replacing stages. It is defined by a relation
+that must hold whenever b has a value.
+
 | stage | information | valid outcomes |
 |---|---|---|
-| 1 | d = 2 · b, at all times | d free until b has a value |
+| 1 | d = 2 · b, at all times | d = 2 · b; neither has a value yet |
 | 2–4 | the stages of P10a | d = 20, then 30, then 14 |
 
 ## P10c. A snapshot

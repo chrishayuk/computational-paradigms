@@ -1,5 +1,7 @@
 # P15. Merge and committed choice
 
+*Added after review 1.*
+
 **Probes:** how a system arbitrates between computations: interleaving two
 sources, fairness to an unbounded one, and granting a single resource.
 
@@ -10,8 +12,8 @@ each. It is defined, in this order, by:
 
 1. merge(⟨⟩, b, b), for every sequence b
 2. merge(⟨h⟩ ++ a, ⟨⟩, ⟨h⟩ ++ a), for every sequence a
-3. merge(⟨h⟩ ++ a, b, ⟨h⟩ ++ m) if merge(a, b, m), b not empty
-4. merge(a, ⟨h⟩ ++ b, ⟨h⟩ ++ m) if merge(a, b, m), a not empty
+3. merge(⟨h⟩ ++ a, b, ⟨h⟩ ++ m) if b ≠ ⟨⟩ and merge(a, b, m)
+4. merge(a, ⟨h⟩ ++ b, ⟨h⟩ ++ m) if a ≠ ⟨⟩ and merge(a, b, m)
 
 | | query | valid outcomes |
 |---|---|---|
@@ -20,31 +22,62 @@ each. It is defined, in this order, by:
 
 ## P15b. Fairness to an unbounded source
 
-Under the stream reading of P09d2: z is the unbounded sequence ⟨0, 0, 0, …⟩,
-and the merge is of z and ⟨9⟩. Read as the greatest relation, merge also
+Under the stream reading of P09d2. z is defined by
+
+1. zeros(⟨0⟩ ++ s) if zeros(s)
+
+read as the greatest relation, so zeros(z) makes z = ⟨0, 0, 0, …⟩. A
+consumer asks where 9 is: position(e, m, i) holds when the i-th element of
+m is e. It is defined, in this order, by
+
+1. position(e, ⟨e⟩ ++ t, 1)
+2. position(e, ⟨h⟩ ++ t, i) if h ≠ e and position(e, t, j) and i = j + 1
+
+The query is zeros(z) and merge(z, ⟨9⟩, m) and position(9, m, i), in that
+order. The arguments of merge are in the order that disadvantages a
+depth-first merge, which takes from z for ever. **P15b2** poses the same
+with merge(⟨9⟩, z, m). Read as the greatest relation, merge also
 admits the unfair interleaving that takes only from z, so this problem adds
 a requirement the definition alone does not give: **fairness**, meaning
 every element of both inputs appears at some finite position. Valid: every
 fair interleaving, that is, those in which 9 appears at a finite
 position.
 
-Record the position at which 9 appears in what the system produces within
-the budget, or that it does not appear. A merge that takes only from z
-produces a valid prefix but never a valid outcome.
+Valid outcome: i = some positive integer. A system that reports a value of
+i is *complete* for i, whatever it has produced of m, and whether or not
+the producer of z stops. A merge that takes only from z never binds i:
+*none reported* with *budget*.
 
 ## P15c. One resource, two requests at once
 
-One stage: requests from ᴀ and from ʙ for one resource arrive together.
-Exactly one is granted. Valid outcomes: ᴀ granted and ʙ not, or ʙ granted
-and ᴀ not. An "any one" query.
+grant(p, q, g): of two requests, from p and from q, for one resource, g is
+the one granted. It is defined by
+
+1. grant(p, q, p)
+2. grant(p, q, q)
+
+One stage: grant(ᴀ, ʙ, g), an any-one query (`answers(1)`). Valid outcomes:
+g = ᴀ, or g = ʙ. Committed choice means the system selects one and does not
+revisit it.
 
 ## P15d. One resource, over time
 
 | stage | information | valid outcomes |
 |---|---|---|
-| 1 | ᴀ requests | ᴀ holds the resource |
-| 2 | ʙ requests | ᴀ holds it; ʙ waits |
-| 3 | ᴀ releases | ʙ holds it |
+| 1 | ᴀ requests | holder = ᴀ, queue = ⟨⟩ |
+| 2 | ʙ requests | holder = ᴀ, queue = ⟨ʙ⟩ |
+| 3 | ᴀ releases | holder = ʙ, queue = ⟨⟩ |
+
+holder and queue are named quantities, as in P10, starting as none and ⟨⟩.
+A request and a release are replacing stages, defined by cases:
+
+- p requests: if holder = none, holder becomes p; otherwise queue becomes
+  queue ++ ⟨p⟩;
+- p releases, where holder = p: if queue = ⟨⟩, holder becomes none;
+  otherwise, with queue = ⟨h⟩ ++ t, holder becomes h and queue becomes t.
+
+A program may implement this as a process, or by these replacements.
+Either is a transcription (P).
 
 A grant, once made, is not withdrawn when a later request arrives. That is
 committed choice.

@@ -32,9 +32,20 @@ ISO Prolog:
 - the cut;
 - `\+` (negation as failure), `=`, `\=`;
 - `is/2` and arithmetic comparison;
+- type tests and comparison of terms: `var/1`, `nonvar/1`, `atom/1`,
+  `integer/1`, `==/2`, `\==/2`, `compare/3`;
+- term construction: `functor/3`, `arg/3`, `=../2`, `copy_term/2`;
 - `findall/3`, `call/N`, `catch/3`, `throw/1`;
 - `assertz/1`, `retract/1` and `dynamic/1`, for posing definitions and
-  replacing state between stages.
+  replacing state between stages. `dynamic/1` changes how an undefined
+  relation behaves, and is counted as control where it does (`METRICS.md`,
+  rule 11);
+Anything else is treated as outside the core of *plain*, and listed under
+external mechanisms when used. That includes `between/3`, `length/2`,
+`member/2`, `msort/2` and the rest of `library(lists)`, whatever their
+standing in later ISO corrigenda. A foreign predicate such as `msort/2` counts as one
+inference whatever work it does, which is one reason P13 also records
+CPU time.
 
 Flags:
 
@@ -46,19 +57,27 @@ Flags:
 ## Units
 
 Qualified on macOS arm64 by the study in
-[`measurement.md`](measurement.md). Not yet checked on the Linux CI
-image.
+[`measurement.md`](measurement.md). The probes in [`probes/`](probes) run
+on the Linux CI image by the workflow `swi-measurement`; its first result
+is recorded in `measurement.md`.
 
-- **Step:** one inference. The difference of `statistics(inferences, _)`
-  agrees exactly with `call_with_inference_limit/3`, and is the same from
-  run to run. Libraries are loaded before measuring, because autoloading
+**Repeated work** is not measured from a trace, because the debugger
+changes the inference count (24.9 million against 275,563 in one probe).
+Only problem operations counted by the program are reported.
+
+- **Step:** one inference. The difference of `statistics(inferences, _)`,
+  minus one, is exactly the smallest limit `call_with_inference_limit/3`
+  lets a goal finish under, and it is the same from run to run. Libraries are loaded before measuring, because autoloading
   adds 15,000–23,000 inferences, and a limit reached during autoloading
   leaves the library undefined. Runs are not in debug mode. In *session*,
   the count is read inside the engine, which keeps its own.
 - **Alternative:** **retained choicepoints**, the open choicepoints newer
   than a mark taken at the start of the stage, counted by walking
   `prolog_choice_attribute/3`, by type. Exact at answers and stage
-  boundaries. A choicepoint records that one call has untried alternatives.
+  boundaries. It is measured at each answer, before the next is requested,
+  and inside the handler when the budget runs out, since the harness's
+  collecting of answers leaves none at a stage boundary. A choicepoint
+  records that one call has untried alternatives.
   It may yield no solutions or a million, so it is never equated with one
   derivation of another system. A comparable count of alternatives comes
   only from a quantity the problem defines, such as P12's candidates
@@ -73,7 +92,9 @@ image.
 
   SWI-Prolog has no true peak of any of these. A maximum within a stage is
   taken with the `heartbeat` flag, and reported as a **sampled maximum**
-  with its interval, never as a peak. The sampler misses deterministic
+  with its interval, never as a peak. Sampling adds inferences, so it is
+  done only in storage mode, never in the run that gives the step count or
+  the classification (`PROTOCOL.md`, modes). The sampler misses deterministic
   tail-recursive loops, and its own inferences are counted. The operating
   system's maximum resident set size is a true peak, but of the whole
   process, and is reported as such.

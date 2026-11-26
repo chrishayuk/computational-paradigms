@@ -21,13 +21,14 @@ of trade-offs, not a ranking.
 
 ## Status
 
-**Draft 0.3. No system has been compared.**
+**Draft 0.4. No system has been compared.**
 
 - Draft 0.1 was reviewed independently. Draft 0.2 answered every finding
-  ([`reviews/review-1.md`](reviews/review-1.md)). Draft 0.3 applies the
+  ([`reviews/review-1.md`](reviews/review-1.md)). Draft 0.3 applied the
   decisions on its open questions
-  ([`reviews/decisions-0.2.md`](reviews/decisions-0.2.md)), and awaits a
-  second review.
+  ([`reviews/decisions-0.2.md`](reviews/decisions-0.2.md)). A second,
+  fresh review of draft 0.3 is answered in draft 0.4
+  ([`reviews/review-2.md`](reviews/review-2.md)).
 - Nothing is frozen.
 - No programs have been written for this study.
 
@@ -55,8 +56,8 @@ The first comparison is of four:
 - [Python](systems/python), the modern imperative baseline;
 - [ALGOL 60](systems/algol-60), the historical imperative baseline.
 
-Each has the configurations described in its folder. Earlier experiments on both are in the
-[absys](https://github.com/chrishayuk/absys) repository. They are not
+Each has the configurations described in its folder. Earlier experiments on Absys and SWI-Prolog are in
+the [absys](https://github.com/chrishayuk/absys) repository. They are not
 results of this study: they were written before the problems were fixed.
 
 Proposed after them, in order, and not started:

@@ -1,9 +1,10 @@
 # Specification
 
-*Draft 0.3, 26 November 2026. Not frozen. Draft 0.1 was reviewed
+*Draft 0.4, 26 November 2026. Not frozen. Draft 0.1 was reviewed
 independently; the findings and the response to each are in
-[`reviews/`](reviews). Draft 0.3 adds the decisions taken on draft 0.2
-(`reviews/decisions-0.2.md`). See `PROTOCOL.md` for how the specification is
+[`reviews/`](reviews). Draft 0.3 added the decisions taken on draft 0.2
+(`reviews/decisions-0.2.md`). Draft 0.4 answers the second review, of
+draft 0.3 (`reviews/review-2.md`). See `PROTOCOL.md` for how the specification is
 frozen.*
 
 ## The question
@@ -155,10 +156,13 @@ and how the system showed the withdrawal, if it did.
 
 ## Outcomes
 
-Each stage of each run is classified on three axes, recorded separately.
-Whether a problem can be written in a configuration at all is a fourth,
-separate observation (*expressible*, or *not expressible without supporting
-code*), made once per configuration and problem.
+Each stage of each run is classified on three axes, recorded separately,
+and on a fourth, effects, in P11 only.
+
+Separately from the axes, **expressibility** is recorded once per
+configuration and query (for a relation used in several directions, once
+per direction): *expressible*, or *not expressible without supporting
+code*.
 
 ### 1. Semantic result
 
@@ -170,11 +174,33 @@ outcomes.
 | **complete** | the report denotes exactly the valid outcomes. Where the valid outcomes are empty, the system has reported that there are none |
 | **partial** | the report denotes a nonempty proper subset of the valid outcomes. This includes a representation that drops solutions, such as a solver that restricts an unknown to integers when the problem lets it range wider |
 | **unsound** | the report denotes an outcome that is not valid, or reports that there are none where valid outcomes exist |
-| **undetermined** | the report consists of conditions the system has left unresolved, and either they are the problem's own relations essentially unreduced, or they denote the empty set and the system has not reported it empty |
+| **undetermined** | the report consists of conditions the system has left unresolved, and either they are not equivalent to the valid outcomes, or they are equivalent but a smaller equivalent solved form exists that the system did not reach (below). That includes conditions that denote the empty set, when the system has not reported it empty |
 | **none reported** | nothing was reported |
 
 A system that reports one answer of several, for a query that asks for one
 (*any one* queries, in later problems), is *complete* for that query.
+
+**Smaller.** One representation is smaller than another if it has fewer
+relations left to decide, or the same number with fewer occurrences of
+unknowns. So:
+
+- P02, stage 1: u + v = 16, held unresolved, is *complete*, representation
+  *residual*. It is the valid outcome, and no smaller equivalent form
+  exists.
+- P07c: x + y = 10, held, is *complete* / *residual*.
+- P09e: x = y + 1 and y = x − 1, held, are *complete* / *residual*. So is
+  either equation alone, which is equivalent to both. A solved form binds
+  unknowns to terms of values, unknowns, ⟨⟩ and ++, and arithmetic is not
+  among them, so no solved form exists here.
+- P07f: x + y = 10 and x + y = 11, held, is *undetermined*: they denote the
+  empty set, which a smaller form (no solutions) represents.
+- P07b: x + y = 10 and x − y = 4, held, is *undetermined*: the solved form
+  x = 7, y = 3 is smaller.
+
+A binding that the system holds is **reported** if the harness's
+`observe()` can read it at the end of the stage, including at the moment
+a budget runs out, whether or not the system's mechanism for answers
+would deliver it (P09d2, P15b).
 
 ### 2. Representation
 
@@ -240,5 +266,9 @@ resemble Absys. Disclosure does not remove that, so:
 - The first comparison includes two imperative baselines (Python and
   ALGOL 60), so that the suite is not only a comparison of declarative
   systems.
-- Retained state and recomputation are measured as costs, with a
-  comparable measure of peak store (`METRICS.md`).
+- Retained state and recomputation are measured as costs. Each system's
+  store is measured in its own units, which are not comparable. What is
+  compared across systems is the **problem-defined quantities**, such as
+  the alternatives a problem's own terms say are held, and the **growth
+  exponent** of each system's store and steps as a problem's size grows
+  (`METRICS.md`).

@@ -1,5 +1,7 @@
 # P14. A process over a message stream
 
+*Added after review 1.*
+
 **Probes:** whether a computation can persist as a process with its own
 state, receiving messages as they arrive and answering between them.
 
@@ -10,7 +12,16 @@ A **counter** holds a count, 0 at first. It receives messages:
 - ɪɴᴄ adds one to the count;
 - ʀᴇᴀᴅ(r) makes r equal to the count when the message is received.
 
-Messages are taken in the order they arrive.
+Messages are taken in the order they arrive. As a relation over the
+sequence of messages and the count before them:
+
+1. run(⟨⟩, c)
+2. run(⟨ɪɴᴄ⟩ ++ s, c) if run(s, c + 1)
+3. run(⟨ʀᴇᴀᴅ(r)⟩ ++ s, c) if r = c and run(s, c)
+
+The messages are posed with run(m, 0). A program may instead implement the
+counter as a process holding its count. Either is a transcription of the
+problem (P), since the two definitions say the same thing.
 
 ## P14a. Messages as stages
 

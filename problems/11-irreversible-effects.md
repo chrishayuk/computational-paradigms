@@ -22,8 +22,16 @@ An outcome is **provisional** until the problem commits to it, and
 anticipate information it has not received:
 
 - In a problem of one stage, the outcome is committed when it is reported.
-- In a problem of several stages, a stage marked **commit** commits to the
-  outcome as it then stands. Before it, every outcome is provisional.
+- In a problem of several stages, a stage marked **commit** commits: the
+  system selects one of its current outcomes, v, and the information
+  x = v is added to the problem. A system that holds several outcomes at
+  that point must select one. If it does not, its effects class is judged
+  on every entry it emitted. The valid outcomes after commit are computed
+  with x = v.
+
+The log L is kept across every run the harness makes, reposed runs
+included, as `PROTOCOL.md` says. Entries duplicated only by reposing are
+counted separately.
 
 ## Effects
 
@@ -45,6 +53,7 @@ An effect can be both deferred to commitment and exact.
 One stage: pick(x) and x ≥ 2 and emit(x), in that order.
 
 Valid: one answer, x = 2 or x = 3, and L holds exactly that one entry.
+Answers are collected with `answers(1)`.
 
 ## P11b. The effect before the test
 
@@ -73,10 +82,11 @@ outcome. If that outcome was later refuted (x = 1 at stage 2), L is
 | 2 | commit |
 | 3 | x ≠ 1 |
 
-Valid: whatever was committed at stage 2 stays committed, and its effect
-cannot be withdrawn. If x = 1 was committed, stage 3 contradicts a final
-outcome. Valid outcome after stage 3: none, with L holding ⟨1⟩, *exact*. If
-x = 2 or x = 3 was committed, stage 3 is consistent with it. Record what the
+Valid: the commit at stage 2 adds x = v, for the v the system selected.
+- If v = 1, stage 3 contradicts it: the valid outcome after stage 3 is
+  none, and L holding ⟨1⟩ is *exact*, since 1 was the committed outcome.
+- If v = 2 or v = 3, stage 3 is consistent: the valid outcome is x = v,
+  and L holding ⟨v⟩ is *exact*. Record what the
 system does with information that contradicts a committed effect.
 
 ## Rules

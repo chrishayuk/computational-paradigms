@@ -1,5 +1,7 @@
 # P13. Deterministic scale
 
+*Added after review 1.*
+
 **Probes:** how steps and store grow with the size of a computation that has
 no unknowns and no alternatives, so that the bookkeeping cost of each model
 can be seen apart from search and suspension.
@@ -11,7 +13,38 @@ task is posed twice:
 - **prescribed:** with the definitions below, which every system
   transcribes. Differences are then the model's, not the algorithm's;
 - **native:** by whatever means is the system's own idiom. The algorithm
-  used is recorded, and it is not reformulation.
+  used is recorded, and it is not reformulation. The sequence ⟨1, …, n⟩
+  must be built and held until the answer is given; a closed form, or an
+  iteration that never builds it, does not answer P13e or P13f.
+
+## Three sources of cost
+
+The costs observed have three sources, which cannot always be separated:
+
+- **algorithmic:** the work intrinsic to the algorithm, the same in every
+  system for a prescribed task, and counted as problem operations
+  (`METRICS.md`);
+- **computational model:** work added by search, suspension, scheduling or
+  retained alternatives, although the task has none of them;
+- **implementation:** the interpreter, the run-time, the representation of
+  data, and measurement.
+
+The prescribed tasks hold the first fixed. Comparing their problem
+operations with the system's own steps shows how much the second and third
+add.
+
+## Representation
+
+In the prescribed tasks, a sequence must decompose as ⟨h⟩ ++ t in constant
+time, as a pair of a head and a tail does. A representation in which
+taking the tail copies the sequence (slicing an array, for instance) makes
+linear definitions quadratic, and is not a transcription. The
+representation used is recorded. A system with no dynamic structures
+(ALGOL 60) uses arrays with an index for the tail, and records it.
+
+Recursive definitions at n = 10⁵ exceed some systems' default recursion
+depth. Raising the limit is a configuration flag, listed in the systems
+file. Where it is not raised, the error is the result.
 
 ## Vocabulary
 
@@ -30,7 +63,7 @@ by:
 rev is as in P03, which is quadratic. revacc(a, b) is the linear one:
 
 1. revacc(a, b) if racc(a, ⟨⟩, b)
-2. racc(⟨⟩, b, b)
+2. racc(⟨⟩, b, b), for every sequence b
 3. racc(⟨h⟩ ++ t, c, b) if racc(t, ⟨h⟩ ++ c, b)
 
 ## Queries
@@ -54,8 +87,14 @@ out of the others.
 This problem's budget is 10⁸ steps per stage and its safety limit 600
 seconds. The other problems' limits would stop most systems at n = 10⁴ on
 P13c, which is the expected result for a quadratic algorithm, not a
-finding. A run stopped by either limit is recorded as such, and the larger
-values of n are not run after it.
+finding. These limits are fixed. They are not raised to let any system
+finish: a quadratic algorithm is expected to stop scaling, and where it
+stops is a result. A run stopped by either limit is recorded as such, and
+the larger values of n are not run after it.
+
+Steps, problem operations, process CPU time and maximum resident set size
+are recorded for each n. The growth exponents of each are compared across
+systems (`METRICS.md`).
 
 ## Observations
 

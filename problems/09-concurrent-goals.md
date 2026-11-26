@@ -10,8 +10,8 @@ is as in P04. rev and conc are as in P03.
 
 ## P09a. Independent computations
 
-Two separate computations, posed to the same running system, not conjoined,
-sharing no unknowns:
+Two separate computations, each started with `spawn` (`PROTOCOL.md`) in the
+same running system, not conjoined, sharing no unknowns:
 
 - A: loop(x)
 - B: rev(⟨1, 2, 3⟩, b)
@@ -49,7 +49,8 @@ genu(n, s) is defined by one case:
 
 1. genu(n, ⟨n⟩ ++ rest) if genu(n + 1, rest)
 
-One computation: genu(1, s) and sum3(s, total), in that order. Two readings:
+One computation: genu(1, s) and sum3(s, total), in that order. It is run
+once and classified twice, under each of two readings:
 
 - **P09d1, finite:** sequences are finite, and genu is read as the least
   relation. It has no instances, so the conjunction has no solution. Valid

@@ -4,7 +4,7 @@ The historical imperative baseline: a mainstream programming model of the
 same period as Absys, with structured control, recursion, procedures, call
 by name and mutable variables.
 
-The system is the reconstruction in `~/chris-source/esoteric/algol-60`
+The system is the reconstruction at https://github.com/chrishayuk/algol-60
 (the `algol60` interpreter, built from the *Revised Report*, 1962),
 provisionally pinned at commit `6e8740c`. The commit is fixed at the
 freeze. That repository is not changed for this study; a change it needed
@@ -28,16 +28,57 @@ records its departures from the problem's definitions as reformulation.
 Some problems may be *not expressible* without supporting code. That is a
 result.
 
+## The core
+
+The Revised Report: its statements, declarations, procedures with value
+and name parameters, arrays, own variables, switches and labels, and its
+standard functions `abs`, `sign`, `sqrt`, `sin`, `cos`, `arctan`, `ln`,
+`exp` and `entier` (3.2.4–3.2.5). The input and output procedures are
+IFIP's (1964), and are external mechanisms in *report*.
+
+## Values
+
+ALGOL 60 has integers, reals and Booleans, and arrays of them. Atoms are
+encoded as integer codes, fixed per problem, and sequences as an integer
+array with a length, or as parallel arrays of heads and tail indices for a
+sequence that is built up. These encodings are part of transcribing a
+problem, and count as P. Stages are read from input as integers in the
+same encoding.
+
 ## Units
 
-To be qualified before the freeze:
+- **Step:** the interpreter's own `tick`, as `--max-steps` counts it.
+  Exactly what one step covers is to be stated from the interpreter's
+  source before the freeze.
+- **Store:** a vector, from `--measure` on the instrumented commit
+  `2589d00` (branch `measure`). Each quantity has its value at the end of
+  the run and its peak, updated as objects are made and dropped, so the
+  peak is exact:
 
-- **Step:** the interpreter's own steps, as `--max-steps` counts them (one
-  per statement or expression evaluated; to be confirmed and stated
-  exactly).
-- **Store:** not yet reported by the interpreter. Reporting it would be an
-  instrumentation-only change, under the conditions of `PROTOCOL.md`.
+  | quantity | what it counts |
+  |---|---|
+  | frames | activation records alive, including those kept by procedures and name parameters |
+  | slots | variables in the live activation records |
+  | arrays | arrays alive |
+  | array_elements | elements of the live arrays |
+  | names | name parameters alive, each an expression with its environment |
+  | call_depth | procedure calls in progress |
+  | frames_made, calls, name_uses, name_evaluations | totals over the run |
+
+  Temporary values are not measured: the tree-walking interpreter holds
+  them on its own call stack, which cannot be counted without changing how
+  it runs. call_depth is the nearest measure.
+
+  The instrumented commit's stdout, stderr and exit code were identical to
+  the baseline's on all 100 programs in the repository, in both dialects,
+  with measurement on and off (200 runs). That is observational
+  equivalence over that corpus.
+- **Repeated work:** `name_evaluations`. Call by name evaluates an actual
+  parameter again at every use. Jensen's device makes 8 procedure calls and
+  392 name evaluations.
 - **Alternative:** as Python: whatever structure the program keeps, named.
+- **x1sim:** the X1 simulator's own instruction count, if it reports one;
+  to be established before the freeze, or x1sim is run for behaviour only.
 
 ## The same computation
 

@@ -1,6 +1,6 @@
 # Metrics
 
-*Draft 0.3. The classification rules below are frozen with the specification,
+*Draft 0.4. The classification rules below are frozen with the specification,
 before any system is compared.*
 
 Every metric is recorded per system, per configuration, per problem, and per
@@ -22,10 +22,12 @@ observations, and C, R and S tokens taken relative to P tokens.
 | **answer completeness** | information, search | see below |
 | **answer latency** | execution | steps to the first valid answer, steps between successive answers, and steps to the end of the stage |
 | **suspended state** | execution | unresolved computations held, at each stage boundary and at their peak during the stage, in the system's terms, with a count |
-| **retained alternatives** | search | alternatives held, at each stage boundary and at their peak, in the unit the systems file defines |
+| **retained alternatives** | search | alternatives held, at each answer, at each stage boundary, when the budget runs out, and at their peak, in the unit the systems file defines |
 | **peak store** | resources | the store the computation holds during the stage, as a vector of quantities the systems file defines, each with its current value at the stage boundary and its peak during the stage. Where a true peak cannot be measured, the sampled maximum is reported and labelled as such |
 | **restart cost** | resources | for a system that cannot receive a stage into its existing computation: the steps of reposing stages 1 to k−1 |
-| **repeated work** | resources | work done again inside one computation after new information: relations examined again, goals re-solved. Measured from a trace |
+| **repeated work** | resources | work done again inside one computation after new information: relations examined again, goals re-solved, name parameters re-evaluated. Each systems file names its source for the count, or says it is not measured |
+| **problem operations** | resources | applications of each case of each relation the problem defines, counted in the problem's own terms (below). Comparable across systems |
+| **problem-defined alternatives** | search | alternatives held, in the problem's own terms (below). Comparable across systems |
 | **intervention** | resources | manual actions needed to make progress (see below) |
 | **effects** | commitment | P11's effects class, and when each effect was performed |
 | **coordination** | coordination | in P09, P14 and P15: whether computations progressed independently, what they waited on, and how arbitration was decided |
@@ -67,34 +69,68 @@ construct takes the construct's class, including its punctuation.
 ### Rules
 
 1. **Reference semantics.** A construct is P if removing it would change the
-   declarative meaning of the program, that is the set of solutions under the
-   semantics of `SPECIFICATION.md`. It is C if removing it would change
-   only operational behaviour: order, termination, floundering, errors,
-   efficiency.
+   meaning of the program: for a declarative program, the set of solutions
+   under the semantics of `SPECIFICATION.md`; for an imperative program,
+   the values it reports for the queries the problem poses. It is C if
+   removing it would change only operational behaviour: order,
+   termination, floundering, errors, efficiency. Where this rule and rule
+   5 disagree, rule 5 decides.
 2. A construct that changes both (a red cut, a guard that also orders) is
-   C, and is listed in the results.
-3. Moving a definition case or a conjunct away from the presentation order
+   C, and is listed in the results. But a **guard** that tests only its
+   case's own head (the pattern or condition the problem's case states) is
+   P. This is the head test of a committed-choice clause, a pattern match,
+   or an `if` that dispatches on the case. Only synchronisation or
+   commitment beyond that is C.
+3. **Mode-faithful transcription is P.** A function or procedure that
+   computes exactly the directions the problem's queries use, with one
+   branch per case of the definition, transcribes the definition. Its case
+   dispatch (`if not a:`, a match on the head) is P. R covers only:
+   - arguments or cases the problem does not give;
+   - a changed algorithm;
+   - a direction the queries do not use.
+
+   So `conc(a, b)` in Python, returning a followed by b by the problem's
+   two cases, is P for P03a. The same function offered for P03b, where
+   conc is used to split a sequence, is *not expressible* in that
+   direction, or R if the program writes a separate splitting function.
+4. Moving a definition case or a conjunct away from the presentation order
    adds no tokens. Each move counts as one move, under reformulation.
-4. An extra argument added for efficiency is R, even if the program is then
+5. An extra argument added for efficiency is R, even if the program is then
    shorter.
-5. A disjunction or a set of facts that the problem states is P. An
+6. A disjunction or a set of facts that the problem states is P. An
    enumeration that the problem does not state is C.
-6. A comprehension or aggregation construct that states a definition the
+7. A comprehension or aggregation construct that states a definition the
    problem gives (a set former for setdiff, for instance) is P, the same as
    a transcription of the definition by cases.
-7. Writing an arithmetic relation as an evaluation in one direction (a
-   value computed from the others) is R, plus one move if it forces a
-   reordering. Where the configuration cannot state the relation in more
-   than one direction at all, the program for that direction is recorded
-   under *not expressible* for the other directions.
-8. A built-in of the configuration's core is counted as its call tokens. A
+8. Writing an arithmetic relation as an evaluation in one direction is P
+   where that direction is the one the query uses (rule 3), and R where the
+   problem needs the relation in a direction the evaluation does not
+   serve, plus one move if it forces a reordering.
+9. **Built-ins in place of defined relations.** Using a built-in instead of
+   a relation the problem defines (memberchk/2 or Python's `in` for mem;
+   `sum` for sum) is P if it is equivalent in the directions used, and R
+   otherwise. Either way it is listed, since it may hide the problem's
+   operations from the step count.
+10. **Nested constructs.** The tokens that introduce a construct (a loop
+    header, an if-then-else's condition and connectives) take its class.
+    The constructs inside it are classed on their own.
+11. **Declarations that change failure.** A declaration that changes how an
+    undefined relation behaves (`:- dynamic`, the `unknown` flag) is C, and
+    is listed, since it chooses a reading of P08.
+12. A built-in of the configuration's core is counted as its call tokens. A
    library outside the core is counted the same way, and is also listed
    under external mechanisms. Code written for the experiment is S,
-   wherever it is kept, counted once per mechanism per configuration.
-9. Code in the harness beyond the fixed harness calls is not H. It is
+   wherever it is kept, counted once per mechanism per configuration. S is
+   reported apart from the per-problem ratios of C and R to P.
+13. Code in the harness beyond the fixed harness calls is not H. It is
    classed as C or S by these rules.
 
 ### Two classifiers
+
+**Calibration.** Before the freeze, worked and pre-classified programs for
+P03 and P13 are written in each system of the first comparison (Python and
+ALGOL 60 included), and both classifiers class them, so that the rules are
+tested where they are hardest before they are frozen.
 
 Each program is classed independently by two classifiers, who are named,
 are not the program's author, and are not shown each other's classes. For
@@ -122,7 +158,31 @@ Native suspension appears as neither.
 Each systems file names, before the freeze, the unit of steps (derivation
 steps, inferences, reductions), the unit of an alternative, and the unit of
 store, and how each is measured. They are not chosen afterwards. Wall-clock
-time is not a metric.
+time is not a metric, with one exception: in P13 only, process CPU time and
+the operating system's maximum resident set size are recorded as secondary
+measures of **growth**, since a built-in can do work that no step count
+sees. They are used only for the growth exponent, never as counts.
+
+## Quantities comparable across systems
+
+Each system's own units are compared within that system only. Across
+systems, these quantities are compared, because each problem defines them
+in its own terms:
+
+- **Problem operations.** The applications of each case of each relation
+  the problem defines. In the prescribed tasks of P13, they are fixed by
+  the definitions: for example, rev on a sequence of n makes n(n+1)/2
+  applications of conc's cases beyond those of rev itself. A system that
+  makes more has done work the problem does not ask for. A program counts
+  them with counters that are harness code (H), or by instrumentation.
+- **Problem-defined alternatives.** In P05, the values of x still held. In
+  P12, the candidates examined (sequences s for which accept(s) is
+  evaluated) and the partial sequences held, live or kept for
+  backtracking. In P15a, the interleavings held.
+- **Growth exponents.** For a problem with a size parameter (P12's n,
+  P13's n), the exponent k of the fit steps ∝ nᵏ, and likewise for each
+  store quantity, within each system. The exponents are compared across
+  systems; the counts are not.
 
 ## Restart cost and repeated work
 
@@ -133,9 +193,13 @@ twice.
   existing computation, is the step count of running stages 1 to k−1
   alone, measured, since those steps are spent again when stages 1 to k are
   posed together.
-- **Repeated work**, for any system, is counted from a trace: the number of
-  times a relation, goal or constraint already examined is examined again
-  after new information arrives, and the steps those examinations take.
+- **Repeated work** is counted from a source each systems file names: the
+  number of times a relation, goal or constraint already examined is
+  examined again after new information arrives, and the steps those
+  examinations take. For Absys, the trace. For ALGOL 60, the
+  `name_evaluations` count of its measurement build. For SWI-Prolog and
+  Python, only problem operations counted by the program; the debugger is
+  not used, because it changes the inference count.
 - For every stage, both the *incremental cost* (steps from the end of stage
   k−1 to the end of stage k, where the system allows it) and the *restated
   cost* (steps from nothing to the end of stage k) are recorded beside them.

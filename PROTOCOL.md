@@ -1,6 +1,6 @@
 # Protocol
 
-*Draft 0.3.*
+*Draft 0.4.*
 
 ## Phases
 
@@ -13,7 +13,7 @@
    it for ambiguity, for errors in the valid outcomes, for language bias,
    and for problems missing from the suite. Findings and responses are kept
    in `reviews/`. *(Draft 0.1 had one review, answered in draft 0.2. Draft
-   0.3 is awaiting a second, by a fresh reviewer.)*
+   0.3 had a second, by a fresh reviewer, answered in draft 0.4.)*
 3. **Freeze.** The specification is tagged `spec-1.0`, together with:
    - the pinned version or commit of every system in the first comparison;
    - each systems file's cores, flags and units;
@@ -108,19 +108,37 @@ Every harness provides exactly these operations, and nothing that orders,
 chooses or re-poses goals on its own:
 
 - **pose(stage)**: give the system the information of one stage, into the
-  same computation if the configuration allows it, or else by reposing
-  stages 1 to k together;
+  same computation if the configuration allows it, or else by reposing.
+  A reposed run replays **every** stage 1 to k in order, replacements and
+  withdrawals included, and the program must carry them out. The harness
+  never works out the net information itself;
+- **spawn(computation)**: start a separate computation in the same
+  instance (P09), returning at once where the configuration can run
+  computations side by side. In a configuration that cannot, the first
+  runs to its end or its budget, and then the next;
 - **answers(cap)**: collect the answers the system reports, through its
   standard mechanism for enumerating them, until it is exhausted, the
-  budget runs out, or `cap` answers have been collected. The cap is 20;
-- **observe()**: record the state the common observations need;
+  budget runs out, or `cap` answers have been collected. `cap` is 1 for an
+  *any one* query and 20 otherwise, as each problem states. The execution
+  state is classified after the call;
+- **observe()**: record the state the common observations need, including
+  bindings the system holds (`SPECIFICATION.md`, "reported");
 - **print()**.
+
+Each system's systems file says what its standard mechanism for answers
+is. For Python and ALGOL 60, it is the values the program prints.
 
 **Observing must not consume the computation.** In a system where
 collecting answers would end or alter the computation that the next stage
 extends (exhausting a backtracking search, for instance), the observation
 of stage k is taken on a separate run of stages 1 to k. The incremental
 run is left as it was.
+
+**External effects** (P11) are written to one log per problem, never reset,
+across every run the harness makes for classification, reposed runs
+included. Separate observation runs write to a separate log, which is not
+judged. Entries that are duplicated only because a run was reposed are
+counted separately, as the cost of reposing an irreversible effect.
 
 Concurrency used to run computations (threads, processes) is a mechanism of
 the configuration, listed in its systems file. A harness may not run
@@ -139,20 +157,35 @@ system processes.
    counts as R.
 4. Where several idiomatic programs are possible, choose one per
    configuration and problem before any is run, or run and report every
-   variant.
-5. A program may not be revised after its results are seen, except to fix a
+   variant. In either case, one is designated the **primary** variant
+   before any is run, and stands for the configuration.
+5. **No anticipation.** The code that handles stage k may not depend on the
+   content of any later stage.
+6. **Genericity.** A program must stay correct when the constants in a
+   problem's stages are changed. Each problem has hidden variants with other
+   constants, held by someone who does not write programs. Every program is
+   run on them after its results are recorded. A program that fails a
+   variant is recorded as such, since it encodes a conclusion rather than
+   computing it.
+7. A program may not be revised after its results are seen, except to fix a
    transcription error: a place where the program departs from the text of
    the problem file. Each fix is recorded as a diff, with the reason. A
    program changed for any other reason is a separate, named variant, and
    is reported as such.
-6. Record the author of each program, human or agent.
+8. Record the author of each program, human or agent.
 
 ## Running
 
 - Pin the version of every system, and record its source and commit.
 - **Budget.** 10⁶ steps in the system's own unit, per stage and per
   computation. In P09, each separate computation has its own budget and its
-  own classification.
+  own classification. A reposed run of stages 1 to k has a budget of its
+  measured restart cost plus 10⁶.
+- **The budget is relative to each system.** 10⁶ Absys steps, SWI-Prolog
+  inferences and Python instructions are different amounts of work. So
+  *budget* is a classification within a system, and is not compared
+  across systems. Each system records, as a calibration figure, its steps
+  for P13b at n = 10³.
 - **After budget.** If stage k ends in *budget* and the configuration can
   keep its computation and continue it, stage k+1 is posed into that same
   computation, with a new budget. Whether it can is recorded, since
@@ -162,8 +195,29 @@ system processes.
 - **After error.** Stage k+1 is posed by reposing stages 1 to k+1, counted
   under restart cost.
 - **Safety limit.** A limit of 60 seconds per stage protects the harness.
-  It is not a measurement. A stage it stops is classified *timeout* and
-  rerun on a faster machine, or with the limit raised, with both recorded.
+  It is not a measurement. A stage it stops is rerun once, with the limit
+  raised tenfold. If the rerun also stops, *timeout* is final for that
+  stage. Both runs are recorded.
+
+## Modes of running
+
+Each program is run in up to three modes:
+
+| mode | what it establishes | instrumentation |
+|---|---|---|
+| **behaviour** | the outcomes, the three axes and effects | none beyond the harness |
+| **cost** | steps, answer latency, problem-defined operation counts | step counting only |
+| **storage** | store, retained alternatives, suspended state | the systems file's storage measurement |
+
+- The semantic result and execution state are taken from the behaviour run.
+- Where two modes can be compared, their semantic results must agree, and
+  any disagreement is reported as a fault of the instrumentation.
+- A sampled measurement is never taken from the run that gives the step
+  count or the classification, because sampling adds steps of its own.
+- A run that hits the safety limit only because it is instrumented (in
+  cost or storage mode, when the behaviour run finished) is not evidence
+  that the model cannot complete the problem. It is recorded as a limit of
+  the measurement.
 - Run in CI where the system allows it, and compare with recorded output.
 
 ## Recording a result
@@ -178,7 +232,11 @@ gives:
 - for each stage, the common observations of `SPECIFICATION.md` and the
   problem's own;
 - the token counts by class, per classifier, with the disputed tokens;
-- the configuration's expressibility for the problem.
+- the configuration's expressibility for the problem;
+- the supporting code (S) used, by mechanism. An *extended* result is named
+  by its mechanism, and every configuration's S mechanisms are listed, with
+  their size, at the freeze;
+- whether the program passed its hidden variants.
 
 ## Guarding against bias
 

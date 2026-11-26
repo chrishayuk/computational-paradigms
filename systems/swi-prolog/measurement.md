@@ -728,6 +728,29 @@ The workflow `.github/workflows/swi-measurement.yml` runs `run.sh` in the
 diff as the build artifact `swi-measurement-linux`, and fails only if an
 `I` line differs from the macOS expectations.
 
-Linux results are pending until the workflow has run. Until then,
-statements in this note about Linux (in particular that inference counts
-are expected to match) are unverified.
+The workflow has run once; its result follows. The rest of this note was
+written before it, and its statements about Linux are confirmed by it only
+as far as the probes go.
+
+### First Linux result
+
+Run 45912868699 of the `swi-measurement` workflow, 26 November 2026, in
+the `swipl:11.0.1` image on ubuntu-latest (`x86_64-linux`):
+
+- **All 195 platform-independent (I) lines were identical to the macOS
+  arm64 run.** These cover:
+  - choicepoint counts, types and probe costs;
+  - inference counts warm, with `-O` and in debug mode, and their agreement
+    with `call_with_inference_limit/3`;
+  - attributed-variable and residual counts;
+  - table and answer counts, and the provisional `table_space_used` and
+    trie byte sizes, which can stay classed I;
+  - engine counters.
+- **108 platform-dependent (D) lines differed, as expected:** the
+  architecture, stack byte figures and allocated sizes, garbage-collection
+  counts (121 on macOS, 127 on Linux, during the same work), stack shifts,
+  and the heartbeat's sampled figures.
+
+So the step unit, the unit of an alternative, and the counts of tables,
+attributed variables and residual goals are portable between these two
+platforms. Stack bytes are not, and are compared within a platform only.
