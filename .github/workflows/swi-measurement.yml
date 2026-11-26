@@ -1,0 +1,51 @@
+# Runs the SWI-Prolog measurement-qualification probes on Linux, in the
+# same image the study pins, and compares them with the macOS arm64 run.
+# Fails only if a line classed I (platform-independent) differs; D lines
+# are shown in the diff but never fail the job.
+name: swi-measurement
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'systems/swi-prolog/probes/**'
+      - '.github/workflows/swi-measurement.yml'
+  pull_request:
+    paths:
+      - 'systems/swi-prolog/probes/**'
+      - '.github/workflows/swi-measurement.yml'
+
+jobs:
+  probes:
+    runs-on: ubuntu-latest
+    container: swipl:11.0.1
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Platform
+        run: |
+          uname -a
+          swipl --version
+
+      - name: Run probes
+        run: bash systems/swi-prolog/probes/run.sh > swi-measurement-linux.txt
+
+      - name: Compare with macOS arm64 expectations
+        run: |
+          set -o pipefail
+          bash systems/swi-prolog/probes/check.sh swi-measurement-linux.txt \
+            systems/swi-prolog/probes/expected-macos-arm64.txt | tee swi-measurement-diff.txt
+
+      - name: Upload output and diff
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: swi-measurement-linux
+          path: |
+            swi-measurement-linux.txt
+            swi-measurement-diff.txt
+          if-no-files-found: warn

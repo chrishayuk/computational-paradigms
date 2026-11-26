@@ -4,10 +4,22 @@ This is a measurement-qualification note, not a benchmark. Every figure
 below comes from a small probe run locally on SWI-Prolog 11.0.1 for
 arm64-darwin (Homebrew build, `swipl --version` prints `SWI-Prolog version
 11.0.1 for arm64-darwin`). The CI image `swipl:11.0.1` (Linux) was not
-available locally, so nothing here has been checked on Linux. The probe
-files are in the session scratchpad
-(a scratch folder, not kept);
-the code needed to reproduce each result is quoted in this note.
+available locally, so nothing here has been checked on Linux. The figures
+below come from the first, ad hoc probes. They are now packaged, with a
+runner, in [`probes/`](probes), and run on Linux by the workflow
+`.github/workflows/swi-measurement.yml` (see "Reproducing on Linux" at the
+end). The packaged probes load their libraries first, so a few of their
+figures differ from those quoted below:
+
+| figure | package | below |
+|---|---|---|
+| stacks work, inferences | 2,280,007 | 2,280,009 |
+| garbage collections during the stacks work | 121 | 147 |
+| `work`, cold, inferences | 276,584 | 291,137 |
+| toplevel overhead between queries | 967 | 587 |
+
+The heartbeat's sampled maxima differ too. The package's figures, in
+`probes/expected-macos-arm64.txt`, are the ones of record.
 
 All probes were run as `swipl -q -g Goal -t halt file.pl </dev/null`. The
 options must come before the file name: arguments after the file name are
@@ -679,3 +691,43 @@ and the heartbeat phase are the same.
   one engine were looked at.
 - **CPU-time reproducibility** was not studied. Timings are reported as
   measured.
+## Reproducing on Linux
+
+The probes behind this note are in `systems/swi-prolog/probes/`. Each is a
+small Prolog file; `run.sh` runs each in a fresh `swipl -f none -q -g Goal
+-t halt` process, with the variants used above (GC on, off, and off until
+the boundary; plain, `-O` and debug mode; four heartbeat phases; and so
+on). It prints one line per result:
+
+```
+CLASS|probe[variant]|key=value
+```
+
+`CLASS` is `I` for a quantity expected to be the same on every platform
+for SWI-Prolog 11.0.1 with the same flags: choicepoint counts and types,
+warm inference counts, the agreement of `call_with_inference_limit/3`
+with `statistics/2`, attributed-variable and residual-goal counts, table
+and answer counts, and each probe's exit status. `table_space_used` and the
+trie sizes are also classed `I`. They are byte figures, but should agree
+on any 64-bit build; if they do not, that is itself a result. `D` marks
+quantities expected to vary: stack bytes and allocated sizes, GC counts,
+first-call (autoload) inference counts, everything produced by the
+heartbeat sampler, toplevel overhead, and `statistics(memory)`. CPU and
+wall time are not printed at all, since they have no stable expected
+value. Output a probe prints without a label (a warning on stderr, for
+instance) is kept as a `D` line.
+
+`expected-macos-arm64.txt` is the output on macOS arm64 (SWI-Prolog
+11.0.1, Homebrew). Two consecutive runs there gave identical output,
+including every `D` line. `check.sh OUTPUT EXPECTED` prints the full diff,
+then the diff of the `I` lines alone, and exits non-zero only if the `I`
+lines differ.
+
+The workflow `.github/workflows/swi-measurement.yml` runs `run.sh` in the
+`swipl:11.0.1` container on `ubuntu-latest`, uploads the output and the
+diff as the build artifact `swi-measurement-linux`, and fails only if an
+`I` line differs from the macOS expectations.
+
+Linux results are pending until the workflow has run. Until then,
+statements in this note about Linux (in particular that inference counts
+are expected to match) are unverified.
