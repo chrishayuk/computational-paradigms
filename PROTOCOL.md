@@ -1,6 +1,6 @@
 # Protocol
 
-*Draft 0.6.*
+*Draft 0.7.*
 
 ## Phases
 
@@ -16,7 +16,7 @@
    and for problems missing from the suite. Findings and responses are kept
    in `reviews/`. *(Draft 0.1 had one review, answered in draft 0.2. Draft
    0.3 had a second, by a fresh reviewer, answered in draft 0.4. Draft 0.5
-   had a third, answered in draft 0.6.)*
+   had a third, answered in draft 0.6. Draft 0.7 is the freeze candidate.)*
 3. **Freeze.** The specification is tagged `spec-1.0`, together with:
    - the pinned version or commit of every system in the first comparison;
    - each systems file's cores, flags and units;
@@ -201,13 +201,22 @@ system processes.
    content of any later stage.
 6. **Genericity.** A program must stay correct when the constants in a
    problem's stages are changed. It keeps them in one marked place, or reads
-   them as input, so that the verifier can substitute them. A program
-   **fails** a variant if its semantic class or its effects class on the
-   variant differs from its class on the original constants. Each problem has hidden variants with other
-   constants, held by someone who does not write programs. Every program is
-   run on them after its results are recorded. A program that fails a
-   variant is recorded as such, since it encodes a conclusion rather than
-   computing it.
+   them as input, so that the verifier can substitute them. Each problem
+   has hidden variants with other constants, held by someone who does not
+   write programs. Every program is run on them after its results are
+   recorded. The custodian works out each variant's valid outcomes
+   independently, stage by stage, as the problem files give them for the
+   original constants. A variant's outcomes need not have the same classes
+   as the original's: other constants can make a finite outcome infinite,
+   or a consistent stage inconsistent. A program's run on a variant is
+   classified against **that variant's** valid outcomes, on the semantic and
+   effects axes, exactly as a primary run is. A program **fails** a variant
+   where that classification differs from its classification on the
+   original constants, each against its own valid outcomes: a program
+   complete on the original and unsound on the variant fails it. It is
+   recorded as such, since it encodes a conclusion rather than computing
+   it. The custodian records, for each variant, which of the original's
+   outcome classes it was built to keep, if any.
 7. A program may not be revised after its results are seen, except to fix a
    transcription error: a place where the program departs from the text of
    the problem file. Each fix is recorded as a diff, with the reason. A

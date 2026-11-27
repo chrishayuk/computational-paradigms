@@ -1,0 +1,121 @@
+
+## algol-60/p02.alg: 1873 tokens, agreement 1680/1873 (89.7%)
+  class  A      B
+  P      234    282
+  C      30     46
+  R      563    534
+  S      0      0
+  H      1046   1011
+  tokens 0-0 A=P B=H: begin
+      A: outer program block begin (with final end) | B: program block opening
+  tokens 88-93 A=P B=R: if ku ∧ kv then begin
+      A: rel1: header, both known (test), u known (v := c - u) | B: rel1 both-known dispatch
+  tokens 108-113 A=P B=R: end else if ku then begin
+      A: rel1: header, both known (test), u known (v := c - u) | B: rel1 both-known block close
+  tokens 127-127 A=P B=R: end
+      A: rel1: header, both known (test), u known (v := c - u) | B: rel1 u-known block close
+  tokens 133-145 A=R B=P: which := 1 ; val := c - v ; rel1 := 1
+      A: rel1, v known: u := c - v (never reached) | B: R1 determine u and encode verdict
+  tokens 159-166 A=P B=R: if kw ∧ ku ∧ kv then begin
+      A: rel2: header, all known (test) | B: rel2 all-known dispatch
+  tokens 181-181 A=P B=R: end
+      A: rel2: header, all known (test) | B: rel2 all-known block close
+  tokens 189-201 A=R B=P: which := 2 ; val := w × u ; rel2 := 1
+      A: rel2, w and u known (never reached) | B: R2 determine v and encode verdict
+  tokens 203-209 A=P B=R: else if ku ∧ kv then begin
+      A: rel2, u and v known: w := v / u, with u = 0 and non-integer cases | B: rel2 u-and-v-known dispatch
+  tokens 258-258 A=P B=R: end
+      A: rel2, u and v known: w := v / u, with u = 0 and non-integer cases | B: rel2 u-and-v-known block close
+  tokens 266-313 A=R B=P: if w = 0 then begin if v = 0 then rel2 := 2 else rel2 := 3 end else if v ÷ w × w
+      A: rel2, w and v known (never reached) | B: R2 zero-w case head
+  tokens 315-319 A=P B=R: else if ku then begin
+      A: rel2, u known and 0: v := 0 | B: rel2 u-known dispatch
+  tokens 338-338 A=R B=P: else
+      A: rel2 := 0 (waits) | B: R2 zero-u inference block close and else
+  tokens 342-342 A=P B=R: end
+      A: end of u-known branch | B: rel2 u-known block close
+  tokens 348-366 A=R B=P: if w = 0 then begin which := 2 ; val := 0 ; rel2 := 1 end else
+      A: rel2, w known and 0 (never reached) | B: R2 zero-w inference head
+  tokens 398-401 A=P B=R: if ku then begin
+      A: rel3 | B: rel3 u-known dispatch
+  tokens 416-418 A=P B=R: end else begin
+      A: rel3 | B: rel3 known branch close and unknown branch opening
+  tokens 432-432 A=P B=R: end
+      A: rel3 | B: rel3 unknown branch close
+  tokens 1231-1239 A=H B=R: , nalive , c ; Boolean has1 , has2
+      A: output adapters showu, showv, showw, showwaits, showrel, trace, report | B: report solver-selection variable declarations
+  tokens 1450-1453 A=H B=R: ; nalive := 0
+      A: output adapters showu, showv, showw, showwaits, showrel, trace, report | B: initialize undecided relation count for solver selection
+  tokens 1464-1485 A=H B=R: ; for i := 1 step 1 until nrel do if alive [ i ] then begin nalive := nalive + 1
+      A: report: loop over held relations, nalive | B: scan store to select combined solver
+  tokens 1553-1553 A=H B=R: end
+      A: report: printing held relations, solved form/explicit | B: solver-selection scan block close
+  tokens 1616-1616 A=H B=R: else
+      A: report: residual print; read runs, id, nstages | B: combined solver conditional else connective
+  tokens 1657-1672 A=R B=C: ; nrel := 0 ; ku := kv := kw := false ; failed := false
+      A: new computation: nrel, known flags, failed reset | B: reset held relation store for independent run
+  tokens 1872-1872 A=P B=H: end
+      A: final end of program block | B: harness stage and run trailers and program close
+
+## python/p02.py: 1573 tokens, agreement 1385/1573 (88.0%)
+  class  A      B
+  P      357    393
+  C      28     31
+  R      522    490
+  S      0      0
+  H      666    659
+  tokens 20-30 A=P B=R: if "u" in known and "v" in known : <NEWLINE> <INDENT>
+      A: r1, u and v known: test u + v = R1_SUM | B: r1 both-known dispatch
+  tokens 54-61 A=P B=R: <DEDENT> if "u" in known : <NEWLINE> <INDENT>
+      A: r1, u known: v = R1_SUM - u | B: r1 both-known block close
+  tokens 84-97 A=R B=P: return ( "bind" , "u" , R1_SUM - known [ "v" ] ) <NEWLINE>
+      A: r1, v known: u = R1_SUM - v (never reached: v is never known before u) | B: R1 determine u
+  tokens 119-133 A=P B=R: if "w" in known and "u" in known and "v" in known : <NEWLINE> <INDENT>
+      A: r2, all known: test w*u = v | B: r2 all-known dispatch
+  tokens 172-188 A=R B=P: return ( "bind" , "v" , known [ "w" ] * known [ "u" ] ) <NEWLINE>
+      A: r2, w and u known: v = w*u (never reached: w is only known after u and | B: R2 determine v
+  tokens 189-200 A=P B=R: <DEDENT> if "u" in known and "v" in known : <NEWLINE> <INDENT>
+      A: r2, u and v known: w = v/u, with u = 0 and non-integer cases | B: r2 w-and-u-known block close
+  tokens 277-340 A=R B=P: w , v = known [ "w" ] , known [ "v" ] <NEWLINE> if w == 0 : <NEWLINE> <INDENT> r
+      A: r2, w and v known: u = v/w (never reached) | B: R2 local w and v values
+  tokens 341-355 A=P B=R: <DEDENT> if "u" in known and known [ "u" ] == 0 : <NEWLINE> <INDENT>
+      A: r2, u known and 0: v = 0 (reached under variants with u = 0) | B: r2 w-and-v-known block close
+  tokens 380-388 A=R B=P: return ( "bind" , "v" , 0 ) <NEWLINE>
+      A: r2, w known and 0 (never reached) | B: R2 zero-w determines v
+  tokens 424-430 A=P B=R: if "u" in known : <NEWLINE> <INDENT>
+      A: r3, u known: test u + R3_ADDEND = R3_SUM | B: r3 u-known dispatch
+  tokens 451-451 A=P B=R: <DEDENT>
+      A: r3: u = R3_SUM - R3_ADDEND | B: r3 u-known block close
+  tokens 463-463 A=R B=P: <DEDENT>
+      A: RELATIONS dispatch table for held relations | B: r3 definition close
+  tokens 805-805 A=R B=C: <INDENT>
+      A: divisor test | B: generate positive divisor candidates
+  tokens 814-814 A=C B=R: <INDENT>
+      A: for u in (d, -d): enumeration of signs | B: derived divisor test
+  tokens 826-826 A=R B=C: <INDENT>
+      A: build each triple, return | B: generate positive and negative divisors
+  tokens 846-846 A=R B=C: <DEDENT>
+      A: build each triple, return | B: signed divisor loop close
+  tokens 848-848 A=R B=C: <DEDENT>
+      A: build each triple, return | B: candidate loop close
+  tokens 852-852 A=H B=R: <DEDENT>
+      A: show_relation (output adapter) | B: combined solver definition close
+  tokens 1324-1324 A=R B=H: <DEDENT>
+      A: report: choose and call r1_and_r2_solutions | B: held-relation printing loop close
+  tokens 1353-1353 A=H B=R: <DEDENT>
+      A: report: printing of outcome | B: combined solver selection block close
+  tokens 1408-1413 A=H B=R: comp = new_computation ( ) <NEWLINE>
+      A: run: stand-in for spawn/pose/print | B: create per-run relation store
+
+## per system
+  algol-60: 1680/1873 (89.7%)
+  python: 1385/1573 (88.0%)
+
+## disagreements by (A, B) class
+  R→P: 199
+  P→R: 113
+  H→R: 45
+  R→C: 20
+  P→H: 2
+  C→R: 1
+  R→H: 1

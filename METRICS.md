@@ -1,6 +1,6 @@
 # Metrics
 
-*Draft 0.6. The classification rules below are frozen with the specification,
+*Draft 0.7. The classification rules below are frozen with the specification,
 before any system is compared.*
 
 Every metric is recorded per system, per configuration, per problem, and per
@@ -137,7 +137,9 @@ construct takes the construct's class, including its punctuation.
     computed. That covers a printer that walks an encoded sequence, a
     callback that prints an answer, and a stand-in for the fixed harness
     calls. Code that computes anything the report depends on is not an
-    adapter.
+    adapter, and nor is code that decides which computation's result is
+    reported (a test of what is still held, for instance, that chooses
+    whether to derive the answers another way).
 14. **A separately written function for a direction** (rule 3) is R
     throughout, its case-head tests included. Rule 2's exemption for head
     tests applies to transcriptions of the problem's own cases, not to a
@@ -164,6 +166,20 @@ construct takes the construct's class, including its punctuation.
     - general over relations, reusable from one problem to another (a
       constraint store, a propagator), it is S, and the program belongs to
       the *extended* configuration, named by that mechanism.
+
+    Inside such code, each relation's **evaluator** (the function that,
+    given which of the relation's places are known, decides it, gives an
+    unknown its value, or waits) is split. *(Clarified after the held-out
+    check.)*
+    - Computing any one place from the others, and testing a fully known
+      relation, is P, in **every** direction the relation has. The problem
+      states the relation without a direction, and any stage, order or
+      hidden variant may leave any of its places unknown, so rule 3's
+      "direction the queries do not use" does not apply here. Which
+      branches a run happens to reach never decides a class.
+    - The tests of which places are known, the verdict that the relation
+      must wait, and what it records about what it waits for, are R: they
+      are the holding, not the relation.
 20. **Separators** between two constructs (a comma between arguments, a
     semicolon between statements) take the class of the construct that
     follows them.

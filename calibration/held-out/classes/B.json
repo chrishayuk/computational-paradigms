@@ -1,0 +1,2396 @@
+{
+  "tokens": {
+    "python/p02.py": [
+      {
+        "from": 0,
+        "to": 3,
+        "class": "P",
+        "construct": "R1 stage constant",
+        "rule": "3, 8"
+      },
+      {
+        "from": 4,
+        "to": 7,
+        "class": "P",
+        "construct": "R3 addend stage constant",
+        "rule": "3, 8"
+      },
+      {
+        "from": 8,
+        "to": 11,
+        "class": "P",
+        "construct": "R3 sum stage constant",
+        "rule": "3, 8"
+      },
+      {
+        "from": 12,
+        "to": 19,
+        "class": "P",
+        "construct": "r1 definition header",
+        "rule": "3, 8, 10"
+      },
+      {
+        "from": 20,
+        "to": 30,
+        "class": "R",
+        "construct": "r1 both-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 31,
+        "to": 53,
+        "class": "P",
+        "construct": "R1 truth test",
+        "rule": "3, 8"
+      },
+      {
+        "from": 54,
+        "to": 54,
+        "class": "R",
+        "construct": "r1 both-known block close",
+        "rule": "10, 19"
+      },
+      {
+        "from": 55,
+        "to": 61,
+        "class": "R",
+        "construct": "r1 u-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 62,
+        "to": 75,
+        "class": "P",
+        "construct": "R1 determine v",
+        "rule": "3, 8"
+      },
+      {
+        "from": 76,
+        "to": 76,
+        "class": "R",
+        "construct": "r1 u-known block close",
+        "rule": "10, 19"
+      },
+      {
+        "from": 77,
+        "to": 83,
+        "class": "R",
+        "construct": "r1 v-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 84,
+        "to": 97,
+        "class": "P",
+        "construct": "R1 determine u",
+        "rule": "3, 8"
+      },
+      {
+        "from": 98,
+        "to": 98,
+        "class": "R",
+        "construct": "r1 v-known block close",
+        "rule": "10, 19"
+      },
+      {
+        "from": 99,
+        "to": 109,
+        "class": "R",
+        "construct": "R1 undecidable verdict and dependencies",
+        "rule": "19"
+      },
+      {
+        "from": 110,
+        "to": 110,
+        "class": "P",
+        "construct": "r1 definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 111,
+        "to": 118,
+        "class": "P",
+        "construct": "r2 definition header",
+        "rule": "3, 8, 10"
+      },
+      {
+        "from": 119,
+        "to": 133,
+        "class": "R",
+        "construct": "r2 all-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 134,
+        "to": 159,
+        "class": "P",
+        "construct": "R2 truth test",
+        "rule": "3, 8"
+      },
+      {
+        "from": 160,
+        "to": 160,
+        "class": "R",
+        "construct": "r2 all-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 161,
+        "to": 171,
+        "class": "R",
+        "construct": "r2 w-and-u-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 172,
+        "to": 188,
+        "class": "P",
+        "construct": "R2 determine v",
+        "rule": "3, 8"
+      },
+      {
+        "from": 189,
+        "to": 189,
+        "class": "R",
+        "construct": "r2 w-and-u-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 190,
+        "to": 200,
+        "class": "R",
+        "construct": "r2 u-and-v-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 201,
+        "to": 214,
+        "class": "P",
+        "construct": "R2 local u and v values",
+        "rule": "3, 8"
+      },
+      {
+        "from": 215,
+        "to": 221,
+        "class": "P",
+        "construct": "R2 zero-u case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 222,
+        "to": 236,
+        "class": "P",
+        "construct": "R2 zero-u truth test",
+        "rule": "3, 8"
+      },
+      {
+        "from": 237,
+        "to": 237,
+        "class": "P",
+        "construct": "R2 zero-u block close",
+        "rule": "10"
+      },
+      {
+        "from": 238,
+        "to": 246,
+        "class": "P",
+        "construct": "R2 integer divisibility case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 247,
+        "to": 257,
+        "class": "P",
+        "construct": "R2 determine integer w",
+        "rule": "3, 8"
+      },
+      {
+        "from": 258,
+        "to": 258,
+        "class": "P",
+        "construct": "R2 divisibility block close",
+        "rule": "10"
+      },
+      {
+        "from": 259,
+        "to": 264,
+        "class": "P",
+        "construct": "R2 reject noninteger w",
+        "rule": "3, 8"
+      },
+      {
+        "from": 265,
+        "to": 265,
+        "class": "R",
+        "construct": "r2 u-and-v-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 266,
+        "to": 276,
+        "class": "R",
+        "construct": "r2 w-and-v-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 277,
+        "to": 290,
+        "class": "P",
+        "construct": "R2 local w and v values",
+        "rule": "3, 8"
+      },
+      {
+        "from": 291,
+        "to": 297,
+        "class": "P",
+        "construct": "R2 zero-w case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 298,
+        "to": 312,
+        "class": "P",
+        "construct": "R2 zero-w truth test",
+        "rule": "3, 8"
+      },
+      {
+        "from": 313,
+        "to": 313,
+        "class": "P",
+        "construct": "R2 zero-w block close",
+        "rule": "10"
+      },
+      {
+        "from": 314,
+        "to": 322,
+        "class": "P",
+        "construct": "R2 integer-u divisibility case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 323,
+        "to": 333,
+        "class": "P",
+        "construct": "R2 determine integer u",
+        "rule": "3, 8"
+      },
+      {
+        "from": 334,
+        "to": 334,
+        "class": "P",
+        "construct": "R2 integer-u block close",
+        "rule": "10"
+      },
+      {
+        "from": 335,
+        "to": 340,
+        "class": "P",
+        "construct": "R2 reject noninteger u",
+        "rule": "3, 8"
+      },
+      {
+        "from": 341,
+        "to": 341,
+        "class": "R",
+        "construct": "r2 w-and-v-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 342,
+        "to": 355,
+        "class": "R",
+        "construct": "r2 known-zero-u dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 356,
+        "to": 364,
+        "class": "P",
+        "construct": "R2 zero-u determines v",
+        "rule": "3, 8"
+      },
+      {
+        "from": 365,
+        "to": 365,
+        "class": "R",
+        "construct": "r2 known-zero-u block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 366,
+        "to": 379,
+        "class": "R",
+        "construct": "r2 known-zero-w dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 380,
+        "to": 388,
+        "class": "P",
+        "construct": "R2 zero-w determines v",
+        "rule": "3, 8"
+      },
+      {
+        "from": 389,
+        "to": 389,
+        "class": "R",
+        "construct": "r2 known-zero-w block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 390,
+        "to": 414,
+        "class": "R",
+        "construct": "R2 undecidable verdict and dependency collection",
+        "rule": "19"
+      },
+      {
+        "from": 415,
+        "to": 415,
+        "class": "P",
+        "construct": "r2 definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 416,
+        "to": 423,
+        "class": "P",
+        "construct": "r3 definition header",
+        "rule": "3, 8, 10"
+      },
+      {
+        "from": 424,
+        "to": 430,
+        "class": "R",
+        "construct": "r3 u-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 431,
+        "to": 450,
+        "class": "P",
+        "construct": "R3 truth test",
+        "rule": "3, 8"
+      },
+      {
+        "from": 451,
+        "to": 451,
+        "class": "R",
+        "construct": "r3 u-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 452,
+        "to": 462,
+        "class": "P",
+        "construct": "R3 determine u",
+        "rule": "3, 8"
+      },
+      {
+        "from": 463,
+        "to": 463,
+        "class": "P",
+        "construct": "r3 definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 464,
+        "to": 479,
+        "class": "R",
+        "construct": "held-relation evaluator dispatch table",
+        "rule": "19"
+      },
+      {
+        "from": 480,
+        "to": 488,
+        "class": "R",
+        "construct": "new_computation definition and state constructor",
+        "rule": "19, 10"
+      },
+      {
+        "from": 489,
+        "to": 492,
+        "class": "R",
+        "construct": "known bindings state",
+        "rule": "19"
+      },
+      {
+        "from": 493,
+        "to": 497,
+        "class": "R",
+        "construct": "held relations state",
+        "rule": "19, 20"
+      },
+      {
+        "from": 498,
+        "to": 502,
+        "class": "R",
+        "construct": "waiting dependencies state",
+        "rule": "19, 20"
+      },
+      {
+        "from": 503,
+        "to": 506,
+        "class": "R",
+        "construct": "failure state",
+        "rule": "19, 20"
+      },
+      {
+        "from": 507,
+        "to": 511,
+        "class": "H",
+        "construct": "trace observation state",
+        "rule": "13, 20"
+      },
+      {
+        "from": 512,
+        "to": 516,
+        "class": "H",
+        "construct": "examination-count observation state",
+        "rule": "13, 20"
+      },
+      {
+        "from": 517,
+        "to": 519,
+        "class": "R",
+        "construct": "new_computation constructor and definition close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 520,
+        "to": 527,
+        "class": "R",
+        "construct": "resume definition header",
+        "rule": "19, 10"
+      },
+      {
+        "from": 528,
+        "to": 531,
+        "class": "R",
+        "construct": "initialize resumption progress",
+        "rule": "19"
+      },
+      {
+        "from": 532,
+        "to": 542,
+        "class": "R",
+        "construct": "repeat relation passes to fixpoint",
+        "rule": "19, 10"
+      },
+      {
+        "from": 543,
+        "to": 546,
+        "class": "R",
+        "construct": "begin resumption pass",
+        "rule": "19"
+      },
+      {
+        "from": 547,
+        "to": 559,
+        "class": "R",
+        "construct": "visit held relations in arrival order",
+        "rule": "19, 10"
+      },
+      {
+        "from": 560,
+        "to": 572,
+        "class": "R",
+        "construct": "obtain held-relation verdict",
+        "rule": "19"
+      },
+      {
+        "from": 573,
+        "to": 594,
+        "class": "H",
+        "construct": "count relation examination",
+        "rule": "13"
+      },
+      {
+        "from": 595,
+        "to": 603,
+        "class": "H",
+        "construct": "collect verdict trace",
+        "rule": "13"
+      },
+      {
+        "from": 604,
+        "to": 613,
+        "class": "R",
+        "construct": "dispatch binding verdict",
+        "rule": "19, 10"
+      },
+      {
+        "from": 614,
+        "to": 629,
+        "class": "R",
+        "construct": "retain new binding",
+        "rule": "19"
+      },
+      {
+        "from": 630,
+        "to": 633,
+        "class": "R",
+        "construct": "binding requires another pass",
+        "rule": "19"
+      },
+      {
+        "from": 634,
+        "to": 634,
+        "class": "R",
+        "construct": "binding branch close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 635,
+        "to": 644,
+        "class": "R",
+        "construct": "dispatch decided verdict",
+        "rule": "19, 10"
+      },
+      {
+        "from": 645,
+        "to": 654,
+        "class": "R",
+        "construct": "remove decided held relation",
+        "rule": "19"
+      },
+      {
+        "from": 655,
+        "to": 666,
+        "class": "R",
+        "construct": "remove decided dependencies",
+        "rule": "19"
+      },
+      {
+        "from": 667,
+        "to": 670,
+        "class": "R",
+        "construct": "decision requires another pass",
+        "rule": "19"
+      },
+      {
+        "from": 671,
+        "to": 671,
+        "class": "R",
+        "construct": "decided branch close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 672,
+        "to": 681,
+        "class": "R",
+        "construct": "dispatch failing verdict",
+        "rule": "19, 10"
+      },
+      {
+        "from": 682,
+        "to": 688,
+        "class": "R",
+        "construct": "retain contradiction",
+        "rule": "19"
+      },
+      {
+        "from": 689,
+        "to": 690,
+        "class": "R",
+        "construct": "stop processing failed store",
+        "rule": "19"
+      },
+      {
+        "from": 691,
+        "to": 691,
+        "class": "R",
+        "construct": "failure branch close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 692,
+        "to": 695,
+        "class": "R",
+        "construct": "dispatch waiting verdict",
+        "rule": "19, 10"
+      },
+      {
+        "from": 696,
+        "to": 708,
+        "class": "R",
+        "construct": "retain waiting dependencies",
+        "rule": "19"
+      },
+      {
+        "from": 709,
+        "to": 712,
+        "class": "R",
+        "construct": "resume nested block closes",
+        "rule": "19, 10"
+      },
+      {
+        "from": 713,
+        "to": 722,
+        "class": "R",
+        "construct": "take definition header",
+        "rule": "19, 10"
+      },
+      {
+        "from": 723,
+        "to": 730,
+        "class": "H",
+        "construct": "clear stage trace observations",
+        "rule": "13"
+      },
+      {
+        "from": 731,
+        "to": 738,
+        "class": "H",
+        "construct": "clear stage examination observations",
+        "rule": "13"
+      },
+      {
+        "from": 739,
+        "to": 745,
+        "class": "R",
+        "construct": "visit newly posed relations",
+        "rule": "19, 10"
+      },
+      {
+        "from": 746,
+        "to": 755,
+        "class": "R",
+        "construct": "retain newly posed relation",
+        "rule": "19"
+      },
+      {
+        "from": 756,
+        "to": 756,
+        "class": "R",
+        "construct": "new-relations block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 757,
+        "to": 761,
+        "class": "R",
+        "construct": "resume after new information",
+        "rule": "19"
+      },
+      {
+        "from": 762,
+        "to": 762,
+        "class": "R",
+        "construct": "take definition close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 763,
+        "to": 770,
+        "class": "R",
+        "construct": "combined R1-R2 solver definition header",
+        "rule": "3, 10, 13"
+      },
+      {
+        "from": 771,
+        "to": 779,
+        "class": "R",
+        "construct": "combined solver applicability guard",
+        "rule": "3, 10, 13"
+      },
+      {
+        "from": 780,
+        "to": 782,
+        "class": "R",
+        "construct": "decline finite enumeration",
+        "rule": "3, 13"
+      },
+      {
+        "from": 783,
+        "to": 783,
+        "class": "R",
+        "construct": "applicability guard close",
+        "rule": "10"
+      },
+      {
+        "from": 784,
+        "to": 788,
+        "class": "R",
+        "construct": "initialize combined solution collection",
+        "rule": "3, 13"
+      },
+      {
+        "from": 789,
+        "to": 805,
+        "class": "C",
+        "construct": "generate positive divisor candidates",
+        "rule": "6, 10"
+      },
+      {
+        "from": 806,
+        "to": 814,
+        "class": "R",
+        "construct": "derived divisor test",
+        "rule": "3, 10"
+      },
+      {
+        "from": 815,
+        "to": 826,
+        "class": "C",
+        "construct": "generate positive and negative divisors",
+        "rule": "6, 10"
+      },
+      {
+        "from": 827,
+        "to": 845,
+        "class": "R",
+        "construct": "derive and retain solution triple",
+        "rule": "3, 8, 13"
+      },
+      {
+        "from": 846,
+        "to": 846,
+        "class": "C",
+        "construct": "signed divisor loop close",
+        "rule": "6, 10"
+      },
+      {
+        "from": 847,
+        "to": 847,
+        "class": "R",
+        "construct": "derived divisor guard close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 848,
+        "to": 848,
+        "class": "C",
+        "construct": "candidate loop close",
+        "rule": "6, 10"
+      },
+      {
+        "from": 849,
+        "to": 851,
+        "class": "R",
+        "construct": "return combined solution set",
+        "rule": "3, 13"
+      },
+      {
+        "from": 852,
+        "to": 852,
+        "class": "R",
+        "construct": "combined solver definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 853,
+        "to": 954,
+        "class": "H",
+        "construct": "show_relation output adapter",
+        "rule": "13"
+      },
+      {
+        "from": 955,
+        "to": 1076,
+        "class": "H",
+        "construct": "note_trace output adapter",
+        "rule": "13"
+      },
+      {
+        "from": 1077,
+        "to": 1323,
+        "class": "H",
+        "construct": "report existing bindings, observations and held relations",
+        "rule": "13"
+      },
+      {
+        "from": 1324,
+        "to": 1324,
+        "class": "H",
+        "construct": "held-relation printing loop close",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1325,
+        "to": 1328,
+        "class": "R",
+        "construct": "initialize computed answer selection",
+        "rule": "3, 13"
+      },
+      {
+        "from": 1329,
+        "to": 1345,
+        "class": "R",
+        "construct": "select combined solver for held R1 and R2",
+        "rule": "3, 10, 13"
+      },
+      {
+        "from": 1346,
+        "to": 1352,
+        "class": "R",
+        "construct": "compute combined answers for report",
+        "rule": "3, 13"
+      },
+      {
+        "from": 1353,
+        "to": 1353,
+        "class": "R",
+        "construct": "combined solver selection block close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 1354,
+        "to": 1397,
+        "class": "H",
+        "construct": "print already computed residual or explicit answers",
+        "rule": "13"
+      },
+      {
+        "from": 1398,
+        "to": 1407,
+        "class": "H",
+        "construct": "run harness definition header",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1408,
+        "to": 1413,
+        "class": "R",
+        "construct": "create per-run relation store",
+        "rule": "19"
+      },
+      {
+        "from": 1414,
+        "to": 1427,
+        "class": "H",
+        "construct": "harness visits prescribed stages",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1428,
+        "to": 1434,
+        "class": "H",
+        "construct": "harness pose stand-in call",
+        "rule": "13; PROTOCOL.md: The harness interface"
+      },
+      {
+        "from": 1435,
+        "to": 1454,
+        "class": "H",
+        "construct": "harness observe and print stand-in",
+        "rule": "13"
+      },
+      {
+        "from": 1455,
+        "to": 1460,
+        "class": "H",
+        "construct": "harness run trailer",
+        "rule": "13"
+      },
+      {
+        "from": 1461,
+        "to": 1463,
+        "class": "H",
+        "construct": "P02a harness call and label",
+        "rule": "13"
+      },
+      {
+        "from": 1464,
+        "to": 1477,
+        "class": "P",
+        "construct": "P02a prescribed stage argument",
+        "rule": "3, 10, 20"
+      },
+      {
+        "from": 1478,
+        "to": 1479,
+        "class": "H",
+        "construct": "P02a harness call close",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1480,
+        "to": 1482,
+        "class": "H",
+        "construct": "harness iterates required P02b orders",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1483,
+        "to": 1531,
+        "class": "P",
+        "construct": "six prescribed P02b presentation orders",
+        "rule": "3, 6, 10"
+      },
+      {
+        "from": 1532,
+        "to": 1534,
+        "class": "H",
+        "construct": "P02b harness loop header close",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1535,
+        "to": 1544,
+        "class": "H",
+        "construct": "P02b harness call and order label",
+        "rule": "13"
+      },
+      {
+        "from": 1545,
+        "to": 1554,
+        "class": "P",
+        "construct": "P02b stage argument from prescribed order",
+        "rule": "3, 10, 20"
+      },
+      {
+        "from": 1555,
+        "to": 1557,
+        "class": "H",
+        "construct": "P02b harness call and loop close",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1558,
+        "to": 1560,
+        "class": "H",
+        "construct": "P02c harness call and label",
+        "rule": "13"
+      },
+      {
+        "from": 1561,
+        "to": 1570,
+        "class": "P",
+        "construct": "P02c prescribed single stage argument",
+        "rule": "3, 10, 20"
+      },
+      {
+        "from": 1571,
+        "to": 1572,
+        "class": "H",
+        "construct": "P02c harness call close",
+        "rule": "13, 10"
+      }
+    ],
+    "algol-60/p02.alg": [
+      {
+        "from": 0,
+        "to": 0,
+        "class": "H",
+        "construct": "program block opening",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1,
+        "to": 6,
+        "class": "P",
+        "construct": "problem unknown declarations",
+        "rule": "3"
+      },
+      {
+        "from": 7,
+        "to": 13,
+        "class": "R",
+        "construct": "known-value flag declarations",
+        "rule": "19, 20"
+      },
+      {
+        "from": 14,
+        "to": 18,
+        "class": "R",
+        "construct": "binding verdict declarations",
+        "rule": "19, 20"
+      },
+      {
+        "from": 19,
+        "to": 31,
+        "class": "R",
+        "construct": "held relation kind and constants arrays",
+        "rule": "19, 20"
+      },
+      {
+        "from": 32,
+        "to": 40,
+        "class": "R",
+        "construct": "held relation liveness array",
+        "rule": "19, 20"
+      },
+      {
+        "from": 41,
+        "to": 43,
+        "class": "R",
+        "construct": "held relation count declaration",
+        "rule": "19, 20"
+      },
+      {
+        "from": 44,
+        "to": 46,
+        "class": "R",
+        "construct": "failed-store flag declaration",
+        "rule": "19, 20"
+      },
+      {
+        "from": 47,
+        "to": 55,
+        "class": "H",
+        "construct": "examination observation array",
+        "rule": "13, 20"
+      },
+      {
+        "from": 56,
+        "to": 72,
+        "class": "H",
+        "construct": "harness input and iteration declarations",
+        "rule": "13, 20"
+      },
+      {
+        "from": 73,
+        "to": 87,
+        "class": "P",
+        "construct": "rel1 definition header and block opening",
+        "rule": "3, 8, 10, 20"
+      },
+      {
+        "from": 88,
+        "to": 93,
+        "class": "R",
+        "construct": "rel1 both-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 94,
+        "to": 107,
+        "class": "P",
+        "construct": "R1 truth test and result",
+        "rule": "3, 8"
+      },
+      {
+        "from": 108,
+        "to": 108,
+        "class": "R",
+        "construct": "rel1 both-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 109,
+        "to": 113,
+        "class": "R",
+        "construct": "rel1 u-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 114,
+        "to": 126,
+        "class": "P",
+        "construct": "R1 determine v and encode verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 127,
+        "to": 127,
+        "class": "R",
+        "construct": "rel1 u-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 128,
+        "to": 132,
+        "class": "R",
+        "construct": "rel1 v-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 133,
+        "to": 145,
+        "class": "P",
+        "construct": "R1 determine u and encode verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 146,
+        "to": 146,
+        "class": "R",
+        "construct": "rel1 v-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 147,
+        "to": 150,
+        "class": "R",
+        "construct": "R1 undecidable verdict",
+        "rule": "19, 10"
+      },
+      {
+        "from": 151,
+        "to": 152,
+        "class": "P",
+        "construct": "rel1 definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 153,
+        "to": 158,
+        "class": "P",
+        "construct": "rel2 definition header and block opening",
+        "rule": "3, 8, 10, 20"
+      },
+      {
+        "from": 159,
+        "to": 166,
+        "class": "R",
+        "construct": "rel2 all-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 167,
+        "to": 180,
+        "class": "P",
+        "construct": "R2 truth test and result",
+        "rule": "3, 8"
+      },
+      {
+        "from": 181,
+        "to": 181,
+        "class": "R",
+        "construct": "rel2 all-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 182,
+        "to": 188,
+        "class": "R",
+        "construct": "rel2 w-and-u-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 189,
+        "to": 201,
+        "class": "P",
+        "construct": "R2 determine v and encode verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 202,
+        "to": 202,
+        "class": "R",
+        "construct": "rel2 w-and-u-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 203,
+        "to": 209,
+        "class": "R",
+        "construct": "rel2 u-and-v-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 210,
+        "to": 215,
+        "class": "P",
+        "construct": "R2 zero-u case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 216,
+        "to": 227,
+        "class": "P",
+        "construct": "R2 zero-u truth test",
+        "rule": "3, 8"
+      },
+      {
+        "from": 228,
+        "to": 228,
+        "class": "P",
+        "construct": "R2 zero-u block close",
+        "rule": "10"
+      },
+      {
+        "from": 229,
+        "to": 239,
+        "class": "P",
+        "construct": "R2 integer-w divisibility case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 240,
+        "to": 252,
+        "class": "P",
+        "construct": "R2 determine integer w and encode verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 253,
+        "to": 253,
+        "class": "P",
+        "construct": "R2 integer-w block close",
+        "rule": "10"
+      },
+      {
+        "from": 254,
+        "to": 257,
+        "class": "P",
+        "construct": "R2 reject noninteger w",
+        "rule": "3, 8"
+      },
+      {
+        "from": 258,
+        "to": 258,
+        "class": "R",
+        "construct": "rel2 u-and-v-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 259,
+        "to": 265,
+        "class": "R",
+        "construct": "rel2 w-and-v-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 266,
+        "to": 271,
+        "class": "P",
+        "construct": "R2 zero-w case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 272,
+        "to": 283,
+        "class": "P",
+        "construct": "R2 zero-w truth test",
+        "rule": "3, 8"
+      },
+      {
+        "from": 284,
+        "to": 284,
+        "class": "P",
+        "construct": "R2 zero-w block close",
+        "rule": "10"
+      },
+      {
+        "from": 285,
+        "to": 295,
+        "class": "P",
+        "construct": "R2 integer-u divisibility case head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 296,
+        "to": 308,
+        "class": "P",
+        "construct": "R2 determine integer u and encode verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 309,
+        "to": 309,
+        "class": "P",
+        "construct": "R2 integer-u block close",
+        "rule": "10"
+      },
+      {
+        "from": 310,
+        "to": 313,
+        "class": "P",
+        "construct": "R2 reject noninteger u",
+        "rule": "3, 8"
+      },
+      {
+        "from": 314,
+        "to": 314,
+        "class": "R",
+        "construct": "rel2 w-and-v-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 315,
+        "to": 319,
+        "class": "R",
+        "construct": "rel2 u-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 320,
+        "to": 325,
+        "class": "P",
+        "construct": "R2 zero-u inference head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 326,
+        "to": 336,
+        "class": "P",
+        "construct": "R2 zero-u determines v and encodes verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 337,
+        "to": 338,
+        "class": "P",
+        "construct": "R2 zero-u inference block close and else",
+        "rule": "10"
+      },
+      {
+        "from": 339,
+        "to": 341,
+        "class": "R",
+        "construct": "R2 nonzero-u undecidable verdict",
+        "rule": "19"
+      },
+      {
+        "from": 342,
+        "to": 342,
+        "class": "R",
+        "construct": "rel2 u-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 343,
+        "to": 347,
+        "class": "R",
+        "construct": "rel2 w-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 348,
+        "to": 353,
+        "class": "P",
+        "construct": "R2 zero-w inference head",
+        "rule": "2, 3, 8, 10"
+      },
+      {
+        "from": 354,
+        "to": 364,
+        "class": "P",
+        "construct": "R2 zero-w determines v and encodes verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 365,
+        "to": 366,
+        "class": "P",
+        "construct": "R2 zero-w inference block close and else",
+        "rule": "10"
+      },
+      {
+        "from": 367,
+        "to": 369,
+        "class": "R",
+        "construct": "R2 nonzero-w undecidable verdict",
+        "rule": "19"
+      },
+      {
+        "from": 370,
+        "to": 370,
+        "class": "R",
+        "construct": "rel2 w-known block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 371,
+        "to": 374,
+        "class": "R",
+        "construct": "R2 undecidable verdict with no known inputs",
+        "rule": "19, 10"
+      },
+      {
+        "from": 375,
+        "to": 376,
+        "class": "P",
+        "construct": "rel2 definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 377,
+        "to": 397,
+        "class": "P",
+        "construct": "rel3 definition header and block opening",
+        "rule": "3, 8, 10, 20"
+      },
+      {
+        "from": 398,
+        "to": 401,
+        "class": "R",
+        "construct": "rel3 u-known dispatch",
+        "rule": "19, 10"
+      },
+      {
+        "from": 402,
+        "to": 415,
+        "class": "P",
+        "construct": "R3 truth test and result",
+        "rule": "3, 8"
+      },
+      {
+        "from": 416,
+        "to": 418,
+        "class": "R",
+        "construct": "rel3 known branch close and unknown branch opening",
+        "rule": "19, 10"
+      },
+      {
+        "from": 419,
+        "to": 431,
+        "class": "P",
+        "construct": "R3 determine u and encode verdict",
+        "rule": "3, 8"
+      },
+      {
+        "from": 432,
+        "to": 432,
+        "class": "R",
+        "construct": "rel3 unknown branch close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 433,
+        "to": 434,
+        "class": "P",
+        "construct": "rel3 definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 435,
+        "to": 496,
+        "class": "R",
+        "construct": "examine held-relation dispatcher",
+        "rule": "19, 20"
+      },
+      {
+        "from": 497,
+        "to": 542,
+        "class": "R",
+        "construct": "bind retained unknown from verdict",
+        "rule": "19, 20"
+      },
+      {
+        "from": 543,
+        "to": 546,
+        "class": "R",
+        "construct": "resume definition header and block opening",
+        "rule": "19, 10, 20"
+      },
+      {
+        "from": 547,
+        "to": 550,
+        "class": "R",
+        "construct": "resume local relation and verdict declarations",
+        "rule": "19"
+      },
+      {
+        "from": 551,
+        "to": 553,
+        "class": "R",
+        "construct": "resume progress declaration",
+        "rule": "19, 20"
+      },
+      {
+        "from": 554,
+        "to": 556,
+        "class": "R",
+        "construct": "resumption pass label",
+        "rule": "19, 20"
+      },
+      {
+        "from": 557,
+        "to": 559,
+        "class": "R",
+        "construct": "initialize pass progress",
+        "rule": "19"
+      },
+      {
+        "from": 560,
+        "to": 569,
+        "class": "R",
+        "construct": "visit held relations in arrival order",
+        "rule": "19, 10, 20"
+      },
+      {
+        "from": 570,
+        "to": 579,
+        "class": "R",
+        "construct": "skip dead relations and failed store",
+        "rule": "19, 10"
+      },
+      {
+        "from": 580,
+        "to": 585,
+        "class": "R",
+        "construct": "obtain held-relation verdict",
+        "rule": "19"
+      },
+      {
+        "from": 586,
+        "to": 603,
+        "class": "H",
+        "construct": "count relation examination",
+        "rule": "13, 20"
+      },
+      {
+        "from": 604,
+        "to": 610,
+        "class": "H",
+        "construct": "print verdict trace",
+        "rule": "13, 20"
+      },
+      {
+        "from": 611,
+        "to": 623,
+        "class": "R",
+        "construct": "binding verdict updates store and progress",
+        "rule": "19, 10, 20"
+      },
+      {
+        "from": 624,
+        "to": 641,
+        "class": "R",
+        "construct": "decided verdict removes relation and updates progress",
+        "rule": "19, 10"
+      },
+      {
+        "from": 642,
+        "to": 650,
+        "class": "R",
+        "construct": "failing verdict marks contradiction",
+        "rule": "19, 10"
+      },
+      {
+        "from": 651,
+        "to": 651,
+        "class": "R",
+        "construct": "live relation block close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 652,
+        "to": 661,
+        "class": "R",
+        "construct": "resume another pass if progress occurred",
+        "rule": "19, 10, 20"
+      },
+      {
+        "from": 662,
+        "to": 663,
+        "class": "R",
+        "construct": "resume definition close",
+        "rule": "19, 10"
+      },
+      {
+        "from": 664,
+        "to": 677,
+        "class": "R",
+        "construct": "combined R1-R2 solver definition header",
+        "rule": "3, 10, 13, 20"
+      },
+      {
+        "from": 678,
+        "to": 685,
+        "class": "R",
+        "construct": "combined solver working declarations",
+        "rule": "3, 13"
+      },
+      {
+        "from": 686,
+        "to": 697,
+        "class": "R",
+        "construct": "absolute bound for divisor search",
+        "rule": "3, 13, 20"
+      },
+      {
+        "from": 698,
+        "to": 701,
+        "class": "R",
+        "construct": "initialize finite solution count",
+        "rule": "3, 13, 20"
+      },
+      {
+        "from": 702,
+        "to": 711,
+        "class": "C",
+        "construct": "generate divisor candidates for counting",
+        "rule": "6, 10, 20"
+      },
+      {
+        "from": 712,
+        "to": 720,
+        "class": "R",
+        "construct": "derived divisor test for counting",
+        "rule": "3, 10"
+      },
+      {
+        "from": 721,
+        "to": 725,
+        "class": "R",
+        "construct": "count both signed divisor solutions",
+        "rule": "3, 13"
+      },
+      {
+        "from": 726,
+        "to": 746,
+        "class": "H",
+        "construct": "print computed solution count heading",
+        "rule": "13, 20"
+      },
+      {
+        "from": 747,
+        "to": 756,
+        "class": "C",
+        "construct": "generate positive divisor candidates",
+        "rule": "6, 10, 20"
+      },
+      {
+        "from": 757,
+        "to": 766,
+        "class": "R",
+        "construct": "derived divisor test",
+        "rule": "3, 10"
+      },
+      {
+        "from": 767,
+        "to": 775,
+        "class": "C",
+        "construct": "generate both signs of divisor",
+        "rule": "6, 10"
+      },
+      {
+        "from": 776,
+        "to": 792,
+        "class": "H",
+        "construct": "print solution indentation, u and v call opening",
+        "rule": "13"
+      },
+      {
+        "from": 793,
+        "to": 796,
+        "class": "R",
+        "construct": "derive v from divisor and R1",
+        "rule": "3, 8, 13, 20"
+      },
+      {
+        "from": 797,
+        "to": 801,
+        "class": "H",
+        "construct": "v call close and w call opening",
+        "rule": "13, 20"
+      },
+      {
+        "from": 802,
+        "to": 807,
+        "class": "R",
+        "construct": "derive w from both relations",
+        "rule": "3, 8, 13, 20"
+      },
+      {
+        "from": 808,
+        "to": 815,
+        "class": "H",
+        "construct": "w call close and solution newline",
+        "rule": "13, 20"
+      },
+      {
+        "from": 816,
+        "to": 816,
+        "class": "C",
+        "construct": "signed divisor loop block close",
+        "rule": "6, 10"
+      },
+      {
+        "from": 817,
+        "to": 817,
+        "class": "R",
+        "construct": "derived divisor guard block close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 818,
+        "to": 819,
+        "class": "R",
+        "construct": "combined solver definition close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 820,
+        "to": 840,
+        "class": "H",
+        "construct": "showu output adapter",
+        "rule": "13, 20"
+      },
+      {
+        "from": 841,
+        "to": 860,
+        "class": "H",
+        "construct": "showv output adapter",
+        "rule": "13, 20"
+      },
+      {
+        "from": 861,
+        "to": 880,
+        "class": "H",
+        "construct": "showw output adapter",
+        "rule": "13, 20"
+      },
+      {
+        "from": 881,
+        "to": 943,
+        "class": "H",
+        "construct": "showwaits output adapter",
+        "rule": "13, 20"
+      },
+      {
+        "from": 944,
+        "to": 1088,
+        "class": "H",
+        "construct": "showrel output adapter",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1089,
+        "to": 1224,
+        "class": "H",
+        "construct": "trace output adapter",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1225,
+        "to": 1228,
+        "class": "H",
+        "construct": "report definition header",
+        "rule": "13, 10, 20"
+      },
+      {
+        "from": 1229,
+        "to": 1230,
+        "class": "H",
+        "construct": "report observation iteration variable declaration",
+        "rule": "13"
+      },
+      {
+        "from": 1231,
+        "to": 1234,
+        "class": "R",
+        "construct": "report solver-selection variable declarations",
+        "rule": "3, 13, 20"
+      },
+      {
+        "from": 1235,
+        "to": 1239,
+        "class": "R",
+        "construct": "report solver-selection flags declaration",
+        "rule": "3, 13, 20"
+      },
+      {
+        "from": 1240,
+        "to": 1449,
+        "class": "H",
+        "construct": "report existing observations and bindings",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1450,
+        "to": 1453,
+        "class": "R",
+        "construct": "initialize undecided relation count for solver selection",
+        "rule": "3, 13, 20"
+      },
+      {
+        "from": 1454,
+        "to": 1459,
+        "class": "R",
+        "construct": "initialize solver-selection flags",
+        "rule": "3, 13, 20"
+      },
+      {
+        "from": 1460,
+        "to": 1463,
+        "class": "R",
+        "construct": "initialize combined solver constant",
+        "rule": "3, 13, 20"
+      },
+      {
+        "from": 1464,
+        "to": 1473,
+        "class": "R",
+        "construct": "scan store to select combined solver",
+        "rule": "3, 10, 13, 20"
+      },
+      {
+        "from": 1474,
+        "to": 1480,
+        "class": "R",
+        "construct": "select live relation for combined solver",
+        "rule": "3, 10, 13"
+      },
+      {
+        "from": 1481,
+        "to": 1485,
+        "class": "R",
+        "construct": "count live relations for combined solver",
+        "rule": "3, 13"
+      },
+      {
+        "from": 1486,
+        "to": 1506,
+        "class": "R",
+        "construct": "find R1 and its constant for combined solver",
+        "rule": "3, 10, 13, 20"
+      },
+      {
+        "from": 1507,
+        "to": 1518,
+        "class": "R",
+        "construct": "find R2 for combined solver",
+        "rule": "3, 10, 13, 20"
+      },
+      {
+        "from": 1519,
+        "to": 1552,
+        "class": "H",
+        "construct": "print already held relation and dependencies",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1553,
+        "to": 1553,
+        "class": "R",
+        "construct": "solver-selection scan block close",
+        "rule": "3, 10"
+      },
+      {
+        "from": 1554,
+        "to": 1588,
+        "class": "H",
+        "construct": "print explicit or solved form for decided store",
+        "rule": "13, 10, 20"
+      },
+      {
+        "from": 1589,
+        "to": 1611,
+        "class": "R",
+        "construct": "select finite combined R1-R2 solver",
+        "rule": "3, 10, 13"
+      },
+      {
+        "from": 1612,
+        "to": 1615,
+        "class": "R",
+        "construct": "compute combined solutions for report",
+        "rule": "3, 13"
+      },
+      {
+        "from": 1616,
+        "to": 1616,
+        "class": "R",
+        "construct": "combined solver conditional else connective",
+        "rule": "3, 10, 13"
+      },
+      {
+        "from": 1617,
+        "to": 1625,
+        "class": "H",
+        "construct": "print residual fallback and close report",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1626,
+        "to": 1632,
+        "class": "H",
+        "construct": "harness read number of runs",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1633,
+        "to": 1643,
+        "class": "H",
+        "construct": "harness visit prescribed runs",
+        "rule": "13, 10, 20"
+      },
+      {
+        "from": 1644,
+        "to": 1656,
+        "class": "H",
+        "construct": "harness read run and stage count",
+        "rule": "13"
+      },
+      {
+        "from": 1657,
+        "to": 1660,
+        "class": "C",
+        "construct": "reset held relation store for independent run",
+        "rule": "16, 20"
+      },
+      {
+        "from": 1661,
+        "to": 1668,
+        "class": "C",
+        "construct": "reset known-value flags for independent run",
+        "rule": "16, 20"
+      },
+      {
+        "from": 1669,
+        "to": 1672,
+        "class": "C",
+        "construct": "reset contradiction flag for independent run",
+        "rule": "16, 20"
+      },
+      {
+        "from": 1673,
+        "to": 1683,
+        "class": "H",
+        "construct": "harness visit prescribed stages",
+        "rule": "13, 10, 20"
+      },
+      {
+        "from": 1684,
+        "to": 1698,
+        "class": "H",
+        "construct": "reset stage observation counters",
+        "rule": "13"
+      },
+      {
+        "from": 1699,
+        "to": 1757,
+        "class": "H",
+        "construct": "print stage label and read stage size",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1758,
+        "to": 1768,
+        "class": "H",
+        "construct": "harness read each newly posed relation",
+        "rule": "13, 10, 20"
+      },
+      {
+        "from": 1769,
+        "to": 1774,
+        "class": "H",
+        "construct": "harness read relation code",
+        "rule": "13"
+      },
+      {
+        "from": 1775,
+        "to": 1780,
+        "class": "R",
+        "construct": "allocate newly held relation slot",
+        "rule": "19, 20"
+      },
+      {
+        "from": 1781,
+        "to": 1787,
+        "class": "R",
+        "construct": "retain newly posed relation kind",
+        "rule": "19, 20"
+      },
+      {
+        "from": 1788,
+        "to": 1794,
+        "class": "R",
+        "construct": "mark newly posed relation alive",
+        "rule": "19, 20"
+      },
+      {
+        "from": 1795,
+        "to": 1837,
+        "class": "H",
+        "construct": "harness read and pose relation constants",
+        "rule": "13, 10, 20"
+      },
+      {
+        "from": 1838,
+        "to": 1850,
+        "class": "H",
+        "construct": "print newly posed relation name",
+        "rule": "13"
+      },
+      {
+        "from": 1851,
+        "to": 1851,
+        "class": "H",
+        "construct": "harness relation-reading block close",
+        "rule": "13, 10"
+      },
+      {
+        "from": 1852,
+        "to": 1858,
+        "class": "H",
+        "construct": "print stage label newline",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1859,
+        "to": 1860,
+        "class": "R",
+        "construct": "resume held computation after stage",
+        "rule": "19, 20"
+      },
+      {
+        "from": 1861,
+        "to": 1862,
+        "class": "H",
+        "construct": "harness observe and print stand-in",
+        "rule": "13, 20"
+      },
+      {
+        "from": 1863,
+        "to": 1872,
+        "class": "H",
+        "construct": "harness stage and run trailers and program close",
+        "rule": "13, 10"
+      }
+    ]
+  },
+  "outcomes": {
+    "python/p02.py": [
+      {
+        "run": "P02a",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02a",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a stage 2 / P02b valid outcomes: all ten integer triples enumerated"
+      },
+      {
+        "run": "P02a",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R1,R2,R3",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R1,R2,R3",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a stage 2 / P02b valid outcomes: all ten integer triples enumerated"
+      },
+      {
+        "run": "P02b R1,R2,R3",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R1,R3,R2",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R1,R3,R2",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R1,R3,R2",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R2,R1,R3",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R2,R1,R3",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a stage 2 / P02b valid outcomes: all ten integer triples enumerated"
+      },
+      {
+        "run": "P02b R2,R1,R3",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R2,R3,R1",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R2,R3,R1",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R2,R3,R1",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R3,R1,R2",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R3,R1,R2",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R3,R1,R2",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R3,R2,R1",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R3,R2,R1",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R3,R2,R1",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02c",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      }
+    ],
+    "algol-60/p02.alg": [
+      {
+        "run": "P02a",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02a",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a stage 2 / P02b valid outcomes: all ten integer triples enumerated"
+      },
+      {
+        "run": "P02a",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R1,R2,R3",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R1,R2,R3",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a stage 2 / P02b valid outcomes: all ten integer triples enumerated"
+      },
+      {
+        "run": "P02b R1,R2,R3",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R1,R3,R2",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R1,R3,R2",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R1,R3,R2",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R2,R1,R3",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R2,R1,R3",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a stage 2 / P02b valid outcomes: all ten integer triples enumerated"
+      },
+      {
+        "run": "P02b R2,R1,R3",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R2,R3,R1",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R2,R3,R1",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R2,R3,R1",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R3,R1,R2",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R3,R1,R2",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R3,R1,R2",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02b R3,R2,R1",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "solved form",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02b valid outcomes: u=2 with v,w free, or u=2,v=14 with w free"
+      },
+      {
+        "run": "P02b R3,R2,R1",
+        "stage": 2,
+        "semantic": "complete",
+        "representation": "residual",
+        "simplification": "reduced",
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02a/P02b valid outcomes: retained R1, R2, or R2 with u=2; equivalent over integers; Outcomes 1 Simplification: one primitive relation with no reducible unknown occurrences"
+      },
+      {
+        "run": "P02b R3,R2,R1",
+        "stage": 3,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      },
+      {
+        "run": "P02c",
+        "stage": 1,
+        "semantic": "complete",
+        "representation": "explicit",
+        "simplification": null,
+        "rule": "SPECIFICATION.md Outcomes 1 (Semantic result), 2 (Representation); P02 valid outcomes: u=2, v=14, w=7"
+      }
+    ]
+  }
+}

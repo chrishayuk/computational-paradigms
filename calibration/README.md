@@ -170,7 +170,9 @@ show the rules generalise. Programs for a staged problem, where
 imperative code must hold undecided relations, were not calibrated, and
 review 3 named that as the case where disagreement is most likely
 (rule 19 was added for it). A held-out check, P02 in Python and ALGOL 60
-classified by both, would test that. It is listed as open.
+classified by both, would test that. It was run before the freeze: see
+[`held-out/`](held-out). Outcome classes agreed on all 44 stages; token
+classes on 88.9%, with the gap in one boundary, clarified afterwards.
 
 **Rules clarified after round 2.** Round 2's classifier A flagged three
 ambiguities. They are clarified in draft 0.6, and round 2 was not rerun

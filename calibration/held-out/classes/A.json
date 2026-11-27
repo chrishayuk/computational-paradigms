@@ -1,0 +1,1115 @@
+{
+ "tokens": {
+  "python/p02.py": [
+   {
+    "from": 0,
+    "to": 3,
+    "class": "P",
+    "construct": "stage constant R1_SUM (R1's constant), the one marked place",
+    "rule": "P class: information of a stage; PROTOCOL rule 6"
+   },
+   {
+    "from": 4,
+    "to": 7,
+    "class": "P",
+    "construct": "stage constant R3_ADDEND",
+    "rule": "P class: information of a stage"
+   },
+   {
+    "from": 8,
+    "to": 11,
+    "class": "P",
+    "construct": "stage constant R3_SUM",
+    "rule": "P class: information of a stage"
+   },
+   {
+    "from": 12,
+    "to": 19,
+    "class": "P",
+    "construct": "def r1: the relation R1 as a function of its own",
+    "rule": "3, 8"
+   },
+   {
+    "from": 20,
+    "to": 53,
+    "class": "P",
+    "construct": "r1, u and v known: test u + v = R1_SUM",
+    "rule": "3, 8 (direction used)"
+   },
+   {
+    "from": 54,
+    "to": 75,
+    "class": "P",
+    "construct": "r1, u known: v = R1_SUM - u",
+    "rule": "8 (direction used)"
+   },
+   {
+    "from": 76,
+    "to": 97,
+    "class": "R",
+    "construct": "r1, v known: u = R1_SUM - v (never reached: v is never known before u)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 98,
+    "to": 109,
+    "class": "R",
+    "construct": "r1 returns ('waits', ...)",
+    "rule": "what the relation waits for: rule 19 (holding code written for this problem's relations), core"
+   },
+   {
+    "from": 110,
+    "to": 118,
+    "class": "P",
+    "construct": "def r2",
+    "rule": "3, 8"
+   },
+   {
+    "from": 119,
+    "to": 159,
+    "class": "P",
+    "construct": "r2, all known: test w*u = v",
+    "rule": "3, 8"
+   },
+   {
+    "from": 160,
+    "to": 188,
+    "class": "R",
+    "construct": "r2, w and u known: v = w*u (never reached: w is only known after u and v)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 189,
+    "to": 264,
+    "class": "P",
+    "construct": "r2, u and v known: w = v/u, with u = 0 and non-integer cases",
+    "rule": "8 (direction used); 2 (guards of the relation's own cases)"
+   },
+   {
+    "from": 265,
+    "to": 340,
+    "class": "R",
+    "construct": "r2, w and v known: u = v/w (never reached)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 341,
+    "to": 364,
+    "class": "P",
+    "construct": "r2, u known and 0: v = 0 (reached under variants with u = 0)",
+    "rule": "8"
+   },
+   {
+    "from": 365,
+    "to": 388,
+    "class": "R",
+    "construct": "r2, w known and 0 (never reached)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 389,
+    "to": 414,
+    "class": "R",
+    "construct": "r2 returns ('waits', unknowns)",
+    "rule": "what the relation waits for: rule 19 (holding code written for this problem's relations), core"
+   },
+   {
+    "from": 415,
+    "to": 423,
+    "class": "P",
+    "construct": "def r3",
+    "rule": "3, 8"
+   },
+   {
+    "from": 424,
+    "to": 450,
+    "class": "P",
+    "construct": "r3, u known: test u + R3_ADDEND = R3_SUM",
+    "rule": "8"
+   },
+   {
+    "from": 451,
+    "to": 462,
+    "class": "P",
+    "construct": "r3: u = R3_SUM - R3_ADDEND",
+    "rule": "8"
+   },
+   {
+    "from": 463,
+    "to": 479,
+    "class": "R",
+    "construct": "RELATIONS dispatch table for held relations",
+    "rule": "19"
+   },
+   {
+    "from": 480,
+    "to": 506,
+    "class": "R",
+    "construct": "new_computation: known, held, waits, failed",
+    "rule": "19"
+   },
+   {
+    "from": 507,
+    "to": 516,
+    "class": "H",
+    "construct": "trace and examined fields (observation counters)",
+    "rule": "13; METRICS problem operations (counters are H)"
+   },
+   {
+    "from": 517,
+    "to": 518,
+    "class": "R",
+    "construct": "close of the computation dict",
+    "rule": "19"
+   },
+   {
+    "from": 519,
+    "to": 572,
+    "class": "R",
+    "construct": "resume: fixpoint over held relations, examining each",
+    "rule": "19"
+   },
+   {
+    "from": 573,
+    "to": 603,
+    "class": "H",
+    "construct": "examined counter and note_trace call",
+    "rule": "13; METRICS (counters are H)"
+   },
+   {
+    "from": 604,
+    "to": 708,
+    "class": "R",
+    "construct": "resume: acting on the verdict (bind, decide, fail, wait)",
+    "rule": "19"
+   },
+   {
+    "from": 709,
+    "to": 722,
+    "class": "R",
+    "construct": "take: header",
+    "rule": "19"
+   },
+   {
+    "from": 723,
+    "to": 738,
+    "class": "H",
+    "construct": "reset of per-stage trace and counters",
+    "rule": "13"
+   },
+   {
+    "from": 739,
+    "to": 761,
+    "class": "R",
+    "construct": "take: append the stage's relations to held, resume",
+    "rule": "19"
+   },
+   {
+    "from": 762,
+    "to": 788,
+    "class": "R",
+    "construct": "r1_and_r2_solutions: derivation u*(w+1) = R1_SUM (header, guard, accumulator)",
+    "rule": "3 (changed algorithm); 13 (computes the report, not an adapter)"
+   },
+   {
+    "from": 789,
+    "to": 804,
+    "class": "C",
+    "construct": "for d in range(...): enumeration of divisors the problem does not state",
+    "rule": "6; C class (generator of values); 10"
+   },
+   {
+    "from": 805,
+    "to": 813,
+    "class": "R",
+    "construct": "divisor test",
+    "rule": "3 (changed algorithm)"
+   },
+   {
+    "from": 814,
+    "to": 825,
+    "class": "C",
+    "construct": "for u in (d, -d): enumeration of signs",
+    "rule": "6; 10"
+   },
+   {
+    "from": 826,
+    "to": 851,
+    "class": "R",
+    "construct": "build each triple, return",
+    "rule": "3"
+   },
+   {
+    "from": 852,
+    "to": 953,
+    "class": "H",
+    "construct": "show_relation (output adapter)",
+    "rule": "13"
+   },
+   {
+    "from": 954,
+    "to": 1075,
+    "class": "H",
+    "construct": "note_trace (output adapter)",
+    "rule": "13"
+   },
+   {
+    "from": 1076,
+    "to": 1323,
+    "class": "H",
+    "construct": "report: printing",
+    "rule": "13"
+   },
+   {
+    "from": 1324,
+    "to": 1352,
+    "class": "R",
+    "construct": "report: choose and call r1_and_r2_solutions",
+    "rule": "13 (computes what the report depends on); 3"
+   },
+   {
+    "from": 1353,
+    "to": 1394,
+    "class": "H",
+    "construct": "report: printing of outcome",
+    "rule": "13"
+   },
+   {
+    "from": 1395,
+    "to": 1459,
+    "class": "H",
+    "construct": "run: stand-in for spawn/pose/print",
+    "rule": "13"
+   },
+   {
+    "from": 1460,
+    "to": 1463,
+    "class": "H",
+    "construct": "run call for P02a",
+    "rule": "13"
+   },
+   {
+    "from": 1464,
+    "to": 1477,
+    "class": "P",
+    "construct": "P02a stages [[R1],[R2],[R3]]",
+    "rule": "P class: information of each stage; 20"
+   },
+   {
+    "from": 1478,
+    "to": 1482,
+    "class": "H",
+    "construct": "for order in (loop of runs)",
+    "rule": "13; 10"
+   },
+   {
+    "from": 1483,
+    "to": 1531,
+    "class": "P",
+    "construct": "the six orders of P02b",
+    "rule": "P class: information of each stage; 10"
+   },
+   {
+    "from": 1532,
+    "to": 1544,
+    "class": "H",
+    "construct": "run call for P02b, label",
+    "rule": "13"
+   },
+   {
+    "from": 1545,
+    "to": 1554,
+    "class": "P",
+    "construct": "P02b stages, one relation per stage",
+    "rule": "P class; 20"
+   },
+   {
+    "from": 1555,
+    "to": 1560,
+    "class": "H",
+    "construct": "run call for P02c",
+    "rule": "13"
+   },
+   {
+    "from": 1561,
+    "to": 1570,
+    "class": "P",
+    "construct": "P02c stage [[R1,R2,R3]]",
+    "rule": "P class; 20"
+   },
+   {
+    "from": 1571,
+    "to": 1572,
+    "class": "H",
+    "construct": "close of run call",
+    "rule": "13"
+   }
+  ],
+  "algol-60/p02.alg": [
+   {
+    "from": 0,
+    "to": 0,
+    "class": "P",
+    "construct": "outer program block begin (with final end)",
+    "rule": "10"
+   },
+   {
+    "from": 1,
+    "to": 6,
+    "class": "P",
+    "construct": "declaration of the unknowns u, v, w",
+    "rule": "P class (vocabulary); 20"
+   },
+   {
+    "from": 7,
+    "to": 14,
+    "class": "R",
+    "construct": "known flags ku, kv, kw",
+    "rule": "19; 20 (leading ';')"
+   },
+   {
+    "from": 15,
+    "to": 19,
+    "class": "R",
+    "construct": "verdict binding which, val",
+    "rule": "19"
+   },
+   {
+    "from": 20,
+    "to": 32,
+    "class": "R",
+    "construct": "held relation store kind, ca, cb",
+    "rule": "19"
+   },
+   {
+    "from": 33,
+    "to": 41,
+    "class": "R",
+    "construct": "alive",
+    "rule": "19"
+   },
+   {
+    "from": 42,
+    "to": 44,
+    "class": "R",
+    "construct": "nrel",
+    "rule": "19"
+   },
+   {
+    "from": 45,
+    "to": 46,
+    "class": "R",
+    "construct": "failed",
+    "rule": "19"
+   },
+   {
+    "from": 47,
+    "to": 56,
+    "class": "H",
+    "construct": "examined counters",
+    "rule": "13; METRICS (counters are H); 20 (leading ';')"
+   },
+   {
+    "from": 57,
+    "to": 72,
+    "class": "H",
+    "construct": "harness variables runs, run, id, nstages, stage, nr, j, code",
+    "rule": "13"
+   },
+   {
+    "from": 73,
+    "to": 127,
+    "class": "P",
+    "construct": "rel1: header, both known (test), u known (v := c - u)",
+    "rule": "3, 8; 20 (leading ';')"
+   },
+   {
+    "from": 128,
+    "to": 146,
+    "class": "R",
+    "construct": "rel1, v known: u := c - v (never reached)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 147,
+    "to": 150,
+    "class": "R",
+    "construct": "rel1 := 0 (waits)",
+    "rule": "what the relation waits for: rule 19 (holding code written for this problem's relations), core"
+   },
+   {
+    "from": 151,
+    "to": 153,
+    "class": "P",
+    "construct": "end rel1",
+    "rule": "10"
+   },
+   {
+    "from": 154,
+    "to": 181,
+    "class": "P",
+    "construct": "rel2: header, all known (test)",
+    "rule": "3, 8"
+   },
+   {
+    "from": 182,
+    "to": 202,
+    "class": "R",
+    "construct": "rel2, w and u known (never reached)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 203,
+    "to": 258,
+    "class": "P",
+    "construct": "rel2, u and v known: w := v / u, with u = 0 and non-integer cases",
+    "rule": "8; 2"
+   },
+   {
+    "from": 259,
+    "to": 314,
+    "class": "R",
+    "construct": "rel2, w and v known (never reached)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 315,
+    "to": 337,
+    "class": "P",
+    "construct": "rel2, u known and 0: v := 0",
+    "rule": "8"
+   },
+   {
+    "from": 338,
+    "to": 341,
+    "class": "R",
+    "construct": "rel2 := 0 (waits)",
+    "rule": "what the relation waits for: rule 19 (holding code written for this problem's relations), core"
+   },
+   {
+    "from": 342,
+    "to": 342,
+    "class": "P",
+    "construct": "end of u-known branch",
+    "rule": "10"
+   },
+   {
+    "from": 343,
+    "to": 370,
+    "class": "R",
+    "construct": "rel2, w known and 0 (never reached)",
+    "rule": "unused direction: rule 3 (a direction the queries do not use), rule 10"
+   },
+   {
+    "from": 371,
+    "to": 374,
+    "class": "R",
+    "construct": "rel2 := 0 (waits)",
+    "rule": "what the relation waits for: rule 19 (holding code written for this problem's relations), core"
+   },
+   {
+    "from": 375,
+    "to": 377,
+    "class": "P",
+    "construct": "end rel2",
+    "rule": "10"
+   },
+   {
+    "from": 378,
+    "to": 434,
+    "class": "P",
+    "construct": "rel3",
+    "rule": "3, 8"
+   },
+   {
+    "from": 435,
+    "to": 496,
+    "class": "R",
+    "construct": "examine: dispatch on held relation kind",
+    "rule": "19; 20 (leading ';')"
+   },
+   {
+    "from": 497,
+    "to": 542,
+    "class": "R",
+    "construct": "bind: apply a verdict's binding",
+    "rule": "19"
+   },
+   {
+    "from": 543,
+    "to": 585,
+    "class": "R",
+    "construct": "resume: fixpoint over held relations",
+    "rule": "19"
+   },
+   {
+    "from": 586,
+    "to": 610,
+    "class": "H",
+    "construct": "examined counter, trace call",
+    "rule": "13; METRICS (counters are H); 20 (leading ';')"
+   },
+   {
+    "from": 611,
+    "to": 664,
+    "class": "R",
+    "construct": "resume: act on verdict, go to again",
+    "rule": "19"
+   },
+   {
+    "from": 665,
+    "to": 701,
+    "class": "R",
+    "construct": "solutions12: header, declarations, |c|, count",
+    "rule": "3 (changed algorithm)"
+   },
+   {
+    "from": 702,
+    "to": 711,
+    "class": "C",
+    "construct": "for d := 1 step 1 until m (enumeration of divisors)",
+    "rule": "6; 10; 20 (leading ';')"
+   },
+   {
+    "from": 712,
+    "to": 725,
+    "class": "R",
+    "construct": "count divisors (n := n + 2)",
+    "rule": "3; 13 (computes the report)"
+   },
+   {
+    "from": 726,
+    "to": 746,
+    "class": "H",
+    "construct": "print count",
+    "rule": "13; 20 (leading ';')"
+   },
+   {
+    "from": 747,
+    "to": 756,
+    "class": "C",
+    "construct": "for d := 1 step 1 until m",
+    "rule": "6; 10; 20 (leading ';')"
+   },
+   {
+    "from": 757,
+    "to": 766,
+    "class": "R",
+    "construct": "divisor test",
+    "rule": "3"
+   },
+   {
+    "from": 767,
+    "to": 775,
+    "class": "C",
+    "construct": "for s := d, -d (enumeration of signs)",
+    "rule": "6; 10"
+   },
+   {
+    "from": 776,
+    "to": 792,
+    "class": "H",
+    "construct": "outstring, outinteger(1, s)",
+    "rule": "13"
+   },
+   {
+    "from": 793,
+    "to": 796,
+    "class": "R",
+    "construct": "argument c - s (computes v)",
+    "rule": "10; 3; 13"
+   },
+   {
+    "from": 797,
+    "to": 801,
+    "class": "H",
+    "construct": "outinteger call",
+    "rule": "13"
+   },
+   {
+    "from": 802,
+    "to": 807,
+    "class": "R",
+    "construct": "argument c / s - 1 (computes w)",
+    "rule": "10; 3; 13"
+   },
+   {
+    "from": 808,
+    "to": 815,
+    "class": "H",
+    "construct": "close of outinteger, newline",
+    "rule": "13"
+   },
+   {
+    "from": 816,
+    "to": 816,
+    "class": "C",
+    "construct": "end of the for s body",
+    "rule": "10"
+   },
+   {
+    "from": 817,
+    "to": 819,
+    "class": "R",
+    "construct": "end of the if body, end solutions12",
+    "rule": "10; 3"
+   },
+   {
+    "from": 820,
+    "to": 1453,
+    "class": "H",
+    "construct": "output adapters showu, showv, showw, showwaits, showrel, trace, report",
+    "rule": "13; 20 (leading ';')"
+   },
+   {
+    "from": 1454,
+    "to": 1463,
+    "class": "R",
+    "construct": "report: has1, has2, c initialised (for solutions12)",
+    "rule": "13 (computes the report); 3"
+   },
+   {
+    "from": 1464,
+    "to": 1485,
+    "class": "H",
+    "construct": "report: loop over held relations, nalive",
+    "rule": "13"
+   },
+   {
+    "from": 1486,
+    "to": 1518,
+    "class": "R",
+    "construct": "report: has1, has2, c set",
+    "rule": "13; 3"
+   },
+   {
+    "from": 1519,
+    "to": 1588,
+    "class": "H",
+    "construct": "report: printing held relations, solved form/explicit",
+    "rule": "13"
+   },
+   {
+    "from": 1589,
+    "to": 1615,
+    "class": "R",
+    "construct": "report: else if ... then solutions12(c)",
+    "rule": "13; 3"
+   },
+   {
+    "from": 1616,
+    "to": 1656,
+    "class": "H",
+    "construct": "report: residual print; read runs, id, nstages",
+    "rule": "13"
+   },
+   {
+    "from": 1657,
+    "to": 1672,
+    "class": "R",
+    "construct": "new computation: nrel, known flags, failed reset",
+    "rule": "19; 20 (leading ';')"
+   },
+   {
+    "from": 1673,
+    "to": 1774,
+    "class": "H",
+    "construct": "stage loop, counter reset, labels, read relation code",
+    "rule": "13; 20 (leading ';')"
+   },
+   {
+    "from": 1775,
+    "to": 1794,
+    "class": "R",
+    "construct": "add relation to the held store",
+    "rule": "19; 20 (leading ';')"
+   },
+   {
+    "from": 1795,
+    "to": 1858,
+    "class": "H",
+    "construct": "read relation constants (pose stand-in), print",
+    "rule": "13; 20 (leading ';')"
+   },
+   {
+    "from": 1859,
+    "to": 1860,
+    "class": "R",
+    "construct": "resume call",
+    "rule": "19; 20 (leading ';')"
+   },
+   {
+    "from": 1861,
+    "to": 1871,
+    "class": "H",
+    "construct": "report call, end of loops",
+    "rule": "13; 20 (leading ';')"
+   },
+   {
+    "from": 1872,
+    "to": 1872,
+    "class": "P",
+    "construct": "final end of program block",
+    "rule": "10"
+   }
+  ]
+ },
+ "outcomes": {
+  "python/p02.py": [
+   {
+    "run": "P02a",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02a",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: the ten triples, as values, from the R reformulation; the held state is R1, R2 as posed (residual, reducible) -- see notes"
+   },
+   {
+    "run": "P02a",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R1,R2,R3",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R1,R2,R3",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: the ten triples, as values, from the R reformulation; the held state is R1, R2 as posed (residual, reducible) -- see notes"
+   },
+   {
+    "run": "P02b R1,R2,R3",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R1,R3,R2",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R1,R3,R2",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v = 14, w free; no relation held"
+   },
+   {
+    "run": "P02b R1,R3,R2",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R2,R1,R3",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R2,R1,R3",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: the ten triples, as values, from the R reformulation; the held state is R1, R2 as posed (residual, reducible) -- see notes"
+   },
+   {
+    "run": "P02b R2,R1,R3",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R2,R3,R1",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R2,R3,R1",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held'); u = 2 and w*2 = v held: equivalent to u = 2, v = 2w; no solved form, since · is not a solved-form term"
+   },
+   {
+    "run": "P02b R2,R3,R1",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R3,R1,R2",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v and w free; no relation held"
+   },
+   {
+    "run": "P02b R3,R1,R2",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v = 14, w free; no relation held"
+   },
+   {
+    "run": "P02b R3,R1,R2",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R3,R2,R1",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v and w free; no relation held"
+   },
+   {
+    "run": "P02b R3,R2,R1",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held'); u = 2 and w*2 = v held"
+   },
+   {
+    "run": "P02b R3,R2,R1",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02c",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   }
+  ],
+  "algol-60/p02.alg": [
+   {
+    "run": "P02a",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02a",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: the ten triples, as values, from the R reformulation; the held state is R1, R2 as posed (residual, reducible) -- see notes"
+   },
+   {
+    "run": "P02a",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R1,R2,R3",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R1,R2,R3",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: the ten triples, as values, from the R reformulation; the held state is R1, R2 as posed (residual, reducible) -- see notes"
+   },
+   {
+    "run": "P02b R1,R2,R3",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R1,R3,R2",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R1,R3,R2",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v = 14, w free; no relation held"
+   },
+   {
+    "run": "P02b R1,R3,R2",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R2,R1,R3",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R2,R1,R3",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: the ten triples, as values, from the R reformulation; the held state is R1, R2 as posed (residual, reducible) -- see notes"
+   },
+   {
+    "run": "P02b R2,R1,R3",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R2,R3,R1",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced, identical to the posed information",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held')"
+   },
+   {
+    "run": "P02b R2,R3,R1",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held'); u = 2 and w*2 = v held: equivalent to u = 2, v = 2w; no solved form, since · is not a solved-form term"
+   },
+   {
+    "run": "P02b R2,R3,R1",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R3,R1,R2",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v and w free; no relation held"
+   },
+   {
+    "run": "P02b R3,R1,R2",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v = 14, w free; no relation held"
+   },
+   {
+    "run": "P02b R3,R1,R2",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02b R3,R2,R1",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "solved form",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 solved form: u = 2, v and w free; no relation held"
+   },
+   {
+    "run": "P02b R3,R2,R1",
+    "stage": 2,
+    "semantic": "complete",
+    "representation": "residual",
+    "simplification": "reduced",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 residual; simplification 'reduced' (cf. 'P02, stage 1: u + v = 16, held'); u = 2 and w*2 = v held"
+   },
+   {
+    "run": "P02b R3,R2,R1",
+    "stage": 3,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   },
+   {
+    "run": "P02c",
+    "stage": 1,
+    "semantic": "complete",
+    "representation": "explicit",
+    "simplification": "n/a (not residual)",
+    "rule": "SPECIFICATION Outcomes §1 (complete), §2 explicit: u = 2, v = 14, w = 7"
+   }
+  ]
+ }
+}

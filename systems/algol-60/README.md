@@ -47,9 +47,27 @@ same encoding.
 
 ## Units
 
-- **Step:** the interpreter's own `tick`, as `--max-steps` counts it.
-  Exactly what one step covers is to be stated from the interpreter's
-  source before the freeze.
+- **Step:** the interpreter's own `tick`, as `--max-steps` counts it
+  (`src/interp.rs`, at `6e8740c`). One step is any one of:
+  - the execution of one compiled statement: an assignment, a procedure
+    statement, a `go to`, the test of a conditional statement, the jump past
+    its `else` branch, the entry of a block, or a `for` statement;
+  - one test of a `step … until` or `while` element, once for every time
+    round and once more for the test that ends it;
+  - one activation of a declared procedure, by a procedure statement or a
+    function designator, and one more where its body is a single block.
+
+  Nothing else is a step: evaluating an expression (its operators, its
+  subscripts, the standard functions, a name parameter), a call of an
+  input or output procedure, a compound statement without declarations, a
+  dummy statement, and the elements of a `for` list that are plain
+  expressions. So `i := 1; i := 2` in a block is 3 steps; a procedure
+  statement whose body is one assignment is 3 (the statement, the
+  activation, the assignment); `for i := 1 step 1 until 3 do ;` is 5 (the
+  statement and four tests); `for i := 1, 2, 3 do ;` is 1. Each of these
+  was checked against `--max-steps` on ten small programs. Work done
+  inside expressions, which call by name can make large, is therefore not
+  in the step count. It is measured by `name_evaluations` (below).
 - **Store:** a vector, from `--measure` on the instrumented commit
   `151cdff` (branch `measure`). Each quantity has its value at the end of
   the run and its peak, updated as objects are made and dropped, so the
@@ -81,8 +99,16 @@ same encoding.
   repeats. A repeat is not always wasted work. Jensen's device relies on
   it, since the parameter's value changes between evaluations.
 - **Alternative:** as Python: whatever structure the program keeps, named.
-- **x1sim:** the X1 simulator's own instruction count, if it reports one;
-  to be established before the freeze, or x1sim is run for behaviour only.
+- **x1sim: behaviour only.** The simulator (Vakulenko's, commit
+  `938fa03`) counts the X1 instructions it executes, but it reports the
+  count only in a progress message every five seconds, not at the end of a
+  run, so reading it would mean changing the simulator. And the count would
+  not measure the X1's work. The run-time routines that the object code
+  calls (procedure entry, `for` statements, real arithmetic, input and
+  output) do not survive, and the simulator carries them out as 105
+  operations written in C++, each counted as one instruction however much
+  it does. x1sim is therefore run in behaviour mode only, for its
+  outcomes. No step, store or cost figure is taken from it.
 
 ## The same computation
 

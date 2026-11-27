@@ -1,0 +1,195 @@
+P02a stage 1: R1
+  trace:    R1 waits on u, v
+  examined: R1 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R1: u + v = 16   waits on u, v
+  outcome:  residual (the held relations above)
+P02a stage 2: R2
+  trace:    R1 waits on u, v; R2 waits on w, u, v
+  examined: R1 1, R2 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R1: u + v = 16   waits on u, v
+  held:     R2: w * u = v   waits on w, u, v
+  outcome:  explicit, 10 solutions (u, v, w):
+            (1, 15, 15)
+            (-1, 17, -17)
+            (2, 14, 7)
+            (-2, 18, -9)
+            (4, 12, 3)
+            (-4, 20, -5)
+            (8, 8, 1)
+            (-8, 24, -3)
+            (16, 0, 0)
+            (-16, 32, -2)
+P02a stage 3: R3
+  trace:    R1 waits on u, v; R2 waits on w, u, v; R3 binds u = 2; R1 binds v = 14; R2 binds w = 7; R3 decided; R1 decided; R2 decided
+  examined: R1 3, R2 3, R3 2
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+
+P02b R1 R2 R3 stage 1: R1
+  trace:    R1 waits on u, v
+  examined: R1 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R1: u + v = 16   waits on u, v
+  outcome:  residual (the held relations above)
+P02b R1 R2 R3 stage 2: R2
+  trace:    R1 waits on u, v; R2 waits on w, u, v
+  examined: R1 1, R2 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R1: u + v = 16   waits on u, v
+  held:     R2: w * u = v   waits on w, u, v
+  outcome:  explicit, 10 solutions (u, v, w):
+            (1, 15, 15)
+            (-1, 17, -17)
+            (2, 14, 7)
+            (-2, 18, -9)
+            (4, 12, 3)
+            (-4, 20, -5)
+            (8, 8, 1)
+            (-8, 24, -3)
+            (16, 0, 0)
+            (-16, 32, -2)
+P02b R1 R2 R3 stage 3: R3
+  trace:    R1 waits on u, v; R2 waits on w, u, v; R3 binds u = 2; R1 binds v = 14; R2 binds w = 7; R3 decided; R1 decided; R2 decided
+  examined: R1 3, R2 3, R3 2
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+
+P02b R1 R3 R2 stage 1: R1
+  trace:    R1 waits on u, v
+  examined: R1 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R1: u + v = 16   waits on u, v
+  outcome:  residual (the held relations above)
+P02b R1 R3 R2 stage 2: R3
+  trace:    R1 waits on u, v; R3 binds u = 2; R1 binds v = 14; R3 decided; R1 decided
+  examined: R1 3, R3 2
+  bound:    u = 2, v = 14
+  unbound:  w
+  held:     none
+  outcome:  solved form (w free)
+P02b R1 R3 R2 stage 3: R2
+  trace:    R2 binds w = 7; R2 decided
+  examined: R2 2
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+
+P02b R2 R1 R3 stage 1: R2
+  trace:    R2 waits on w, u, v
+  examined: R2 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R2: w * u = v   waits on w, u, v
+  outcome:  residual (the held relations above)
+P02b R2 R1 R3 stage 2: R1
+  trace:    R2 waits on w, u, v; R1 waits on u, v
+  examined: R1 1, R2 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R2: w * u = v   waits on w, u, v
+  held:     R1: u + v = 16   waits on u, v
+  outcome:  explicit, 10 solutions (u, v, w):
+            (1, 15, 15)
+            (-1, 17, -17)
+            (2, 14, 7)
+            (-2, 18, -9)
+            (4, 12, 3)
+            (-4, 20, -5)
+            (8, 8, 1)
+            (-8, 24, -3)
+            (16, 0, 0)
+            (-16, 32, -2)
+P02b R2 R1 R3 stage 3: R3
+  trace:    R2 waits on w, u, v; R1 waits on u, v; R3 binds u = 2; R2 waits on w, v; R1 binds v = 14; R3 decided; R2 binds w = 7; R1 decided; R2 decided
+  examined: R1 3, R2 4, R3 2
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+
+P02b R2 R3 R1 stage 1: R2
+  trace:    R2 waits on w, u, v
+  examined: R2 1
+  bound:    none
+  unbound:  u, v, w
+  held:     R2: w * u = v   waits on w, u, v
+  outcome:  residual (the held relations above)
+P02b R2 R3 R1 stage 2: R3
+  trace:    R2 waits on w, u, v; R3 binds u = 2; R2 waits on w, v; R3 decided; R2 waits on w, v
+  examined: R2 3, R3 2
+  bound:    u = 2
+  unbound:  v, w
+  held:     R2: w * 2 = v   waits on w, v
+  outcome:  residual (the held relations above)
+P02b R2 R3 R1 stage 3: R1
+  trace:    R2 waits on w, v; R1 binds v = 14; R2 binds w = 7; R1 decided; R2 decided
+  examined: R1 2, R2 3
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+
+P02b R3 R1 R2 stage 1: R3
+  trace:    R3 binds u = 2; R3 decided
+  examined: R3 2
+  bound:    u = 2
+  unbound:  v, w
+  held:     none
+  outcome:  solved form (v, w free)
+P02b R3 R1 R2 stage 2: R1
+  trace:    R1 binds v = 14; R1 decided
+  examined: R1 2
+  bound:    u = 2, v = 14
+  unbound:  w
+  held:     none
+  outcome:  solved form (w free)
+P02b R3 R1 R2 stage 3: R2
+  trace:    R2 binds w = 7; R2 decided
+  examined: R2 2
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+
+P02b R3 R2 R1 stage 1: R3
+  trace:    R3 binds u = 2; R3 decided
+  examined: R3 2
+  bound:    u = 2
+  unbound:  v, w
+  held:     none
+  outcome:  solved form (v, w free)
+P02b R3 R2 R1 stage 2: R2
+  trace:    R2 waits on w, v
+  examined: R2 1
+  bound:    u = 2
+  unbound:  v, w
+  held:     R2: w * 2 = v   waits on w, v
+  outcome:  residual (the held relations above)
+P02b R3 R2 R1 stage 3: R1
+  trace:    R2 waits on w, v; R1 binds v = 14; R2 binds w = 7; R1 decided; R2 decided
+  examined: R1 2, R2 3
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+
+P02c stage 1: R1, R2, R3
+  trace:    R1 waits on u, v; R2 waits on w, u, v; R3 binds u = 2; R1 binds v = 14; R2 binds w = 7; R3 decided; R1 decided; R2 decided
+  examined: R1 3, R2 3, R3 2
+  bound:    u = 2, v = 14, w = 7
+  unbound:  none
+  held:     none
+  outcome:  explicit
+

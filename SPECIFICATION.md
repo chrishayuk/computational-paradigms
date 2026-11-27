@@ -1,6 +1,6 @@
 # Specification
 
-*Draft 0.6, 27 November 2026. Not frozen; the freeze candidate. Draft 0.1 was reviewed
+*Draft 0.7, 27 November 2026. Not frozen; the freeze candidate. Draft 0.1 was reviewed
 independently; the findings and the response to each are in
 [`reviews/`](reviews). Draft 0.3 added the decisions taken on draft 0.2
 (`reviews/decisions-0.2.md`). Draft 0.4 answered the second review, of
@@ -236,6 +236,12 @@ Whether a residual is equivalent to the valid outcomes is checked by the
 classifiers (`PROTOCOL.md`, Roles), by hand or by a published checking
 script, with the reasoning recorded. Sizes of representations are measured
 on the primitive decomposition (`Conventions`).
+
+Where a program reports a stage in two forms (the relations it holds, and
+the solutions it derived from them, for instance), the representation is
+classified on the more explicit form that is valid, and the other is
+recorded as an observation. A form derived by reformulation keeps its R
+tokens. *(Clarified after the held-out check.)*
 
 A residual counts as reported only if it is state that the system or the
 program holds and acts on at a later stage, read by `observe()`. Printing

@@ -9,7 +9,12 @@ Elcock (1990). Every rule it follows, and the evidence for each, is in its
 ## Pinning
 
 The commit used is fixed when the specification is frozen. It is
-provisionally `7bb61e6`, whose CI passed. Any later change to the
+`efd5203` (`PINS.md`): `7bb61e6` with one defect of the printer fixed.
+Printing a list that contains itself (`x = [x]`, P01c) overflowed the
+stack after the computation had finished. Only the printer changed, and
+every example and research text prints byte for byte as at `7bb61e6`
+(160 runs), which is kept as the behavioural reference. The defect is
+recorded in the reconstruction's `docs/decisions.md`. Any later change to the
 reconstruction, for whatever reason, makes a new configuration, reported
 separately beside the pinned one. Mechanisms added after the freeze are
 never counted as native in the pinned configuration.
@@ -85,7 +90,7 @@ expressibility):
   variant.
 
 **Output.** The baseline prints at most 32 elements of a list and 24
-derivations. The instrumented commit `a5762f5` (branch `measure`) adds
+derivations. The instrumented commit `5450449` (branch `measure`) adds
 `--full`, which prints both in full, so `observe()` can read every answer.
 With no occur check, a computation can end with a cyclic value (P01c), so
 `--full` detects a list cell met again while it is being printed, and
@@ -96,11 +101,12 @@ Against the baseline, its default output is identical in all 140 runs, and
 `--full` output is identical in the 132 runs the baseline did not cut
 short.
 
-**A fault in the baseline.** The baseline's default printer overflows the
-stack on a cyclic head, X = [X]. The computation finishes; printing its
-answer crashes. On P01c's rational reading, this is the baseline's
-behaviour under *behaviour* mode. Results are read with `--full`, which
-prints it as `[↻]`.
+**A fault, found and fixed.** At `7bb61e6` the default printer overflowed
+the stack on a cycle through a list's elements, X = [X]: the computation
+finished, and printing its answer crashed. It was fixed on `main` as
+`efd5203`, the pinned commit, which prints `[↻]` in every mode. The fault
+is kept on record, in the reconstruction's `docs/decisions.md` and in
+`PINS.md`. No result is taken from `7bb61e6`.
 
 ## Units
 
@@ -114,7 +120,7 @@ prints it as `[↻]`.
   other system's unit. Comparable counts come only from quantities a
   problem defines.
 - **Store:** a vector, from `--measure` on the instrumented commit
-  `f1def9d` (branch `measure`; `a5762f5` adds `--full` and changes nothing
+  `f1a63aa` (branch `measure`; `5450449` adds `--full` and changes nothing
   measured). For each assertion it gives the value at
   the end and the peak, sampled after every step, so the peak is exact at
   the granularity of steps:
@@ -141,9 +147,11 @@ first step, so a peak at a stage boundary is not missed.
 The instrumented commit changes nothing the machine computes on the texts
 tested. That is observational equivalence over that corpus, not a proof
 for every workload. With
-`--measure` off and on, its output was identical to the baseline
-`7bb61e6`'s, byte for byte: 20 texts in 7 output modes (140 runs), full
-traces included, and the JSON of all 20. Measuring is slow, because the
+`--measure` off and on, its output was identical to the baseline's, byte
+for byte: 20 texts in 7 output modes (140 runs), full traces included,
+and the JSON of all 20. This was checked against `7bb61e6`, and again
+after the branch was rebased onto `efd5203`, with the same result; `--full`
+output also matched wherever the baseline cut nothing short (132 runs). Measuring is slow, because the
 whole state is read after every step. Step counts are unaffected; only
 time is. Results report the baseline commit for behaviour and the
 instrumented commit for store.
