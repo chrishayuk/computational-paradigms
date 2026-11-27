@@ -1,4 +1,4 @@
-=== /opt/homebrew/bin/python3.14 (3.14.6) on Darwin arm64
+=== python3.14 (3.14.6) on Darwin arm64
 --- p1_instructions
 python 3.14.6
 monitoring: meter frame instructions (excluded from counts): 13
@@ -39,20 +39,28 @@ plain call, then trace        : [0, 26, 26]
 monitoring first              : [26, 26, 26]
 monitoring once, then trace   : [0, 26, 26]
 1000 plain calls, then mon    : [26, 26, 26]
+plain, trace, trace, mon, trace, trace: [('trace', 0), ('trace', 26), ('mon', 26), ('trace', 0), ('trace', 0)]
+then a different fresh function, trace x2: [0, 26]
 --- p1d_cost
 python 3.14.6 recursionlimit 1000
-   runs: [(0.027, 499999500000), (0.026, 499999500000), (0.026, 499999500000)]
-time plain        : 0.026s result=499999500000
-   runs: [(0.394, 6000010), (0.397, 6000010), (0.399, 6000010)]
-time monitoring   : 0.397s result=499999500000 instructions=6000010 ratio=15.5
-   runs: [(0.035, 0), (0.523, 6000010), (0.516, 6000010)]
-time settrace     : 0.516s result=499999500000 opcode events=6000010 ratio=20.2
+   runs: [(0.025, 499999500000), (0.025, 499999500000), (0.025, 499999500000)]
+time plain        : 0.025s result=499999500000
+   runs: [(0.395, 6000010), (0.393, 6000010), (0.392, 6000010)]
+time monitoring   : 0.392s result=499999500000 instructions=6000010 ratio=15.6
+   runs: [(0.034, 0), (0.531, 6000010), (0.531, 6000010)]
+time settrace     : 0.531s result=499999500000 opcode events=6000010 ratio=21.2
 peak bytes plain      : 288
 peak bytes monitoring : 582
 peak bytes settrace   : 1055
 depth plain           : 998
 depth monitoring      : 996
 depth settrace        : 996
+--- p1e_scope
+python 3.14.6
+sorted(xs)              : 6
+sorted(xs, key=lambda)  : 3009
+work() in this thread   : 6010
+work() here and in a new thread: 12699
 --- p2_algops
 python 3.14.6 recursionlimit 5000
 n=100 expected {'conc': 5050, 'racc': 101, 'rev': 101, 'revacc': 1, 'rng': 101, 'sm': 101}
@@ -62,11 +70,11 @@ n=100 expected {'conc': 5050, 'racc': 101, 'rev': 101, 'revacc': 1, 'rng': 101, 
   C monitoring  result=(5050, 100, 100) same=True counts_match=True cpu=0.001s
   D setprofile  result=(5050, 100, 100) same=True counts_match=True cpu=0.002s
 n=1000 expected {'conc': 500500, 'racc': 1001, 'rev': 1001, 'revacc': 1, 'rng': 1001, 'sm': 1001}
-  none          result=(500500, 1000, 1000) same=True counts_match=- cpu=0.032s
-  A counters    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.069s
-  B wrappers    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.096s
-  C monitoring  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.125s
-  D setprofile  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.179s
+  none          result=(500500, 1000, 1000) same=True counts_match=- cpu=0.035s
+  A counters    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.070s
+  B wrappers    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.100s
+  C monitoring  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.129s
+  D setprofile  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.185s
 instructions of the n=100 workload, counted by meter.count_mon:
   none          75468
   A counters    130092
@@ -83,7 +91,7 @@ recursionlimit 1500, n=1000:
 python 3.14.6 darwin
 [outside] mmap of 64 MiB, every page touched
   tracemalloc current growth=104 peak growth=104
-  ru_maxrss before=16728064 after=83836928 growth=67108864
+  ru_maxrss before=17350656 after=84459520 growth=67108864
 [peak] build and drop 10^6 ints inside a call
   current growth=3224 peak growth=39997944
 [ints/strings] lists of 100000 elements kept (current growth, bytes)
@@ -95,15 +103,15 @@ python 3.14.6 darwin
 [freelist] 10^5 floats created and freed one at a time
   current growth=0 peak growth=0
 [maxrss] process
-  ru_maxrss at start=16728064 now=138625024 (unit: bytes on darwin)
+  ru_maxrss at start=17334272 now=139247616 (unit: bytes on darwin)
   tracemalloc own memory=9040
 [overhead] CPU for keep_large_ints(10^6), best of 3
-  off=0.028s on(1 frame)=0.203s ratio=7.2 on(25 frames)=1.995s ratio=70.9
+  off=0.029s on(1 frame)=0.210s ratio=7.3 on(25 frames)=1.996s ratio=69.0
 [maxrss of a child process] keep_large_ints(10^6), tracemalloc off/on
   off maxrss start=15794176 end=58130432 growth=42336256 traced_peak=0 tracemalloc_own=0
-  on  maxrss start=15859712 end=130400256 growth=114540544 traced_peak=40448736 tracemalloc_own=48777360
-  off maxrss start=15843328 end=58179584 growth=42336256 traced_peak=0 tracemalloc_own=0
-  on  maxrss start=15859712 end=130383872 growth=114524160 traced_peak=40448736 tracemalloc_own=48777360
+  on  maxrss start=15826944 end=130351104 growth=114524160 traced_peak=40448736 tracemalloc_own=48777360
+  off maxrss start=15859712 end=58195968 growth=42336256 traced_peak=0 tracemalloc_own=0
+  on  maxrss start=15826944 end=130351104 growth=114524160 traced_peak=40448736 tracemalloc_own=48777360
 [steps] instructions of keep_large_ints(10^4), tracemalloc off/on
   off=70013 on=70013
 --- p4_retained
@@ -127,7 +135,7 @@ python 3.14.6
   cons cell (1, ())      listed=False is_tracked=False
   len(gc.get_objects()) twice in a row: 9893 9893
 [blocks] sys.getallocatedblocks() around keeping 10^4 cons cells
-  before=43403 kept=63407 (+20004) after del=43405 (+2)
+  before=43407 kept=63411 (+20004) after del=43409 (+2)
 [frames] Python frame depth at a point
   depth at top: 2  inside down(50): 53
 --- p5_recursion
@@ -183,29 +191,29 @@ python 3.14.6
 [C loop] budget 1000 around any(itertools.repeat(0)), 5 s timeout
   not stopped by the budget; killed by the 5 s timeout
 [cost] finite(10**6)
-  plain 0.025s  under budget meter 0.482s  ratio 19.7
+  plain 0.027s  under budget meter 0.479s  ratio 17.8
 --- p1c_determinism (PYTHONHASHSEED 0, 0, 1, 2, random, random)
-python 3.14.6 PYTHONHASHSEED=0
+python 3.14.6 PYTHONHASHSEED=0 meter count_mon
   list of str                position= 101 instructions=1824
   set of str                 position=  63 instructions=1140
-  set of objects (id hash)   position= 137 instructions=2609
-python 3.14.6 PYTHONHASHSEED=0
+  set of objects (id hash)   position=  40 instructions=766
+python 3.14.6 PYTHONHASHSEED=0 meter count_mon
   list of str                position= 101 instructions=1824
   set of str                 position=  63 instructions=1140
-  set of objects (id hash)   position= 143 instructions=2723
-python 3.14.6 PYTHONHASHSEED=1
+  set of objects (id hash)   position=  37 instructions=709
+python 3.14.6 PYTHONHASHSEED=1 meter count_mon
   list of str                position= 101 instructions=1824
   set of str                 position=   6 instructions=114
-  set of objects (id hash)   position= 143 instructions=2723
-python 3.14.6 PYTHONHASHSEED=2
+  set of objects (id hash)   position=  39 instructions=747
+python 3.14.6 PYTHONHASHSEED=2 meter count_mon
   list of str                position= 101 instructions=1824
   set of str                 position=  44 instructions=798
-  set of objects (id hash)   position= 139 instructions=2647
-python 3.14.6 PYTHONHASHSEED=unset
+  set of objects (id hash)   position=  39 instructions=747
+python 3.14.6 PYTHONHASHSEED=unset meter count_mon
   list of str                position= 101 instructions=1824
-  set of str                 position= 115 instructions=2076
-  set of objects (id hash)   position= 143 instructions=2723
-python 3.14.6 PYTHONHASHSEED=unset
+  set of str                 position=  92 instructions=1662
+  set of objects (id hash)   position=  41 instructions=785
+python 3.14.6 PYTHONHASHSEED=unset meter count_mon
   list of str                position= 101 instructions=1824
-  set of str                 position=  17 instructions=312
-  set of objects (id hash)   position= 145 instructions=2761
+  set of str                 position= 140 instructions=2526
+  set of objects (id hash)   position=  41 instructions=785

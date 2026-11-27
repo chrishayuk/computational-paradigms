@@ -1,9 +1,8 @@
 # Python
 
 **Evidence class: modern.** The modern imperative baseline. The version is
-to be pinned at the freeze. The proposal is CPython 3.13 in the
-`python:3.13` container image, at a fixed patch release. 3.12.2 is
-installed locally.
+pinned at the freeze, to a patch release. The proposal is CPython 3.13.7,
+the 3.13 release studied, in a `python:3.13.7` container image.
 
 Python is not forced into a logic-programming style. Where a problem is
 expressed more naturally in Python by another algorithm, the program uses
@@ -23,18 +22,44 @@ external mechanisms. No third-party package is used.
 
 ## Units
 
-To be qualified before the freeze, as SWI-Prolog's were:
+Qualified on macOS arm64 with CPython 3.10 to 3.14 by the study in
+[`measurement.md`](measurement.md), with probes in [`probes/`](probes).
+Not yet run in the `python:3.13` image or on Linux.
 
-- **Step:** the proposal is one bytecode instruction, counted through
-  `sys.monitoring` (Python 3.12 and later) INSTRUCTION events. That count
-  is exact and changes no result, but slows the run. It depends on the
-  CPython version, which is pinned.
-- **Store:** `tracemalloc`'s current and peak traced memory. This gives a
-  true peak of the memory Python allocates, not a sampled maximum.
-- **Alternative:** Python has none of its own. A program that keeps
-  alternatives keeps them in its own structures (a stack, a frontier, a
-  list of generators), and the count of their entries is reported, with
-  the structure named.
+- **Pinning.** The **patch** release is pinned, not only 3.13. Instruction
+  counts per loop differ between minor versions, and the depth to which
+  recursion through C works differs between patch releases (1,497 levels on
+  3.12.2, 9,997 on 3.12.11). Runs set `PYTHONHASHSEED=0`.
+- **Step:** one bytecode instruction, counted by `sys.monitoring`
+  INSTRUCTION events. The count is exact and repeatable, and results are
+  unchanged, at 12–25 times the time. It sees no work inside built-ins:
+  at n = 10⁵, `sum(xs)` is 4 instructions and a loop 700,007. So P13 also
+  records CPU time and maximum resident set size, for growth only
+  (`METRICS.md`).
+- **Budget:** a `BaseException` raised from the monitoring callback stops
+  the computation after exactly B instructions. Where a stage must be
+  continued after its budget, the computation's thread is instead blocked
+  at B and resumed with a new budget, with the same total count. A loop
+  inside one C call is never seen, so the safety limit kills the process
+  from outside.
+- **Problem operations:** applications of each defined relation, counted by
+  `sys.monitoring` PY_START events on the functions that transcribe the
+  definitions. No change is made to the program, and the count matched the
+  closed forms exactly (conc: 500,500 at n = 1,000). Each defined relation
+  is therefore written as a function of its own.
+- **Store:** `tracemalloc`'s current and peak traced memory, which is a true
+  peak of Python's own allocations, and `sys.getallocatedblocks()`.
+  Memory outside Python's allocators is not seen. The process's
+  `ru_maxrss` is taken only from a separate run with `tracemalloc` off, one
+  process per stage, since it never falls.
+- **Alternative:** the entries of the program's named pending structure (a
+  stack, a queue, a frontier), and suspended generator frames, counted
+  exactly with `gc.get_objects()` after a collection.
+- **Recursion:** the recursion limit is a configuration flag, fixed per
+  configuration. A `RecursionError` is classed *error*, not *budget*. The
+  harness compares and prints deep answers iteratively, not with `==` or
+  `repr`, which recurse through C.
+- **Repeated work:** only problem operations, as counted above.
 
 ## The same computation
 

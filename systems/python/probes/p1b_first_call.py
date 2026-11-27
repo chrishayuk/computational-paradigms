@@ -42,3 +42,17 @@ if meter.HAVE_MON:
     for _ in range(1000):  # let the specialising interpreter adapt it
         f(xs)
     print("1000 plain calls, then mon    :", [meter.count_mon(f, xs)[1] for _ in range(3)])
+
+if meter.HAVE_MON:
+    # A sequence on one fresh function: plain call, trace, trace, monitoring,
+    # trace, trace. Shows whether settrace opcode events survive a use of
+    # sys.monitoring by another tool.
+    f = fresh()
+    f(xs)
+    seq = [("trace", meter.count_trace(f, xs)[1]), ("trace", meter.count_trace(f, xs)[1]),
+           ("mon", meter.count_mon(f, xs)[1]),
+           ("trace", meter.count_trace(f, xs)[1]), ("trace", meter.count_trace(f, xs)[1])]
+    print("plain, trace, trace, mon, trace, trace:", seq)
+    g = fresh()
+    print("then a different fresh function, trace x2:",
+          [meter.count_trace(g, xs)[1] for _ in range(2)])

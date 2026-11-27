@@ -39,20 +39,28 @@ plain call, then trace        : [0, 25, 25]
 monitoring first              : [25, 25, 25]
 monitoring once, then trace   : [0, 25, 25]
 1000 plain calls, then mon    : [25, 25, 25]
+plain, trace, trace, mon, trace, trace: [('trace', 0), ('trace', 25), ('mon', 25), ('trace', 0), ('trace', 0)]
+then a different fresh function, trace x2: [0, 25]
 --- p1d_cost
 python 3.13.7 recursionlimit 1000
-   runs: [(0.021, 499999500000), (0.018, 499999500000), (0.018, 499999500000)]
-time plain        : 0.018s result=499999500000
-   runs: [(0.227, 6000009), (0.216, 6000009), (0.216, 6000009)]
-time monitoring   : 0.216s result=499999500000 instructions=6000009 ratio=12.1
-   runs: [(0.024, 0), (0.324, 6000009), (0.323, 6000009)]
-time settrace     : 0.323s result=499999500000 opcode events=6000009 ratio=18.1
+   runs: [(0.019, 499999500000), (0.019, 499999500000), (0.019, 499999500000)]
+time plain        : 0.019s result=499999500000
+   runs: [(0.234, 6000009), (0.223, 6000009), (0.218, 6000009)]
+time monitoring   : 0.218s result=499999500000 instructions=6000009 ratio=11.7
+   runs: [(0.024, 0), (0.314, 6000009), (0.316, 6000009)]
+time settrace     : 0.314s result=499999500000 opcode events=6000009 ratio=16.9
 peak bytes plain      : 344
 peak bytes monitoring : 692
 peak bytes settrace   : 1069
 depth plain           : 998
 depth monitoring      : 996
 depth settrace        : 996
+--- p1e_scope
+python 3.13.7
+sorted(xs)              : 6
+sorted(xs, key=lambda)  : 3009
+work() in this thread   : 6008
+work() here and in a new thread: 12600
 --- p2_algops
 python 3.13.7 recursionlimit 5000
 n=100 expected {'conc': 5050, 'racc': 101, 'rev': 101, 'revacc': 1, 'rng': 101, 'sm': 101}
@@ -62,11 +70,11 @@ n=100 expected {'conc': 5050, 'racc': 101, 'rev': 101, 'revacc': 1, 'rng': 101, 
   C monitoring  result=(5050, 100, 100) same=True counts_match=True cpu=0.001s
   D setprofile  result=(5050, 100, 100) same=True counts_match=True cpu=0.002s
 n=1000 expected {'conc': 500500, 'racc': 1001, 'rev': 1001, 'revacc': 1, 'rng': 1001, 'sm': 1001}
-  none          result=(500500, 1000, 1000) same=True counts_match=- cpu=0.025s
-  A counters    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.056s
-  B wrappers    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.077s
-  C monitoring  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.126s
-  D setprofile  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.170s
+  none          result=(500500, 1000, 1000) same=True counts_match=- cpu=0.023s
+  A counters    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.054s
+  B wrappers    result=(500500, 1000, 1000) same=True counts_match=True cpu=0.075s
+  C monitoring  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.124s
+  D setprofile  result=(500500, 1000, 1000) same=True counts_match=True cpu=0.173s
 instructions of the n=100 workload, counted by meter.count_mon:
   none          75364
   A counters    129978
@@ -83,7 +91,7 @@ recursionlimit 1500, n=1000:
 python 3.13.7 darwin
 [outside] mmap of 64 MiB, every page touched
   tracemalloc current growth=96 peak growth=216
-  ru_maxrss before=18972672 after=86097920 growth=67125248
+  ru_maxrss before=19595264 after=86720512 growth=67125248
 [peak] build and drop 10^6 ints inside a call
   current growth=84 peak growth=40000208
 [ints/strings] lists of 100000 elements kept (current growth, bytes)
@@ -95,15 +103,15 @@ python 3.13.7 darwin
 [freelist] 10^5 floats created and freed one at a time
   current growth=32 peak growth=152
 [maxrss] process
-  ru_maxrss at start=18939904 now=140935168 (unit: bytes on darwin)
+  ru_maxrss at start=19562496 now=141524992 (unit: bytes on darwin)
   tracemalloc own memory=2160
 [overhead] CPU for keep_large_ints(10^6), best of 3
-  off=0.019s on(1 frame)=0.319s ratio=16.6 on(25 frames)=2.407s ratio=125.4
+  off=0.019s on(1 frame)=0.318s ratio=16.4 on(25 frames)=2.446s ratio=126.7
 [maxrss of a child process] keep_large_ints(10^6), tracemalloc off/on
-  off maxrss start=17842176 end=60030976 growth=42188800 traced_peak=0 tracemalloc_own=0
-  on  maxrss start=17989632 end=132661248 growth=114671616 traced_peak=40449336 tracemalloc_own=48777968
-  off maxrss start=17940480 end=60145664 growth=42205184 traced_peak=0 tracemalloc_own=0
-  on  maxrss start=17825792 end=132579328 growth=114753536 traced_peak=40449336 tracemalloc_own=48777968
+  off maxrss start=17973248 end=60194816 growth=42221568 traced_peak=0 tracemalloc_own=0
+  on  maxrss start=18055168 end=132792320 growth=114737152 traced_peak=40449336 tracemalloc_own=48777968
+  off maxrss start=17989632 end=60194816 growth=42205184 traced_peak=0 tracemalloc_own=0
+  on  maxrss start=17956864 end=132644864 growth=114688000 traced_peak=40449336 tracemalloc_own=48777968
 [steps] instructions of keep_large_ints(10^4), tracemalloc off/on
   off=70013 on=70013
 --- p4_retained
@@ -127,7 +135,7 @@ python 3.13.7
   cons cell (1, ())      listed=False is_tracked=False
   len(gc.get_objects()) twice in a row: 9338 9338
 [blocks] sys.getallocatedblocks() around keeping 10^4 cons cells
-  before=43753 kept=63754 (+20001) after del=43755 (+2)
+  before=43761 kept=63762 (+20001) after del=43763 (+2)
 [frames] Python frame depth at a point
   depth at top: 2  inside down(50): 53
 --- p5_recursion
@@ -159,3 +167,53 @@ recursionlimit=10000000
   viaC   n=  100000: RecursionError: maximum recursion depth exceeded exit 1
   largest n that works: eq=9998 repr=9997 viaC=4999
 --- p6_budget
+python 3.13.7
+[stop]
+  endless, budget 10: ('budget', None, 10)
+  endless, budget 1000: ('budget', None, 1000)
+  endless, budget 1000000: ('budget', None, 1000000)
+  finite(100), budget 10**6: ('finished', 4950, 609)
+  finite(100), budget 608: ('budget', None, 608)
+  finite(100), budget 609: ('finished', 4950, 609)
+[catch]
+  except Exception: ('budget', None, 1000)
+  bare except     : ('finished', 'caught by bare except', 1001)
+  finally         : ('budget', None, 1000) cleanup ran: True
+  sticky, except Exception: ('budget', None, 1000)
+  sticky, bare except     : ('budget', None, 1000)
+  sticky, finally         : ('budget', None, 1000) cleanup ran: False
+[pause] finite(1000) pausing at 2000, 4000 and 6000 instructions, then unlimited
+   ('paused at', 2000)
+   ('paused at', 4000)
+   ('paused at', 6000)
+   ('finished', 499500, 'instructions', 6009)
+  finite(1000) under meter.count_mon: (499500, 6009)
+[C loop] budget 1000 around any(itertools.repeat(0)), 5 s timeout
+  not stopped by the budget; killed by the 5 s timeout
+[cost] finite(10**6)
+  plain 0.019s  under budget meter 0.297s  ratio 15.5
+--- p1c_determinism (PYTHONHASHSEED 0, 0, 1, 2, random, random)
+python 3.13.7 PYTHONHASHSEED=0 meter count_mon
+  list of str                position= 101 instructions=1724
+  set of str                 position=  63 instructions=1078
+  set of objects (id hash)   position=  46 instructions=835
+python 3.13.7 PYTHONHASHSEED=0 meter count_mon
+  list of str                position= 101 instructions=1724
+  set of str                 position=  63 instructions=1078
+  set of objects (id hash)   position=  45 instructions=817
+python 3.13.7 PYTHONHASHSEED=1 meter count_mon
+  list of str                position= 101 instructions=1724
+  set of str                 position=   6 instructions=109
+  set of objects (id hash)   position=  45 instructions=817
+python 3.13.7 PYTHONHASHSEED=2 meter count_mon
+  list of str                position= 101 instructions=1724
+  set of str                 position=  44 instructions=755
+  set of objects (id hash)   position=  45 instructions=817
+python 3.13.7 PYTHONHASHSEED=unset meter count_mon
+  list of str                position= 101 instructions=1724
+  set of str                 position= 155 instructions=2642
+  set of objects (id hash)   position=  49 instructions=889
+python 3.13.7 PYTHONHASHSEED=unset meter count_mon
+  list of str                position= 101 instructions=1724
+  set of str                 position=  74 instructions=1265
+  set of objects (id hash)   position=  49 instructions=889
