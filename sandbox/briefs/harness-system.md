@@ -16,6 +16,19 @@ work"), and `systems/SYSTEMDIR/` in full, including its probes.
 
 SYSTEMNOTES
 
+## The first principle
+
+**The harness observes what the system computes; it never supplies it.**
+It must not implement, on the system's behalf, suspension, waiting for
+information, search or backtracking, scheduling, constraint propagation,
+reconstruction or simplification of answers, or the combination of
+stages. Where a configuration lacks a mechanism, the harness does not
+make up for it: the program must, as S code counted against that
+configuration, or the problem is not expressible there. Anything the
+harness does beyond passing stages in, collecting answers through the
+system's standard mechanism, and reading state for `observe()`, must be
+listed in its README as a possible confound.
+
 ## What to write, all under `harnesses/SYSTEMDIR/`
 
 1. **The harness**, `harnesses/SYSTEMDIR/run`, with the command line the
@@ -65,6 +78,18 @@ Do not modify any file outside `harnesses/SYSTEMDIR/`. If the common
 contract or the specification cannot be implemented as written for
 SYSTEM, do not change them: write it in
 `harnesses/SYSTEMDIR/QUESTIONS.md` with the reading you implemented.
+
+5. **`harnesses/SYSTEMDIR/check`** `CONFIGURATION PROGRAM`: a syntax
+   check that never executes the program. It may parse or compile it, and
+   report syntax and static errors verbatim, but must not run any of its
+   statements, goals, directives or assertions, pose any stage, or print
+   anything the program would compute. Say in the README exactly what it
+   does for each configuration, and show in the qualification that it
+   executes nothing (a program whose only effect would be to write a file
+   or print a marker, checked, leaves no trace). Where the system offers
+   no way to check without executing, say so and make `check` report that.
+   Program authors may use `check`, and nothing else, before their
+   programs are fixed.
 
 When you are done, commit in `/work` on a branch `harness-SYSTEMDIR`
 (author `harness-SYSTEMDIR <harness-SYSTEMDIR@sandbox>`, no trailers), and

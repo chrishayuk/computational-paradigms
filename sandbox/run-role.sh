@@ -12,13 +12,18 @@
 # The container sees one thing from the host: a fresh clone of the public
 # repository at REF, made from GitHub for this run alone, mounted at /work.
 # Nothing else is mounted: not the home directory, not ~/.claude, not other
-# roles' clones, not any key. Credentials enter as environment variables
-# (Claude) or one read-only file (Codex auth). The agent's whole transcript
+# roles' clones, not any key. The container is on the host-only network
+# cp-roles; its only way out is sandbox/egress-proxy.py, which lets a Claude
+# role reach api.anthropic.com and a Codex role OpenAI's API, and nothing
+# else (no GitHub: nothing can be pushed or published). Credentials enter as
+# an environment variable (Claude) or one read-only file (Codex auth, for
+# Codex roles only). The agent's whole transcript
 # is written by the host, from the container's output, to OUT_DIR, where
 # the agent cannot read it back.
 set -euo pipefail
 NAME=$1 IMAGE=$2 REF=$3 PROMPT=$4 OUT=$5 AGENT=${6:-claude}
 REPO=https://github.com/chrishayuk/computational-paradigms
+GW=192.168.128.1   # the cp-roles gateway, where sandbox/egress-proxy.py listens
 [ -e "$OUT" ] && { echo "$OUT exists" >&2; exit 1; }
 mkdir -p "$OUT"
 git clone -q "$REPO" "$OUT/work"
@@ -41,14 +46,15 @@ case $AGENT in
     echo "model: ${CP_MODEL:-claude-opus-5-5}" >> "$OUT/provenance.txt"
     cmd=(claude -p "$(cat "$PROMPT")" --model "${CP_MODEL:-claude-opus-5-5}"
          --dangerously-skip-permissions --output-format stream-json --verbose)
-    envs=(--env CLAUDE_CODE_OAUTH_TOKEN) ;;
+    envs=(--env CLAUDE_CODE_OAUTH_TOKEN --env HTTPS_PROXY=http://$GW:3128
+          --env CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 --env DISABLE_AUTOUPDATER=1) ;;
   codex)
     mounts+=(--volume "$HOME/.codex/auth.json:/home/agent/.codex/auth.json:ro")
     cmd=(codex exec -s workspace-write -C /work --json "$(cat "$PROMPT")")
-    envs=() ;;
+    envs=(--env HTTPS_PROXY=http://$GW:3129) ;;
 esac
 set +e
-container run --rm --platform linux/amd64 --memory 8g --cpus 4 \
+container run --rm --platform linux/amd64 --memory 8g --cpus 4 --network cp-roles \
   "${mounts[@]}" "${envs[@]}" --workdir /work "$IMAGE" "${cmd[@]}" \
   > "$OUT/transcript.jsonl" 2> "$OUT/stderr.txt"
 status=$?

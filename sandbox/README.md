@@ -40,3 +40,49 @@ freeze.
 Each run's `provenance.txt` (image id, repository commit, agent and model,
 the brief's SHA-256, start and end) is kept with the role's output, and
 published with the result it produced.
+
+## Network and credentials
+
+Role containers sit on `cp-roles`, a host-only network with no route out.
+The one way out is `egress-proxy.py` on the host, which accepts only HTTPS
+CONNECT, to `api.anthropic.com` (Claude roles) or OpenAI's API (Codex
+roles), and logs every request. GitHub is refused, so a role can neither
+push nor publish. A Claude role receives only its token, as an
+environment variable; Codex's credentials are mounted only into Codex
+roles. A credential the agent needs is necessarily readable by it; the
+proxy limits where it can be sent.
+
+## Isolation tests
+
+`isolation-test.sh IMAGE DIR` sets a role up as `run-role.sh` does, plants
+canaries on the host (another role's working copy, the role's own
+transcript file, stand-ins for the key and the custodian's transcript),
+and checks from inside: unprivileged, no root; exactly one host directory
+mounted; no host home; no canary; no age secret key anywhere in the
+image; no Claude session store; no Codex credentials in a Claude role; no
+git or GitHub credentials; no direct route to the internet or the host;
+the proxy refuses GitHub, a `git push` and plain HTTP, and allows the
+Anthropic API; the hidden variants are present only as ciphertext. On 27
+November 2026 all 16 checks passed in all three images. (The first run
+failed "no age secret key": the Claude Code binary contains the bare
+prefix `AGE-SECRET-KEY-1`. The check now matches a whole key.)
+
+## Syntax checking before a program is fixed
+
+`PROTOCOL.md`, phase 5: programs are "fixed before any of them is run".
+Checking a program's syntax, without executing any of it, is not running
+it. So:
+
+| | |
+|---|---|
+| **syntax check** | permitted before a program is fixed, with the harness's `check`, which parses or compiles and executes nothing |
+| **execution** | none, of any kind, before the primary program is committed |
+| **tuning on results** | never (`PROTOCOL.md`, "Writing a program", rule 7) |
+| **transcription fixes** | after results, as rule 7 says, each recorded as a diff with its reason |
+
+An implementation author's container has the system and its `check`, so
+the restriction on executing is enforced by audit: every command the
+author ran is in its transcript, and any execution other than `check` is
+reported as a breach of protocol with the program it touched. A program
+that fails to run in its primary run keeps that result; a corrected
+transcription is reported beside it, never in its place.
