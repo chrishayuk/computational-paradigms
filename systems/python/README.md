@@ -47,8 +47,9 @@ Not yet run in the `python:3.13` image or on Linux.
   definitions. No change is made to the program, and the count matched the
   closed forms exactly (conc: 500,500 at n = 1,000). Each defined relation
   is therefore written as a function of its own.
-- **Store:** `tracemalloc`'s current and peak traced memory, which is a true
-  peak of Python's own allocations, and `sys.getallocatedblocks()`.
+- **Store:** `tracemalloc`'s current and peak **traced Python
+  allocations**, a true peak of what Python's own allocators hand out, not
+  the memory the process uses; and `sys.getallocatedblocks()`.
   Memory outside Python's allocators is not seen. The process's
   `ru_maxrss` is taken only from a separate run with `tracemalloc` off, one
   process per stage, since it never falls.

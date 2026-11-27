@@ -3,3 +3,6 @@ sources/downloads/
 .DS_Store
 __pycache__/
 *.pyc
+*.pyo
+*.so
+*.o

@@ -1,0 +1,9 @@
+# Fails if a tracked file holds a local path or is a generated binary.
+name: hygiene
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash tools/check-hygiene.sh

@@ -1,0 +1,36 @@
+# Runs the CPython measurement-qualification probes on Linux, in the image
+# of the pinned release, and shows the difference from the macOS run of the
+# same release. Informational: it fails only if a probe cannot run.
+name: python-measurement
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'systems/python/probes/**'
+      - '.github/workflows/python-measurement.yml'
+
+jobs:
+  probes:
+    runs-on: ubuntu-latest
+    container: python:3.13.7
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Platform
+        run: uname -a && python3 --version
+      - name: Run probes
+        run: |
+          cp systems/python/probes/out/3.13.7.txt macos-3.13.7.txt
+          sh systems/python/probes/run.sh python3 > /dev/null
+          cp systems/python/probes/out/3.13.7.txt linux-3.13.7.txt
+      - name: Difference from macOS arm64
+        run: diff macos-3.13.7.txt linux-3.13.7.txt || true
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-measurement-linux
+          path: |
+            linux-3.13.7.txt
+            macos-3.13.7.txt
