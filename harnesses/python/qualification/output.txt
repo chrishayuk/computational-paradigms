@@ -1,6 +1,6 @@
-Qualification of harnesses/python, 20261127T190245Z
+Qualification of harnesses/python, 20261127T191224Z
 Python 3.13.7 (main, Sep 30 2025, 10:24:57) [GCC 14.2.0]
-records: harnesses/python/qualification/records/20261127T190245Z
+records: harnesses/python/qualification/records/20261127T191224Z
 
 == (a) the system run directly, and through the harness
 PASS  X01 example, behaviour: answers per stage equal the direct run's printed lines  [harness [[], [], ['s = 7']], direct [[], [], ['s = 7']]]
@@ -33,7 +33,7 @@ PASS  X01: the same answers at every stage, incremental and reposed
 PASS  X01: the same observe() at every stage, incremental and reposed
 PASS  X01 reposed: every later stage has a measured in-run restart cost, and budget = restart cost + 10^6  [[72, 126]]
 PASS  X02 (effects, commit): the same answers at every stage, incremental and reposed  [[['p = 5'], ['p = 5'], []]]
-PASS  X02 reposed: stage 3 replays commit stage 2 as the verbatim answer it gave  [[{'stage': 2, 'value_verbatim': 'p = 5', 'selected_in_run': 'X02a.behaviour.20261127T190302Z'}]]
+PASS  X02 reposed: stage 3 replays commit stage 2 as the verbatim answer it gave  [[{'stage': 2, 'value_verbatim': 'p = 5', 'selected_in_run': 'X02a.behaviour.20261127T191239Z'}]]
 PASS  X02 reposed: the effect is logged once per run of stage 1, marked during_replay_of 1 when replayed  [[(1, None), (2, 1), (3, 1)]]
 PASS  X02: the classification log is never reset (the second run starts after the first run's entries)  [entries_before_run 1]
 PASS  X02 cost: entries go only to the observation log
@@ -55,7 +55,7 @@ PASS  X04d: 25 answers printed, the first 20 collected, ended_by cap; the rest s
 PASS  X04d: a registered stack with entries left is 'alternatives pending'
 PASS  X07 stdlib-concurrency: a computation blocked in a wait is reported suspended (undetermined, by quiescence); the other finishes
 PASS  X03 with V not registered: V is recorded spawned, state undetermined, and the record is valid
-PASS  X08: CPU time and maximum resident set size are recorded where the problem asks (P13; X08 by its made-up flag)  [cpu 0.12180099999999999 s, rss 25088 KiB]
+PASS  X08: CPU time and maximum resident set size are recorded where the problem asks (P13; X08 by its made-up flag)  [cpu 0.112352 s, rss 25080 KiB]
 PASS  usage error (unknown configuration): exit status 2 and no record  [run: unknown configuration 'nonsense' (systems/python/README.md: core, stdlib-concurrency, extended)]
 PASS  usage error (unknown instance): exit status 2 and no record  [run: unknown instance 'X01z' in harnesses/python/qualification/stages-qual.json]
 PASS  usage error (unknown mode): exit status 2 and no record  [run: unknown mode 'fast']
@@ -70,8 +70,21 @@ PASS  X10 stage 1: the whole memory of the program's process holds stage 1's con
 PASS  X10 stage 2: once stage 2 is posed, its constant is there  [{'QZ-EARLY-STAGE-CONSTANT-1180': 6, 'QZ-LATER-STAGE-CONSTANT-5521': 4}]
 PASS  X10: the program received each stage's constants as s.constants (answers list what it held)
 
+== (c2) extended admits the S mechanisms (S-mechanisms.md), and only extended
+PASS  S import: check passes it in extended and refuses it in core; run in extended gives the answers of the direct run of x01_total.py  [extended answers [[], [], ['s = 7']], direct [[], [], ['s = 7']]]
+   check extended harnesses/python/qualification/programs/x01_extended.py: no errors found
+   note: posing: incremental
+   note: constants block: lines 11-16; delivered with their stages: stage 2: A_VALUE; stage 3: B_VALUE
+   note: line 18: imports S.suspend: an S mechanism of extended (S-mechanisms.md), counted once per mechanism
+   (nothing was executed: the program was compiled and its syntax tree read)
+   check core harnesses/python/qualification/programs/x01_extended.py: 1 error(s)
+   error: line 18: imports S.suspend, an S mechanism, which only the extended configuration adds
+   note: posing: incremental
+   note: constants block: lines 11-16; delivered with their stages: stage 2: A_VALUE; stage 3: B_VALUE
+   (nothing was executed: the program was compiled and its syntax tree read)
+
 == (d) every record validates
-PASS  validate.py on all 31 records: all valid, none kept as INVALID
+PASS  validate.py on all 32 records: all valid, none kept as INVALID
 
 == (e) check executes nothing
 PASS  check on a program whose only effects are writing a file and printing a marker: no file, no marker, exit 0
@@ -107,4 +120,4 @@ PASS  check stdlib-concurrency x07_wait.py: no errors  [check stdlib-concurrency
 PASS  check core x09_probes.py: no errors  [check core harnesses/python/qualification/programs/x09_probes.py: no errors found]
 PASS  check core x10_nolookahead.py: no errors  [check core harnesses/python/qualification/programs/x10_nolookahead.py: no errors found]
 
-67 of 67 checks passed
+68 of 68 checks passed
