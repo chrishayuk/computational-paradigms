@@ -1,0 +1,48 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for recursive procedures with parameters called by name (4.7.3.2, 5.4) and procedures as actual parameters (4.7.5, 5.4.4), each solution being passed to a parameterless procedure in the way of the procedures passed as parameters in Knuth's man or boy test (1964, examples/man-or-boy-1964.alg in the image), conditional statements (4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: k, the integer of the alternative x = k;
+  c̲o̲m̲m̲e̲n̲t̲ P04a. The query loop(x) or x = k, its alternatives in that order. loop is transcribed by its one case, loop(x) if loop(x): a procedure that calls itself. Each relation is a procedure that passes each of its solutions to the procedure found, and returns when it has no more. x is a Boolean that says whether it has a value, and an integer that holds it. The alternatives are tried in the order written, the second when the first has returned;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, c1, xv, loop1;
+  b̲o̲o̲l̲e̲a̲n̲ xk;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ loop(xk, x, found);
+    b̲o̲o̲l̲e̲a̲n̲ xk; i̲n̲t̲e̲g̲e̲r̲ x; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ loop(x), by its one case: loop(x) if loop(x);
+  b̲e̲g̲i̲n̲ loop1 := loop1 + 1; loop(xk, x, found) e̲n̲d̲ loop;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ equals(xk, x, c, found);
+    v̲a̲l̲u̲e̲ c; b̲o̲o̲l̲e̲a̲n̲ xk; i̲n̲t̲e̲g̲e̲r̲ x, c; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ x = c: tested if x is known, else x is given the value c for as long as found runs;
+  i̲f̲ xk t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ i̲f̲ x = c t̲h̲e̲n̲ found e̲n̲d̲
+  e̲l̲s̲e̲
+  b̲e̲g̲i̲n̲ x := c; xk := t̲r̲u̲e̲; found; xk := f̲a̲l̲s̲e̲ e̲n̲d̲ equals;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ answer;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: one solution, the value of x;
+  b̲e̲g̲i̲n̲
+    PRINTTEXT(`[answer]x');
+    i̲f̲ xk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` = '); print(xv) e̲n̲d̲ e̲l̲s̲e̲ PRINTTEXT(` free');
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+  e̲n̲d̲ answer;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constant;
+  c1 := read;
+  xk := f̲a̲l̲s̲e̲; loop1 := 0;
+
+  c̲o̲m̲m̲e̲n̲t̲ the query: loop(x) or x = c1, in that order;
+  loop(xk, xv, answer);
+  equals(xk, xv, c1, answer);
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the applications of the case of loop;
+  PRINTTEXT(`[observe]');
+  PRINTTEXT(`[operations loop/1 '); print(loop1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+e̲n̲d̲

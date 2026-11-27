@@ -1,0 +1,84 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), procedures and Boolean function designators (5.4), the Boolean operator of negation (3.4), the for statement (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), facts as arrays of integer codes (systems file, Values), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: q S s1 ... sS M m1 ... mM T p1 k1 ... pT kT. q is the atom of the query nonmajor(q). Then the facts of the closed world: S and the atom of each fact student(s), M and the atom of each fact maths(m), T and the two atoms of each fact takes(p, k), each in order. Atoms are integer codes: brown 1, smith 2, c101 101, c301 301, any other atom another positive integer;
+  c̲o̲m̲m̲e̲n̲t̲ P06e1, and P06e2, which has the same stage with other constants. The query nonmajor(q) with q known, by the one case of nonmajor: nonmajor(p) if student(p) and maths(k) and not takes(p, k), the conjuncts in that order. student, maths and takes are given by their facts. student(q) is tested on each fact in order, maths(k) gives k the value of each fact in order, and takes(q, k), with both known, is tested on its facts. Each derivation is reported as one answer, true;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, q, ns, nm, nt;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants: the atom of the query, and then each relation's facts, their number first, which sizes its array;
+  q := read;
+  ns := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ st[1:ns];
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ ns d̲o̲ st[i] := read;
+  nm := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ mt[1:nm];
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nm d̲o̲ mt[i] := read;
+  nt := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ nm1, stud, math, tak, negs, found;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ tp, tk[1:nt];
+
+  b̲o̲o̲l̲e̲a̲n̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ takes(p, c);
+    v̲a̲l̲u̲e̲ p, c; i̲n̲t̲e̲g̲e̲r̲ p, c;
+  c̲o̲m̲m̲e̲n̲t̲ takes(p, c) with both known: true when one of its facts is takes(p, c), in a closed world;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j;
+    b̲o̲o̲l̲e̲a̲n̲ t;
+    t := f̲a̲l̲s̲e̲;
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nt d̲o̲
+    b̲e̲g̲i̲n̲ i̲f̲ tp[j] = p ∧ tk[j] = c t̲h̲e̲n̲ b̲e̲g̲i̲n̲ tak := tak + 1; t := t̲r̲u̲e̲ e̲n̲d̲ e̲n̲d̲;
+    takes := t
+  e̲n̲d̲ takes;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ nonmajor(p);
+    v̲a̲l̲u̲e̲ p; i̲n̲t̲e̲g̲e̲r̲ p;
+  c̲o̲m̲m̲e̲n̲t̲ nonmajor(p) with p known, by its one case, the conjuncts in order. Each derivation is one answer;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ a, b, kv;
+    nm1 := nm1 + 1;
+    f̲o̲r̲ a := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ ns d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ st[a] = p t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        stud := stud + 1;
+        f̲o̲r̲ b := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nm d̲o̲
+        b̲e̲g̲i̲n̲
+          kv := mt[b]; math := math + 1;
+          negs := negs + 1;
+          i̲f̲ ¬takes(p, kv) t̲h̲e̲n̲
+          b̲e̲g̲i̲n̲
+            found := found + 1;
+            b̲e̲g̲i̲n̲ PRINTTEXT(`[answer]true[/answer]'); NLCR e̲n̲d̲
+          e̲n̲d̲
+        e̲n̲d̲
+      e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ nonmajor;
+
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nt d̲o̲ b̲e̲g̲i̲n̲ tp[i] := read; tk[i] := read e̲n̲d̲;
+  nm1 := stud := math := tak := negs := found := 0;
+
+  c̲o̲m̲m̲e̲n̲t̲ the query: nonmajor(q);
+  nonmajor(q);
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: whether there is a solution, and the applications of each relation;
+  PRINTTEXT(`[observe]');
+  i̲f̲ found = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`each negation decided with p and k known'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations nonmajor/1 '); print(nm1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations student-facts-matched '); print(stud); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations maths-facts-matched '); print(math); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations takes-facts-matched '); print(tak); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations negations-decided '); print(negs); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+  e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲

@@ -1,0 +1,100 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays (5.2), recursive procedures with parameters called by name (4.7.3.2, 5.4) and procedures as actual parameters (4.7.5, 5.4.4), each solution being passed to a parameterless procedure declared in an inner block, in the way of the procedure B passed as a parameter in Knuth's man or boy test (1964, examples/man-or-boy-1964.alg in the image), the for statement (4.6) and conditional statements and expressions (3.3, 4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), sequences as parallel arrays of heads and tail indices (systems file, Values), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS none. The query alist(s) has no constants. The atom a of the definition is the integer code 1;
+  c̲o̲m̲m̲e̲n̲t̲ P04f. The query alist(s) with s unknown, and the definition alist-right. Each relation is a procedure that passes each of its solutions to the procedure found, and returns when it has no more. A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence hd[c] followed by the sequence tl[c]. An unknown sequence is a Boolean that says whether it has a value and an integer that holds it. The cases are tried in the order written. A value given to an unknown is taken back when found returns, and a cell made for it is given back;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1. The stage has no constants;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ top, acode, sv, al1, al2;
+  b̲o̲o̲l̲e̲a̲n̲ sk;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ hd, tl[0:20000];
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ cons(h, t);
+    v̲a̲l̲u̲e̲ h, t; i̲n̲t̲e̲g̲e̲r̲ h, t;
+  c̲o̲m̲m̲e̲n̲t̲ a new cell, the sequence h followed by the sequence t;
+  b̲e̲g̲i̲n̲ top := top + 1; hd[top] := h; tl[top] := t; cons := top e̲n̲d̲ cons;
+
+  b̲o̲o̲l̲e̲a̲n̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ same(p, q);
+    v̲a̲l̲u̲e̲ p, q; i̲n̲t̲e̲g̲e̲r̲ p, q;
+  c̲o̲m̲m̲e̲n̲t̲ the equality of two sequences;
+  same := i̲f̲ p = 0 t̲h̲e̲n̲ q = 0 e̲l̲s̲e̲ i̲f̲ q = 0 t̲h̲e̲n̲ f̲a̲l̲s̲e̲ e̲l̲s̲e̲ i̲f̲ hd[p] = hd[q] t̲h̲e̲n̲ same(tl[p], tl[q]) e̲l̲s̲e̲ f̲a̲l̲s̲e̲;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ conseq(sk, s, mk, m, found);
+    b̲o̲o̲l̲e̲a̲n̲ sk, mk; i̲n̲t̲e̲g̲e̲r̲ s, m; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ the equation s = the sequence of a alone ++ m, by the places known. With s known, it gives m its value, or tests it. With s unknown and m known, it gives s its value. Each solution is passed to found. With both unknown it does nothing: that is not reached here, since case 2 decides its head first only when s is known;
+  i̲f̲ sk t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    i̲f̲ s ≠ 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ hd[s] = acode t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ mk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ i̲f̲ same(tl[s], m) t̲h̲e̲n̲ found e̲n̲d̲
+        e̲l̲s̲e̲ b̲e̲g̲i̲n̲ m := tl[s]; mk := t̲r̲u̲e̲; found; mk := f̲a̲l̲s̲e̲ e̲n̲d̲
+      e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲
+  e̲l̲s̲e̲ i̲f̲ mk t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ s := cons(acode, m); sk := t̲r̲u̲e̲; found; sk := f̲a̲l̲s̲e̲; top := top - 1 e̲n̲d̲ conseq;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ alist(sk, s, found);
+    b̲o̲o̲l̲e̲a̲n̲ sk; i̲n̲t̲e̲g̲e̲r̲ s; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ alist-right, its cases in order. Case 1: alist(the empty sequence). Case 2: alist(the sequence of a alone ++ m) if alist(m). With s known, the head of case 2 gives m, and then alist(m) is called. With s unknown, alist(m) is called first, and the head then gives s from m: a sequence cannot be given a value before its tail has one;
+  b̲e̲g̲i̲n̲
+    i̲f̲ sk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ i̲f̲ s = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ al1 := al1 + 1; found e̲n̲d̲ e̲n̲d̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲ al1 := al1 + 1; s := 0; sk := t̲r̲u̲e̲; found; sk := f̲a̲l̲s̲e̲ e̲n̲d̲;
+    b̲e̲g̲i̲n̲
+      i̲n̲t̲e̲g̲e̲r̲ m;
+      b̲o̲o̲l̲e̲a̲n̲ mk;
+      p̲r̲o̲c̲e̲d̲u̲r̲e̲ body;
+      c̲o̲m̲m̲e̲n̲t̲ the body of case 2, once its head has given m;
+      b̲e̲g̲i̲n̲ al2 := al2 + 1; alist(mk, m, found) e̲n̲d̲ body;
+      p̲r̲o̲c̲e̲d̲u̲r̲e̲ head;
+      c̲o̲m̲m̲e̲n̲t̲ the head of case 2, once alist(m) has given m;
+      conseq(sk, s, mk, m, found);
+      mk := f̲a̲l̲s̲e̲;
+      i̲f̲ sk t̲h̲e̲n̲ conseq(sk, s, mk, m, body)
+      e̲l̲s̲e̲ b̲e̲g̲i̲n̲ al2 := al2 + 1; alist(mk, m, head) e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ alist;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printseq(p);
+    v̲a̲l̲u̲e̲ p; i̲n̲t̲e̲g̲e̲r̲ p;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a sequence, its elements in parentheses, separated by commas, the atom a as a;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j;
+    PRINTTEXT(`(');
+    f̲o̲r̲ j := 0 w̲h̲i̲l̲e̲ p ≠ 0 d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ hd[p] = acode t̲h̲e̲n̲ PRINTTEXT(`a') e̲l̲s̲e̲ print(hd[p]);
+      p := tl[p];
+      i̲f̲ p ≠ 0 t̲h̲e̲n̲ PRINTTEXT(`, ')
+    e̲n̲d̲;
+    PRINTTEXT(`)')
+  e̲n̲d̲ printseq;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ answer;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: one solution, the value of s;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[answer]s = '); printseq(sv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲ e̲n̲d̲ answer;
+
+  top := al1 := al2 := 0;
+  acode := 1;
+  sk := f̲a̲l̲s̲e̲;
+
+  c̲o̲m̲m̲e̲n̲t̲ the query: alist(s), with s unknown;
+  alist(sk, sv, answer);
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the applications of each case of alist;
+  PRINTTEXT(`[observe]');
+  PRINTTEXT(`[operations alist/1 '); print(al1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations alist/2 '); print(al2); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲

@@ -1,0 +1,67 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays (5.2), procedures (5.4), the for statement (4.6), conditional statements and expressions (3.3, 4.5), and the standard functions sqrt and entier (3.2.4, 3.2.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of a relation until enough of its places are known, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: c, the integer of R1, x times x = c;
+  c̲o̲m̲m̲e̲n̲t̲ P07g. One integer unknown x. One stage: R1, x times x = c. x has no value, or the values held in the array xs, all at once. R1 is held as posed until a place is known. Its one unknown is x, in both its places, and c is known, so it gives x its values: the integers whose square is c, the root r of c by sqrt, rounded, if r times r = c, and its negation, or none if no integer square is c;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, c1, r, nx, held, x1;
+  b̲o̲o̲l̲e̲a̲n̲ r1, inconsistent;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ xs[1:2];
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine1;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of R1, x times x = c1. With x known, each of its values is tested. With x unknown, x is given every integer whose square is c1;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j, kept;
+    x1 := x1 + 1;
+    i̲f̲ nx > 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      kept := 0;
+      f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nx d̲o̲
+      b̲e̲g̲i̲n̲ i̲f̲ xs[j] × xs[j] = c1 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ kept := kept + 1; xs[kept] := xs[j] e̲n̲d̲ e̲n̲d̲;
+      nx := kept;
+      i̲f̲ nx = 0 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ c1 < 0 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲
+      r := entier(sqrt(c1) + 0.5);
+      i̲f̲ r × r ≠ c1 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲
+      e̲l̲s̲e̲ i̲f̲ r = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ nx := 1; xs[1] := 0 e̲n̲d̲
+      e̲l̲s̲e̲ b̲e̲g̲i̲n̲ nx := 2; xs[1] := r; xs[2] := -r e̲n̲d̲
+    e̲n̲d̲;
+    r1 := f̲a̲l̲s̲e̲
+  e̲n̲d̲ examine1;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constant;
+  c1 := read;
+  inconsistent := f̲a̲l̲s̲e̲; nx := 0; x1 := 0;
+  r1 := t̲r̲u̲e̲;
+
+  i̲f̲ r1 t̲h̲e̲n̲ examine1;
+
+  c̲o̲m̲m̲e̲n̲t̲ the answers: each value of x;
+  i̲f̲ ¬inconsistent t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nx d̲o̲
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[answer]x = '); print(xs[i]); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲ e̲n̲d̲
+  e̲n̲d̲;
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the relation held, the values of x held, and how often the relation was examined;
+  held := i̲f̲ r1 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0;
+  PRINTTEXT(`[observe]');
+  i̲f̲ inconsistent t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`held relations: none'); NLCR e̲n̲d̲;
+  i̲f̲ ¬inconsistent t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    PRINTTEXT(`values of x held, all at once:');
+    f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nx d̲o̲ b̲e̲g̲i̲n̲ PRINTTEXT(` '); print(xs[i]) e̲n̲d̲;
+    NLCR
+  e̲n̲d̲;
+  PRINTTEXT(`[operations R1-examined '); print(x1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+e̲n̲d̲

@@ -1,0 +1,116 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING incremental;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays (5.2), procedures (5.4), the for statement with step-until and while elements (4.6) and conditional statements and expressions (3.3, 4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), the message loop and observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of each equation until x has values to test, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: F f1 ... fF, the number of facts of pick and then the value of each fact, in order. A line 2: c, the integer of x = c. A line 3: c, the integer of x = c;
+  c̲o̲m̲m̲e̲n̲t̲ P05c. One unknown x. Stage 1: pick(x), a closed world of facts. Stage 2: x = c2. Stage 3: x = c3. pick is given by its facts: when it is posed, each fact, in order, gives x a value, and the values are held all at once, each with a Boolean that says whether it is still a solution. Each equation is held as posed until x has values, and then tested on each of them. A value that fails a test is dropped, and is not kept;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, j, nf, c2, c3, held, alive;
+  b̲o̲o̲l̲e̲a̲n̲ picked, r2, r3;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ xv[1:1000], pk[1:1000];
+  b̲o̲o̲l̲e̲a̲n̲ a̲r̲r̲a̲y̲ xa[1:1000];
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ test;
+  c̲o̲m̲m̲e̲n̲t̲ every equation posed so far is tested on every value of x still held, in the order the equations were posed. An equation is held until pick has given x its values;
+  i̲f̲ picked t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nf d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ xa[j] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ r2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ i̲f̲ ¬(xv[j] = c2) t̲h̲e̲n̲ xa[j] := f̲a̲l̲s̲e̲ e̲n̲d̲;
+        i̲f̲ r3 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ i̲f̲ ¬(xv[j] = c3) t̲h̲e̲n̲ xa[j] := f̲a̲l̲s̲e̲ e̲n̲d̲
+      e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ test;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ digits(v);
+    v̲a̲l̲u̲e̲ v; i̲n̲t̲e̲g̲e̲r̲ v;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a natural number, its decimal digits with no sign and no spaces, for the name of a case;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ d;
+    i̲f̲ v ≥ 10 t̲h̲e̲n̲ digits(v ÷ 10);
+    d := v - v ÷ 10 × 10;
+    i̲f̲ d = 0 t̲h̲e̲n̲ PRINTTEXT(`0') e̲l̲s̲e̲ i̲f̲ d = 1 t̲h̲e̲n̲ PRINTTEXT(`1') e̲l̲s̲e̲ i̲f̲ d = 2 t̲h̲e̲n̲ PRINTTEXT(`2')
+    e̲l̲s̲e̲ i̲f̲ d = 3 t̲h̲e̲n̲ PRINTTEXT(`3') e̲l̲s̲e̲ i̲f̲ d = 4 t̲h̲e̲n̲ PRINTTEXT(`4') e̲l̲s̲e̲ i̲f̲ d = 5 t̲h̲e̲n̲ PRINTTEXT(`5')
+    e̲l̲s̲e̲ i̲f̲ d = 6 t̲h̲e̲n̲ PRINTTEXT(`6') e̲l̲s̲e̲ i̲f̲ d = 7 t̲h̲e̲n̲ PRINTTEXT(`7') e̲l̲s̲e̲ i̲f̲ d = 8 t̲h̲e̲n̲ PRINTTEXT(`8')
+    e̲l̲s̲e̲ PRINTTEXT(`9')
+  e̲n̲d̲ digits;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ relations;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the equations held, which wait for x to have values;
+  b̲e̲g̲i̲n̲
+    b̲o̲o̲l̲e̲a̲n̲ first;
+    first := t̲r̲u̲e̲;
+    i̲f̲ r2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`x = '); print(c2); first := f̲a̲l̲s̲e̲ e̲n̲d̲;
+    i̲f̲ r3 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ ¬first t̲h̲e̲n̲ PRINTTEXT(`, ');
+      PRINTTEXT(`x = '); print(c3)
+    e̲n̲d̲
+  e̲n̲d̲ relations;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  picked := r2 := r3 := f̲a̲l̲s̲e̲; nf := 0;
+
+  f̲o̲r̲ i := 1 w̲h̲i̲l̲e̲ t̲r̲u̲e̲ d̲o̲
+  b̲e̲g̲i̲n̲
+    c̲o̲m̲m̲e̲n̲t̲ harness words: one message, the stage it poses, and then that stage's constants;
+    code := read; k := read;
+    i̲f̲ k = 1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      c̲o̲m̲m̲e̲n̲t̲ pick(x): each fact, in order, gives x one value;
+      nf := read;
+      f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nf d̲o̲
+      b̲e̲g̲i̲n̲ xv[j] := read; xa[j] := t̲r̲u̲e̲; pk[j] := 1 e̲n̲d̲;
+      picked := t̲r̲u̲e̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ c2 := read; r2 := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 3 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ c3 := read; r3 := t̲r̲u̲e̲ e̲n̲d̲;
+
+    test;
+
+    c̲o̲m̲m̲e̲n̲t̲ the answers: every value of x still held, or, before pick, x and the equations held;
+    alive := 0;
+    i̲f̲ picked t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nf d̲o̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ xa[j] t̲h̲e̲n̲
+        b̲e̲g̲i̲n̲
+          alive := alive + 1;
+          PRINTTEXT(`[answer]x = '); print(xv[j]); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+        e̲n̲d̲
+      e̲n̲d̲
+    e̲n̲d̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲
+      PRINTTEXT(`[answer]x');
+      i̲f̲ r2 ∨ r3 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` held, where '); relations e̲n̲d̲ e̲l̲s̲e̲ PRINTTEXT(` free');
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+    e̲n̲d̲;
+
+    c̲o̲m̲m̲e̲n̲t̲ observe: the values of x held, all at once, the equations held, and the facts of pick applied;
+    held := i̲f̲ picked t̲h̲e̲n̲ 0 e̲l̲s̲e̲ (i̲f̲ r2 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0) + (i̲f̲ r3 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0);
+    PRINTTEXT(`[observe]');
+    i̲f̲ picked ∧ alive = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+    i̲f̲ picked t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      PRINTTEXT(`values of x held, all at once:');
+      f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nf d̲o̲
+      b̲e̲g̲i̲n̲ i̲f̲ xa[j] t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` '); print(xv[j]) e̲n̲d̲ e̲n̲d̲;
+      NLCR;
+      PRINTTEXT(`[problem-alternatives x '); print(alive); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲
+    e̲n̲d̲;
+    PRINTTEXT(`held relations: ');
+    i̲f̲ held = 0 t̲h̲e̲n̲ PRINTTEXT(`none') e̲l̲s̲e̲ relations;
+    NLCR;
+    i̲f̲ held > 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended held-relations '); print(held); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲ e̲n̲d̲;
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nf d̲o̲
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[operations pick/'); digits(j); PRINTTEXT(` '); print(pk[j]); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲ e̲n̲d̲;
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲

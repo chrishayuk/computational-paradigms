@@ -1,0 +1,195 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING incremental;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays (5.2), recursive procedures and function designators with parameters called by value and by name (4.7, 5.4), the for statement with step-until and while elements (4.6), conditional statements and expressions (3.3, 4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), sequences as parallel arrays of heads and tail indices (systems file, Values), the message loop and observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of the application of a relation not yet wholly defined until it can be decided, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 2: L e1 ... eL, the length and then the elements of the known sequence s of rev(s, b). A line 3: L1 L2 p1 ... pL1 r1 ... rL2, the two lengths, and then the elements of the two sequences p and r of case 1 of rev, rev(p, r). Elements are integers. Stages 1 and 4 have none;
+  c̲o̲m̲m̲e̲n̲t̲ P08c. One unknown sequence b. Stage 1: the definition of conc, as in P03. Stage 2: rev(s, b), with rev not yet defined. Stage 3: case 1 of rev, rev(p, r). Stage 4: case 2 of rev, rev(h followed by l, r) if rev(l, q) and conc(q, the sequence of h alone, r). ALGOL 60 has no definitions that arrive while a program runs: the procedures are in the text, and a Boolean for conc and for each case of rev says whether it has arrived. rev and conc compute their last place from the others, their cases in order, and say whether they found it (1), found that there is none (0), or could not tell, because a case they would need has not arrived (2). An application of rev that cannot be told is held as posed, and is neither true nor false: the fourth of the problem's four states, the open reading. It is examined again at every stage, with the cases that have arrived, and is decided when the whole of rev and conc has arrived. A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence hd[c] followed by the sequence tl[c]. b is a Boolean that says whether it has a value and an integer that holds it;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, j, top, sv, pv, rv, bv, held, pass, rev1, rev2, conc1, conc2;
+  b̲o̲o̲l̲e̲a̲n̲ bk, q2, concdef, rev1def, rev2def, changed, inconsistent;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ hd, tl[1:10000];
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ cons(h, t);
+    v̲a̲l̲u̲e̲ h, t; i̲n̲t̲e̲g̲e̲r̲ h, t;
+  c̲o̲m̲m̲e̲n̲t̲ a new cell, the sequence h followed by the sequence t;
+  b̲e̲g̲i̲n̲ top := top + 1; hd[top] := h; tl[top] := t; cons := top e̲n̲d̲ cons;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ readseq(len);
+    v̲a̲l̲u̲e̲ len; i̲n̲t̲e̲g̲e̲r̲ len;
+  c̲o̲m̲m̲e̲n̲t̲ a sequence of len elements, read from the input in order;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ w, e, first, last, c;
+    first := last := 0;
+    f̲o̲r̲ w := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ len d̲o̲
+    b̲e̲g̲i̲n̲
+      e := read; c := cons(e, 0);
+      i̲f̲ last = 0 t̲h̲e̲n̲ first := c e̲l̲s̲e̲ tl[last] := c;
+      last := c
+    e̲n̲d̲;
+    readseq := first
+  e̲n̲d̲ readseq;
+
+  b̲o̲o̲l̲e̲a̲n̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ same(p, q);
+    v̲a̲l̲u̲e̲ p, q; i̲n̲t̲e̲g̲e̲r̲ p, q;
+  c̲o̲m̲m̲e̲n̲t̲ the equality of two sequences;
+  same := i̲f̲ p = 0 t̲h̲e̲n̲ q = 0 e̲l̲s̲e̲ i̲f̲ q = 0 t̲h̲e̲n̲ f̲a̲l̲s̲e̲ e̲l̲s̲e̲ i̲f̲ hd[p] = hd[q] t̲h̲e̲n̲ same(tl[p], tl[q]) e̲l̲s̲e̲ f̲a̲l̲s̲e̲;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ conc(a, b, c);
+    v̲a̲l̲u̲e̲ a, b; i̲n̲t̲e̲g̲e̲r̲ a, b, c;
+  c̲o̲m̲m̲e̲n̲t̲ conc(a, b, c), computing c from a and b by its cases, in order, once its definition has arrived. Case 1: conc(the empty sequence, b, b). Case 2: conc(h followed by a, b, h followed by c) if conc(a, b, c);
+  i̲f̲ ¬concdef t̲h̲e̲n̲ conc := 2
+  e̲l̲s̲e̲ i̲f̲ a = 0 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ conc1 := conc1 + 1; c := b; conc := 1 e̲n̲d̲
+  e̲l̲s̲e̲
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ t, d;
+    conc2 := conc2 + 1;
+    t := conc(tl[a], b, d);
+    i̲f̲ t = 1 t̲h̲e̲n̲ c := cons(hd[a], d);
+    conc := t
+  e̲n̲d̲ conc;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ rev(a, r);
+    v̲a̲l̲u̲e̲ a; i̲n̲t̲e̲g̲e̲r̲ a, r;
+  c̲o̲m̲m̲e̲n̲t̲ rev(a, r), computing r from a by the cases that have arrived, in order. Case 1: rev(p, r0), p and r0 being the two sequences of stage 3. Case 2: rev(h followed by l, r) if rev(l, q) and conc(q, the sequence of h alone, r), the conjuncts in that order. When no case that has arrived gives r, there is none if every case has arrived, and it cannot be told if one has not;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ st, t, q;
+    st := 3;
+    i̲f̲ rev1def t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ i̲f̲ same(a, pv) t̲h̲e̲n̲ b̲e̲g̲i̲n̲ rev1 := rev1 + 1; r := rv; st := 1 e̲n̲d̲ e̲n̲d̲;
+    i̲f̲ st ≠ 1 ∧ rev2def t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ a ≠ 0 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        rev2 := rev2 + 1;
+        t := rev(tl[a], q);
+        i̲f̲ t = 1 t̲h̲e̲n̲ t := conc(q, cons(hd[a], 0), r);
+        i̲f̲ t ≠ 0 t̲h̲e̲n̲ st := t
+      e̲n̲d̲
+    e̲n̲d̲;
+    i̲f̲ st = 3 t̲h̲e̲n̲ st := i̲f̲ rev1def ∧ rev2def t̲h̲e̲n̲ 0 e̲l̲s̲e̲ 2;
+    rev := st
+  e̲n̲d̲ rev;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine2;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of the application rev(s, b): b is computed from s by the cases of rev that have arrived, or tested if known. The application is held until the whole of rev and conc has arrived;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ t, r;
+    t := rev(sv, r);
+    i̲f̲ t = 1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ bk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ i̲f̲ ¬same(bv, r) t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲ e̲n̲d̲
+      e̲l̲s̲e̲ b̲e̲g̲i̲n̲ bv := r; bk := t̲r̲u̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ t = 0 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲;
+    i̲f̲ concdef ∧ rev1def ∧ rev2def t̲h̲e̲n̲ q2 := f̲a̲l̲s̲e̲
+  e̲n̲d̲ examine2;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ propagate;
+  c̲o̲m̲m̲e̲n̲t̲ every held relation is examined, again and again until a whole pass gives no unknown a value;
+  b̲e̲g̲i̲n̲
+    changed := t̲r̲u̲e̲;
+    f̲o̲r̲ pass := 1 w̲h̲i̲l̲e̲ changed d̲o̲
+    b̲e̲g̲i̲n̲
+      changed := f̲a̲l̲s̲e̲;
+      i̲f̲ q2 t̲h̲e̲n̲ examine2
+    e̲n̲d̲
+  e̲n̲d̲ propagate;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ digits(v);
+    v̲a̲l̲u̲e̲ v; i̲n̲t̲e̲g̲e̲r̲ v;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a natural number, its decimal digits with no sign and no spaces;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ d;
+    i̲f̲ v ≥ 10 t̲h̲e̲n̲ digits(v ÷ 10);
+    d := v - v ÷ 10 × 10;
+    i̲f̲ d = 0 t̲h̲e̲n̲ PRINTTEXT(`0') e̲l̲s̲e̲ i̲f̲ d = 1 t̲h̲e̲n̲ PRINTTEXT(`1') e̲l̲s̲e̲ i̲f̲ d = 2 t̲h̲e̲n̲ PRINTTEXT(`2')
+    e̲l̲s̲e̲ i̲f̲ d = 3 t̲h̲e̲n̲ PRINTTEXT(`3') e̲l̲s̲e̲ i̲f̲ d = 4 t̲h̲e̲n̲ PRINTTEXT(`4') e̲l̲s̲e̲ i̲f̲ d = 5 t̲h̲e̲n̲ PRINTTEXT(`5')
+    e̲l̲s̲e̲ i̲f̲ d = 6 t̲h̲e̲n̲ PRINTTEXT(`6') e̲l̲s̲e̲ i̲f̲ d = 7 t̲h̲e̲n̲ PRINTTEXT(`7') e̲l̲s̲e̲ i̲f̲ d = 8 t̲h̲e̲n̲ PRINTTEXT(`8')
+    e̲l̲s̲e̲ PRINTTEXT(`9')
+  e̲n̲d̲ digits;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printint(v);
+    v̲a̲l̲u̲e̲ v; i̲n̲t̲e̲g̲e̲r̲ v;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: an integer, its sign if negative and its digits, with no padding, so that an answer with many values stays on one line;
+  i̲f̲ v < 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`-'); digits(-v) e̲n̲d̲ e̲l̲s̲e̲ digits(v);
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printseq(p);
+    v̲a̲l̲u̲e̲ p; i̲n̲t̲e̲g̲e̲r̲ p;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a sequence, its elements in parentheses, separated by commas;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ w;
+    PRINTTEXT(`(');
+    f̲o̲r̲ w := 0 w̲h̲i̲l̲e̲ p ≠ 0 d̲o̲
+    b̲e̲g̲i̲n̲ printint(hd[p]); p := tl[p]; i̲f̲ p ≠ 0 t̲h̲e̲n̲ PRINTTEXT(`, ') e̲n̲d̲;
+    PRINTTEXT(`)')
+  e̲n̲d̲ printseq;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ relations;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the application held, with b put in its place if known;
+  i̲f̲ q2 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    PRINTTEXT(`rev('); printseq(sv); PRINTTEXT(`, ');
+    i̲f̲ bk t̲h̲e̲n̲ printseq(bv) e̲l̲s̲e̲ PRINTTEXT(`b');
+    PRINTTEXT(`)');
+    i̲f̲ ¬(rev1def ∨ rev2def) t̲h̲e̲n̲ PRINTTEXT(` awaiting the definition of rev')
+    e̲l̲s̲e̲ PRINTTEXT(` awaiting the rest of the definition of rev');
+    i̲f̲ ¬concdef t̲h̲e̲n̲ PRINTTEXT(` and conc')
+  e̲n̲d̲ relations;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  bk := q2 := concdef := rev1def := rev2def := inconsistent := f̲a̲l̲s̲e̲;
+  top := rev1 := rev2 := conc1 := conc2 := 0;
+  sv := pv := rv := 0;
+
+  f̲o̲r̲ i := 1 w̲h̲i̲l̲e̲ t̲r̲u̲e̲ d̲o̲
+  b̲e̲g̲i̲n̲
+    c̲o̲m̲m̲e̲n̲t̲ harness words: one message, the stage it poses, and then that stage's constants;
+    code := read; k := read;
+    i̲f̲ k = 1 t̲h̲e̲n̲ concdef := t̲r̲u̲e̲
+    e̲l̲s̲e̲ i̲f̲ k = 2 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      j := read; sv := readseq(j); q2 := t̲r̲u̲e̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 3 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲n̲t̲e̲g̲e̲r̲ l1, l2;
+      l1 := read; l2 := read;
+      pv := readseq(l1); rv := readseq(l2); rev1def := t̲r̲u̲e̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 4 t̲h̲e̲n̲ rev2def := t̲r̲u̲e̲;
+
+    propagate;
+
+    c̲o̲m̲m̲e̲n̲t̲ the answer: b, and the application still held;
+    i̲f̲ ¬inconsistent t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      PRINTTEXT(`[answer]b');
+      i̲f̲ bk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` = '); printseq(bv) e̲n̲d̲
+      e̲l̲s̲e̲ i̲f̲ q2 t̲h̲e̲n̲ PRINTTEXT(` held') e̲l̲s̲e̲ PRINTTEXT(` free');
+      i̲f̲ q2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`, where '); relations e̲n̲d̲;
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+    e̲n̲d̲;
+
+    c̲o̲m̲m̲e̲n̲t̲ observe: the application held, which parts of the definitions have arrived, the value known, and the applications of each case of rev and conc;
+    held := i̲f̲ q2 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0;
+    PRINTTEXT(`[observe]');
+    i̲f̲ inconsistent t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+    PRINTTEXT(`held relations: ');
+    i̲f̲ held = 0 t̲h̲e̲n̲ PRINTTEXT(`none') e̲l̲s̲e̲ relations;
+    NLCR;
+    i̲f̲ concdef t̲h̲e̲n̲ PRINTTEXT(`conc: defined') e̲l̲s̲e̲ PRINTTEXT(`conc: not yet defined');
+    i̲f̲ rev1def t̲h̲e̲n̲ PRINTTEXT(`, rev case 1: defined') e̲l̲s̲e̲ PRINTTEXT(`, rev case 1: not yet defined');
+    i̲f̲ rev2def t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`, rev case 2: defined'); NLCR e̲n̲d̲ e̲l̲s̲e̲ b̲e̲g̲i̲n̲ PRINTTEXT(`, rev case 2: not yet defined'); NLCR e̲n̲d̲;
+    i̲f̲ q2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`rev(s, b): held as posed, neither true nor false, examined again at each stage'); NLCR e̲n̲d̲;
+    i̲f̲ bk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind b]'); printseq(bv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲ e̲n̲d̲;
+    i̲f̲ q2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended pending-applications 1]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations rev/1 '); print(rev1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations rev/2 '); print(rev2); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations conc/1 '); print(conc1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations conc/2 '); print(conc2); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲
