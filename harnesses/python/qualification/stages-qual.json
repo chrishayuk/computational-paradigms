@@ -1,0 +1,942 @@
+{
+ "format": "cp-stages/1",
+ "spec_tag": "spec-1.0",
+ "about": [
+  "MADE UP for the qualification of harnesses/python. Problems X01-X10 are invented, are not in the suite, and use no problem's constants. Nothing here is a result."
+ ],
+ "vocabulary": {
+  "kind": {
+   "adds": "",
+   "replaces": "",
+   "retracts": "",
+   "commit": "",
+   "query": ""
+  },
+  "answers": {
+   "all": "answers(20)",
+   "any-one": "answers(1)"
+  }
+ },
+ "default_limits": {
+  "budget_steps": 1000000,
+  "safety_limit_s": 60,
+  "rerun_limit_s": 600,
+  "source": "PROTOCOL.md, Running"
+ },
+ "problems": [
+  {
+   "problem": "X01",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: a sum whose parts arrive later",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X01a",
+     "line": 1,
+     "title": "total",
+     "unknowns": [
+      "a",
+      "b",
+      "s"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X01a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "s = a + b",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "a = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "b = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X02",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: a choice, an effect and a commit",
+   "effects": true,
+   "subproblems": [
+    {
+     "id": "X02a",
+     "line": 1,
+     "title": "pick",
+     "unknowns": [
+      "p"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X02a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "p in <seq>; emit(p)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "commit",
+       "description": "commit",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": true,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "p != <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X03",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: two spawned computations",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X03a",
+     "line": 1,
+     "title": "two counters",
+     "unknowns": [
+      "u",
+      "v"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X03a.UV",
+       "parameters": {
+        "spawn_order": [
+         "U",
+         "V"
+        ]
+       }
+      },
+      {
+       "id": "X03a.VU",
+       "parameters": {
+        "spawn_order": [
+         "V",
+         "U"
+        ]
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "U: count to <k>; V: count to <k>",
+       "queries": [
+        {
+         "id": "U",
+         "computation": "U",
+         "answers": "all",
+         "cap": 20
+        },
+        {
+         "id": "V",
+         "computation": "V",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": [
+        "U",
+        "V"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X04",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: budget, continuation, error and timeout under short limits",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X04a",
+     "line": 1,
+     "title": "budget then continuation",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X04a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "r = a long sum",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "t = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    },
+    {
+     "id": "X04b",
+     "line": 1,
+     "title": "error, then reposing",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X04b",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "r = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "r raises",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "t = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    },
+    {
+     "id": "X04c",
+     "line": 1,
+     "title": "a loop inside one C call, then reposing",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X04c",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "r = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "spin in C",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "t = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    },
+    {
+     "id": "X04d",
+     "line": 1,
+     "title": "many answers: the cap",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X04d",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "r in 1..<k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "r in 1..<k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    },
+    {
+     "id": "X04e",
+     "line": 1,
+     "title": "an endless Python loop: budget, continued and again budget",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X04e",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "loop",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "t = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 1000000,
+    "safety_limit_s": 4,
+    "rerun_limit_s": 8,
+    "line": 1,
+    "source": "made up: short limits so the qualification runs quickly"
+   }
+  },
+  {
+   "problem": "X05",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: a fixed safety limit, no rerun",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X05a",
+     "line": 1,
+     "title": "spin in C",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X05a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "spin in C",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "t = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 100000000,
+    "safety_limit_s": 4,
+    "rerun_limit_s": null,
+    "line": 1,
+    "source": "made up: fixed and not raised"
+   }
+  },
+  {
+   "problem": "X06",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: counts and store",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X06a",
+     "line": 1,
+     "title": "calls, store and generators",
+     "unknowns": [
+      "f",
+      "g"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X06a.n12",
+       "parameters": {
+        "n": 12
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "f = calls(<k>)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "hold generators",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "build and drop",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X07",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: a computation that waits",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X07a",
+     "line": 1,
+     "title": "waiting",
+     "unknowns": [
+      "w"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X07a.AB",
+       "parameters": {
+        "spawn_order": [
+         "A",
+         "B"
+        ]
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "A: wait for a signal; B: give it, or not",
+       "queries": [
+        {
+         "id": "A",
+         "computation": "A",
+         "answers": "all",
+         "cap": 20
+        },
+        {
+         "id": "B",
+         "computation": "B",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": [
+        "A",
+        "B"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X08",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: CPU time and resident set",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X08a",
+     "line": 1,
+     "title": "growth",
+     "unknowns": [
+      "s"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X08a.n1000",
+       "parameters": {
+        "n": 1000
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "s = sum 1..n",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "x_record_cpu_rss": true
+  },
+  {
+   "problem": "X09",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: the systems file's probe workloads, as stages",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X09a",
+     "line": 1,
+     "title": "nothing, finite(100) twice, finite(1000), build and drop 10^6",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X09a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "nothing (the program's setup)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "r = finite(<k>)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "r = finite(<k>)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 4,
+       "line": 4,
+       "kind": "adds",
+       "description": "r = finite(<k>)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 5,
+       "line": 5,
+       "kind": "adds",
+       "description": "r = build_and_drop(<k>)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X10",
+   "file": "(made up for the Python harness's qualification)",
+   "title": "Made up: no anticipation of a later stage's constants",
+   "effects": false,
+   "limits": {
+    "budget_steps": 100000000,
+    "safety_limit_s": 60,
+    "rerun_limit_s": 600,
+    "line": 1,
+    "source": "made up: a large budget, so the program can wait in a Python loop while it is scanned"
+   },
+   "subproblems": [
+    {
+     "id": "X10a",
+     "line": 1,
+     "title": "early, then later",
+     "unknowns": [
+      "e",
+      "l"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X10a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "e = <atom>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "l = <atom>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

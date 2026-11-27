@@ -1,0 +1,1046 @@
+#!/usr/bin/env python3
+"""The Python harness (harnesses/python/README.md).
+
+    harnesses/python/run CONFIGURATION PROBLEM SUBPROBLEM MODE PROGRAM OUTDIR
+
+Runs inside the pinned python:3.13.7 image. This process is the harness; the
+program runs in its own interpreter process (python3 -B -s -P
+harnesses/python/runtime.py), which this process starts, poses stages to,
+reads answers and state from, and stops at the safety limit.
+
+Exit status: 0 a valid record was written; 2 usage error, no record;
+3 the harness failed and could not write a valid record.
+
+Environment read (all optional):
+  CP_IMAGE_DIGEST  the image digest, passed by the launcher (recorded)
+  CP_PURPOSE       primary (default), variant or qualification
+  CP_VARIANT       the hidden variant's id, when the verifier runs one
+  CP_STAGES        a stages file other than harnesses/stages.json; for
+                   qualification on made-up problems only (recorded in notes)
+"""
+
+import datetime
+import hashlib
+import json
+import os
+import queue
+import re
+import shutil
+import signal
+import subprocess
+import sys
+import tempfile
+import threading
+import time
+import marshal
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import constants as cpconst  # noqa: E402  (harnesses/python/constants.py)
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(HERE))
+RUNTIME = os.path.join(HERE, "runtime.py")
+PYTHON = "/usr/local/bin/python3"
+SYSTEM = "python"
+CONFIGURATIONS = {
+    # name: whether spawn() runs computations side by side (README.md, "spawn")
+    "core": False,
+    "stdlib-concurrency": True,
+    "extended": False,
+}
+MODES = ("behaviour", "cost", "storage")
+STEP_UNIT = "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)"
+ENV = {"PYTHONHASHSEED": "0"}
+END_GRACE_S = 5.0
+
+CONFOUNDS = [
+    "The harness runtime (harnesses/python/runtime.py) runs inside the program's interpreter process. It imports marshal, os, sys, threading and time (and, through threading, _collections, _weakrefset, itertools, types and warnings) before the program starts, so a program's own import of these runs no module code and counts no instructions.",
+    "The program's module is exec'd under three runtime frames, not run as the interpreter's own script: about three fewer frames are available before RecursionError at the default recursion limit (1000, not changed).",
+    "Two runtime threads (control and watcher) run beside the program in every configuration; neither runs program code (except finalizers run by gc.collect() in storage mode) and neither is counted.",
+    "The budget counter is the step meter (sys.monitoring INSTRUCTION) in every mode, behaviour included (harnesses/QUESTIONS.md Q17); a computation is stopped at its budget by pausing its thread inside the monitoring callback, never by an exception.",
+    "The instructions of the program's own H call sites are counted as the program's; those executed inside the H calls are not, nor those of the traceback module while it formats an uncaught exception (instruction events are switched off then if no other computation is running; a thread the program started that is still running is not counted meanwhile).",
+    "Spawned computations run in threads the runtime starts; in core and extended one after another, in stdlib-concurrency side by side.",
+    "The end of a stage is read from the program (its next cp.stage(), its end, its budget, its error) or from quiescence: every running computation alive and executing no instruction for 0.5 s, sampled by wall clock (README.md, section 6).",
+    "Answers are what the program passes to cp.answer(), which prints them as print() would; answers after the cap are printed but not collected.",
+    "observe() reads only the objects the program registered, rendered by an iterative equivalent of repr(); the states alternatives pending and suspended come only from registrations.",
+    "In storage mode tracemalloc (1 frame, started before the program) traces the runtime's own allocations during the stage with the program's, and gc.collect() runs at each stage boundary.",
+    "Standard output and standard error are files; the runtime flushes sys.stdout and sys.stderr at every stage boundary.",
+    "P13's CPU time and maximum resident set size are the whole interpreter process's (resource.getrusage(RUSAGE_SELF)), runtime threads included.",
+    "A thread a program starts with _thread.start_new_thread directly, not through threading.Thread, is not attributed to any computation and its instructions are not counted.",
+    "The program is compiled from its text with the constants block's lines emptied, and its constants are given to it as s.constants with their stage (README.md 3.1); tracebacks show that text, not the file on disk.",
+]
+
+
+class Usage(Exception):
+    pass
+
+
+def utcnow():
+    return datetime.datetime.now(datetime.timezone.utc)
+
+
+def iso(t):
+    return t.strftime("%Y-%m-%dT%H:%M:%S.") + "%06dZ" % t.microsecond
+
+
+def stamp(t):
+    return t.strftime("%Y%m%dT%H%M%SZ")
+
+
+def git(*args):
+    try:
+        p = subprocess.run(["git", "-c", "safe.directory=*", "-C", REPO] + list(args),
+                           capture_output=True, text=True, timeout=30)
+        return p.stdout.strip() if p.returncode == 0 else None
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+# ------------------------------------------------------------ program ---
+
+POSING_RE = re.compile(r"^#\s*CP-POSING:\s*(\S+)\s*$", re.M)
+
+
+def read_program(path):
+    with open(path, "rb") as f:
+        data = f.read()
+    text = data.decode("utf-8", errors="replace")
+    posings = POSING_RE.findall(text)
+    return data, text, posings
+
+
+# ------------------------------------------------------------- child ---
+
+class Child:
+    """The program's interpreter process."""
+
+    def __init__(self, init, tmp):
+        self.events = queue.Queue()
+        self.tmp = tempfile.mkdtemp(dir=tmp)
+        self.out_path = os.path.join(self.tmp, "stdout")
+        self.err_path = os.path.join(self.tmp, "stderr")
+        out = open(self.out_path, "wb")
+        err = open(self.err_path, "wb")
+        a_r, a_w = os.pipe()   # harness -> runtime
+        b_r, b_w = os.pipe()   # runtime -> harness
+        env = {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": os.environ.get("HOME", "/tmp")}
+        env.update(ENV)
+        self.started = time.monotonic()
+        self.proc = subprocess.Popen(
+            [PYTHON, "-B", "-s", "-P", RUNTIME, str(a_r), str(b_w)],
+            stdin=subprocess.DEVNULL, stdout=out, stderr=err, pass_fds=(a_r, b_w),
+            env=env, cwd=REPO, close_fds=True)
+        os.close(a_r)
+        os.close(b_w)
+        out.close()
+        err.close()
+        self.w = a_w
+        self.r = b_r
+        self.offsets = {"out": 0, "err": 0}
+        self.dead = False
+        self.exit = None
+        self.killed_by_harness = None
+        self.main_ended = None
+        threading.Thread(target=self._reader, daemon=True).start()
+        self.send(init)
+
+    def _reader(self):
+        f = os.fdopen(self.r, "rb", buffering=0)
+        while True:
+            head = self._read_exact(f, 4)
+            if head is None:
+                break
+            data = self._read_exact(f, int.from_bytes(head, "big"))
+            if data is None:
+                break
+            self.events.put(marshal.loads(data))
+        self.events.put({"ev": "eof"})
+
+    @staticmethod
+    def _read_exact(f, n):
+        buf = bytearray()
+        while len(buf) < n:
+            chunk = f.read(n - len(buf))
+            if not chunk:
+                return None
+            buf += chunk
+        return bytes(buf)
+
+    def send(self, msg):
+        data = marshal.dumps(msg)
+        try:
+            os.write(self.w, len(data).to_bytes(4, "big") + data)
+            return True
+        except OSError:
+            return False
+
+    def next_event(self, deadline):
+        timeout = deadline - time.monotonic()
+        if timeout <= 0:
+            return {"ev": "timeout"}
+        try:
+            return self.events.get(timeout=timeout)
+        except queue.Empty:
+            return {"ev": "timeout"}
+
+    def take(self, which):
+        path = self.out_path if which == "out" else self.err_path
+        with open(path, "rb") as f:
+            f.seek(self.offsets[which])
+            data = f.read()
+        self.offsets[which] += len(data)
+        return data
+
+    def size(self, which):
+        return os.path.getsize(self.out_path if which == "out" else self.err_path)
+
+    def kill(self, why):
+        if self.proc.poll() is None:
+            self.killed_by_harness = why
+            try:
+                self.proc.send_signal(signal.SIGKILL)
+            except OSError:
+                pass
+        self.reap()
+
+    def reap(self, timeout=None):
+        try:
+            rc = self.proc.wait(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            return None
+        self.dead = True
+        if rc < 0:
+            self.exit = {"status": None, "signal": signal.Signals(-rc).name}
+        else:
+            self.exit = {"status": rc, "signal": None}
+        return self.exit
+
+    def finish(self):
+        """End the run of this process: tell the program there are no more
+        stages, give it END_GRACE_S to exit, then kill it."""
+        if self.proc.poll() is None:
+            self.send({"op": "end"})
+            if self.reap(timeout=END_GRACE_S) is None:
+                self.kill("SIGKILL, %.0f s after the harness ended the run (cp.stage() returned None)" % END_GRACE_S)
+        else:
+            self.reap()
+        try:
+            os.close(self.w)
+        except OSError:
+            pass
+        return self.exit
+
+
+# -------------------------------------------------------------- run ---
+
+def decode(data, faults, what):
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError:
+        faults.append("%s: bytes that are not UTF-8 were written as U+FFFD" % what)
+        return data.decode("utf-8", errors="replace")
+
+
+class Harness:
+    def __init__(self, argv):
+        if len(argv) != 7:
+            raise Usage("usage: run CONFIGURATION PROBLEM SUBPROBLEM MODE PROGRAM OUTDIR")
+        _, self.config, self.problem, self.inst_id, self.mode, self.program, self.outdir = argv
+        self.command = ["harnesses/python/run"] + argv[1:]
+        if self.config not in CONFIGURATIONS:
+            raise Usage("unknown configuration %r (systems/python/README.md: %s)" % (self.config, ", ".join(CONFIGURATIONS)))
+        if self.mode not in MODES:
+            raise Usage("unknown mode %r" % self.mode)
+        self.stages_path = os.environ.get("CP_STAGES") or os.path.join(REPO, "harnesses", "stages.json")
+        with open(self.stages_path) as f:
+            self.stages_doc = json.load(f)
+        found = None
+        for p in self.stages_doc["problems"]:
+            for s in p["subproblems"]:
+                for i in s["instances"]:
+                    if i["id"] == self.inst_id:
+                        found = (p, s, i)
+        if found is None:
+            raise Usage("unknown instance %r in %s" % (self.inst_id, os.path.relpath(self.stages_path, REPO)))
+        self.prob, self.sub, self.inst = found
+        if self.prob["problem"] != self.problem:
+            raise Usage("instance %s belongs to %s, not %s" % (self.inst_id, self.prob["problem"], self.problem))
+        lim = self.prob.get("limits") or self.stages_doc["default_limits"]
+        self.budget = lim["budget_steps"]
+        self.limit_s = lim["safety_limit_s"]
+        self.rerun_s = lim["rerun_limit_s"]
+        self.prog_abs = os.path.normpath(os.path.join(REPO, self.program))
+        if not os.path.isfile(self.prog_abs):
+            raise Usage("no program at %s" % self.program)
+        self.prog_bytes, text, posings = read_program(self.prog_abs)
+        if len(posings) != 1 or posings[0] not in ("incremental", "reposed"):
+            raise Usage("the program must declare its posing on one line '# CP-POSING: incremental' or '# CP-POSING: reposed' (README.md); found %r" % posings)
+        self.posing = posings[0]
+        self.side_by_side = CONFIGURATIONS[self.config]
+        self.faults = []
+        self.notes = []
+        where, self.consts, errs = cpconst.parse(text)
+        K = len(self.sub["stages"])
+        errs += ["constants are tagged for stage %d, but %s has %d stages" % (j, self.inst_id, K) for j in sorted(self.consts) if j > K]
+        if errs:
+            raise Usage("the program's constants block is malformed (README.md, 3.1): " + "; ".join(errs))
+        self.constants_how = "block" if where is not None else "none"
+        # the program's process receives this text, the block's lines emptied:
+        # no constant reaches it except with its stage
+        self.source = cpconst.blanked(text, where)
+        self.effects = bool(self.prob.get("effects"))
+        self.commit_stages = {s["stage"] for s in self.sub["stages"] if s.get("commit")}
+        self.rusage = self.prob["problem"] == "P13" or bool(self.prob.get("x_record_cpu_rss"))
+        self.commitments = {}
+        self.purpose = os.environ.get("CP_PURPOSE", "primary")
+        if self.purpose not in ("primary", "variant", "qualification"):
+            raise Usage("CP_PURPOSE must be primary, variant or qualification")
+
+    # ---------------------------------------------------------- effects
+    def open_logs(self):
+        if not self.effects:
+            return
+        self.log_path = os.path.join(self.outdir, "%s.effects.jsonl" % self.inst_id)
+        self.obs_log_path = os.path.join(self.outdir, "%s.effects-observation.jsonl" % self.inst_id)
+
+        def count(p):
+            if not os.path.exists(p):
+                return 0
+            with open(p) as f:
+                return sum(1 for line in f if line.strip())
+
+        self.log_seq = count(self.log_path)
+        self.obs_seq = count(self.obs_log_path)
+        self.entries_before = self.log_seq
+
+    def append_effect(self, ev, k, attempt, replay_of):
+        cls = self.mode == "behaviour"
+        if cls:
+            self.log_seq += 1
+            seq, path, log = self.log_seq, self.log_path, "classification"
+        else:
+            self.obs_seq += 1
+            seq, path, log = self.obs_seq, self.obs_log_path, "observation"
+        e = {"seq": seq, "entry": ev["entry"], "run_id": self.run_id, "stage": k,
+             "attempt": attempt, "during_replay_of": replay_of, "log": log}
+        with open(path, "a") as f:
+            f.write(json.dumps(e, ensure_ascii=False) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+        return e
+
+    # ------------------------------------------------------------ init
+    def init_msg(self, budget):
+        return {"program": self.prog_abs, "source": self.source, "params": self.inst.get("parameters", {}),
+                "mode": self.mode, "budget": budget, "rusage": self.rusage and self.mode != "storage",
+                "config": self.config}
+
+    # ----------------------------------------------------- one attempt
+    def attempt(self, k, n, how, reason, child, continued, prev_count):
+        """Run attempt n of stage k. how: fresh, incremental or reposed.
+        Returns (attempt record, child process left running or None)."""
+        sst = self.sub["stages"][k - 1]
+        limit_s = self.limit_s if n == 1 else self.rerun_s
+        t0 = time.monotonic()
+        deadline = t0 + limit_s
+        A = {"k": k, "n": n, "answers": {}, "extra": {}, "comp": {}, "effects": [],
+             "notes": [], "timeout": False, "dead": False, "prev_count": prev_count}
+        comps = A["comp"]
+
+        def comp(name):
+            if name not in comps:
+                comps[name] = {"state": None, "error": None, "count_start": 0, "count_end": None,
+                               "restart": None, "budget": self.budget, "spawned": False,
+                               "spawn_index": None, "answers": [], "extra": 0, "basis": None,
+                               "ended": False, "blocked": None, "nospawn": False, "start_known": True}
+            return comps[name]
+
+        main = comp("main")
+        replay_stage = None   # stage being replayed, during a replay
+
+        new_child = how in ("fresh", "reposed")
+        if new_child:
+            if child is not None:
+                child.finish()
+            child = Child(self.init_msg(self.budget), self.tmp)
+
+        posed_queries = {q["computation"]: q for q in sst["queries"]}
+
+        def handle(ev, phase):
+            """Common handling of an event. Returns the event."""
+            e = ev["ev"]
+            if e == "answer":
+                c = ev.get("comp")
+                if ev.get("replay") or phase == "replay":
+                    A["notes"].append("an answer printed by %s while stage %s was being replayed was not collected: %r" % (c, ev.get("pstage"), ev["text"]))
+                    return ev
+                if c is None or c not in posed_queries:
+                    A["notes"].append("an answer printed by computation %s, which has no query in stage %d, was not collected: %r" % (c, k, ev["text"]))
+                    return ev
+                cc = comp(c)
+                cap = self.cap(posed_queries[c])
+                if len(cc["answers"]) >= cap:
+                    cc["extra"] += 1
+                    return ev
+                cc["answers"].append({"text": ev["text"], "count": ev.get("count"), "alts": ev.get("alts"),
+                                      "pstage": ev.get("pstage")})
+            elif e == "emit":
+                if not self.effects:
+                    A["notes"].append("the program called cp.emit(%r) in a problem without effects; nothing was logged" % ev["entry"])
+                    return ev
+                replay_of = replay_stage if phase == "replay" else None
+                A["effects"].append(self.append_effect(ev, k, n, replay_of))
+            return ev
+
+        def wait_main(phase):
+            """Wait until main ends its part of the stage. Returns one of
+            want, end, budget, quiescent, timeout, eof."""
+            while True:
+                ev = child.next_event(deadline)
+                e = ev["ev"]
+                if e in ("answer", "emit"):
+                    handle(ev, phase)
+                    continue
+                if e == "recv":
+                    if phase != "replay" and ev["k"] == k:
+                        A["recv_count"] = ev["count"]
+                        A["print_from"] = child.size("out")
+                    continue
+                if e == "quiescent":
+                    if "main" in ev["comps"]:
+                        main["blocked"] = ev["comps"]["main"] or "(no Python frame)"
+                        return ev
+                    for nm, fr in ev["comps"].items():
+                        if nm in comps:
+                            comp(nm)["blocked"] = fr or "(no Python frame)"
+                    continue
+                if e == "done":
+                    if ev["comp"] in comps:
+                        c = comp(ev["comp"])
+                        c["ended"] = True
+                        c["count_end"] = ev["count"]
+                        if ev["how"] == "error":
+                            c["state"], c["error"] = "error", ev["error"]
+                    continue
+                if e in ("want", "end", "budget", "timeout", "eof"):
+                    if e == "budget" and ev["comp"] != "main":
+                        if ev["comp"] in comps:
+                            comp(ev["comp"])["state"] = "budget"
+                        continue
+                    return ev
+
+        # 1. a new process: wait for the program to ask for stage 1
+        status = None
+        if new_child:
+            ev = wait_main("start")
+            if ev["ev"] != "want":
+                status = ev
+        # 2. replay
+        replayed = list(range(1, k)) if how == "reposed" else []
+        restart = None
+        if status is None:
+            for j in replayed:
+                replay_stage = j
+                msg = {"op": "pose", "k": j, "replay": True, "budget": self.budget, "reset": j > 1,
+                       "constants": self.consts.get(j, {})}
+                if j in self.commit_stages and j in self.commitments:
+                    msg["commitment"] = self.commitments[j][0]
+                child.send(msg)
+                ev = wait_main("replay")
+                if ev["ev"] == "want":
+                    sj = self.sub["stages"][j - 1]
+                    if sj.get("spawns"):
+                        self.run_spawns(child, sj, deadline, A, comp, handle, phase="replay")
+                    continue
+                status = ev
+                A["notes"].append("the replay of stage %d did not reach its end: %s" % (j, ev["ev"]))
+                break
+            if status is None and how == "reposed":
+                restart = ev["count"]
+                main["restart"] = restart
+        # A reposed run that stopped before stage k was posed (an error, budget
+        # or timeout in the program's set-up or in a replayed stage): its whole
+        # count is the restart cost, and what stopped it is stage k's state
+        # (QUESTIONS.md, Q4).
+        if status is not None and how == "reposed":
+            main["restart"] = status.get("count")
+            if main["restart"] is None:
+                main["restart"] = 0
+                self.faults.append("stage %d attempt %d: the restart cost could not be read (the reposed run ended by %s, with no instruction count); recorded as 0 so that the record states a budget" % (k, n, status["ev"]))
+            where = ("the replay of stage %d" % replay_stage) if replay_stage is not None else "the program's set-up, before it first asked for a stage,"
+            A["notes"].append("stage %d was never posed in this run: %s ended first (%s). restart_cost is the run's whole count." % (k, where, status["ev"]))
+        replay_stage = None
+        # 3. pose stage k
+        if status is None and not new_child and child.main_ended is not None:
+            status = dict(child.main_ended)
+            A["notes"].append("the program had ended (%s) before stage %d was posed: the stage could not be received, and nothing was sent to it" % (status["how"], k))
+        elif status is None:
+            # the stage is queued first, so that a computation released from its
+            # budget finds it when it next asks
+            child.send({"op": "pose", "k": k, "replay": False, "budget": self.budget,
+                        "reset": (k > 1 and not continued), "constants": self.consts.get(k, {})})
+            if self.consts.get(k):
+                A["notes"].append("stage %d's constants were delivered with it: %s" % (k, ", ".join(sorted(self.consts[k]))))
+            if continued:
+                child.send({"op": "continue", "comp": "main", "budget": self.budget})
+            status = wait_main("stage")
+        # main's part of the stage has ended
+        e = status["ev"]
+        if e == "want":
+            main["count_end"] = status["count"]
+        elif e == "end":
+            main["count_end"] = status["count"]
+            main["ended"] = True
+            child.main_ended = status
+            if status["how"] == "error":
+                main["state"], main["error"] = "error", status["error"]
+            A["main_end"] = status
+        elif e == "budget":
+            main["state"] = "budget"
+            main["count_end"] = status["count"]
+        elif e == "quiescent":
+            main["state"] = "blocked"
+        elif e == "timeout":
+            A["timeout"] = True
+        elif e == "eof":
+            A["dead"] = True
+        # 4. spawns
+        if sst.get("spawns") and not A["timeout"] and not A["dead"]:
+            r = self.run_spawns(child, sst, deadline, A, comp, handle, phase="stage")
+            if r == "timeout":
+                A["timeout"] = True
+            elif r == "eof":
+                A["dead"] = True
+        elif sst.get("spawns"):
+            order = self.spawn_order(sst)
+            for i, nm in enumerate(order, 1):
+                c = comp(nm)
+                c["spawned"], c["spawn_index"] = True, i
+                c["state"] = "timeout" if A["timeout"] else None
+                c["start_known"] = False
+        # 5. observe
+        obs = None
+        if not A["timeout"] and not A["dead"]:
+            child.send({"op": "observe", "comps": list(comps)})
+            while True:
+                ev = child.next_event(deadline)
+                if ev["ev"] in ("answer", "emit"):
+                    handle(ev, "stage")
+                    continue
+                if ev["ev"] == "obs":
+                    obs = ev
+                    break
+                if ev["ev"] == "timeout":
+                    A["timeout"] = True
+                    break
+                if ev["ev"] == "eof":
+                    A["dead"] = True
+                    break
+                if ev["ev"] in ("done", "budget") and ev["comp"] in comps:
+                    self._spawn_event(ev, comp)
+        if A["timeout"]:
+            child.kill("SIGKILL to the program's interpreter process when the safety limit of %g s ran out" % limit_s)
+            A["how_stopped"] = child.killed_by_harness
+            # drain what the process sent before it was stopped
+            while True:
+                try:
+                    ev = child.events.get_nowait()
+                except queue.Empty:
+                    break
+                if ev["ev"] in ("answer", "emit"):
+                    handle(ev, "stage" if A.get("recv_count") is not None else "replay")
+        wall = time.monotonic() - t0
+        # 6. what the process wrote; whether it continues
+        keep = None
+        ends_here = A["timeout"] or A["dead"] or self.posing == "reposed" or k == len(self.sub["stages"]) \
+            or any(c["state"] == "error" for c in comps.values())
+        if ends_here:
+            if not child.dead:
+                child.finish()
+                if child.killed_by_harness and not A["timeout"]:
+                    A["notes"].append("after print(), the harness ended the run (cp.stage() returned None, or nothing could be sent); the process had not exited %.0f s later and was killed: %s" % (END_GRACE_S, child.killed_by_harness))
+            if child.exit is None:
+                child.reap()
+            exit_ = child.exit
+        else:
+            keep = child
+            exit_ = {"status": None, "signal": None}
+        if child.dead and child.exit and child.exit.get("signal") and not A["timeout"] and child.killed_by_harness is None:
+            A["dead"] = True
+        out_base = child.offsets["out"]
+        out_all = child.take("out")
+        pf = A.get("print_from")
+        if how != "reposed":
+            A["print_bytes"] = out_all
+        else:
+            A["print_bytes"] = out_all[pf - out_base:] if pf is not None and pf >= out_base else b""
+        err_all = child.take("err")
+        stdout = decode(out_all, self.faults, "stage %d attempt %d stdout" % (k, n))
+        stderr = decode(err_all, self.faults, "stage %d attempt %d stderr" % (k, n))
+        A.update({"wall": wall, "stdout": stdout, "stderr": stderr, "exit": exit_, "obs": obs,
+                  "limit_s": limit_s, "how": how, "reason": reason, "replayed": replayed,
+                  "continued": continued, "child_exit": child.exit})
+        rec = self.attempt_record(A, sst)
+        return rec, keep
+
+    def spawn_order(self, sst):
+        order = self.inst.get("parameters", {}).get("spawn_order")
+        return order if order else list(sst["spawns"])
+
+    def run_spawns(self, child, sst, deadline, A, comp, handle, phase):
+        """spawn() each computation of the stage in the instance's order. Side
+        by side: all are started, then waited for. Otherwise each runs to its
+        end, its budget or quiescence before the next is started."""
+        order = self.spawn_order(sst)
+        settled = set()      # computations that ended, hit budget, or went quiet
+
+        def note(ev):
+            e = ev["ev"]
+            if e in ("done", "budget"):
+                settled.add(ev["comp"])
+            elif e == "quiescent":
+                settled.update(ev["comps"])
+            if phase == "stage":
+                self._spawn_event(ev, comp)
+
+        def wait_for(names):
+            while not set(names) <= settled:
+                ev = child.next_event(deadline)
+                e = ev["ev"]
+                if e in ("answer", "emit"):
+                    handle(ev, phase)
+                elif e in ("timeout", "eof"):
+                    return e
+                else:
+                    note(ev)
+            return "ok"
+
+        started = []
+        for i, nm in enumerate(order, 1):
+            if phase == "stage":
+                c = comp(nm)
+                c["spawned"], c["spawn_index"] = True, i
+            child.send({"op": "spawn", "comp": nm, "budget": self.budget})
+            while True:
+                ev = child.next_event(deadline)
+                e = ev["ev"]
+                if e in ("answer", "emit"):
+                    handle(ev, phase)
+                elif e == "started" and ev["comp"] == nm:
+                    break
+                elif e == "nospawn" and ev["comp"] == nm:
+                    settled.add(nm)
+                    if phase == "stage":
+                        comp(nm)["nospawn"] = True
+                        comp(nm)["ended"] = True
+                    break
+                elif e in ("timeout", "eof"):
+                    return e
+                else:
+                    note(ev)
+            if nm in settled and phase == "stage" and comp(nm).get("nospawn"):
+                continue
+            started.append(nm)
+            if not self.side_by_side:
+                r = wait_for([nm])
+                if r != "ok":
+                    return r
+        return wait_for(started)
+
+    def _spawn_event(self, ev, comp):
+        e = ev["ev"]
+        if e == "done":
+            c = comp(ev["comp"])
+            c["ended"], c["count_end"] = True, ev["count"]
+            if ev["how"] == "error":
+                c["state"], c["error"] = "error", ev["error"]
+        elif e == "budget":
+            c = comp(ev["comp"])
+            c["state"], c["count_end"] = "budget", ev["count"]
+        elif e == "quiescent":
+            for nm, fr in ev["comps"].items():
+                comp(nm)["blocked"] = fr or "(no Python frame)"
+
+    def cap(self, q):
+        if q.get("cap") is not None:
+            return q["cap"]
+        return self.inst["parameters"]["cap"]
+
+    # ------------------------------------------------ attempt record
+    def attempt_record(self, A, sst):
+        k, n = A["k"], A["n"]
+        obs = A["obs"] or {"comps": {}, "raw": "", "faults": []}
+        for f in obs.get("faults", []):
+            self.faults.append("stage %d attempt %d: %s" % (k, n, f))
+        if A["obs"] is None and not A["timeout"]:
+            A["notes"].append("observe() could not be taken: the program's process had ended")
+        comps_rec = []
+        queries = sst["queries"]
+        qby = {q["computation"]: q for q in queries}
+        names = ["main"] + [nm for nm in A["comp"] if nm != "main"]
+        reposed = A["how"] == "reposed"
+        for nm in names:
+            c = A["comp"][nm]
+            oc = obs["comps"].get(nm, {})
+            states, basis, determined = [], [], True
+            err = c["error"]
+            if A["timeout"] and not c["ended"] and c["state"] not in ("budget", "error"):
+                states = ["timeout"]
+                basis.append("the safety limit stopped the attempt before this computation ended its part of the stage")
+            elif A["dead"] and c["state"] is None and not c["ended"]:
+                ex = A["child_exit"] or {}
+                states = ["error"]
+                err = "the program's interpreter process ended (status %r, signal %r) before the stage ended\n%s" % (ex.get("status"), ex.get("signal"), A["stderr"])
+                basis.append("the interpreter process ended: exit status %r, signal %r" % (ex.get("status"), ex.get("signal")))
+            elif c["nospawn"]:
+                determined = False
+                basis.append("the program registered no computation %r with cp.computation(); nothing was started" % nm)
+            elif c["state"] == "error":
+                states = ["error"]
+                basis.append("an uncaught exception ended the computation; its traceback is copied verbatim")
+            elif c["state"] == "budget":
+                states = ["budget"]
+                basis.append("the instruction budget ran out: the computation's thread is paused in the sys.monitoring callback at exactly its budget")
+            elif not c.get("start_known", True) and oc == {}:
+                determined = False
+                basis.append("the computation was not started")
+            else:
+                pend = oc.get("pending") or {}
+                susp = oc.get("suspended") or {}
+                np_ = sum(v for v in pend.values() if v)
+                ns_ = sum(v for v in susp.values() if v)
+                if np_:
+                    states.append("alternatives pending")
+                    basis.append("the program's registered pending structures hold %d entries (%s)" % (np_, ", ".join("%s: %s" % kv for kv in pend.items())))
+                if ns_:
+                    states.append("suspended")
+                    basis.append("the program's registered waiting structures hold %d entries (%s)" % (ns_, ", ".join("%s: %s" % kv for kv in susp.items())))
+                blocked = c.get("blocked") or (c["state"] == "blocked")
+                if blocked:
+                    determined = False
+                    if "suspended" not in states:
+                        states.append("suspended")
+                    basis.append("the computation's thread was alive and executed no instruction for 0.5 s (quiescence), last Python frame %s; whether it waits for information or is stopped in a C call is not mechanically certain" % (c.get("blocked") if isinstance(c.get("blocked"), str) else oc.get("blocked_frame")))
+                if not states and not blocked:
+                    states = ["finished"]
+                    how_ended = "asked for the next stage (cp.stage())" if nm == "main" and not c["ended"] else "returned"
+                    if nm == "main" and c["ended"]:
+                        how_ended = "ended (the program's module finished)"
+                    if oc.get("exposed"):
+                        basis.append("the computation %s, and its registered pending and waiting structures are empty" % how_ended)
+                    else:
+                        basis.append("the computation %s, and registered no pending or waiting structure" % how_ended)
+            if nm == "main" and A.get("main_end") and A["main_end"]["how"] == "exit":
+                A["notes"].append("the program raised SystemExit (status %r) during stage %d" % (A["main_end"]["status"], k))
+            es = {"states": states, "determined": determined, "basis": "; ".join(basis) or "nothing could be read",
+                  "error_verbatim": err if "error" in states else None}
+            # steps
+            budget = c["budget"]
+            restart = c["restart"] if reposed and nm == "main" else (0 if reposed else None)
+            if reposed and restart is not None:
+                budget = self.budget + restart
+            start = restart if (reposed and nm == "main") else (A.get("prev_count", 0) if nm == "main" else 0)
+            if nm == "main" and A["how"] == "fresh":
+                start = 0
+            end = c["count_end"]
+            if end is None and oc.get("count") is not None:
+                end = oc["count"]
+            ans = c["answers"]
+            to_first = None
+            between = []
+            if ans and ans[0]["count"] is not None and start is not None:
+                to_first = ans[0]["count"] - start
+                between = [ans[i]["count"] - ans[i - 1]["count"] for i in range(1, len(ans))]
+            exhausted = "budget" in states
+            steps = {"unit": STEP_UNIT, "budget": budget, "budget_exhausted": exhausted,
+                     "stage": None, "restated": end, "restart_cost": restart,
+                     "restart_cost_method": "in-run" if restart is not None else None,
+                     "restart_cost_source": None,
+                     "to_first_answer": to_first, "between_answers": between,
+                     "to_end": (end - start) if (end is not None and start is not None) else None,
+                     "repeated_work": None}
+            if A["how"] in ("fresh", "incremental") or c["spawned"]:
+                steps["stage"] = steps["to_end"]
+            if restart is not None:
+                steps["restart_cost_source"] = ("%s stage %d attempt %d: the computation's instruction count when stage %d was first posed, after the replay of stages 1-%d" % (self.run_id, k, n, k, k - 1)) if nm == "main" else "started in this stage: nothing replayed"
+            if not c.get("start_known", True):
+                steps.update({"restated": None, "to_end": None, "stage": None})
+            # alternatives, suspended
+            pend = oc.get("pending") or {}
+            susp = oc.get("suspended") or {}
+            by_type = {kk: v for kk, v in pend.items() if v is not None}
+            if self.mode == "storage" and obs.get("gc"):
+                by_type["suspended generator frames (gc, process-wide)"] = obs["gc"]["generators"]
+            items = {kk: v for kk, v in susp.items() if v is not None}
+            if self.mode == "storage" and obs.get("gc"):
+                items["suspended coroutines (gc, process-wide)"] = obs["gc"]["coroutines"]
+                items["suspended async generators (gc, process-wide)"] = obs["gc"]["async_generators"]
+            if "suspended" in states and c.get("blocked"):
+                items["blocked thread"] = 1
+            alt = {"unit": "entries of the program's registered pending structures (cp.pending)",
+                   "at_boundary": (sum(v for v in pend.values() if v) if oc else None),
+                   "at_budget": oc.get("alts_at_budget") if exhausted else None,
+                   "peak": None,
+                   "held_as": "unknown" if pend else ("none" if oc else "unknown"),
+                   "by_type": by_type if oc else None,
+                   "problem_defined": ({kk: v for kk, v in oc["problem_alts"].items() if v is not None} or None) if oc.get("problem_alts") else None}
+            sus = {"unit": "entries of the program's registered waiting structures (cp.suspended)",
+                   "at_boundary": (sum(v for v in susp.values() if v) if oc else None),
+                   "peak": None, "items": items if oc else None}
+            ops = None
+            if self.mode == "cost" and oc:
+                ops = dict(oc.get("ops") or {})
+            cand = None
+            if self.prob["problem"] == "P12" and ops is not None:
+                cand = ops.get("accept")
+            # queries
+            qrecs = []
+            q = qby.get(nm)
+            if q is not None:
+                cap = self.cap(q)
+                answers = []
+                for i, a in enumerate(ans, 1):
+                    ar = {"index": i, "verbatim": a["text"]}
+                    ar["steps_at"] = (a["count"] - start) if (a["count"] is not None and start is not None) else None
+                    if self.mode == "storage":
+                        ar["alternatives_at"] = a.get("alts")
+                    answers.append(ar)
+                    if a.get("pstage") is not None and a["pstage"] != k:
+                        A["notes"].append("answer %d of %s was printed while the program was still in stage %s (continued after its budget), before it received stage %d" % (i, nm, a["pstage"], k))
+                if len(answers) >= cap:
+                    ended = "cap"
+                elif states and states[0] in ("budget", "timeout", "error"):
+                    ended = states[0]
+                else:
+                    ended = "no-enumeration"
+                if c["extra"]:
+                    A["notes"].append("%s printed %d more answer(s) after the cap of %d; they are in stdout, not collected" % (nm, c["extra"], cap))
+                qrecs.append({"id": q["id"], "cap": cap, "answers": answers, "ended_by": ended,
+                              "collected_on": "this-run"})
+            cr = {"id": nm, "spawned": c["spawned"], "spawn_index": c["spawn_index"],
+                  "side_by_side": (self.side_by_side if c["spawned"] else None),
+                  "queries": qrecs, "execution_state": es, "steps": steps,
+                  "alternatives": alt, "suspended": sus, "problem_operations": ops}
+            if self.prob["problem"] == "P12":
+                cr["candidates_examined"] = cand
+            comps_rec.append(cr)
+        # observe
+        bindings = None
+        bl = {}
+        for nm in names:
+            b = obs["comps"].get(nm, {}).get("bindings")
+            if b is not None:
+                for kk, v in b.items():
+                    bl[kk if nm == "main" else "%s:%s" % (nm, kk)] = v
+                bindings = bl
+        observe = {"raw": obs.get("raw", ""),
+                   "method": "the harness runtime, in the program's process, at the end of the stage (or at the budget), reads the objects registered with cp.bindings, cp.pending, cp.suspended, cp.held and cp.problem_alternatives, and renders each with an iterative equivalent of repr(); bindings are split from the registered bindings mapping",
+                   "taken_on": "this-run", "bindings": bindings}
+        # store
+        store = {"quantities": {}, "source": None}
+        if self.mode == "storage" and obs.get("store"):
+            s = obs["store"]
+            store = {"quantities": {
+                "traced_bytes": {"boundary": s["traced_current"], "peak": {"value": s["traced_peak"], "kind": "exact"}, "unit": "bytes"},
+                "traced_bytes_at_window_start": {"boundary": s["traced_start"], "peak": None, "unit": "bytes"},
+                "allocated_blocks": {"boundary": s["blocks"], "peak": None, "unit": "blocks"},
+                "allocated_blocks_at_window_start": {"boundary": s["blocks_start"], "peak": None, "unit": "blocks"}},
+                "source": "tracemalloc.get_traced_memory() (1 frame, started before the program; peak reset at the start of the stage's budget window, or from the program's start for a stage posed into a new process) and sys.getallocatedblocks(), read at the end of the stage before anything else"}
+        # print: what the program wrote to stdout while stage k was posed
+        printed = decode(A["print_bytes"], [], "print")
+        # timeouts and exit
+        sl_hit = A["timeout"]
+        if sl_hit:
+            action = "rerun" if (n == 1 and self.rerun_s is not None) else ("final-timeout" if n == 2 else "fixed-limit-timeout")
+        else:
+            action = "none"
+        cpu = rss = None
+        if obs.get("rusage"):
+            cpu = obs["rusage"]["cpu"]
+            rss = obs["rusage"]["maxrss"]
+        commitments = []
+        if A["how"] == "reposed":
+            for j in sorted(self.commit_stages):
+                if j < k and j in self.commitments:
+                    commitments.append({"stage": j, "value_verbatim": self.commitments[j][0],
+                                        "selected_in_run": self.commitments[j][1]})
+                elif j < k:
+                    A["notes"].append("commit stage %d selected nothing (no answer), so nothing was replayed as a commitment" % j)
+        rec = {
+            "attempt": n, "limit_s": A["limit_s"],
+            "posed": {"how": A["how"], "reason": A["reason"], "replayed": A["replayed"],
+                      "replayed_commitments": commitments, "continued_after_budget": A["continued"],
+                      "instance_parameters_passed": self.inst.get("parameters", {})},
+            "computations": comps_rec, "observe": observe, "print": printed, "store": store,
+            "wall_time_s": round(A["wall"], 6), "cpu_time_s": cpu, "max_rss_kb": rss,
+            "stdout": A["stdout"], "stderr": A["stderr"], "exit": A["exit"],
+            "safety_limit": {"hit": sl_hit, "action": action, "how_stopped": A.get("how_stopped")},
+            "effects": A["effects"], "manual_actions": [], "separate_run": None,
+            "notes": A["notes"],
+        }
+        return rec
+
+    # -------------------------------------------------------- the run
+    def run(self):
+        self.t_start = utcnow()
+        os.makedirs(os.path.join(REPO, self.outdir) if not os.path.isabs(self.outdir) else self.outdir, exist_ok=True)
+        self.outdir = os.path.join(REPO, self.outdir) if not os.path.isabs(self.outdir) else self.outdir
+        while True:
+            self.run_id = "%s.%s.%s" % (self.inst_id, self.mode, stamp(self.t_start))
+            self.rec_path = os.path.join(self.outdir, self.run_id + ".json")
+            lock = self.rec_path + ".running"
+            if not os.path.exists(self.rec_path) and not os.path.exists(self.rec_path.replace(".json", ".INVALID.json")):
+                try:
+                    fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                    os.close(fd)
+                    break
+                except FileExistsError:
+                    pass
+            time.sleep(1.0)
+            self.t_start = utcnow()
+        self.lock = lock
+        self.open_logs()
+        self.tmp = tempfile.mkdtemp(prefix="cp-python-")
+        stages_rec = self._partial = []
+        child = None
+        nxt_how, nxt_reason, continued = "fresh", "first-stage", False
+        K = len(self.sub["stages"])
+        prev_count = 0
+        try:
+            for k in range(1, K + 1):
+                atts = []
+                rec, child2 = self.attempt(k, 1, nxt_how, nxt_reason, child, continued, prev_count)
+                atts.append(rec)
+                if rec["safety_limit"]["hit"] and self.rerun_s is not None:
+                    child = None
+                    how2 = "fresh" if k == 1 else "reposed"
+                    rec2, child2 = self.attempt(k, 2, how2, "safety-rerun", None, False, 0)
+                    atts.append(rec2)
+                stages_rec.append({"stage": k, "attempts": atts})
+                child = child2
+                final = atts[-1]
+                states = set()
+                for c in final["computations"]:
+                    states |= set(c["execution_state"]["states"])
+                main_rec = final["computations"][0]
+                if "error" in states:
+                    nxt_how, nxt_reason, continued = "reposed", "after-error", False
+                elif "timeout" in states:
+                    nxt_how, nxt_reason, continued = "reposed", "after-timeout", False
+                elif self.posing == "reposed":
+                    nxt_how, nxt_reason, continued = "reposed", "configuration", False
+                else:
+                    nxt_how, nxt_reason = "incremental", "configuration"
+                    continued = "budget" in main_rec["execution_state"]["states"]
+                if child is None and nxt_how == "incremental" and k < K:
+                    # the process ended (it cannot here, but never pose into nothing)
+                    nxt_how, nxt_reason, continued = "reposed", "configuration", False
+                    self.notes.append("stage %d: the process of the incremental computation had ended; stage %d was reposed" % (k, k + 1))
+                prev_count = main_rec["steps"]["restated"] or 0
+                # commitment
+                sst = self.sub["stages"][k - 1]
+                if sst.get("commit"):
+                    q = [qq for qq in main_rec["queries"]]
+                    if q and q[0]["answers"]:
+                        self.commitments[k] = (q[0]["answers"][0]["verbatim"], self.run_id)
+            if child is not None:
+                child.finish()
+        finally:
+            shutil.rmtree(self.tmp, ignore_errors=True)
+        return stages_rec
+
+    def build_record(self, stages_rec):
+        t_end = utcnow()
+        head = git("rev-parse", "HEAD")
+        dirty = git("status", "--porcelain", "--", "harnesses/python/run", "harnesses/python/runtime.py",
+                    "harnesses/validate.py", "harnesses/stages.json", "harnesses/record.schema.json")
+        if head is None:
+            self.faults.append("the harness's git commit could not be read; recorded as 0000000")
+        prog_rel = os.path.relpath(self.prog_abs, REPO)
+        prog_dirty = git("status", "--porcelain", "--", prog_rel)
+        tracked = git("ls-files", "--", prog_rel)
+        repo_commit = head if (head and tracked and not prog_dirty) else None
+        if head and not repo_commit:
+            self.notes.append("the program %s is not committed unchanged at %s; program.repo_commit is null" % (prog_rel, head))
+        try:
+            ver = subprocess.run([PYTHON, "-VV"], capture_output=True, text=True, timeout=30).stdout
+        except (OSError, subprocess.SubprocessError):
+            ver = None
+        if self.stages_path != os.path.join(REPO, "harnesses", "stages.json"):
+            self.notes.append("stages file: %s (CP_STAGES), not harnesses/stages.json" % os.path.relpath(self.stages_path, REPO))
+        K = len(self.sub["stages"])
+        run = {
+            "run_id": self.run_id, "spec_tag": "spec-1.0", "system": SYSTEM,
+            "configuration": self.config, "problem": self.problem, "subproblem": self.sub["id"],
+            "instance": self.inst_id, "parameters": self.inst.get("parameters", {}),
+            "mode": self.mode, "purpose": self.purpose,
+            "program": {"path": prog_rel, "sha256": hashlib.sha256(self.prog_bytes).hexdigest(),
+                        "repo_commit": repo_commit},
+            "constants": {"how": self.constants_how, "input_path": None, "input_sha256": None,
+                          "variant": os.environ.get("CP_VARIANT") or None},
+            "system_build": {"commit": None, "image": os.environ.get("CP_IMAGE_DIGEST") or None,
+                             "binary": PYTHON, "version_output": ver, "instrumented": True},
+            "harness": {"path": "harnesses/python/run", "commit": head or "0000000", "dirty": bool(dirty)},
+            "command": self.command, "posing": self.posing,
+            "limits": {"budget_steps": self.budget, "step_unit": STEP_UNIT,
+                       "safety_limit_s": self.limit_s, "rerun_limit_s": self.rerun_s},
+            "started_utc": iso(self.t_start), "ended_utc": iso(t_end),
+            "complete": len(stages_rec) == K, "incomplete_reason": None if len(stages_rec) == K else "the harness stopped before every stage was posed",
+            "confounds": CONFOUNDS, "environment": dict(ENV),
+        }
+        rec = {"record_format": "cp-raw-record/1", "run": run, "stages": stages_rec,
+               "effects": None, "manual_actions": [], "harness_faults": self.faults, "notes": self.notes}
+        if self.effects:
+            log = []
+            if os.path.exists(self.log_path):
+                with open(self.log_path) as f:
+                    log = [json.loads(line) for line in f if line.strip()]
+            rec["effects"] = {"log_path": os.path.relpath(self.log_path, REPO),
+                              "observation_log_path": os.path.relpath(self.obs_log_path, REPO),
+                              "entries_before_run": self.entries_before, "log_after_run": log}
+        return rec
+
+    def write(self, rec):
+        with open(self.rec_path, "w") as f:
+            json.dump(rec, f, indent=1, ensure_ascii=False)
+            f.write("\n")
+        p = subprocess.run([PYTHON, "-B", "-s", os.path.join(REPO, "harnesses", "validate.py"),
+                            "--stages", self.stages_path, self.rec_path], capture_output=True, text=True)
+        try:
+            os.unlink(self.lock)
+        except OSError:
+            pass
+        if p.returncode != 0:
+            bad = self.rec_path[:-len(".json")] + ".INVALID.json"
+            os.rename(self.rec_path, bad)
+            sys.stderr.write(p.stdout + p.stderr)
+            sys.stderr.write("harness fault: the record does not validate; kept as %s\n" % bad)
+            return 3
+        sys.stdout.write(os.path.relpath(self.rec_path, REPO) + "\n")
+        return 0
+
+
+def main(argv):
+    try:
+        h = Harness(argv)
+    except Usage as e:
+        sys.stderr.write("run: %s\n" % e)
+        return 2
+    try:
+        stages_rec = h.run()
+    except Exception as e:  # noqa: BLE001 - a harness fault, kept
+        import traceback
+        h.faults.append("the harness failed: " + "".join(traceback.format_exception(e)))
+        stages_rec = getattr(h, "_partial", [])
+    try:
+        rec = h.build_record(stages_rec)
+        return h.write(rec)
+    except Exception:  # noqa: BLE001
+        import traceback
+        traceback.print_exc()
+        return 3
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

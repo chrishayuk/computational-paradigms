@@ -1,0 +1,135 @@
+#!/usr/bin/env python3
+"""Syntax and static check of a Python program for the study. It never runs
+the program: it reads its bytes, compiles them with compile() (which
+executes nothing) and walks the syntax tree (ast.parse). See
+harnesses/python/README.md, "check".
+
+    harnesses/python/check CONFIGURATION PROGRAM
+
+Exit status: 0 no error found; 1 errors found (listed); 2 usage error.
+"""
+
+import ast
+import os
+import sys
+import warnings
+
+CONFIGURATIONS = ("core", "stdlib-concurrency", "extended")
+CONCURRENCY = {"threading", "queue", "asyncio"}
+sys.dont_write_bytecode = True
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import constants as cpconst  # noqa: E402  (harnesses/python/constants.py)
+
+H_NAMES = {"stage", "answer", "emit", "bindings", "pending", "suspended", "held",
+           "problem_alternatives", "relations", "computation", "params"}
+STAGE_ATTRS = {"k", "replay", "commitment", "params", "constants"}
+
+
+def main(argv):
+    if len(argv) != 3 or argv[1] not in CONFIGURATIONS:
+        sys.stderr.write("usage: check CONFIGURATION PROGRAM   (CONFIGURATION: %s)\n" % ", ".join(CONFIGURATIONS))
+        return 2
+    config, path = argv[1], argv[2]
+    try:
+        with open(path, "rb") as f:
+            data = f.read()
+    except OSError as e:
+        sys.stderr.write("check: cannot read %s: %s\n" % (path, e))
+        return 2
+    errors, notes = [], []
+
+    # 1. compile: syntax errors and compile-time warnings, verbatim
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        try:
+            compile(data, path, "exec", dont_inherit=True)
+        except SyntaxError as e:
+            import traceback
+            errors.append("".join(traceback.format_exception_only(type(e), e)).rstrip("\n"))
+        except ValueError as e:      # null bytes, for instance
+            errors.append("ValueError: %s" % e)
+    for w in caught:
+        notes.append(warnings.formatwarning(w.message, w.category, w.filename, w.lineno).rstrip("\n"))
+    if errors:
+        report(path, config, errors, notes)
+        return 1
+
+    text = data.decode("utf-8", errors="replace")
+    lines = text.splitlines()
+    tree = ast.parse(data, path)
+
+    # 2. the harness declarations README.md requires
+    posing = [l for l in lines if l.lstrip().startswith("#") and "CP-POSING:" in l]
+    if len(posing) != 1:
+        errors.append("the program must have exactly one line '# CP-POSING: incremental' or '# CP-POSING: reposed' (found %d)" % len(posing))
+    else:
+        val = posing[0].split("CP-POSING:", 1)[1].strip()
+        if val not in ("incremental", "reposed"):
+            errors.append("CP-POSING must be 'incremental' or 'reposed', not %r" % val)
+        else:
+            notes.append("posing: %s" % val)
+
+    # 3. the constants block: parsed here exactly as run parses it, never executed
+    where, consts, cerrs = cpconst.parse(text)
+    errors += cerrs
+    if where is None and not cerrs:
+        notes.append("no constants block: the record will say constants.how = 'none' (right only for a sub-problem without constants)")
+    elif where is not None and not cerrs:
+        notes.append("constants block: lines %d-%d; delivered with their stages: %s" % (
+            where[0] + 1, where[1] + 1,
+            "; ".join("stage %d: %s" % (k, ", ".join(sorted(v))) for k, v in sorted(consts.items())) or "nothing"))
+    if where is not None and not isinstance(where, str):
+        b, e = where[0] + 1, where[1] + 1
+        names = {nm for v in consts.values() for nm in v}
+        for n in ast.walk(tree):
+            if isinstance(n, ast.Name) and n.id in names and not (b < n.lineno < e):
+                errors.append("line %d: %s is a constant of the block, which the program never executes: read it from s.constants[%r] when its stage is posed" % (n.lineno, n.id, n.id))
+
+    # 4. imports, by configuration (systems/python/README.md)
+    for n in ast.walk(tree):
+        if isinstance(n, (ast.Import, ast.ImportFrom)):
+            mods = [a.name for a in n.names] if isinstance(n, ast.Import) else [n.module or "." * n.level]
+            for m in mods:
+                top = m.split(".")[0]
+                if top in CONCURRENCY:
+                    if config == "stdlib-concurrency":
+                        notes.append("line %d: imports %s (a mechanism of stdlib-concurrency)" % (n.lineno, m))
+                    else:
+                        errors.append("line %d: imports %s, which only the stdlib-concurrency configuration adds" % (n.lineno, m))
+                else:
+                    notes.append("line %d: imports %s: an external mechanism, to be listed (systems/python/README.md)" % (n.lineno, m))
+
+    # 5. no reading of the program's own text, where every stage's constants are
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Name) and n.id in ("__file__", "open", "__loader__", "__spec__"):
+            errors.append("line %d: %s: a program may not read files (its own text holds every stage's constants)" % (n.lineno, n.id))
+        if isinstance(n, (ast.Import, ast.ImportFrom)):
+            mods = [x.name for x in n.names] if isinstance(n, ast.Import) else [n.module or ""]
+            for m in mods:
+                if m.split(".")[0] in ("linecache", "inspect", "tokenize", "pathlib", "io", "runpy", "importlib"):
+                    errors.append("line %d: imports %s, which reads source or files (a program's own text holds every stage's constants)" % (n.lineno, m))
+
+    # 6. the H calls: names on cp, attributes of a stage
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Attribute) and isinstance(n.value, ast.Name) and n.value.id == "cp":
+            if n.attr not in H_NAMES:
+                errors.append("line %d: cp.%s is not a harness call (README.md: %s)" % (n.lineno, n.attr, ", ".join(sorted(H_NAMES))))
+    uses_stage = any(isinstance(n, ast.Attribute) and isinstance(n.value, ast.Name) and n.value.id == "cp" and n.attr == "stage"
+                     for n in ast.walk(tree))
+    if not uses_stage:
+        errors.append("the program never calls cp.stage(): it cannot receive a stage")
+    report(path, config, errors, notes)
+    return 1 if errors else 0
+
+
+def report(path, config, errors, notes):
+    print("check %s %s: %s" % (config, path, "%d error(s)" % len(errors) if errors else "no errors found"))
+    for e in errors:
+        print("error: " + e.replace("\n", "\n       "))
+    for n in notes:
+        print("note: " + n)
+    print("(nothing was executed: the program was compiled and its syntax tree read)")
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

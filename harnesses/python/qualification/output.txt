@@ -1,0 +1,110 @@
+Qualification of harnesses/python, 20261127T190245Z
+Python 3.13.7 (main, Sep 30 2025, 10:24:57) [GCC 14.2.0]
+records: harnesses/python/qualification/records/20261127T190245Z
+
+== (a) the system run directly, and through the harness
+PASS  X01 example, behaviour: answers per stage equal the direct run's printed lines  [harness [[], [], ['s = 7']], direct [[], [], ['s = 7']]]
+PASS  X01 example, behaviour: the program's stdout through the harness is byte-identical to the direct run's
+PASS  X01 example, cost: answers per stage equal the direct run's printed lines  [harness [[], [], ['s = 7']], direct [[], [], ['s = 7']]]
+PASS  X01 example, cost: the program's stdout through the harness is byte-identical to the direct run's
+PASS  X01 example, cost: instructions per stage equal the direct count (probes/meter.py's method)  [harness [76, 58, 90], direct [76, 58, 90]]
+PASS  X01 example, cost: relation calls per stage equal the direct PY_START count  [harness [{}, {}, {'plus': 1}], direct [{}, {}, {'plus': 1}]]
+PASS  X06 cost: instructions per stage equal the direct count  [harness [4941, 391, 600057], direct [4941, 391, 600057]]
+PASS  X06 cost: calls of f(12) = 2 f(12) - 1 = 465 (closed form), and equal to the direct count  [harness {'f': 465}, direct {'f': 465}]
+PASS  X06 storage: 17 suspended generator frames for generators nested 16 deep (probe p4: 17)  [{'suspended generators': 1, 'suspended generator frames (gc, process-wide)': 17}]
+PASS  X06 storage: the registered pending generator counts 1 and makes the state 'alternatives pending'  [['alternatives pending']]
+PASS  X06 storage: answers equal the direct run's
+   probes run now in this image: count_mon(finite, 100) = 609, count_mon(finite, 1000) = 6009; traced peak growth of build_and_drop(10**6) = 40000272
+PASS  probe p6 figures reproduced in this image (systems/python/probes/out/3.13.7.txt: 609, 6009)
+   X09 stages 2, 3, 4 (finite(100), finite(100), finite(1000)): 639, 640, 6040 instructions. The first pass through the loop's tail (stage 2) is one instruction fewer than later passes, in the direct run as well: the interpreter's, not the harness's.
+PASS  X09 cost: stage 4 minus stage 3 (finite(1000) against finite(100), same warm code path) = 6009 - 609 (probe p6)  [harness 6040 - 640 = 5400]
+PASS  X09 cost: one call of each registered relation per stage
+PASS  X09 cost: instructions per stage equal the direct count  [harness [33, 639, 640, 6040, 39], direct [33, 639, 640, 6040, 39]]
+PASS  X09 storage: traced peak growth of stage 5 (build and drop 10^6 ints) agrees with probe p3 (40,000,208) to within 4 KiB of harness traffic  [harness 40001357, probe now 40000272, difference 1085]
+PASS  X09 storage: answers equal those of the cost run
+PASS  X09: behaviour, cost and storage runs give the same answers
+PASS  X03 core X03a.UV: each spawned computation's answers equal the direct run's; spawn order ['U', 'V']; side_by_side False
+PASS  X03 core X03a.VU: each spawned computation's answers equal the direct run's; spawn order ['V', 'U']; side_by_side False
+PASS  X03 stdlib-concurrency X03a.UV: each spawned computation's answers equal the direct run's; spawn order ['U', 'V']; side_by_side True
+PASS  X03 core cost: each spawned computation's instructions equal the direct count  [[('U', 535, 535), ('V', 361, 361)]]
+
+== (b) incremental and reposed posing
+PASS  X01: the same answers at every stage, incremental and reposed
+PASS  X01: the same observe() at every stage, incremental and reposed
+PASS  X01 reposed: every later stage has a measured in-run restart cost, and budget = restart cost + 10^6  [[72, 126]]
+PASS  X02 (effects, commit): the same answers at every stage, incremental and reposed  [[['p = 5'], ['p = 5'], []]]
+PASS  X02 reposed: stage 3 replays commit stage 2 as the verbatim answer it gave  [[{'stage': 2, 'value_verbatim': 'p = 5', 'selected_in_run': 'X02a.behaviour.20261127T190302Z'}]]
+PASS  X02 reposed: the effect is logged once per run of stage 1, marked during_replay_of 1 when replayed  [[(1, None), (2, 1), (3, 1)]]
+PASS  X02: the classification log is never reset (the second run starts after the first run's entries)  [entries_before_run 1]
+PASS  X02 cost: entries go only to the observation log
+
+== (c) budget, safety limit and error paths
+PASS  X04a: stage 1 ends in budget after exactly 10^6 instructions  [1000000]
+PASS  X04a: stage 2 continues the same computation (continued_after_budget) and the total equals the uninterrupted direct count  [harness 1000000 + 200086, direct 1200053 + 33]
+PASS  X04a: the answers are those of the direct run, in total
+PASS  X04e: an endless loop is budget at stage 1, continued and budget again at stage 2, each at exactly 10^6  [frontier entries at budget: 50]
+PASS  X04b: a RecursionError is error, with its traceback verbatim, and stage 3 is reposed after-error
+PASS  X01 over three stages, a program that raises at stage 1 (incremental): run exits 0, every stage is error, stages 2 and 3 are reposed after-error with the stopped run's whole count as restart cost, and the record is valid  [exit 0; restart costs [21, 21]]
+PASS  X01 over three stages, a program that raises at stage 1 (reposed): run exits 0, every stage is error, stages 2 and 3 are reposed after-error with the stopped run's whole count as restart cost, and the record is valid  [exit 0; restart costs [21, 21]]
+PASS  X01 over three stages, a program that raises in its set-up, before its first cp.stage() (incremental): run exits 0, every stage is error, stages 2 and 3 are reposed after-error with the stopped run's whole count as restart cost, and the record is valid  [exit 0; restart costs [8, 8]]
+PASS  X01 over three stages, a program that raises in its set-up, before its first cp.stage() (reposed): run exits 0, every stage is error, stages 2 and 3 are reposed after-error with the stopped run's whole count as restart cost, and the record is valid  [exit 0; restart costs [8, 8]]
+PASS  X04b, os.abort(): the process ends by SIGABRT; the stage is error and stage 3 reposed  [{'status': None, 'signal': 'SIGABRT'}]
+PASS  X04c: a loop inside one C call is stopped by the safety limit (4 s), rerun reposed (8 s), final timeout; stage 3 reposed after-timeout
+PASS  X05: under a fixed limit the first stop is final (fixed-limit-timeout), no second attempt
+PASS  X04d: 25 answers printed, the first 20 collected, ended_by cap; the rest stay in stdout
+PASS  X04d: a registered stack with entries left is 'alternatives pending'
+PASS  X07 stdlib-concurrency: a computation blocked in a wait is reported suspended (undetermined, by quiescence); the other finishes
+PASS  X03 with V not registered: V is recorded spawned, state undetermined, and the record is valid
+PASS  X08: CPU time and maximum resident set size are recorded where the problem asks (P13; X08 by its made-up flag)  [cpu 0.12180099999999999 s, rss 25088 KiB]
+PASS  usage error (unknown configuration): exit status 2 and no record  [run: unknown configuration 'nonsense' (systems/python/README.md: core, stdlib-concurrency, extended)]
+PASS  usage error (unknown instance): exit status 2 and no record  [run: unknown instance 'X01z' in harnesses/python/qualification/stages-qual.json]
+PASS  usage error (unknown mode): exit status 2 and no record  [run: unknown mode 'fast']
+PASS  usage error (instance of another problem): exit status 2 and no record  [run: instance X01a belongs to X01, not X02]
+PASS  a program without a valid CP-POSING line: exit status 2 and no record  [run: the program must declare its posing on one line '# CP-POSING: incremental' or '# CP-POSING: reposed' (README.md); found ['sometimes']]
+
+== (f) no anticipation: a stage's constants reach the program's process only when that stage is posed
+PASS  X10: the program's file on disk holds both stages' constants
+   stage 1: the program's process (pid 428) holds {'QZ-EARLY-STAGE-CONSTANT-1180': 4, 'QZ-LATER-STAGE-CONSTANT-5521': 0}
+   stage 2: the program's process (pid 428) holds {'QZ-EARLY-STAGE-CONSTANT-1180': 6, 'QZ-LATER-STAGE-CONSTANT-5521': 4}
+PASS  X10 stage 1: the whole memory of the program's process holds stage 1's constant and not stage 2's  [{'QZ-EARLY-STAGE-CONSTANT-1180': 4, 'QZ-LATER-STAGE-CONSTANT-5521': 0}]
+PASS  X10 stage 2: once stage 2 is posed, its constant is there  [{'QZ-EARLY-STAGE-CONSTANT-1180': 6, 'QZ-LATER-STAGE-CONSTANT-5521': 4}]
+PASS  X10: the program received each stage's constants as s.constants (answers list what it held)
+
+== (d) every record validates
+PASS  validate.py on all 31 records: all valid, none kept as INVALID
+
+== (e) check executes nothing
+PASS  check on a program whose only effects are writing a file and printing a marker: no file, no marker, exit 0
+   check core harnesses/python/qualification/programs/check_marker.py: no errors found
+   note: posing: incremental
+   note: no constants block: the record will say constants.how = 'none' (right only for a sub-problem without constants)
+   (nothing was executed: the program was compiled and its syntax tree read)
+PASS  control: running that program directly does write the file and print the marker
+PASS  check reports a syntax error verbatim, as the interpreter does, exit 1  [interpreter: "SyntaxError: expected ':'"]
+   check core harnesses/python/qualification/programs/check_syntax_error.py: 1 error(s)
+   error:   File "harnesses/python/qualification/programs/check_syntax_error.py", line 2
+              while (s := cp.stage()) is not None
+                                                 ^
+          SyntaxError: expected ':'
+   (nothing was executed: the program was compiled and its syntax tree read)
+PASS  check reports static errors: bad CP-POSING, a non-literal constant, threading in core, a block constant used as a name, an unknown cp call, no cp.stage()
+   check core harnesses/python/qualification/programs/check_static.py: 6 error(s)
+   error: CP-POSING must be 'incremental' or 'reposed', not 'sometimes'
+   error: line 6: the value assigned to L is not a literal
+   error: line 8: K is a constant of the block, which the program never executes: read it from s.constants['K'] when its stage is posed
+   error: line 2: imports threading, which only the stdlib-concurrency configuration adds
+   error: line 8: cp.anwser is not a harness call (README.md: answer, bindings, computation, emit, held, params, pending, problem_alternatives, relations, stage, suspended)
+   error: the program never calls cp.stage(): it cannot receive a stage
+   (nothing was executed: the program was compiled and its syntax tree read)
+PASS  a constant not tagged with a stage: check reports it, and run refuses the program (exit 2, no record)  [run: the program's constants block is malformed (README.md, 3.1): line 4: A_VALUE comes before any '# stage k' line: every constant is tagged with the stage that first uses it]
+   check core harnesses/python/qualification/programs/check_untagged.py: 1 error(s)
+   error: line 4: A_VALUE comes before any '# stage k' line: every constant is tagged with the stage that first uses it
+   note: posing: incremental
+   (nothing was executed: the program was compiled and its syntax tree read)
+PASS  check core x01_total.py: no errors  [check core harnesses/python/qualification/programs/x01_total.py: no errors found]
+PASS  check core x06_counts.py: no errors  [check core harnesses/python/qualification/programs/x06_counts.py: no errors found]
+PASS  check stdlib-concurrency x07_wait.py: no errors  [check stdlib-concurrency harnesses/python/qualification/programs/x07_wait.py: no errors found]
+PASS  check core x09_probes.py: no errors  [check core harnesses/python/qualification/programs/x09_probes.py: no errors found]
+PASS  check core x10_nolookahead.py: no errors  [check core harnesses/python/qualification/programs/x10_nolookahead.py: no errors found]
+
+67 of 67 checks passed
