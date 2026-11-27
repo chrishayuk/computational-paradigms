@@ -1,0 +1,514 @@
+
+## constraints/P01a.pl: 92 tokens, agreement 92/92 (100.0%)
+  class  A      B
+  P      27     27
+  C      0      0
+  R      0      0
+  S      0      0
+  H      65     65
+
+## constraints/P01b.pl: 129 tokens, agreement 129/129 (100.0%)
+  class  A      B
+  P      85     85
+  C      0      0
+  R      0      0
+  S      0      0
+  H      44     44
+
+## constraints/P01c-occurs-check.pl: 97 tokens, agreement 97/97 (100.0%)
+  class  A      B
+  P      62     62
+  C      8      8
+  R      0      0
+  S      0      0
+  H      27     27
+
+## constraints/P01c.pl: 89 tokens, agreement 89/89 (100.0%)
+  class  A      B
+  P      62     62
+  C      0      0
+  R      0      0
+  S      0      0
+  H      27     27
+
+## constraints/P02a.pl: 182 tokens, agreement 182/182 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      47     47
+
+## constraints/P02b.R1R2R3.pl: 182 tokens, agreement 182/182 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      47     47
+
+## constraints/P02b.R1R3R2.pl: 182 tokens, agreement 182/182 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      47     47
+
+## constraints/P02b.R2R1R3.pl: 182 tokens, agreement 182/182 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      47     47
+
+## constraints/P02b.R2R3R1.pl: 182 tokens, agreement 182/182 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      47     47
+
+## constraints/P02b.R3R1R2.pl: 182 tokens, agreement 182/182 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      47     47
+
+## constraints/P02b.R3R2R1.pl: 182 tokens, agreement 182/182 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      47     47
+
+## constraints/P02c.pl: 164 tokens, agreement 164/164 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      29     29
+
+## constraints/P03a.pl: 108 tokens, agreement 108/108 (100.0%)
+  class  A      B
+  P      81     81
+  C      0      0
+  R      0      0
+  S      0      0
+  H      27     27
+
+## constraints/P03b.pl: 95 tokens, agreement 95/95 (100.0%)
+  class  A      B
+  P      64     64
+  C      0      0
+  R      0      0
+  S      0      0
+  H      31     31
+
+## constraints/P03c.pl: 110 tokens, agreement 110/110 (100.0%)
+  class  A      B
+  P      83     83
+  C      0      0
+  R      0      0
+  S      0      0
+  H      27     27
+
+## constraints/P03d.pl: 110 tokens, agreement 110/110 (100.0%)
+  class  A      B
+  P      83     83
+  C      0      0
+  R      0      0
+  S      0      0
+  H      27     27
+
+## constraints/P03e.pl: 129 tokens, agreement 129/129 (100.0%)
+  class  A      B
+  P      102    102
+  C      0      0
+  R      0      0
+  S      0      0
+  H      27     27
+
+## constraints/P03f.pl: 129 tokens, agreement 129/129 (100.0%)
+  class  A      B
+  P      102    102
+  C      0      0
+  R      0      0
+  S      0      0
+  H      27     27
+
+## coroutines/P02a.pl: 455 tokens, agreement 427/455 (93.8%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## coroutines/P02b.R1R2R3.pl: 455 tokens, agreement 427/455 (93.8%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## coroutines/P02b.R1R3R2.pl: 455 tokens, agreement 427/455 (93.8%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## coroutines/P02b.R2R1R3.pl: 455 tokens, agreement 427/455 (93.8%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## coroutines/P02b.R2R3R1.pl: 455 tokens, agreement 427/455 (93.8%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## coroutines/P02b.R3R1R2.pl: 455 tokens, agreement 427/455 (93.8%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## coroutines/P02b.R3R2R1.pl: 455 tokens, agreement 427/455 (93.8%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## coroutines/P02c.pl: 437 tokens, agreement 409/437 (93.6%)
+  class  A      B
+  P      305    303
+  C      77     105
+  R      26     0
+  S      0      0
+  H      29     29
+  tokens 67-67 A=P B=C: .
+      A: full stop ending the sum clause | B: closing delimiter of when/2
+  tokens 77-85 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 104-107 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 184-184 A=P B=C: .
+      A: full stop ending the product clause | B: closing delimiter of when/2
+  tokens 194-202 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 221-224 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product_known clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02a.pl: 349 tokens, agreement 323/349 (92.6%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02b.R1R2R3.pl: 349 tokens, agreement 323/349 (92.6%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02b.R1R3R2.pl: 349 tokens, agreement 323/349 (92.6%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02b.R2R1R3.pl: 349 tokens, agreement 323/349 (92.6%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02b.R2R3R1.pl: 349 tokens, agreement 323/349 (92.6%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02b.R3R1R2.pl: 349 tokens, agreement 323/349 (92.6%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02b.R3R2R1.pl: 349 tokens, agreement 323/349 (92.6%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      47     47
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## plain/P02c.pl: 331 tokens, agreement 305/331 (92.1%)
+  class  A      B
+  P      267    267
+  C      9      35
+  R      26     0
+  S      0      0
+  H      29     29
+  tokens 24-32 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 51-54 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a sum clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 88-96 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+  tokens 115-118 A=R B=C: nonvar ( A )
+      A: mode test nonvar ( A ) in a product clause | B: mode dispatch: test whether an arithmetic place is instantiated
+
+## tabling/P01b.pl: 135 tokens, agreement 135/135 (100.0%)
+  class  A      B
+  P      85     85
+  C      6      6
+  R      0      0
+  S      0      0
+  H      44     44
+
+## tabling/P01c-occurs-check.pl: 103 tokens, agreement 103/103 (100.0%)
+  class  A      B
+  P      62     62
+  C      14     14
+  R      0      0
+  S      0      0
+  H      27     27
+
+## tabling/P01c.pl: 95 tokens, agreement 95/95 (100.0%)
+  class  A      B
+  P      62     62
+  C      6      6
+  R      0      0
+  S      0      0
+  H      27     27
+
+## tabling/P03a.pl: 114 tokens, agreement 114/114 (100.0%)
+  class  A      B
+  P      81     81
+  C      6      6
+  R      0      0
+  S      0      0
+  H      27     27
+
+## tabling/P03b.pl: 101 tokens, agreement 101/101 (100.0%)
+  class  A      B
+  P      64     64
+  C      6      6
+  R      0      0
+  S      0      0
+  H      31     31
+
+## tabling/P03c.pl: 116 tokens, agreement 116/116 (100.0%)
+  class  A      B
+  P      83     83
+  C      6      6
+  R      0      0
+  S      0      0
+  H      27     27
+
+## tabling/P03d.pl: 116 tokens, agreement 116/116 (100.0%)
+  class  A      B
+  P      83     83
+  C      6      6
+  R      0      0
+  S      0      0
+  H      27     27
+
+## tabling/P03e.pl: 139 tokens, agreement 139/139 (100.0%)
+  class  A      B
+  P      102    102
+  C      10     10
+  R      0      0
+  S      0      0
+  H      27     27
+
+## tabling/P03f.pl: 139 tokens, agreement 139/139 (100.0%)
+  class  A      B
+  P      102    102
+  C      10     10
+  R      0      0
+  S      0      0
+  H      27     27
+
+## per system
+  constraints: 2526/2526 (100.0%)
+  coroutines: 3398/3622 (93.8%)
+  plain: 2566/2774 (92.5%)
+  tabling: 1058/1058 (100.0%)
+
+## disagreements by (A, B) class
+  R→C: 416
+  P→C: 16

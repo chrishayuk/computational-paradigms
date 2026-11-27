@@ -1,0 +1,3475 @@
+{
+ "tokens": {
+  "absys/P01a.ab1": [
+   {
+    "from": 0,
+    "to": 2,
+    "class": "P",
+    "construct": "constants block entry: zval = 2 (the stage 3 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 3,
+    "to": 5,
+    "class": "P",
+    "construct": "stage information: x = y",
+    "rule": "rule 1; P covers 'the information of each stage' and the equality connective"
+   },
+   {
+    "from": 6,
+    "to": 8,
+    "class": "P",
+    "construct": "stage information: y = z",
+    "rule": "rule 1; P covers 'the information of each stage' and the equality connective"
+   },
+   {
+    "from": 9,
+    "to": 11,
+    "class": "P",
+    "construct": "stage information: z = zval",
+    "rule": "rule 1; P covers 'the information of each stage' and the equality connective"
+   }
+  ],
+  "absys/P01b.ab1": [
+   {
+    "from": 0,
+    "to": 6,
+    "class": "P",
+    "construct": "constants block entry: left = [ 1 ; 2 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 7,
+    "to": 11,
+    "class": "P",
+    "construct": "constants block entry: sval = [ 3 ] (the stage 2 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 12,
+    "to": 21,
+    "class": "P",
+    "construct": "conc: definition head 'conc' = lambda with its parameters, and the opening 'begin {' of its body (definition of conc by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 22,
+    "to": 28,
+    "class": "P",
+    "construct": "conc case 1: p = [ ] q = r (conc(<>, b, b))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 29,
+    "to": 29,
+    "class": "P",
+    "construct": "'or' between conc's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 30,
+    "to": 36,
+    "class": "P",
+    "construct": "conc case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 37,
+    "to": 43,
+    "class": "P",
+    "construct": "conc case 2 head equation: r = [ h & m' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 44,
+    "to": 51,
+    "class": "P",
+    "construct": "conc case 2 body conjunct (in the problem's order): conc ( k , q , m )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 52,
+    "to": 53,
+    "class": "P",
+    "construct": "closing '} end' of conc's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 54,
+    "to": 61,
+    "class": "P",
+    "construct": "stage information / query: conc ( left , s , t )",
+    "rule": "rule 1; P covers the query"
+   },
+   {
+    "from": 62,
+    "to": 64,
+    "class": "P",
+    "construct": "stage information: s = sval",
+    "rule": "rule 1; P covers 'the information of each stage' and the equality connective"
+   }
+  ],
+  "absys/P01c.ab1": [
+   {
+    "from": 0,
+    "to": 2,
+    "class": "P",
+    "construct": "constants block entry: pfx = 1 (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 3,
+    "to": 9,
+    "class": "P",
+    "construct": "stage information: x = [ pfx & x ]",
+    "rule": "rule 1; P covers 'the information of each stage' and the equality connective"
+   }
+  ],
+  "absys/P02a.ab1": [
+   {
+    "from": 0,
+    "to": 2,
+    "class": "P",
+    "construct": "constants block entry: r1sum = 16 (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 3,
+    "to": 5,
+    "class": "P",
+    "construct": "constants block entry: r3add = 10 (the stage 3 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 6,
+    "to": 8,
+    "class": "P",
+    "construct": "constants block entry: r3sum = 12 (the stage 3 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 9,
+    "to": 13,
+    "class": "P",
+    "construct": "stage information / query: u + v = r1sum",
+    "rule": "rule 1; P covers the query"
+   },
+   {
+    "from": 14,
+    "to": 18,
+    "class": "P",
+    "construct": "stage information / query: w * u = v",
+    "rule": "rule 1; P covers the query"
+   },
+   {
+    "from": 19,
+    "to": 23,
+    "class": "P",
+    "construct": "stage information / query: u + r3add = r3sum",
+    "rule": "rule 1; P covers the query"
+   }
+  ],
+  "absys/P02b.ab1": [
+   {
+    "from": 0,
+    "to": 2,
+    "class": "P",
+    "construct": "constants block entry: r1sum = 16 (the part R1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 3,
+    "to": 5,
+    "class": "P",
+    "construct": "constants block entry: r3add = 10 (the part R3 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 6,
+    "to": 8,
+    "class": "P",
+    "construct": "constants block entry: r3sum = 12 (the part R3 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 9,
+    "to": 13,
+    "class": "P",
+    "construct": "stage information / query: u + v = r1sum",
+    "rule": "rule 1; P covers the query"
+   },
+   {
+    "from": 14,
+    "to": 18,
+    "class": "P",
+    "construct": "stage information / query: w * u = v",
+    "rule": "rule 1; P covers the query"
+   },
+   {
+    "from": 19,
+    "to": 23,
+    "class": "P",
+    "construct": "stage information / query: u + r3add = r3sum",
+    "rule": "rule 1; P covers the query"
+   }
+  ],
+  "absys/P02c.ab1": [
+   {
+    "from": 0,
+    "to": 2,
+    "class": "P",
+    "construct": "constants block entry: r1sum = 16 (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 3,
+    "to": 5,
+    "class": "P",
+    "construct": "constants block entry: r3add = 10 (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 6,
+    "to": 8,
+    "class": "P",
+    "construct": "constants block entry: r3sum = 12 (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 9,
+    "to": 9,
+    "class": "P",
+    "construct": "'begin' opening the stage's conjunction of R1, R2, R3 (Absys 1's conjunction bracket)",
+    "rule": "rule 10 with the P list's conjunction connective; see notes (could be argued C under rule 1)"
+   },
+   {
+    "from": 10,
+    "to": 14,
+    "class": "P",
+    "construct": "R1: u + v = r1sum",
+    "rule": "rule 8 and SPECIFICATION Arithmetic: a primitive arithmetic relation written as the relation, served in every direction by the core"
+   },
+   {
+    "from": 15,
+    "to": 19,
+    "class": "P",
+    "construct": "R2: w * u = v",
+    "rule": "rule 8 and SPECIFICATION Arithmetic: a primitive arithmetic relation written as the relation, served in every direction by the core"
+   },
+   {
+    "from": 20,
+    "to": 24,
+    "class": "P",
+    "construct": "R3: u + r3add = r3sum",
+    "rule": "rule 8 and SPECIFICATION Arithmetic: a primitive arithmetic relation written as the relation, served in every direction by the core"
+   },
+   {
+    "from": 25,
+    "to": 25,
+    "class": "P",
+    "construct": "'end' closing the stage's conjunction",
+    "rule": "rule 10 with the P list's conjunction connective"
+   }
+  ],
+  "absys/P03a.ab1": [
+   {
+    "from": 0,
+    "to": 6,
+    "class": "P",
+    "construct": "constants block entry: ca = [ 1 ; 2 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 7,
+    "to": 11,
+    "class": "P",
+    "construct": "constants block entry: cb = [ 3 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 12,
+    "to": 21,
+    "class": "P",
+    "construct": "conc: definition head 'conc' = lambda with its parameters, and the opening 'begin {' of its body (definition of conc by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 22,
+    "to": 28,
+    "class": "P",
+    "construct": "conc case 1: p = [ ] q = r (conc(<>, b, b))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 29,
+    "to": 29,
+    "class": "P",
+    "construct": "'or' between conc's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 30,
+    "to": 36,
+    "class": "P",
+    "construct": "conc case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 37,
+    "to": 43,
+    "class": "P",
+    "construct": "conc case 2 head equation: r = [ h & m' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 44,
+    "to": 51,
+    "class": "P",
+    "construct": "conc case 2 body conjunct (in the problem's order): conc ( k , q , m )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 52,
+    "to": 53,
+    "class": "P",
+    "construct": "closing '} end' of conc's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 54,
+    "to": 61,
+    "class": "P",
+    "construct": "stage information / query: conc ( ca , cb , c )",
+    "rule": "rule 1; P covers the query"
+   }
+  ],
+  "absys/P03b.ab1": [
+   {
+    "from": 0,
+    "to": 6,
+    "class": "P",
+    "construct": "constants block entry: cc = [ 1 ; 2 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 7,
+    "to": 16,
+    "class": "P",
+    "construct": "conc: definition head 'conc' = lambda with its parameters, and the opening 'begin {' of its body (definition of conc by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 17,
+    "to": 23,
+    "class": "P",
+    "construct": "conc case 1: p = [ ] q = r (conc(<>, b, b))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 24,
+    "to": 24,
+    "class": "P",
+    "construct": "'or' between conc's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 25,
+    "to": 31,
+    "class": "P",
+    "construct": "conc case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 32,
+    "to": 38,
+    "class": "P",
+    "construct": "conc case 2 head equation: r = [ h & m' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 39,
+    "to": 46,
+    "class": "P",
+    "construct": "conc case 2 body conjunct (in the problem's order): conc ( k , q , m )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 47,
+    "to": 48,
+    "class": "P",
+    "construct": "closing '} end' of conc's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 49,
+    "to": 56,
+    "class": "P",
+    "construct": "stage information / query: conc ( a , b , cc )",
+    "rule": "rule 1; P covers the query"
+   }
+  ],
+  "absys/P03c.ab1": [
+   {
+    "from": 0,
+    "to": 4,
+    "class": "P",
+    "construct": "constants block entry: ca = [ 1 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 5,
+    "to": 13,
+    "class": "P",
+    "construct": "constants block entry: cc = [ 1 ; 2 ; 3 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 14,
+    "to": 23,
+    "class": "P",
+    "construct": "conc: definition head 'conc' = lambda with its parameters, and the opening 'begin {' of its body (definition of conc by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 24,
+    "to": 30,
+    "class": "P",
+    "construct": "conc case 1: p = [ ] q = r (conc(<>, b, b))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 31,
+    "to": 31,
+    "class": "P",
+    "construct": "'or' between conc's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 32,
+    "to": 38,
+    "class": "P",
+    "construct": "conc case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 39,
+    "to": 45,
+    "class": "P",
+    "construct": "conc case 2 head equation: r = [ h & m' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 46,
+    "to": 53,
+    "class": "P",
+    "construct": "conc case 2 body conjunct (in the problem's order): conc ( k , q , m )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 54,
+    "to": 55,
+    "class": "P",
+    "construct": "closing '} end' of conc's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 56,
+    "to": 63,
+    "class": "P",
+    "construct": "stage information / query: conc ( ca , b , cc )",
+    "rule": "rule 1; P covers the query"
+   }
+  ],
+  "absys/P03d.ab1": [
+   {
+    "from": 0,
+    "to": 4,
+    "class": "P",
+    "construct": "constants block entry: cb = [ 3 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 5,
+    "to": 13,
+    "class": "P",
+    "construct": "constants block entry: cc = [ 1 ; 2 ; 3 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 14,
+    "to": 23,
+    "class": "P",
+    "construct": "conc: definition head 'conc' = lambda with its parameters, and the opening 'begin {' of its body (definition of conc by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 24,
+    "to": 30,
+    "class": "P",
+    "construct": "conc case 1: p = [ ] q = r (conc(<>, b, b))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 31,
+    "to": 31,
+    "class": "P",
+    "construct": "'or' between conc's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 32,
+    "to": 38,
+    "class": "P",
+    "construct": "conc case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 39,
+    "to": 45,
+    "class": "P",
+    "construct": "conc case 2 head equation: r = [ h & m' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 46,
+    "to": 53,
+    "class": "P",
+    "construct": "conc case 2 body conjunct (in the problem's order): conc ( k , q , m )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 54,
+    "to": 55,
+    "class": "P",
+    "construct": "closing '} end' of conc's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 56,
+    "to": 63,
+    "class": "P",
+    "construct": "stage information / query: conc ( a , cb , cc )",
+    "rule": "rule 1; P covers the query"
+   }
+  ],
+  "absys/P03e.ab1": [
+   {
+    "from": 0,
+    "to": 8,
+    "class": "P",
+    "construct": "constants block entry: ra = [ 1 ; 2 ; 3 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 9,
+    "to": 18,
+    "class": "P",
+    "construct": "conc: definition head 'conc' = lambda with its parameters, and the opening 'begin {' of its body (definition of conc by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 19,
+    "to": 25,
+    "class": "P",
+    "construct": "conc case 1: p = [ ] q = r (conc(<>, b, b))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 26,
+    "to": 26,
+    "class": "P",
+    "construct": "'or' between conc's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 27,
+    "to": 33,
+    "class": "P",
+    "construct": "conc case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 34,
+    "to": 40,
+    "class": "P",
+    "construct": "conc case 2 head equation: r = [ h & m' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 41,
+    "to": 48,
+    "class": "P",
+    "construct": "conc case 2 body conjunct (in the problem's order): conc ( k , q , m )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 49,
+    "to": 50,
+    "class": "P",
+    "construct": "closing '} end' of conc's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 51,
+    "to": 58,
+    "class": "P",
+    "construct": "rev: definition head 'rev' = lambda with its parameters, and the opening 'begin {' of its body (definition of rev by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 59,
+    "to": 66,
+    "class": "P",
+    "construct": "rev case 1: p = [ ] r = [ ] (rev(<>, <>))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 67,
+    "to": 67,
+    "class": "P",
+    "construct": "'or' between rev's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 68,
+    "to": 74,
+    "class": "P",
+    "construct": "rev case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 75,
+    "to": 80,
+    "class": "P",
+    "construct": "rev case 2 body conjunct (in the problem's order): rev ( k , n' )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 81,
+    "to": 90,
+    "class": "P",
+    "construct": "rev case 2 body conjunct (in the problem's order): conc ( n , [ h ] , r )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 91,
+    "to": 92,
+    "class": "P",
+    "construct": "closing '} end' of rev's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 93,
+    "to": 98,
+    "class": "P",
+    "construct": "stage information / query: rev ( ra , b )",
+    "rule": "rule 1; P covers the query"
+   }
+  ],
+  "absys/P03f.ab1": [
+   {
+    "from": 0,
+    "to": 8,
+    "class": "P",
+    "construct": "constants block entry: rb = [ 1 ; 2 ; 3 ] (the stage 1 constant)",
+    "rule": "rule 1 (removing the constants-block line changes what the stage asserts); harness README 3.12: the block is classed by METRICS.md's rules, not H"
+   },
+   {
+    "from": 9,
+    "to": 18,
+    "class": "P",
+    "construct": "conc: definition head 'conc' = lambda with its parameters, and the opening 'begin {' of its body (definition of conc by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 19,
+    "to": 25,
+    "class": "P",
+    "construct": "conc case 1: p = [ ] q = r (conc(<>, b, b))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 26,
+    "to": 26,
+    "class": "P",
+    "construct": "'or' between conc's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 27,
+    "to": 33,
+    "class": "P",
+    "construct": "conc case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 34,
+    "to": 40,
+    "class": "P",
+    "construct": "conc case 2 head equation: r = [ h & m' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 41,
+    "to": 48,
+    "class": "P",
+    "construct": "conc case 2 body conjunct (in the problem's order): conc ( k , q , m )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 49,
+    "to": 50,
+    "class": "P",
+    "construct": "closing '} end' of conc's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 51,
+    "to": 58,
+    "class": "P",
+    "construct": "rev: definition head 'rev' = lambda with its parameters, and the opening 'begin {' of its body (definition of rev by cases)",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 59,
+    "to": 66,
+    "class": "P",
+    "construct": "rev case 1: p = [ ] r = [ ] (rev(<>, <>))",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 67,
+    "to": 67,
+    "class": "P",
+    "construct": "'or' between rev's cases 1 and 2",
+    "rule": "rule 6 (a disjunction the problem states: the definition's two cases); rule 20 would give the same class"
+   },
+   {
+    "from": 68,
+    "to": 74,
+    "class": "P",
+    "construct": "rev case 2 head equation: p = [ h' & k' ]",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 75,
+    "to": 80,
+    "class": "P",
+    "construct": "rev case 2 body conjunct (in the problem's order): rev ( k , n' )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 81,
+    "to": 90,
+    "class": "P",
+    "construct": "rev case 2 body conjunct (in the problem's order): conc ( n , [ h ] , r )",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 91,
+    "to": 92,
+    "class": "P",
+    "construct": "closing '} end' of rev's body",
+    "rule": "rule 3 (transcription of the problem's definition by cases, in presentation order); rule 10 for the tokens that introduce and close it"
+   },
+   {
+    "from": 93,
+    "to": 98,
+    "class": "P",
+    "construct": "stage information / query: rev ( a , rb )",
+    "rule": "rule 1; P covers the query"
+   }
+  ]
+ },
+ "outcomes": [
+  {
+   "configuration": "absys",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys/P01/raw/P01a.behaviour.20261127T194848Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "x and y identified by a suspended equation x = y (the system's representation of two unknowns made equal); z does not occur (free). Equals 'every assignment with x = y; z free'.",
+   "observations": "unknowns: x = y held as one suspended equation between the two unknowns (a recorded equation, not one shared variable); z does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_equations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys/P01/raw/P01a.behaviour.20261127T194848Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "x, y, z identified through two suspended equations x = y, y = z: equals 'every assignment with x = y = z'.",
+   "observations": "unknowns: x = y = z held as two suspended equations, x = y and y = z; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_equations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys/P01/raw/P01a.behaviour.20261127T194848Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = y = z = 2, explicit: the valid outcome.",
+   "observations": "unknowns: none remain unknown; the value 2 reached x, y and z (cost run: 6 steps in the stage, 3 reactivating events); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 6 steps in the stage, 10 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P01b",
+   "program": "P01b.ab1",
+   "record": "results/absys/absys/P01/raw/P01b.behaviour.20261127T194849Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "t = [1;2&m2] with s identified with m2 by a suspended equation: t = <1,2> ++ s, s free, which is the valid outcome. The program's conc does not test that s is a sequence (see notes), but the solved form t = <1,2> ++ s only denotes sequences s, as the valid outcome does.",
+   "observations": "unknowns: s identified with an internal unknown m2 by a suspended equation s = m2; t bound to the open list [1;2&m2]; the conc application has been fully elaborated (derivation #5 is the only survivor of the or-branches); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_equations': 1}; answers collected 1, ended_by exhausted; cost run: 18 steps in the stage, 18 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P01b",
+   "program": "P01b.ab1",
+   "record": "results/absys/absys/P01/raw/P01b.behaviour.20261127T194849Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "s = [3], t = [1;2;3]: the valid outcome.",
+   "observations": "unknowns: none remain unknown; the value of s reached t through the suspended equation s = m2 (cost run: 4 steps in the stage, 2 reactivating events); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 22 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P01c",
+   "program": "P01c.ab1",
+   "record": "results/absys/absys/P01/raw/P01c.behaviour.20261127T194851Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "reading": "finite",
+   "semantic": "unsound",
+   "representation": "cyclic",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = [1&↻] reports a (cyclic) solution where the finite reading has none, so the report denotes an outcome that is not valid (problem file: a cyclic value is unsound under the finite reading).",
+   "observations": "unknown x bound to a cyclic term, printed with ↻ ('the enclosing list again'); configuration has no occur check (docs/decisions.md rule 8, cited in the program and the systems file); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; P01c: 'A cyclic value, presented as such, is complete under the rational reading and unsound under the finite one'"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P01c",
+   "program": "P01c.ab1",
+   "record": "results/absys/absys/P01/raw/P01c.behaviour.20261127T194851Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "reading": "rational",
+   "semantic": "complete",
+   "representation": "cyclic",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = [1&↻], printed as a cyclic list, is the rational tree <1,1,1,...>: the one solution under the rational reading.",
+   "observations": "unknown x bound to a cyclic term, printed with ↻ ('the enclosing list again'); configuration has no occur check (docs/decisions.md rule 8, cited in the program and the systems file); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; P01c: 'A cyclic value, presented as such, is complete under the rational reading and unsound under the finite one'"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys/P02/raw/P02a.behaviour.20261127T194852Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys/P02/raw/P02a.behaviour.20261127T194852Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys/P02/raw/P02a.behaviour.20261127T194852Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R1R2R3.behaviour.20261127T194854Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R1R2R3.behaviour.20261127T194854Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R1R2R3.behaviour.20261127T194854Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R1R3R2.behaviour.20261127T194855Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R1R3R2.behaviour.20261127T194855Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2, v = 14, w not occurring (free): equals the valid outcome 'u = 2, v = 14; w free'.",
+   "observations": "unknowns: u = 2, v = 14; w does not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 6 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R1R3R2.behaviour.20261127T194855Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 8 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R2R1R3.behaviour.20261127T194856Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: w * u = v (1 relation, 3 occurrences); input: R2 (1 relation, 3 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R2 itself, the valid outcome 'v = w * u (infinite)'. Infinite solution set; one primitive relation over three unknowns cannot be smaller.",
+   "observations": "unknowns: w, u and v uninstantiated, held by the suspended relation w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R2R1R3.behaviour.20261127T194856Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R2R1R3.behaviour.20261127T194856Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R2R3R1.behaviour.20261127T194858Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: w * u = v (1 relation, 3 occurrences); input: R2 (1 relation, 3 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R2 itself, the valid outcome 'v = w * u (infinite)'. Infinite solution set; one primitive relation over three unknowns cannot be smaller.",
+   "observations": "unknowns: w, u and v uninstantiated, held by the suspended relation w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R2R3R1.behaviour.20261127T194858Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": false,
+   "residual_size": "held: u = 2 and w * 2 = v (1 relation left, 2 occurrences); input: R2 and R3 (2 relations, 4 occurrences: w, u, v in w * u = v, and u in u + 10 = 12)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: u = 2 bound and w*2 = v held is the valid outcome 'u = 2, v = 2w, for every integer w'. Reduced: the solution set is infinite and one relation over two unknowns is the least that can express it. Not identical to the posed information: R3 was solved and its value substituted into R2.",
+   "observations": "unknowns: u = 2; w and v uninstantiated, held by the suspended relation w * 2 = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 3 steps in the stage, 5 restated, 1 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R2R3R1.behaviour.20261127T194858Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 9 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R3R1R2.behaviour.20261127T194859Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2 with v and w not occurring (free): equals the valid outcome 'u = 2; v and w free'.",
+   "observations": "unknowns: u = 2; v and w do not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R3R1R2.behaviour.20261127T194859Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2, v = 14, w not occurring (free): equals the valid outcome 'u = 2, v = 14; w free'.",
+   "observations": "unknowns: u = 2, v = 14; w does not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R3R1R2.behaviour.20261127T194859Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 6 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R3R2R1.behaviour.20261127T194901Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2 with v and w not occurring (free): equals the valid outcome 'u = 2; v and w free'.",
+   "observations": "unknowns: u = 2; v and w do not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R3R2R1.behaviour.20261127T194901Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": false,
+   "residual_size": "held: u = 2 and w * 2 = v (1 relation left, 2 occurrences); input: R2 and R3 (2 relations, 4 occurrences: w, u, v in w * u = v, and u in u + 10 = 12)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: u = 2 bound and w*2 = v held is the valid outcome 'u = 2, v = 2w, for every integer w'. Reduced: the solution set is infinite and one relation over two unknowns is the least that can express it. Not identical to the posed information: R3 was solved and its value substituted into R2.",
+   "observations": "unknowns: u = 2; w and v uninstantiated, held by the suspended relation w * 2 = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys/P02/raw/P02b.R3R2R1.behaviour.20261127T194901Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 8 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P02c",
+   "program": "P02c.ab1",
+   "record": "results/absys/absys/P02/raw/P02c.behaviour.20261127T194902Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "u = 2, v = 14, w = 7: the valid outcome.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 9 steps in the stage, 9 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P03a",
+   "program": "P03a.ab1",
+   "record": "results/absys/absys/P03/raw/P03a.behaviour.20261127T194903Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "c = [1;2;3], one derivation: the one valid outcome; answer completeness 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 18 steps in the stage, 18 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P03b",
+   "program": "P03b.ab1",
+   "record": "results/absys/absys/P03/raw/P03b.behaviour.20261127T194905Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "three derivations, (a, b) = ([], [1;2]), ([1], [2]), ([1;2], []): exactly the three valid outcomes, in that order; answer completeness 3/3, 0 invalid. The system reports it has every answer (no derivation still elaborating, none suspended).",
+   "observations": "unknowns: none remain unknown in any derivation; alternatives held: 3 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 3, ended_by exhausted; cost run: 23 steps in the stage, 23 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P03c",
+   "program": "P03c.ab1",
+   "record": "results/absys/absys/P03/raw/P03c.behaviour.20261127T194906Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "b = [2;3]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 13 steps in the stage, 13 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P03d",
+   "program": "P03d.ab1",
+   "record": "results/absys/absys/P03/raw/P03d.behaviour.20261127T194907Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "a = [1;2]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 27 steps in the stage, 27 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P03e",
+   "program": "P03e.ab1",
+   "record": "results/absys/absys/P03/raw/P03e.behaviour.20261127T194909Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "b = [3;2;1]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 52 steps in the stage, 52 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "record": "results/absys/absys/P03/raw/P03f.behaviour.20261127T194910Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget",
+    "suspended"
+   ],
+   "residual_equivalence": "one hibernating derivation with a = [3;2;1], the one valid outcome; the other 899 derivations are still elaborating when the budget ran out. Checked by script (p03f_check.py): every one of them already fixes a prefix of a of at least 32 elements, while every solution of rev(a, <1,2,3>) has 3, so each still-elaborating derivation denotes no solution (an inconsistency not yet detected). So the report denotes exactly {a = <3,2,1>}: complete; answer completeness 1/1, 0 invalid answers. The problem file: 'a system that reports it and then runs out of budget is complete with budget'.",
+   "observations": "representation classed on the valid explicit derivation; the other form, 899 still-elaborating derivations each with an open or over-long a, suspended equations between element unknowns and pending rev/conc goals, is recorded here (it is a residual whose inconsistency is undetected). The first of the 20 answers collected (cap 20) is the valid one; the rest are unfinished derivations, not solutions. The system does not know it has every answer: it goes on to the budget (10^6 steps). alternatives held: 900 derivation(s), held as all-live (all live at once); suspended work: 222703 process(es) the printer shows {'susp_equations': 222703}; answers collected 20, ended_by budget; cost run: steps unavailable (the cost run's attempts both hit the safety limit); no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; Representation, 'two forms': classed on the more explicit valid form; P03 Observations on P03f"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys-depth-first/P01/raw/P01a.behaviour.20261127T201154Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "x and y identified by a suspended equation x = y (the system's representation of two unknowns made equal); z does not occur (free). Equals 'every assignment with x = y; z free'.",
+   "observations": "unknowns: x = y held as one suspended equation between the two unknowns (a recorded equation, not one shared variable); z does not occur; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_equations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys-depth-first/P01/raw/P01a.behaviour.20261127T201154Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "x, y, z identified through two suspended equations x = y, y = z: equals 'every assignment with x = y = z'.",
+   "observations": "unknowns: x = y = z held as two suspended equations, x = y and y = z; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 2 process(es) the printer shows {'susp_equations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys-depth-first/P01/raw/P01a.behaviour.20261127T201154Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = y = z = 2, explicit: the valid outcome.",
+   "observations": "unknowns: none remain unknown; the value 2 reached x, y and z (cost run: 6 steps in the stage, 3 reactivating events); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 6 steps in the stage, 10 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P01b",
+   "program": "P01b.ab1",
+   "record": "results/absys/absys-depth-first/P01/raw/P01b.behaviour.20261127T201156Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "t = [1;2&m2] with s identified with m2 by a suspended equation: t = <1,2> ++ s, s free, which is the valid outcome. The program's conc does not test that s is a sequence (see notes), but the solved form t = <1,2> ++ s only denotes sequences s, as the valid outcome does.",
+   "observations": "unknowns: s identified with an internal unknown m2 by a suspended equation s = m2; t bound to the open list [1;2&m2]; the conc application has been fully elaborated (derivation #5 is the only survivor of the or-branches); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_equations': 1}; answers collected 1, ended_by exhausted; cost run: 18 steps in the stage, 18 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P01b",
+   "program": "P01b.ab1",
+   "record": "results/absys/absys-depth-first/P01/raw/P01b.behaviour.20261127T201156Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "s = [3], t = [1;2;3]: the valid outcome.",
+   "observations": "unknowns: none remain unknown; the value of s reached t through the suspended equation s = m2 (cost run: 4 steps in the stage, 2 reactivating events); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 22 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P01c",
+   "program": "P01c.ab1",
+   "record": "results/absys/absys-depth-first/P01/raw/P01c.behaviour.20261127T201157Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "reading": "finite",
+   "semantic": "unsound",
+   "representation": "cyclic",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = [1&↻] reports a (cyclic) solution where the finite reading has none, so the report denotes an outcome that is not valid (problem file: a cyclic value is unsound under the finite reading).",
+   "observations": "unknown x bound to a cyclic term, printed with ↻ ('the enclosing list again'); configuration has no occur check (docs/decisions.md rule 8, cited in the program and the systems file); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; P01c: 'A cyclic value, presented as such, is complete under the rational reading and unsound under the finite one'"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P01c",
+   "program": "P01c.ab1",
+   "record": "results/absys/absys-depth-first/P01/raw/P01c.behaviour.20261127T201157Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "reading": "rational",
+   "semantic": "complete",
+   "representation": "cyclic",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = [1&↻], printed as a cyclic list, is the rational tree <1,1,1,...>: the one solution under the rational reading.",
+   "observations": "unknown x bound to a cyclic term, printed with ↻ ('the enclosing list again'); configuration has no occur check (docs/decisions.md rule 8, cited in the program and the systems file); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; P01c: 'A cyclic value, presented as such, is complete under the rational reading and unsound under the finite one'"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02a.behaviour.20261127T201158Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02a.behaviour.20261127T201158Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02a.behaviour.20261127T201158Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R1R2R3.behaviour.20261127T201200Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R1R2R3.behaviour.20261127T201200Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R1R2R3.behaviour.20261127T201200Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R1R3R2.behaviour.20261127T201201Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R1R3R2.behaviour.20261127T201201Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2, v = 14, w not occurring (free): equals the valid outcome 'u = 2, v = 14; w free'.",
+   "observations": "unknowns: u = 2, v = 14; w does not occur (free); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 6 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R1R3R2.behaviour.20261127T201201Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 8 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R2R1R3.behaviour.20261127T201202Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: w * u = v (1 relation, 3 occurrences); input: R2 (1 relation, 3 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R2 itself, the valid outcome 'v = w * u (infinite)'. Infinite solution set; one primitive relation over three unknowns cannot be smaller.",
+   "observations": "unknowns: w, u and v uninstantiated, held by the suspended relation w * u = v; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R2R1R3.behaviour.20261127T201202Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R2R1R3.behaviour.20261127T201202Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R2R3R1.behaviour.20261127T201204Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: w * u = v (1 relation, 3 occurrences); input: R2 (1 relation, 3 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R2 itself, the valid outcome 'v = w * u (infinite)'. Infinite solution set; one primitive relation over three unknowns cannot be smaller.",
+   "observations": "unknowns: w, u and v uninstantiated, held by the suspended relation w * u = v; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R2R3R1.behaviour.20261127T201204Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": false,
+   "residual_size": "held: u = 2 and w * 2 = v (1 relation left, 2 occurrences); input: R2 and R3 (2 relations, 4 occurrences: w, u, v in w * u = v, and u in u + 10 = 12)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: u = 2 bound and w*2 = v held is the valid outcome 'u = 2, v = 2w, for every integer w'. Reduced: the solution set is infinite and one relation over two unknowns is the least that can express it. Not identical to the posed information: R3 was solved and its value substituted into R2.",
+   "observations": "unknowns: u = 2; w and v uninstantiated, held by the suspended relation w * 2 = v; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 3 steps in the stage, 5 restated, 1 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R2R3R1.behaviour.20261127T201204Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 9 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R3R1R2.behaviour.20261127T201205Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2 with v and w not occurring (free): equals the valid outcome 'u = 2; v and w free'.",
+   "observations": "unknowns: u = 2; v and w do not occur (free); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R3R1R2.behaviour.20261127T201205Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2, v = 14, w not occurring (free): equals the valid outcome 'u = 2, v = 14; w free'.",
+   "observations": "unknowns: u = 2, v = 14; w does not occur (free); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R3R1R2.behaviour.20261127T201205Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 6 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R3R2R1.behaviour.20261127T201207Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2 with v and w not occurring (free): equals the valid outcome 'u = 2; v and w free'.",
+   "observations": "unknowns: u = 2; v and w do not occur (free); alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R3R2R1.behaviour.20261127T201207Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": false,
+   "residual_size": "held: u = 2 and w * 2 = v (1 relation left, 2 occurrences); input: R2 and R3 (2 relations, 4 occurrences: w, u, v in w * u = v, and u in u + 10 = 12)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: u = 2 bound and w*2 = v held is the valid outcome 'u = 2, v = 2w, for every integer w'. Reduced: the solution set is infinite and one relation over two unknowns is the least that can express it. Not identical to the posed information: R3 was solved and its value substituted into R2.",
+   "observations": "unknowns: u = 2; w and v uninstantiated, held by the suspended relation w * 2 = v; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02b.R3R2R1.behaviour.20261127T201207Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 8 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P02c",
+   "program": "P02c.ab1",
+   "record": "results/absys/absys-depth-first/P02/raw/P02c.behaviour.20261127T201208Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "u = 2, v = 14, w = 7: the valid outcome.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 9 steps in the stage, 9 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03a",
+   "program": "P03a.ab1",
+   "record": "results/absys/absys-depth-first/P03/raw/P03a.behaviour.20261127T201209Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "c = [1;2;3], one derivation: the one valid outcome; answer completeness 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 18 steps in the stage, 18 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03b",
+   "program": "P03b.ab1",
+   "record": "results/absys/absys-depth-first/P03/raw/P03b.behaviour.20261127T201210Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "three derivations, (a, b) = ([], [1;2]), ([1], [2]), ([1;2], []): exactly the three valid outcomes, in that order; answer completeness 3/3, 0 invalid. The system reports it has every answer (no derivation still elaborating, none suspended).",
+   "observations": "unknowns: none remain unknown in any derivation; alternatives held: 3 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 3, ended_by exhausted; cost run: 23 steps in the stage, 23 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03c",
+   "program": "P03c.ab1",
+   "record": "results/absys/absys-depth-first/P03/raw/P03c.behaviour.20261127T201212Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "b = [2;3]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 13 steps in the stage, 13 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03d",
+   "program": "P03d.ab1",
+   "record": "results/absys/absys-depth-first/P03/raw/P03d.behaviour.20261127T201213Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "a = [1;2]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 27 steps in the stage, 27 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03e",
+   "program": "P03e.ab1",
+   "record": "results/absys/absys-depth-first/P03/raw/P03e.behaviour.20261127T201215Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "b = [3;2;1]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 52 steps in the stage, 52 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "record": "results/absys/absys-depth-first/P03/raw/P03f.behaviour.20261127T201216Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "timeout"
+   ],
+   "residual_equivalence": "nothing was collected before the safety limit (60 s) stopped the attempt",
+   "observations": "attempt 1 of 2: SIGKILL at the 60 s safety limit, rerun once at 600 s (attempt 2, reposed as a safety rerun); alternatives held: None derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: None process(es) the printer shows ; answers collected 0, ended_by timeout; cost run: steps unavailable (the cost run's attempts both hit the safety limit); no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 3 (timeout; answers before the limit classified on the semantic axis: none); PROTOCOL Running, safety limit"
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "record": "results/absys/absys-depth-first/P03/raw/P03f.behaviour.20261127T201216Z.json",
+   "stage": 1,
+   "attempt": 2,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget",
+    "suspended"
+   ],
+   "residual_equivalence": "one hibernating derivation with a = [3;2;1], the one valid outcome; the other 18 derivations are still elaborating when the budget ran out. Checked by script (p03f_check.py): every one of them already fixes a prefix of a of at least 106 elements, while every solution of rev(a, <1,2,3>) has 3, so each still-elaborating derivation denotes no solution (an inconsistency not yet detected). So the report denotes exactly {a = <3,2,1>}: complete; answer completeness 1/1, 0 invalid answers. The problem file: 'a system that reports it and then runs out of budget is complete with budget'.",
+   "observations": "representation classed on the valid explicit derivation; the other form, 18 still-elaborating derivations each with an open or over-long a, suspended equations between element unknowns and pending rev/conc goals, is recorded here (it is a residual whose inconsistency is undetected). The first of the 19 answers collected (cap 20) is the valid one; the rest are unfinished derivations, not solutions. The system does not know it has every answer: it goes on to the budget (10^6 steps). Attempt 2 (safety rerun at 600 s) after attempt 1 timed out at 60 s. alternatives held: 19 derivation(s), held as mixed (all held, only the first running one elaborated: depth-first); suspended work: 798 process(es) the printer shows {'susp_equations': 798}; answers collected 19, ended_by budget; cost run: steps unavailable (the cost run's attempts both hit the safety limit); no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; Representation, 'two forms': classed on the more explicit valid form; P03 Observations on P03f"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys-wake-back/P01/raw/P01a.behaviour.20261127T203742Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "x and y identified by a suspended equation x = y (the system's representation of two unknowns made equal); z does not occur (free). Equals 'every assignment with x = y; z free'.",
+   "observations": "unknowns: x = y held as one suspended equation between the two unknowns (a recorded equation, not one shared variable); z does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_equations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys-wake-back/P01/raw/P01a.behaviour.20261127T203742Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "x, y, z identified through two suspended equations x = y, y = z: equals 'every assignment with x = y = z'.",
+   "observations": "unknowns: x = y = z held as two suspended equations, x = y and y = z; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_equations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P01a",
+   "program": "P01a.ab1",
+   "record": "results/absys/absys-wake-back/P01/raw/P01a.behaviour.20261127T203742Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = y = z = 2, explicit: the valid outcome.",
+   "observations": "unknowns: none remain unknown; the value 2 reached x, y and z (cost run: 6 steps in the stage, 3 reactivating events); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 6 steps in the stage, 10 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P01b",
+   "program": "P01b.ab1",
+   "record": "results/absys/absys-wake-back/P01/raw/P01b.behaviour.20261127T203744Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "t = [1;2&m2] with s identified with m2 by a suspended equation: t = <1,2> ++ s, s free, which is the valid outcome. The program's conc does not test that s is a sequence (see notes), but the solved form t = <1,2> ++ s only denotes sequences s, as the valid outcome does.",
+   "observations": "unknowns: s identified with an internal unknown m2 by a suspended equation s = m2; t bound to the open list [1;2&m2]; the conc application has been fully elaborated (derivation #5 is the only survivor of the or-branches); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_equations': 1}; answers collected 1, ended_by exhausted; cost run: 18 steps in the stage, 18 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P01b",
+   "program": "P01b.ab1",
+   "record": "results/absys/absys-wake-back/P01/raw/P01b.behaviour.20261127T203744Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "s = [3], t = [1;2;3]: the valid outcome.",
+   "observations": "unknowns: none remain unknown; the value of s reached t through the suspended equation s = m2 (cost run: 4 steps in the stage, 2 reactivating events); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 22 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P01c",
+   "program": "P01c.ab1",
+   "record": "results/absys/absys-wake-back/P01/raw/P01c.behaviour.20261127T203745Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "reading": "finite",
+   "semantic": "unsound",
+   "representation": "cyclic",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = [1&↻] reports a (cyclic) solution where the finite reading has none, so the report denotes an outcome that is not valid (problem file: a cyclic value is unsound under the finite reading).",
+   "observations": "unknown x bound to a cyclic term, printed with ↻ ('the enclosing list again'); configuration has no occur check (docs/decisions.md rule 8, cited in the program and the systems file); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; P01c: 'A cyclic value, presented as such, is complete under the rational reading and unsound under the finite one'"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P01c",
+   "program": "P01c.ab1",
+   "record": "results/absys/absys-wake-back/P01/raw/P01c.behaviour.20261127T203745Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "reading": "rational",
+   "semantic": "complete",
+   "representation": "cyclic",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "x = [1&↻], printed as a cyclic list, is the rational tree <1,1,1,...>: the one solution under the rational reading.",
+   "observations": "unknown x bound to a cyclic term, printed with ↻ ('the enclosing list again'); configuration has no occur check (docs/decisions.md rule 8, cited in the program and the systems file); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; P01c: 'A cyclic value, presented as such, is complete under the rational reading and unsound under the finite one'"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02a.behaviour.20261127T203746Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02a.behaviour.20261127T203746Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02a",
+   "program": "P02a.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02a.behaviour.20261127T203746Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R1R2R3.behaviour.20261127T203747Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R1R2R3.behaviour.20261127T203747Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R1R2R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R1R2R3.behaviour.20261127T203747Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R1R3R2.behaviour.20261127T203748Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 (1 relation, 2 occurrences of unknowns); input: R1 (1 relation, 2 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R1 itself, and w does not occur (free), which is the valid outcome 'u + v = 16, w free'. No smaller representation: the solution set is infinite, so no explicit form, and one relation cannot lose an occurrence (SPECIFICATION's own example, P02 stage 1).",
+   "observations": "unknowns: u and v uninstantiated, held only by the suspended relation u + v = 16 (waits for two of its numbers); w does not occur; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R1R3R2.behaviour.20261127T203748Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2, v = 14, w not occurring (free): equals the valid outcome 'u = 2, v = 14; w free'.",
+   "observations": "unknowns: u = 2, v = 14; w does not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 6 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R1R3R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R1R3R2.behaviour.20261127T203748Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 8 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R2R1R3.behaviour.20261127T203750Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: w * u = v (1 relation, 3 occurrences); input: R2 (1 relation, 3 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R2 itself, the valid outcome 'v = w * u (infinite)'. Infinite solution set; one primitive relation over three unknowns cannot be smaller.",
+   "observations": "unknowns: w, u and v uninstantiated, held by the suspended relation w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R2R1R3.behaviour.20261127T203750Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reducible",
+   "identical_to_posed": true,
+   "residual_size": "held: u + v = 16 and w * u = v (2 relations, 5 occurrences); input: R1 and R2 (2 relations, 5 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent, by script (p02_check.py): over the integers, u + v = 16 and w*u = v give u*(w+1) = 16, so u divides 16; enumerating every divisor u of 16 and solving gives exactly the ten triples of the problem file, and every one of the ten satisfies both held relations. Reducible: the ten explicit triples have no relation left to decide, so a smaller representation exists by SPECIFICATION's measure (as in its P07b example), which the system did not reach.",
+   "observations": "unknowns: u, v, w uninstantiated, held by the two suspended relations u + v = 16 and w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 2 process(es) the printer shows {'susp_relations': 2}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R2R1R3",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R2R1R3.behaviour.20261127T203750Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 7 steps in the stage, 11 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R2R3R1.behaviour.20261127T203751Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": true,
+   "residual_size": "held: w * u = v (1 relation, 3 occurrences); input: R2 (1 relation, 3 occurrences)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: the held relation is R2 itself, the valid outcome 'v = w * u (infinite)'. Infinite solution set; one primitive relation over three unknowns cannot be smaller.",
+   "observations": "unknowns: w, u and v uninstantiated, held by the suspended relation w * u = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R2R3R1.behaviour.20261127T203751Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": false,
+   "residual_size": "held: u = 2 and w * 2 = v (1 relation left, 2 occurrences); input: R2 and R3 (2 relations, 4 occurrences: w, u, v in w * u = v, and u in u + 10 = 12)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: u = 2 bound and w*2 = v held is the valid outcome 'u = 2, v = 2w, for every integer w'. Reduced: the solution set is infinite and one relation over two unknowns is the least that can express it. Not identical to the posed information: R3 was solved and its value substituted into R2.",
+   "observations": "unknowns: u = 2; w and v uninstantiated, held by the suspended relation w * 2 = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 3 steps in the stage, 5 restated, 1 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R2R3R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R2R3R1.behaviour.20261127T203751Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 9 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R3R1R2.behaviour.20261127T203752Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2 with v and w not occurring (free): equals the valid outcome 'u = 2; v and w free'.",
+   "observations": "unknowns: u = 2; v and w do not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R3R1R2.behaviour.20261127T203752Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2, v = 14, w not occurring (free): equals the valid outcome 'u = 2, v = 14; w free'.",
+   "observations": "unknowns: u = 2, v = 14; w does not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R3R1R2",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R3R1R2.behaviour.20261127T203752Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 6 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R3R2R1.behaviour.20261127T203754Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "solved form",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "solved form u = 2 with v and w not occurring (free): equals the valid outcome 'u = 2; v and w free'.",
+   "observations": "unknowns: u = 2; v and w do not occur (free); alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 2 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R3R2R1.behaviour.20261127T203754Z.json",
+   "stage": 2,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "residual",
+   "simplification": "reduced",
+   "identical_to_posed": false,
+   "residual_size": "held: u = 2 and w * 2 = v (1 relation left, 2 occurrences); input: R2 and R3 (2 relations, 4 occurrences: w, u, v in w * u = v, and u in u + 10 = 12)",
+   "execution_state": [
+    "suspended"
+   ],
+   "residual_equivalence": "equivalent: u = 2 bound and w*2 = v held is the valid outcome 'u = 2, v = 2w, for every integer w'. Reduced: the solution set is infinite and one relation over two unknowns is the least that can express it. Not identical to the posed information: R3 was solved and its value substituted into R2.",
+   "observations": "unknowns: u = 2; w and v uninstantiated, held by the suspended relation w * 2 = v; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 1 process(es) the printer shows {'susp_relations': 1}; answers collected 1, ended_by exhausted; cost run: 2 steps in the stage, 4 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02b.R3R2R1",
+   "program": "P02b.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02b.R3R2R1.behaviour.20261127T203754Z.json",
+   "stage": 3,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit u = 2, v = 14, w = 7: the single valid triple.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 4 steps in the stage, 8 restated, 2 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 1 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P02c",
+   "program": "P02c.ab1",
+   "record": "results/absys/absys-wake-back/P02/raw/P02c.behaviour.20261127T203755Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "u = 2, v = 14, w = 7: the valid outcome.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 9 steps in the stage, 9 restated, 3 reactivating events; no conclusion of an earlier stage withdrawn; no manual action; the storage run's susp_relations is 2 at the boundary although the printer shows nothing suspended: relations stay associated with their variables after every one is bound (docs/decisions.md rule 10, harness README 4); execution state read as finished, as the harness did",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03a",
+   "program": "P03a.ab1",
+   "record": "results/absys/absys-wake-back/P03/raw/P03a.behaviour.20261127T203756Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "c = [1;2;3], one derivation: the one valid outcome; answer completeness 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 18 steps in the stage, 18 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03b",
+   "program": "P03b.ab1",
+   "record": "results/absys/absys-wake-back/P03/raw/P03b.behaviour.20261127T203757Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "three derivations, (a, b) = ([], [1;2]), ([1], [2]), ([1;2], []): exactly the three valid outcomes, in that order; answer completeness 3/3, 0 invalid. The system reports it has every answer (no derivation still elaborating, none suspended).",
+   "observations": "unknowns: none remain unknown in any derivation; alternatives held: 3 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 3, ended_by exhausted; cost run: 23 steps in the stage, 23 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03c",
+   "program": "P03c.ab1",
+   "record": "results/absys/absys-wake-back/P03/raw/P03c.behaviour.20261127T203758Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "b = [2;3]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 13 steps in the stage, 13 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03d",
+   "program": "P03d.ab1",
+   "record": "results/absys/absys-wake-back/P03/raw/P03d.behaviour.20261127T203800Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "a = [1;2]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 27 steps in the stage, 27 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03e",
+   "program": "P03e.ab1",
+   "record": "results/absys/absys-wake-back/P03/raw/P03e.behaviour.20261127T203801Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "b = [3;2;1]: the one valid outcome; 1/1, 0 invalid.",
+   "observations": "unknowns: none remain unknown; alternatives held: 1 derivation(s), held as all-live (all live at once); suspended work: 0 process(es) the printer shows ; answers collected 1, ended_by exhausted; cost run: 52 steps in the stage, 52 restated, 0 reactivating events; no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3 and simplification; 'reported' = what observe() reads at the end of the stage"
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "record": "results/absys/absys-wake-back/P03/raw/P03f.behaviour.20261127T203802Z.json",
+   "stage": 1,
+   "attempt": 1,
+   "final_attempt": true,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget",
+    "suspended"
+   ],
+   "residual_equivalence": "one hibernating derivation with a = [3;2;1], the one valid outcome; the other 899 derivations are still elaborating when the budget ran out. Checked by script (p03f_check.py): every one of them already fixes a prefix of a of at least 32 elements, while every solution of rev(a, <1,2,3>) has 3, so each still-elaborating derivation denotes no solution (an inconsistency not yet detected). So the report denotes exactly {a = <3,2,1>}: complete; answer completeness 1/1, 0 invalid answers. The problem file: 'a system that reports it and then runs out of budget is complete with budget'.",
+   "observations": "representation classed on the valid explicit derivation; the other form, 899 still-elaborating derivations each with an open or over-long a, suspended equations between element unknowns and pending rev/conc goals, is recorded here (it is a residual whose inconsistency is undetected). The first of the 20 answers collected (cap 20) is the valid one; the rest are unfinished derivations, not solutions. The system does not know it has every answer: it goes on to the budget (10^6 steps). alternatives held: 900 derivation(s), held as all-live (all live at once); suspended work: 222726 process(es) the printer shows {'susp_equations': 222726}; answers collected 20, ended_by budget; cost run: steps unavailable (the cost run's attempts both hit the safety limit); no conclusion of an earlier stage withdrawn; no manual action",
+   "rule": "SPECIFICATION Outcomes 1-3; Representation, 'two forms': classed on the more explicit valid form; P03 Observations on P03f"
+  }
+ ],
+ "mode_differences": [
+  {
+   "configuration": "absys",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "mode": "cost",
+   "record": "results/absys/absys/P03/raw/P03f.cost.20261127T194953Z.json",
+   "stage": 1,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget",
+     "suspended"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     [
+      "timeout"
+     ],
+     [
+      "timeout"
+     ]
+    ],
+    "attempts": [
+     "rerun",
+     "final-timeout"
+    ]
+   },
+   "note": "Both attempts of the instrumented run (60 s, then the 600 s rerun) were stopped by the safety limit with nothing collected; steps, restart cost, repeated work and the store vector are unavailable for this stage (AMENDMENTS 3.1), not 0. The behaviour run reached the budget with the valid answer, so this is a limit of the measurement (PROTOCOL, Modes of running), not evidence about the model, and not a disagreement of semantic results between modes, since the cost/storage run reported nothing."
+  },
+  {
+   "configuration": "absys",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "mode": "storage",
+   "record": "results/absys/absys/P03/raw/P03f.storage.20261127T200054Z.json",
+   "stage": 1,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget",
+     "suspended"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     [
+      "timeout"
+     ],
+     [
+      "timeout"
+     ]
+    ],
+    "attempts": [
+     "rerun",
+     "final-timeout"
+    ]
+   },
+   "note": "Both attempts of the instrumented run (60 s, then the 600 s rerun) were stopped by the safety limit with nothing collected; steps, restart cost, repeated work and the store vector are unavailable for this stage (AMENDMENTS 3.1), not 0. The behaviour run reached the budget with the valid answer, so this is a limit of the measurement (PROTOCOL, Modes of running), not evidence about the model, and not a disagreement of semantic results between modes, since the cost/storage run reported nothing."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "mode": "cost",
+   "record": "results/absys/absys-depth-first/P03/raw/P03f.cost.20261127T201541Z.json",
+   "stage": 1,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget",
+     "suspended"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     [
+      "timeout"
+     ],
+     [
+      "timeout"
+     ]
+    ],
+    "attempts": [
+     "rerun",
+     "final-timeout"
+    ]
+   },
+   "note": "Both attempts of the instrumented run (60 s, then the 600 s rerun) were stopped by the safety limit with nothing collected; steps, restart cost, repeated work and the store vector are unavailable for this stage (AMENDMENTS 3.1), not 0. The behaviour run reached the budget with the valid answer, so this is a limit of the measurement (PROTOCOL, Modes of running), not evidence about the model, and not a disagreement of semantic results between modes, since the cost/storage run reported nothing. In this configuration the behaviour run itself needed its 600 s rerun (attempt 1 timed out at 60 s)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "mode": "storage",
+   "record": "results/absys/absys-depth-first/P03/raw/P03f.storage.20261127T202642Z.json",
+   "stage": 1,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget",
+     "suspended"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     [
+      "timeout"
+     ],
+     [
+      "timeout"
+     ]
+    ],
+    "attempts": [
+     "rerun",
+     "final-timeout"
+    ]
+   },
+   "note": "Both attempts of the instrumented run (60 s, then the 600 s rerun) were stopped by the safety limit with nothing collected; steps, restart cost, repeated work and the store vector are unavailable for this stage (AMENDMENTS 3.1), not 0. The behaviour run reached the budget with the valid answer, so this is a limit of the measurement (PROTOCOL, Modes of running), not evidence about the model, and not a disagreement of semantic results between modes, since the cost/storage run reported nothing. In this configuration the behaviour run itself needed its 600 s rerun (attempt 1 timed out at 60 s)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "mode": "cost",
+   "record": "results/absys/absys-wake-back/P03/raw/P03f.cost.20261127T203841Z.json",
+   "stage": 1,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget",
+     "suspended"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     [
+      "timeout"
+     ],
+     [
+      "timeout"
+     ]
+    ],
+    "attempts": [
+     "rerun",
+     "final-timeout"
+    ]
+   },
+   "note": "Both attempts of the instrumented run (60 s, then the 600 s rerun) were stopped by the safety limit with nothing collected; steps, restart cost, repeated work and the store vector are unavailable for this stage (AMENDMENTS 3.1), not 0. The behaviour run reached the budget with the valid answer, so this is a limit of the measurement (PROTOCOL, Modes of running), not evidence about the model, and not a disagreement of semantic results between modes, since the cost/storage run reported nothing."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "instance": "P03f",
+   "program": "P03f.ab1",
+   "mode": "storage",
+   "record": "results/absys/absys-wake-back/P03/raw/P03f.storage.20261127T204941Z.json",
+   "stage": 1,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget",
+     "suspended"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     [
+      "timeout"
+     ],
+     [
+      "timeout"
+     ]
+    ],
+    "attempts": [
+     "rerun",
+     "final-timeout"
+    ]
+   },
+   "note": "Both attempts of the instrumented run (60 s, then the 600 s rerun) were stopped by the safety limit with nothing collected; steps, restart cost, repeated work and the store vector are unavailable for this stage (AMENDMENTS 3.1), not 0. The behaviour run reached the budget with the valid answer, so this is a limit of the measurement (PROTOCOL, Modes of running), not evidence about the model, and not a disagreement of semantic results between modes, since the cost/storage run reported nothing."
+  }
+ ],
+ "expressibility": [
+  {
+   "configuration": "absys",
+   "subproblem": "P01a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "x = y, y = z, z = 2 are transcribed as equations; every token P; Absys holds an equation between unknowns natively. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P01b",
+   "direction": "conc(known, unknown, unknown)",
+   "expressibility": "expressible",
+   "reason": "conc transcribed by its two cases in order (rule 3); the same definition serves this direction with no extra argument or case; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P01c",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "x = [1&x] transcribes x = <1> ++ x directly; no R tokens. (The result is cyclic: complete under the rational reading, unsound under the finite one; that is an outcome, not expressibility.) Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P02a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the three relations written as Absys 1 arithmetic assertions, which the core takes up in any direction once two of three numbers are known; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P02b",
+   "direction": "every order; R1 used to give v from u, R2 to give w from u and v (and held unsolved before), R3 to give u",
+   "expressibility": "expressible",
+   "reason": "one text with a PART per relation, chosen by the harness's order; each relation is one primitive arithmetic assertion served in whichever direction the order needs; no R tokens, no control. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P02c",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "R1, R2, R3 as one conjunction (begin ... end), in the problem's order; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P03a",
+   "direction": "conc(known, known, unknown)",
+   "expressibility": "expressible",
+   "reason": "conc transcribed; forwards direction served by the transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P03b",
+   "direction": "conc(unknown, unknown, known): splitting",
+   "expressibility": "expressible",
+   "reason": "the same transcription of conc serves the splitting direction (the core applies a lambda in any direction); no separate splitting function, no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P03c",
+   "direction": "conc(known, unknown, known): suffix",
+   "expressibility": "expressible",
+   "reason": "same transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P03d",
+   "direction": "conc(unknown, known, known): prefix",
+   "expressibility": "expressible",
+   "reason": "same transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P03e",
+   "direction": "rev(known, unknown)",
+   "expressibility": "expressible",
+   "reason": "rev and conc transcribed by their cases with rev's conjuncts in the problem's order; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys",
+   "subproblem": "P03f",
+   "direction": "rev(unknown, known)",
+   "expressibility": "expressible",
+   "reason": "the same transcription of rev and conc, unchanged; no R and no control. It reports the one answer and then runs to the budget, which is an outcome (complete with budget), not a reformulation. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P01a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "x = y, y = z, z = 2 are transcribed as equations; every token P; Absys holds an equation between unknowns natively. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P01b",
+   "direction": "conc(known, unknown, unknown)",
+   "expressibility": "expressible",
+   "reason": "conc transcribed by its two cases in order (rule 3); the same definition serves this direction with no extra argument or case; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P01c",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "x = [1&x] transcribes x = <1> ++ x directly; no R tokens. (The result is cyclic: complete under the rational reading, unsound under the finite one; that is an outcome, not expressibility.) Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P02a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the three relations written as Absys 1 arithmetic assertions, which the core takes up in any direction once two of three numbers are known; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P02b",
+   "direction": "every order; R1 used to give v from u, R2 to give w from u and v (and held unsolved before), R3 to give u",
+   "expressibility": "expressible",
+   "reason": "one text with a PART per relation, chosen by the harness's order; each relation is one primitive arithmetic assertion served in whichever direction the order needs; no R tokens, no control. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P02c",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "R1, R2, R3 as one conjunction (begin ... end), in the problem's order; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P03a",
+   "direction": "conc(known, known, unknown)",
+   "expressibility": "expressible",
+   "reason": "conc transcribed; forwards direction served by the transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P03b",
+   "direction": "conc(unknown, unknown, known): splitting",
+   "expressibility": "expressible",
+   "reason": "the same transcription of conc serves the splitting direction (the core applies a lambda in any direction); no separate splitting function, no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P03c",
+   "direction": "conc(known, unknown, known): suffix",
+   "expressibility": "expressible",
+   "reason": "same transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P03d",
+   "direction": "conc(unknown, known, known): prefix",
+   "expressibility": "expressible",
+   "reason": "same transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P03e",
+   "direction": "rev(known, unknown)",
+   "expressibility": "expressible",
+   "reason": "rev and conc transcribed by their cases with rev's conjuncts in the problem's order; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-depth-first",
+   "subproblem": "P03f",
+   "direction": "rev(unknown, known)",
+   "expressibility": "expressible",
+   "reason": "the same transcription of rev and conc, unchanged; no R and no control. It reports the one answer and then runs to the budget, which is an outcome (complete with budget), not a reformulation. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P01a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "x = y, y = z, z = 2 are transcribed as equations; every token P; Absys holds an equation between unknowns natively. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P01b",
+   "direction": "conc(known, unknown, unknown)",
+   "expressibility": "expressible",
+   "reason": "conc transcribed by its two cases in order (rule 3); the same definition serves this direction with no extra argument or case; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P01c",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "x = [1&x] transcribes x = <1> ++ x directly; no R tokens. (The result is cyclic: complete under the rational reading, unsound under the finite one; that is an outcome, not expressibility.) Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P02a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the three relations written as Absys 1 arithmetic assertions, which the core takes up in any direction once two of three numbers are known; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P02b",
+   "direction": "every order; R1 used to give v from u, R2 to give w from u and v (and held unsolved before), R3 to give u",
+   "expressibility": "expressible",
+   "reason": "one text with a PART per relation, chosen by the harness's order; each relation is one primitive arithmetic assertion served in whichever direction the order needs; no R tokens, no control. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P02c",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "R1, R2, R3 as one conjunction (begin ... end), in the problem's order; no R tokens. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P03a",
+   "direction": "conc(known, known, unknown)",
+   "expressibility": "expressible",
+   "reason": "conc transcribed; forwards direction served by the transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P03b",
+   "direction": "conc(unknown, unknown, known): splitting",
+   "expressibility": "expressible",
+   "reason": "the same transcription of conc serves the splitting direction (the core applies a lambda in any direction); no separate splitting function, no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P03c",
+   "direction": "conc(known, unknown, known): suffix",
+   "expressibility": "expressible",
+   "reason": "same transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P03d",
+   "direction": "conc(unknown, known, known): prefix",
+   "expressibility": "expressible",
+   "reason": "same transcription; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P03e",
+   "direction": "rev(known, unknown)",
+   "expressibility": "expressible",
+   "reason": "rev and conc transcribed by their cases with rev's conjuncts in the problem's order; no R. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  },
+  {
+   "configuration": "absys-wake-back",
+   "subproblem": "P03f",
+   "direction": "rev(unknown, known)",
+   "expressibility": "expressible",
+   "reason": "the same transcription of rev and conc, unchanged; no R and no control. It reports the one answer and then runs to the budget, which is an outcome (complete with budget), not a reformulation. Same text and same classes in all three configurations (no S mechanism in any: harnesses/absys/S-mechanisms.md)."
+  }
+ ]
+}

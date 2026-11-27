@@ -1,0 +1,101 @@
+
+## absys/P01a.ab1: 12 tokens, agreement 12/12 (100.0%)
+  class  A      B
+  P      12     12
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P01b.ab1: 65 tokens, agreement 65/65 (100.0%)
+  class  A      B
+  P      65     65
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P01c.ab1: 10 tokens, agreement 10/10 (100.0%)
+  class  A      B
+  P      10     10
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P02a.ab1: 24 tokens, agreement 24/24 (100.0%)
+  class  A      B
+  P      24     24
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P02b.ab1: 24 tokens, agreement 24/24 (100.0%)
+  class  A      B
+  P      24     24
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P02c.ab1: 26 tokens, agreement 26/26 (100.0%)
+  class  A      B
+  P      26     26
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P03a.ab1: 62 tokens, agreement 62/62 (100.0%)
+  class  A      B
+  P      62     62
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P03b.ab1: 57 tokens, agreement 57/57 (100.0%)
+  class  A      B
+  P      57     57
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P03c.ab1: 64 tokens, agreement 64/64 (100.0%)
+  class  A      B
+  P      64     64
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P03d.ab1: 64 tokens, agreement 64/64 (100.0%)
+  class  A      B
+  P      64     64
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P03e.ab1: 99 tokens, agreement 99/99 (100.0%)
+  class  A      B
+  P      99     99
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P03f.ab1: 99 tokens, agreement 99/99 (100.0%)
+  class  A      B
+  P      99     99
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## per system
+  absys: 606/606 (100.0%)
+
+## disagreements by (A, B) class

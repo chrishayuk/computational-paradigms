@@ -1,0 +1,13 @@
+stages: 175 (A 175, B 175)
+  reached: 175/175
+  semantic: 171/175
+  representation: 175/175
+  simplification: 175/175
+  identical_to_posed: 175/175
+  execution_state: 175/175
+
+differences (stage, axis, A, B):
+   | ('constraints', 'P03f', 'P03f.pl', 1) | semantic | ['complete'] | ['unsound']
+   | ('coroutines', 'P03f', 'P03f.pl', 1) | semantic | ['complete'] | ['unsound']
+   | ('plain', 'P03f', 'P03f.pl', 1) | semantic | ['complete'] | ['unsound']
+   | ('session', 'P03f', 'P03f.pl', 1) | semantic | ['complete'] | ['unsound']

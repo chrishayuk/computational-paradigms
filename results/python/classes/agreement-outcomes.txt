@@ -1,0 +1,10 @@
+stages: 102 (A 102, B 102)
+  reached: 102/102
+  semantic: 101/102
+  representation: 102/102
+  simplification: 102/102
+  identical_to_posed: 102/102
+  execution_state: 102/102
+
+differences (stage, axis, A, B):
+   | ('extended', 'P03f', 'P03f.py', 1) | semantic | ['complete'] | ['unsound']

@@ -1,0 +1,126 @@
+{
+  "records_checked": 153,
+  "behaviour_records": 51,
+  "behaviour_stages": 102,
+  "outcome_rows_including_two_P01c_readings": 105,
+  "mode_stage_reading_comparisons": 210,
+  "unique_texts": 12,
+  "token_totals": {
+    "P": 606,
+    "C": 0,
+    "R": 0,
+    "S": 0,
+    "H": 0
+  },
+  "per_text": {
+    "absys/P01a.ab1": {
+      "P": 12
+    },
+    "absys/P01b.ab1": {
+      "P": 65
+    },
+    "absys/P01c.ab1": {
+      "P": 10
+    },
+    "absys/P02a.ab1": {
+      "P": 24
+    },
+    "absys/P02b.ab1": {
+      "P": 24
+    },
+    "absys/P02c.ab1": {
+      "P": 26
+    },
+    "absys/P03a.ab1": {
+      "P": 62
+    },
+    "absys/P03b.ab1": {
+      "P": 57
+    },
+    "absys/P03c.ab1": {
+      "P": 64
+    },
+    "absys/P03d.ab1": {
+      "P": 64
+    },
+    "absys/P03e.ab1": {
+      "P": 99
+    },
+    "absys/P03f.ab1": {
+      "P": 99
+    }
+  },
+  "semantic": {
+    "complete": 102,
+    "unsound": 3
+  },
+  "representation": {
+    "solved form": 21,
+    "explicit": 48,
+    "cyclic": 6,
+    "residual": 30
+  },
+  "execution_state_combinations": {
+    "suspended": 39,
+    "finished": 63,
+    "budget, suspended": 3
+  },
+  "residual_simplification": {
+    "reduced": 21,
+    "reducible": 9
+  },
+  "mode_differences": 6,
+  "expressibility_rows": 36,
+  "P02_R1_R2_ten_triples": [
+    [
+      -16,
+      32,
+      -2
+    ],
+    [
+      -8,
+      24,
+      -3
+    ],
+    [
+      -4,
+      20,
+      -5
+    ],
+    [
+      -2,
+      18,
+      -9
+    ],
+    [
+      -1,
+      17,
+      -17
+    ],
+    [
+      1,
+      15,
+      15
+    ],
+    [
+      2,
+      14,
+      7
+    ],
+    [
+      4,
+      12,
+      3
+    ],
+    [
+      8,
+      8,
+      1
+    ],
+    [
+      16,
+      0,
+      0
+    ]
+  ]
+}

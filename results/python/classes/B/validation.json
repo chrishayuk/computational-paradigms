@@ -1,0 +1,102 @@
+{
+  "distinct_texts": 30,
+  "tokens": {
+    "P": 4080,
+    "H": 5543,
+    "R": 5123,
+    "C": 1552,
+    "S": 1917
+  },
+  "by_first_path_configuration": {
+    "core": {
+      "P": 1111,
+      "H": 1811,
+      "R": 2168,
+      "C": 34
+    },
+    "extended": {
+      "C": 498,
+      "P": 2074,
+      "R": 1040,
+      "H": 2740,
+      "S": 1917
+    },
+    "stdlib-concurrency": {
+      "C": 1020,
+      "P": 895,
+      "H": 992,
+      "R": 1915
+    }
+  },
+  "behaviour_records": 51,
+  "behaviour_stages": 102,
+  "reading_classifications": 105,
+  "mode_differences": 0,
+  "semantic": {
+    "complete": 103,
+    "unsound": 2
+  },
+  "representations": {
+    "residual": 40,
+    "explicit": 48,
+    "solved form": 15,
+    "cyclic": 2
+  },
+  "execution": {
+    "suspended": 40,
+    "finished": 64,
+    "budget": 1
+  },
+  "residual_checks": [
+    [
+      -16,
+      32,
+      -2
+    ],
+    [
+      -8,
+      24,
+      -3
+    ],
+    [
+      -4,
+      20,
+      -5
+    ],
+    [
+      -2,
+      18,
+      -9
+    ],
+    [
+      -1,
+      17,
+      -17
+    ],
+    [
+      1,
+      15,
+      15
+    ],
+    [
+      2,
+      14,
+      7
+    ],
+    [
+      4,
+      12,
+      3
+    ],
+    [
+      8,
+      8,
+      1
+    ],
+    [
+      16,
+      0,
+      0
+    ]
+  ]
+}

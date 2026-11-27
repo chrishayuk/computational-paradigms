@@ -1,0 +1,18 @@
+stages: 102 (A 102, B 102)
+  reached: 102/102
+  semantic: 102/102
+  representation: 102/102
+  simplification: 93/102
+  identical_to_posed: 102/102
+  execution_state: 102/102
+
+differences (stage, axis, A, B):
+   | ('report', 'P01a', 'P01a.alg', 1) | simplification | ['reduced'] | ['reducible']
+   | ('report', 'P01a', 'P01a.alg', 2) | simplification | ['reduced'] | ['reducible']
+   | ('report', 'P01c', 'P01c.alg', 1) | simplification | ['inconsistency undetected', 'reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1', 'P01a', 'P01a.a60', 1) | simplification | ['reduced'] | ['reducible']
+   | ('x1', 'P01a', 'P01a.a60', 2) | simplification | ['reduced'] | ['reducible']
+   | ('x1', 'P01c', 'P01c.a60', 1) | simplification | ['inconsistency undetected', 'reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1sim', 'P01a', 'P01a.a60', 1) | simplification | ['reduced'] | ['reducible']
+   | ('x1sim', 'P01a', 'P01a.a60', 2) | simplification | ['reduced'] | ['reducible']
+   | ('x1sim', 'P01c', 'P01c.a60', 1) | simplification | ['inconsistency undetected', 'reduced'] | ['inconsistency undetected', 'reducible']
