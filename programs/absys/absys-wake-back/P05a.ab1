@@ -1,0 +1,35 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1969 (.ab1): x > k needs a comparison, which no notation has, and x != k needs not, which only the 1990 notation has.
+% NOTATION: both are reformulated with arithmetic, which only the 1969 notation has (systems/absys/README.md, Notation: constructs found in no single notation).
+% IDIOM: a closed world of facts as a procedure whose alternatives are the facts, its completion: Elcock 1990 p. 15 (student, examples/students.abs), written in the 1969 notation as {A or B}: Foster and Elcock 1969 (examples/alternatives.ab1, examples/map.ab1);
+% IDIOM: name'=lambda x begin ... end, primes for new names: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1).
+% IDIOM: arithmetic as an assertion usable in every direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8; examples/alternatives.ab1); Foster 1968, pass sets (docs/decisions.md rule 23).
+% pick, P05 Vocabulary: a closed world of three facts, pick(<k1>), pick(<k2>), pick(<k3>), in this order.
+pick'=lambda p
+    begin {p = pk1 or p = pk2 or p = pk3} end
+% REFORMULATION (R): the problem's x > k is a primitive comparison, which no Absys notation has (systems/absys/README.md, Notation).
+% gt(a, b), a > b over the integers, is defined from arithmetic: a = b + d for a positive integer d.
+gt'=lambda a, b
+    begin a = b + d' pos(d) end
+% REFORMULATION (R): pos(q), q a positive integer: the least relation with pos(1), and pos(e + 1) if pos(e).
+pos'=lambda q
+    begin {q = 1 or pos(e') q = e + 1} end
+% REFORMULATION (R): the problem's x != k is a primitive comparison; the 1969 notation has no not. ne(a, b), a != b over the integers, is a > b or b > a.
+% (x is an integer here: stage 2's x > k holds only of integers.)
+ne'=lambda a, b
+    begin {gt(a, b) or gt(b, a)} end
+% P05a. Unknown x. Stage 1 pick(x); stage 2 x > <k>; stage 3 x != <k>.
+% CONSTANTS BEGIN
+pk1 = 1   % stage 1: the facts of pick (P05 Vocabulary), given with the prelude
+pk2 = 2   % stage 1: the facts of pick
+pk3 = 3   % stage 1: the facts of pick
+gtk = 1   % stage 2: x > gtk
+nek = 2   % stage 3: x != nek
+% CONSTANTS END
+% STAGE 1
+pick(x)
+% STAGE 2
+gt(x, gtk)
+% STAGE 3
+ne(x, nek)

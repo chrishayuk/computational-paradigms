@@ -1,0 +1,15 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation).
+% IDIOM: a relation as name'=lambda x begin ... end, primes for new names: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: alternatives asserted at the top level as {A or B}: Foster and Elcock 1969, p=[1;2] {p = [a;b] or p = [b;a]} (examples/alternatives.ab1);
+% IDIOM: loop as a procedure whose body applies itself, loop = lambda X {loop(X)}: the reconstruction's tutorial, ch. 5.
+% loop, P04 Vocabulary, its one case: loop(x) if loop(x).
+loop'=lambda p
+    begin loop(p) end
+% P04b. Unknown x. One stage: x = <k> or loop(x), in that order.
+% CONSTANTS BEGIN
+xval = 1   % stage 1
+% CONSTANTS END
+% STAGE 1
+{x = xval or loop(x)}

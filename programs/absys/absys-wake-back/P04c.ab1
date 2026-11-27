@@ -1,0 +1,14 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation).
+% IDIOM: a relation as name'=lambda x begin {A or B} end, primes for new names, lists [a;b] and [h&t], quoted constants 'a': Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1; tutorial ch. 8, ch. 10; docs/decisions.md rule 5);
+% IDIOM: the head pattern of a case as an equation on the lambda's parameter: Elcock 1990 p. 8 (examples/append.abs).
+% alist-left, P04 Vocabulary, in that order: case 1, alist(s) if alist(m) and s = <A> ++ m, its two conjuncts in that order; case 2, alist(<>).
+alist'=lambda p
+    begin {alist(m') p = ['a'&m] or p = []} end
+% P04c. No unknowns. One stage: alist(<seq>), with alist-left.
+% CONSTANTS BEGIN
+sq = ['a';'a']   % stage 1
+% CONSTANTS END
+% STAGE 1
+alist(sq)

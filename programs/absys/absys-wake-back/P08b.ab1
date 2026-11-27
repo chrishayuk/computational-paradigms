@@ -1,0 +1,16 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation), as for rev and conc in P03.
+% IDIOM: a relation as a lambda whose body is {A or B}, primes for new local names, lists [a;b] and [h&t]: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: the shape of the two cases, {R = [], S = T} or {R = [X|L], T = [X|N], app(L, S, N)}: Elcock 1990 p. 8 (examples/append.abs);
+% IDIOM: an application of a procedure that has no value yet waits for it: Elcock 1990 p. 10 (docs/decisions.md rule 6; tutorial ch. 4).
+% The procedure names are written without a prime where they are defined (rev=lambda, not rev'=lambda): the name is applied
+% before it is defined, and a prime introduces a new name (Foster and Elcock 1969; docs/decisions.md rule 6), so the definition
+% must be an equation on the name already in use. No declaration changes how an undefined relation behaves (there is none).
+% P08b. Unknowns a, b, x, y, z. Stages 1 to 3 of P08a, and no more. No constants.
+% STAGE 1
+a = [x;y;z]
+% STAGE 2
+rev(a, b)
+% STAGE 3
+x = y

@@ -1,0 +1,16 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic (systems/absys/README.md, Notation; docs/decisions.md rule 23).
+% IDIOM: arithmetic as an assertion usable in every direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8; examples/alternatives.ab1); Foster 1968, pass sets;
+% IDIOM: relations written as Elcock writes them, u+v = 16, w*u = v: Elcock 1982 p. 123 (examples/relation-list.ab2).
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations; tutorial ch. 8).
+% P07a, instance P07a: order ["1","2","3"], the relations named by their position as written: 1 x + y + z = <k>, 2 y + z = <k>, 3 z = <k>.
+% Unknowns x, y, z (integers). One stage: the three relations in the instance's order, as one conjunction.
+% One text per instance: the six differ only in the order of the conjuncts (programs/absys/README.md, batch 1B, ambiguity on P07a's orders).
+% CONSTANTS BEGIN
+r1sum = 12   % stage 1: relation 1
+r2sum = 7   % stage 1: relation 2
+r3val = 3   % stage 1: relation 3
+% CONSTANTS END
+% STAGE 1
+begin x + y + z = r1sum  y + z = r2sum  z = r3val end

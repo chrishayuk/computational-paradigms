@@ -1,0 +1,23 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NAMED VARIANT, not the primary (the primary is P06d.abs): setdiff stated with the set-forming construct, as P06d allows.
+% Not chosen as primary: set gives the distinct values of X, so for an s1 with a repeated element it is not the problem's setdiff,
+% and the order of its list is the order in which the derivations stand (docs/decisions.md rule 19), not the problem's case analysis.
+% NOTATION: 1990 (.abs), the earliest notation with not (systems/absys/README.md, Notation; docs/decisions.md rule 18).
+% IDIOM: not(A), an independent computation with the criteria reversed: Elcock 1990 p. 14 (tutorial ch. 7: not(X = 1)).
+% IDIOM: setdiff = lambda S1, S2, S {set(X), {mem(X, S1), not(mem(X, S2))}, S}: Elcock 1990 p. 15, a demonstration of Absys-4 (examples/setdiff.abs; tutorial ch. 7);
+% IDIOM: mem written as {S = [X|T]} or {S = [Y|T], mem(X, T)}: the reconstruction's own mem (tutorial ch. 7, examples/setdiff.abs).
+% P06d. Unknown d. One stage: setdiff(<seq>, <seq>, d).
+% CONSTANTS BEGIN
+s1v = [1, 2, 3, 4]   % stage 1: s1
+s2v = [2, 4, 6]   % stage 1: s2
+% CONSTANTS END
+% mem, P06d, cases 1 and 2 in that order: mem(e, <e> ++ t); mem(e, <h> ++ t) if mem(e, t). Each head as an equation on the lambda's parameter.
+mem = lambda E, S
+    {S = [E|T]} or
+    {S = [H|T], mem(E, T)}
+% setdiff, P06d, as a set former: d is the elements of s1 that are not elements of s2 (METRICS.md rule 7).
+setdiff = lambda S1, S2, D
+    {set(X), {mem(X, S1), not(mem(X, S2))}, D}
+% STAGE 1
+setdiff(s1v, s2v, d)

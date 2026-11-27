@@ -1,0 +1,13 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic (systems/absys/README.md, Notation; docs/decisions.md rule 23).
+% IDIOM: arithmetic as an assertion usable in every direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8; examples/alternatives.ab1); Foster 1968, pass sets;
+% IDIOM: relations written as Elcock writes them, u+v = 16, w*u = v: Elcock 1982 p. 123 (examples/relation-list.ab2).
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations; tutorial ch. 8).
+% P07d. Unknowns w, u, v (integers). One stage: w * u = v, u = <k>, v = <k>, in that order, as one conjunction.
+% CONSTANTS BEGIN
+uval = 2   % stage 1: u = uval
+vval = 14   % stage 1: v = vval
+% CONSTANTS END
+% STAGE 1
+begin w * u = v  u = uval  v = vval end

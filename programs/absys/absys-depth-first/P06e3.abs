@@ -1,0 +1,32 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1990 (.abs), the earliest notation with not (systems/absys/README.md, Notation; docs/decisions.md rule 18).
+% IDIOM: not(A), an independent computation with the criteria reversed: Elcock 1990 p. 14 (tutorial ch. 7: not(X = 1)).
+% P06e3. Unknown p. One stage: nonmajor(p).
+% IDIOM: a closed world as the completion of its facts, a procedure whose alternatives are the facts, and nonmajor as a lambda over a conjunction with not: Elcock 1990 p. 15 (examples/students.abs; tutorial ch. 7).
+% CONSTANTS BEGIN
+st1 = 'BROWN'   % stage 1: student(st1), a fact
+st2 = 'SMITH'   % stage 1: student(st2), a fact
+mc1 = 'C101'   % stage 1: maths(mc1), a fact
+mc2 = 'C301'   % stage 1: maths(mc2), a fact
+tp1 = 'BROWN'   % stage 1: takes(tp1, tc1), a fact
+tc1 = 'C101'   % stage 1
+tp2 = 'SMITH'   % stage 1: takes(tp2, tc2), a fact
+tc2 = 'C101'   % stage 1
+tp3 = 'SMITH'   % stage 1: takes(tp3, tc3), a fact
+tc3 = 'C301'   % stage 1
+% CONSTANTS END
+% The closed world, P06e, its facts in the order given.
+student = lambda P
+    {P = st1} or {P = st2}
+maths = lambda K
+    {K = mc1} or {K = mc2}
+takes = lambda P, K
+    {P = tp1, K = tc1} or
+    {P = tp2, K = tc2} or
+    {P = tp3, K = tc3}
+% nonmajor, P06e, its one case: nonmajor(p) if student(p) and maths(k) and not takes(p, k), the conjuncts in that order.
+nonmajor = lambda P
+    {student(P), maths(K), not(takes(P, K))}
+% STAGE 1
+nonmajor(p)

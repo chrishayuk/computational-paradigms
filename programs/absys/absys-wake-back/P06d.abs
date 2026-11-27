@@ -1,0 +1,25 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1B, for what was read).
+% NOTATION: 1990 (.abs), the earliest notation with not (systems/absys/README.md, Notation; docs/decisions.md rule 18).
+% IDIOM: not(A), an independent computation with the criteria reversed: Elcock 1990 p. 14 (tutorial ch. 7: not(X = 1)).
+% IDIOM: a relation as name = lambda X, Y {A} or {B}, its case heads as equations on the parameters: Elcock 1990 p. 8 (examples/append.abs; tutorial ch. 4);
+% IDIOM: mem written as {S = [X|T]} or {S = [Y|T], mem(X, T)}: the reconstruction's own mem (tutorial ch. 7, examples/setdiff.abs; Elcock 1990 does not define it).
+% P06d. Unknown d. One stage: setdiff(<seq>, <seq>, d). The primary: setdiff by the problem's three cases
+% (the set form, Elcock 1990 p. 15, is the named variant variants/P06d.set.abs).
+% CONSTANTS BEGIN
+s1v = [1, 2, 3, 4]   % stage 1: s1
+s2v = [2, 4, 6]   % stage 1: s2
+% CONSTANTS END
+% mem, P06d, cases 1 and 2 in that order: mem(e, <e> ++ t); mem(e, <h> ++ t) if mem(e, t). Each head as an equation on the lambda's parameter.
+mem = lambda E, S
+    {S = [E|T]} or
+    {S = [H|T], mem(E, T)}
+% setdiff, P06d, cases 1, 2 and 3 in that order, each head as equations on the parameters, then its conjuncts in the order written:
+% 1. setdiff(<>, s2, <>); 2. setdiff(<h> ++ t, s2, d) if mem(h, s2) and setdiff(t, s2, d);
+% 3. setdiff(<h> ++ t, s2, <h> ++ d) if not mem(h, s2) and setdiff(t, s2, d).
+setdiff = lambda S1, S2, D
+    {S1 = [], D = []} or
+    {S1 = [H|T], mem(H, S2), setdiff(T, S2, D)} or
+    {S1 = [H|T], D = [H|R], not(mem(H, S2)), setdiff(T, S2, R)}
+% STAGE 1
+setdiff(s1v, s2v, d)
