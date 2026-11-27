@@ -13,7 +13,8 @@ id> or <sub-problem id>, with the system's extension), and calls
     harnesses/SYSTEM/run CONFIG PROBLEM INSTANCE MODE PROGRAM results/SYSTEM/CONFIG/PROBLEM/raw/
 
 A file named <sub-problem id>-<name>.<ext> is a named variant and is run the
-same way. The driver chooses nothing about the runs themselves: it only
+same way, as is any file in the configuration's variants/ folder whose name
+begins with the sub-problem id (<id>.<name>.<ext> or <id>-<name>.<ext>). The driver chooses nothing about the runs themselves: it only
 enumerates them. One line per run goes to results/SYSTEM/batch-log.tsv.
 """
 import json, os, subprocess, sys, time
@@ -45,6 +46,10 @@ def main():
                             progs.append(hit[0]); break
                     progs += sorted(f for f in files if os.path.splitext(f)[1] in EXT[system]
                                     and os.path.splitext(f)[0].startswith(sp["id"] + "-"))
+                    vdir = f"{root}/{cfg}/variants"            # named variants kept in a folder of their own (batch 1B)
+                    if os.path.isdir(vdir):
+                        progs += sorted("variants/" + f for f in os.listdir(vdir) if os.path.splitext(f)[1] in EXT[system]
+                                        and (f.startswith(sp["id"] + ".") or f.startswith(sp["id"] + "-")))
                     if not progs:
                         print(f"NO PROGRAM\t{cfg}\t{inst['id']}", flush=True)
                         log.write(f"{time.strftime('%FT%TZ', time.gmtime())}\t{cfg}\t{inst['id']}\t-\t-\tno program\n")
