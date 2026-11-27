@@ -53,6 +53,7 @@ Programs come after the freeze (`PROTOCOL.md`).
 | [`problems/`](problems) | the sixteen problems, in mathematical notation, with their valid outcomes |
 | [`METRICS.md`](METRICS.md) | what is measured, and the frozen rules for classing tokens |
 | [`PROTOCOL.md`](PROTOCOL.md) | phases, amendments, evidence classes, configurations, how programs are written, run and recorded |
+| [`AMENDMENTS.md`](AMENDMENTS.md) | the numbered changes since the freeze (`spec-1.0.1`) |
 | [`PINS.md`](PINS.md) | the version or commit of every system, fixed at the freeze |
 | [`systems/`](systems) | each system's configurations and evidence class |
 | [`calibration/`](calibration) | the checks of the classification rules: development examples, not results |

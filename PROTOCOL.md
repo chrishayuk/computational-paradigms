@@ -66,7 +66,8 @@ Their disagreements, on tokens and on outcomes, are recorded, and a
 disputed outcome is reported under both classes.
 
 **Hidden variants** are made inaccessible, not merely placed where an
-implementation author is told not to look. The custodian writes them
+implementation author is told not to look. *(For wave 1, amended:
+`AMENDMENTS.md`, 1.)* The custodian writes them
 before the freeze and encrypts them with a key the project's owner holds
 but does not use. The plaintext begins with a random nonce of at least 128
 bits, so that a small space of constants cannot be recovered from its

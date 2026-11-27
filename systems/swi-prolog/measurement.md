@@ -42,7 +42,7 @@ not exist), so none was loaded.
 | attributed variables created by a goal, reachable or not | `call_residue_vars/2` around the goal | exact | about 9 to 12 inferences in the probes |
 | residual constraints | `copy_term/3` (length of goal list) | exact count of projected goals, which is not a count of suspended goals or propagators | 46 to 10,040 inferences in the probes, growing with the store |
 | inferences | `statistics(inferences, I)` before and after | exact and deterministic for a fixed build, flags and load state | 1 inference per `statistics/2` call; the toplevel adds 587 between queries |
-| inference limit | `call_with_inference_limit/3` | exact; agrees with the `statistics/2` difference minus 1 | none if libraries are loaded beforehand (see 5.4) |
+| inference limit | `call_with_inference_limit/3` | *amended (`AMENDMENTS.md`, 2): does not always agree with the `statistics/2` difference minus 1, which is the measurement of record* | none if libraries are loaded beforehand (see 5.4) |
 | process CPU time | `statistics(process_cputime, T)`, `statistics(cputime, T)`, `call_time/2` | measured; not reproducible to the digit | negligible |
 | process peak memory | `/usr/bin/time -l` (macOS) or GNU `time -v` (Linux): maximum resident set size | true peak, but of the whole process (stacks, heap, code, tables) | none inside Prolog |
 | `statistics(memory, _)` | getrusage `ru_idrss` | unavailable on macOS: returns `[0,-1]` | none |
