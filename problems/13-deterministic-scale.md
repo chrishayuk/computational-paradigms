@@ -73,9 +73,9 @@ Each is one stage. n takes the values 10², 10³, 10⁴ and 10⁵.
 | | query | valid outcome |
 |---|---|---|
 | P13a | range(1, n, s) | s = ⟨1, …, n⟩ |
-| P13b | range(1, n, s) and sum(s, k) | k = n(n+1)/2 |
-| P13c | range(1, n, s) and rev(s, r) | r = ⟨n, …, 1⟩ |
-| P13d | range(1, n, s) and revacc(s, r) | r = ⟨n, …, 1⟩ |
+| P13b | range(1, n, s) and sum(s, k) | s = ⟨1, …, n⟩, k = n(n+1)/2 |
+| P13c | range(1, n, s) and rev(s, r) | s = ⟨1, …, n⟩, r = ⟨n, …, 1⟩ |
+| P13d | range(1, n, s) and revacc(s, r) | s = ⟨1, …, n⟩, r = ⟨n, …, 1⟩ |
 | P13e | native: build ⟨1, …, n⟩ and sum it | k = n(n+1)/2 |
 | P13f | native: build ⟨1, …, n⟩ and reverse it | r = ⟨n, …, 1⟩ |
 

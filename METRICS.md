@@ -95,6 +95,10 @@ construct takes the construct's class, including its punctuation.
    direction, or R if the program writes a separate splitting function.
 4. Moving a definition case or a conjunct away from the presentation order
    adds no tokens. Each move counts as one move, under reformulation.
+   Likewise, a guard, case or conjunct of the problem left out of a
+   program counts as one **omission**, under reformulation. The tokens that
+   introduce and close the case it is missing from are R. The case's
+   unchanged contents are classed on their own (rule 10).
 5. An extra argument added for efficiency is R, even if the program is then
    shorter.
 6. A disjunction or a set of facts that the problem states is P. An
@@ -123,7 +127,29 @@ construct takes the construct's class, including its punctuation.
    wherever it is kept, counted once per mechanism per configuration. S is
    reported apart from the per-problem ratios of C and R to P.
 13. Code in the harness beyond the fixed harness calls is not H. It is
-   classed as C or S by these rules.
+    classed as C or S by these rules, with one exception. **Output
+    adapters** are H, however long they are: code whose only effect is to
+    print, or collect for the harness, answers the program has already
+    computed. That covers a printer that walks an encoded sequence, a
+    callback that prints an answer, and a stand-in for the fixed harness
+    calls. Code that computes anything the report depends on is not an
+    adapter.
+14. **A separately written function for a direction** (rule 3) is R
+    throughout, its case-head tests included. Rule 2's exemption for head
+    tests applies to transcriptions of the problem's own cases, not to a
+    function written because a transcription cannot run in that direction.
+15. **Operations on an encoding are part of the encoding.** Where a systems
+    file defines an encoding as P, the operations the problem's relations
+    need on encoded values (construction, decomposition, equality) are P.
+    A general mechanism beyond the problem's relations, such as a unifier
+    or a search, is S.
+16. **A reset that only lets store be reused** is C, since removing it
+    changes what is held, not what is computed (rule 1).
+17. **Docstrings are comments,** and are not tokens.
+18. In P13, a **native** algorithm is not reformulation (the problem says
+    so). Its tokens are P. Where a system has only one way to compute a
+    task, its native and prescribed programs are the same, and are
+    recorded once.
 
 ### Two classifiers
 
@@ -139,6 +165,10 @@ styles of program, where the rules are hardest. The calibration record
 - the constructs that caused disagreement;
 - whether the disagreements fall more on one paradigm than another;
 - any amendment to the rules that resulted.
+
+The first calibration, of draft 0.5, is recorded in
+[`calibration/README.md`](calibration/README.md). Its disagreements fell
+almost all on imperative code, and rules 4 and 13–18 come from it.
 
 The rules are amended only to make classifications more defensible, never
 to make the systems' totals come out more alike.

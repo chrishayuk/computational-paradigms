@@ -1,0 +1,13 @@
+% P13e, native, n = 100: build <1, ..., n> and sum it.
+% Absys has no means of building or summing a list other than relations of
+% this kind, so the native program uses the same algorithm as P13b:
+% recursion down the list, with the arithmetic relation k = h + j.
+% REFORMULATED, as in P13a-d: no notation has m > n or m <= n, so the
+% building relation ends with the equation m = n + 1 and case 2 is unguarded.
+range' = lambda m, n, s
+    {begin m = n + 1  s = [] end
+     or begin s = [m&t']  range(m + 1, n, t) end}
+sum' = lambda s, k
+    {begin s = []  k = 0 end
+     or begin s = [h'&t']  sum(t, j')  k = h + j end}
+begin range(1, 100, s)  sum(s, k) end

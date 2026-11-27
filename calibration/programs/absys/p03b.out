@@ -1,0 +1,13 @@
+3 derivations:
+  derivation #1 (hibernating)
+    procedures  conc, rev
+    a = []
+    b = [1;2]
+  derivation #3 (hibernating)
+    procedures  conc, rev
+    a = [1]
+    b = [2]
+  derivation #5 (hibernating)
+    procedures  conc, rev
+    a = [1;2]
+    b = []

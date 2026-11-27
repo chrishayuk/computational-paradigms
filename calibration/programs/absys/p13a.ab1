@@ -1,0 +1,24 @@
+% P13, transcribed from problems/13-deterministic-scale.md, cases in order.
+% REFORMULATED: range. No Absys notation has the comparisons m > n and
+% m <= n. Case 1's test m > n is written m = n + 1, which agrees with it
+% for every call made from range(1, n, s) with n >= 0; case 2's test m <= n
+% cannot be written, and is left out.
+range' = lambda m, n, s
+    {begin m = n + 1  s = [] end
+     or begin s = [m&t']  range(m + 1, n, t) end}
+sum' = lambda s, k
+    {begin s = []  k = 0 end
+     or begin s = [h'&t']  sum(t, j')  k = h + j end}
+conc' = lambda a, b, c
+    {begin a = []  b = c end
+     or begin a = [h'&a1']  c = [h&c1']  conc(a1, b, c1) end}
+rev' = lambda a, b
+    {begin a = []  b = [] end
+     or begin a = [h'&l']  rev(l, q')  conc(q, [h], b) end}
+revacc' = lambda a, b
+    begin racc(a, [], b) end
+racc' = lambda a, c, b
+    {begin a = []  c = b end
+     or begin a = [h'&t']  racc(t, [h&c], b) end}
+% P13a, n = 100. range(1, n, s)
+range(1, 100, s)

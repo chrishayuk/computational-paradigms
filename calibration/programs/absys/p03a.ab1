@@ -1,0 +1,10 @@
+% P03: conc and rev, transcribed from problems/03-reversible-relations.md
+% (conc from problems/01-unknown-equality.md), cases in the order given.
+conc' = lambda a, b, c
+    {begin a = []  b = c end
+     or begin a = [h'&a1']  c = [h&c1']  conc(a1, b, c1) end}
+rev' = lambda a, b
+    {begin a = []  b = [] end
+     or begin a = [h'&l']  rev(l, q')  conc(q, [h], b) end}
+% P03a. conc(<1,2>, <3>, c)
+conc([1;2], [3], c)

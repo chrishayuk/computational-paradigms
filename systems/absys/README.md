@@ -58,6 +58,18 @@ chosen: the **earliest** notation that has every construct the problem
 needs. A problem that needs constructs found in no single notation is
 recorded as such, with the notation used.
 
+**No notation has comparisons.** Absys's arithmetic is +, −, · and ÷ as
+relations. None of its three notations has <, ≤, > or ≥, as calibration
+found. So P13's range, guarded by m > n and m ≤ n, and every problem that
+uses a comparison (P05, P11, P12, P15d), are *not expressible* in Absys as
+transcriptions. A reformulation without the comparison may be written,
+and is reported as a named variant, never as the program of record.
+
+**Output.** The reconstruction prints at most 32 elements of a list, in
+every mode, so `observe()` cannot read a longer answer. Printing in full
+needs an instrumentation-only option, to be added under `PROTOCOL.md`'s
+rules before the freeze.
+
 ## Units
 
 - **Step:** one step of the machine, as its `--steps` budget counts them:

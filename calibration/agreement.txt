@@ -1,0 +1,284 @@
+
+## absys/p03a.ab1: 102 tokens, agreement 102/102 (100.0%)
+  class  A      B
+  P      102    102
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03b.ab1: 100 tokens, agreement 100/100 (100.0%)
+  class  A      B
+  P      100    100
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03c.ab1: 104 tokens, agreement 104/104 (100.0%)
+  class  A      B
+  P      104    104
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03d.ab1: 104 tokens, agreement 104/104 (100.0%)
+  class  A      B
+  P      104    104
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03e.ab1: 100 tokens, agreement 100/100 (100.0%)
+  class  A      B
+  P      100    100
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03f.ab1: 100 tokens, agreement 100/100 (100.0%)
+  class  A      B
+  P      100    100
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p13a.ab1: 233 tokens, agreement 229/233 (98.3%)
+  class  A      B
+  P      228    224
+  C      0      0
+  R      5      9
+  S      0      0
+  H      0      0
+  tokens 20-21 A=P B=R: or begin
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range case 2 introduction with required m <= n omitted
+  tokens 39-40 A=P B=R: end }
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range altered case 2 and definition close
+
+## absys/p13b.ab1: 241 tokens, agreement 237/241 (98.3%)
+  class  A      B
+  P      236    232
+  C      0      0
+  R      5      9
+  S      0      0
+  H      0      0
+  tokens 20-21 A=P B=R: or begin
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range case 2 introduction with required m <= n omitted
+  tokens 39-40 A=P B=R: end }
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range altered case 2 and definition close
+
+## absys/p13c.ab1: 241 tokens, agreement 237/241 (98.3%)
+  class  A      B
+  P      236    232
+  C      0      0
+  R      5      9
+  S      0      0
+  H      0      0
+  tokens 20-21 A=P B=R: or begin
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range case 2 introduction with required m <= n omitted
+  tokens 39-40 A=P B=R: end }
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range altered case 2 and definition close
+
+## absys/p13d.ab1: 241 tokens, agreement 237/241 (98.3%)
+  class  A      B
+  P      236    232
+  C      0      0
+  R      5      9
+  S      0      0
+  H      0      0
+  tokens 20-21 A=P B=R: or begin
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range case 2 introduction with required m <= n omitted
+  tokens 39-40 A=P B=R: end }
+      A: range case 2 (its guard m <= n is omitted; zero tokens) | B: range altered case 2 and definition close
+
+## absys/p13e.ab1: 95 tokens, agreement 95/95 (100.0%)
+  class  A      B
+  P      95     95
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p13f.ab1: 115 tokens, agreement 115/115 (100.0%)
+  class  A      B
+  P      115    115
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## algol-60/p03.alg: 902 tokens, agreement 679/902 (75.3%)
+  class  A      B
+  P      287    405
+  C      0      0
+  R      325    263
+  S      157    0
+  H      133    234
+  tokens 60-119 A=S B=P: Boolean procedure same ( x , y ) ; value x , y ; integer x , y ; same := if x = 
+      A: same: structural equality of encoded sequences, a mechanism ALGOL lack | B: structural equality encoding header
+  tokens 224-228 A=R B=P: if c ≠ 0 then
+      A: splits: separate procedure for P03b, with continuation parameter found | B: split nonempty-case head test
+  tokens 264-268 A=R B=P: if a = 0 then
+      A: suffix: separate procedure for P03c | B: suffix empty-prefix case head test
+  tokens 273-290 A=R B=P: else if c ≠ 0 then begin if hd [ c ] = hd [ a ] then
+      A: suffix: separate procedure for P03c | B: suffix nonempty-output case test and block opening
+  tokens 305-305 A=R B=P: end
+      A: suffix: separate procedure for P03c | B: suffix head-test block close
+  tokens 357-364 A=R B=P: if same ( b , c ) then
+      A: prefix: separate procedure for P03d | B: prefix empty-prefix case equality test
+  tokens 370-374 A=R B=P: if c ≠ 0 then
+      A: prefix: separate procedure for P03d | B: prefix nonempty-case head test
+  tokens 493-506 A=R B=P: if x ≠ 0 then begin if tl [ x ] = 0 then
+      A: revinverse: P03f, case 2 read backwards via splits, conjuncts reordere | B: singleton suffix test: nonempty and block opening
+  tokens 513-513 A=R B=P: end
+      A: revinverse: P03f, case 2 read backwards via splits, conjuncts reordere | B: singleton suffix test block close
+  tokens 516-520 A=R B=P: if r = 0 then
+      A: revinverse: P03f, case 2 read backwards via splits, conjuncts reordere | B: reverse-inverse empty-case head test
+  tokens 534-546 A=S B=H: procedure outseq ( s ) ; value s ; integer s ; begin
+      A: outseq heading: sequence printer, beyond fixed print calls | B: outseq print implementation
+  tokens 554-561 A=S B=H: more : if s ≠ 0 then begin
+      A: outseq loop label and test | B: outseq print implementation
+  tokens 572-583 A=S B=H: s := tl [ s ] ; go to more end ;
+      A: outseq step to tail and go to | B: outseq print implementation
+  tokens 590-604 A=S B=H: end ; procedure show ( s ) ; value s ; integer s ; begin
+      A: outseq end | B: outseq print implementation
+  tokens 612-636 A=S B=H: outseq ( s ) end ; procedure showpair ( a , b ) ; value a , b ; integer a , b ; 
+      A: outseq call, end | B: show one-answer print callback
+  tokens 644-648 A=S B=H: outseq ( a ) ;
+      A: outseq(a) | B: showpair answer-pair print callback
+  tokens 656-660 A=S B=H: outseq ( b ) ;
+      A: outseq(b) | B: showpair answer-pair print callback
+  tokens 667-668 A=S B=H: end ;
+      A: showpair end | B: showpair answer-pair print callback
+  tokens 669-672 A=P B=H: free := 0 ;
+      A: free := 0: initialise the encoding's allocator | B: pose initializes sequence arena
+  tokens 680-681 A=S B=H: outseq (
+      A: outseq call | B: P03a print wrapper opening
+  tokens 703-704 A=S B=H: ) ;
+      A: outseq call close | B: P03a print wrapper close
+  tokens 733-733 A=S B=H: showpair
+      A: showpair as answer collector | B: P03b answer-print callback argument
+  tokens 776-776 A=S B=H: show
+      A: show as answer collector | B: P03c answer-print callback argument
+  tokens 819-819 A=S B=H: show
+      A: show | B: P03d answer-print callback argument
+  tokens 836-837 A=S B=H: outseq (
+      A: outseq call | B: P03e print wrapper opening
+  tokens 857-858 A=S B=H: ) ;
+      A: outseq close | B: P03e print wrapper close
+  tokens 892-892 A=S B=H: show
+      A: show | B: P03f answer-print callback argument
+
+## algol-60/p13.alg: 713 tokens, agreement 638/713 (89.5%)
+  class  A      B
+  P      514    510
+  C      12     0
+  R      0      0
+  S      59     0
+  H      128    203
+  tokens 340-352 A=S B=H: procedure outseq ( s ) ; value s ; integer s ; begin
+      A: outseq heading: sequence printer | B: outseq implementation of printing
+  tokens 360-367 A=S B=H: more : if s ≠ 0 then begin
+      A: outseq loop label and test | B: outseq implementation of printing
+  tokens 378-389 A=S B=H: s := tl [ s ] ; go to more end ;
+      A: outseq step and go to | B: outseq implementation of printing
+  tokens 396-397 A=S B=H: end ;
+      A: outseq end | B: outseq implementation of printing
+  tokens 398-401 A=P B=H: free := 0 ;
+      A: free := 0: initialise the allocator | B: P13a pose resets encoding arena
+  tokens 418-422 A=S B=H: outseq ( s ) ;
+      A: outseq(s) | B: P13a print sequence
+  tokens 430-433 A=C B=H: free := 0 ;
+      A: free := 0: reset allocator between queries; only store use changes | B: P13b pose resets encoding arena
+  tokens 471-474 A=C B=H: free := 0 ;
+      A: free := 0 reset | B: P13c pose resets encoding arena
+  tokens 498-502 A=S B=H: outseq ( r ) ;
+      A: outseq(r) | B: P13c print sequence
+  tokens 510-513 A=C B=H: free := 0 ;
+      A: free := 0 reset | B: P13d pose resets encoding arena
+  tokens 537-541 A=S B=H: outseq ( r ) ;
+      A: outseq(r) | B: P13d print sequence
+  tokens 686-694 A=S B=H: for i := 1 step 1 until n do
+      A: for header of the element-printing loop | B: P13f printing traversal header
+
+## python/p03.py: 472 tokens, agreement 411/472 (87.1%)
+  class  A      B
+  P      152    213
+  C      0      0
+  R      284    223
+  S      0      0
+  H      36     36
+  tokens 63-67 A=R B=P: if c : <NEWLINE> <INDENT>
+      A: conc_split: separate splitting function for P03b | B: split nonempty-case head test and layout opening
+  tokens 103-103 A=R B=P: <DEDENT>
+      A: conc_split: separate splitting function for P03b | B: split nonempty-case layout close
+  tokens 120-125 A=R B=P: if not a : <NEWLINE> <INDENT>
+      A: conc_suffix: separate function for P03c | B: suffix empty-prefix case head test
+  tokens 131-146 A=R B=P: <DEDENT> if c and c [ 0 ] == a [ 0 ] : <NEWLINE> <INDENT>
+      A: conc_suffix: separate function for P03c | B: suffix empty-prefix case layout close
+  tokens 163-163 A=R B=P: <DEDENT>
+      A: conc_suffix: separate function for P03c | B: suffix recursive-case layout close
+  tokens 186-192 A=R B=P: if b == c : <NEWLINE> <INDENT>
+      A: conc_prefix: separate function for P03d (uses built-in == on lists) | B: prefix empty-prefix case equality test
+  tokens 201-206 A=R B=P: <DEDENT> if c : <NEWLINE> <INDENT>
+      A: conc_prefix: separate function for P03d (uses built-in == on lists) | B: prefix empty-prefix test layout close
+  tokens 238-238 A=R B=P: <DEDENT>
+      A: conc_prefix: separate function for P03d (uses built-in == on lists) | B: prefix nonempty-case layout close
+  tokens 300-305 A=R B=P: if not r : <NEWLINE> <INDENT>
+      A: rev_inverse: P03f direction, case 2 read backwards via conc_split, con | B: reverse-inverse empty-case head test
+  tokens 314-314 A=R B=P: <DEDENT>
+      A: rev_inverse: P03f direction, case 2 read backwards via conc_split, con | B: reverse-inverse empty-case layout close
+  tokens 327-336 A=R B=P: if len ( last ) == 1 : <NEWLINE> <INDENT>
+      A: rev_inverse: P03f direction, case 2 read backwards via conc_split, con | B: reverse-inverse singleton suffix head test
+  tokens 362-362 A=R B=P: <DEDENT>
+      A: rev_inverse: P03f direction, case 2 read backwards via conc_split, con | B: reverse-inverse singleton head test layout close
+
+## python/p13.py: 426 tokens, agreement 373/426 (87.6%)
+  class  A      B
+  P      334    334
+  C      0      0
+  R      0      0
+  S      53     0
+  H      39     92
+  tokens 232-272 A=S B=H: def as_list ( s ) : <NEWLINE> <INDENT> """Harness (H): the chain of pairs writte
+      A: as_list: chain-of-pairs to list for printing; harness code beyond the  | B: print adapter header and docstring
+  tokens 286-289 A=S B=H: as_list ( s )
+      A: as_list call | B: P13a print
+  tokens 335-338 A=S B=H: as_list ( r )
+      A: as_list call | B: P13c print
+  tokens 361-364 A=S B=H: as_list ( r )
+      A: as_list call | B: P13d print
+
+## swi-prolog/p03.pl: 350 tokens, agreement 350/350 (100.0%)
+  class  A      B
+  P      156    156
+  C      0      0
+  R      0      0
+  S      0      0
+  H      194    194
+
+## swi-prolog/p13.pl: 550 tokens, agreement 550/550 (100.0%)
+  class  A      B
+  P      358    358
+  C      0      0
+  R      0      0
+  S      0      0
+  H      192    192
+
+## per system
+  absys: 1760/1776 (99.1%)
+  algol-60: 1317/1615 (81.5%)
+  python: 784/898 (87.3%)
+  swi-prolog: 900/900 (100.0%)
+
+## disagreements by (A, B) class
+  S→H: 209
+  R→P: 123
+  S→P: 60
+  P→R: 16
+  C→H: 12
+  P→H: 8

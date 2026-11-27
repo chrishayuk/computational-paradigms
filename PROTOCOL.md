@@ -190,7 +190,8 @@ system processes.
 5. **No anticipation.** The code that handles stage k may not depend on the
    content of any later stage.
 6. **Genericity.** A program must stay correct when the constants in a
-   problem's stages are changed. Each problem has hidden variants with other
+   problem's stages are changed. It keeps them in one marked place, or reads
+   them as input, so that the verifier can substitute them. Each problem has hidden variants with other
    constants, held by someone who does not write programs. Every program is
    run on them after its results are recorded. A program that fails a
    variant is recorded as such, since it encodes a conclusion rather than
@@ -225,7 +226,9 @@ system processes.
 - **Safety limit.** A limit of 60 seconds per stage protects the harness.
   It is not a measurement. A stage it stops is rerun once, with the limit
   raised tenfold. If the rerun also stops, *timeout* is final for that
-  stage. Both runs are recorded.
+  stage. Both runs are recorded. Answers reported before the limit stopped
+  the run are kept and classified on the semantic axis; only the execution
+  state is *timeout*.
 
 ## Modes of running
 

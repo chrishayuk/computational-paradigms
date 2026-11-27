@@ -1,0 +1,13 @@
+% P13f, native, n = 100: build <1, ..., n> and reverse it.
+% The reverse is the retrospective's own (Elcock 1990, pp. 11-13: rev1 and
+% rev, with an accumulator, linear), written in the 1969 notation.
+% REFORMULATED building relation, as in P13e.
+range' = lambda m, n, s
+    {begin m = n + 1  s = [] end
+     or begin s = [m&t']  range(m + 1, n, t) end}
+rev1' = lambda r, s, t
+    {begin r = []  s = t end
+     or begin r = [x'&l']  rev1(l, [x&s], t) end}
+rev' = lambda r, s
+    begin rev1(r, [], s) end
+begin range(1, 100, s)  rev(s, r) end
