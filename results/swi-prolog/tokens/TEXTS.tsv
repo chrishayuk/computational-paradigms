@@ -1,0 +1,44 @@
+text	also the text of
+constraints/P01a.pl	coroutines/P01a.pl plain/P01a.pl session/P01a.pl tabling/P01a.pl
+constraints/P01b.pl	coroutines/P01b.pl plain/P01b.pl session/P01b.pl
+constraints/P01c-occurs-check.pl	coroutines/P01c-occurs-check.pl plain/P01c-occurs-check.pl session/P01c-occurs-check.pl
+constraints/P01c.pl	coroutines/P01c.pl plain/P01c.pl session/P01c.pl
+constraints/P02a.pl	session/P02a.pl
+constraints/P02b.R1R2R3.pl	session/P02b.R1R2R3.pl
+constraints/P02b.R1R3R2.pl	session/P02b.R1R3R2.pl
+constraints/P02b.R2R1R3.pl	session/P02b.R2R1R3.pl
+constraints/P02b.R2R3R1.pl	session/P02b.R2R3R1.pl
+constraints/P02b.R3R1R2.pl	session/P02b.R3R1R2.pl
+constraints/P02b.R3R2R1.pl	session/P02b.R3R2R1.pl
+constraints/P02c.pl	session/P02c.pl
+constraints/P03a.pl	coroutines/P03a.pl plain/P03a.pl session/P03a.pl
+constraints/P03b.pl	coroutines/P03b.pl plain/P03b.pl session/P03b.pl
+constraints/P03c.pl	coroutines/P03c.pl plain/P03c.pl session/P03c.pl
+constraints/P03d.pl	coroutines/P03d.pl plain/P03d.pl session/P03d.pl
+constraints/P03e.pl	coroutines/P03e.pl plain/P03e.pl session/P03e.pl
+constraints/P03f.pl	coroutines/P03f.pl plain/P03f.pl session/P03f.pl
+coroutines/P02a.pl	
+coroutines/P02b.R1R2R3.pl	
+coroutines/P02b.R1R3R2.pl	
+coroutines/P02b.R2R1R3.pl	
+coroutines/P02b.R2R3R1.pl	
+coroutines/P02b.R3R1R2.pl	
+coroutines/P02b.R3R2R1.pl	
+coroutines/P02c.pl	
+plain/P02a.pl	tabling/P02a.pl
+plain/P02b.R1R2R3.pl	tabling/P02b.R1R2R3.pl
+plain/P02b.R1R3R2.pl	tabling/P02b.R1R3R2.pl
+plain/P02b.R2R1R3.pl	tabling/P02b.R2R1R3.pl
+plain/P02b.R2R3R1.pl	tabling/P02b.R2R3R1.pl
+plain/P02b.R3R1R2.pl	tabling/P02b.R3R1R2.pl
+plain/P02b.R3R2R1.pl	tabling/P02b.R3R2R1.pl
+plain/P02c.pl	tabling/P02c.pl
+tabling/P01b.pl	
+tabling/P01c-occurs-check.pl	
+tabling/P01c.pl	
+tabling/P03a.pl	
+tabling/P03b.pl	
+tabling/P03c.pl	
+tabling/P03d.pl	
+tabling/P03e.pl	
+tabling/P03f.pl	

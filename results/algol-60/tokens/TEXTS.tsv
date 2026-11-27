@@ -1,0 +1,25 @@
+text	also the text of
+report/P01a.alg	
+report/P01b.alg	
+report/P01c.alg	
+report/P02a.alg	
+report/P02b.R1R2R3.alg	report/P02b.R1R3R2.alg report/P02b.R2R1R3.alg report/P02b.R2R3R1.alg report/P02b.R3R1R2.alg report/P02b.R3R2R1.alg
+report/P02c.alg	
+report/P03a.alg	
+report/P03b.alg	
+report/P03c.alg	
+report/P03d.alg	
+report/P03e.alg	
+report/P03f.alg	
+x1/P01a.a60	x1sim/P01a.a60
+x1/P01b.a60	x1sim/P01b.a60
+x1/P01c.a60	x1sim/P01c.a60
+x1/P02a.a60	x1sim/P02a.a60
+x1/P02b.R1R2R3.a60	x1/P02b.R1R3R2.a60 x1/P02b.R2R1R3.a60 x1/P02b.R2R3R1.a60 x1/P02b.R3R1R2.a60 x1/P02b.R3R2R1.a60 x1sim/P02b.R1R2R3.a60 x1sim/P02b.R1R3R2.a60 x1sim/P02b.R2R1R3.a60 x1sim/P02b.R2R3R1.a60 x1sim/P02b.R3R1R2.a60 x1sim/P02b.R3R2R1.a60
+x1/P02c.a60	x1sim/P02c.a60
+x1/P03a.a60	x1sim/P03a.a60
+x1/P03b.a60	x1sim/P03b.a60
+x1/P03c.a60	x1sim/P03c.a60
+x1/P03d.a60	x1sim/P03d.a60
+x1/P03e.a60	x1sim/P03e.a60
+x1/P03f.a60	x1sim/P03f.a60
