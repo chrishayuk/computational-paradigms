@@ -1,0 +1,116 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), recursive procedures and function designators with value parameters (4.7, 5.4), the for statement (4.6) and conditional statements and expressions (3.3, 4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), sequences as parallel arrays of heads and tail indices (systems file, Values), the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of a relation until its places are known, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: L e1 ... eL, the length and then the elements of the known sequence a of the equation x = a ++ x. Elements are integers, an atom being its integer code;
+  c̲o̲m̲m̲e̲n̲t̲ P01c. One unknown x, a sequence. One stage: x = a ++ x. A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence hd[c] followed by the sequence tl[c]. ALGOL 60 has no unknowns: x is a Boolean that says whether it has a value and the sequence it holds. The equation is held as posed until x is known, when it would be tested, a ++ x being computed by the cases of conc. Nothing here gives x a value, so it is held. The program has no occurs check, since it has no unification, and makes no cyclic value;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, len;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants: the length of a, which sizes the cells, and then its elements;
+  len := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ top, a1, xv, held, conc1, conc2;
+  b̲o̲o̲l̲e̲a̲n̲ xk, r1, inconsistent;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ hd, tl[1:2 × len + 1];
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ cons(h, t);
+    v̲a̲l̲u̲e̲ h, t; i̲n̲t̲e̲g̲e̲r̲ h, t;
+  c̲o̲m̲m̲e̲n̲t̲ a new cell, the sequence h followed by the sequence t;
+  b̲e̲g̲i̲n̲ top := top + 1; hd[top] := h; tl[top] := t; cons := top e̲n̲d̲ cons;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ readseq(len);
+    v̲a̲l̲u̲e̲ len; i̲n̲t̲e̲g̲e̲r̲ len;
+  c̲o̲m̲m̲e̲n̲t̲ a sequence of len elements, read from the input in order;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j, e, first, last, c;
+    first := last := 0;
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ len d̲o̲
+    b̲e̲g̲i̲n̲
+      e := read; c := cons(e, 0);
+      i̲f̲ last = 0 t̲h̲e̲n̲ first := c e̲l̲s̲e̲ tl[last] := c;
+      last := c
+    e̲n̲d̲;
+    readseq := first
+  e̲n̲d̲ readseq;
+
+  b̲o̲o̲l̲e̲a̲n̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ same(p, q);
+    v̲a̲l̲u̲e̲ p, q; i̲n̲t̲e̲g̲e̲r̲ p, q;
+  c̲o̲m̲m̲e̲n̲t̲ the equality of two sequences;
+  same := i̲f̲ p = 0 t̲h̲e̲n̲ q = 0 e̲l̲s̲e̲ i̲f̲ q = 0 t̲h̲e̲n̲ f̲a̲l̲s̲e̲ e̲l̲s̲e̲ i̲f̲ hd[p] = hd[q] t̲h̲e̲n̲ same(tl[p], tl[q]) e̲l̲s̲e̲ f̲a̲l̲s̲e̲;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ conc(a, b);
+    v̲a̲l̲u̲e̲ a, b; i̲n̲t̲e̲g̲e̲r̲ a, b;
+  c̲o̲m̲m̲e̲n̲t̲ conc(a, b, c), computing c from a and b by its cases, in order. Case 1: conc(the empty sequence, b, b). Case 2: conc(h followed by a, b, h followed by c) if conc(a, b, c);
+  i̲f̲ a = 0 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ conc1 := conc1 + 1; conc := b e̲n̲d̲
+  e̲l̲s̲e̲
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ c;
+    conc2 := conc2 + 1;
+    c := conc(tl[a], b);
+    conc := cons(hd[a], c)
+  e̲n̲d̲ conc;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine1;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of x = a1 ++ x: with x known, it is tested. With x unknown, it waits;
+  i̲f̲ xk t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    i̲f̲ ¬same(xv, conc(a1, xv)) t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲;
+    r1 := f̲a̲l̲s̲e̲
+  e̲n̲d̲ examine1;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printseq(p);
+    v̲a̲l̲u̲e̲ p; i̲n̲t̲e̲g̲e̲r̲ p;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a sequence, its elements in parentheses, separated by commas;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j;
+    PRINTTEXT(`(');
+    f̲o̲r̲ j := 0 w̲h̲i̲l̲e̲ p ≠ 0 d̲o̲
+    b̲e̲g̲i̲n̲ print(hd[p]); p := tl[p]; i̲f̲ p ≠ 0 t̲h̲e̲n̲ PRINTTEXT(`, ') e̲n̲d̲;
+    PRINTTEXT(`)')
+  e̲n̲d̲ printseq;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ relations;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the relation held, with x put in its places if known;
+  i̲f̲ r1 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    i̲f̲ xk t̲h̲e̲n̲ printseq(xv) e̲l̲s̲e̲ PRINTTEXT(`x');
+    PRINTTEXT(` = '); printseq(a1); PRINTTEXT(` ++ ');
+    i̲f̲ xk t̲h̲e̲n̲ printseq(xv) e̲l̲s̲e̲ PRINTTEXT(`x')
+  e̲n̲d̲ relations;
+
+  xk := r1 := inconsistent := f̲a̲l̲s̲e̲;
+  top := conc1 := conc2 := 0;
+  a1 := readseq(len);
+  r1 := t̲r̲u̲e̲;
+  examine1;
+
+  c̲o̲m̲m̲e̲n̲t̲ the answer: the unknown, and the relation still held;
+  i̲f̲ ¬inconsistent t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    PRINTTEXT(`[answer]x');
+    i̲f̲ xk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` = '); printseq(xv) e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ r1 t̲h̲e̲n̲ PRINTTEXT(` held') e̲l̲s̲e̲ PRINTTEXT(` free');
+    i̲f̲ r1 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`, where '); relations e̲n̲d̲;
+    PRINTTEXT(`[/answer]'); NLCR
+  e̲n̲d̲;
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the relation held, the value known, how many relations wait, and the applications of each case of conc;
+  held := i̲f̲ r1 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0;
+  PRINTTEXT(`[observe]');
+  i̲f̲ inconsistent t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  PRINTTEXT(`held relations: ');
+  i̲f̲ held = 0 t̲h̲e̲n̲ PRINTTEXT(`none') e̲l̲s̲e̲ relations;
+  NLCR;
+  i̲f̲ xk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind x]'); printseq(xv); PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲;
+  i̲f̲ held > 0 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended held-relations '); print(held); PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations conc/1 '); print(conc1); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations conc/2 '); print(conc2); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]')
+  e̲n̲d̲
+e̲n̲d̲

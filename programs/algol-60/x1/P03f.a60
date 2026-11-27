@@ -1,0 +1,98 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), recursive procedures and function designators with value and name parameters (4.7, 5.4), name parameters to return results (4.7.3.2), the for statement (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), sequences as parallel arrays of heads and tail indices (systems file, Values), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: Lb b1 ... bLb, the length and then the elements of the known sequence b of rev(a, b). Elements are integers, an atom being its integer code;
+  c̲o̲m̲m̲e̲n̲t̲ P03f. rev(a, b) with b known, every a. ALGOL 60 procedures compute in one direction, so this direction is a separate procedure, unrev, written from the cases of rev, in order, with conc used in a direction of its own, lastsplit, written from the cases of conc (reformulations, METRICS.md rule 3). Case 1 of rev, rev(the empty sequence, the empty sequence), applies when b is empty, and gives the answer a empty. Case 2, rev(h followed by l, r) if rev(l, q) and conc(q, the sequence of h alone, r), has its conjuncts taken in the other order (a move), since r is known and q is not: lastsplit finds q and h from r by conc, and then every answer l of rev(l, q) gives the answer a = h followed by l. The heads taken by case 2 so far are kept in the array path, an extra argument of the search. A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence hd[c] followed by the sequence tl[c]. A sequence of length L needs L cells to read it and fewer than L(L + 1)/2 for lastsplit;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, lb;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants: the length, which sizes the cells, and then the elements;
+  lb := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ top, b0, answers, conc1, conc2, rev1, rev2;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ hd, tl[1:lb + lb × (lb + 1) ÷ 2 + 1];
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ path[1:lb + 1];
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ cons(h, t);
+    v̲a̲l̲u̲e̲ h, t; i̲n̲t̲e̲g̲e̲r̲ h, t;
+  c̲o̲m̲m̲e̲n̲t̲ a new cell, the sequence h followed by the sequence t;
+  b̲e̲g̲i̲n̲ top := top + 1; hd[top] := h; tl[top] := t; cons := top e̲n̲d̲ cons;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ readseq(len);
+    v̲a̲l̲u̲e̲ len; i̲n̲t̲e̲g̲e̲r̲ len;
+  c̲o̲m̲m̲e̲n̲t̲ a sequence of len elements, read from the input in order;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j, e, first, last, c;
+    first := last := 0;
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ len d̲o̲
+    b̲e̲g̲i̲n̲
+      e := read; c := cons(e, 0);
+      i̲f̲ last = 0 t̲h̲e̲n̲ first := c e̲l̲s̲e̲ tl[last] := c;
+      last := c
+    e̲n̲d̲;
+    readseq := first
+  e̲n̲d̲ readseq;
+
+  b̲o̲o̲l̲e̲a̲n̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ lastsplit(r, q, h);
+    v̲a̲l̲u̲e̲ r; i̲n̲t̲e̲g̲e̲r̲ r, q, h;
+  c̲o̲m̲m̲e̲n̲t̲ conc(q, the sequence of h alone, r), with r known: true, with q and h given their values, where it has an answer, from the cases of conc, in order. Case 1, conc(the empty sequence, b, b), applies when r is the sequence of one element h, and gives q empty. Case 2, conc(g followed by a, b, g followed by c) if conc(a, b, c), applies when r is g followed by r1, and gives q = g followed by q1 for the answer q1, h of conc(q1, the sequence of h alone, r1). The sequence of h alone has one answer in r at most, so at most one case gives one;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ q1, h1;
+    lastsplit := f̲a̲l̲s̲e̲;
+    i̲f̲ r ≠ 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ tl[r] = 0 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ conc1 := conc1 + 1; q := 0; h := hd[r]; lastsplit := t̲r̲u̲e̲ e̲n̲d̲;
+      i̲f̲ lastsplit(tl[r], q1, h1) t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ conc2 := conc2 + 1; q := cons(hd[r], q1); h := h1; lastsplit := t̲r̲u̲e̲ e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ lastsplit;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printpath(d);
+    v̲a̲l̲u̲e̲ d; i̲n̲t̲e̲g̲e̲r̲ d;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the sequence path[1], ..., path[d];
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j;
+    PRINTTEXT(`(');
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ d d̲o̲
+    b̲e̲g̲i̲n̲ print(path[j]); i̲f̲ j < d t̲h̲e̲n̲ PRINTTEXT(`, ') e̲n̲d̲;
+    PRINTTEXT(`)')
+  e̲n̲d̲ printpath;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ unrev(r, d);
+    v̲a̲l̲u̲e̲ r, d; i̲n̲t̲e̲g̲e̲r̲ r, d;
+  c̲o̲m̲m̲e̲n̲t̲ every answer a of rev(a, r), with r known, a being path[1], ..., path[d] followed by the a of this call;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ q, h;
+    i̲f̲ r = 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      rev1 := rev1 + 1;
+      answers := answers + 1;
+      PRINTTEXT(`[answer]a = '); printpath(d); PRINTTEXT(`[/answer]'); NLCR
+    e̲n̲d̲;
+    i̲f̲ lastsplit(r, q, h) t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      rev2 := rev2 + 1;
+      path[d + 1] := h;
+      unrev(q, d + 1)
+    e̲n̲d̲
+  e̲n̲d̲ unrev;
+
+  top := answers := conc1 := conc2 := rev1 := rev2 := 0;
+  b0 := readseq(lb);
+
+  unrev(b0, 0);
+
+  PRINTTEXT(`[observe]');
+  i̲f̲ answers = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations rev/1 '); print(rev1); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations rev/2 '); print(rev2); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations conc/1 '); print(conc1); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations conc/2 '); print(conc2); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]')
+  e̲n̲d̲
+e̲n̲d̲

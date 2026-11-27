@@ -1,0 +1,89 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), recursive procedures and function designators with value parameters (4.7, 5.4), the for statement (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), sequences as parallel arrays of heads and tail indices (systems file, Values), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: La a1 ... aLa, the length and then the elements of the known sequence a of rev(a, b). Elements are integers, an atom being its integer code;
+  c̲o̲m̲m̲e̲n̲t̲ P03e. rev(a, b) with a known: b is computed from a by the cases of rev, in order, as a function, the direction this query uses, and conc likewise computes its third place from the first two. Case 2 of rev takes its two conjuncts in order: q from rev(l, q), and then r from conc(q, the sequence of h alone, r). A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence hd[c] followed by the sequence tl[c]. A sequence of length L needs L cells to read it and L(L + 1)/2 for rev;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, la;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants: the length, which sizes the cells, and then the elements;
+  la := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ top, a0, b0, conc1, conc2, rev1, rev2;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ hd, tl[1:la + la × (la + 1) ÷ 2 + 1];
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ cons(h, t);
+    v̲a̲l̲u̲e̲ h, t; i̲n̲t̲e̲g̲e̲r̲ h, t;
+  c̲o̲m̲m̲e̲n̲t̲ a new cell, the sequence h followed by the sequence t;
+  b̲e̲g̲i̲n̲ top := top + 1; hd[top] := h; tl[top] := t; cons := top e̲n̲d̲ cons;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ readseq(len);
+    v̲a̲l̲u̲e̲ len; i̲n̲t̲e̲g̲e̲r̲ len;
+  c̲o̲m̲m̲e̲n̲t̲ a sequence of len elements, read from the input in order;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j, e, first, last, c;
+    first := last := 0;
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ len d̲o̲
+    b̲e̲g̲i̲n̲
+      e := read; c := cons(e, 0);
+      i̲f̲ last = 0 t̲h̲e̲n̲ first := c e̲l̲s̲e̲ tl[last] := c;
+      last := c
+    e̲n̲d̲;
+    readseq := first
+  e̲n̲d̲ readseq;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ conc(a, b);
+    v̲a̲l̲u̲e̲ a, b; i̲n̲t̲e̲g̲e̲r̲ a, b;
+  c̲o̲m̲m̲e̲n̲t̲ conc(a, b, c), computing c from a and b by its cases, in order. Case 1: conc(the empty sequence, b, b). Case 2: conc(h followed by a, b, h followed by c) if conc(a, b, c);
+  i̲f̲ a = 0 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ conc1 := conc1 + 1; conc := b e̲n̲d̲
+  e̲l̲s̲e̲
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ c;
+    conc2 := conc2 + 1;
+    c := conc(tl[a], b);
+    conc := cons(hd[a], c)
+  e̲n̲d̲ conc;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ rev(a);
+    v̲a̲l̲u̲e̲ a; i̲n̲t̲e̲g̲e̲r̲ a;
+  c̲o̲m̲m̲e̲n̲t̲ rev(a, b), computing b from a by its cases, in order. Case 1: rev(the empty sequence, the empty sequence). Case 2: rev(h followed by l, r) if rev(l, q) and conc(q, the sequence of h alone, r);
+  i̲f̲ a = 0 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ rev1 := rev1 + 1; rev := 0 e̲n̲d̲
+  e̲l̲s̲e̲
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ q;
+    rev2 := rev2 + 1;
+    q := rev(tl[a]);
+    rev := conc(q, cons(hd[a], 0))
+  e̲n̲d̲ rev;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printseq(p);
+    v̲a̲l̲u̲e̲ p; i̲n̲t̲e̲g̲e̲r̲ p;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a sequence, its elements in parentheses, separated by commas;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j;
+    PRINTTEXT(`(');
+    f̲o̲r̲ j := 0 w̲h̲i̲l̲e̲ p ≠ 0 d̲o̲
+    b̲e̲g̲i̲n̲ print(hd[p]); p := tl[p]; i̲f̲ p ≠ 0 t̲h̲e̲n̲ PRINTTEXT(`, ') e̲n̲d̲;
+    PRINTTEXT(`)')
+  e̲n̲d̲ printseq;
+
+  top := conc1 := conc2 := rev1 := rev2 := 0;
+  a0 := readseq(la);
+
+  b0 := rev(a0);
+
+  PRINTTEXT(`[answer]b = '); printseq(b0); PRINTTEXT(`[/answer]'); NLCR;
+  PRINTTEXT(`[observe]');
+  PRINTTEXT(`[operations rev/1 '); print(rev1); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations rev/2 '); print(rev2); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations conc/1 '); print(conc1); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations conc/2 '); print(conc2); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]')
+  e̲n̲d̲
+e̲n̲d̲

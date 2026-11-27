@@ -1,0 +1,156 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks, procedures (5.4), the for statement with a while element (4.6), conditional statements and expressions (3.3, 4.5) and integer division (3.3.4.2), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of each relation until enough of its places are known, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS one line 1: c a b, where c is the right side of R1, u + v = c, and a and b are the two integers of R3, u + a = b. R2, w times u = v, has none;
+  c̲o̲m̲m̲e̲n̲t̲ P02c. Integer unknowns u, v, w. One stage: R1, R2 and R3, in that order, posed by rerunning (there is no later stage to wait for). Each unknown is a Boolean that says whether it has a value and an integer that holds it. Each relation is held as posed until enough of its places are known, when it gives the remaining place its value or is tested;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, c1, a3, b3, uv, vv, wv, held, pass, x1, x2, x3;
+  b̲o̲o̲l̲e̲a̲n̲ uk, vk, wk, r1, r2, r3, changed, inconsistent;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine1;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of R1, u + v = c1;
+  b̲e̲g̲i̲n̲
+    x1 := x1 + 1;
+    i̲f̲ uk ∧ vk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ i̲f̲ uv + vv ≠ c1 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲; r1 := f̲a̲l̲s̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ uk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ vv := c1 - uv; vk := t̲r̲u̲e̲; r1 := f̲a̲l̲s̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ vk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ uv := c1 - vv; uk := t̲r̲u̲e̲; r1 := f̲a̲l̲s̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+  e̲n̲d̲ examine1;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine2;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of R2, w times u = v. With u known and nonzero, w is v divided by u where u divides v, and there is no solution where it does not. With u = 0, R2 holds for every w when v = 0, and for none when v is not 0. The same with w and u exchanged;
+  b̲e̲g̲i̲n̲
+    x2 := x2 + 1;
+    i̲f̲ uk ∧ wk ∧ vk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ i̲f̲ wv × uv ≠ vv t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲; r2 := f̲a̲l̲s̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ uk ∧ wk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ vv := wv × uv; vk := t̲r̲u̲e̲; r2 := f̲a̲l̲s̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ uk ∧ vk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ uv = 0 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ i̲f̲ vv ≠ 0 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲ e̲n̲d̲
+      e̲l̲s̲e̲ i̲f̲ vv ÷ uv × uv = vv t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ wv := vv ÷ uv; wk := t̲r̲u̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+      e̲l̲s̲e̲ inconsistent := t̲r̲u̲e̲;
+      r2 := f̲a̲l̲s̲e̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ wk ∧ vk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ wv = 0 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ i̲f̲ vv ≠ 0 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲ e̲n̲d̲
+      e̲l̲s̲e̲ i̲f̲ vv ÷ wv × wv = vv t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ uv := vv ÷ wv; uk := t̲r̲u̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+      e̲l̲s̲e̲ inconsistent := t̲r̲u̲e̲;
+      r2 := f̲a̲l̲s̲e̲
+    e̲n̲d̲
+  e̲n̲d̲ examine2;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine3;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of R3, u + a3 = b3;
+  b̲e̲g̲i̲n̲
+    x3 := x3 + 1;
+    i̲f̲ uk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ i̲f̲ uv + a3 ≠ b3 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲ uv := b3 - a3; uk := t̲r̲u̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲;
+    r3 := f̲a̲l̲s̲e̲
+  e̲n̲d̲ examine3;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ propagate;
+  c̲o̲m̲m̲e̲n̲t̲ every held relation is examined, in the order R1, R2, R3, again and again until a whole pass gives no unknown a value;
+  b̲e̲g̲i̲n̲
+    changed := t̲r̲u̲e̲;
+    f̲o̲r̲ pass := 1 w̲h̲i̲l̲e̲ changed d̲o̲
+    b̲e̲g̲i̲n̲
+      changed := f̲a̲l̲s̲e̲;
+      i̲f̲ r1 t̲h̲e̲n̲ examine1;
+      i̲f̲ r2 t̲h̲e̲n̲ examine2;
+      i̲f̲ r3 t̲h̲e̲n̲ examine3
+    e̲n̲d̲
+  e̲n̲d̲ propagate;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ uname(u);
+    v̲a̲l̲u̲e̲ u; i̲n̲t̲e̲g̲e̲r̲ u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the name of unknown u, 1 for u, 2 for v, 3 for w;
+  i̲f̲ u = 1 t̲h̲e̲n̲ PRINTTEXT(`u') e̲l̲s̲e̲ i̲f̲ u = 2 t̲h̲e̲n̲ PRINTTEXT(`v') e̲l̲s̲e̲ PRINTTEXT(`w');
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ place(known, x, u);
+    v̲a̲l̲u̲e̲ known, x, u; b̲o̲o̲l̲e̲a̲n̲ known; i̲n̲t̲e̲g̲e̲r̲ x, u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a place of a relation, its value if known, else the name of its unknown;
+  i̲f̲ known t̲h̲e̲n̲ print(x) e̲l̲s̲e̲ uname(u);
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ state(known, x, inheld, u);
+    v̲a̲l̲u̲e̲ known, x, inheld, u; b̲o̲o̲l̲e̲a̲n̲ known, inheld; i̲n̲t̲e̲g̲e̲r̲ x, u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: an unknown, as its value, or held by a relation, or free;
+  b̲e̲g̲i̲n̲
+    uname(u);
+    i̲f̲ known t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` = '); print(x) e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ inheld t̲h̲e̲n̲ PRINTTEXT(` held')
+    e̲l̲s̲e̲ PRINTTEXT(` free')
+  e̲n̲d̲ state;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ relations;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the relations held, separated by commas, with the values known put in their places;
+  b̲e̲g̲i̲n̲
+    b̲o̲o̲l̲e̲a̲n̲ first;
+    first := t̲r̲u̲e̲;
+    i̲f̲ r1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ place(uk, uv, 1); PRINTTEXT(` + '); place(vk, vv, 2); PRINTTEXT(` = '); print(c1); first := f̲a̲l̲s̲e̲ e̲n̲d̲;
+    i̲f̲ r2 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ ¬first t̲h̲e̲n̲ PRINTTEXT(`, ');
+      place(wk, wv, 3); PRINTTEXT(` . '); place(uk, uv, 1); PRINTTEXT(` = '); place(vk, vv, 2); first := f̲a̲l̲s̲e̲
+    e̲n̲d̲;
+    i̲f̲ r3 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ ¬first t̲h̲e̲n̲ PRINTTEXT(`, ');
+      place(uk, uv, 1); PRINTTEXT(` + '); print(a3); PRINTTEXT(` = '); print(b3)
+    e̲n̲d̲
+  e̲n̲d̲ relations;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  uk := vk := wk := r1 := r2 := r3 := inconsistent := f̲a̲l̲s̲e̲;
+  x1 := x2 := x3 := 0;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the one message, which poses stage 1, and then its constants;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ R1, R2 and R3, in that order, as one stage;
+  c1 := read; r1 := t̲r̲u̲e̲;
+  r2 := t̲r̲u̲e̲;
+  a3 := read; b3 := read; r3 := t̲r̲u̲e̲;
+
+  propagate;
+
+  c̲o̲m̲m̲e̲n̲t̲ the answer: every unknown, and the relations still held;
+  i̲f̲ ¬inconsistent t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    PRINTTEXT(`[answer]');
+    state(uk, uv, r1 ∨ r2 ∨ r3, 1); PRINTTEXT(`, ');
+    state(vk, vv, r1 ∨ r2, 2); PRINTTEXT(`, ');
+    state(wk, wv, r2, 3);
+    i̲f̲ r1 ∨ r2 ∨ r3 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`, where '); relations e̲n̲d̲;
+    PRINTTEXT(`[/answer]'); NLCR
+  e̲n̲d̲;
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the relations held, the values known, how many relations wait, and how often each was examined;
+  held := (i̲f̲ r1 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0) + (i̲f̲ r2 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0) + (i̲f̲ r3 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0);
+  PRINTTEXT(`[observe]');
+  i̲f̲ inconsistent t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  PRINTTEXT(`held relations: ');
+  i̲f̲ held = 0 t̲h̲e̲n̲ PRINTTEXT(`none') e̲l̲s̲e̲ relations;
+  NLCR;
+  i̲f̲ uk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind u]'); print(uv); PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲;
+  i̲f̲ vk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind v]'); print(vv); PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲;
+  i̲f̲ wk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind w]'); print(wv); PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲;
+  i̲f̲ held > 0 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended held-relations '); print(held); PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations R1-examined '); print(x1); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations R2-examined '); print(x2); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[operations R3-examined '); print(x3); PRINTTEXT(`]'); NLCR;
+  PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]')
+e̲n̲d̲
