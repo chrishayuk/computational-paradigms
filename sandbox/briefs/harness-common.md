@@ -2,9 +2,9 @@
 
 You are the harness author (`PROTOCOL.md`, "Roles", phase 4) for the part
 of the harness that all four systems of wave 1 share. You are working in
-`/work`, a clone of the public repository at tag `spec-1.0`, the frozen
+CLONE, your own clone of the public repository at tag `spec-1.0`, the frozen
 specification. You have no other context: you have not seen any earlier
-work on this study, and you must not look for it outside `/work`.
+work on this study, and you must not look for it outside CLONE.
 
 Read first: `README.md`, `SPECIFICATION.md`, `PROTOCOL.md` (especially
 "The harness interface", "Running", "Modes of running", "Recording a
@@ -75,7 +75,7 @@ program for any problem. Do not run anything except `validate.py` on
 records you make up by hand to test it, which you put in
 `harnesses/examples/`, clearly marked as made up.
 
-When you are done, commit your work in `/work` on a branch
+When you are done, commit your work in CLONE on a branch
 `harness-common` (author `harness-common <harness-common@sandbox>`, no
 trailers), and end with a short summary: what you wrote, and every entry
 in `QUESTIONS.md`.

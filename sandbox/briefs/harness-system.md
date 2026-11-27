@@ -1,11 +1,11 @@
 # Brief: harness author for SYSTEM
 
 You are the harness author (`PROTOCOL.md`, "Roles", phase 4) for SYSTEM in
-wave 1. You are working in `/work`, a clone of the public repository at
+wave 1. You are working in CLONE, your own clone of the public repository at
 commit COMMIT: the frozen specification (`spec-1.0`) plus the common
 harness contract in `harnesses/`. You have no other context: you have not
 seen any earlier work on this study, and you must not look for it outside
-`/work` and the system sources named below.
+CLONE and the system sources named below.
 
 Read first: `harnesses/README.md`, `harnesses/stages.json`,
 `harnesses/record.schema.json`, `harnesses/QUESTIONS.md` if present,
@@ -91,7 +91,7 @@ SYSTEM, do not change them: write it in
    Program authors may use `check`, and nothing else, before their
    programs are fixed.
 
-When you are done, commit in `/work` on a branch `harness-SYSTEMDIR`
+When you are done, commit in CLONE on a branch `harness-SYSTEMDIR`
 (author `harness-SYSTEMDIR <harness-SYSTEMDIR@sandbox>`, no trailers), and
 end with a short summary: what you wrote, what the qualification showed,
 and every entry in your `QUESTIONS.md`.
