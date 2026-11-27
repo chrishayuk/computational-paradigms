@@ -298,6 +298,11 @@ gives:
   the suite came from.
 - Results are reported for every system on every problem, including
   "not expressible".
+- Both classifiers' token classes are kept and reported for every result,
+  throughout the study, never only an adjudicated set. A comparative
+  conclusion that would change if one classifier's classes were used in
+  place of the other's is reported as **classification-sensitive**, with
+  both figures.
 - No ranking is computed. A summary may say where a system needed control,
   supporting code or intervention that another did not, and what it held in
   store to avoid them.

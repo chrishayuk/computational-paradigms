@@ -30,3 +30,23 @@ variants.
 Anyone can check a published plaintext:
 
     shasum -a 256 variants.tar    # must equal SHA256
+
+## Wave 1
+
+The first comparison: Absys, SWI-Prolog, Python and ALGOL 60. Sealed on
+27 November 2026, before the freeze, by a custodian agent with its own
+context. 138 variants over P01–P16, at least two for every sub-problem
+with constants. Three sub-problems (P04d, P04f, P08b) have no constant to
+vary, and have none. Sizes and arrival orders were not varied. Each
+variant's valid outcomes were derived stage by stage and confirmed by a
+checking script, sealed with them. Plaintext SHA-256:
+`63d25bad472e72520355919fef5cae0ffd6c1cf671d831dc3820fc62e2ba027e`.
+
+The custodian's own working transcript, which holds the plaintext, is
+kept by the owner outside the repository, away from every other agent.
+It is deleted, or kept as private, at the owner's choice.
+
+Execution of wave 1 is in batches (P01–P03, P04–P08, P09–P12, P13–P16).
+The batches do not change the protocol. Wave 1's variants are opened
+only after the primary programs and results of all four systems on every
+problem are committed.
