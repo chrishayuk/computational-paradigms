@@ -16,6 +16,10 @@ A file named <sub-problem id>-<name>.<ext> is a named variant and is run the
 same way, as is any file in the configuration's variants/ folder whose name
 begins with the sub-problem id (<id>.<name>.<ext> or <id>-<name>.<ext>). The driver chooses nothing about the runs themselves: it only
 enumerates them. One line per run goes to results/SYSTEM/batch-log.tsv.
+
+    --configs A,B     run only these configurations
+    --skip-logged     skip every run batch-log.tsv already records as finished
+                      (so an interrupted batch resumes without repeating a run)
 """
 import json, os, subprocess, sys, time
 
@@ -24,7 +28,18 @@ EXT = {"absys": [".ab1", ".ab2", ".abs"], "swi-prolog": [".pl"], "python": [".py
 MODES = {"x1sim": ["behaviour"]}          # PROTOCOL / systems file: x1sim is behaviour only
 
 def main():
-    system, problems = sys.argv[1], sys.argv[2:]
+    args = sys.argv[1:]
+    only = skip = None
+    if "--configs" in args:                    # run only these configurations (comma-separated)
+        i = args.index("--configs"); only = set(args[i + 1].split(",")); del args[i:i + 2]
+    if "--skip-logged" in args:                # skip runs batch-log.tsv already records as finished
+        args.remove("--skip-logged"); skip = set()
+        if os.path.exists(f"results/{args[0]}/batch-log.tsv"):
+            for l in open(f"results/{args[0]}/batch-log.tsv"):
+                f = l.rstrip("\n").split("\t")
+                if len(f) >= 6 and f[5].startswith("exit "):
+                    skip.add((f[1], f[2], f[3], f[4]))
+    system, problems = args[0], args[1:]
     stages = json.load(open("harnesses/stages.json"))["problems"]
     root = f"programs/{system}"
     configs = sorted(d for d in os.listdir(root) if os.path.isdir(f"{root}/{d}"))
@@ -33,6 +48,8 @@ def main():
         os.makedirs(f"results/{system}", exist_ok=True)
         log = open(f"results/{system}/batch-log.tsv", "a")
     for cfg in configs:
+        if only is not None and cfg not in only:
+            continue
         files = os.listdir(f"{root}/{cfg}")
         for p in stages:
             if p["problem"] not in problems:
@@ -56,6 +73,8 @@ def main():
                         continue
                     for prog in progs:
                         for mode in MODES.get(cfg, ["behaviour", "cost", "storage"]):
+                            if skip is not None and (cfg, inst["id"], prog, mode) in skip:
+                                continue
                             out = f"results/{system}/{cfg}/{p['problem']}/raw/"
                             os.makedirs(out, exist_ok=True)
                             t = time.time()
