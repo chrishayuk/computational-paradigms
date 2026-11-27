@@ -84,10 +84,23 @@ expressibility):
   sub-problem is *not expressible*, and the reformulation is a named
   variant.
 
-**Output.** The reconstruction prints at most 32 elements of a list, in
-every mode, so `observe()` cannot read a longer answer. Printing in full
-needs an instrumentation-only option, to be added under `PROTOCOL.md`'s
-rules before the freeze.
+**Output.** The baseline prints at most 32 elements of a list and 24
+derivations. The instrumented commit `a5762f5` (branch `measure`) adds
+`--full`, which prints both in full, so `observe()` can read every answer.
+With no occur check, a computation can end with a cyclic value (P01c), so
+`--full` detects a list cell met again while it is being printed, and
+prints `↻` for "the enclosing list again": X = [1|X] prints `[1|↻]`,
+X = [X] prints `[↻]`. Tests cover cyclic tails and heads, cycles through
+two variables, long and partly known lists, and many derivations.
+Against the baseline, its default output is identical in all 140 runs, and
+`--full` output is identical in the 132 runs the baseline did not cut
+short.
+
+**A fault in the baseline.** The baseline's default printer overflows the
+stack on a cyclic head, X = [X]. The computation finishes; printing its
+answer crashes. On P01c's rational reading, this is the baseline's
+behaviour under *behaviour* mode. Results are read with `--full`, which
+prints it as `[↻]`.
 
 ## Units
 
@@ -101,7 +114,8 @@ rules before the freeze.
   other system's unit. Comparable counts come only from quantities a
   problem defines.
 - **Store:** a vector, from `--measure` on the instrumented commit
-  `f1def9d` (branch `measure`). For each assertion it gives the value at
+  `f1def9d` (branch `measure`; `a5762f5` adds `--full` and changes nothing
+  measured). For each assertion it gives the value at
   the end and the peak, sampled after every step, so the peak is exact at
   the granularity of steps:
 
