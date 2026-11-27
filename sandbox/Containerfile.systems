@@ -1,0 +1,30 @@
+# The pinned Absys and ALGOL 60 builds, with x1sim (PINS.md), on Linux
+# x86_64. Sources are cloned from their public repositories at the pinned
+# commits, never copied from a working tree.
+FROM docker.io/library/rust@sha256:82150a52ec202c1b14d7817e14516c392bb7f5cfebd88f1ed531cb37ebd39922 AS build
+RUN apt-get update && apt-get install -y --no-install-recommends cmake g++ make git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /opt/src
+RUN git clone https://github.com/chrishayuk/absys absys \
+ && git -C absys checkout --detach efd5203 \
+ && cargo build --release --manifest-path absys/Cargo.toml \
+ && cp absys/target/release/absys /usr/local/bin/absys \
+ && git clone https://github.com/chrishayuk/absys absys-measure \
+ && git -C absys-measure checkout --detach 5450449 \
+ && cargo build --release --manifest-path absys-measure/Cargo.toml \
+ && cp absys-measure/target/release/absys /usr/local/bin/absys-measure \
+ && rm -rf absys/target absys-measure/target
+RUN git clone https://github.com/chrishayuk/algol-60 algol-60 \
+ && git -C algol-60 checkout --detach 6e8740c \
+ && cargo build --release --manifest-path algol-60/Cargo.toml \
+ && cp algol-60/target/release/algol60 /usr/local/bin/algol60 \
+ && git clone https://github.com/chrishayuk/algol-60 algol-60-measure \
+ && git -C algol-60-measure checkout --detach 151cdff \
+ && cargo build --release --manifest-path algol-60-measure/Cargo.toml \
+ && cp algol-60-measure/target/release/algol60 /usr/local/bin/algol60-measure \
+ && rm -rf algol-60/target algol-60-measure/target
+RUN git clone https://github.com/sergev/x1-algol-compiler x1sim \
+ && git -C x1sim checkout --detach 938fa03 \
+ && make -C x1sim && make -C x1sim install && rm -rf x1sim/build
+RUN for r in absys absys-measure algol-60 algol-60-measure x1sim; do \
+      printf '%s %s\n' "$r" "$(git -C $r rev-parse HEAD)"; done > /opt/src/COMMITS
