@@ -1,0 +1,19 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation).
+% IDIOM: a relation as a lambda whose body is {A or B}, primes for new names, lists [a;b] and [h&t]: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: the shape of the two cases, {R = [], S = T} or {R = [X|L], T = [X|N], app(L, S, N)}: Elcock 1990 p. 8 (examples/append.abs).
+% P03, P03e. Unknowns b. One stage.
+% CONSTANTS BEGIN
+ra = [1;2;3]   % stage 1
+% CONSTANTS END
+% conc, P01 Vocabulary, cases 1 and 2 in that order; case 2 as its head equations, then conc(a, b, c).
+conc'=lambda p, q, r
+    begin {p = [] q = r or
+           p = [h'&k'] r = [h&m'] conc(k, q, m)} end
+% rev, P03 Vocabulary, cases 1 and 2 in that order; case 2 as its head equation, then rev(l, q), then conc(q, <h>, r).
+rev'=lambda p, r
+    begin {p = [] r = [] or
+           p = [h'&k'] rev(k, n') conc(n, [h], r)} end
+% STAGE 1
+rev(ra, b)

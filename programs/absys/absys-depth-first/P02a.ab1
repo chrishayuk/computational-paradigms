@@ -1,0 +1,16 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation).
+% IDIOM: arithmetic as an assertion in any direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8; examples/alternatives.ab1); the three relations as written, u+v = 16, w*u = v, u+10 = 12: Elcock 1982 p. 123 (examples/relation-list.ab2).
+% P02a. Unknowns u, v, w (integers). R1, R2, R3 one per stage, in Elcock's order.
+% CONSTANTS BEGIN
+r1sum = 16   % stage 1
+r3add = 10   % stage 3
+r3sum = 12   % stage 3
+% CONSTANTS END
+% STAGE 1
+u + v = r1sum
+% STAGE 2
+w * u = v
+% STAGE 3
+u + r3add = r3sum

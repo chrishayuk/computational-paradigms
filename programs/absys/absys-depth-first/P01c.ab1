@@ -1,0 +1,13 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation).
+% IDIOM: equations as assertions side by side, "x=y y = 2": Foster and Elcock 1969 (examples/assertions.ab1).
+% IDIOM: <seq> ++ x written as the list [e1;...;en&x]: Foster and Elcock 1969, [h&t] (tutorial ch. 8).
+% P01c. Unknown x. One stage. No occur check (docs/decisions.md, rule 8).
+% CONSTANTS BEGIN
+% pfx is the elements of the sequence <seq>, written as the 1969 notation writes the
+% members of a list, separated by ; and without brackets: <1> is 1, <1,2> would be 1;2.
+pfx = 1   % stage 1
+% CONSTANTS END
+% STAGE 1
+x = [pfx&x]

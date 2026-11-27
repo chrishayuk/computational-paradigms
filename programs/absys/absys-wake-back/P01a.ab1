@@ -1,0 +1,14 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation).
+% IDIOM: equations as assertions side by side, "x=y y = 2": Foster and Elcock 1969 (examples/assertions.ab1).
+% P01a. Unknowns x, y, z.
+% CONSTANTS BEGIN
+zval = 2   % stage 3
+% CONSTANTS END
+% STAGE 1
+x = y
+% STAGE 2
+y = z
+% STAGE 3
+z = zval
