@@ -700,3 +700,37 @@ iteratively.
   budget.
 - **CPU-time reproducibility** was not studied. Timings are as measured,
   and varied by about 10% between runs.
+
+## Reproducing on Linux
+
+The workflow `.github/workflows/python-measurement.yml` runs `probes/run.sh`
+in the `python:3.13.7` image on ubuntu-latest, and shows the difference
+from the macOS run of the same release.
+
+### First Linux result
+
+Run 45916373754, 27 November 2026, CPython 3.13.7 on Linux x86_64,
+compared with 3.13.7 on macOS arm64. 219 lines were produced. The figures
+the study relies on were identical:
+
+- instruction counts (for example, 6,000,009 for the loop of P1);
+- every problem-operation count, by all four methods (500,500 for conc
+  at n = 1,000);
+- traced Python peaks (40,449,336 bytes);
+- the recursion depths.
+
+What differed:
+
+- times, as expected;
+- `ru_maxrss`, which Linux reports in KiB, as documented, where macOS
+  reports bytes;
+- the order of iteration over sets of objects hashed by identity, which
+  P1c had already shown to vary between runs, and over sets of strings
+  under a random hash seed;
+- counts of objects tracked by the collector, which differ by a few dozen
+  between builds.
+
+So the step unit, problem operations and traced memory are portable
+between these platforms for the pinned release. Resident-set figures are
+compared within a platform only, and identity-hashed iteration is kept out
+of anything counted.

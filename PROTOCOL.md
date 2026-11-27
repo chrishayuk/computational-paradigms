@@ -1,11 +1,13 @@
 # Protocol
 
-*Draft 0.5.*
+*Draft 0.6.*
 
 ## Phases
 
 1. **Draft.** `SPECIFICATION.md`, `METRICS.md`, this file and `problems/`
-   are written. No system's programs are written.
+   are written. No program for the study is written, apart from the
+   calibration programs (`METRICS.md`, Calibration), which are development
+   examples and never results.
    Measurement may be qualified at this phase: establishing what each
    system can report, and adding instrumentation that changes no result,
    under the conditions in "Instrumentation" below.
@@ -13,7 +15,8 @@
    it for ambiguity, for errors in the valid outcomes, for language bias,
    and for problems missing from the suite. Findings and responses are kept
    in `reviews/`. *(Draft 0.1 had one review, answered in draft 0.2. Draft
-   0.3 had a second, by a fresh reviewer, answered in draft 0.4.)*
+   0.3 had a second, by a fresh reviewer, answered in draft 0.4. Draft 0.5
+   had a third, answered in draft 0.6.)*
 3. **Freeze.** The specification is tagged `spec-1.0`, together with:
    - the pinned version or commit of every system in the first comparison;
    - each systems file's cores, flags and units;
@@ -51,21 +54,28 @@ one, with the date it was proposed and the results that existed then.
 | **specification author** | writes the problems and the protocol | the public repository |
 | **variant custodian** | writes the hidden variants and their valid outcomes | the specification, and the private variants |
 | **implementation author** | writes the programs | the public repository only |
-| **classifier A** | classes the programs' constructs | the specification, the metrics and the programs |
-| **classifier B** | classes them independently | the same, without A's classes |
+| **harness author** | writes each system's harness (phase 4) | the public repository |
+| **classifier A** | classes the programs' constructs, and the outcomes of every run on all axes, checking residual equivalence | the specification, the metrics, the programs, their outputs and the valid outcomes |
+| **classifier B** | does both independently | the same, without A's classes |
 | **verifier** | runs the programs on the hidden variants | the programs, the variants and their outcomes |
 
 Each role is a separate agent or person, with its own context, and its
 provenance is recorded. The two classifiers are of different origin (for
 instance Claude and Codex), and neither wrote the program it classes.
+Their disagreements, on tokens and on outcomes, are recorded, and a
+disputed outcome is reported under both classes.
 
 **Hidden variants** are made inaccessible, not merely placed where an
 implementation author is told not to look. The custodian writes them
-before the freeze and encrypts them with a key the project's owner holds.
-Only the ciphertext and the SHA-256 hash of the plaintext are committed.
-The key is given to the verifier only after every primary program and its
-results are committed. The verifier publishes the plaintext, and anyone can
-check it against the hash.
+before the freeze and encrypts them with a key the project's owner holds
+but does not use. The plaintext begins with a random nonce of at least 128
+bits, so that a small space of constants cannot be recovered from its
+hash. Only the ciphertext and the SHA-256 hash of the plaintext are
+committed. The key is given to the verifier only after every primary
+program and its results are committed. The verifier publishes the
+plaintext, and anyone can check it against the hash. Each later wave of
+systems (PLANNER onwards) has its own sealed set, made before that wave's
+programs are written, since revealing a set publishes it.
 
 ## Evidence classification
 
@@ -191,7 +201,9 @@ system processes.
    content of any later stage.
 6. **Genericity.** A program must stay correct when the constants in a
    problem's stages are changed. It keeps them in one marked place, or reads
-   them as input, so that the verifier can substitute them. Each problem has hidden variants with other
+   them as input, so that the verifier can substitute them. A program
+   **fails** a variant if its semantic class or its effects class on the
+   variant differs from its class on the original constants. Each problem has hidden variants with other
    constants, held by someone who does not write programs. Every program is
    run on them after its results are recorded. A program that fails a
    variant is recorded as such, since it encodes a conclusion rather than
@@ -214,7 +226,7 @@ system processes.
   inferences and Python instructions are different amounts of work. So
   *budget* is a classification within a system, and is not compared
   across systems. Each system records, as a calibration figure, its steps
-  for P13b at n = 10³.
+  for P13b at n = 10³, or, where P13b is not expressible, for P03e.
 - **After budget.** If stage k ends in *budget* and the configuration can
   keep its computation and continue it, stage k+1 is posed into that same
   computation, with a new budget. Whether it can is recorded, since
@@ -265,8 +277,8 @@ gives:
 - the token counts by class, per classifier, with the disputed tokens;
 - the configuration's expressibility for the problem;
 - the supporting code (S) used, by mechanism. An *extended* result is named
-  by its mechanism, and every configuration's S mechanisms are listed, with
-  their size, at the freeze;
+  by its mechanism. Every configuration's S mechanisms are listed, with
+  their size, at phase 4, before any program is run;
 - whether the program passed its hidden variants.
 
 ## Guarding against bias

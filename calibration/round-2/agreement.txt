@@ -1,0 +1,161 @@
+
+## absys/p03a.ab1: 102 tokens, agreement 102/102 (100.0%)
+  class  A      B
+  P      102    102
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03b.ab1: 100 tokens, agreement 100/100 (100.0%)
+  class  A      B
+  P      100    100
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03c.ab1: 104 tokens, agreement 104/104 (100.0%)
+  class  A      B
+  P      104    104
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03d.ab1: 104 tokens, agreement 104/104 (100.0%)
+  class  A      B
+  P      104    104
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03e.ab1: 100 tokens, agreement 100/100 (100.0%)
+  class  A      B
+  P      100    100
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p03f.ab1: 100 tokens, agreement 100/100 (100.0%)
+  class  A      B
+  P      100    100
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p13a.ab1: 233 tokens, agreement 233/233 (100.0%)
+  class  A      B
+  P      226    226
+  C      0      0
+  R      7      7
+  S      0      0
+  H      0      0
+
+## absys/p13b.ab1: 241 tokens, agreement 241/241 (100.0%)
+  class  A      B
+  P      234    234
+  C      0      0
+  R      7      7
+  S      0      0
+  H      0      0
+
+## absys/p13c.ab1: 241 tokens, agreement 241/241 (100.0%)
+  class  A      B
+  P      234    234
+  C      0      0
+  R      7      7
+  S      0      0
+  H      0      0
+
+## absys/p13d.ab1: 241 tokens, agreement 241/241 (100.0%)
+  class  A      B
+  P      234    234
+  C      0      0
+  R      7      7
+  S      0      0
+  H      0      0
+
+## absys/p13e.ab1: 95 tokens, agreement 95/95 (100.0%)
+  class  A      B
+  P      95     95
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/p13f.ab1: 115 tokens, agreement 115/115 (100.0%)
+  class  A      B
+  P      115    115
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## algol-60/p03.alg: 902 tokens, agreement 898/902 (99.6%)
+  class  A      B
+  P      347    343
+  C      0      0
+  R      325    325
+  S      0      0
+  H      230    234
+  tokens 732-732 A=P B=H: ,
+      A: query p03b splits(<1,2>) | B: P03b output-only showpair callback argument and separator
+  tokens 775-775 A=P B=H: ,
+      A: query p03c suffix(<1>,<1,2,3>) | B: P03c output-only show callback argument and separator
+  tokens 818-818 A=P B=H: ,
+      A: query p03d prefix(<3>,<1,2,3>) | B: P03d output-only show callback argument and separator
+  tokens 891-891 A=P B=H: ,
+      A: query p03f revinverse(<1,2,3>) | B: P03f output-only show callback argument and separator
+
+## algol-60/p13.alg: 713 tokens, agreement 713/713 (100.0%)
+  class  A      B
+  P      514    514
+  C      12     12
+  R      0      0
+  S      0      0
+  H      187    187
+
+## python/p03.py: 460 tokens, agreement 460/460 (100.0%)
+  class  A      B
+  P      148    148
+  C      0      0
+  R      276    276
+  S      0      0
+  H      36     36
+
+## python/p13.py: 412 tokens, agreement 412/412 (100.0%)
+  class  A      B
+  P      322    322
+  C      0      0
+  R      0      0
+  S      0      0
+  H      90     90
+
+## swi-prolog/p03.pl: 350 tokens, agreement 350/350 (100.0%)
+  class  A      B
+  P      156    156
+  C      0      0
+  R      0      0
+  S      0      0
+  H      194    194
+
+## swi-prolog/p13.pl: 550 tokens, agreement 550/550 (100.0%)
+  class  A      B
+  P      358    358
+  C      0      0
+  R      0      0
+  S      0      0
+  H      192    192
+
+## per system
+  absys: 1776/1776 (100.0%)
+  algol-60: 1611/1615 (99.8%)
+  python: 872/872 (100.0%)
+  swi-prolog: 900/900 (100.0%)
+
+## disagreements by (A, B) class
+  P→H: 4

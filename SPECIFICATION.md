@@ -1,11 +1,12 @@
 # Specification
 
-*Draft 0.5, 27 November 2026. Not frozen; the freeze candidate. Draft 0.1 was reviewed
+*Draft 0.6, 27 November 2026. Not frozen; the freeze candidate. Draft 0.1 was reviewed
 independently; the findings and the response to each are in
 [`reviews/`](reviews). Draft 0.3 added the decisions taken on draft 0.2
 (`reviews/decisions-0.2.md`). Draft 0.4 answered the second review, of
-draft 0.3 (`reviews/review-2.md`). Draft 0.5 applies the decisions on
-draft 0.4 (`reviews/decisions-0.4.md`). See `PROTOCOL.md` for how the specification is
+draft 0.3 (`reviews/review-2.md`). Draft 0.5 applied the decisions on
+draft 0.4 (`reviews/decisions-0.4.md`). Draft 0.6 answers the third review
+(`reviews/review-3.md`). See `PROTOCOL.md` for how the specification is
 frozen.*
 
 ## The question
@@ -163,9 +164,17 @@ and on a fourth, effects, in P11 only. A residual representation also
 records its simplification (below).
 
 Separately from the axes, **expressibility** is recorded once per
-configuration and query (for a relation used in several directions, once
-per direction): *expressible*, or *not expressible without supporting
-code*.
+configuration and sub-problem (for a relation used in several directions,
+once per direction), by one rule for every system:
+
+| expressibility | meaning | the program of record |
+|---|---|---|
+| **expressible** | the problem's definitions can be transcribed | the transcription |
+| **expressible with reformulation** | it cannot be transcribed, but a reformulation keeps the relation's meaning on every input the problem and its hidden variants use | the reformulation, with its R tokens counted |
+| **not expressible** | only a reformulation that changes the meaning (dropping a guard the inputs depend on, for instance), or supporting code, can be written | none. Any such reformulation is run and reported as a named variant |
+
+Both the classification and any named variant are always reported. That a
+reformulation was needed is itself a result.
 
 ### 1. Semantic result
 
@@ -174,7 +183,7 @@ outcomes.
 
 | class | meaning |
 |---|---|
-| **complete** | the report denotes exactly the valid outcomes. Where the valid outcomes are empty, the system has reported that there are none |
+| **complete** | the report denotes exactly the valid outcomes. Whether an empty set was reported as empty is recorded by simplification (*inconsistency undetected*) and by answer completeness |
 | **partial** | the report denotes a nonempty proper subset of the valid outcomes. This includes a representation that drops solutions, such as a solver that restricts an unknown to integers when the problem lets it range wider |
 | **unsound** | the report denotes an outcome that is not valid, or reports that there are none where valid outcomes exist |
 | **undetermined** | the report consists of conditions whose equivalence to the valid outcomes the classifiers cannot establish |
@@ -210,7 +219,9 @@ compared alongside the semantic result.
 A binding that the system holds is **reported** if the harness's
 `observe()` can read it at the end of the stage, including at the moment
 a budget runs out, whether or not the system's mechanism for answers
-would deliver it (P09d2, P15b).
+would deliver it (P09d2, P15b). The one exception is P09d1, whose finite
+reading has no solution: there, a binding held while the producer still
+runs is recorded as an observation, and the result is *none reported*.
 
 ### 2. Representation
 
@@ -221,8 +232,17 @@ would deliver it (P09d2, P15b).
 | **residual** | some relations remain to be decided. The residual conditions are recorded, with their size beside the size of the input |
 | **cyclic** | a term that is not finite (a rational tree), presented as such |
 
-Whether a residual is equivalent to the valid outcomes is checked by hand,
-and the reasoning recorded.
+Whether a residual is equivalent to the valid outcomes is checked by the
+classifiers (`PROTOCOL.md`, Roles), by hand or by a published checking
+script, with the reasoning recorded. Sizes of representations are measured
+on the primitive decomposition (`Conventions`).
+
+A residual counts as reported only if it is state that the system or the
+program holds and acts on at a later stage, read by `observe()`. Printing
+the posed information back is not a report. Beside simplification, a flag
+records a residual **identical to the posed information**, so that a
+system that held the relations and did nothing yet can be told apart from
+one that transformed them.
 
 ### 3. Execution state
 
@@ -232,7 +252,7 @@ and the reasoning recorded.
 | **alternatives pending** | the system has stopped after an answer, and holds alternatives that a request for more answers would resume |
 | **suspended** | the system has stopped, and holds work that later information may resume |
 | **budget** | the step budget ran out (`PROTOCOL.md`). Nontermination is presumed, not proved |
-| **timeout** | the harness's safety limit on time ran out before the budget did. The run is unclassified on the other axes, and is rerun |
+| **timeout** | the harness's safety limit on time ran out before the budget did. The run is rerun once with the limit raised (`PROTOCOL.md`). Answers reported before the limit are classified on the semantic axis |
 | **error** | the system stopped with an error, recorded verbatim |
 
 A run may be both *alternatives pending* and *suspended*. Both are
@@ -269,8 +289,9 @@ and some of its decisions were taken because of them
 resemble Absys. Disclosure does not remove that, so:
 
 - P07 includes cases that Absys is known or expected to handle badly.
-- P10–P15 were added after review: state replacement, effects, large
-  search spaces, scale, persistent processes and arbitration. These are
+- P10–P16 were added after review: state replacement, effects, large
+  search spaces, scale, persistent processes, arbitration, and shared
+  information at scale. These are
   problems where imperative, backtracking and concurrent designs are
   expected to do well, and Absys may do badly or not at all.
 - The first comparison includes two imperative baselines (Python and

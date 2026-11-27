@@ -27,18 +27,37 @@ COMMENT = {
 }
 
 
+def docstring_lines(text):
+    """The (line, column) where each docstring starts: a string that is the
+    first statement of a module, class or function body, so that it becomes
+    that object's __doc__. Other strings standing alone are kept as tokens."""
+    import ast
+    starts = set()
+    tree = ast.parse(text)
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+            body = node.body
+            if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant) \
+                    and isinstance(body[0].value.value, str):
+                starts.add((body[0].lineno, body[0].col_offset))
+    return starts
+
+
 def python_tokens(text):
+    """Docstrings are not tokens (METRICS.md, rule 17); their NEWLINE goes too."""
     skip = {tokenize.COMMENT, tokenize.NL, tokenize.ENCODING, tokenize.ENDMARKER}
-    prev = tokenize.NEWLINE
-    toks = list(tokenize.generate_tokens(io.StringIO(text).readline))
-    for k, t in enumerate(toks):
+    docs = docstring_lines(text)
+    drop_newline = False
+    for t in tokenize.generate_tokens(io.StringIO(text).readline):
         if t.type in skip:
             continue
-        # a docstring: a string standing alone as a statement (METRICS.md, rule 17)
-        nxt = next((u.type for u in toks[k + 1:] if u.type not in skip), None)
-        if t.type == tokenize.STRING and prev in (tokenize.NEWLINE, tokenize.INDENT, tokenize.DEDENT) and nxt == tokenize.NEWLINE:
+        if t.type == tokenize.STRING and t.start in docs:
+            drop_newline = True
             continue
-        prev = t.type
+        if drop_newline and t.type == tokenize.NEWLINE:
+            drop_newline = False
+            continue
+        drop_newline = False
         name = {tokenize.NEWLINE: "<NEWLINE>", tokenize.INDENT: "<INDENT>",
                 tokenize.DEDENT: "<DEDENT>"}.get(t.type, t.string)
         yield t.start[0], name

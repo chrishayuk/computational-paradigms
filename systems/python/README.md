@@ -23,8 +23,10 @@ external mechanisms. No third-party package is used.
 ## Units
 
 Qualified on macOS arm64 with CPython 3.10 to 3.14 by the study in
-[`measurement.md`](measurement.md), with probes in [`probes/`](probes).
-Not yet run in the `python:3.13` image or on Linux.
+[`measurement.md`](measurement.md), with probes in [`probes/`](probes),
+and on Linux x86_64 in the `python:3.13.7` image. There, every
+instruction count, problem-operation count and traced peak was identical
+to the macOS run of 3.13.7.
 
 - **Pinning.** The **patch** release is pinned, not only 3.13. Instruction
   counts per loop differ between minor versions, and the depth to which

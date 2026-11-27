@@ -34,7 +34,7 @@ m is e. It is defined, in this order, by
 2. position(e, ⟨h⟩ ++ t, i) if h ≠ e and position(e, t, j) and i = j + 1
 
 The query is zeros(z) and merge(z, ⟨9⟩, m) and position(9, m, i), in that
-order. The arguments of merge are in the order that disadvantages a
+order, an any-one query (`answers(1)`). The arguments of merge are in the order that disadvantages a
 depth-first merge, which takes from z for ever. **P15b2** poses the same
 with merge(⟨9⟩, z, m). Read as the greatest relation, merge also
 admits the unfair interleaving that takes only from z, so this problem adds

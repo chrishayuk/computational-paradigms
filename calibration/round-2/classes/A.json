@@ -1,0 +1,2418 @@
+{
+ "python/p03.py": [
+  {
+   "from": 0,
+   "to": 9,
+   "class": "P",
+   "construct": "conc header",
+   "rule": "3"
+  },
+  {
+   "from": 10,
+   "to": 19,
+   "class": "P",
+   "construct": "conc case 1 (dispatch if not a)",
+   "rule": "3"
+  },
+  {
+   "from": 20,
+   "to": 39,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "3"
+  },
+  {
+   "from": 40,
+   "to": 103,
+   "class": "R",
+   "construct": "conc_split: separate function for direction of P03b",
+   "rule": "14"
+  },
+  {
+   "from": 104,
+   "to": 162,
+   "class": "R",
+   "construct": "conc_suffix: separate function for direction of P03c",
+   "rule": "14"
+  },
+  {
+   "from": 163,
+   "to": 234,
+   "class": "R",
+   "construct": "conc_prefix: separate function for direction of P03d",
+   "rule": "14"
+  },
+  {
+   "from": 235,
+   "to": 242,
+   "class": "P",
+   "construct": "rev header",
+   "rule": "3"
+  },
+  {
+   "from": 243,
+   "to": 253,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "3"
+  },
+  {
+   "from": 254,
+   "to": 274,
+   "class": "P",
+   "construct": "rev case 2 (through conc, P03a direction)",
+   "rule": "3"
+  },
+  {
+   "from": 275,
+   "to": 355,
+   "class": "R",
+   "construct": "rev_inverse: separate function for direction of P03f, conjuncts reordered",
+   "rule": "14, 4"
+  },
+  {
+   "from": 356,
+   "to": 359,
+   "class": "H",
+   "construct": "print of p03a",
+   "rule": "13"
+  },
+  {
+   "from": 360,
+   "to": 371,
+   "class": "P",
+   "construct": "query p03a",
+   "rule": "10"
+  },
+  {
+   "from": 372,
+   "to": 373,
+   "class": "H",
+   "construct": "print of p03a (close)",
+   "rule": "13"
+  },
+  {
+   "from": 374,
+   "to": 377,
+   "class": "H",
+   "construct": "print of p03b",
+   "rule": "13"
+  },
+  {
+   "from": 378,
+   "to": 385,
+   "class": "P",
+   "construct": "query p03b",
+   "rule": "10"
+  },
+  {
+   "from": 386,
+   "to": 387,
+   "class": "H",
+   "construct": "print of p03b (close)",
+   "rule": "13"
+  },
+  {
+   "from": 388,
+   "to": 391,
+   "class": "H",
+   "construct": "print of p03c",
+   "rule": "13"
+  },
+  {
+   "from": 392,
+   "to": 405,
+   "class": "P",
+   "construct": "query p03c",
+   "rule": "10"
+  },
+  {
+   "from": 406,
+   "to": 407,
+   "class": "H",
+   "construct": "print of p03c (close)",
+   "rule": "13"
+  },
+  {
+   "from": 408,
+   "to": 411,
+   "class": "H",
+   "construct": "print of p03d",
+   "rule": "13"
+  },
+  {
+   "from": 412,
+   "to": 425,
+   "class": "P",
+   "construct": "query p03d",
+   "rule": "10"
+  },
+  {
+   "from": 426,
+   "to": 427,
+   "class": "H",
+   "construct": "print of p03d (close)",
+   "rule": "13"
+  },
+  {
+   "from": 428,
+   "to": 431,
+   "class": "H",
+   "construct": "print of p03e",
+   "rule": "13"
+  },
+  {
+   "from": 432,
+   "to": 441,
+   "class": "P",
+   "construct": "query p03e",
+   "rule": "10"
+  },
+  {
+   "from": 442,
+   "to": 443,
+   "class": "H",
+   "construct": "print of p03e (close)",
+   "rule": "13"
+  },
+  {
+   "from": 444,
+   "to": 447,
+   "class": "H",
+   "construct": "print of p03f",
+   "rule": "13"
+  },
+  {
+   "from": 448,
+   "to": 457,
+   "class": "P",
+   "construct": "query p03f",
+   "rule": "10"
+  },
+  {
+   "from": 458,
+   "to": 459,
+   "class": "H",
+   "construct": "print of p03f (close)",
+   "rule": "13"
+  }
+ ],
+ "python/p13.py": [
+  {
+   "from": 0,
+   "to": 3,
+   "class": "P",
+   "construct": "N = 100, stage constant in one marked place",
+   "rule": ""
+  },
+  {
+   "from": 4,
+   "to": 13,
+   "class": "P",
+   "construct": "seq_range header",
+   "rule": "3"
+  },
+  {
+   "from": 14,
+   "to": 23,
+   "class": "P",
+   "construct": "range case 1 (if m > n)",
+   "rule": "2, 3"
+  },
+  {
+   "from": 24,
+   "to": 39,
+   "class": "P",
+   "construct": "range case 2 (else branch)",
+   "rule": "3"
+  },
+  {
+   "from": 40,
+   "to": 47,
+   "class": "P",
+   "construct": "seq_sum header",
+   "rule": "3"
+  },
+  {
+   "from": 48,
+   "to": 57,
+   "class": "P",
+   "construct": "sum case 1",
+   "rule": "3"
+  },
+  {
+   "from": 58,
+   "to": 77,
+   "class": "P",
+   "construct": "sum case 2, decomposition and k = h + j",
+   "rule": "3, 8"
+  },
+  {
+   "from": 78,
+   "to": 87,
+   "class": "P",
+   "construct": "conc header",
+   "rule": "3"
+  },
+  {
+   "from": 88,
+   "to": 97,
+   "class": "P",
+   "construct": "conc case 1",
+   "rule": "3"
+  },
+  {
+   "from": 98,
+   "to": 117,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "3"
+  },
+  {
+   "from": 118,
+   "to": 125,
+   "class": "P",
+   "construct": "rev header",
+   "rule": "3"
+  },
+  {
+   "from": 126,
+   "to": 135,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "3"
+  },
+  {
+   "from": 136,
+   "to": 162,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": "3"
+  },
+  {
+   "from": 163,
+   "to": 179,
+   "class": "P",
+   "construct": "revacc",
+   "rule": "3"
+  },
+  {
+   "from": 180,
+   "to": 189,
+   "class": "P",
+   "construct": "racc header",
+   "rule": "3"
+  },
+  {
+   "from": 190,
+   "to": 199,
+   "class": "P",
+   "construct": "racc case 2 (racc(<>,b,b))",
+   "rule": "3"
+  },
+  {
+   "from": 200,
+   "to": 219,
+   "class": "P",
+   "construct": "racc case 3",
+   "rule": "3"
+  },
+  {
+   "from": 220,
+   "to": 258,
+   "class": "H",
+   "construct": "as_list: output adapter walking the chain of pairs",
+   "rule": "13"
+  },
+  {
+   "from": 259,
+   "to": 267,
+   "class": "P",
+   "construct": "P13a query range(1, N, s)",
+   "rule": ""
+  },
+  {
+   "from": 268,
+   "to": 277,
+   "class": "H",
+   "construct": "print p13a",
+   "rule": "13"
+  },
+  {
+   "from": 278,
+   "to": 293,
+   "class": "P",
+   "construct": "P13b query range and sum",
+   "rule": ""
+  },
+  {
+   "from": 294,
+   "to": 300,
+   "class": "H",
+   "construct": "print p13b",
+   "rule": "13"
+  },
+  {
+   "from": 301,
+   "to": 316,
+   "class": "P",
+   "construct": "P13c query range and rev",
+   "rule": ""
+  },
+  {
+   "from": 317,
+   "to": 326,
+   "class": "H",
+   "construct": "print p13c",
+   "rule": "13"
+  },
+  {
+   "from": 327,
+   "to": 342,
+   "class": "P",
+   "construct": "P13d query range and revacc",
+   "rule": ""
+  },
+  {
+   "from": 343,
+   "to": 352,
+   "class": "H",
+   "construct": "print p13d",
+   "rule": "13"
+  },
+  {
+   "from": 353,
+   "to": 373,
+   "class": "P",
+   "construct": "P13e native: list(range(...)) and built-in sum",
+   "rule": "18, 9"
+  },
+  {
+   "from": 374,
+   "to": 380,
+   "class": "H",
+   "construct": "print p13e",
+   "rule": "13"
+  },
+  {
+   "from": 381,
+   "to": 404,
+   "class": "P",
+   "construct": "P13f native: list(range(...)) and slice reverse",
+   "rule": "18"
+  },
+  {
+   "from": 405,
+   "to": 411,
+   "class": "H",
+   "construct": "print p13f",
+   "rule": "13"
+  }
+ ],
+ "swi-prolog/p03.pl": [
+  {
+   "from": 0,
+   "to": 9,
+   "class": "P",
+   "construct": "conc case 1",
+   "rule": ""
+  },
+  {
+   "from": 10,
+   "to": 35,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": ""
+  },
+  {
+   "from": 36,
+   "to": 44,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": ""
+  },
+  {
+   "from": 45,
+   "to": 73,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": ""
+  },
+  {
+   "from": 74,
+   "to": 79,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p03a: name and answer template",
+   "rule": "13"
+  },
+  {
+   "from": 80,
+   "to": 93,
+   "class": "P",
+   "construct": "query goal p03a",
+   "rule": "10"
+  },
+  {
+   "from": 94,
+   "to": 95,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p03a",
+   "rule": "13"
+  },
+  {
+   "from": 96,
+   "to": 103,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p03b: name and answer template",
+   "rule": "13"
+  },
+  {
+   "from": 104,
+   "to": 115,
+   "class": "P",
+   "construct": "query goal p03b",
+   "rule": "10"
+  },
+  {
+   "from": 116,
+   "to": 117,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p03b",
+   "rule": "13"
+  },
+  {
+   "from": 118,
+   "to": 123,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p03c: name and answer template",
+   "rule": "13"
+  },
+  {
+   "from": 124,
+   "to": 139,
+   "class": "P",
+   "construct": "query goal p03c",
+   "rule": "10"
+  },
+  {
+   "from": 140,
+   "to": 141,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p03c",
+   "rule": "13"
+  },
+  {
+   "from": 142,
+   "to": 147,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p03d: name and answer template",
+   "rule": "13"
+  },
+  {
+   "from": 148,
+   "to": 163,
+   "class": "P",
+   "construct": "query goal p03d",
+   "rule": "10"
+  },
+  {
+   "from": 164,
+   "to": 165,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p03d",
+   "rule": "13"
+  },
+  {
+   "from": 166,
+   "to": 171,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p03e: name and answer template",
+   "rule": "13"
+  },
+  {
+   "from": 172,
+   "to": 183,
+   "class": "P",
+   "construct": "query goal p03e",
+   "rule": "10"
+  },
+  {
+   "from": 184,
+   "to": 185,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p03e",
+   "rule": "13"
+  },
+  {
+   "from": 186,
+   "to": 191,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p03f: name and answer template",
+   "rule": "13"
+  },
+  {
+   "from": 192,
+   "to": 203,
+   "class": "P",
+   "construct": "query goal p03f",
+   "rule": "10"
+  },
+  {
+   "from": 204,
+   "to": 205,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p03f",
+   "rule": "13"
+  },
+  {
+   "from": 206,
+   "to": 316,
+   "class": "H",
+   "construct": "answers/3: stand-in for the fixed harness answers(cap) with budget",
+   "rule": "13"
+  },
+  {
+   "from": 317,
+   "to": 339,
+   "class": "H",
+   "construct": "main: poses each query",
+   "rule": "13"
+  },
+  {
+   "from": 340,
+   "to": 349,
+   "class": "H",
+   "construct": "initialization directive",
+   "rule": "13"
+  }
+ ],
+ "swi-prolog/p13.pl": [
+  {
+   "from": 0,
+   "to": 13,
+   "class": "P",
+   "construct": "range case 1, guard M > N",
+   "rule": "2"
+  },
+  {
+   "from": 14,
+   "to": 45,
+   "class": "P",
+   "construct": "range case 2, guard M =< N, M1 is M + 1",
+   "rule": "2, 8"
+  },
+  {
+   "from": 46,
+   "to": 53,
+   "class": "P",
+   "construct": "sum case 1",
+   "rule": ""
+  },
+  {
+   "from": 54,
+   "to": 77,
+   "class": "P",
+   "construct": "sum case 2, K is H + J",
+   "rule": "8"
+  },
+  {
+   "from": 78,
+   "to": 87,
+   "class": "P",
+   "construct": "conc case 1",
+   "rule": ""
+  },
+  {
+   "from": 88,
+   "to": 113,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": ""
+  },
+  {
+   "from": 114,
+   "to": 122,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": ""
+  },
+  {
+   "from": 123,
+   "to": 151,
+   "class": "P",
+   "construct": "rev case 2",
+   "rule": ""
+  },
+  {
+   "from": 152,
+   "to": 168,
+   "class": "P",
+   "construct": "revacc",
+   "rule": ""
+  },
+  {
+   "from": 169,
+   "to": 178,
+   "class": "P",
+   "construct": "racc case 2",
+   "rule": ""
+  },
+  {
+   "from": 179,
+   "to": 204,
+   "class": "P",
+   "construct": "racc case 3",
+   "rule": ""
+  },
+  {
+   "from": 205,
+   "to": 227,
+   "class": "P",
+   "construct": "use_module of library(lists) for the native tasks (external mechanism, listed)",
+   "rule": "12, 18"
+  },
+  {
+   "from": 228,
+   "to": 232,
+   "class": "P",
+   "construct": "n(100): stage constant in one marked place",
+   "rule": ""
+  },
+  {
+   "from": 233,
+   "to": 238,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p13a",
+   "rule": "13"
+  },
+  {
+   "from": 239,
+   "to": 253,
+   "class": "P",
+   "construct": "query conjunction p13a",
+   "rule": "10"
+  },
+  {
+   "from": 254,
+   "to": 255,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p13a",
+   "rule": "13"
+  },
+  {
+   "from": 256,
+   "to": 261,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p13b",
+   "rule": "13"
+  },
+  {
+   "from": 262,
+   "to": 283,
+   "class": "P",
+   "construct": "query conjunction p13b",
+   "rule": "10"
+  },
+  {
+   "from": 284,
+   "to": 285,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p13b",
+   "rule": "13"
+  },
+  {
+   "from": 286,
+   "to": 291,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p13c",
+   "rule": "13"
+  },
+  {
+   "from": 292,
+   "to": 313,
+   "class": "P",
+   "construct": "query conjunction p13c",
+   "rule": "10"
+  },
+  {
+   "from": 314,
+   "to": 315,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p13c",
+   "rule": "13"
+  },
+  {
+   "from": 316,
+   "to": 321,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p13d",
+   "rule": "13"
+  },
+  {
+   "from": 322,
+   "to": 343,
+   "class": "P",
+   "construct": "query conjunction p13d",
+   "rule": "10"
+  },
+  {
+   "from": 344,
+   "to": 345,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p13d",
+   "rule": "13"
+  },
+  {
+   "from": 346,
+   "to": 351,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p13e",
+   "rule": "13"
+  },
+  {
+   "from": 352,
+   "to": 373,
+   "class": "P",
+   "construct": "query conjunction p13e (native, library)",
+   "rule": "18, 12"
+  },
+  {
+   "from": 374,
+   "to": 375,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p13e",
+   "rule": "13"
+  },
+  {
+   "from": 376,
+   "to": 381,
+   "class": "H",
+   "construct": "query/3 fact wrapper for p13f",
+   "rule": "13"
+  },
+  {
+   "from": 382,
+   "to": 403,
+   "class": "P",
+   "construct": "query conjunction p13f (native, library)",
+   "rule": "18, 12"
+  },
+  {
+   "from": 404,
+   "to": 405,
+   "class": "H",
+   "construct": "query/3 fact wrapper close p13f",
+   "rule": "13"
+  },
+  {
+   "from": 406,
+   "to": 516,
+   "class": "H",
+   "construct": "answers/3 harness stand-in, budget 10^8",
+   "rule": "13"
+  },
+  {
+   "from": 517,
+   "to": 539,
+   "class": "H",
+   "construct": "main",
+   "rule": "13"
+  },
+  {
+   "from": 540,
+   "to": 549,
+   "class": "H",
+   "construct": "initialization directive",
+   "rule": "13"
+  }
+ ],
+ "algol-60/p03.alg": [
+  {
+   "from": 0,
+   "to": 0,
+   "class": "P",
+   "construct": "program block begin",
+   "rule": "10"
+  },
+  {
+   "from": 1,
+   "to": 11,
+   "class": "P",
+   "construct": "hd, tl arrays: sequence encoding",
+   "rule": "15"
+  },
+  {
+   "from": 12,
+   "to": 14,
+   "class": "P",
+   "construct": "free: cell allocator of the encoding",
+   "rule": "15"
+  },
+  {
+   "from": 15,
+   "to": 59,
+   "class": "P",
+   "construct": "cons: construction on encoded sequences",
+   "rule": "15"
+  },
+  {
+   "from": 60,
+   "to": 119,
+   "class": "P",
+   "construct": "same: equality on encoded sequences",
+   "rule": "15"
+  },
+  {
+   "from": 120,
+   "to": 138,
+   "class": "P",
+   "construct": "conc header",
+   "rule": "3"
+  },
+  {
+   "from": 139,
+   "to": 165,
+   "class": "P",
+   "construct": "conc cases 1 and 2 (if a = 0 dispatch)",
+   "rule": "2, 3"
+  },
+  {
+   "from": 166,
+   "to": 239,
+   "class": "R",
+   "construct": "splits: separate procedure for direction of P03b, with prefixed continuation",
+   "rule": "14"
+  },
+  {
+   "from": 240,
+   "to": 307,
+   "class": "R",
+   "construct": "suffix: separate procedure for direction of P03c",
+   "rule": "14"
+  },
+  {
+   "from": 308,
+   "to": 387,
+   "class": "R",
+   "construct": "prefix: separate procedure for direction of P03d",
+   "rule": "14"
+  },
+  {
+   "from": 388,
+   "to": 400,
+   "class": "P",
+   "construct": "rev header",
+   "rule": "3"
+  },
+  {
+   "from": 401,
+   "to": 430,
+   "class": "P",
+   "construct": "rev cases 1 and 2",
+   "rule": "3"
+  },
+  {
+   "from": 431,
+   "to": 533,
+   "class": "R",
+   "construct": "revinverse: separate procedure for direction of P03f, conjuncts reordered",
+   "rule": "14, 4"
+  },
+  {
+   "from": 534,
+   "to": 591,
+   "class": "H",
+   "construct": "outseq: output adapter",
+   "rule": "13"
+  },
+  {
+   "from": 592,
+   "to": 617,
+   "class": "H",
+   "construct": "show: printing callback",
+   "rule": "13"
+  },
+  {
+   "from": 618,
+   "to": 668,
+   "class": "H",
+   "construct": "showpair: printing callback",
+   "rule": "13"
+  },
+  {
+   "from": 669,
+   "to": 672,
+   "class": "P",
+   "construct": "free := 0: initialisation of the encoding's store",
+   "rule": "15"
+  },
+  {
+   "from": 673,
+   "to": 681,
+   "class": "H",
+   "construct": "print p03a",
+   "rule": "13"
+  },
+  {
+   "from": 682,
+   "to": 702,
+   "class": "P",
+   "construct": "query p03a conc(<1,2>,<3>)",
+   "rule": "10"
+  },
+  {
+   "from": 703,
+   "to": 711,
+   "class": "H",
+   "construct": "print p03a close",
+   "rule": "13"
+  },
+  {
+   "from": 712,
+   "to": 718,
+   "class": "H",
+   "construct": "print p03b label",
+   "rule": "13"
+  },
+  {
+   "from": 719,
+   "to": 732,
+   "class": "P",
+   "construct": "query p03b splits(<1,2>)",
+   "rule": "10"
+  },
+  {
+   "from": 733,
+   "to": 733,
+   "class": "H",
+   "construct": "showpair callback argument",
+   "rule": "13"
+  },
+  {
+   "from": 734,
+   "to": 735,
+   "class": "P",
+   "construct": "query p03b close",
+   "rule": "10"
+  },
+  {
+   "from": 736,
+   "to": 742,
+   "class": "H",
+   "construct": "newline",
+   "rule": "13"
+  },
+  {
+   "from": 743,
+   "to": 749,
+   "class": "H",
+   "construct": "print p03c label",
+   "rule": "13"
+  },
+  {
+   "from": 750,
+   "to": 775,
+   "class": "P",
+   "construct": "query p03c suffix(<1>,<1,2,3>)",
+   "rule": "10"
+  },
+  {
+   "from": 776,
+   "to": 776,
+   "class": "H",
+   "construct": "show callback argument",
+   "rule": "13"
+  },
+  {
+   "from": 777,
+   "to": 778,
+   "class": "P",
+   "construct": "query p03c close",
+   "rule": "10"
+  },
+  {
+   "from": 779,
+   "to": 785,
+   "class": "H",
+   "construct": "newline",
+   "rule": "13"
+  },
+  {
+   "from": 786,
+   "to": 792,
+   "class": "H",
+   "construct": "print p03d label",
+   "rule": "13"
+  },
+  {
+   "from": 793,
+   "to": 818,
+   "class": "P",
+   "construct": "query p03d prefix(<3>,<1,2,3>)",
+   "rule": "10"
+  },
+  {
+   "from": 819,
+   "to": 819,
+   "class": "H",
+   "construct": "show callback argument",
+   "rule": "13"
+  },
+  {
+   "from": 820,
+   "to": 821,
+   "class": "P",
+   "construct": "query p03d close",
+   "rule": "10"
+  },
+  {
+   "from": 822,
+   "to": 828,
+   "class": "H",
+   "construct": "newline",
+   "rule": "13"
+  },
+  {
+   "from": 829,
+   "to": 837,
+   "class": "H",
+   "construct": "print p03e",
+   "rule": "13"
+  },
+  {
+   "from": 838,
+   "to": 856,
+   "class": "P",
+   "construct": "query p03e rev(<1,2,3>)",
+   "rule": "10"
+  },
+  {
+   "from": 857,
+   "to": 865,
+   "class": "H",
+   "construct": "print p03e close",
+   "rule": "13"
+  },
+  {
+   "from": 866,
+   "to": 872,
+   "class": "H",
+   "construct": "print p03f label",
+   "rule": "13"
+  },
+  {
+   "from": 873,
+   "to": 891,
+   "class": "P",
+   "construct": "query p03f revinverse(<1,2,3>)",
+   "rule": "10"
+  },
+  {
+   "from": 892,
+   "to": 892,
+   "class": "H",
+   "construct": "show callback argument",
+   "rule": "13"
+  },
+  {
+   "from": 893,
+   "to": 894,
+   "class": "P",
+   "construct": "query p03f close",
+   "rule": "10"
+  },
+  {
+   "from": 895,
+   "to": 900,
+   "class": "H",
+   "construct": "newline",
+   "rule": "13"
+  },
+  {
+   "from": 901,
+   "to": 901,
+   "class": "P",
+   "construct": "program block end",
+   "rule": "10"
+  }
+ ],
+ "algol-60/p13.alg": [
+  {
+   "from": 0,
+   "to": 0,
+   "class": "P",
+   "construct": "program block begin",
+   "rule": "10"
+  },
+  {
+   "from": 1,
+   "to": 7,
+   "class": "P",
+   "construct": "n, := 100: stage constant",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 8,
+   "class": "P",
+   "construct": "prescribed block begin",
+   "rule": "10"
+  },
+  {
+   "from": 9,
+   "to": 25,
+   "class": "P",
+   "construct": "hd, tl arrays: sequence encoding",
+   "rule": "15"
+  },
+  {
+   "from": 26,
+   "to": 34,
+   "class": "P",
+   "construct": "free (encoding), s, r, k (query unknowns)",
+   "rule": "15"
+  },
+  {
+   "from": 35,
+   "to": 79,
+   "class": "P",
+   "construct": "cons: construction on encoded sequences",
+   "rule": "15"
+  },
+  {
+   "from": 80,
+   "to": 98,
+   "class": "P",
+   "construct": "range header",
+   "rule": "3"
+  },
+  {
+   "from": 99,
+   "to": 121,
+   "class": "P",
+   "construct": "range cases 1 and 2 (if m > n dispatch)",
+   "rule": "2, 3"
+  },
+  {
+   "from": 122,
+   "to": 134,
+   "class": "P",
+   "construct": "sum header",
+   "rule": "3"
+  },
+  {
+   "from": 135,
+   "to": 169,
+   "class": "P",
+   "construct": "sum cases 1 and 2, with j",
+   "rule": "3, 8"
+  },
+  {
+   "from": 170,
+   "to": 188,
+   "class": "P",
+   "construct": "conc header",
+   "rule": "3"
+  },
+  {
+   "from": 189,
+   "to": 215,
+   "class": "P",
+   "construct": "conc cases",
+   "rule": "3"
+  },
+  {
+   "from": 216,
+   "to": 228,
+   "class": "P",
+   "construct": "rev header",
+   "rule": "3"
+  },
+  {
+   "from": 229,
+   "to": 271,
+   "class": "P",
+   "construct": "rev cases, with q",
+   "rule": "3"
+  },
+  {
+   "from": 272,
+   "to": 293,
+   "class": "P",
+   "construct": "revacc",
+   "rule": "3"
+  },
+  {
+   "from": 294,
+   "to": 312,
+   "class": "P",
+   "construct": "racc header",
+   "rule": "3"
+  },
+  {
+   "from": 313,
+   "to": 339,
+   "class": "P",
+   "construct": "racc cases",
+   "rule": "3"
+  },
+  {
+   "from": 340,
+   "to": 397,
+   "class": "H",
+   "construct": "outseq: output adapter",
+   "rule": "13"
+  },
+  {
+   "from": 398,
+   "to": 401,
+   "class": "P",
+   "construct": "free := 0, first: initialisation of the encoding's store",
+   "rule": "15"
+  },
+  {
+   "from": 402,
+   "to": 410,
+   "class": "P",
+   "construct": "P13a query",
+   "rule": ""
+  },
+  {
+   "from": 411,
+   "to": 429,
+   "class": "H",
+   "construct": "print p13a",
+   "rule": "13"
+  },
+  {
+   "from": 430,
+   "to": 433,
+   "class": "C",
+   "construct": "free := 0 reset before P13b, store reuse only",
+   "rule": "16"
+  },
+  {
+   "from": 434,
+   "to": 449,
+   "class": "P",
+   "construct": "P13b query range and sum",
+   "rule": ""
+  },
+  {
+   "from": 450,
+   "to": 470,
+   "class": "H",
+   "construct": "print p13b",
+   "rule": "13"
+  },
+  {
+   "from": 471,
+   "to": 474,
+   "class": "C",
+   "construct": "free := 0 reset before P13c",
+   "rule": "16"
+  },
+  {
+   "from": 475,
+   "to": 490,
+   "class": "P",
+   "construct": "P13c query range and rev",
+   "rule": ""
+  },
+  {
+   "from": 491,
+   "to": 509,
+   "class": "H",
+   "construct": "print p13c",
+   "rule": "13"
+  },
+  {
+   "from": 510,
+   "to": 513,
+   "class": "C",
+   "construct": "free := 0 reset before P13d",
+   "rule": "16"
+  },
+  {
+   "from": 514,
+   "to": 529,
+   "class": "P",
+   "construct": "P13d query range and revacc",
+   "rule": ""
+  },
+  {
+   "from": 530,
+   "to": 547,
+   "class": "H",
+   "construct": "print p13d",
+   "rule": "13"
+  },
+  {
+   "from": 548,
+   "to": 549,
+   "class": "P",
+   "construct": "prescribed block end",
+   "rule": "10"
+  },
+  {
+   "from": 550,
+   "to": 602,
+   "class": "P",
+   "construct": "P13e native block: array, for-fill, for-sum",
+   "rule": "18"
+  },
+  {
+   "from": 603,
+   "to": 622,
+   "class": "H",
+   "construct": "print p13e",
+   "rule": "13"
+  },
+  {
+   "from": 623,
+   "to": 624,
+   "class": "P",
+   "construct": "P13e block end",
+   "rule": "10"
+  },
+  {
+   "from": 625,
+   "to": 678,
+   "class": "P",
+   "construct": "P13f native block: arrays, for-fill, for-reverse",
+   "rule": "18"
+  },
+  {
+   "from": 679,
+   "to": 710,
+   "class": "H",
+   "construct": "print p13f, including printing for loop",
+   "rule": "13"
+  },
+  {
+   "from": 711,
+   "to": 711,
+   "class": "P",
+   "construct": "P13f block end",
+   "rule": "10"
+  },
+  {
+   "from": 712,
+   "to": 712,
+   "class": "P",
+   "construct": "program block end",
+   "rule": "10"
+  }
+ ],
+ "absys/p03a.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 17,
+   "class": "P",
+   "construct": "conc case 1 (with disjunction brace)",
+   "rule": "6"
+  },
+  {
+   "from": 18,
+   "to": 43,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 44,
+   "to": 49,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 50,
+   "to": 60,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 61,
+   "to": 87,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": "6"
+  },
+  {
+   "from": 88,
+   "to": 101,
+   "class": "P",
+   "construct": "query P03a",
+   "rule": ""
+  }
+ ],
+ "absys/p03b.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 17,
+   "class": "P",
+   "construct": "conc case 1 (with disjunction brace)",
+   "rule": "6"
+  },
+  {
+   "from": 18,
+   "to": 43,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 44,
+   "to": 49,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 50,
+   "to": 60,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 61,
+   "to": 87,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": "6"
+  },
+  {
+   "from": 88,
+   "to": 99,
+   "class": "P",
+   "construct": "query P03b",
+   "rule": ""
+  }
+ ],
+ "absys/p03c.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 17,
+   "class": "P",
+   "construct": "conc case 1 (with disjunction brace)",
+   "rule": "6"
+  },
+  {
+   "from": 18,
+   "to": 43,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 44,
+   "to": 49,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 50,
+   "to": 60,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 61,
+   "to": 87,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": "6"
+  },
+  {
+   "from": 88,
+   "to": 103,
+   "class": "P",
+   "construct": "query P03c",
+   "rule": ""
+  }
+ ],
+ "absys/p03d.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 17,
+   "class": "P",
+   "construct": "conc case 1 (with disjunction brace)",
+   "rule": "6"
+  },
+  {
+   "from": 18,
+   "to": 43,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 44,
+   "to": 49,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 50,
+   "to": 60,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 61,
+   "to": 87,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": "6"
+  },
+  {
+   "from": 88,
+   "to": 103,
+   "class": "P",
+   "construct": "query P03d",
+   "rule": ""
+  }
+ ],
+ "absys/p03e.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 17,
+   "class": "P",
+   "construct": "conc case 1 (with disjunction brace)",
+   "rule": "6"
+  },
+  {
+   "from": 18,
+   "to": 43,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 44,
+   "to": 49,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 50,
+   "to": 60,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 61,
+   "to": 87,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": "6"
+  },
+  {
+   "from": 88,
+   "to": 99,
+   "class": "P",
+   "construct": "query P03e",
+   "rule": ""
+  }
+ ],
+ "absys/p03f.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 17,
+   "class": "P",
+   "construct": "conc case 1 (with disjunction brace)",
+   "rule": "6"
+  },
+  {
+   "from": 18,
+   "to": 43,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 44,
+   "to": 49,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 50,
+   "to": 60,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 61,
+   "to": 87,
+   "class": "P",
+   "construct": "rev case 2, conjuncts in order",
+   "rule": "6"
+  },
+  {
+   "from": 88,
+   "to": 99,
+   "class": "P",
+   "construct": "query P03f",
+   "rule": ""
+  }
+ ],
+ "absys/p13a.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "range header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 9,
+   "class": "P",
+   "construct": "disjunction brace, case 1 begin",
+   "rule": "6"
+  },
+  {
+   "from": 10,
+   "to": 14,
+   "class": "R",
+   "construct": "case 1 test m > n written m = n + 1 (changed condition)",
+   "rule": "3"
+  },
+  {
+   "from": 15,
+   "to": 19,
+   "class": "P",
+   "construct": "case 1 s = [] and end",
+   "rule": ""
+  },
+  {
+   "from": 20,
+   "to": 20,
+   "class": "P",
+   "construct": "or connective",
+   "rule": "6"
+  },
+  {
+   "from": 21,
+   "to": 21,
+   "class": "R",
+   "construct": "case 2 begin: case missing its guard m <= n",
+   "rule": "4"
+  },
+  {
+   "from": 22,
+   "to": 38,
+   "class": "P",
+   "construct": "case 2 contents s = [m&t'], range(m + 1, n, t)",
+   "rule": "4, 10"
+  },
+  {
+   "from": 39,
+   "to": 39,
+   "class": "R",
+   "construct": "case 2 end: case missing its guard",
+   "rule": "4"
+  },
+  {
+   "from": 40,
+   "to": 40,
+   "class": "P",
+   "construct": "disjunction close",
+   "rule": "6"
+  },
+  {
+   "from": 41,
+   "to": 46,
+   "class": "P",
+   "construct": "sum header",
+   "rule": ""
+  },
+  {
+   "from": 47,
+   "to": 56,
+   "class": "P",
+   "construct": "sum case 1",
+   "rule": "6"
+  },
+  {
+   "from": 57,
+   "to": 78,
+   "class": "P",
+   "construct": "sum case 2, k = h + j",
+   "rule": ""
+  },
+  {
+   "from": 79,
+   "to": 86,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 87,
+   "to": 96,
+   "class": "P",
+   "construct": "conc case 1",
+   "rule": "6"
+  },
+  {
+   "from": 97,
+   "to": 122,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 123,
+   "to": 128,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 129,
+   "to": 139,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 140,
+   "to": 166,
+   "class": "P",
+   "construct": "rev case 2",
+   "rule": ""
+  },
+  {
+   "from": 167,
+   "to": 183,
+   "class": "P",
+   "construct": "revacc",
+   "rule": ""
+  },
+  {
+   "from": 184,
+   "to": 191,
+   "class": "P",
+   "construct": "racc header",
+   "rule": ""
+  },
+  {
+   "from": 192,
+   "to": 201,
+   "class": "P",
+   "construct": "racc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 202,
+   "to": 224,
+   "class": "P",
+   "construct": "racc case 3",
+   "rule": "6"
+  },
+  {
+   "from": 225,
+   "to": 232,
+   "class": "P",
+   "construct": "P13a query range(1, 100, s)",
+   "rule": ""
+  }
+ ],
+ "absys/p13b.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "range header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 9,
+   "class": "P",
+   "construct": "disjunction brace, case 1 begin",
+   "rule": "6"
+  },
+  {
+   "from": 10,
+   "to": 14,
+   "class": "R",
+   "construct": "case 1 test m > n written m = n + 1 (changed condition)",
+   "rule": "3"
+  },
+  {
+   "from": 15,
+   "to": 19,
+   "class": "P",
+   "construct": "case 1 s = [] and end",
+   "rule": ""
+  },
+  {
+   "from": 20,
+   "to": 20,
+   "class": "P",
+   "construct": "or connective",
+   "rule": "6"
+  },
+  {
+   "from": 21,
+   "to": 21,
+   "class": "R",
+   "construct": "case 2 begin: case missing its guard m <= n",
+   "rule": "4"
+  },
+  {
+   "from": 22,
+   "to": 38,
+   "class": "P",
+   "construct": "case 2 contents s = [m&t'], range(m + 1, n, t)",
+   "rule": "4, 10"
+  },
+  {
+   "from": 39,
+   "to": 39,
+   "class": "R",
+   "construct": "case 2 end: case missing its guard",
+   "rule": "4"
+  },
+  {
+   "from": 40,
+   "to": 40,
+   "class": "P",
+   "construct": "disjunction close",
+   "rule": "6"
+  },
+  {
+   "from": 41,
+   "to": 46,
+   "class": "P",
+   "construct": "sum header",
+   "rule": ""
+  },
+  {
+   "from": 47,
+   "to": 56,
+   "class": "P",
+   "construct": "sum case 1",
+   "rule": "6"
+  },
+  {
+   "from": 57,
+   "to": 78,
+   "class": "P",
+   "construct": "sum case 2, k = h + j",
+   "rule": ""
+  },
+  {
+   "from": 79,
+   "to": 86,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 87,
+   "to": 96,
+   "class": "P",
+   "construct": "conc case 1",
+   "rule": "6"
+  },
+  {
+   "from": 97,
+   "to": 122,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 123,
+   "to": 128,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 129,
+   "to": 139,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 140,
+   "to": 166,
+   "class": "P",
+   "construct": "rev case 2",
+   "rule": ""
+  },
+  {
+   "from": 167,
+   "to": 183,
+   "class": "P",
+   "construct": "revacc",
+   "rule": ""
+  },
+  {
+   "from": 184,
+   "to": 191,
+   "class": "P",
+   "construct": "racc header",
+   "rule": ""
+  },
+  {
+   "from": 192,
+   "to": 201,
+   "class": "P",
+   "construct": "racc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 202,
+   "to": 224,
+   "class": "P",
+   "construct": "racc case 3",
+   "rule": "6"
+  },
+  {
+   "from": 225,
+   "to": 240,
+   "class": "P",
+   "construct": "P13b query range and sum",
+   "rule": ""
+  }
+ ],
+ "absys/p13c.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "range header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 9,
+   "class": "P",
+   "construct": "disjunction brace, case 1 begin",
+   "rule": "6"
+  },
+  {
+   "from": 10,
+   "to": 14,
+   "class": "R",
+   "construct": "case 1 test m > n written m = n + 1 (changed condition)",
+   "rule": "3"
+  },
+  {
+   "from": 15,
+   "to": 19,
+   "class": "P",
+   "construct": "case 1 s = [] and end",
+   "rule": ""
+  },
+  {
+   "from": 20,
+   "to": 20,
+   "class": "P",
+   "construct": "or connective",
+   "rule": "6"
+  },
+  {
+   "from": 21,
+   "to": 21,
+   "class": "R",
+   "construct": "case 2 begin: case missing its guard m <= n",
+   "rule": "4"
+  },
+  {
+   "from": 22,
+   "to": 38,
+   "class": "P",
+   "construct": "case 2 contents s = [m&t'], range(m + 1, n, t)",
+   "rule": "4, 10"
+  },
+  {
+   "from": 39,
+   "to": 39,
+   "class": "R",
+   "construct": "case 2 end: case missing its guard",
+   "rule": "4"
+  },
+  {
+   "from": 40,
+   "to": 40,
+   "class": "P",
+   "construct": "disjunction close",
+   "rule": "6"
+  },
+  {
+   "from": 41,
+   "to": 46,
+   "class": "P",
+   "construct": "sum header",
+   "rule": ""
+  },
+  {
+   "from": 47,
+   "to": 56,
+   "class": "P",
+   "construct": "sum case 1",
+   "rule": "6"
+  },
+  {
+   "from": 57,
+   "to": 78,
+   "class": "P",
+   "construct": "sum case 2, k = h + j",
+   "rule": ""
+  },
+  {
+   "from": 79,
+   "to": 86,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 87,
+   "to": 96,
+   "class": "P",
+   "construct": "conc case 1",
+   "rule": "6"
+  },
+  {
+   "from": 97,
+   "to": 122,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 123,
+   "to": 128,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 129,
+   "to": 139,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 140,
+   "to": 166,
+   "class": "P",
+   "construct": "rev case 2",
+   "rule": ""
+  },
+  {
+   "from": 167,
+   "to": 183,
+   "class": "P",
+   "construct": "revacc",
+   "rule": ""
+  },
+  {
+   "from": 184,
+   "to": 191,
+   "class": "P",
+   "construct": "racc header",
+   "rule": ""
+  },
+  {
+   "from": 192,
+   "to": 201,
+   "class": "P",
+   "construct": "racc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 202,
+   "to": 224,
+   "class": "P",
+   "construct": "racc case 3",
+   "rule": "6"
+  },
+  {
+   "from": 225,
+   "to": 240,
+   "class": "P",
+   "construct": "P13c query range and rev",
+   "rule": ""
+  }
+ ],
+ "absys/p13d.ab1": [
+  {
+   "from": 0,
+   "to": 7,
+   "class": "P",
+   "construct": "range header",
+   "rule": ""
+  },
+  {
+   "from": 8,
+   "to": 9,
+   "class": "P",
+   "construct": "disjunction brace, case 1 begin",
+   "rule": "6"
+  },
+  {
+   "from": 10,
+   "to": 14,
+   "class": "R",
+   "construct": "case 1 test m > n written m = n + 1 (changed condition)",
+   "rule": "3"
+  },
+  {
+   "from": 15,
+   "to": 19,
+   "class": "P",
+   "construct": "case 1 s = [] and end",
+   "rule": ""
+  },
+  {
+   "from": 20,
+   "to": 20,
+   "class": "P",
+   "construct": "or connective",
+   "rule": "6"
+  },
+  {
+   "from": 21,
+   "to": 21,
+   "class": "R",
+   "construct": "case 2 begin: case missing its guard m <= n",
+   "rule": "4"
+  },
+  {
+   "from": 22,
+   "to": 38,
+   "class": "P",
+   "construct": "case 2 contents s = [m&t'], range(m + 1, n, t)",
+   "rule": "4, 10"
+  },
+  {
+   "from": 39,
+   "to": 39,
+   "class": "R",
+   "construct": "case 2 end: case missing its guard",
+   "rule": "4"
+  },
+  {
+   "from": 40,
+   "to": 40,
+   "class": "P",
+   "construct": "disjunction close",
+   "rule": "6"
+  },
+  {
+   "from": 41,
+   "to": 46,
+   "class": "P",
+   "construct": "sum header",
+   "rule": ""
+  },
+  {
+   "from": 47,
+   "to": 56,
+   "class": "P",
+   "construct": "sum case 1",
+   "rule": "6"
+  },
+  {
+   "from": 57,
+   "to": 78,
+   "class": "P",
+   "construct": "sum case 2, k = h + j",
+   "rule": ""
+  },
+  {
+   "from": 79,
+   "to": 86,
+   "class": "P",
+   "construct": "conc header",
+   "rule": ""
+  },
+  {
+   "from": 87,
+   "to": 96,
+   "class": "P",
+   "construct": "conc case 1",
+   "rule": "6"
+  },
+  {
+   "from": 97,
+   "to": 122,
+   "class": "P",
+   "construct": "conc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 123,
+   "to": 128,
+   "class": "P",
+   "construct": "rev header",
+   "rule": ""
+  },
+  {
+   "from": 129,
+   "to": 139,
+   "class": "P",
+   "construct": "rev case 1",
+   "rule": "6"
+  },
+  {
+   "from": 140,
+   "to": 166,
+   "class": "P",
+   "construct": "rev case 2",
+   "rule": ""
+  },
+  {
+   "from": 167,
+   "to": 183,
+   "class": "P",
+   "construct": "revacc",
+   "rule": ""
+  },
+  {
+   "from": 184,
+   "to": 191,
+   "class": "P",
+   "construct": "racc header",
+   "rule": ""
+  },
+  {
+   "from": 192,
+   "to": 201,
+   "class": "P",
+   "construct": "racc case 2",
+   "rule": "6"
+  },
+  {
+   "from": 202,
+   "to": 224,
+   "class": "P",
+   "construct": "racc case 3",
+   "rule": "6"
+  },
+  {
+   "from": 225,
+   "to": 240,
+   "class": "P",
+   "construct": "P13d query range and revacc",
+   "rule": ""
+  }
+ ],
+ "absys/p13e.ab1": [
+  {
+   "from": 0,
+   "to": 40,
+   "class": "P",
+   "construct": "range, native building relation (m = n + 1 ending, unguarded case 2)",
+   "rule": "18"
+  },
+  {
+   "from": 41,
+   "to": 78,
+   "class": "P",
+   "construct": "sum, native",
+   "rule": "18"
+  },
+  {
+   "from": 79,
+   "to": 94,
+   "class": "P",
+   "construct": "P13e query",
+   "rule": "18"
+  }
+ ],
+ "absys/p13f.ab1": [
+  {
+   "from": 0,
+   "to": 40,
+   "class": "P",
+   "construct": "range, native building relation (m = n + 1 ending, unguarded case 2)",
+   "rule": "18"
+  },
+  {
+   "from": 41,
+   "to": 81,
+   "class": "P",
+   "construct": "rev1, native accumulator reverse (Elcock 1990)",
+   "rule": "18"
+  },
+  {
+   "from": 82,
+   "to": 98,
+   "class": "P",
+   "construct": "rev, native",
+   "rule": "18"
+  },
+  {
+   "from": 99,
+   "to": 114,
+   "class": "P",
+   "construct": "P13f query",
+   "rule": "18"
+  }
+ ]
+}

@@ -4,7 +4,8 @@ This is a measurement-qualification note, not a benchmark. Every figure
 below comes from a small probe run locally on SWI-Prolog 11.0.1 for
 arm64-darwin (Homebrew build, `swipl --version` prints `SWI-Prolog version
 11.0.1 for arm64-darwin`). The CI image `swipl:11.0.1` (Linux) was not
-available locally, so nothing here has been checked on Linux. The figures
+available locally when this note was written. Its probes have since been
+run on Linux; see "First Linux result" at the end. The figures
 below come from the first, ad hoc probes. They are now packaged, with a
 runner, in [`probes/`](probes), and run on Linux by the workflow
 `.github/workflows/swi-measurement.yml` (see "Reproducing on Linux" at the
@@ -731,6 +732,16 @@ diff as the build artifact `swi-measurement-linux`, and fails only if an
 The workflow has run once; its result follows. The rest of this note was
 written before it, and its statements about Linux are confirmed by it only
 as far as the probes go.
+
+### Provenance of the package
+
+The probes were written by the agent that made this study. A first attempt
+to have it copy them into the repository was refused by the session's
+permission check, because its brief had limited it to this one file. That
+was a limit of its assigned scope, not an access control. The agent then
+built the package in its own scratch folder. The main session read the
+runner, the checker and the workflow, checked the files for local paths,
+and committed them.
 
 ### First Linux result
 

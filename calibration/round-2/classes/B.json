@@ -1,0 +1,3328 @@
+{
+  "absys/p03a.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "conc definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 9,
+      "to": 17,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 18,
+      "to": 18,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 19,
+      "to": 42,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 43,
+      "to": 43,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 44,
+      "to": 50,
+      "class": "P",
+      "construct": "rev definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 51,
+      "to": 60,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 61,
+      "to": 61,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 62,
+      "to": 86,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 87,
+      "to": 87,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 88,
+      "to": 101,
+      "class": "P",
+      "construct": "P03a query",
+      "rule": "1"
+    }
+  ],
+  "absys/p03b.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "conc definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 9,
+      "to": 17,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 18,
+      "to": 18,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 19,
+      "to": 42,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 43,
+      "to": 43,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 44,
+      "to": 50,
+      "class": "P",
+      "construct": "rev definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 51,
+      "to": 60,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 61,
+      "to": 61,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 62,
+      "to": 86,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 87,
+      "to": 87,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 88,
+      "to": 99,
+      "class": "P",
+      "construct": "P03b query",
+      "rule": "1"
+    }
+  ],
+  "absys/p03c.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "conc definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 9,
+      "to": 17,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 18,
+      "to": 18,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 19,
+      "to": 42,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 43,
+      "to": 43,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 44,
+      "to": 50,
+      "class": "P",
+      "construct": "rev definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 51,
+      "to": 60,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 61,
+      "to": 61,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 62,
+      "to": 86,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 87,
+      "to": 87,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 88,
+      "to": 103,
+      "class": "P",
+      "construct": "P03c query",
+      "rule": "1"
+    }
+  ],
+  "absys/p03d.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "conc definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 9,
+      "to": 17,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 18,
+      "to": 18,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 19,
+      "to": 42,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 43,
+      "to": 43,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 44,
+      "to": 50,
+      "class": "P",
+      "construct": "rev definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 51,
+      "to": 60,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 61,
+      "to": 61,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 62,
+      "to": 86,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 87,
+      "to": 87,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 88,
+      "to": 103,
+      "class": "P",
+      "construct": "P03d query",
+      "rule": "1"
+    }
+  ],
+  "absys/p03e.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "conc definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 9,
+      "to": 17,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 18,
+      "to": 18,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 19,
+      "to": 42,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 43,
+      "to": 43,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 44,
+      "to": 50,
+      "class": "P",
+      "construct": "rev definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 51,
+      "to": 60,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 61,
+      "to": 61,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 62,
+      "to": 86,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 87,
+      "to": 87,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 88,
+      "to": 99,
+      "class": "P",
+      "construct": "P03e query",
+      "rule": "1"
+    }
+  ],
+  "absys/p03f.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "conc definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 9,
+      "to": 17,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 18,
+      "to": 18,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 19,
+      "to": 42,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 43,
+      "to": 43,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 44,
+      "to": 50,
+      "class": "P",
+      "construct": "rev definition binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 51,
+      "to": 60,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 61,
+      "to": 61,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 62,
+      "to": 86,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 87,
+      "to": 87,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 88,
+      "to": 99,
+      "class": "P",
+      "construct": "P03f query",
+      "rule": "1"
+    }
+  ],
+  "absys/p13a.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "range definition binding, lambda parameters and opening brace",
+      "rule": "1, 10"
+    },
+    {
+      "from": 9,
+      "to": 9,
+      "class": "P",
+      "construct": "range case 1 block opening",
+      "rule": "10"
+    },
+    {
+      "from": 10,
+      "to": 14,
+      "class": "R",
+      "construct": "range case 1 replacement of m > n by m = n + 1",
+      "rule": "3, 10"
+    },
+    {
+      "from": 15,
+      "to": 18,
+      "class": "P",
+      "construct": "range case 1 empty-sequence equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 19,
+      "to": 19,
+      "class": "P",
+      "construct": "range case 1 block closing",
+      "rule": "10"
+    },
+    {
+      "from": 20,
+      "to": 20,
+      "class": "P",
+      "construct": "range case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 21,
+      "to": 21,
+      "class": "R",
+      "construct": "range case 2 opening with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 22,
+      "to": 28,
+      "class": "P",
+      "construct": "range case 2 sequence construction equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 29,
+      "to": 38,
+      "class": "P",
+      "construct": "range case 2 recursive range application",
+      "rule": "1, 10"
+    },
+    {
+      "from": 39,
+      "to": 39,
+      "class": "R",
+      "construct": "range case 2 closing with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 40,
+      "to": 40,
+      "class": "P",
+      "construct": "range definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 41,
+      "to": 47,
+      "class": "P",
+      "construct": "sum binding, lambda parameters and opening brace",
+      "rule": "1, 8"
+    },
+    {
+      "from": 48,
+      "to": 56,
+      "class": "P",
+      "construct": "sum case 1",
+      "rule": "1, 8"
+    },
+    {
+      "from": 57,
+      "to": 57,
+      "class": "P",
+      "construct": "sum case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 58,
+      "to": 77,
+      "class": "P",
+      "construct": "sum case 2, recursive sum before arithmetic",
+      "rule": "1, 8"
+    },
+    {
+      "from": 78,
+      "to": 78,
+      "class": "P",
+      "construct": "sum definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 79,
+      "to": 87,
+      "class": "P",
+      "construct": "conc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 88,
+      "to": 96,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 97,
+      "to": 97,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 98,
+      "to": 121,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 122,
+      "to": 122,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 123,
+      "to": 129,
+      "class": "P",
+      "construct": "rev binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 130,
+      "to": 139,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 140,
+      "to": 140,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 141,
+      "to": 165,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 166,
+      "to": 166,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 167,
+      "to": 183,
+      "class": "P",
+      "construct": "revacc definition through racc with empty accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 184,
+      "to": 192,
+      "class": "P",
+      "construct": "racc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 193,
+      "to": 201,
+      "class": "P",
+      "construct": "racc empty-input case",
+      "rule": "1, 2"
+    },
+    {
+      "from": 202,
+      "to": 202,
+      "class": "P",
+      "construct": "racc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 203,
+      "to": 223,
+      "class": "P",
+      "construct": "racc recursive case and problem-given accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 224,
+      "to": 224,
+      "class": "P",
+      "construct": "racc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 225,
+      "to": 232,
+      "class": "P",
+      "construct": "P13a query with n = 100",
+      "rule": "1"
+    }
+  ],
+  "absys/p13b.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "range definition binding, lambda parameters and opening brace",
+      "rule": "1, 10"
+    },
+    {
+      "from": 9,
+      "to": 9,
+      "class": "P",
+      "construct": "range case 1 block opening",
+      "rule": "10"
+    },
+    {
+      "from": 10,
+      "to": 14,
+      "class": "R",
+      "construct": "range case 1 replacement of m > n by m = n + 1",
+      "rule": "3, 10"
+    },
+    {
+      "from": 15,
+      "to": 18,
+      "class": "P",
+      "construct": "range case 1 empty-sequence equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 19,
+      "to": 19,
+      "class": "P",
+      "construct": "range case 1 block closing",
+      "rule": "10"
+    },
+    {
+      "from": 20,
+      "to": 20,
+      "class": "P",
+      "construct": "range case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 21,
+      "to": 21,
+      "class": "R",
+      "construct": "range case 2 opening with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 22,
+      "to": 28,
+      "class": "P",
+      "construct": "range case 2 sequence construction equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 29,
+      "to": 38,
+      "class": "P",
+      "construct": "range case 2 recursive range application",
+      "rule": "1, 10"
+    },
+    {
+      "from": 39,
+      "to": 39,
+      "class": "R",
+      "construct": "range case 2 closing with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 40,
+      "to": 40,
+      "class": "P",
+      "construct": "range definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 41,
+      "to": 47,
+      "class": "P",
+      "construct": "sum binding, lambda parameters and opening brace",
+      "rule": "1, 8"
+    },
+    {
+      "from": 48,
+      "to": 56,
+      "class": "P",
+      "construct": "sum case 1",
+      "rule": "1, 8"
+    },
+    {
+      "from": 57,
+      "to": 57,
+      "class": "P",
+      "construct": "sum case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 58,
+      "to": 77,
+      "class": "P",
+      "construct": "sum case 2, recursive sum before arithmetic",
+      "rule": "1, 8"
+    },
+    {
+      "from": 78,
+      "to": 78,
+      "class": "P",
+      "construct": "sum definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 79,
+      "to": 87,
+      "class": "P",
+      "construct": "conc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 88,
+      "to": 96,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 97,
+      "to": 97,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 98,
+      "to": 121,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 122,
+      "to": 122,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 123,
+      "to": 129,
+      "class": "P",
+      "construct": "rev binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 130,
+      "to": 139,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 140,
+      "to": 140,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 141,
+      "to": 165,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 166,
+      "to": 166,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 167,
+      "to": 183,
+      "class": "P",
+      "construct": "revacc definition through racc with empty accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 184,
+      "to": 192,
+      "class": "P",
+      "construct": "racc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 193,
+      "to": 201,
+      "class": "P",
+      "construct": "racc empty-input case",
+      "rule": "1, 2"
+    },
+    {
+      "from": 202,
+      "to": 202,
+      "class": "P",
+      "construct": "racc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 203,
+      "to": 223,
+      "class": "P",
+      "construct": "racc recursive case and problem-given accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 224,
+      "to": 224,
+      "class": "P",
+      "construct": "racc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 225,
+      "to": 240,
+      "class": "P",
+      "construct": "P13b query with n = 100",
+      "rule": "1"
+    }
+  ],
+  "absys/p13c.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "range definition binding, lambda parameters and opening brace",
+      "rule": "1, 10"
+    },
+    {
+      "from": 9,
+      "to": 9,
+      "class": "P",
+      "construct": "range case 1 block opening",
+      "rule": "10"
+    },
+    {
+      "from": 10,
+      "to": 14,
+      "class": "R",
+      "construct": "range case 1 replacement of m > n by m = n + 1",
+      "rule": "3, 10"
+    },
+    {
+      "from": 15,
+      "to": 18,
+      "class": "P",
+      "construct": "range case 1 empty-sequence equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 19,
+      "to": 19,
+      "class": "P",
+      "construct": "range case 1 block closing",
+      "rule": "10"
+    },
+    {
+      "from": 20,
+      "to": 20,
+      "class": "P",
+      "construct": "range case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 21,
+      "to": 21,
+      "class": "R",
+      "construct": "range case 2 opening with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 22,
+      "to": 28,
+      "class": "P",
+      "construct": "range case 2 sequence construction equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 29,
+      "to": 38,
+      "class": "P",
+      "construct": "range case 2 recursive range application",
+      "rule": "1, 10"
+    },
+    {
+      "from": 39,
+      "to": 39,
+      "class": "R",
+      "construct": "range case 2 closing with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 40,
+      "to": 40,
+      "class": "P",
+      "construct": "range definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 41,
+      "to": 47,
+      "class": "P",
+      "construct": "sum binding, lambda parameters and opening brace",
+      "rule": "1, 8"
+    },
+    {
+      "from": 48,
+      "to": 56,
+      "class": "P",
+      "construct": "sum case 1",
+      "rule": "1, 8"
+    },
+    {
+      "from": 57,
+      "to": 57,
+      "class": "P",
+      "construct": "sum case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 58,
+      "to": 77,
+      "class": "P",
+      "construct": "sum case 2, recursive sum before arithmetic",
+      "rule": "1, 8"
+    },
+    {
+      "from": 78,
+      "to": 78,
+      "class": "P",
+      "construct": "sum definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 79,
+      "to": 87,
+      "class": "P",
+      "construct": "conc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 88,
+      "to": 96,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 97,
+      "to": 97,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 98,
+      "to": 121,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 122,
+      "to": 122,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 123,
+      "to": 129,
+      "class": "P",
+      "construct": "rev binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 130,
+      "to": 139,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 140,
+      "to": 140,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 141,
+      "to": 165,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 166,
+      "to": 166,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 167,
+      "to": 183,
+      "class": "P",
+      "construct": "revacc definition through racc with empty accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 184,
+      "to": 192,
+      "class": "P",
+      "construct": "racc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 193,
+      "to": 201,
+      "class": "P",
+      "construct": "racc empty-input case",
+      "rule": "1, 2"
+    },
+    {
+      "from": 202,
+      "to": 202,
+      "class": "P",
+      "construct": "racc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 203,
+      "to": 223,
+      "class": "P",
+      "construct": "racc recursive case and problem-given accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 224,
+      "to": 224,
+      "class": "P",
+      "construct": "racc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 225,
+      "to": 240,
+      "class": "P",
+      "construct": "P13c query with n = 100",
+      "rule": "1"
+    }
+  ],
+  "absys/p13d.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "range definition binding, lambda parameters and opening brace",
+      "rule": "1, 10"
+    },
+    {
+      "from": 9,
+      "to": 9,
+      "class": "P",
+      "construct": "range case 1 block opening",
+      "rule": "10"
+    },
+    {
+      "from": 10,
+      "to": 14,
+      "class": "R",
+      "construct": "range case 1 replacement of m > n by m = n + 1",
+      "rule": "3, 10"
+    },
+    {
+      "from": 15,
+      "to": 18,
+      "class": "P",
+      "construct": "range case 1 empty-sequence equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 19,
+      "to": 19,
+      "class": "P",
+      "construct": "range case 1 block closing",
+      "rule": "10"
+    },
+    {
+      "from": 20,
+      "to": 20,
+      "class": "P",
+      "construct": "range case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 21,
+      "to": 21,
+      "class": "R",
+      "construct": "range case 2 opening with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 22,
+      "to": 28,
+      "class": "P",
+      "construct": "range case 2 sequence construction equation",
+      "rule": "1, 10"
+    },
+    {
+      "from": 29,
+      "to": 38,
+      "class": "P",
+      "construct": "range case 2 recursive range application",
+      "rule": "1, 10"
+    },
+    {
+      "from": 39,
+      "to": 39,
+      "class": "R",
+      "construct": "range case 2 closing with m <= n guard omitted",
+      "rule": "4, 10"
+    },
+    {
+      "from": 40,
+      "to": 40,
+      "class": "P",
+      "construct": "range definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 41,
+      "to": 47,
+      "class": "P",
+      "construct": "sum binding, lambda parameters and opening brace",
+      "rule": "1, 8"
+    },
+    {
+      "from": 48,
+      "to": 56,
+      "class": "P",
+      "construct": "sum case 1",
+      "rule": "1, 8"
+    },
+    {
+      "from": 57,
+      "to": 57,
+      "class": "P",
+      "construct": "sum case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 58,
+      "to": 77,
+      "class": "P",
+      "construct": "sum case 2, recursive sum before arithmetic",
+      "rule": "1, 8"
+    },
+    {
+      "from": 78,
+      "to": 78,
+      "class": "P",
+      "construct": "sum definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 79,
+      "to": 87,
+      "class": "P",
+      "construct": "conc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 88,
+      "to": 96,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 97,
+      "to": 97,
+      "class": "P",
+      "construct": "conc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 98,
+      "to": 121,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1, 2"
+    },
+    {
+      "from": 122,
+      "to": 122,
+      "class": "P",
+      "construct": "conc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 123,
+      "to": 129,
+      "class": "P",
+      "construct": "rev binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 130,
+      "to": 139,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1, 2"
+    },
+    {
+      "from": 140,
+      "to": 140,
+      "class": "P",
+      "construct": "rev case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 141,
+      "to": 165,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1, 2"
+    },
+    {
+      "from": 166,
+      "to": 166,
+      "class": "P",
+      "construct": "rev definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 167,
+      "to": 183,
+      "class": "P",
+      "construct": "revacc definition through racc with empty accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 184,
+      "to": 192,
+      "class": "P",
+      "construct": "racc binding, lambda parameters and opening brace",
+      "rule": "1"
+    },
+    {
+      "from": 193,
+      "to": 201,
+      "class": "P",
+      "construct": "racc empty-input case",
+      "rule": "1, 2"
+    },
+    {
+      "from": 202,
+      "to": 202,
+      "class": "P",
+      "construct": "racc case disjunction",
+      "rule": "6"
+    },
+    {
+      "from": 203,
+      "to": 223,
+      "class": "P",
+      "construct": "racc recursive case and problem-given accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 224,
+      "to": 224,
+      "class": "P",
+      "construct": "racc definition closing brace",
+      "rule": "10"
+    },
+    {
+      "from": 225,
+      "to": 240,
+      "class": "P",
+      "construct": "P13d query with n = 100",
+      "rule": "1"
+    }
+  ],
+  "absys/p13e.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "native range binding, lambda parameters and opening brace",
+      "rule": "18"
+    },
+    {
+      "from": 9,
+      "to": 19,
+      "class": "P",
+      "construct": "native range terminal case using m = n + 1",
+      "rule": "18"
+    },
+    {
+      "from": 20,
+      "to": 20,
+      "class": "P",
+      "construct": "native range case disjunction",
+      "rule": "18"
+    },
+    {
+      "from": 21,
+      "to": 39,
+      "class": "P",
+      "construct": "native range recursive case without comparison guard",
+      "rule": "18"
+    },
+    {
+      "from": 40,
+      "to": 40,
+      "class": "P",
+      "construct": "native range definition closing brace",
+      "rule": "18"
+    },
+    {
+      "from": 41,
+      "to": 47,
+      "class": "P",
+      "construct": "sum binding, lambda parameters and opening brace",
+      "rule": "18"
+    },
+    {
+      "from": 48,
+      "to": 56,
+      "class": "P",
+      "construct": "sum case 1",
+      "rule": "18"
+    },
+    {
+      "from": 57,
+      "to": 57,
+      "class": "P",
+      "construct": "sum case disjunction",
+      "rule": "18"
+    },
+    {
+      "from": 58,
+      "to": 77,
+      "class": "P",
+      "construct": "sum case 2, recursive sum before arithmetic",
+      "rule": "18"
+    },
+    {
+      "from": 78,
+      "to": 78,
+      "class": "P",
+      "construct": "sum definition closing brace",
+      "rule": "18"
+    },
+    {
+      "from": 79,
+      "to": 94,
+      "class": "P",
+      "construct": "P13e native build-and-sum query",
+      "rule": "18"
+    }
+  ],
+  "absys/p13f.ab1": [
+    {
+      "from": 0,
+      "to": 8,
+      "class": "P",
+      "construct": "native range binding, lambda parameters and opening brace",
+      "rule": "18"
+    },
+    {
+      "from": 9,
+      "to": 19,
+      "class": "P",
+      "construct": "native range terminal case using m = n + 1",
+      "rule": "18"
+    },
+    {
+      "from": 20,
+      "to": 20,
+      "class": "P",
+      "construct": "native range case disjunction",
+      "rule": "18"
+    },
+    {
+      "from": 21,
+      "to": 39,
+      "class": "P",
+      "construct": "native range recursive case without comparison guard",
+      "rule": "18"
+    },
+    {
+      "from": 40,
+      "to": 40,
+      "class": "P",
+      "construct": "native range definition closing brace",
+      "rule": "18"
+    },
+    {
+      "from": 41,
+      "to": 49,
+      "class": "P",
+      "construct": "native rev1 binding, parameters and opening brace",
+      "rule": "18"
+    },
+    {
+      "from": 50,
+      "to": 58,
+      "class": "P",
+      "construct": "native rev1 empty-input case",
+      "rule": "18"
+    },
+    {
+      "from": 59,
+      "to": 59,
+      "class": "P",
+      "construct": "native rev1 case disjunction",
+      "rule": "18"
+    },
+    {
+      "from": 60,
+      "to": 80,
+      "class": "P",
+      "construct": "native rev1 recursive accumulator case",
+      "rule": "18"
+    },
+    {
+      "from": 81,
+      "to": 81,
+      "class": "P",
+      "construct": "native rev1 definition closing brace",
+      "rule": "18"
+    },
+    {
+      "from": 82,
+      "to": 98,
+      "class": "P",
+      "construct": "native rev definition through rev1",
+      "rule": "18"
+    },
+    {
+      "from": 99,
+      "to": 114,
+      "class": "P",
+      "construct": "P13f native build-and-reverse query",
+      "rule": "18"
+    }
+  ],
+  "algol-60/p03.alg": [
+    {
+      "from": 0,
+      "to": 0,
+      "class": "P",
+      "construct": "program block opening",
+      "rule": "1, 10"
+    },
+    {
+      "from": 1,
+      "to": 11,
+      "class": "P",
+      "construct": "parallel-array sequence encoding declaration",
+      "rule": "15"
+    },
+    {
+      "from": 12,
+      "to": 14,
+      "class": "P",
+      "construct": "encoding allocation pointer declaration",
+      "rule": "15"
+    },
+    {
+      "from": 15,
+      "to": 59,
+      "class": "P",
+      "construct": "cons encoded sequence construction procedure",
+      "rule": "15"
+    },
+    {
+      "from": 60,
+      "to": 119,
+      "class": "P",
+      "construct": "same encoded sequence equality procedure",
+      "rule": "15"
+    },
+    {
+      "from": 120,
+      "to": 138,
+      "class": "P",
+      "construct": "conc forward procedure declaration",
+      "rule": "3"
+    },
+    {
+      "from": 139,
+      "to": 165,
+      "class": "P",
+      "construct": "conc two-case forward transcription",
+      "rule": "2, 3"
+    },
+    {
+      "from": 166,
+      "to": 239,
+      "class": "R",
+      "construct": "splits separately written splitting direction including prefixed callback",
+      "rule": "14"
+    },
+    {
+      "from": 240,
+      "to": 307,
+      "class": "R",
+      "construct": "suffix separately written suffix direction including case tests",
+      "rule": "14"
+    },
+    {
+      "from": 308,
+      "to": 387,
+      "class": "R",
+      "construct": "prefix separately written prefix direction including prefixed callback",
+      "rule": "14"
+    },
+    {
+      "from": 388,
+      "to": 400,
+      "class": "P",
+      "construct": "rev forward procedure declaration",
+      "rule": "3"
+    },
+    {
+      "from": 401,
+      "to": 430,
+      "class": "P",
+      "construct": "rev two-case forward transcription",
+      "rule": "2, 3"
+    },
+    {
+      "from": 431,
+      "to": 533,
+      "class": "R",
+      "construct": "revinverse separately written inverse direction including nested last and prefixed procedures",
+      "rule": "4, 14"
+    },
+    {
+      "from": 534,
+      "to": 591,
+      "class": "H",
+      "construct": "outseq encoded-sequence output adapter including its traversal and jump",
+      "rule": "13"
+    },
+    {
+      "from": 592,
+      "to": 617,
+      "class": "H",
+      "construct": "show single-answer output callback",
+      "rule": "13"
+    },
+    {
+      "from": 618,
+      "to": 668,
+      "class": "H",
+      "construct": "showpair answer-pair output callback",
+      "rule": "13"
+    },
+    {
+      "from": 669,
+      "to": 672,
+      "class": "P",
+      "construct": "initial allocation pointer initialization before any query",
+      "rule": "15"
+    },
+    {
+      "from": 673,
+      "to": 679,
+      "class": "H",
+      "construct": "P03a output label",
+      "rule": "13"
+    },
+    {
+      "from": 680,
+      "to": 681,
+      "class": "H",
+      "construct": "P03a outseq adapter call opening",
+      "rule": "10, 13"
+    },
+    {
+      "from": 682,
+      "to": 702,
+      "class": "P",
+      "construct": "P03a conc query and encoded sequence constants",
+      "rule": "1, 3, 15"
+    },
+    {
+      "from": 703,
+      "to": 704,
+      "class": "H",
+      "construct": "P03a outseq adapter call closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 705,
+      "to": 711,
+      "class": "H",
+      "construct": "P03a output newline",
+      "rule": "13"
+    },
+    {
+      "from": 712,
+      "to": 718,
+      "class": "H",
+      "construct": "P03b output label",
+      "rule": "13"
+    },
+    {
+      "from": 719,
+      "to": 731,
+      "class": "P",
+      "construct": "P03b splitting query opening and encoded input",
+      "rule": "1, 10, 15"
+    },
+    {
+      "from": 732,
+      "to": 733,
+      "class": "H",
+      "construct": "P03b output-only showpair callback argument and separator",
+      "rule": "10, 13"
+    },
+    {
+      "from": 734,
+      "to": 735,
+      "class": "P",
+      "construct": "P03b query call closing",
+      "rule": "1, 10"
+    },
+    {
+      "from": 736,
+      "to": 742,
+      "class": "H",
+      "construct": "P03b output newline",
+      "rule": "13"
+    },
+    {
+      "from": 743,
+      "to": 749,
+      "class": "H",
+      "construct": "P03c output label",
+      "rule": "13"
+    },
+    {
+      "from": 750,
+      "to": 774,
+      "class": "P",
+      "construct": "P03c suffix query opening and encoded inputs",
+      "rule": "1, 10, 15"
+    },
+    {
+      "from": 775,
+      "to": 776,
+      "class": "H",
+      "construct": "P03c output-only show callback argument and separator",
+      "rule": "10, 13"
+    },
+    {
+      "from": 777,
+      "to": 778,
+      "class": "P",
+      "construct": "P03c query call closing",
+      "rule": "1, 10"
+    },
+    {
+      "from": 779,
+      "to": 785,
+      "class": "H",
+      "construct": "P03c output newline",
+      "rule": "13"
+    },
+    {
+      "from": 786,
+      "to": 792,
+      "class": "H",
+      "construct": "P03d output label",
+      "rule": "13"
+    },
+    {
+      "from": 793,
+      "to": 817,
+      "class": "P",
+      "construct": "P03d prefix query opening and encoded inputs",
+      "rule": "1, 10, 15"
+    },
+    {
+      "from": 818,
+      "to": 819,
+      "class": "H",
+      "construct": "P03d output-only show callback argument and separator",
+      "rule": "10, 13"
+    },
+    {
+      "from": 820,
+      "to": 821,
+      "class": "P",
+      "construct": "P03d query call closing",
+      "rule": "1, 10"
+    },
+    {
+      "from": 822,
+      "to": 828,
+      "class": "H",
+      "construct": "P03d output newline",
+      "rule": "13"
+    },
+    {
+      "from": 829,
+      "to": 835,
+      "class": "H",
+      "construct": "P03e output label",
+      "rule": "13"
+    },
+    {
+      "from": 836,
+      "to": 837,
+      "class": "H",
+      "construct": "P03e outseq adapter call opening",
+      "rule": "10, 13"
+    },
+    {
+      "from": 838,
+      "to": 856,
+      "class": "P",
+      "construct": "P03e rev query and encoded sequence constant",
+      "rule": "1, 3, 15"
+    },
+    {
+      "from": 857,
+      "to": 858,
+      "class": "H",
+      "construct": "P03e outseq adapter call closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 859,
+      "to": 865,
+      "class": "H",
+      "construct": "P03e output newline",
+      "rule": "13"
+    },
+    {
+      "from": 866,
+      "to": 872,
+      "class": "H",
+      "construct": "P03f output label",
+      "rule": "13"
+    },
+    {
+      "from": 873,
+      "to": 890,
+      "class": "P",
+      "construct": "P03f inverse-reverse query opening and encoded input",
+      "rule": "1, 10, 15"
+    },
+    {
+      "from": 891,
+      "to": 892,
+      "class": "H",
+      "construct": "P03f output-only show callback argument and separator",
+      "rule": "10, 13"
+    },
+    {
+      "from": 893,
+      "to": 894,
+      "class": "P",
+      "construct": "P03f query call closing",
+      "rule": "1, 10"
+    },
+    {
+      "from": 895,
+      "to": 900,
+      "class": "H",
+      "construct": "P03f output newline",
+      "rule": "13"
+    },
+    {
+      "from": 901,
+      "to": 901,
+      "class": "P",
+      "construct": "program block closing",
+      "rule": "1, 10"
+    }
+  ],
+  "algol-60/p13.alg": [
+    {
+      "from": 0,
+      "to": 0,
+      "class": "P",
+      "construct": "program block opening",
+      "rule": "1, 10"
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "class": "P",
+      "construct": "problem size declaration",
+      "rule": "1"
+    },
+    {
+      "from": 4,
+      "to": 7,
+      "class": "P",
+      "construct": "problem size n = 100",
+      "rule": "1"
+    },
+    {
+      "from": 8,
+      "to": 8,
+      "class": "P",
+      "construct": "prescribed-task encoding block opening",
+      "rule": "10, 15"
+    },
+    {
+      "from": 9,
+      "to": 25,
+      "class": "P",
+      "construct": "parallel-array encoding storage declaration",
+      "rule": "15"
+    },
+    {
+      "from": 26,
+      "to": 34,
+      "class": "P",
+      "construct": "encoding pointer and problem-unknown declarations",
+      "rule": "1, 15"
+    },
+    {
+      "from": 35,
+      "to": 79,
+      "class": "P",
+      "construct": "cons encoded sequence construction procedure",
+      "rule": "15"
+    },
+    {
+      "from": 80,
+      "to": 98,
+      "class": "P",
+      "construct": "range procedure declaration",
+      "rule": "3"
+    },
+    {
+      "from": 99,
+      "to": 121,
+      "class": "P",
+      "construct": "range two-case forward transcription with complementary else guard",
+      "rule": "2, 3, 8"
+    },
+    {
+      "from": 122,
+      "to": 135,
+      "class": "P",
+      "construct": "sum procedure declaration and block opening",
+      "rule": "3"
+    },
+    {
+      "from": 136,
+      "to": 138,
+      "class": "P",
+      "construct": "sum case-2 intermediate j declaration",
+      "rule": "3"
+    },
+    {
+      "from": 139,
+      "to": 146,
+      "class": "P",
+      "construct": "sum empty-input case and head test",
+      "rule": "2, 3"
+    },
+    {
+      "from": 147,
+      "to": 167,
+      "class": "P",
+      "construct": "sum recursive case, recursion before addition",
+      "rule": "3, 8, 15"
+    },
+    {
+      "from": 168,
+      "to": 169,
+      "class": "P",
+      "construct": "sum procedure block closing",
+      "rule": "3, 10"
+    },
+    {
+      "from": 170,
+      "to": 188,
+      "class": "P",
+      "construct": "conc procedure declaration",
+      "rule": "3"
+    },
+    {
+      "from": 189,
+      "to": 215,
+      "class": "P",
+      "construct": "conc two-case forward transcription",
+      "rule": "2, 3, 15"
+    },
+    {
+      "from": 216,
+      "to": 229,
+      "class": "P",
+      "construct": "rev procedure declaration and block opening",
+      "rule": "3"
+    },
+    {
+      "from": 230,
+      "to": 232,
+      "class": "P",
+      "construct": "rev case-2 intermediate q declaration",
+      "rule": "3"
+    },
+    {
+      "from": 233,
+      "to": 240,
+      "class": "P",
+      "construct": "rev empty-input case and head test",
+      "rule": "2, 3"
+    },
+    {
+      "from": 241,
+      "to": 269,
+      "class": "P",
+      "construct": "rev recursive case, rev before conc",
+      "rule": "3, 15"
+    },
+    {
+      "from": 270,
+      "to": 271,
+      "class": "P",
+      "construct": "rev procedure block closing",
+      "rule": "3, 10"
+    },
+    {
+      "from": 272,
+      "to": 284,
+      "class": "P",
+      "construct": "revacc procedure declaration",
+      "rule": "3"
+    },
+    {
+      "from": 285,
+      "to": 293,
+      "class": "P",
+      "construct": "revacc case using problem-given empty accumulator",
+      "rule": "3"
+    },
+    {
+      "from": 294,
+      "to": 312,
+      "class": "P",
+      "construct": "racc procedure declaration",
+      "rule": "3"
+    },
+    {
+      "from": 313,
+      "to": 339,
+      "class": "P",
+      "construct": "racc two-case transcription with problem-given accumulator",
+      "rule": "2, 3, 15"
+    },
+    {
+      "from": 340,
+      "to": 397,
+      "class": "H",
+      "construct": "outseq encoded-sequence output adapter including traversal and jump",
+      "rule": "13"
+    },
+    {
+      "from": 398,
+      "to": 401,
+      "class": "P",
+      "construct": "initial allocation pointer initialization before any query",
+      "rule": "15"
+    },
+    {
+      "from": 402,
+      "to": 410,
+      "class": "P",
+      "construct": "P13a range query",
+      "rule": "1, 3"
+    },
+    {
+      "from": 411,
+      "to": 417,
+      "class": "H",
+      "construct": "P13a output label",
+      "rule": "13"
+    },
+    {
+      "from": 418,
+      "to": 422,
+      "class": "H",
+      "construct": "P13a encoded-sequence output adapter call",
+      "rule": "13"
+    },
+    {
+      "from": 423,
+      "to": 429,
+      "class": "H",
+      "construct": "P13a output newline",
+      "rule": "13"
+    },
+    {
+      "from": 430,
+      "to": 433,
+      "class": "C",
+      "construct": "allocation-pointer reset for store reuse before P13b",
+      "rule": "16"
+    },
+    {
+      "from": 434,
+      "to": 442,
+      "class": "P",
+      "construct": "P13b range conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 443,
+      "to": 449,
+      "class": "P",
+      "construct": "P13b sum conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 450,
+      "to": 456,
+      "class": "H",
+      "construct": "P13b output label",
+      "rule": "13"
+    },
+    {
+      "from": 457,
+      "to": 463,
+      "class": "H",
+      "construct": "P13b sum output",
+      "rule": "13"
+    },
+    {
+      "from": 464,
+      "to": 470,
+      "class": "H",
+      "construct": "P13b output newline",
+      "rule": "13"
+    },
+    {
+      "from": 471,
+      "to": 474,
+      "class": "C",
+      "construct": "allocation-pointer reset for store reuse before P13c",
+      "rule": "16"
+    },
+    {
+      "from": 475,
+      "to": 483,
+      "class": "P",
+      "construct": "P13c range conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 484,
+      "to": 490,
+      "class": "P",
+      "construct": "P13c rev conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 491,
+      "to": 497,
+      "class": "H",
+      "construct": "P13c output label",
+      "rule": "13"
+    },
+    {
+      "from": 498,
+      "to": 502,
+      "class": "H",
+      "construct": "P13c encoded-sequence output adapter call",
+      "rule": "13"
+    },
+    {
+      "from": 503,
+      "to": 509,
+      "class": "H",
+      "construct": "P13c output newline",
+      "rule": "13"
+    },
+    {
+      "from": 510,
+      "to": 513,
+      "class": "C",
+      "construct": "allocation-pointer reset for store reuse before P13d",
+      "rule": "16"
+    },
+    {
+      "from": 514,
+      "to": 522,
+      "class": "P",
+      "construct": "P13d range conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 523,
+      "to": 529,
+      "class": "P",
+      "construct": "P13d revacc conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 530,
+      "to": 536,
+      "class": "H",
+      "construct": "P13d output label",
+      "rule": "13"
+    },
+    {
+      "from": 537,
+      "to": 541,
+      "class": "H",
+      "construct": "P13d encoded-sequence output adapter call",
+      "rule": "13"
+    },
+    {
+      "from": 542,
+      "to": 547,
+      "class": "H",
+      "construct": "P13d output newline",
+      "rule": "13"
+    },
+    {
+      "from": 548,
+      "to": 549,
+      "class": "P",
+      "construct": "prescribed-task encoding block closing",
+      "rule": "10, 15"
+    },
+    {
+      "from": 550,
+      "to": 550,
+      "class": "P",
+      "construct": "P13e native block opening",
+      "rule": "18"
+    },
+    {
+      "from": 551,
+      "to": 559,
+      "class": "P",
+      "construct": "P13e native materialized sequence declaration",
+      "rule": "18"
+    },
+    {
+      "from": 560,
+      "to": 564,
+      "class": "P",
+      "construct": "P13e native index and sum declarations",
+      "rule": "18"
+    },
+    {
+      "from": 565,
+      "to": 580,
+      "class": "P",
+      "construct": "P13e native sequence construction loop",
+      "rule": "18"
+    },
+    {
+      "from": 581,
+      "to": 584,
+      "class": "P",
+      "construct": "P13e native sum initialization",
+      "rule": "18"
+    },
+    {
+      "from": 585,
+      "to": 602,
+      "class": "P",
+      "construct": "P13e native sum loop",
+      "rule": "18"
+    },
+    {
+      "from": 603,
+      "to": 609,
+      "class": "H",
+      "construct": "P13e output label",
+      "rule": "13"
+    },
+    {
+      "from": 610,
+      "to": 616,
+      "class": "H",
+      "construct": "P13e sum output",
+      "rule": "13"
+    },
+    {
+      "from": 617,
+      "to": 622,
+      "class": "H",
+      "construct": "P13e output newline",
+      "rule": "13"
+    },
+    {
+      "from": 623,
+      "to": 624,
+      "class": "P",
+      "construct": "P13e native block closing",
+      "rule": "18"
+    },
+    {
+      "from": 625,
+      "to": 625,
+      "class": "P",
+      "construct": "P13f native block opening",
+      "rule": "18"
+    },
+    {
+      "from": 626,
+      "to": 636,
+      "class": "P",
+      "construct": "P13f native materialized input and output sequence declarations",
+      "rule": "18"
+    },
+    {
+      "from": 637,
+      "to": 639,
+      "class": "P",
+      "construct": "P13f native index declaration",
+      "rule": "18"
+    },
+    {
+      "from": 640,
+      "to": 655,
+      "class": "P",
+      "construct": "P13f native sequence construction loop",
+      "rule": "18"
+    },
+    {
+      "from": 656,
+      "to": 678,
+      "class": "P",
+      "construct": "P13f native reverse loop",
+      "rule": "18"
+    },
+    {
+      "from": 679,
+      "to": 685,
+      "class": "H",
+      "construct": "P13f output label and opening delimiter",
+      "rule": "13"
+    },
+    {
+      "from": 686,
+      "to": 704,
+      "class": "H",
+      "construct": "P13f output-only traversal of already computed reverse array",
+      "rule": "13"
+    },
+    {
+      "from": 705,
+      "to": 710,
+      "class": "H",
+      "construct": "P13f output closing delimiter and newline",
+      "rule": "13"
+    },
+    {
+      "from": 711,
+      "to": 711,
+      "class": "P",
+      "construct": "P13f native block closing",
+      "rule": "18"
+    },
+    {
+      "from": 712,
+      "to": 712,
+      "class": "P",
+      "construct": "program block closing",
+      "rule": "1, 10"
+    }
+  ],
+  "python/p03.py": [
+    {
+      "from": 0,
+      "to": 9,
+      "class": "P",
+      "construct": "conc forward definition header and function indentation",
+      "rule": "3"
+    },
+    {
+      "from": 10,
+      "to": 19,
+      "class": "P",
+      "construct": "conc empty-input case, including closing case dedent",
+      "rule": "2, 3"
+    },
+    {
+      "from": 20,
+      "to": 38,
+      "class": "P",
+      "construct": "conc recursive case",
+      "rule": "3"
+    },
+    {
+      "from": 39,
+      "to": 39,
+      "class": "P",
+      "construct": "conc function closing dedent",
+      "rule": "3, 10"
+    },
+    {
+      "from": 40,
+      "to": 103,
+      "class": "R",
+      "construct": "conc_split separately written splitting direction",
+      "rule": "14"
+    },
+    {
+      "from": 104,
+      "to": 162,
+      "class": "R",
+      "construct": "conc_suffix separately written suffix direction",
+      "rule": "14"
+    },
+    {
+      "from": 163,
+      "to": 234,
+      "class": "R",
+      "construct": "conc_prefix separately written prefix direction",
+      "rule": "14"
+    },
+    {
+      "from": 235,
+      "to": 242,
+      "class": "P",
+      "construct": "rev forward definition header and function indentation",
+      "rule": "3"
+    },
+    {
+      "from": 243,
+      "to": 253,
+      "class": "P",
+      "construct": "rev empty-input case, including closing case dedent",
+      "rule": "2, 3"
+    },
+    {
+      "from": 254,
+      "to": 273,
+      "class": "P",
+      "construct": "rev recursive case, rev before conc",
+      "rule": "3"
+    },
+    {
+      "from": 274,
+      "to": 274,
+      "class": "P",
+      "construct": "rev function closing dedent",
+      "rule": "3, 10"
+    },
+    {
+      "from": 275,
+      "to": 355,
+      "class": "R",
+      "construct": "rev_inverse separately written inverse direction with reordered conjuncts",
+      "rule": "4, 14"
+    },
+    {
+      "from": 356,
+      "to": 359,
+      "class": "H",
+      "construct": "p03a print call opening and output label",
+      "rule": "10, 13"
+    },
+    {
+      "from": 360,
+      "to": 371,
+      "class": "P",
+      "construct": "p03a query expression",
+      "rule": "1, 10"
+    },
+    {
+      "from": 372,
+      "to": 373,
+      "class": "H",
+      "construct": "p03a print call closing and newline",
+      "rule": "10, 13"
+    },
+    {
+      "from": 374,
+      "to": 377,
+      "class": "H",
+      "construct": "p03b print call opening and output label",
+      "rule": "10, 13"
+    },
+    {
+      "from": 378,
+      "to": 385,
+      "class": "P",
+      "construct": "p03b query expression",
+      "rule": "1, 10"
+    },
+    {
+      "from": 386,
+      "to": 387,
+      "class": "H",
+      "construct": "p03b print call closing and newline",
+      "rule": "10, 13"
+    },
+    {
+      "from": 388,
+      "to": 391,
+      "class": "H",
+      "construct": "p03c print call opening and output label",
+      "rule": "10, 13"
+    },
+    {
+      "from": 392,
+      "to": 405,
+      "class": "P",
+      "construct": "p03c query expression",
+      "rule": "1, 10"
+    },
+    {
+      "from": 406,
+      "to": 407,
+      "class": "H",
+      "construct": "p03c print call closing and newline",
+      "rule": "10, 13"
+    },
+    {
+      "from": 408,
+      "to": 411,
+      "class": "H",
+      "construct": "p03d print call opening and output label",
+      "rule": "10, 13"
+    },
+    {
+      "from": 412,
+      "to": 425,
+      "class": "P",
+      "construct": "p03d query expression",
+      "rule": "1, 10"
+    },
+    {
+      "from": 426,
+      "to": 427,
+      "class": "H",
+      "construct": "p03d print call closing and newline",
+      "rule": "10, 13"
+    },
+    {
+      "from": 428,
+      "to": 431,
+      "class": "H",
+      "construct": "p03e print call opening and output label",
+      "rule": "10, 13"
+    },
+    {
+      "from": 432,
+      "to": 441,
+      "class": "P",
+      "construct": "p03e query expression",
+      "rule": "1, 10"
+    },
+    {
+      "from": 442,
+      "to": 443,
+      "class": "H",
+      "construct": "p03e print call closing and newline",
+      "rule": "10, 13"
+    },
+    {
+      "from": 444,
+      "to": 447,
+      "class": "H",
+      "construct": "p03f print call opening and output label",
+      "rule": "10, 13"
+    },
+    {
+      "from": 448,
+      "to": 457,
+      "class": "P",
+      "construct": "p03f query expression",
+      "rule": "1, 10"
+    },
+    {
+      "from": 458,
+      "to": 459,
+      "class": "H",
+      "construct": "p03f print call closing and newline",
+      "rule": "10, 13"
+    }
+  ],
+  "python/p13.py": [
+    {
+      "from": 0,
+      "to": 3,
+      "class": "P",
+      "construct": "problem size N = 100",
+      "rule": "1"
+    },
+    {
+      "from": 4,
+      "to": 13,
+      "class": "P",
+      "construct": "seq_range definition header and indentation",
+      "rule": "3"
+    },
+    {
+      "from": 14,
+      "to": 24,
+      "class": "P",
+      "construct": "range case 1 and its head test",
+      "rule": "2, 3"
+    },
+    {
+      "from": 25,
+      "to": 38,
+      "class": "P",
+      "construct": "range case 2, complement of case 1, pair construction",
+      "rule": "3, 8, 15"
+    },
+    {
+      "from": 39,
+      "to": 39,
+      "class": "P",
+      "construct": "seq_range closing dedent",
+      "rule": "10"
+    },
+    {
+      "from": 40,
+      "to": 47,
+      "class": "P",
+      "construct": "seq_sum definition header and indentation",
+      "rule": "3"
+    },
+    {
+      "from": 48,
+      "to": 58,
+      "class": "P",
+      "construct": "sum case 1 and its empty-sequence head test",
+      "rule": "2, 3"
+    },
+    {
+      "from": 59,
+      "to": 76,
+      "class": "P",
+      "construct": "sum case 2: pair decomposition, recursive sum, then addition",
+      "rule": "3, 8, 15"
+    },
+    {
+      "from": 77,
+      "to": 77,
+      "class": "P",
+      "construct": "seq_sum closing dedent",
+      "rule": "10"
+    },
+    {
+      "from": 78,
+      "to": 87,
+      "class": "P",
+      "construct": "conc definition header and indentation",
+      "rule": "3"
+    },
+    {
+      "from": 88,
+      "to": 98,
+      "class": "P",
+      "construct": "conc empty-input case and its head test",
+      "rule": "2, 3"
+    },
+    {
+      "from": 99,
+      "to": 116,
+      "class": "P",
+      "construct": "conc recursive case and pair operations",
+      "rule": "3, 15"
+    },
+    {
+      "from": 117,
+      "to": 117,
+      "class": "P",
+      "construct": "conc closing dedent",
+      "rule": "10"
+    },
+    {
+      "from": 118,
+      "to": 125,
+      "class": "P",
+      "construct": "rev definition header and indentation",
+      "rule": "3"
+    },
+    {
+      "from": 126,
+      "to": 136,
+      "class": "P",
+      "construct": "rev empty-input case and its head test",
+      "rule": "2, 3"
+    },
+    {
+      "from": 137,
+      "to": 161,
+      "class": "P",
+      "construct": "rev recursive case: decomposition, rev, then conc",
+      "rule": "3, 15"
+    },
+    {
+      "from": 162,
+      "to": 162,
+      "class": "P",
+      "construct": "rev closing dedent",
+      "rule": "10"
+    },
+    {
+      "from": 163,
+      "to": 170,
+      "class": "P",
+      "construct": "revacc definition header and indentation",
+      "rule": "3"
+    },
+    {
+      "from": 171,
+      "to": 178,
+      "class": "P",
+      "construct": "revacc case using problem-given empty accumulator",
+      "rule": "3"
+    },
+    {
+      "from": 179,
+      "to": 179,
+      "class": "P",
+      "construct": "revacc closing dedent",
+      "rule": "10"
+    },
+    {
+      "from": 180,
+      "to": 189,
+      "class": "P",
+      "construct": "racc definition header and indentation",
+      "rule": "3"
+    },
+    {
+      "from": 190,
+      "to": 200,
+      "class": "P",
+      "construct": "racc empty-input case and its head test",
+      "rule": "2, 3"
+    },
+    {
+      "from": 201,
+      "to": 218,
+      "class": "P",
+      "construct": "racc recursive case using problem-given accumulator",
+      "rule": "3, 15"
+    },
+    {
+      "from": 219,
+      "to": 219,
+      "class": "P",
+      "construct": "racc closing dedent",
+      "rule": "10"
+    },
+    {
+      "from": 220,
+      "to": 258,
+      "class": "H",
+      "construct": "as_list output adapter, including its closing dedent",
+      "rule": "13"
+    },
+    {
+      "from": 259,
+      "to": 267,
+      "class": "P",
+      "construct": "P13a range query",
+      "rule": "1, 3"
+    },
+    {
+      "from": 268,
+      "to": 277,
+      "class": "H",
+      "construct": "P13a output through as_list adapter",
+      "rule": "13"
+    },
+    {
+      "from": 278,
+      "to": 286,
+      "class": "P",
+      "construct": "P13b range conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 287,
+      "to": 293,
+      "class": "P",
+      "construct": "P13b sum conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 294,
+      "to": 300,
+      "class": "H",
+      "construct": "P13b printing",
+      "rule": "13"
+    },
+    {
+      "from": 301,
+      "to": 309,
+      "class": "P",
+      "construct": "P13c range conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 310,
+      "to": 316,
+      "class": "P",
+      "construct": "P13c rev conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 317,
+      "to": 326,
+      "class": "H",
+      "construct": "P13c output through as_list adapter",
+      "rule": "13"
+    },
+    {
+      "from": 327,
+      "to": 335,
+      "class": "P",
+      "construct": "P13d range conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 336,
+      "to": 342,
+      "class": "P",
+      "construct": "P13d revacc conjunct",
+      "rule": "1, 3"
+    },
+    {
+      "from": 343,
+      "to": 352,
+      "class": "H",
+      "construct": "P13d output through as_list adapter",
+      "rule": "13"
+    },
+    {
+      "from": 353,
+      "to": 366,
+      "class": "P",
+      "construct": "P13e native materialized list construction",
+      "rule": "18"
+    },
+    {
+      "from": 367,
+      "to": 373,
+      "class": "P",
+      "construct": "P13e native built-in sum",
+      "rule": "9, 18"
+    },
+    {
+      "from": 374,
+      "to": 380,
+      "class": "H",
+      "construct": "P13e printing",
+      "rule": "13"
+    },
+    {
+      "from": 381,
+      "to": 394,
+      "class": "P",
+      "construct": "P13f native materialized list construction",
+      "rule": "18"
+    },
+    {
+      "from": 395,
+      "to": 404,
+      "class": "P",
+      "construct": "P13f native reverse slicing",
+      "rule": "18"
+    },
+    {
+      "from": 405,
+      "to": 411,
+      "class": "H",
+      "construct": "P13f printing",
+      "rule": "13"
+    }
+  ],
+  "swi-prolog/p03.pl": [
+    {
+      "from": 0,
+      "to": 9,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1"
+    },
+    {
+      "from": 10,
+      "to": 35,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1"
+    },
+    {
+      "from": 36,
+      "to": 44,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1"
+    },
+    {
+      "from": 45,
+      "to": 73,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1"
+    },
+    {
+      "from": 74,
+      "to": 79,
+      "class": "H",
+      "construct": "p03a query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 80,
+      "to": 93,
+      "class": "P",
+      "construct": "p03a query goal",
+      "rule": "1, 10"
+    },
+    {
+      "from": 94,
+      "to": 95,
+      "class": "H",
+      "construct": "p03a query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 96,
+      "to": 103,
+      "class": "H",
+      "construct": "p03b query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 104,
+      "to": 115,
+      "class": "P",
+      "construct": "p03b query goal",
+      "rule": "1, 10"
+    },
+    {
+      "from": 116,
+      "to": 117,
+      "class": "H",
+      "construct": "p03b query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 118,
+      "to": 123,
+      "class": "H",
+      "construct": "p03c query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 124,
+      "to": 139,
+      "class": "P",
+      "construct": "p03c query goal",
+      "rule": "1, 10"
+    },
+    {
+      "from": 140,
+      "to": 141,
+      "class": "H",
+      "construct": "p03c query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 142,
+      "to": 147,
+      "class": "H",
+      "construct": "p03d query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 148,
+      "to": 163,
+      "class": "P",
+      "construct": "p03d query goal",
+      "rule": "1, 10"
+    },
+    {
+      "from": 164,
+      "to": 165,
+      "class": "H",
+      "construct": "p03d query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 166,
+      "to": 171,
+      "class": "H",
+      "construct": "p03e query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 172,
+      "to": 183,
+      "class": "P",
+      "construct": "p03e query goal",
+      "rule": "1, 10"
+    },
+    {
+      "from": 184,
+      "to": 185,
+      "class": "H",
+      "construct": "p03e query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 186,
+      "to": 191,
+      "class": "H",
+      "construct": "p03f query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 192,
+      "to": 203,
+      "class": "P",
+      "construct": "p03f query goal",
+      "rule": "1, 10"
+    },
+    {
+      "from": 204,
+      "to": 205,
+      "class": "H",
+      "construct": "p03f query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 206,
+      "to": 316,
+      "class": "H",
+      "construct": "answers/3 fixed-harness stand-in: enumeration, cap, budget and output",
+      "rule": "13"
+    },
+    {
+      "from": 317,
+      "to": 339,
+      "class": "H",
+      "construct": "main harness stage traversal",
+      "rule": "13"
+    },
+    {
+      "from": 340,
+      "to": 349,
+      "class": "H",
+      "construct": "harness initialization and termination",
+      "rule": "13"
+    }
+  ],
+  "swi-prolog/p13.pl": [
+    {
+      "from": 0,
+      "to": 13,
+      "class": "P",
+      "construct": "range case 1 and its comparison guard",
+      "rule": "1, 2"
+    },
+    {
+      "from": 14,
+      "to": 45,
+      "class": "P",
+      "construct": "range case 2, arithmetic increment and recursion",
+      "rule": "1, 2, 8"
+    },
+    {
+      "from": 46,
+      "to": 53,
+      "class": "P",
+      "construct": "sum case 1",
+      "rule": "1"
+    },
+    {
+      "from": 54,
+      "to": 77,
+      "class": "P",
+      "construct": "sum case 2, recursive sum before arithmetic",
+      "rule": "1, 8"
+    },
+    {
+      "from": 78,
+      "to": 87,
+      "class": "P",
+      "construct": "conc case 1",
+      "rule": "1"
+    },
+    {
+      "from": 88,
+      "to": 113,
+      "class": "P",
+      "construct": "conc case 2",
+      "rule": "1"
+    },
+    {
+      "from": 114,
+      "to": 122,
+      "class": "P",
+      "construct": "rev case 1",
+      "rule": "1"
+    },
+    {
+      "from": 123,
+      "to": 151,
+      "class": "P",
+      "construct": "rev case 2, rev before conc",
+      "rule": "1"
+    },
+    {
+      "from": 152,
+      "to": 168,
+      "class": "P",
+      "construct": "revacc case using problem-given racc",
+      "rule": "1"
+    },
+    {
+      "from": 169,
+      "to": 178,
+      "class": "P",
+      "construct": "racc empty-input case",
+      "rule": "1"
+    },
+    {
+      "from": 179,
+      "to": 204,
+      "class": "P",
+      "construct": "racc recursive case and problem-given accumulator",
+      "rule": "1"
+    },
+    {
+      "from": 205,
+      "to": 227,
+      "class": "P",
+      "construct": "native vocabulary import from external library(lists)",
+      "rule": "12, 18"
+    },
+    {
+      "from": 228,
+      "to": 232,
+      "class": "P",
+      "construct": "problem size fact n(100)",
+      "rule": "1"
+    },
+    {
+      "from": 233,
+      "to": 238,
+      "class": "H",
+      "construct": "p13a query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 239,
+      "to": 253,
+      "class": "P",
+      "construct": "p13a query conjunction including size selection",
+      "rule": "1, 8"
+    },
+    {
+      "from": 254,
+      "to": 255,
+      "class": "H",
+      "construct": "p13a query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 256,
+      "to": 261,
+      "class": "H",
+      "construct": "p13b query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 262,
+      "to": 283,
+      "class": "P",
+      "construct": "p13b query conjunction including size selection",
+      "rule": "1, 8"
+    },
+    {
+      "from": 284,
+      "to": 285,
+      "class": "H",
+      "construct": "p13b query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 286,
+      "to": 291,
+      "class": "H",
+      "construct": "p13c query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 292,
+      "to": 313,
+      "class": "P",
+      "construct": "p13c query conjunction including size selection",
+      "rule": "1, 8"
+    },
+    {
+      "from": 314,
+      "to": 315,
+      "class": "H",
+      "construct": "p13c query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 316,
+      "to": 321,
+      "class": "H",
+      "construct": "p13d query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 322,
+      "to": 343,
+      "class": "P",
+      "construct": "p13d query conjunction including size selection",
+      "rule": "1, 8"
+    },
+    {
+      "from": 344,
+      "to": 345,
+      "class": "H",
+      "construct": "p13d query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 346,
+      "to": 351,
+      "class": "H",
+      "construct": "p13e query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 352,
+      "to": 373,
+      "class": "P",
+      "construct": "p13e query conjunction including size selection",
+      "rule": "18"
+    },
+    {
+      "from": 374,
+      "to": 375,
+      "class": "H",
+      "construct": "p13e query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 376,
+      "to": 381,
+      "class": "H",
+      "construct": "p13f query registry, label and answer template",
+      "rule": "10, 13"
+    },
+    {
+      "from": 382,
+      "to": 403,
+      "class": "P",
+      "construct": "p13f query conjunction including size selection",
+      "rule": "18"
+    },
+    {
+      "from": 404,
+      "to": 405,
+      "class": "H",
+      "construct": "p13f query registry closing",
+      "rule": "10, 13"
+    },
+    {
+      "from": 406,
+      "to": 516,
+      "class": "H",
+      "construct": "answers/3 fixed-harness stand-in: enumeration, cap, budget and output",
+      "rule": "13"
+    },
+    {
+      "from": 517,
+      "to": 539,
+      "class": "H",
+      "construct": "main harness stage traversal",
+      "rule": "13"
+    },
+    {
+      "from": 540,
+      "to": 549,
+      "class": "H",
+      "construct": "harness initialization and termination",
+      "rule": "13"
+    }
+  ]
+}

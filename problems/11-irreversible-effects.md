@@ -25,8 +25,11 @@ anticipate information it has not received:
 - In a problem of several stages, a stage marked **commit** commits: the
   system selects one of its current outcomes, v, and the information
   x = v is added to the problem. A system that holds several outcomes at
-  that point must select one. If it does not, its effects class is judged
-  on every entry it emitted. The valid outcomes after commit are computed
+  that point must select one. A system that cannot select (one that keeps
+  every alternative live, for instance) is judged on every entry it
+  emitted: *extra* if L holds more than one entry, *missing* if it holds
+  none. Its semantic result is then classified against the outcomes before
+  the commit. The valid outcomes after commit are computed
   with x = v.
 
 A reposed run replays a commit as the information x = v, with the v first

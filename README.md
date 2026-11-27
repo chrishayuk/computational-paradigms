@@ -21,14 +21,21 @@ of trade-offs, not a ranking.
 
 ## Status
 
-**Draft 0.5, the freeze candidate. No system has been compared.**
+**Draft 0.6, the freeze candidate. No system has been compared.**
 
 - Draft 0.1 was reviewed independently. Draft 0.2 answered every finding
   ([`reviews/review-1.md`](reviews/review-1.md)). Draft 0.3 applied the
   decisions on its open questions
   ([`reviews/decisions-0.2.md`](reviews/decisions-0.2.md)). A second,
-  fresh review of draft 0.3 is answered in draft 0.4
-  ([`reviews/review-2.md`](reviews/review-2.md)).
+  fresh review of draft 0.3 was answered in draft 0.4
+  ([`reviews/review-2.md`](reviews/review-2.md)), and the decisions on it
+  in draft 0.5 ([`reviews/decisions-0.4.md`](reviews/decisions-0.4.md)).
+  A third review, of draft 0.5, is answered in draft 0.6
+  ([`reviews/review-3.md`](reviews/review-3.md)).
+- The classification rules have been calibrated on P03 and P13 in all four
+  systems, by two independent classifiers
+  ([`calibration/`](calibration)). The calibration programs are
+  development examples, not results.
 - Nothing is frozen.
 - No programs have been written for this study.
 

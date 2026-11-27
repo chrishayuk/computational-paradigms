@@ -22,7 +22,8 @@ P07a is also posed in all six orders of its relations.
 
 - For each: the three classifications, with any residual recorded.
 - P07e and P07f: whether the inconsistency is detected. A system that holds
-  the relations unresolved is *undetermined* with *suspended*.
+  the relations unresolved is *complete* / *residual* / *inconsistency
+  undetected*, with *suspended*.
 - P07e: a solver over the rationals that reports w = 15/2 is *unsound*
   under this problem's integers.
 - P07g: whether both solutions are found.

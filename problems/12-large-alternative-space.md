@@ -26,6 +26,11 @@ Each is one stage: choice(n, s) and accept(s), in that order. Each is
 posed twice: for **all** solutions (`answers(20)`), and for **any one**
 (`answers(1)`).
 
+**Limits.** As in P13: a budget of 10⁸ steps per stage and a safety limit
+of 600 seconds, fixed and not raised. A strategy that examines every
+candidate does about 2ⁿ⁺¹ of them, and needs these limits to reach
+n = 16.
+
 | | accept | all solutions | where they lie |
 |---|---|---|---|
 | P12a | ⟨ʀ⟩, and ʟ repeated 12 times | both | depth 1 on the right; depth 12 on the far left |

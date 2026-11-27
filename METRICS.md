@@ -1,6 +1,6 @@
 # Metrics
 
-*Draft 0.5. The classification rules below are frozen with the specification,
+*Draft 0.6. The classification rules below are frozen with the specification,
 before any system is compared.*
 
 Every metric is recorded per system, per configuration, per problem, and per
@@ -8,7 +8,9 @@ stage where it applies. Raw counts are kept beside every derived figure.
 Counts in a system's own unit are compared within that system: across
 stages, configurations and problems, not across systems. Across systems,
 the comparable figures are the classifications, the qualitative
-observations, and C, R and S tokens taken relative to P tokens.
+observations, the problem-defined quantities and growth below, and C and R
+tokens taken relative to P tokens. S is reported apart, per mechanism
+(rule 12).
 
 ## The metrics
 
@@ -90,9 +92,11 @@ construct takes the construct's class, including its punctuation.
    - a direction the queries do not use.
 
    So `conc(a, b)` in Python, returning a followed by b by the problem's
-   two cases, is P for P03a. The same function offered for P03b, where
-   conc is used to split a sequence, is *not expressible* in that
-   direction, or R if the program writes a separate splitting function.
+   two cases, is P for P03a. For P03b, where conc is used to split a
+   sequence, that function cannot run backwards. A separate splitting
+   function that keeps conc's meaning on every input used is R, and P03b
+   is *expressible with reformulation* (`SPECIFICATION.md`,
+   expressibility). The author has no choice between the two.
 4. Moving a definition case or a conjunct away from the presentation order
    adds no tokens. Each move counts as one move, under reformulation.
    Likewise, a guard, case or conjunct of the problem left out of a
@@ -142,14 +146,27 @@ construct takes the construct's class, including its punctuation.
     file defines an encoding as P, the operations the problem's relations
     need on encoded values (construction, decomposition, equality) are P.
     A general mechanism beyond the problem's relations, such as a unifier
-    or a search, is S.
+    or a search, is S. Inside a separately written direction function,
+    rule 14 wins: an encoding operation used only there is R with it.
 16. **A reset that only lets store be reused** is C, since removing it
     changes what is held, not what is computed (rule 1).
 17. **Docstrings are comments,** and are not tokens.
 18. In P13, a **native** algorithm is not reformulation (the problem says
     so). Its tokens are P. Where a system has only one way to compute a
     task, its native and prescribed programs are the same, and are
-    recorded once.
+    recorded once, with the prescribed program's classes.
+19. **Code that holds undecided relations.** In imperative programs for
+    the staged problems (P01, P02, P05, P07, P09e, P16, among others), code
+    that holds relations until their values arrive and then decides them
+    is classed by how general it is:
+    - written for the problem's own relations, it is R, in the core
+      configuration;
+    - general over relations, reusable from one problem to another (a
+      constraint store, a propagator), it is S, and the program belongs to
+      the *extended* configuration, named by that mechanism.
+20. **Separators** between two constructs (a comma between arguments, a
+    semicolon between statements) take the class of the construct that
+    follows them.
 
 ### Two classifiers
 

@@ -58,12 +58,31 @@ chosen: the **earliest** notation that has every construct the problem
 needs. A problem that needs constructs found in no single notation is
 recorded as such, with the notation used.
 
-**No notation has comparisons.** Absys's arithmetic is +, −, · and ÷ as
-relations. None of its three notations has <, ≤, > or ≥, as calibration
-found. So P13's range, guarded by m > n and m ≤ n, and every problem that
-uses a comparison (P05, P11, P12, P15d), are *not expressible* in Absys as
-transcriptions. A reformulation without the comparison may be written,
-and is reported as a named variant, never as the program of record.
+**No comparisons.** The pinned reconstruction has +, −, · and ÷ as
+relations, and no <, ≤, > or ≥, as calibration found. Three claims are kept
+apart:
+
+| claim | status |
+|---|---|
+| the pinned reconstruction has no comparison operators | established |
+| the notations recovered from the sources show none | supported by the sources examined: Foster (1968), the extracts of Foster and Elcock (1969), Elcock (1982) and Elcock (1990) |
+| historical Absys never had comparisons | **not established**. The full description of Absys-4 (Elcock and Gray, 1988) and the program itself have not been seen |
+
+Expressibility is recorded per **sub-problem**, not per problem family. A
+sub-problem that needs a comparison cannot be transcribed: P05's x > 1,
+P09c's n > 5, P10d's x > 1, P11's x ≥ 2, P12's n > 0, P13a–d's range, and
+P15d. The other sub-problems of the same problem are recorded on their
+own. The rule for every system then applies (`SPECIFICATION.md`,
+expressibility):
+
+- where a reformulation without the comparison keeps the meaning on every
+  input the problem and its variants use (replacing n > 0 by an enumeration
+  of the finitely many values used, for instance), it is the program of
+  record, *expressible with reformulation*;
+- where it does not (calibration's range, with m > n replaced by
+  m = n + 1 and m ≤ n dropped, which leaves an endless derivation), the
+  sub-problem is *not expressible*, and the reformulation is a named
+  variant.
 
 **Output.** The reconstruction prints at most 32 elements of a list, in
 every mode, so `observe()` cannot read a longer answer. Printing in full

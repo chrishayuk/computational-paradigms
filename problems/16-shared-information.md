@@ -21,7 +21,8 @@ of 10⁸ steps per stage and a safety limit of 600 seconds, not raised for
 any system.
 
 **Arrival orders.** Where relations arrive as a collection, they arrive in
-one of three orders, fixed here:
+one of three orders, fixed here. P16a is posed in all three orders at each
+n; P16b, c and d in ascending order only:
 
 - **ascending:** succ(x₁, x₂), succ(x₂, x₃), …;
 - **descending:** the same, last first;
@@ -46,6 +47,10 @@ contributors share the unknown at the boundary between their segments. Each cont
 configuration allows separate computations to share unknowns. Where it
 does not, the four are posed as one conjunction, and that is recorded.
 
+Stages 2 and 3 are posed to the shared instance, not to one contributor.
+They are classified on the joint valid outcomes below, with one budget
+per stage for the whole.
+
 | stage | information | valid outcomes |
 |---|---|---|
 | 1 | the four contributions | xᵢ = x₁ + i − 1 |
@@ -57,7 +62,9 @@ The relation of stage 2 needs information from every contributor.
 ## P16c. Localised updates
 
 Two chains, of n unknowns each, that share no unknown: x₁, …, xₙ and
-y₁, …, yₙ.
+y₁, …, yₙ. They are posed as **one** computation. Splitting them into
+separate computations would decide in the program the independence that
+this problem measures, and is reformulation.
 
 | stage | information | valid outcomes |
 |---|---|---|
@@ -83,9 +90,9 @@ xₙ = x₁. That contradicts the chain without any value being known
 (xₙ = x₁ + n − 1). Detecting it requires combining relations, as P07f
 does.
 
-The y chain is not involved in either contradiction. If it is posed as a
-separate computation, its outcome is valid on its own. If it is posed in
-the same conjunction, the conjunction has no solution.
+The y chain is not involved in either contradiction, but it is in the same
+computation (as in P16c), so the conjunction has no solution. What happens
+to the y chain's bindings once the contradiction is found is observed.
 
 ## Observations
 

@@ -131,3 +131,54 @@ The implementation author found these while writing the programs:
 - **Constants were written into the programs.** For the genericity rule,
   each program must keep its stage constants in one marked place, or read
   them as input, so that the verifier can substitute the hidden variants.
+
+## Round 2, under the amended rules
+
+Both classifiers classed every program again, independently, under the
+amended rules:
+
+- a fresh Claude agent, and Codex (codex-cli 0.166.0);
+- the same programs, cut by the tokenizer with docstrings dropped
+  (5,163 tokens; [`round-2/tokens/`](round-2/tokens));
+- the brief [`round-2/classifier-brief.md`](round-2/classifier-brief.md),
+  which forbade reading round 1's classes, its agreement report and this
+  write-up. Neither saw how round 1's disagreements were settled, only
+  the rules as they now stand. Codex's log shows no read of any forbidden
+  file.
+
+Round 1's classes are kept, in `classes/` and `agreement.txt`. Round 2's
+are in [`round-2/classes/`](round-2/classes) and
+[`round-2/agreement.txt`](round-2/agreement.txt).
+
+| system | round 1 | round 2 |
+|---|---|---|
+| SWI-Prolog | 100.0% | 100.0% |
+| Absys | 99.1% | 100.0% |
+| Python | 87.3% | 100.0% |
+| ALGOL 60 | 81.5% | 99.8% |
+| all | 91.8% | 99.9% (5,159 of 5,163) |
+
+The four tokens still disputed are commas, each between a query's
+arguments and a printing callback. Rule 20 (a separator takes the class of
+the construct after it) now settles them.
+
+**What this does and does not show.** The rules now give the same classes
+to two independent classifiers, on every style of program tried. But the
+rules were amended on these same programs, so round 2 tests them on the
+cases they were fitted to. It shows the amendments are clear. It does not
+show the rules generalise. Programs for a staged problem, where
+imperative code must hold undecided relations, were not calibrated, and
+review 3 named that as the case where disagreement is most likely
+(rule 19 was added for it). A held-out check, P02 in Python and ALGOL 60
+classified by both, would test that. It is listed as open.
+
+**Rules clarified after round 2.** Round 2's classifier A flagged three
+ambiguities. They are clarified in draft 0.6, and round 2 was not rerun
+under them:
+
+- rule 18: a system's native and prescribed P13 programs, when the same,
+  carry the prescribed classes. Round 2 classed Absys's P13e and P13f as
+  all P;
+- rule 15 against rule 14: inside a direction function, rule 14 wins.
+  Round 2 classed ALGOL 60's `same` as P;
+- rule 20: separators.
