@@ -1,0 +1,45 @@
+{
+  "format": "cp-stages/1",
+  "spec_tag": "spec-1.0",
+  "about": ["MADE UP. Three invented problems, X01-X03, that are not in the suite, so that validate.py can be tested on records written by hand without touching any problem P01-P16. Nothing here is a result."],
+  "vocabulary": {
+    "kind": {"adds": "", "replaces": "", "retracts": "", "commit": "", "query": ""},
+    "answers": {"all": "answers(20)", "any-one": "answers(1)"}
+  },
+  "default_limits": {"budget_steps": 1000000, "safety_limit_s": 60, "rerun_limit_s": 600, "source": "PROTOCOL.md, Running"},
+  "problems": [
+    {
+      "problem": "X01", "file": "(made up)", "title": "Made up: two stages", "effects": false,
+      "subproblems": [
+        {"id": "X01a", "line": 1, "title": "made up", "unknowns": ["p", "q"], "readings": [],
+         "instances": [{"id": "X01a", "parameters": {}}],
+         "stages": [
+           {"stage": 1, "line": 1, "kind": "adds", "description": "p = q", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+           {"stage": 2, "line": 2, "kind": "adds", "description": "q = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+         ]}
+      ]
+    },
+    {
+      "problem": "X02", "file": "(made up)", "title": "Made up: an effect and a commit", "effects": true,
+      "subproblems": [
+        {"id": "X02a", "line": 1, "title": "made up", "unknowns": ["p"], "readings": [],
+         "instances": [{"id": "X02a", "parameters": {}}],
+         "stages": [
+           {"stage": 1, "line": 1, "kind": "adds", "description": "choose(p) and emit(p)", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1}], "commit": false, "spawns": []},
+           {"stage": 2, "line": 2, "kind": "commit", "description": "commit", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1}], "commit": true, "spawns": []},
+           {"stage": 3, "line": 3, "kind": "adds", "description": "p != <k>", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1}], "commit": false, "spawns": []}
+         ]}
+      ]
+    },
+    {
+      "problem": "X03", "file": "(made up)", "title": "Made up: two spawned computations", "effects": false,
+      "subproblems": [
+        {"id": "X03a", "line": 1, "title": "made up", "unknowns": ["p", "q"], "readings": [],
+         "instances": [{"id": "X03a.n4.UV", "parameters": {"n": 4, "spawn_order": ["U", "V"]}}],
+         "stages": [
+           {"stage": 1, "line": 1, "kind": "query", "description": "U: spin(p); V: count(n, q)", "queries": [{"id": "U", "computation": "U", "answers": "all", "cap": 20}, {"id": "V", "computation": "V", "answers": "all", "cap": 20}], "commit": false, "spawns": ["U", "V"]}
+         ]}
+      ]
+    }
+  ]
+}

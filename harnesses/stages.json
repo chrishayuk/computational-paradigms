@@ -1,0 +1,737 @@
+{
+  "format": "cp-stages/1",
+  "spec_tag": "spec-1.0",
+  "about": [
+    "The structure of every problem P01-P16 as its problem file states it: sub-problems, the instances a harness runs (sizes, orders, answer modes), and for each stage its number, a description, the queries it poses with their answer caps, whether it commits (P11) and whether it spawns computations (P09, P16b), with the line of the problem file where it is stated.",
+    "This file holds NO constants and NO valid outcomes. Descriptions are paraphrased from the problem files with every constant of the stage information written as a placeholder: <k> for an integer, <atom> for an atom, <seq> for a sequence of values, <facts> for a set of facts. The program holds the stage information (PROTOCOL.md, Writing a program, rule 6); the harness knows only the structure here. Sizes n and arrival orders are structure, not constants: the problem files fix them, and the hidden variants do not vary them (variants/README.md).",
+    "Lines are 1-based line numbers in the problem file at spec-1.0. A stage's line is where its information is stated; a query's cap is stated by the problem where 'cap_line' is given, and otherwise follows PROTOCOL.md ('cap is 1 for an any one query and 20 otherwise').",
+    "A query whose cap is null takes 'answers' and 'cap' from the parameters of the instance being run (P12)."
+  ],
+  "vocabulary": {
+    "kind": {
+      "adds": "the stage adds information (SPECIFICATION.md, Stages and monotonicity)",
+      "replaces": "a replacing stage: a named quantity takes a new value (P10, P15d)",
+      "retracts": "a retracting stage: information given earlier is withdrawn (P10d)",
+      "commit": "a commit stage (P11): the system selects one current outcome v, and x = v is added",
+      "query": "a problem of one stage, posed as a query"
+    },
+    "answers": {
+      "all": "answers(20)",
+      "any-one": "answers(1)"
+    },
+    "computation": "'main' is the one computation of the instance, or its top level; other ids are computations started with spawn(), named as the problem file names them",
+    "limits": "budget_steps is per stage and per computation, in the system's own unit; a reposed run's budget is its measured restart cost plus budget_steps (PROTOCOL.md, Running). safety_limit_s is per stage; rerun_limit_s is the single rerun's limit, or null where the problem fixes the limit and forbids raising it"
+  },
+  "default_limits": {
+    "budget_steps": 1000000,
+    "safety_limit_s": 60,
+    "rerun_limit_s": 600,
+    "source": "PROTOCOL.md, Running"
+  },
+  "problems": [
+    {
+      "problem": "P01",
+      "file": "problems/01-unknown-equality.md",
+      "title": "Unknown equality",
+      "effects": false,
+      "subproblems": [
+        {
+          "id": "P01a", "line": 15, "title": "A chain of equations",
+          "unknowns": ["x", "y", "z"], "readings": [],
+          "instances": [{"id": "P01a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 19, "kind": "adds", "description": "x = y", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 20, "kind": "adds", "description": "y = z", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 21, "kind": "adds", "description": "z = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P01b", "line": 23, "title": "An unknown inside a structure",
+          "unknowns": ["s", "t"], "readings": [],
+          "instances": [{"id": "P01b", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 27, "kind": "adds", "description": "conc(<seq>, s, t)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 28, "kind": "adds", "description": "s = <seq>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P01c", "line": 30, "title": "A self-referential equation",
+          "unknowns": ["x"], "readings": ["finite (line 38)", "rational (line 39)"],
+          "instances": [{"id": "P01c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 34, "kind": "query", "description": "x = <seq> ++ x", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P02",
+      "file": "problems/02-late-information.md",
+      "title": "Late information",
+      "effects": false,
+      "notes": ["R1, R2 and R3 are the problem's names for its three relations (lines 11-13); they are labels, not constants."],
+      "subproblems": [
+        {
+          "id": "P02a", "line": 15, "title": "In Elcock's order",
+          "unknowns": ["u", "v", "w"], "readings": [],
+          "instances": [{"id": "P02a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 19, "kind": "adds", "description": "R1: u + v = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 20, "kind": "adds", "description": "R2: w * u = v", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 21, "kind": "adds", "description": "R3: u + <k> = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P02b", "line": 27, "title": "Every order",
+          "unknowns": ["u", "v", "w"], "readings": [],
+          "instances": [
+            {"id": "P02b.R1R2R3", "parameters": {"order": ["R1", "R2", "R3"]}},
+            {"id": "P02b.R1R3R2", "parameters": {"order": ["R1", "R3", "R2"]}},
+            {"id": "P02b.R2R1R3", "parameters": {"order": ["R2", "R1", "R3"]}},
+            {"id": "P02b.R2R3R1", "parameters": {"order": ["R2", "R3", "R1"]}},
+            {"id": "P02b.R3R1R2", "parameters": {"order": ["R3", "R1", "R2"]}},
+            {"id": "P02b.R3R2R1", "parameters": {"order": ["R3", "R2", "R1"]}}
+          ],
+          "stages": [
+            {"stage": 1, "line": 29, "kind": "adds", "description": "the first relation of the instance's order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 29, "kind": "adds", "description": "the second relation of the instance's order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 29, "kind": "adds", "description": "the third relation of the instance's order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P02c", "line": 42, "title": "All at once",
+          "unknowns": ["u", "v", "w"], "readings": [],
+          "instances": [{"id": "P02c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 44, "kind": "query", "description": "R1, R2 and R3 as one stage, in that order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P03",
+      "file": "problems/03-reversible-relations.md",
+      "title": "Reversible relations",
+      "effects": false,
+      "subproblems": [
+        {"id": "P03a", "line": 23, "title": "conc, forwards", "unknowns": ["c"], "readings": [], "instances": [{"id": "P03a", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 23, "kind": "query", "description": "conc(<seq>, <seq>, c)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P03b", "line": 24, "title": "conc, splitting", "unknowns": ["a", "b"], "readings": [], "instances": [{"id": "P03b", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 24, "kind": "query", "description": "conc(a, b, <seq>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P03c", "line": 25, "title": "conc, suffix", "unknowns": ["b"], "readings": [], "instances": [{"id": "P03c", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 25, "kind": "query", "description": "conc(<seq>, b, <seq>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P03d", "line": 26, "title": "conc, prefix", "unknowns": ["a"], "readings": [], "instances": [{"id": "P03d", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 26, "kind": "query", "description": "conc(a, <seq>, <seq>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P03e", "line": 27, "title": "rev, forwards", "unknowns": ["b"], "readings": [], "instances": [{"id": "P03e", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 27, "kind": "query", "description": "rev(<seq>, b)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P03f", "line": 28, "title": "rev, backwards", "unknowns": ["a"], "readings": [], "instances": [{"id": "P03f", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 28, "kind": "query", "description": "rev(a, <seq>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]}
+      ]
+    },
+    {
+      "problem": "P04",
+      "file": "problems/04-unbounded-alternative.md",
+      "title": "Unbounded alternative",
+      "effects": false,
+      "subproblems": [
+        {"id": "P04a", "line": 32, "title": "loop first", "unknowns": ["x"], "readings": [], "instances": [{"id": "P04a", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 32, "kind": "query", "description": "loop(x) or x = <k>, in that order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P04b", "line": 33, "title": "loop second", "unknowns": ["x"], "readings": [], "instances": [{"id": "P04b", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 33, "kind": "query", "description": "x = <k> or loop(x), in that order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P04c", "line": 34, "title": "alist-left, ground", "unknowns": [], "readings": [], "instances": [{"id": "P04c", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 34, "kind": "query", "description": "alist(<seq>), with alist-left", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P04d", "line": 35, "title": "alist-left, open", "unknowns": ["s"], "readings": [], "instances": [{"id": "P04d", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 35, "kind": "query", "description": "alist(s), with alist-left", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P04e", "line": 36, "title": "alist-right, ground", "unknowns": [], "readings": [], "instances": [{"id": "P04e", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 36, "kind": "query", "description": "alist(<seq>), with alist-right", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P04f", "line": 37, "title": "alist-right, open", "unknowns": ["s"], "readings": [], "instances": [{"id": "P04f", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 37, "kind": "query", "description": "alist(s), with alist-right", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]}
+      ]
+    },
+    {
+      "problem": "P05",
+      "file": "problems/05-late-contradiction.md",
+      "title": "Late contradiction",
+      "effects": false,
+      "subproblems": [
+        {
+          "id": "P05a", "line": 14, "title": "Choice first", "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P05a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 18, "kind": "adds", "description": "pick(x), a closed world of <facts>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 19, "kind": "adds", "description": "x > <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 20, "kind": "adds", "description": "x != <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P05b", "line": 22, "title": "Constraint first", "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P05b", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 26, "kind": "adds", "description": "x > <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 27, "kind": "adds", "description": "pick(x)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P05c", "line": 29, "title": "Contradiction", "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P05c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 33, "kind": "adds", "description": "pick(x)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 34, "kind": "adds", "description": "x = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 35, "kind": "adds", "description": "x = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P06",
+      "file": "problems/06-negation.md",
+      "title": "Negation with unknowns",
+      "effects": false,
+      "subproblems": [
+        {
+          "id": "P06a", "line": 11, "title": "Negation, then a value", "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P06a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 15, "kind": "adds", "description": "not (x = <k>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 16, "kind": "adds", "description": "x = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P06b", "line": 18, "title": "A value, then negation", "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P06b", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 22, "kind": "adds", "description": "x = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 23, "kind": "adds", "description": "not (x = <k>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P06c", "line": 25, "title": "A contradiction through negation", "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P06c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 29, "kind": "adds", "description": "not (x = <k>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 30, "kind": "adds", "description": "x = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P06d", "line": 32, "title": "Set difference", "unknowns": ["d"], "readings": [],
+          "instances": [{"id": "P06d", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 49, "kind": "query", "description": "setdiff(<seq>, <seq>, d)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P06e1", "line": 70, "title": "Clark's students: a ground query", "unknowns": [], "readings": [],
+          "instances": [{"id": "P06e1", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 70, "kind": "query", "description": "nonmajor(<atom>), over the closed world of <facts> at lines 58-60", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P06e2", "line": 71, "title": "Clark's students: a second ground query", "unknowns": [], "readings": [],
+          "instances": [{"id": "P06e2", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 71, "kind": "query", "description": "nonmajor(<atom>), over the closed world of <facts> at lines 58-60", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P06e3", "line": 72, "title": "Clark's students: open query", "unknowns": ["p"], "readings": [],
+          "instances": [{"id": "P06e3", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 72, "kind": "query", "description": "nonmajor(p), over the closed world of <facts> at lines 58-60", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P07",
+      "file": "problems/07-simultaneous-constraints.md",
+      "title": "Simultaneous constraints",
+      "effects": false,
+      "notes": ["Each set of relations is one stage, in the order given (line 6). P07a is also posed in all six orders of its relations (line 19): the instance's order names the relations by their position as written, 1, 2 and 3."],
+      "subproblems": [
+        {"id": "P07a", "line": 11, "title": "three relations, solved one at a time", "unknowns": ["x", "y", "z"], "readings": [],
+         "instances": [
+           {"id": "P07a", "parameters": {"order": ["1", "2", "3"]}},
+           {"id": "P07a.132", "parameters": {"order": ["1", "3", "2"]}},
+           {"id": "P07a.213", "parameters": {"order": ["2", "1", "3"]}},
+           {"id": "P07a.231", "parameters": {"order": ["2", "3", "1"]}},
+           {"id": "P07a.312", "parameters": {"order": ["3", "1", "2"]}},
+           {"id": "P07a.321", "parameters": {"order": ["3", "2", "1"]}}
+         ],
+         "stages": [{"stage": 1, "line": 11, "kind": "query", "description": "x + y + z = <k>, y + z = <k>, z = <k>, in the instance's order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P07b", "line": 12, "title": "two linear relations", "unknowns": ["x", "y"], "readings": [], "instances": [{"id": "P07b", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 12, "kind": "query", "description": "x + y = <k>, x - y = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P07c", "line": 13, "title": "one relation, two unknowns", "unknowns": ["x", "y"], "readings": [], "instances": [{"id": "P07c", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 13, "kind": "query", "description": "x + y = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P07d", "line": 14, "title": "a product, u and v given", "unknowns": ["w", "u", "v"], "readings": [], "instances": [{"id": "P07d", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 14, "kind": "query", "description": "w * u = v, u = <k>, v = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P07e", "line": 15, "title": "a product, u and v given (P07e's constants)", "unknowns": ["w", "u", "v"], "readings": [], "instances": [{"id": "P07e", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 15, "kind": "query", "description": "w * u = v, u = <k>, v = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P07f", "line": 16, "title": "two relations on one sum", "unknowns": ["x", "y"], "readings": [], "instances": [{"id": "P07f", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 16, "kind": "query", "description": "x + y = <k>, x + y = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P07g", "line": 17, "title": "a square", "unknowns": ["x"], "readings": [], "instances": [{"id": "P07g", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 17, "kind": "query", "description": "x * x = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]}
+      ]
+    },
+    {
+      "problem": "P08",
+      "file": "problems/08-late-definition.md",
+      "title": "Late definition",
+      "effects": false,
+      "subproblems": [
+        {
+          "id": "P08a", "line": 33, "title": "A definition that arrives",
+          "unknowns": ["a", "b", "c", "x", "y", "z"], "readings": ["closed (line 20)", "open (line 21)"],
+          "instances": [{"id": "P08a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 37, "kind": "adds", "description": "a = <x, y, z>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 38, "kind": "adds", "description": "rev(a, b), with rev not yet defined", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 39, "kind": "adds", "description": "x = y", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 40, "kind": "adds", "description": "the definitions of rev and conc", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 5, "line": 41, "kind": "adds", "description": "y = z", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 6, "line": 42, "kind": "adds", "description": "b = <seq> ++ c", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P08b", "line": 58, "title": "A definition that never arrives",
+          "unknowns": ["a", "b", "x", "y", "z"], "readings": ["closed (line 20)", "open (line 21)"],
+          "notes": ["Stages 1 to 3 of P08a, and no more (line 60)."],
+          "instances": [{"id": "P08b", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 37, "kind": "adds", "description": "a = <x, y, z> (P08a stage 1)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 38, "kind": "adds", "description": "rev(a, b), with rev not yet defined (P08a stage 2)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 39, "kind": "adds", "description": "x = y (P08a stage 3)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P08c", "line": 63, "title": "A definition that arrives in parts",
+          "unknowns": ["b"], "readings": ["closed (line 20)", "open (line 21)"],
+          "instances": [{"id": "P08c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 67, "kind": "adds", "description": "the definition of conc", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 68, "kind": "adds", "description": "rev(<seq>, b), with rev not yet defined", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 69, "kind": "adds", "description": "rev, case 1 only: rev(<seq>, <seq>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 70, "kind": "adds", "description": "rev, case 2", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P09",
+      "file": "problems/09-concurrent-goals.md",
+      "title": "Concurrent goals",
+      "effects": false,
+      "notes": ["All computations run in one instance of the system (line 8; PROTOCOL.md). Each spawned computation has its own budget and its own classification (PROTOCOL.md, Running)."],
+      "subproblems": [
+        {
+          "id": "P09a", "line": 11, "title": "Independent computations",
+          "unknowns": ["x", "b"], "readings": [],
+          "notes": ["Posed in both orders, A then B and B then A (lines 19-20). spawn_order is the order in which the harness calls spawn()."],
+          "instances": [
+            {"id": "P09a.AB", "parameters": {"spawn_order": ["A", "B"]}},
+            {"id": "P09a.BA", "parameters": {"spawn_order": ["B", "A"]}}
+          ],
+          "stages": [
+            {"stage": 1, "line": 16, "kind": "query", "description": "two separate computations, not conjoined, sharing no unknowns: A: loop(x) (line 16); B: rev(<seq>, b) (line 17)",
+             "queries": [{"id": "A", "computation": "A", "answers": "all", "cap": 20}, {"id": "B", "computation": "B", "answers": "all", "cap": 20}], "commit": false, "spawns": ["A", "B"]}
+          ]
+        },
+        {
+          "id": "P09b", "line": 22, "title": "Isolation from failure",
+          "unknowns": ["x", "y"], "readings": [],
+          "notes": ["The problem gives no second order for P09b; it is spawned in the order written."],
+          "instances": [{"id": "P09b", "parameters": {"spawn_order": ["A", "B"]}}],
+          "stages": [
+            {"stage": 1, "line": 26, "kind": "query", "description": "two separate computations: A: x = <k> and x = <k> (line 26); B: y = <k> (line 27)",
+             "queries": [{"id": "A", "computation": "A", "answers": "all", "cap": 20}, {"id": "B", "computation": "B", "answers": "all", "cap": 20}], "commit": false, "spawns": ["A", "B"]}
+          ]
+        },
+        {
+          "id": "P09c", "line": 31, "title": "Communication through a shared unknown",
+          "unknowns": ["s", "total"], "readings": [],
+          "instances": [{"id": "P09c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 43, "kind": "query", "description": "one computation: gen(<k>, s) and sum3(s, total), in that order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P09d", "line": 46, "title": "An unbounded producer",
+          "unknowns": ["s", "total"], "readings": ["P09d1, finite (line 55)", "P09d2, stream (line 61)"],
+          "notes": ["Run once and classified twice, once under each reading (lines 52-54)."],
+          "instances": [{"id": "P09d", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 52, "kind": "query", "description": "one computation: genu(<k>, s) and sum3(s, total), in that order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P09e", "line": 67, "title": "Mutual waiting",
+          "unknowns": ["x", "y"], "readings": [],
+          "instances": [{"id": "P09e", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 70, "kind": "query", "description": "one computation of two parts: x = y + <k> and y = x - <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P10",
+      "file": "problems/10-state-replacement.md",
+      "title": "State replacement",
+      "effects": false,
+      "notes": ["A reposed run replays every stage, replacements and withdrawals included (line 25; PROTOCOL.md)."],
+      "subproblems": [
+        {
+          "id": "P10a", "line": 28, "title": "Absolute and relative replacement",
+          "unknowns": ["b"], "readings": [],
+          "instances": [{"id": "P10a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 32, "kind": "replaces", "description": "b becomes <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 33, "kind": "replaces", "description": "b becomes b + <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 34, "kind": "replaces", "description": "b becomes <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P10b", "line": 36, "title": "A standing relation",
+          "unknowns": ["b", "d"], "readings": [],
+          "instances": [{"id": "P10b", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 43, "kind": "adds", "description": "d = <k> * b, at all times", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 44, "kind": "replaces", "description": "P10a stage 1: b becomes <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 44, "kind": "replaces", "description": "P10a stage 2: b becomes b + <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 44, "kind": "replaces", "description": "P10a stage 3: b becomes <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P10c", "line": 46, "title": "A snapshot",
+          "unknowns": ["b", "d"], "readings": [],
+          "instances": [{"id": "P10c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 50, "kind": "replaces", "description": "b becomes <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 51, "kind": "replaces", "description": "d becomes <k> * b", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 52, "kind": "replaces", "description": "b becomes b + <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 53, "kind": "replaces", "description": "b becomes <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P10d", "line": 58, "title": "Retraction of a constraint",
+          "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P10d", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 62, "kind": "adds", "description": "pick(x), as in P05", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 63, "kind": "adds", "description": "x > <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 64, "kind": "retracts", "description": "withdraw the relation of stage 2", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P11",
+      "file": "problems/11-irreversible-effects.md",
+      "title": "Irreversible effects",
+      "effects": true,
+      "notes": [
+        "Every P11 query is an any-one query (lines 15-16): answers(1).",
+        "The effects log L and emit are provided by the harness (lines 11-13); one log per instance and configuration, never reset (lines 38-40; PROTOCOL.md).",
+        "A reposed run replays a commit stage as the information x = v, with the v first selected (lines 35-36)."
+      ],
+      "subproblems": [
+        {
+          "id": "P11a", "line": 57, "title": "The effect after the test",
+          "unknowns": ["x"], "readings": [],
+          "notes": ["A problem of one stage: the outcome is committed when it is reported (line 24)."],
+          "instances": [{"id": "P11a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 59, "kind": "query", "description": "pick(x) and x >= <k> and emit(x), in that order", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 62}], "commit": false, "committed_when_reported": true, "spawns": []}
+          ]
+        },
+        {
+          "id": "P11b", "line": 64, "title": "The effect before the test",
+          "unknowns": ["x"], "readings": [],
+          "notes": ["A problem of one stage: the outcome is committed when it is reported (line 24)."],
+          "instances": [{"id": "P11b", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 66, "kind": "query", "description": "pick(x) and emit(x) and x >= <k>, in that order", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 15}], "commit": false, "committed_when_reported": true, "spawns": []}
+          ]
+        },
+        {
+          "id": "P11c", "line": 70, "title": "The effect, a late contradiction, then commitment",
+          "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P11c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 74, "kind": "adds", "description": "pick(x) and emit(x)", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 15}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 75, "kind": "adds", "description": "x != <k>", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 15}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 76, "kind": "commit", "description": "commit", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 15}], "commit": true, "spawns": []}
+          ]
+        },
+        {
+          "id": "P11d", "line": 83, "title": "Commitment, then a contradiction",
+          "unknowns": ["x"], "readings": [],
+          "instances": [{"id": "P11d", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 87, "kind": "adds", "description": "pick(x) and emit(x)", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 15}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 88, "kind": "commit", "description": "commit", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 15}], "commit": true, "spawns": []},
+            {"stage": 3, "line": 89, "kind": "adds", "description": "x != <k>", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 15}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P12",
+      "file": "problems/12-large-alternative-space.md",
+      "title": "Large alternative space",
+      "effects": false,
+      "limits": {"budget_steps": 100000000, "safety_limit_s": 600, "rerun_limit_s": null, "line": 29, "source": "problems/12-large-alternative-space.md, Limits: fixed and not raised"},
+      "notes": [
+        "Each sub-problem is posed at n = 8, 12 and 16 (lines 19-21), and each is posed twice: for all solutions, answers(20), and for any one, answers(1) (lines 25-27). The instance gives n and the answer mode.",
+        "accept is given by <facts> in a closed world and differs by sub-problem; the facts depend on n, and the program holds them."
+      ],
+      "subproblems": [
+        {"id": "P12a", "line": 36, "title": "two solutions, at depth 1 and depth n", "unknowns": ["s"], "readings": [],
+         "instances": [
+           {"id": "P12a.n8.all", "parameters": {"n": 8, "answers": "all", "cap": 20}},
+           {"id": "P12a.n8.any", "parameters": {"n": 8, "answers": "any-one", "cap": 1}},
+           {"id": "P12a.n12.all", "parameters": {"n": 12, "answers": "all", "cap": 20}},
+           {"id": "P12a.n12.any", "parameters": {"n": 12, "answers": "any-one", "cap": 1}},
+           {"id": "P12a.n16.all", "parameters": {"n": 16, "answers": "all", "cap": 20}},
+           {"id": "P12a.n16.any", "parameters": {"n": 16, "answers": "any-one", "cap": 1}}
+         ],
+         "stages": [{"stage": 1, "line": 25, "kind": "query", "description": "choice(n, s) and accept(s), in that order, with P12a's accept <facts>", "queries": [{"id": "q", "computation": "main", "answers": null, "cap": null, "cap_line": 25}], "commit": false, "spawns": []}]},
+        {"id": "P12b", "line": 37, "title": "one solution at depth 1", "unknowns": ["s"], "readings": [],
+         "instances": [
+           {"id": "P12b.n8.all", "parameters": {"n": 8, "answers": "all", "cap": 20}},
+           {"id": "P12b.n8.any", "parameters": {"n": 8, "answers": "any-one", "cap": 1}},
+           {"id": "P12b.n12.all", "parameters": {"n": 12, "answers": "all", "cap": 20}},
+           {"id": "P12b.n12.any", "parameters": {"n": 12, "answers": "any-one", "cap": 1}},
+           {"id": "P12b.n16.all", "parameters": {"n": 16, "answers": "all", "cap": 20}},
+           {"id": "P12b.n16.any", "parameters": {"n": 16, "answers": "any-one", "cap": 1}}
+         ],
+         "stages": [{"stage": 1, "line": 25, "kind": "query", "description": "choice(n, s) and accept(s), in that order, with P12b's accept <facts>", "queries": [{"id": "q", "computation": "main", "answers": null, "cap": null, "cap_line": 25}], "commit": false, "spawns": []}]},
+        {"id": "P12c", "line": 38, "title": "one solution, last in both orders", "unknowns": ["s"], "readings": [],
+         "instances": [
+           {"id": "P12c.n8.all", "parameters": {"n": 8, "answers": "all", "cap": 20}},
+           {"id": "P12c.n8.any", "parameters": {"n": 8, "answers": "any-one", "cap": 1}},
+           {"id": "P12c.n12.all", "parameters": {"n": 12, "answers": "all", "cap": 20}},
+           {"id": "P12c.n12.any", "parameters": {"n": 12, "answers": "any-one", "cap": 1}},
+           {"id": "P12c.n16.all", "parameters": {"n": 16, "answers": "all", "cap": 20}},
+           {"id": "P12c.n16.any", "parameters": {"n": 16, "answers": "any-one", "cap": 1}}
+         ],
+         "stages": [{"stage": 1, "line": 25, "kind": "query", "description": "choice(n, s) and accept(s), in that order, with P12c's accept <facts>", "queries": [{"id": "q", "computation": "main", "answers": null, "cap": null, "cap_line": 25}], "commit": false, "spawns": []}]},
+        {"id": "P12d", "line": 39, "title": "one solution at depth n, far left", "unknowns": ["s"], "readings": [],
+         "instances": [
+           {"id": "P12d.n8.all", "parameters": {"n": 8, "answers": "all", "cap": 20}},
+           {"id": "P12d.n8.any", "parameters": {"n": 8, "answers": "any-one", "cap": 1}},
+           {"id": "P12d.n12.all", "parameters": {"n": 12, "answers": "all", "cap": 20}},
+           {"id": "P12d.n12.any", "parameters": {"n": 12, "answers": "any-one", "cap": 1}},
+           {"id": "P12d.n16.all", "parameters": {"n": 16, "answers": "all", "cap": 20}},
+           {"id": "P12d.n16.any", "parameters": {"n": 16, "answers": "any-one", "cap": 1}}
+         ],
+         "stages": [{"stage": 1, "line": 25, "kind": "query", "description": "choice(n, s) and accept(s), in that order, with P12d's accept <facts>", "queries": [{"id": "q", "computation": "main", "answers": null, "cap": null, "cap_line": 25}], "commit": false, "spawns": []}]}
+      ]
+    },
+    {
+      "problem": "P13",
+      "file": "problems/13-deterministic-scale.md",
+      "title": "Deterministic scale",
+      "effects": false,
+      "limits": {"budget_steps": 100000000, "safety_limit_s": 600, "rerun_limit_s": null, "line": 87, "source": "problems/13-deterministic-scale.md, Budget: fixed, not raised", "stop_larger_n_after_limit": true},
+      "notes": [
+        "Each query is one stage; n takes the values 10^2, 10^3, 10^4 and 10^5 (line 71).",
+        "A run stopped by either limit is recorded as such, and the larger values of n are not run after it (lines 92-93).",
+        "Process CPU time and maximum resident set size are recorded for each n, for growth only (lines 95-97; METRICS.md, Steps and store)."
+      ],
+      "subproblems": [
+        {"id": "P13a", "line": 75, "title": "range, prescribed", "unknowns": ["s"], "readings": [], "task": "prescribed",
+         "instances": [{"id": "P13a.n100", "parameters": {"n": 100}}, {"id": "P13a.n1000", "parameters": {"n": 1000}}, {"id": "P13a.n10000", "parameters": {"n": 10000}}, {"id": "P13a.n100000", "parameters": {"n": 100000}}],
+         "stages": [{"stage": 1, "line": 75, "kind": "query", "description": "range(<k>, n, s)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P13b", "line": 76, "title": "range and sum, prescribed", "unknowns": ["s", "k"], "readings": [], "task": "prescribed",
+         "instances": [{"id": "P13b.n100", "parameters": {"n": 100}}, {"id": "P13b.n1000", "parameters": {"n": 1000}}, {"id": "P13b.n10000", "parameters": {"n": 10000}}, {"id": "P13b.n100000", "parameters": {"n": 100000}}],
+         "stages": [{"stage": 1, "line": 76, "kind": "query", "description": "range(<k>, n, s) and sum(s, k)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P13c", "line": 77, "title": "range and rev, prescribed", "unknowns": ["s", "r"], "readings": [], "task": "prescribed",
+         "instances": [{"id": "P13c.n100", "parameters": {"n": 100}}, {"id": "P13c.n1000", "parameters": {"n": 1000}}, {"id": "P13c.n10000", "parameters": {"n": 10000}}, {"id": "P13c.n100000", "parameters": {"n": 100000}}],
+         "stages": [{"stage": 1, "line": 77, "kind": "query", "description": "range(<k>, n, s) and rev(s, r)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P13d", "line": 78, "title": "range and revacc, prescribed", "unknowns": ["s", "r"], "readings": [], "task": "prescribed",
+         "instances": [{"id": "P13d.n100", "parameters": {"n": 100}}, {"id": "P13d.n1000", "parameters": {"n": 1000}}, {"id": "P13d.n10000", "parameters": {"n": 10000}}, {"id": "P13d.n100000", "parameters": {"n": 100000}}],
+         "stages": [{"stage": 1, "line": 78, "kind": "query", "description": "range(<k>, n, s) and revacc(s, r)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P13e", "line": 79, "title": "build and sum, native", "unknowns": ["k"], "readings": [], "task": "native",
+         "instances": [{"id": "P13e.n100", "parameters": {"n": 100}}, {"id": "P13e.n1000", "parameters": {"n": 1000}}, {"id": "P13e.n10000", "parameters": {"n": 10000}}, {"id": "P13e.n100000", "parameters": {"n": 100000}}],
+         "stages": [{"stage": 1, "line": 79, "kind": "query", "description": "native: build the sequence of n integers and sum it", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]},
+        {"id": "P13f", "line": 80, "title": "build and reverse, native", "unknowns": ["r"], "readings": [], "task": "native",
+         "instances": [{"id": "P13f.n100", "parameters": {"n": 100}}, {"id": "P13f.n1000", "parameters": {"n": 1000}}, {"id": "P13f.n10000", "parameters": {"n": 10000}}, {"id": "P13f.n100000", "parameters": {"n": 100000}}],
+         "stages": [{"stage": 1, "line": 80, "kind": "query", "description": "native: build the sequence of n integers and reverse it", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}]}
+      ]
+    },
+    {
+      "problem": "P14",
+      "file": "problems/14-message-stream.md",
+      "title": "A process over a message stream",
+      "effects": false,
+      "notes": ["Messages are taken in the order they arrive (line 15). r1, r2, r3 are the problem's names for the unknowns that READ messages bind."],
+      "subproblems": [
+        {
+          "id": "P14a", "line": 26, "title": "Messages as stages",
+          "unknowns": ["r1", "r2"], "readings": [],
+          "instances": [{"id": "P14a", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 30, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 31, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 32, "kind": "adds", "description": "message READ(r1)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 33, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 5, "line": 34, "kind": "adds", "description": "message READ(r2)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P14b", "line": 36, "title": "Messages as one sequence",
+          "unknowns": ["r1", "r2"], "readings": [],
+          "instances": [{"id": "P14b", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 38, "kind": "query", "description": "the counter receives the messages of P14a as one sequence", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P14c", "line": 41, "title": "A stream that stays open",
+          "unknowns": ["r1", "r2", "r3"], "readings": [],
+          "notes": ["The stages of P14a, then stages 6 and 7 (line 43). No stage closes the stream (line 50)."],
+          "instances": [{"id": "P14c", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 30, "kind": "adds", "description": "message <atom> (P14a stage 1)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 31, "kind": "adds", "description": "message <atom> (P14a stage 2)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 32, "kind": "adds", "description": "message READ(r1) (P14a stage 3)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 33, "kind": "adds", "description": "message <atom> (P14a stage 4)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 5, "line": 34, "kind": "adds", "description": "message READ(r2) (P14a stage 5)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 6, "line": 47, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 7, "line": 48, "kind": "adds", "description": "message READ(r3)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P15",
+      "file": "problems/15-merge-and-committed-choice.md",
+      "title": "Merge and committed choice",
+      "effects": false,
+      "subproblems": [
+        {"id": "P15a1", "line": 20, "title": "Merge, any one", "unknowns": ["m"], "readings": [], "instances": [{"id": "P15a1", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 20, "kind": "query", "description": "merge(<seq>, <seq>, m), any one", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 20}], "commit": false, "spawns": []}]},
+        {"id": "P15a2", "line": 21, "title": "Merge, all", "unknowns": ["m"], "readings": [], "instances": [{"id": "P15a2", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 21, "kind": "query", "description": "merge(<seq>, <seq>, m), all", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20, "cap_line": 21}], "commit": false, "spawns": []}]},
+        {"id": "P15b", "line": 23, "title": "Fairness to an unbounded source", "unknowns": ["i", "m", "z"], "readings": ["stream reading of P09d2, with fairness (lines 25, 40-44)"],
+         "instances": [{"id": "P15b", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 36, "kind": "query", "description": "zeros(z) and merge(z, <seq>, m) and position(<k>, m, i), in that order", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 37}], "commit": false, "spawns": []}]},
+        {"id": "P15b2", "line": 38, "title": "Fairness, the arguments of merge swapped", "unknowns": ["i", "m", "z"], "readings": ["stream reading of P09d2, with fairness (lines 25, 40-44)"],
+         "instances": [{"id": "P15b2", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 38, "kind": "query", "description": "as P15b, with merge(<seq>, z, m)", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 37}], "commit": false, "spawns": []}]},
+        {"id": "P15c", "line": 51, "title": "One resource, two requests at once", "unknowns": ["g"], "readings": [],
+         "instances": [{"id": "P15c", "parameters": {}}],
+         "stages": [{"stage": 1, "line": 59, "kind": "query", "description": "grant(<atom>, <atom>, g), any one", "queries": [{"id": "q", "computation": "main", "answers": "any-one", "cap": 1, "cap_line": 59}], "commit": false, "spawns": []}]},
+        {
+          "id": "P15d", "line": 63, "title": "One resource, over time",
+          "unknowns": ["holder", "queue"], "readings": [],
+          "notes": ["holder and queue are named quantities, as in P10; requests and releases are replacing stages (lines 71-77)."],
+          "instances": [{"id": "P15d", "parameters": {}}],
+          "stages": [
+            {"stage": 1, "line": 67, "kind": "replaces", "description": "<atom> requests", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 68, "kind": "replaces", "description": "<atom> requests", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 69, "kind": "replaces", "description": "<atom> releases", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    },
+    {
+      "problem": "P16",
+      "file": "problems/16-shared-information.md",
+      "title": "Shared information at scale",
+      "effects": false,
+      "limits": {"budget_steps": 100000000, "safety_limit_s": 600, "rerun_limit_s": null, "line": 20, "source": "problems/16-shared-information.md, Vocabulary: limits as in P13, not raised"},
+      "notes": [
+        "Sizes n = 10^2, 10^3 and 10^4, fixed in advance (line 19).",
+        "Arrival orders (lines 23-30): P16a in all three orders at each n; P16b, c and d in ascending order only.",
+        "x_i and y_i are the problem's names for the unknowns of the chains; n of each."
+      ],
+      "subproblems": [
+        {
+          "id": "P16a", "line": 32, "title": "Propagation along a chain",
+          "unknowns": ["x_1 ... x_n"], "readings": [],
+          "instances": [
+            {"id": "P16a.n100.ascending", "parameters": {"n": 100, "order": ["ascending"]}},
+            {"id": "P16a.n100.descending", "parameters": {"n": 100, "order": ["descending"]}},
+            {"id": "P16a.n100.interleaved", "parameters": {"n": 100, "order": ["interleaved"]}},
+            {"id": "P16a.n1000.ascending", "parameters": {"n": 1000, "order": ["ascending"]}},
+            {"id": "P16a.n1000.descending", "parameters": {"n": 1000, "order": ["descending"]}},
+            {"id": "P16a.n1000.interleaved", "parameters": {"n": 1000, "order": ["interleaved"]}},
+            {"id": "P16a.n10000.ascending", "parameters": {"n": 10000, "order": ["ascending"]}},
+            {"id": "P16a.n10000.descending", "parameters": {"n": 10000, "order": ["descending"]}},
+            {"id": "P16a.n10000.interleaved", "parameters": {"n": 10000, "order": ["interleaved"]}}
+          ],
+          "stages": [
+            {"stage": 1, "line": 36, "kind": "adds", "description": "succ(x_i, x_{i+1}) for i = 1, ..., n - 1, in the instance's arrival order", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 37, "kind": "adds", "description": "x_j = <k>, where j = ceil(n/2)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P16b", "line": 41, "title": "Several contributors",
+          "unknowns": ["x_1 ... x_{n+1}", "total"], "readings": [],
+          "notes": [
+            "Each of the four contributors is a separate computation (spawn) where the configuration allows separate computations to share unknowns. Where it does not, the four are posed as one conjunction, in computation 'main', and that is recorded (lines 46-48): spawn_fallback.",
+            "Stages 2 and 3 are posed to the shared instance, not to one contributor, with one budget per stage for the whole (lines 50-52): computation 'main'."
+          ],
+          "instances": [
+            {"id": "P16b.n100", "parameters": {"n": 100, "order": ["ascending"]}},
+            {"id": "P16b.n1000", "parameters": {"n": 1000, "order": ["ascending"]}},
+            {"id": "P16b.n10000", "parameters": {"n": 10000, "order": ["ascending"]}}
+          ],
+          "stages": [
+            {"stage": 1, "line": 56, "kind": "adds", "description": "the four contributions: contributor c contributes succ(x_i, x_{i+1}) for its segment of m = n/4 relations, ascending (lines 43-45)",
+             "queries": [{"id": "C1", "computation": "C1", "answers": "all", "cap": 20}, {"id": "C2", "computation": "C2", "answers": "all", "cap": 20}, {"id": "C3", "computation": "C3", "answers": "all", "cap": 20}, {"id": "C4", "computation": "C4", "answers": "all", "cap": 20}],
+             "commit": false, "spawns": ["C1", "C2", "C3", "C4"], "spawn_fallback": "main",
+             "fallback_queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}]},
+            {"stage": 2, "line": 57, "kind": "adds", "description": "total = x_1 + x_{m+1} + x_{2m+1} + x_{3m+1} + x_{4m+1}", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 58, "kind": "adds", "description": "x_1 = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P16c", "line": 62, "title": "Localised updates",
+          "unknowns": ["x_1 ... x_n", "y_1 ... y_n"], "readings": [],
+          "notes": ["The two chains are posed as one computation (lines 65-67)."],
+          "instances": [
+            {"id": "P16c.n100", "parameters": {"n": 100, "order": ["ascending"]}},
+            {"id": "P16c.n1000", "parameters": {"n": 1000, "order": ["ascending"]}},
+            {"id": "P16c.n10000", "parameters": {"n": 10000, "order": ["ascending"]}}
+          ],
+          "stages": [
+            {"stage": 1, "line": 71, "kind": "adds", "description": "every succ(x_i, x_{i+1}) and succ(y_i, y_{i+1}), the x relations first, ascending", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 72, "kind": "adds", "description": "x_1 = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 73, "kind": "adds", "description": "y_1 = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P16d", "line": 78, "title": "Contradiction",
+          "unknowns": ["x_1 ... x_n", "y_1 ... y_n"], "readings": [],
+          "instances": [
+            {"id": "P16d.n100", "parameters": {"n": 100, "order": ["ascending"]}},
+            {"id": "P16d.n1000", "parameters": {"n": 1000, "order": ["ascending"]}},
+            {"id": "P16d.n10000", "parameters": {"n": 10000, "order": ["ascending"]}}
+          ],
+          "stages": [
+            {"stage": 1, "line": 84, "kind": "adds", "description": "every succ for both chains, ascending", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 85, "kind": "adds", "description": "x_1 = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 86, "kind": "adds", "description": "x_n = <k>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        },
+        {
+          "id": "P16d2", "line": 88, "title": "Contradiction without a value",
+          "unknowns": ["x_1 ... x_n", "y_1 ... y_n"], "readings": [],
+          "notes": ["P16d with stage 2 omitted and stage 3 replaced by x_n = x_1 (lines 88-89). The stages are renumbered 1 and 2 here; the problem file numbers them 1 and 3. See harnesses/QUESTIONS.md."],
+          "instances": [
+            {"id": "P16d2.n100", "parameters": {"n": 100, "order": ["ascending"]}},
+            {"id": "P16d2.n1000", "parameters": {"n": 1000, "order": ["ascending"]}},
+            {"id": "P16d2.n10000", "parameters": {"n": 10000, "order": ["ascending"]}}
+          ],
+          "stages": [
+            {"stage": 1, "line": 84, "kind": "adds", "description": "every succ for both chains, ascending (P16d stage 1)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "file_stage": 3, "line": 89, "kind": "adds", "description": "x_n = x_1 (in place of P16d stage 3)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
+          ]
+        }
+      ]
+    }
+  ]
+}
