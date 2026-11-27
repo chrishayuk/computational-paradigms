@@ -1,0 +1,249 @@
+{
+ "record_format": "cp-raw-record/1",
+ "run": {
+  "run_id": "X10a.all.storage.20261127T191051Z",
+  "spec_tag": "spec-1.0",
+  "system": "swi-prolog",
+  "configuration": "plain",
+  "problem": "X10",
+  "subproblem": "X10a",
+  "instance": "X10a.all",
+  "parameters": {
+   "answers": "all",
+   "cap": 20
+  },
+  "mode": "storage",
+  "purpose": "qualification",
+  "program": {
+   "path": "harnesses/swi-prolog/qualification/programs/probe-w2.pl",
+   "sha256": "6d8b38112b144a8e3a48ada3aa1711363d62a6f9a52e176a84743deedceead8e",
+   "repo_commit": "490f2fb4147d929841d40ed6af0555ccb2da2e90"
+  },
+  "constants": {
+   "how": "none",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": null,
+   "image": "sha256:b51af487f3306fe240eae8c13159c85b5526509952e1b949cc22f48a1f82a742",
+   "binary": "/usr/lib/swipl/bin/x86_64-linux/swipl",
+   "version_output": "SWI-Prolog version 11.0.1 for x86_64-linux\n",
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/swi-prolog/run",
+   "commit": "490f2fb4147d929841d40ed6af0555ccb2da2e90",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/swi-prolog/run",
+   "plain",
+   "X10",
+   "X10a.all",
+   "storage",
+   "harnesses/swi-prolog/qualification/programs/probe-w2.pl",
+   "harnesses/swi-prolog/qualification/records/plain/X10/raw"
+  ],
+  "posing": "reposed",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "inference",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T19:10:51.990Z",
+  "ended_utc": "2026-11-27T19:10:52.200Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "Stages are posed by calling the program's stage/2 for stages 1..k, and then query/2 for k, as one conjunction compiled into one clause; in session each stage is posted into one engine and called there. A stage mark (h_m/1) precedes each stage/2 call; its inferences are excluded from the steps and the budget.",
+   "Inferences spent in harness code inside the measured computation (stage marks, answer points, the H predicates the program calls, the storage sampler) are excluded from the steps and from the budget by moving the inference limit on by the amount they used (SWI-Prolog internals '$inference_limit'/2 and '$inference_limit_false'/1, the predicates call_with_inference_limit/3 is built from). The budget is enforced with these internals, not with call_with_inference_limit/3, because that predicate restarts its limit for each solution.",
+   "Answers are rendered with the toplevel's own code ('$toplevel':translate_bindings/4, name_vars/3, the query(yes/more) messages) under \\+ \\+, with answer_write_options max_depth(0) instead of the toplevel's default max_depth(10), so that no answer is elided.",
+   "After loading the program the harness calls autoload_all/0, so that no library is autoloaded while a stage is measured.",
+   "At the moment the budget runs out (or an error reaches the harness), prolog:prolog_exception_hook/5 reads the bindings held, the residual goals and (storage) the choicepoints and the store, before the stacks unwind. It does not change the exception.",
+   "observe() reads, at the end of the stage: the toplevel rendering of the bindings held, term_attvars/2 of the unknowns, the length of copy_term/3's residual goals; in storage mode also the retained choicepoints, and the store after garbage_collect/0. Each costs inferences that are excluded.",
+   "Storage mode only: a heartbeat sampler (flag heartbeat=1008) keeps running maxima of choicepoints, global/local/trail usage and table space with flag/3. Its inferences are excluded from steps and budget, but sampling moves garbage collection and memory layout.",
+   "Each stage of plain, tabling, coroutines and constraints runs in a fresh swipl process (a new computation); session runs one process per incremental computation, and a fresh process for each separate run.",
+   "session: answers of a stage that is not the instance's last are collected on a separate run of stages 1..k (a fresh process and engine), because collecting them by backtracking would consume the incremental computation; print() and observe() read the incremental computation's held state without consuming it.",
+   "Spawned computations (P09) are separate queries in the same process, sharing its database, run one after the other to their end or budget (side_by_side false).",
+   "The effects stub emit/1 writes each entry, flushed, to a spool file; the driver appends the spool to the effects log, with seq and run_id, when the stage's attempt ends."
+  ],
+  "environment": {
+   "LANG": "C.UTF-8"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {
+       "answers": "all",
+       "cap": 20
+      }
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "R = [300, 299, 298, 297, 296, 295, 294, 293, 292, 291, 290, 289, 288, 287, 286, 285, 284, 283, 282, 281, 280, 279, 278, 277, 276, 275, 274, 273, 272, 271, 270, 269, 268, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257, 256, 255, 254, 253, 252, 251, 250, 249, 248, 247, 246, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 235, 234, 233, 232, 231, 230, 229, 228, 227, 226, 225, 224, 223, 222, 221, 220, 219, 218, 217, 216, 215, 214, 213, 212, 211, 210, 209, 208, 207, 206, 205, 204, 203, 202, 201, 200, 199, 198, 197, 196, 195, 194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 181, 180, 179, 178, 177, 176, 175, 174, 173, 172, 171, 170, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 155, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1].\n\n",
+           "steps_at": 45758,
+           "alternatives_at": 0
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "at the last answer: the goal exited without choicepoints (no further answer is offered); 0 attributed variable(s) reachable from the unknowns (term_attvars/2)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "inference",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": 45758,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": 45758,
+        "between_answers": [],
+        "to_end": 45758,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "retained choicepoints (SWI-Prolog choicepoint frames newer than the computation's mark)",
+        "at_boundary": 0,
+        "at_budget": null,
+        "peak": {
+         "value": 0,
+         "kind": "sampled",
+         "sample_interval": "heartbeat every 1008 inferences (prolog:heartbeat/0), 10 samples, GC on"
+        },
+        "held_as": "backtracking",
+        "by_type": {},
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "attributed variables reachable from the unknowns",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {
+         "attributed_variables": 0,
+         "residual_goals": 0
+        }
+       },
+       "problem_operations": null,
+       "candidates_examined": null
+      }
+     ],
+     "observe": {
+      "raw": "R = [300, 299, 298, 297, 296, 295, 294, 293, 292, 291, 290, 289, 288, 287, 286, 285, 284, 283, 282, 281, 280, 279, 278, 277, 276, 275, 274, 273, 272, 271, 270, 269, 268, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257, 256, 255, 254, 253, 252, 251, 250, 249, 248, 247, 246, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 235, 234, 233, 232, 231, 230, 229, 228, 227, 226, 225, 224, 223, 222, 221, 220, 219, 218, 217, 216, 215, 214, 213, 212, 211, 210, 209, 208, 207, 206, 205, 204, 203, 202, 201, 200, 199, 198, 197, 196, 195, 194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 181, 180, 179, 178, 177, 176, 175, 174, 173, 172, 171, 170, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 155, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] ",
+      "method": "read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bindings/4, name_vars/3, query message), term_attvars/2 of the unknowns, copy_term/3 residual goals",
+      "taken_on": "this-run",
+      "bindings": {
+       "R": "[300, 299, 298, 297, 296, 295, 294, 293, 292, 291, 290, 289, 288, 287, 286, 285, 284, 283, 282, 281, 280, 279, 278, 277, 276, 275, 274, 273, 272, 271, 270, 269, 268, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257, 256, 255, 254, 253, 252, 251, 250, 249, 248, 247, 246, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 235, 234, 233, 232, 231, 230, 229, 228, 227, 226, 225, 224, 223, 222, 221, 220, 219, 218, 217, 216, 215, 214, 213, 212, 211, 210, 209, 208, 207, 206, 205, 204, 203, 202, 201, 200, 199, 198, 197, 196, 195, 194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 181, 180, 179, 178, 177, 176, 175, 174, 173, 172, 171, 170, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 155, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
+      }
+     },
+     "print": "R = [300, 299, 298, 297, 296, 295, 294, 293, 292, 291, 290, 289, 288, 287, 286, 285, 284, 283, 282, 281, 280, 279, 278, 277, 276, 275, 274, 273, 272, 271, 270, 269, 268, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257, 256, 255, 254, 253, 252, 251, 250, 249, 248, 247, 246, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 235, 234, 233, 232, 231, 230, 229, 228, 227, 226, 225, 224, 223, 222, 221, 220, 219, 218, 217, 216, 215, 214, 213, 212, 211, 210, 209, 208, 207, 206, 205, 204, 203, 202, 201, 200, 199, 198, 197, 196, 195, 194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 181, 180, 179, 178, 177, 176, 175, 174, 173, 172, 171, 170, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 155, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1].\n\n",
+     "store": {
+      "quantities": {
+       "global_live_bytes": {
+        "boundary": 8424,
+        "peak": {
+         "value": 518456,
+         "kind": "sampled",
+         "sample_interval": "heartbeat every 1008 inferences (prolog:heartbeat/0), 10 samples, GC on"
+        },
+        "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"
+       },
+       "local_bytes": {
+        "boundary": 4136,
+        "peak": {
+         "value": 32672,
+         "kind": "sampled",
+         "sample_interval": "heartbeat every 1008 inferences (prolog:heartbeat/0), 10 samples, GC on"
+        },
+        "unit": "bytes (statistics(localused))"
+       },
+       "trail_bytes": {
+        "boundary": 88,
+        "peak": {
+         "value": 408,
+         "kind": "sampled",
+         "sample_interval": "heartbeat every 1008 inferences (prolog:heartbeat/0), 10 samples, GC on"
+        },
+        "unit": "bytes (statistics(trailused))"
+       },
+       "global_live_bytes_at_computation_start": {
+        "boundary": 576,
+        "peak": null,
+        "unit": "the same, before the computation started (harness baseline)"
+       },
+       "local_bytes_at_computation_start": {
+        "boundary": 2288,
+        "peak": null,
+        "unit": "the same, before the computation started (harness baseline)"
+       },
+       "trail_bytes_at_computation_start": {
+        "boundary": 16,
+        "peak": null,
+        "unit": "the same, before the computation started (harness baseline)"
+       }
+      },
+      "source": "statistics/2 at the stage boundary, after garbage_collect/0; sampled maxima from the heartbeat sampler"
+     },
+     "wall_time_s": 0.181,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "",
+     "stderr": "",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": [
+  "stages file harnesses/swi-prolog/qualification/stages-made-up.json (made-up problems, qualification only), not harnesses/stages.json",
+  "system_build.commit is null: the swipl:11.0.1 image has no /opt/src/COMMITS; the build is recorded as the pinned image's digest (PINS.md) in system_build.image"
+ ]
+}

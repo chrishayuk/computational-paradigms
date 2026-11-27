@@ -1,0 +1,11 @@
+#!/bin/sh
+# harnesses/swi-prolog/check CONFIGURATION PROGRAM
+# A syntax and static check that executes nothing of the program
+# (harnesses/swi-prolog/README.md, "check"). Runs inside the pinned
+# swipl:11.0.1 image.
+if [ $# -ne 2 ]; then
+  echo "usage: harnesses/swi-prolog/check CONFIGURATION PROGRAM" >&2
+  exit 2
+fi
+here=$(cd "$(dirname "$0")" && pwd)
+exec /usr/bin/swipl -f none --no-tty -q -g cp_check:main -t 'halt(3)' "$here/lib/check.pl" "$1" "$2" </dev/null

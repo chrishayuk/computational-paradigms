@@ -1,0 +1,1395 @@
+#!/usr/bin/env python3
+"""SWI-Prolog harness driver (cp-roles, spec-1.0, wave 1).
+
+    harnesses/swi-prolog/run CONFIGURATION PROBLEM SUBPROBLEM MODE PROGRAM OUTDIR
+
+Runs inside the pinned swipl:11.0.1 image (Debian python3 3.13.5 is the
+driver only). See harnesses/swi-prolog/README.md for what it does, the
+program contract, and its confounds; harnesses/README.md for the common
+contract. The Prolog side is harnesses/swi-prolog/lib/harness.pl.
+
+Exit status: 0 a valid record was written; 2 usage error, no record;
+3 the harness failed and could not write a valid record.
+
+Environment (all optional):
+  HARNESS_IMAGE_DIGEST  the image digest (else CP_IMAGE_DIGEST, else the pinned
+                    swipl:11.0.1 digest of PINS.md)
+  CP_PURPOSE        primary (default), variant, qualification
+  CP_VARIANT        the hidden variant's id, for the verifier
+  CP_SWI_STAGES     another stages file (qualification on made-up problems
+                    only; recorded in the record's notes)
+  CP_SWI_KEEP       keep the per-process work directory (debugging)
+"""
+
+import datetime
+import hashlib
+import json
+import os
+import re
+import shutil
+import signal
+import subprocess
+import sys
+import tempfile
+import time
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(HERE))
+LIB = os.path.join(HERE, "lib", "harness.pl")
+SWIPL = "/usr/bin/swipl"
+VALIDATE = os.path.join(REPO, "harnesses", "validate.py")
+
+CONFIGS = {  # systems/swi-prolog/README.md, "Configurations", "The same computation"
+    "plain": "reposed",
+    "tabling": "reposed",
+    "coroutines": "reposed",
+    "constraints": "reposed",
+    "session": "incremental",
+}
+MODES = ("behaviour", "cost", "storage")
+STEP_UNIT = "inference"
+# PINS.md: the swipl:11.0.1 image (the index digest); HARNESS_IMAGE_DIGEST overrides
+PINNED_IMAGE = "sha256:b51af487f3306fe240eae8c13159c85b5526509952e1b949cc22f48a1f82a742"
+ALT_UNIT = "retained choicepoints (SWI-Prolog choicepoint frames newer than the computation's mark)"
+SUSP_UNIT = "attributed variables reachable from the unknowns"
+HEARTBEAT = 1008          # storage mode sampler: heartbeat flag, a multiple of 16
+KILL = "SIGKILL"
+
+CONFOUNDS = [
+    "Stages are posed by calling the program's stage/2 for stages 1..k, and then query/2 for k, as one conjunction compiled into one clause; in session each stage is posted into one engine and called there. A stage mark (h_m/1) precedes each stage/2 call; its inferences are excluded from the steps and the budget.",
+    "Inferences spent in harness code inside the measured computation (stage marks, answer points, the H predicates the program calls, the storage sampler) are excluded from the steps and from the budget by moving the inference limit on by the amount they used (SWI-Prolog internals '$inference_limit'/2 and '$inference_limit_false'/1, the predicates call_with_inference_limit/3 is built from). The budget is enforced with these internals, not with call_with_inference_limit/3, because that predicate restarts its limit for each solution.",
+    "Answers are rendered with the toplevel's own code ('$toplevel':translate_bindings/4, name_vars/3, the query(yes/more) messages) under \\+ \\+, with answer_write_options max_depth(0) instead of the toplevel's default max_depth(10), so that no answer is elided.",
+    "After loading the program the harness calls autoload_all/0, so that no library is autoloaded while a stage is measured.",
+    "At the moment the budget runs out (or an error reaches the harness), prolog:prolog_exception_hook/5 reads the bindings held, the residual goals and (storage) the choicepoints and the store, before the stacks unwind. It does not change the exception.",
+    "observe() reads, at the end of the stage: the toplevel rendering of the bindings held, term_attvars/2 of the unknowns, the length of copy_term/3's residual goals; in storage mode also the retained choicepoints, and the store after garbage_collect/0. Each costs inferences that are excluded.",
+    "Storage mode only: a heartbeat sampler (flag heartbeat=%d) keeps running maxima of choicepoints, global/local/trail usage and table space with flag/3. Its inferences are excluded from steps and budget, but sampling moves garbage collection and memory layout." % HEARTBEAT,
+    "Each stage of plain, tabling, coroutines and constraints runs in a fresh swipl process (a new computation); session runs one process per incremental computation, and a fresh process for each separate run.",
+    "session: answers of a stage that is not the instance's last are collected on a separate run of stages 1..k (a fresh process and engine), because collecting them by backtracking would consume the incremental computation; print() and observe() read the incremental computation's held state without consuming it.",
+    "Spawned computations (P09) are separate queries in the same process, sharing its database, run one after the other to their end or budget (side_by_side false).",
+    "The effects stub emit/1 writes each entry, flushed, to a spool file; the driver appends the spool to the effects log, with seq and run_id, when the stage's attempt ends.",
+]
+
+# ------------------------------------------------------------- utilities ---
+
+
+def utcnow():
+    return datetime.datetime.now(datetime.timezone.utc)
+
+
+def iso(t):
+    return t.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+
+
+def sha256_file(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for b in iter(lambda: f.read(1 << 16), b""):
+            h.update(b)
+    return h.hexdigest()
+
+
+def usage(msg):
+    sys.stderr.write("run: %s\n" % msg)
+    sys.stderr.write(__doc__.split("\n\n")[1] + "\n")
+    sys.exit(2)
+
+
+def decode(b, faults, where):
+    try:
+        return b.decode("utf-8")
+    except UnicodeDecodeError:
+        faults.append("%s: output not valid UTF-8; undecodable bytes written as U+FFFD" % where)
+        return b.decode("utf-8", errors="replace")
+
+
+def plq(s):
+    """A Prolog quoted atom."""
+    return "'" + s.replace("\\", "\\\\").replace("'", "\\'") + "'"
+
+
+def plterm(v):
+    if v is None:
+        return "none"
+    if isinstance(v, bool):
+        return "true" if v else "false"
+    if isinstance(v, int):
+        return str(v)
+    if isinstance(v, str):
+        return plq(v)
+    if isinstance(v, list):
+        return "[" + ",".join(plterm(x) for x in v) + "]"
+    if isinstance(v, tuple):          # (functor, args...)
+        return v[0] + "(" + ",".join(plterm(x) for x in v[1:]) + ")"
+    raise TypeError(v)
+
+
+def plstring(s):
+    return '"' + s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n") + '"'
+
+
+# --------------------------------------------------------- stages lookup ---
+
+
+def find_instance(doc, instance):
+    for prob in doc["problems"]:
+        for sub in prob["subproblems"]:
+            for inst in sub["instances"]:
+                if inst["id"] == instance:
+                    return prob, sub, inst
+    return None
+
+
+def limits_of(doc, prob):
+    lim = dict(doc.get("default_limits", {}))
+    lim.update(prob.get("limits", {}))
+    return lim
+
+
+def query_cap(q, inst):
+    return q["cap"] if q.get("cap") is not None else inst.get("parameters", {}).get("cap")
+
+
+# ------------------------------------------------------------- processes ---
+
+
+class Proc:
+    """One swipl process running harness.pl with a control file."""
+
+    def __init__(self, run, tag, ctl):
+        self.run = run
+        self.dir = tempfile.mkdtemp(prefix="cp-swi-%s-" % tag, dir=run.work)
+        self.events = os.path.join(self.dir, "events.jsonl")
+        self.spool = os.path.join(self.dir, "spool.jsonl") if run.has_effects else None
+        self.out = os.path.join(self.dir, "stdout")
+        self.err = os.path.join(self.dir, "stderr")
+        self.fifo = None
+        if ctl.get("commands"):
+            self.fifo = os.path.join(self.dir, "commands")
+            os.mkfifo(self.fifo)
+        ctl = dict(ctl)
+        ctl["events"] = self.events
+        ctl["spool"] = self.spool
+        ctl["commands"] = self.fifo
+        ctlfile = os.path.join(self.dir, "ctl.pl")
+        with open(ctlfile, "w", encoding="utf-8") as f:
+            for k, v in ctl.items():
+                if k == "_constants":
+                    for j, text in v:
+                        f.write("ctl(constants, %d-%s).\n" % (j, plstring(text)))
+                    continue
+                f.write("ctl(%s, %s).\n" % (k, v if isinstance(v, RawPl) else plterm(v)))
+        self.cmd = [SWIPL, "-f", "none", "--no-tty", "-q",
+                    "-g", "cp_harness:h_main(%s)" % plq(ctlfile), "-t", "halt(4)", LIB]
+        self.fo = open(self.out, "wb")
+        self.fe = open(self.err, "wb")
+        self.t0 = time.monotonic()
+        self.p = subprocess.Popen(self.cmd, stdin=subprocess.DEVNULL, stdout=self.fo, stderr=self.fe,
+                                  cwd=REPO, env=run.env)
+        self.status = None
+        self.signal = None
+        self.rusage = None
+        self.killed = False
+        self.how_stopped = None
+        self.ev_pos = 0
+        self.ev_buf = b""
+        self.cmd_w = None
+
+    def poll_events(self):
+        out = []
+        try:
+            with open(self.events, "rb") as f:
+                f.seek(self.ev_pos)
+                data = f.read()
+        except FileNotFoundError:
+            return out
+        self.ev_pos += len(data)
+        self.ev_buf += data
+        while b"\n" in self.ev_buf:
+            line, self.ev_buf = self.ev_buf.split(b"\n", 1)
+            if line.strip():
+                try:
+                    out.append(json.loads(line.decode("utf-8", errors="replace")))
+                except ValueError as e:
+                    self.run.faults.append("unreadable harness event %r: %s" % (line[:200], e))
+        return out
+
+    def alive(self):
+        if self.status is not None or self.signal is not None:
+            return False
+        pid, st, ru = os.wait4(self.p.pid, os.WNOHANG)
+        if pid == 0:
+            return True
+        self._reap(st, ru)
+        return False
+
+    def _reap(self, st, ru):
+        self.rusage = ru
+        if os.WIFSIGNALED(st):
+            self.signal = signal.Signals(os.WTERMSIG(st)).name
+        else:
+            self.status = os.WEXITSTATUS(st)
+        self.p.returncode = 0
+        self.fo.close()
+        self.fe.close()
+
+    def kill(self):
+        """Stop at the safety limit: SIGUSR1 (the harness's handler reads
+        the state and halts), then SIGKILL if it has not ended in 3 s."""
+        if self.alive():
+            self.killed = True
+            os.kill(self.p.pid, signal.SIGUSR1)
+            t = time.monotonic() + 3.0
+            while time.monotonic() < t:
+                if not self.alive():
+                    self.how_stopped = "SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"
+                    return
+                time.sleep(0.02)
+            os.kill(self.p.pid, signal.SIGKILL)
+            pid, st, ru = os.wait4(self.p.pid, 0)
+            self._reap(st, ru)
+            self.how_stopped = "SIGUSR1 from the driver, then SIGKILL 3 s later (the process had not ended)"
+
+    def hard_kill(self):
+        if self.alive():
+            os.kill(self.p.pid, signal.SIGKILL)
+            pid, st, ru = os.wait4(self.p.pid, 0)
+            self._reap(st, ru)
+
+    def wait(self):
+        if self.alive():
+            pid, st, ru = os.wait4(self.p.pid, 0)
+            self._reap(st, ru)
+
+    def send(self, term):
+        if self.cmd_w is None:
+            self.cmd_w = open(self.fifo, "w", encoding="utf-8")
+        self.cmd_w.write(term + ".\n")
+        self.cmd_w.flush()
+
+    def close_commands(self):
+        if self.cmd_w is not None:
+            try:
+                self.cmd_w.write("stop.\n")
+                self.cmd_w.close()
+            except OSError:
+                pass
+            self.cmd_w = None
+
+    def read_out(self, a=0, b=None):
+        with open(self.out, "rb") as f:
+            data = f.read()
+        return decode(data[a:b], self.run.faults, "stdout")
+
+    def read_err(self, a=0, b=None):
+        with open(self.err, "rb") as f:
+            data = f.read()
+        return decode(data[a:b], self.run.faults, "stderr")
+
+    def out_size(self):
+        return os.path.getsize(self.out), os.path.getsize(self.err)
+
+    def wait_until(self, pred, deadline):
+        """Poll events until pred(events_so_far) is true, the process ends,
+        or the deadline (monotonic) passes. Returns (events, 'ok'|'exit'|'timeout')."""
+        evs = []
+        while True:
+            new = self.poll_events()
+            evs.extend(new)
+            if pred(evs):
+                return evs, "ok"
+            if not self.alive():
+                evs.extend(self.poll_events())
+                return evs, ("ok" if pred(evs) else "exit")
+            if time.monotonic() >= deadline:
+                self.kill()
+                evs.extend(self.poll_events())
+                return evs, "timeout"
+            time.sleep(0.01)
+
+    def cleanup(self):
+        if not os.environ.get("CP_SWI_KEEP"):
+            shutil.rmtree(self.dir, ignore_errors=True)
+
+
+class RawPl(str):
+    """A ctl value already written as a Prolog term."""
+
+
+# ----------------------------------------------------------------- run ----
+
+
+class Run:
+    def __init__(self, argv):
+        if len(argv) != 7:
+            usage("expected 6 arguments")
+        _, self.config, self.problem, self.instance, self.mode, self.program, self.outdir = argv
+        self.faults = []
+        self.notes = []
+        if self.config not in CONFIGS:
+            usage("unknown configuration %r (systems/swi-prolog/README.md: %s)" % (self.config, ", ".join(CONFIGS)))
+        if self.mode not in MODES:
+            usage("unknown mode %r" % self.mode)
+        self.stages_path = os.environ.get("CP_SWI_STAGES") or os.path.join(REPO, "harnesses", "stages.json")
+        try:
+            with open(self.stages_path, encoding="utf-8") as f:
+                self.doc = json.load(f)
+        except (OSError, ValueError) as e:
+            usage("cannot read %s: %s" % (self.stages_path, e))
+        if os.environ.get("CP_SWI_STAGES"):
+            self.notes.append("stages file %s (made-up problems, qualification only), not harnesses/stages.json" %
+                              os.path.relpath(self.stages_path, REPO))
+        found = find_instance(self.doc, self.instance)
+        if found is None:
+            usage("unknown instance %r" % self.instance)
+        self.prob, self.sub, self.inst = found
+        if self.prob["problem"] != self.problem:
+            usage("instance %s belongs to %s, not %s" % (self.instance, self.prob["problem"], self.problem))
+        self.prog_abs = os.path.join(REPO, self.program) if not os.path.isabs(self.program) else self.program
+        if not os.path.isfile(self.prog_abs):
+            usage("no program file %s" % self.program)
+        self.posing = CONFIGS[self.config]
+        self.lim = limits_of(self.doc, self.prob)
+        self.B = int(self.lim["budget_steps"])
+        self.limit1 = self.lim["safety_limit_s"]
+        self.limit2 = self.lim["rerun_limit_s"]
+        self.stages = self.sub["stages"]
+        self.K = len(self.stages)
+        self.params = self.inst.get("parameters", {})
+        self.has_effects = bool(self.prob.get("effects"))
+        self.p13 = self.problem == "P13"
+        self.env = dict(os.environ)
+        self.env.pop("SWI_HOME_DIR", None)
+        self.env["LANG"] = "C.UTF-8"
+        self.started = utcnow()
+        os.makedirs(os.path.join(REPO, self.outdir) if not os.path.isabs(self.outdir) else self.outdir, exist_ok=True)
+        self.out_abs = os.path.join(REPO, self.outdir) if not os.path.isabs(self.outdir) else self.outdir
+        stamp = self.started.strftime("%Y%m%dT%H%M%SZ")
+        self.run_id = "%s.%s.%s" % (self.instance, self.mode, stamp)
+        while os.path.exists(os.path.join(self.out_abs, self.run_id + ".json")) or \
+                os.path.exists(os.path.join(self.out_abs, self.run_id + ".INVALID.json")):
+            time.sleep(1.0)
+            self.started = utcnow()
+            stamp = self.started.strftime("%Y%m%dT%H%M%SZ")
+            self.run_id = "%s.%s.%s" % (self.instance, self.mode, stamp)
+        keep = os.environ.get("CP_SWI_KEEP")
+        if keep and os.path.isdir(keep):
+            self.work = tempfile.mkdtemp(prefix="cp-swi-run-", dir=keep)
+        else:
+            self.work = tempfile.mkdtemp(prefix="cp-swi-run-")
+        self.commitments = {}   # commit stage -> (verbatim, run_id)
+        # the constants block: stripped from the text that is loaded, and
+        # split by stage; a stage's entries reach a process only when that
+        # stage is posed (README, "Constants")
+        self.const_how, self.const_texts, stripped, err = constants_block(self.prog_abs)
+        if err:
+            shutil.rmtree(self.work, ignore_errors=True)
+            usage("%s: %s" % (self.program, err))
+        os.makedirs(os.path.join(self.work, "program"))
+        self.stripped = os.path.join(self.work, "program", os.path.basename(self.prog_abs))
+        with open(self.stripped, "w", encoding="utf-8") as f:
+            f.write(stripped)
+        # effects logs
+        if self.has_effects:
+            self.log_path = os.path.join(self.out_abs, "%s.effects.jsonl" % self.instance)
+            self.obs_log_path = os.path.join(self.out_abs, "%s.effects-observation.jsonl" % self.instance)
+            self.entries_before = self.count_log(self.log_path)
+
+    # ---- effects log ----
+    def count_log(self, path):
+        try:
+            with open(path, encoding="utf-8") as f:
+                return sum(1 for line in f if line.strip())
+        except FileNotFoundError:
+            return 0
+
+    def drain_spool(self, proc):
+        """Append the spool entries written since the last drain to the logs."""
+        if not self.has_effects or proc.spool is None:
+            return []
+        pos = getattr(proc, "spool_pos", 0)
+        try:
+            with open(proc.spool, "rb") as f:
+                f.seek(pos)
+                data = f.read()
+        except FileNotFoundError:
+            return []
+        # only whole lines
+        cut = data.rfind(b"\n") + 1
+        data = data[:cut]
+        proc.spool_pos = pos + cut
+        out = []
+        for line in data.split(b"\n"):
+            if not line.strip():
+                continue
+            try:
+                e = json.loads(line.decode("utf-8", errors="replace"))
+            except ValueError as ex:
+                self.faults.append("unreadable effects spool line %r: %s" % (line[:200], ex))
+                continue
+            log = e["log"]
+            path = self.log_path if log == "classification" else self.obs_log_path
+            seq = self.count_log(path) + 1
+            entry = {"seq": seq, "entry": e["entry"], "run_id": self.run_id, "stage": int(e["stage"]),
+                     "attempt": int(e["attempt"]), "during_replay_of": e["during_replay_of"], "log": log}
+            with open(path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+            out.append(entry)
+        return out
+
+    # ---- control of one process ----
+    def base_ctl(self, mode_log, attempt, posing_now, k):
+        ctl = {
+            "program": self.stripped,
+            "program_id": self.prog_abs,
+            "_constants": [(j, t) for j, t in sorted(self.const_texts.items()) if j <= k],
+            "mode": RawPl(self.mode),
+            "config": RawPl(self.config),
+            "budget": self.B,
+            "params": RawPl(params_pl(self.params)),
+            "attempt": attempt,
+            "log_kind": RawPl(mode_log),
+            "posing_now": RawPl(posing_now),
+            "commitments": RawPl(self.commitments_pl(k)),
+            "heartbeat": HEARTBEAT,
+        }
+        return ctl
+
+    def commitments_pl(self, k):
+        items = ["%d-%s" % (j, plstring(v[0])) for j, v in sorted(self.commitments.items()) if j < k]
+        return "[" + ",".join(items) + "]"
+
+    def log_kind(self, separate=False):
+        if separate or self.mode != "behaviour":
+            return "observation"
+        return "classification"
+
+    # ---- stage structure ----
+    def stage_comps(self, k):
+        """[(comp_id, kind, query_id, cap, spawned, spawn_index)] for stage k."""
+        st = self.stages[k - 1]
+        res = []
+        if st.get("spawns"):
+            if st.get("spawn_fallback"):
+                # SWI-Prolog: no configuration lets separate computations share
+                # unknowns (README, "Spawn"), so the fallback is always taken.
+                for q in st["fallback_queries"]:
+                    res.append((q["computation"], "main", q["id"], query_cap(q, self.inst), False, None))
+                return res, True
+            order = self.params.get("spawn_order") or st["spawns"]
+            byc = {q["computation"]: q for q in st["queries"]}
+            for i, c in enumerate(order, 1):
+                q = byc[c]
+                res.append((c, "spawned", q["id"], query_cap(q, self.inst), True, i))
+            for q in st["queries"]:
+                if q["computation"] == "main":
+                    res.append(("main", "main", q["id"], query_cap(q, self.inst), False, None))
+            return res, False
+        for q in st["queries"]:
+            res.append((q["computation"], "main", q["id"], query_cap(q, self.inst), False, None))
+        return res, False
+
+
+def params_pl(params):
+    items = []
+    for k, v in params.items():
+        items.append("%s-%s" % (k, plterm(v)))
+    return "[" + ",".join(items) + "]"
+
+
+# ------------------------------------------------- building the record ---
+
+
+def empty_store():
+    return {"quantities": {}, "source": None}
+
+
+def sampled_peak(samples, key):
+    if not samples or key not in samples or not samples.get("n"):
+        return None
+    return {"value": samples[key], "kind": "sampled",
+            "sample_interval": "heartbeat every %s inferences (prolog:heartbeat/0), %s samples, GC on" %
+                               (samples.get("interval"), samples.get("n"))}
+
+
+class Attempt:
+    """Collects what one attempt of one stage produced, then renders it."""
+
+    def __init__(self, run, k, n, limit_s, posed):
+        self.run, self.k, self.n, self.limit_s, self.posed = run, k, n, limit_s, posed
+        self.comps = []
+        self.observe = None
+        self.print = None
+        self.store = empty_store()
+        self.wall = 0.0
+        self.cpu = None
+        self.rss = None
+        self.stdout = ""
+        self.stderr = ""
+        self.exit = {"status": None, "signal": None}
+        self.safety = {"hit": False, "action": "none", "how_stopped": None}
+        self.effects = []
+        self.separate = None
+        self.notes = []
+
+    def record(self):
+        d = {
+            "attempt": self.n, "limit_s": self.limit_s, "posed": self.posed,
+            "computations": self.comps, "observe": self.observe, "print": self.print,
+            "store": self.store, "wall_time_s": round(self.wall, 3),
+            "cpu_time_s": self.cpu, "max_rss_kb": self.rss,
+            "stdout": self.stdout, "stderr": self.stderr, "exit": self.exit,
+            "safety_limit": self.safety, "effects": self.effects, "manual_actions": [],
+            "separate_run": self.separate,
+        }
+        if self.notes:
+            d["notes"] = self.notes
+        return d
+
+
+def comp_record(run, cid, qid, cap, spawned, spawn_index, ev, budget, restart, stage_start_steps,
+                incremental_from=None, collected_on="this-run", timeout=False, waiting=None):
+    """Build one computation entry from the events of its run (ev: dict of
+    lists by kind for this computation)."""
+    answers = []
+    steps_at = []
+    for a in ev.get("answer", []):
+        item = {"index": a["index"], "verbatim": a["text"], "steps_at": None, "alternatives_at": None}
+        if a.get("steps") is not None:
+            rel = a["steps"] - (stage_start_steps or 0)
+            item["steps_at"] = max(rel, 0)
+            steps_at.append(a["steps"])
+        if run.mode == "storage":
+            item["alternatives_at"] = a.get("cps")
+        answers.append(item)
+    end = (ev.get("comp_end") or [None])[-1]
+    exc = (ev.get("at_exception") or [None])[-1]
+    tmo = (ev.get("at_timeout") or [None])[-1]
+    pt = waiting
+    ended = None
+    if timeout:
+        ended = "timeout"
+    elif pt is not None:
+        ended = "waiting"
+    elif end is not None:
+        ended = end["ended_by"]
+    else:
+        ended = "harness-fault"
+
+    obs = {}
+    if end is not None and isinstance(end.get("observe"), dict):
+        obs = end["observe"]
+    if pt is not None:
+        obs = pt.get("observe") or {}
+    if exc is not None and ended in ("budget", "error"):
+        obs = exc
+    if ended == "timeout":
+        obs = tmo or {}
+
+    states, basis, err = [], "", None
+    if ended == "timeout":
+        states, basis = ["timeout"], "the safety limit stopped the attempt (the driver's SIGUSR1; see safety_limit.how_stopped)"
+    elif ended == "budget":
+        states, basis = ["budget"], "the budget ran out: inference_limit_exceeded, raised by the system's inference limit, or by the harness's exact check of the step count when the program entered harness code (README, Budget)"
+    elif ended == "error":
+        states = ["error"]
+        basis = "an exception reached the harness's catch/3 around the posed goal"
+        err = end.get("error_text") or end.get("error_term") or ""
+        if end.get("error_term") and end.get("error_text"):
+            err = end["error_text"] + ("" if end["error_text"].endswith("\n") else "\n") + "% term: " + end["error_term"]
+    elif ended == "waiting":
+        states = ["suspended"]
+        basis = "the program's supporting code called h_wait/0 and the engine yielded: it waits for the next stage"
+    elif ended in ("cap", "det"):
+        nav = obs.get("attvars") or 0
+        if ended == "cap" and not end.get("det"):
+            states.append("alternatives pending")
+        if nav > 0:
+            states.append("suspended")
+        if not states:
+            states = ["finished"]
+        basis = ("at the last answer: %s; %d attributed variable(s) reachable from the unknowns (term_attvars/2)" %
+                 ("open choicepoints newer than the query's mark (prolog_current_choice/1), so a request for more would resume it"
+                  if "alternatives pending" in states else
+                  ("the goal exited without choicepoints (no further answer is offered)" if ended == "det"
+                   else "no open choicepoint newer than the mark"), nav))
+    elif ended == "exhausted":
+        states = ["finished"]
+        basis = "the request for another answer failed: backtracking left the posed goal, so no binding, choicepoint or attributed variable of it is held"
+    else:
+        states = []
+        basis = "HARNESS FAULT: the harness received no end event for this computation (see harness_faults); not the system's error"
+
+    budget_exhausted = ended == "budget"
+    to_end = None
+    restated = None
+    if exc is not None and ended in ("budget", "error"):
+        restated = exc.get("steps")
+    elif ended == "timeout":
+        restated = tmo.get("steps") if tmo else None
+    elif end is not None and end.get("steps") is not None:
+        restated = end["steps"]
+    elif pt is not None:
+        restated = pt.get("steps")
+    elif answers and steps_at:
+        restated = steps_at[-1]
+    if restated is not None:
+        to_end = max(restated - (stage_start_steps or 0), 0)
+    stage_steps = None
+    if incremental_from is not None and restated is not None:
+        stage_steps = max(restated - incremental_from, 0)
+    steps = {
+        "unit": STEP_UNIT, "budget": budget, "budget_exhausted": budget_exhausted,
+        "stage": stage_steps, "restated": restated,
+        "restart_cost": restart[0] if restart else None,
+        "restart_cost_method": restart[1] if restart else None,
+        "restart_cost_source": restart[2] if restart else None,
+        "to_first_answer": answers[0]["steps_at"] if answers else None,
+        "between_answers": [b - a for a, b in zip(steps_at, steps_at[1:])],
+        "to_end": to_end,
+        "repeated_work": None,
+    }
+    samples = None
+    counts, held = None, None
+    src = end if end is not None else (pt or {})
+    if src:
+        samples = src.get("samples")
+        counts = src.get("counts")
+        held = src.get("held")
+    cand = None
+    if isinstance(counts, dict):
+        counts = dict(counts)
+        if "$candidates_examined" in counts:
+            cand = counts.pop("$candidates_examined")
+    alt = {"unit": ALT_UNIT, "at_boundary": None, "at_budget": None, "peak": None,
+           "held_as": "backtracking", "by_type": None,
+           "problem_defined": held if held else None}
+    if run.mode == "storage":
+        if ended in ("cap", "det", "waiting") or (ended == "point"):
+            alt["at_boundary"] = obs.get("cps")
+            alt["by_type"] = obs.get("cp_types")
+        elif ended == "exhausted":
+            alt["at_boundary"] = 0
+            alt["by_type"] = {}
+        if ended == "budget" and exc is not None:
+            alt["at_budget"] = exc.get("cps")
+        alt["peak"] = sampled_peak(samples, "cp")
+    susp = {"unit": SUSP_UNIT, "at_boundary": None, "peak": None, "items": None}
+    if obs.get("attvars") is not None:
+        susp["at_boundary"] = obs.get("attvars")
+        susp["items"] = {"attributed_variables": obs.get("attvars"),
+                         "residual_goals": obs.get("residual_goals")}
+        if ended == "waiting":
+            susp["items"]["engine_waiting_for_next_stage"] = 1
+    elif ended == "exhausted":
+        susp["at_boundary"] = 0
+        susp["items"] = {}
+    q = {"id": qid, "cap": cap, "answers": answers,
+         "ended_by": ("exhausted" if ended in ("det", "exhausted", "waiting") else
+                      ended if ended in ("cap", "budget", "error", "timeout") else "error"),
+         "collected_on": collected_on}
+    determined = bool(states)
+    if q["ended_by"] == "error" and "error" not in states:
+        states = ["error"]
+        determined = False
+        err = err or "HARNESS FAULT: no end event for the computation"
+    c = {"id": cid, "spawned": spawned, "spawn_index": spawn_index,
+         "side_by_side": (False if spawned else None),
+         "queries": [q],
+         "execution_state": {"states": states, "determined": determined, "basis": basis, "error_verbatim": err},
+         "steps": steps, "alternatives": alt, "suspended": susp,
+         "problem_operations": counts if counts else None,
+         "candidates_examined": cand}
+    return c, obs, samples, ended
+
+
+def store_from(run, obs, samples, start_store):
+    if run.mode != "storage":
+        return empty_store()
+    st = obs.get("store") or {}
+    qs = {}
+    names = [("global_live_bytes", "globalused", "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"),
+             ("local_bytes", "localused", "bytes (statistics(localused))"),
+             ("trail_bytes", "trailused", "bytes (statistics(trailused))")]
+    if run.config == "tabling":
+        names.append(("table_space_used_bytes", "table_space_used", "bytes (statistics(table_space_used))"))
+    for q, sk, unit in names:
+        qs[q] = {"boundary": st.get(q), "peak": sampled_peak(samples, sk), "unit": unit}
+    if run.config == "tabling":
+        qs["tables"] = {"boundary": st.get("tables"), "peak": None, "unit": "tables (current_table/2)"}
+        qs["table_answers"] = {"boundary": st.get("table_answers"), "peak": None, "unit": "answers in tables (trie_property/2 value_count)"}
+    if run.config in ("coroutines", "constraints", "session"):
+        qs["attributed_variables"] = {"boundary": obs.get("attvars"), "peak": None,
+                                      "unit": "attributed variables reachable from the unknowns (term_attvars/2), solver-internal ones included"}
+        qs["residual_goals"] = {"boundary": obs.get("residual_goals"), "peak": None,
+                                "unit": "residual goals projected by copy_term/3"}
+    if start_store:
+        for k, v in start_store.items():
+            qs[k + "_at_computation_start"] = {"boundary": v, "peak": None, "unit": "the same, before the computation started (harness baseline)"}
+    return {"quantities": qs, "source": "statistics/2 at the stage boundary, after garbage_collect/0; sampled maxima from the heartbeat sampler"}
+
+
+def by_comp(events):
+    d = {}
+    for e in events:
+        c = e.get("comp", "main")
+        d.setdefault(c, {}).setdefault(e["ev"], []).append(e)
+    return d
+
+
+def print_transcript(answers, ended):
+    parts = [a["verbatim"] for a in answers]
+    if not parts:
+        return "false." if ended in ("exhausted",) else ""
+    s = ";\n".join(parts)
+    if ended == "exhausted" and not answers[-1]["verbatim"].rstrip().endswith("."):
+        s += ";\nfalse."
+    return s
+
+
+# ------------------------------------------------------------- drivers ---
+
+
+def posed_entry(run, k, how, reason, attempt_params=True):
+    replayed = list(range(1, k)) if how == "reposed" else []
+    rc = []
+    if how == "reposed":
+        for j, (v, rid) in sorted(run.commitments.items()):
+            if j < k:
+                rc.append({"stage": j, "value_verbatim": v, "selected_in_run": rid})
+    return {"how": how, "reason": reason, "replayed": replayed, "replayed_commitments": rc,
+            "continued_after_budget": False, "instance_parameters_passed": dict(run.params)}
+
+
+def final_states(att):
+    s = set()
+    for c in att.comps:
+        s |= set(c["execution_state"]["states"])
+    return s
+
+
+def next_reason(prev_states):
+    if "error" in prev_states:
+        return "after-error"
+    if "timeout" in prev_states:
+        return "after-timeout"
+    if "budget" in prev_states:
+        return "after-budget"
+    return "configuration"
+
+
+def note_commit(run, k, att):
+    st = run.stages[k - 1]
+    if not st.get("commit"):
+        return
+    for c in att.comps:
+        if c["id"] == "main" and c["queries"] and c["queries"][0]["answers"]:
+            run.commitments[k] = (c["queries"][0]["answers"][0]["verbatim"], run.run_id)
+            return
+    att.notes.append("commit stage: the system reported no answer, so nothing is replayed as a commitment")
+
+
+def run_reposed_attempt(run, k, n, limit, how, reason):
+    """plain, tabling, coroutines, constraints: one process poses stages 1..k."""
+    posed = posed_entry(run, k, how, reason)
+    att = Attempt(run, k, n, limit, posed)
+    comps, fallback = run.stage_comps(k)
+    plan = "reposed(%d, [%s])" % (k, ",".join(
+        "comp(%s, %s, %d)" % (plq(c[0]), ("spawned(%d)" % k) if c[1] == "spawned" else "main", c[3]) for c in comps))
+    ctl = run.base_ctl(run.log_kind(), n, "reposed" if how == "reposed" else "fresh", k)
+    ctl["plan"] = RawPl(plan)
+    proc = Proc(run, "s%da%d" % (k, n), ctl)
+    evs, how_end = proc.wait_until(lambda e: any(x["ev"] in ("done", "load_error") for x in e), proc.t0 + limit)
+    proc.wait()
+    att.wall = time.monotonic() - proc.t0
+    timed_out = how_end == "timeout"
+    finish_proc_attempt(run, att, proc, evs, comps, fallback, k, how, timed_out)
+    return att
+
+
+def finish_proc_attempt(run, att, proc, evs, comps, fallback, k, how, timed_out):
+    att.stdout = proc.read_out()
+    att.stderr = proc.read_err()
+    att.exit = {"status": proc.status, "signal": proc.signal}
+    if run.p13 and run.mode != "storage" and proc.rusage is not None:
+        att.cpu = round(proc.rusage.ru_utime + proc.rusage.ru_stime, 3)
+        att.rss = int(proc.rusage.ru_maxrss)
+    if timed_out:
+        att.safety = {"hit": True, "action": None, "how_stopped": "after %s s of wall time: %s" % (att.limit_s, proc.how_stopped)}
+    for e in evs:
+        if e["ev"] == "harness_fault":
+            run.faults.append("stage %d attempt %d: %s" % (k, att.n, e.get("text")))
+        if e["ev"] == "note":
+            att.notes.append(e.get("text"))
+    load_err = [e for e in evs if e["ev"] == "load_error"]
+    bc = by_comp([e for e in evs if "comp" in e])
+    att.effects = run.drain_spool(proc)
+    obs_main, samples_main, ended_main = {}, None, None
+    for (cid, kind, qid, cap, spawned, sidx) in comps:
+        ev = bc.get(cid, {})
+        enters = ev.get("enter", [])
+        stage_start, restart = 0, None
+        budget = run.B
+        if kind == "main" and how == "reposed":
+            ent = [e for e in enters if e["stage"] == k]
+            if ent:
+                rc = ent[0]["steps"]
+                restart = (rc, "in-run", "%s stage %d attempt %d: the step count when stage %d was first posed, after the replay of stages 1-%d" % (run.run_id, k, att.n, k, k - 1))
+            else:
+                exc = (ev.get("at_exception") or [None])[-1]
+                tmo = (ev.get("at_timeout") or [None])[-1]
+                why = "budget" if exc else ("the safety limit" if tmo else "the end of the process")
+                rcv = exc["steps"] if exc else (tmo.get("steps") if tmo else (ev.get("comp_end") or [{}])[-1].get("steps"))
+                last = max([e["stage"] for e in enters] or [0])
+                if rcv is None:
+                    run.faults.append("stage %d attempt %d: the replay did not reach stage %d and its step count could not be read" % (k, att.n, k))
+                    restart = (None, None, None)
+                else:
+                    restart = (rcv, "in-run", "%s stage %d attempt %d: the replay was stopped by %s during stage %d, before stage %d was posed; the restart cost is every step of the replay, read when it stopped" %
+                               (run.run_id, k, att.n, why, last, k))
+            stage_start = restart[0] or 0
+            budget = (restart[0] or 0) + run.B
+        unfinished = timed_out and not ev.get("comp_end") and not ev.get("at_exception")
+        if load_err:
+            c = load_error_comp(run, cid, qid, cap, spawned, sidx, load_err[0], budget, restart)
+            obs = {}
+            samples = None
+            ended = "error"
+        else:
+            c, obs, samples, ended = comp_record(run, cid, qid, cap, spawned, sidx, ev, budget, restart, stage_start,
+                                                 timeout=unfinished)
+            if timed_out and not unfinished:
+                pass
+        att.comps.append(c)
+        if kind == "main" or not obs_main:
+            obs_main, samples_main, ended_main = obs, samples, ended
+            start_store = None
+            ss = ev.get("store_start")
+            if ss:
+                start_store = ss[-1].get("store")
+            att.store = store_from(run, obs, samples, start_store) if run.mode == "storage" else empty_store()
+    if timed_out and not any("timeout" in c["execution_state"]["states"] for c in att.comps):
+        # the process was killed after every computation ended (in printing): mark the last
+        c = att.comps[-1]
+        c["execution_state"] = {"states": ["timeout"], "determined": True,
+                                "basis": "the safety limit stopped the attempt after the computation had ended",
+                                "error_verbatim": None}
+        c["queries"][0]["ended_by"] = "timeout"
+        c["steps"]["budget_exhausted"] = False
+    if len(comps) > 1 and not load_err:
+        att.observe = observe_multi(run, comps, bc, att.comps)
+    else:
+        att.observe = observe_entry(obs_main, ended_main)
+    att.print = print_for(att.comps, load_err)
+    if len(comps) > 1:
+        att.notes.append("computations ran one after the other in this process, in the order %s; observe() and print() are of %s" %
+                         (", ".join(c[0] for c in comps), att.comps[-1]["id"] if not any(c[1] == "main" for c in comps) else "main"))
+    if fallback:
+        att.notes.append("P16b: SWI-Prolog's computations cannot share unknowns (a separate query or engine copies its goal), so the four contributions are posed as one conjunction in main (spawn_fallback)")
+    proc.cleanup()
+
+
+def load_error_comp(run, cid, qid, cap, spawned, sidx, le, budget, restart):
+    return {"id": cid, "spawned": spawned, "spawn_index": sidx, "side_by_side": (False if spawned else None),
+            "queries": [{"id": qid, "cap": cap, "answers": [], "ended_by": "error", "collected_on": "this-run"}],
+            "execution_state": {"states": ["error"], "determined": True,
+                                "basis": "loading the program raised an exception, so no stage was posed",
+                                "error_verbatim": le.get("text") or ""},
+            "steps": {"unit": STEP_UNIT, "budget": budget, "budget_exhausted": False, "stage": None, "restated": None,
+                      "restart_cost": restart[0] if restart else None,
+                      "restart_cost_method": restart[1] if restart else None,
+                      "restart_cost_source": restart[2] if restart else None,
+                      "to_first_answer": None, "between_answers": [], "to_end": None, "repeated_work": None},
+            "alternatives": {"unit": ALT_UNIT, "at_boundary": None, "at_budget": None, "peak": None,
+                             "held_as": "backtracking", "by_type": None, "problem_defined": None},
+            "suspended": {"unit": SUSP_UNIT, "at_boundary": None, "peak": None, "items": None},
+            "problem_operations": None, "candidates_examined": None}
+
+
+def observe_entry(obs, ended, taken_on="this-run"):
+    raw = obs.get("text") if obs else None
+    where = obs.get("where") if obs else None
+    if raw is None:
+        raw = ""
+    if ended == "timeout":
+        method = "nothing could be read: the process was killed at the safety limit"
+    elif ended == "exhausted":
+        method = "the query failed back past its start, so nothing of it is held: raw is empty"
+    elif where == "at-exception":
+        method = "read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel's rendering of the bindings held (translate_bindings/4, name_vars/3, query message), term_attvars/2, copy_term/3"
+    else:
+        method = "read at the end of the stage (%s): the toplevel's rendering of the bindings held (translate_bindings/4, name_vars/3, query message), term_attvars/2 of the unknowns, copy_term/3 residual goals" % (where or "boundary")
+    b = obs.get("bindings") if obs else None
+    return {"raw": raw, "method": method, "taken_on": taken_on,
+            "bindings": b if isinstance(b, dict) and raw else None}
+
+
+def observe_multi(run, comps, bc, crecs):
+    """observe() of a stage with several computations: each one's, in order."""
+    raws, binds, methods = [], {}, set()
+    for (cid, kind, qid, cap, spawned, sidx), c in zip(comps, crecs):
+        ev = bc.get(cid, {})
+        end = (ev.get("comp_end") or [None])[-1]
+        exc = (ev.get("at_exception") or [None])[-1]
+        obs = exc if (exc is not None and c["queries"][0]["ended_by"] in ("budget", "error")) else \
+            ((end or {}).get("observe") or {})
+        o = observe_entry(obs, c["queries"][0]["ended_by"] if c["queries"][0]["ended_by"] != "exhausted" or not obs.get("text") else "end")
+        raws.append("%% computation %s\n%s" % (cid, o["raw"]))
+        methods.add(o["method"])
+        for k, v in (o["bindings"] or {}).items():
+            binds["%s:%s" % (cid, k)] = v
+    return {"raw": "\n".join(raws), "method": "per computation, in the order they ran: " + "; ".join(sorted(methods)),
+            "taken_on": "this-run", "bindings": binds or None}
+
+
+def print_for(comps, load_err):
+    if load_err:
+        return load_err[0].get("text") or ""
+    parts = []
+    for c in comps:
+        q = c["queries"][0]
+        t = print_transcript(q["answers"], q["ended_by"])
+        if len(comps) > 1:
+            t = "%% computation %s\n%s" % (c["id"], t)
+        parts.append(t)
+    return "\n".join(parts)
+
+
+def run_reposed(run):
+    stages = []
+    prev = None
+    for k in range(1, run.K + 1):
+        if k == 1:
+            how, reason = "fresh", "first-stage"
+        else:
+            how, reason = "reposed", next_reason(final_states(prev))
+        atts = [run_reposed_attempt(run, k, 1, run.limit1, how, reason)]
+        a1 = atts[0]
+        if a1.safety["hit"]:
+            if run.limit2 is not None:
+                a1.safety["action"] = "rerun"
+                h2 = "fresh" if k == 1 else "reposed"
+                a2 = run_reposed_attempt(run, k, 2, run.limit2, h2, "safety-rerun")
+                if a2.safety["hit"]:
+                    a2.safety["action"] = "final-timeout"
+                atts.append(a2)
+            else:
+                a1.safety["action"] = "fixed-limit-timeout"
+        note_commit(run, k, atts[-1])
+        stages.append({"stage": k, "attempts": [a.record() for a in atts]})
+        prev = atts[-1]
+    return stages
+
+
+# ---------------------------------------------------------------- session ---
+
+
+def session_ctl(run, n, k_first, replay_posts, interactive, log, how_first, separate=False):
+    ctl = run.base_ctl(log, n, how_first, k_first)
+    ctl["plan"] = RawPl("session([%s])" % ",".join(replay_posts))
+    ctl["commands"] = interactive
+    return ctl
+
+
+def post_term(j, collect, k, how, att, cap=20, text=None):
+    t = "post(%d, %s, ctx(%d, %s, %d, %d)" % (j, collect, k, how, att, cap)
+    if text is not None:                     # a command: the stage's constants arrive with it
+        return t + ", %s)" % plstring(text)
+    return t + ")"
+
+
+def main_cap(run, k):
+    st = run.stages[k - 1]
+    qs = st["fallback_queries"] if st.get("spawn_fallback") else st["queries"]
+    for q in qs:
+        if q["computation"] == "main":
+            return query_cap(q, run.inst)
+    return 20
+
+
+def run_session(run):
+    """session: an engine per incremental computation; each stage posted."""
+    # P09-like instances (no main computation) are run as in the reposed
+    # configurations: their only stage spawns separate queries.
+    if any(c[1] == "spawned" for c in run.stage_comps(1)[0]) and run.K == 1:
+        return run_reposed(run)
+    stages = {}
+    s = 1
+    reason = "first-stage"
+    attempt_no = 1
+    limit = run.limit1
+    while s <= run.K:
+        how = "fresh" if s == 1 else "reposed"
+        result = session_segment(run, s, how, reason, attempt_no, limit, stages)
+        # result: (last_stage_recorded, final_states, timed_out_stage or None)
+        last, states, timeout_stage = result
+        if timeout_stage is not None:
+            k = timeout_stage
+            a1 = stages[k][-1]
+            if a1.n == 1 and run.limit2 is not None:
+                a1.safety["action"] = "rerun"
+                s, reason, attempt_no, limit = k, "safety-rerun", 2, run.limit2
+                continue
+            a1.safety["action"] = "final-timeout" if a1.n == 2 else "fixed-limit-timeout"
+            s, reason, attempt_no, limit = k + 1, "after-timeout", 1, run.limit1
+            continue
+        if last >= run.K:
+            break
+        s, reason, attempt_no, limit = last + 1, next_reason(states), 1, run.limit1
+    return [{"stage": k, "attempts": [a.record() for a in stages[k]]} for k in sorted(stages)]
+
+
+def session_segment(run, s, how, reason, attempt_no, limit, stages):
+    """Start one incremental computation at stage s (replaying 1..s-1 when
+    reposed), and post s, s+1, ... into it while each stage ends normally."""
+    replay = [post_term(j, "replay", s, "reposed", attempt_no) for j in range(1, s)]
+    ctl = session_ctl(run, attempt_no, s, replay, True, run.log_kind(), "reposed" if how == "reposed" else "fresh")
+    proc = Proc(run, "seg%d" % s, ctl)
+    t_start = proc.t0
+    k = s
+    last_states = set()
+    try:
+        # the replay (part of stage s's attempt, inside its limit)
+        evs, st = proc.wait_until(lambda e: any(x["ev"] in ("ready", "done", "load_error") for x in e), t_start + limit)
+        pre_events = evs
+        if st == "timeout" or any(x["ev"] in ("done", "load_error") for x in evs) and not any(x["ev"] == "ready" for x in evs):
+            # the replay itself stopped: record stage s from what was read
+            att = Attempt(run, s, attempt_no, limit, posed_entry(run, s, how, reason))
+            session_stop_attempt(run, att, proc, evs, s, how, st == "timeout", t_start)
+            stages.setdefault(s, []).append(att)
+            return s, final_states(att), (s if st == "timeout" else None)
+        prev_steps = None
+        while k <= run.K:
+            n = attempt_no if k == s else 1
+            lim = limit if k == s else run.limit1
+            posed = posed_entry(run, k, how if k == s else "incremental", reason if k == s else "configuration")
+            att = Attempt(run, k, n, lim, posed)
+            last_stage = k == run.K
+            collect = "here" if last_stage else "point"
+            t0 = time.monotonic() if k > s else t_start
+            ob, eb = proc.out_size()
+            if k == s:
+                ob, eb = 0, 0
+            proc.send(post_term(k, collect, k, how if k == s else "incremental", n, main_cap(run, k),
+                                text=("" if k == s else run.const_texts.get(k, ""))))
+            evs, st = proc.wait_until(
+                lambda e: any(x["ev"] in ("ready", "done", "load_error") for x in e) or
+                any(x["ev"] in ("comp_end",) for x in e), t0 + lim)
+            if k == s:
+                evs = pre_events + evs
+            att.wall = time.monotonic() - t0
+            if st == "timeout":
+                session_stop_attempt(run, att, proc, evs, k, posed["how"], True, t0, ob, eb)
+                stages.setdefault(k, []).append(att)
+                return k, final_states(att), k
+            pt = [x for x in evs if x["ev"] in ("point", "waiting")]
+            ends = [x for x in evs if x["ev"] == "comp_end"]
+            if pt and not ends:
+                p = pt[-1]
+                # the stage's held state, read without consuming it
+                oa, ea = p.get("out_bytes") or 0, p.get("err_bytes") or 0
+                att.stdout = proc.read_out(ob, oa)
+                att.stderr = proc.read_err(eb, ea)
+                att.exit = {"status": None, "signal": None}
+                att.effects = run.drain_spool(proc)
+                obs = p.get("observe") or {}
+                att.observe = observe_entry(obs, "point")
+                att.print = obs.get("text", "")
+                if p["ev"] == "waiting":
+                    att.print = obs.get("text", "")
+                    att.notes.append("the computation waits (h_wait/0) for the next stage")
+                for e in evs:
+                    if e["ev"] == "harness_fault":
+                        run.faults.append("stage %d: %s" % (k, e.get("text")))
+                inc_from = prev_steps if prev_steps is not None else 0
+                # answers on a separate run of stages 1..k
+                sep, comp, sep_timeout, sep_entries = session_separate(run, k, n, lim, p, inc_from)
+                att.effects = att.effects + sep_entries
+                att.separate = sep
+                att.comps = [comp]
+                if run.mode == "storage":
+                    samples = p.get("samples")
+                    att.store = store_from(run, obs, samples, None)
+                    # alternatives held by the incremental computation itself
+                    att.notes.append("incremental computation at the end of the stage: %s retained choicepoint(s), %s attributed variable(s), det=%s" %
+                                     (obs.get("cps"), obs.get("attvars"), p.get("det")))
+                else:
+                    att.notes.append("incremental computation at the end of the stage: %s attributed variable(s), %s" %
+                                     (obs.get("attvars"), "deterministic so far" if p.get("det") else "open choicepoints in the engine"))
+                if p["ev"] == "waiting":
+                    att.notes.append("the incremental computation's own state: suspended (engine waiting in h_wait/0)")
+                prev_steps = p.get("steps")
+                if sep_timeout:
+                    att.safety = {"hit": True, "action": None,
+                                  "how_stopped": "the separate run, after %s s of wall time: %s" % (lim, sep_timeout)}
+                    stages.setdefault(k, []).append(att)
+                    return k, final_states(att), k
+                note_commit(run, k, att)
+                stages.setdefault(k, []).append(att)
+                last_states = final_states(att)
+                k += 1
+                continue
+            # the computation ended at stage k: answers collected here, or budget/error/failure
+            session_stop_attempt(run, att, proc, evs, k, posed["how"], False, t0, ob, eb, inc_from=prev_steps)
+            note_commit(run, k, att)
+            stages.setdefault(k, []).append(att)
+            return k, final_states(att), None
+        return k - 1, last_states, None
+    finally:
+        proc.close_commands()
+        proc.hard_kill()
+        proc.cleanup()
+
+
+def session_stop_attempt(run, att, proc, evs, k, how, timed_out, t0, ob=0, eb=0, inc_from=None):
+    """Record a stage at which the session process stopped (or was killed)."""
+    proc.close_commands()
+    if not timed_out:
+        proc.wait_until(lambda e: False, time.monotonic() + 30) if proc.alive() else None
+        proc.wait()
+    att.wall = time.monotonic() - t0
+    att.stdout = proc.read_out(ob)
+    att.stderr = proc.read_err(eb)
+    att.exit = {"status": proc.status, "signal": proc.signal}
+    if timed_out:
+        att.safety = {"hit": True, "action": None, "how_stopped": "after %s s of wall time: %s" % (att.limit_s, proc.how_stopped)}
+    att.effects = run.drain_spool(proc)
+    load_err = [e for e in evs if e["ev"] == "load_error"]
+    for e in evs:
+        if e["ev"] == "harness_fault":
+            run.faults.append("stage %d: %s" % (k, e.get("text")))
+    # events of this stage only (after its post)
+    posts = [i for i, e in enumerate(evs) if e["ev"] == "post" and e.get("stage") == k]
+    mine = evs[posts[-1]:] if posts else evs
+    bc = by_comp([e for e in mine if "comp" in e or e["ev"] in ("enter",)])
+    ev = bc.get("main", {})
+    allenter = [e for e in evs if e["ev"] == "enter"]
+    budget, restart, stage_start = run.B, None, (inc_from or 0)
+    if how == "reposed":
+        ent = [e for e in allenter if e["stage"] == k]
+        if ent:
+            rc = ent[0]["steps"]
+            restart = (rc, "in-run", "%s stage %d attempt %d: the engine's step count when stage %d was first posted, after the replay of stages 1-%d" % (run.run_id, k, att.n, k, k - 1))
+        else:
+            exc = [e for e in evs if e["ev"] == "at_exception"]
+            tmo = [e for e in evs if e["ev"] == "at_timeout" and e.get("steps") is not None]
+            rcv = exc[-1]["steps"] if exc else (tmo[-1]["steps"] if tmo else None)
+            why = "budget" if exc else ("the safety limit" if tmo else "the end of the process")
+            last = max([e["stage"] for e in allenter] or [0])
+            if rcv is None:
+                run.faults.append("stage %d attempt %d: the replay did not reach stage %d and its step count could not be read" % (k, att.n, k))
+                restart = (None, None, None)
+            else:
+                restart = (rcv, "in-run", "%s stage %d attempt %d: the replay was stopped by %s during stage %d, before stage %d was posted; the restart cost is every step of the replay, read when it stopped" % (run.run_id, k, att.n, why, last, k))
+        budget = (restart[0] or 0) + run.B
+        stage_start = restart[0] or 0
+    # waiting / point inside a stopped stage: none (stopped means ended)
+    if load_err:
+        c = load_error_comp(run, "main", "q", query_cap(run.stages[k - 1]["queries"][0], run.inst), False, None, load_err[0], budget, restart)
+        obs, ended, samples = {}, "error", None
+    else:
+        qd = run.stages[k - 1]["queries"][0] if not run.stages[k - 1].get("spawn_fallback") else run.stages[k - 1]["fallback_queries"][0]
+        for kind in ("at_exception", "at_timeout"):
+            if kind not in ev:
+                ex = [e for e in evs if e["ev"] == kind]
+                if ex:
+                    ev[kind] = ex[-1:]
+        c, obs, samples, ended = comp_record(run, "main", qd["id"], query_cap(qd, run.inst), False, None, ev, budget,
+                                             restart, stage_start, incremental_from=(inc_from if how == "incremental" else None),
+                                             timeout=timed_out)
+    att.comps = [c]
+    att.observe = observe_entry(obs, ended)
+    att.print = print_for(att.comps, load_err)
+    att.store = store_from(run, obs, samples, None)
+
+
+def session_separate(run, k, n, lim, point_ev, inc_from):
+    """A separate run of stages 1..k in a fresh process and engine, on which
+    answers(cap) are collected (PROTOCOL.md, Observing must not consume)."""
+    posts = [post_term(j, "replay", k, "reposed", n) for j in range(1, k)] + [post_term(k, "here", k, "reposed", n, main_cap(run, k))]
+    ctl = session_ctl(run, n, k, posts, None, run.log_kind(separate=True), "reposed", separate=True)
+    proc = Proc(run, "sep%d" % k, ctl)
+    evs, st = proc.wait_until(lambda e: any(x["ev"] in ("done", "load_error") for x in e), proc.t0 + lim)
+    proc.wait()
+    wall = time.monotonic() - proc.t0
+    timed_out = st == "timeout"
+    entries = run.drain_spool(proc)
+    posts_i = [i for i, e in enumerate(evs) if e["ev"] == "post" and e.get("stage") == k]
+    mine = evs[posts_i[-1]:] if posts_i else evs
+    ev = by_comp([e for e in mine if "comp" in e]).get("main", {})
+    ex = [e for e in evs if e["ev"] == "at_exception"]
+    if ex and "at_exception" not in ev:
+        ev["at_exception"] = ex[-1:]
+    ent = [e for e in evs if e["ev"] == "enter" and e["stage"] == k]
+    stage_start = ent[0]["steps"] if ent else 0
+    qd = run.stages[k - 1]["queries"][0] if not run.stages[k - 1].get("spawn_fallback") else run.stages[k - 1]["fallback_queries"][0]
+    waiting = [e for e in mine if e["ev"] == "waiting"]
+    c, obs, samples, ended = comp_record(run, "main", qd["id"], query_cap(qd, run.inst), False, None, ev, run.B, None,
+                                         stage_start, collected_on="separate-run", timeout=timed_out,
+                                         waiting=(waiting[-1] if waiting and not ev.get("comp_end") else None))
+    # the incremental computation's own steps
+    c["steps"]["restated"] = point_ev.get("steps")
+    c["steps"]["stage"] = (point_ev.get("steps") - inc_from) if point_ev.get("steps") is not None else None
+    c["steps"]["budget_exhausted"] = "budget" in c["execution_state"]["states"]
+    restated_sep = (ev.get("comp_end") or [{}])[-1].get("steps")
+    if restated_sep is None and ex:
+        restated_sep = ex[-1].get("steps")
+    sep = {"replayed": list(range(1, k + 1)), "stdout": proc.read_out(), "stderr": proc.read_err(),
+           "exit": {"status": proc.status, "signal": proc.signal}, "wall_time_s": round(wall, 3),
+           "steps_restated": restated_sep}
+    if run.has_effects:
+        sep["effects_log"] = os.path.relpath(run.obs_log_path, REPO)
+    for e in evs:
+        if e["ev"] == "harness_fault":
+            run.faults.append("stage %d separate run: %s" % (k, e.get("text")))
+    proc.cleanup()
+    return sep, c, (proc.how_stopped if timed_out else None), entries
+
+
+# ------------------------------------------------------------------ main ---
+
+
+def harness_info():
+    try:
+        commit = subprocess.run(["git", "-c", "safe.directory=*", "rev-parse", "HEAD"], cwd=REPO,
+                                capture_output=True, text=True, timeout=30).stdout.strip()
+        dirty = subprocess.run(["git", "-c", "safe.directory=*", "status", "--porcelain", "--", "harnesses/swi-prolog",
+                                ":!harnesses/swi-prolog/qualification/records", ":!harnesses/swi-prolog/qualification/output.txt"],
+                               cwd=REPO, capture_output=True, text=True, timeout=30).stdout.strip() != ""
+    except (OSError, subprocess.SubprocessError):
+        commit, dirty = "", True
+    if not commit:
+        commit, dirty = "0000000", True
+    return {"path": "harnesses/swi-prolog/run", "commit": commit, "dirty": dirty}
+
+
+def repo_commit():
+    try:
+        return subprocess.run(["git", "-c", "safe.directory=*", "rev-parse", "HEAD"], cwd=REPO,
+                              capture_output=True, text=True, timeout=30).stdout.strip() or None
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+STAGE_HEADER = re.compile(r"^\s*%\s*stage\s+([0-9]+)\s*$")
+
+
+def constants_block(path):
+    """(how, {stage: text}, text without the block, error or None).
+
+    The block is the lines between a comment line containing CONSTANTS
+    BEGIN and one containing CONSTANTS END. Inside it, a comment line
+    '% stage K' starts the entries of stage K (stages increasing); every
+    other line is either a comment, blank, or entry text (Prolog facts).
+    The block's lines are blanked in the text that is loaded, so that the
+    program's line numbers stay the same."""
+    with open(path, "rb") as f:
+        text = f.read().decode("utf-8", errors="replace")
+    lines = text.split("\n")
+    b = [i for i, l in enumerate(lines) if "CONSTANTS BEGIN" in l and l.lstrip().startswith("%")]
+    e = [i for i, l in enumerate(lines) if "CONSTANTS END" in l and l.lstrip().startswith("%")]
+    if not b and not e:
+        return "none", {}, text, None
+    if not (len(b) == 1 and len(e) == 1 and b[0] < e[0]):
+        return None, None, None, "the CONSTANTS BEGIN / CONSTANTS END comment lines must be one pair, in that order (check)"
+    texts, cur, last = {}, None, 0
+    for i in range(b[0] + 1, e[0]):
+        l = lines[i]
+        m = STAGE_HEADER.match(l)
+        if m:
+            cur = int(m.group(1))
+            if cur <= last:
+                return None, None, None, "line %d: the block's stages must increase ('%% stage %d' after stage %d)" % (i + 1, cur, last)
+            last = cur
+            texts.setdefault(cur, "")
+            continue
+        if not l.strip() or l.lstrip().startswith("%"):
+            continue
+        if cur is None:
+            return None, None, None, "line %d: an entry of the CONSTANTS block before any '%% stage K' line" % (i + 1)
+        texts[cur] += l + "\n"
+    stripped = "\n".join("" if b[0] <= i <= e[0] else l for i, l in enumerate(lines))
+    return "block", texts, stripped, None
+
+
+def constants_info(run):
+    return {"how": run.const_how, "input_path": None, "input_sha256": None,
+            "variant": os.environ.get("CP_VARIANT") or None}, ([], [])
+
+
+def main(argv):
+    run = Run(argv)
+    try:
+        ver = subprocess.run([SWIPL, "--version"], capture_output=True, text=True, timeout=60).stdout
+    except (OSError, subprocess.SubprocessError) as e:
+        ver = None
+        run.faults.append("could not run swipl --version: %s" % e)
+    consts, (b, e) = constants_info(run)
+    if consts["how"] == "none" and (b or e):
+        run.notes.append("constants markers found but not as one CONSTANTS BEGIN ... CONSTANTS END comment pair: lines %s, %s" % (b, e))
+    prog_sha = sha256_file(run.prog_abs)
+    try:
+        if run.posing == "reposed":
+            stages = run_reposed(run)
+        else:
+            stages = run_session(run)
+        complete = len(stages) == run.K
+        incomplete = None if complete else "only %d of %d stages were recorded" % (len(stages), run.K)
+    except Exception as ex:  # a harness fault
+        import traceback
+        run.faults.append("harness exception: %s" % traceback.format_exc())
+        stages, complete, incomplete = [], False, "the harness failed: %s" % ex
+    ended = utcnow()
+    rel_prog = os.path.relpath(run.prog_abs, REPO)
+    rec = {
+        "record_format": "cp-raw-record/1",
+        "run": {
+            "run_id": run.run_id, "spec_tag": "spec-1.0", "system": "swi-prolog",
+            "configuration": run.config, "problem": run.problem, "subproblem": run.sub["id"],
+            "instance": run.instance, "parameters": run.params, "mode": run.mode,
+            "purpose": os.environ.get("CP_PURPOSE") or "primary",
+            "program": {"path": rel_prog, "sha256": prog_sha, "repo_commit": repo_commit()},
+            "constants": consts,
+            "system_build": {"commit": None,
+                             "image": os.environ.get("HARNESS_IMAGE_DIGEST") or os.environ.get("CP_IMAGE_DIGEST") or PINNED_IMAGE,
+                             "binary": os.path.realpath(SWIPL), "version_output": ver,
+                             "instrumented": run.mode == "storage"},
+            "harness": harness_info(),
+            "command": ["harnesses/swi-prolog/run"] + argv[1:],
+            "posing": run.posing,
+            "limits": {"budget_steps": run.B, "step_unit": STEP_UNIT,
+                       "safety_limit_s": run.limit1, "rerun_limit_s": run.limit2},
+            "started_utc": iso(run.started), "ended_utc": iso(ended),
+            "complete": complete, "incomplete_reason": incomplete,
+            "confounds": CONFOUNDS,
+            "environment": {"LANG": "C.UTF-8"},
+        },
+        "stages": stages,
+        "effects": None,
+        "manual_actions": [],
+        "harness_faults": run.faults,
+        "notes": run.notes + ["system_build.commit is null: the swipl:11.0.1 image has no /opt/src/COMMITS; the build is recorded as the pinned image's digest (PINS.md) in system_build.image"],
+    }
+    if run.has_effects:
+        with open(run.log_path, encoding="utf-8") if os.path.exists(run.log_path) else open(os.devnull) as f:
+            log = [json.loads(l) for l in f if l.strip()]
+        rec["effects"] = {"log_path": os.path.relpath(run.log_path, REPO),
+                          "observation_log_path": os.path.relpath(run.obs_log_path, REPO),
+                          "entries_before_run": run.entries_before, "log_after_run": log}
+    out = os.path.join(run.out_abs, run.run_id + ".json")
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(rec, f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    vargs = [sys.executable, VALIDATE, "--stages", run.stages_path, out]
+    v = subprocess.run(vargs, capture_output=True, text=True)
+    sys.stdout.write(v.stdout)
+    shutil.rmtree(run.work, ignore_errors=True) if not os.environ.get("CP_SWI_KEEP") else None
+    if v.returncode != 0:
+        bad = os.path.join(run.out_abs, run.run_id + ".INVALID.json")
+        os.replace(out, bad)
+        sys.stderr.write("run: the record did not validate; kept as %s\n" % bad)
+        return 3
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

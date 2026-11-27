@@ -1,0 +1,7 @@
+{"seq": 1, "entry": "chose(1)", "run_id": "X02a.behaviour.20261127T190852Z", "stage": 1, "attempt": 1, "during_replay_of": null, "log": "classification"}
+{"seq": 2, "entry": "chose(1)", "run_id": "X02a.behaviour.20261127T190852Z", "stage": 2, "attempt": 1, "during_replay_of": 1, "log": "classification"}
+{"seq": 3, "entry": "committed(1)", "run_id": "X02a.behaviour.20261127T190852Z", "stage": 2, "attempt": 1, "during_replay_of": null, "log": "classification"}
+{"seq": 4, "entry": "chose(1)", "run_id": "X02a.behaviour.20261127T190852Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "classification"}
+{"seq": 5, "entry": "committed(1)", "run_id": "X02a.behaviour.20261127T190852Z", "stage": 3, "attempt": 1, "during_replay_of": 2, "log": "classification"}
+{"seq": 6, "entry": "chose(2)", "run_id": "X02a.behaviour.20261127T190852Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "classification"}
+{"seq": 7, "entry": "chose(3)", "run_id": "X02a.behaviour.20261127T190852Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "classification"}

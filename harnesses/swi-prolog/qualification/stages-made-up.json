@@ -1,0 +1,892 @@
+{
+ "format": "cp-stages/1",
+ "spec_tag": "spec-1.0",
+ "about": [
+  "MADE UP for the SWI-Prolog harness qualification. Invented problems X01-X12, not in the suite, so that the harness can be tested without any problem P01-P16 or its constants. Nothing here is a result."
+ ],
+ "vocabulary": {
+  "kind": {
+   "adds": "",
+   "replaces": "",
+   "retracts": "",
+   "commit": "",
+   "query": ""
+  },
+  "answers": {
+   "all": "answers(20)",
+   "any-one": "answers(1)"
+  }
+ },
+ "default_limits": {
+  "budget_steps": 1000000,
+  "safety_limit_s": 60,
+  "rerun_limit_s": 600,
+  "source": "PROTOCOL.md, Running"
+ },
+ "problems": [
+  {
+   "problem": "X01",
+   "file": "(made up)",
+   "title": "Made up: colours of a made-up flag, three stages",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X01a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "a",
+      "b"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X01a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X02",
+   "file": "(made up)",
+   "title": "Made up: an effect and a commit",
+   "effects": true,
+   "subproblems": [
+    {
+     "id": "X02a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "p"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X02a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "commit",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": true,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X03",
+   "file": "(made up)",
+   "title": "Made up: two spawned computations",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X03a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "p",
+      "q"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X03a.UV",
+       "parameters": {
+        "spawn_order": [
+         "U",
+         "V"
+        ]
+       }
+      },
+      {
+       "id": "X03a.VU",
+       "parameters": {
+        "spawn_order": [
+         "V",
+         "U"
+        ]
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "U",
+         "computation": "U",
+         "answers": "all",
+         "cap": 20
+        },
+        {
+         "id": "V",
+         "computation": "V",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": [
+        "U",
+        "V"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X04",
+   "file": "(made up)",
+   "title": "Made up: a small budget",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X04a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "s"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X04a.n10",
+       "parameters": {
+        "n": 10
+       }
+      },
+      {
+       "id": "X04a.n4997",
+       "parameters": {
+        "n": 4997
+       }
+      },
+      {
+       "id": "X04a.n4998",
+       "parameters": {
+        "n": 4998
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 5000,
+    "safety_limit_s": 60,
+    "rerun_limit_s": 600,
+    "source": "made up"
+   }
+  },
+  {
+   "problem": "X05",
+   "file": "(made up)",
+   "title": "Made up: a stage that runs past the safety limit, rerun",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X05a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "t"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X05a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 1000000000000,
+    "safety_limit_s": 1,
+    "rerun_limit_s": 3,
+    "source": "made up"
+   }
+  },
+  {
+   "problem": "X06",
+   "file": "(made up)",
+   "title": "Made up: an error, then reposing",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X06a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "e"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X06a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X07",
+   "file": "(made up)",
+   "title": "Made up: a fixed safety limit, no rerun",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X07a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "t"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X07a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 1000000000000,
+    "safety_limit_s": 1,
+    "rerun_limit_s": null,
+    "source": "made up"
+   }
+  },
+  {
+   "problem": "X08",
+   "file": "(made up)",
+   "title": "Made up: late information: suspension and constraints",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X08a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "m",
+      "n"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X08a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X09",
+   "file": "(made up)",
+   "title": "Made up: sizes, orders and counters",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X09a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X09a.n5.up",
+       "parameters": {
+        "n": 5,
+        "order": [
+         "up"
+        ]
+       }
+      },
+      {
+       "id": "X09a.n5.down",
+       "parameters": {
+        "n": 5,
+        "order": [
+         "down"
+        ]
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X10",
+   "file": "(made up)",
+   "title": "Made up: answer modes",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X10a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "w"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X10a.all",
+       "parameters": {
+        "answers": "all",
+        "cap": 20
+       }
+      },
+      {
+       "id": "X10a.any",
+       "parameters": {
+        "answers": "any-one",
+        "cap": 1
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": null,
+         "cap": null
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X11",
+   "file": "(made up)",
+   "title": "Made up: a replacing stage",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X11a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "v"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X11a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "replaces",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "replaces",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X12",
+   "file": "(made up)",
+   "title": "Made up: a fallback conjunction of contributors",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X12a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "x"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X12a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "C1",
+         "computation": "C1",
+         "answers": "all",
+         "cap": 20
+        },
+        {
+         "id": "C2",
+         "computation": "C2",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": [
+        "C1",
+        "C2"
+       ],
+       "spawn_fallback": "main",
+       "fallback_queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ]
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "made up",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

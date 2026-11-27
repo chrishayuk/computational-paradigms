@@ -1,0 +1,14 @@
+{"seq": 1, "entry": "chose(1)", "run_id": "X02a.cost.20261127T190853Z", "stage": 1, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 2, "entry": "chose(1)", "run_id": "X02a.cost.20261127T190853Z", "stage": 2, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 3, "entry": "committed(1)", "run_id": "X02a.cost.20261127T190853Z", "stage": 2, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 4, "entry": "chose(1)", "run_id": "X02a.cost.20261127T190853Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 5, "entry": "committed(1)", "run_id": "X02a.cost.20261127T190853Z", "stage": 3, "attempt": 1, "during_replay_of": 2, "log": "observation"}
+{"seq": 6, "entry": "chose(2)", "run_id": "X02a.cost.20261127T190853Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 7, "entry": "chose(3)", "run_id": "X02a.cost.20261127T190853Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 8, "entry": "chose(1)", "run_id": "X02a.storage.20261127T190854Z", "stage": 1, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 9, "entry": "chose(1)", "run_id": "X02a.storage.20261127T190854Z", "stage": 2, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 10, "entry": "committed(1)", "run_id": "X02a.storage.20261127T190854Z", "stage": 2, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 11, "entry": "chose(1)", "run_id": "X02a.storage.20261127T190854Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 12, "entry": "committed(1)", "run_id": "X02a.storage.20261127T190854Z", "stage": 3, "attempt": 1, "during_replay_of": 2, "log": "observation"}
+{"seq": 13, "entry": "chose(2)", "run_id": "X02a.storage.20261127T190854Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 14, "entry": "chose(3)", "run_id": "X02a.storage.20261127T190854Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}

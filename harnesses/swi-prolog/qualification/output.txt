@@ -1,0 +1,423 @@
+[0/6] [0s]
+[1/6] Fetching image [0s]
+[2/6] Unpacking image [0s]
+[3/6] Fetching kernel [0s]
+[4/6] Fetching init image [0s]
+[5/6] Unpacking init image [0s]
+[6/6] Starting container [0s]
+[6/6] Starting container [0s]
+SWI-Prolog harness qualification, 2026-11-27T19:08:37Z
+SWI-Prolog version 11.0.1 for x86_64-linux
+== runs (made-up programs, made-up stages file harnesses/swi-prolog/qualification/stages-made-up.json)
+  run x01    plain       X01a         behaviour x01-flag.pl      exit 0  1.0s  X01a.behaviour.20261127T190837Z.json
+  run x01    plain       X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190838Z.json
+  run x01    plain       X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190839Z.json
+  run x01    tabling     X01a         behaviour x01-flag.pl      exit 0  0.9s  X01a.behaviour.20261127T190840Z.json
+  run x01    tabling     X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190841Z.json
+  run x01    tabling     X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190842Z.json
+  run x01    coroutines  X01a         behaviour x01-flag.pl      exit 0  0.9s  X01a.behaviour.20261127T190843Z.json
+  run x01    coroutines  X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190844Z.json
+  run x01    coroutines  X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190845Z.json
+  run x01    constraints X01a         behaviour x01-flag.pl      exit 0  0.9s  X01a.behaviour.20261127T190846Z.json
+  run x01    constraints X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190847Z.json
+  run x01    constraints X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190848Z.json
+  run x01    session     X01a         behaviour x01-flag.pl      exit 0  1.0s  X01a.behaviour.20261127T190849Z.json
+  run x01    session     X01a         cost      x01-flag.pl      exit 0  1.0s  X01a.cost.20261127T190850Z.json
+  run x01    session     X01a         storage   x01-flag.pl      exit 0  1.0s  X01a.storage.20261127T190851Z.json
+  run x02    plain       X02a         behaviour x02-commit.pl    exit 0  0.9s  X02a.behaviour.20261127T190852Z.json
+  run x02    plain       X02a         cost      x02-commit.pl    exit 0  1.0s  X02a.cost.20261127T190853Z.json
+  run x02    plain       X02a         storage   x02-commit.pl    exit 0  0.9s  X02a.storage.20261127T190854Z.json
+  run x03    plain       X03a.UV      behaviour x03-spawn.pl     exit 0  0.6s  X03a.UV.behaviour.20261127T190854Z.json
+  run x03    plain       X03a.UV      cost      x03-spawn.pl     exit 0  0.6s  X03a.UV.cost.20261127T190855Z.json
+  run x03    plain       X03a.UV      storage   x03-spawn.pl     exit 0  0.6s  X03a.UV.storage.20261127T190856Z.json
+  run x03    plain       X03a.VU      behaviour x03-spawn.pl     exit 0  0.6s  X03a.VU.behaviour.20261127T190856Z.json
+  run x03    plain       X03a.VU      cost      x03-spawn.pl     exit 0  0.6s  X03a.VU.cost.20261127T190857Z.json
+  run x03    plain       X03a.VU      storage   x03-spawn.pl     exit 0  0.6s  X03a.VU.storage.20261127T190857Z.json
+  run x04    plain       X04a.n10     behaviour x04-budget.pl    exit 0  0.9s  X04a.n10.behaviour.20261127T190858Z.json
+  run x04    plain       X04a.n10     cost      x04-budget.pl    exit 0  0.9s  X04a.n10.cost.20261127T190859Z.json
+  run x04    plain       X04a.n4997   behaviour x04-budget.pl    exit 0  0.9s  X04a.n4997.behaviour.20261127T190900Z.json
+  run x04    plain       X04a.n4997   cost      x04-budget.pl    exit 0  0.9s  X04a.n4997.cost.20261127T190901Z.json
+  run x04    plain       X04a.n4998   behaviour x04-budget.pl    exit 0  0.9s  X04a.n4998.behaviour.20261127T190902Z.json
+  run x04    plain       X04a.n4998   cost      x04-budget.pl    exit 0  0.9s  X04a.n4998.cost.20261127T190903Z.json
+  run x05    plain       X05a         behaviour x05-timeout.pl   exit 0  8.9s  X05a.behaviour.20261127T190904Z.json
+  run x06    plain       X06a         behaviour x06-error.pl     exit 0  0.9s  X06a.behaviour.20261127T190912Z.json
+  run x06    plain       X06a         cost      x06-error.pl     exit 0  0.9s  X06a.cost.20261127T190913Z.json
+  run x06    plain       X06a         storage   x06-error.pl     exit 0  0.9s  X06a.storage.20261127T190914Z.json
+  run x09    plain       X09a.n5.up   behaviour x09-count.pl     exit 0  0.8s  X09a.n5.up.behaviour.20261127T190915Z.json
+  run x09    plain       X09a.n5.up   cost      x09-count.pl     exit 0  0.8s  X09a.n5.up.cost.20261127T190916Z.json
+  run x09    plain       X09a.n5.up   storage   x09-count.pl     exit 0  0.8s  X09a.n5.up.storage.20261127T190917Z.json
+  run x09n   plain       X09a.n5.up   behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.up.behaviour.20261127T190918Z.json
+  run x09n   plain       X09a.n5.up   cost      x09-nocount.pl   exit 0  0.7s  X09a.n5.up.cost.20261127T190918Z.json
+  run x09n   plain       X09a.n5.up   storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.up.storage.20261127T190919Z.json
+  run x09    plain       X09a.n5.down behaviour x09-count.pl     exit 0  0.8s  X09a.n5.down.behaviour.20261127T190920Z.json
+  run x09    plain       X09a.n5.down cost      x09-count.pl     exit 0  0.8s  X09a.n5.down.cost.20261127T190921Z.json
+  run x09    plain       X09a.n5.down storage   x09-count.pl     exit 0  0.8s  X09a.n5.down.storage.20261127T190921Z.json
+  run x09n   plain       X09a.n5.down behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.down.behaviour.20261127T190922Z.json
+  run x09n   plain       X09a.n5.down cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.down.cost.20261127T190923Z.json
+  run x09n   plain       X09a.n5.down storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.down.storage.20261127T190924Z.json
+  run x10    plain       X10a.all     behaviour x10-modes.pl     exit 0  0.6s  X10a.all.behaviour.20261127T190924Z.json
+  run x10    plain       X10a.all     cost      x10-modes.pl     exit 0  0.6s  X10a.all.cost.20261127T190925Z.json
+  run x10    plain       X10a.all     storage   x10-modes.pl     exit 0  0.6s  X10a.all.storage.20261127T190926Z.json
+  run x10    plain       X10a.any     behaviour x10-modes.pl     exit 0  0.6s  X10a.any.behaviour.20261127T190926Z.json
+  run x10    plain       X10a.any     cost      x10-modes.pl     exit 0  0.6s  X10a.any.cost.20261127T190927Z.json
+  run x10    plain       X10a.any     storage   x10-modes.pl     exit 0  0.6s  X10a.any.storage.20261127T190927Z.json
+  run x11    plain       X11a         behaviour x11-replace.pl   exit 0  1.0s  X11a.behaviour.20261127T190928Z.json
+  run x11    plain       X11a         cost      x11-replace.pl   exit 0  0.9s  X11a.cost.20261127T190929Z.json
+  run x11    plain       X11a         storage   x11-replace.pl   exit 0  0.9s  X11a.storage.20261127T190930Z.json
+  run x12    plain       X12a         behaviour x12-fallback.pl  exit 0  0.8s  X12a.behaviour.20261127T190931Z.json
+  run x12    plain       X12a         cost      x12-fallback.pl  exit 0  0.8s  X12a.cost.20261127T190931Z.json
+  run x12    plain       X12a         storage   x12-fallback.pl  exit 0  0.8s  X12a.storage.20261127T190932Z.json
+  run x02    session     X02a         behaviour x02-commit.pl    exit 0  1.0s  X02a.behaviour.20261127T190933Z.json
+  run x02    session     X02a         cost      x02-commit.pl    exit 0  1.0s  X02a.cost.20261127T190934Z.json
+  run x02    session     X02a         storage   x02-commit.pl    exit 0  1.0s  X02a.storage.20261127T190935Z.json
+  run x03    session     X03a.UV      behaviour x03-spawn.pl     exit 0  0.6s  X03a.UV.behaviour.20261127T190936Z.json
+  run x03    session     X03a.UV      cost      x03-spawn.pl     exit 0  0.6s  X03a.UV.cost.20261127T190937Z.json
+  run x03    session     X03a.UV      storage   x03-spawn.pl     exit 0  0.6s  X03a.UV.storage.20261127T190937Z.json
+  run x03    session     X03a.VU      behaviour x03-spawn.pl     exit 0  0.6s  X03a.VU.behaviour.20261127T190938Z.json
+  run x03    session     X03a.VU      cost      x03-spawn.pl     exit 0  0.6s  X03a.VU.cost.20261127T190938Z.json
+  run x03    session     X03a.VU      storage   x03-spawn.pl     exit 0  0.6s  X03a.VU.storage.20261127T190939Z.json
+  run x04    session     X04a.n10     behaviour x04-budget.pl    exit 0  1.0s  X04a.n10.behaviour.20261127T190939Z.json
+  run x04    session     X04a.n10     cost      x04-budget.pl    exit 0  1.0s  X04a.n10.cost.20261127T190940Z.json
+  run x04    session     X04a.n4997   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4997.behaviour.20261127T190941Z.json
+  run x04    session     X04a.n4997   cost      x04-budget.pl    exit 0  1.0s  X04a.n4997.cost.20261127T190942Z.json
+  run x04    session     X04a.n4998   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4998.behaviour.20261127T190943Z.json
+  run x04    session     X04a.n4998   cost      x04-budget.pl    exit 0  1.0s  X04a.n4998.cost.20261127T190944Z.json
+  run x05    session     X05a         behaviour x05-timeout.pl   exit 0  8.9s  X05a.behaviour.20261127T190945Z.json
+  run x06    session     X06a         behaviour x06-error.pl     exit 0  1.2s  X06a.behaviour.20261127T190954Z.json
+  run x06    session     X06a         cost      x06-error.pl     exit 0  1.1s  X06a.cost.20261127T190955Z.json
+  run x06    session     X06a         storage   x06-error.pl     exit 0  1.1s  X06a.storage.20261127T190956Z.json
+  run x09    session     X09a.n5.up   behaviour x09-count.pl     exit 0  0.8s  X09a.n5.up.behaviour.20261127T190958Z.json
+  run x09    session     X09a.n5.up   cost      x09-count.pl     exit 0  0.8s  X09a.n5.up.cost.20261127T190958Z.json
+  run x09    session     X09a.n5.up   storage   x09-count.pl     exit 0  0.8s  X09a.n5.up.storage.20261127T190959Z.json
+  run x09n   session     X09a.n5.up   behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.up.behaviour.20261127T191000Z.json
+  run x09n   session     X09a.n5.up   cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.up.cost.20261127T191001Z.json
+  run x09n   session     X09a.n5.up   storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.up.storage.20261127T191001Z.json
+  run x09    session     X09a.n5.down behaviour x09-count.pl     exit 0  0.8s  X09a.n5.down.behaviour.20261127T191002Z.json
+  run x09    session     X09a.n5.down cost      x09-count.pl     exit 0  0.8s  X09a.n5.down.cost.20261127T191003Z.json
+  run x09    session     X09a.n5.down storage   x09-count.pl     exit 0  0.8s  X09a.n5.down.storage.20261127T191004Z.json
+  run x09n   session     X09a.n5.down behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.down.behaviour.20261127T191005Z.json
+  run x09n   session     X09a.n5.down cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.down.cost.20261127T191005Z.json
+  run x09n   session     X09a.n5.down storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.down.storage.20261127T191006Z.json
+  run x10    session     X10a.all     behaviour x10-modes.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191007Z.json
+  run x10    session     X10a.all     cost      x10-modes.pl     exit 0  0.6s  X10a.all.cost.20261127T191008Z.json
+  run x10    session     X10a.all     storage   x10-modes.pl     exit 0  0.6s  X10a.all.storage.20261127T191008Z.json
+  run x10    session     X10a.any     behaviour x10-modes.pl     exit 0  0.6s  X10a.any.behaviour.20261127T191009Z.json
+  run x10    session     X10a.any     cost      x10-modes.pl     exit 0  0.6s  X10a.any.cost.20261127T191009Z.json
+  run x10    session     X10a.any     storage   x10-modes.pl     exit 0  0.6s  X10a.any.storage.20261127T191010Z.json
+  run x11    session     X11a         behaviour x11-replace.pl   exit 0  1.0s  X11a.behaviour.20261127T191011Z.json
+  run x11    session     X11a         cost      x11-replace.pl   exit 0  1.0s  X11a.cost.20261127T191012Z.json
+  run x11    session     X11a         storage   x11-replace.pl   exit 0  1.0s  X11a.storage.20261127T191013Z.json
+  run x12    session     X12a         behaviour x12-fallback.pl  exit 0  0.8s  X12a.behaviour.20261127T191013Z.json
+  run x12    session     X12a         cost      x12-fallback.pl  exit 0  0.8s  X12a.cost.20261127T191014Z.json
+  run x12    session     X12a         storage   x12-fallback.pl  exit 0  0.8s  X12a.storage.20261127T191015Z.json
+  run x07    plain       X07a         behaviour x07-fixed.pl     exit 0  2.5s  X07a.behaviour.20261127T191016Z.json
+  run x08f   coroutines  X08a         behaviour x08-freeze.pl    exit 0  0.9s  X08a.behaviour.20261127T191018Z.json
+  run x08f   coroutines  X08a         cost      x08-freeze.pl    exit 0  0.9s  X08a.cost.20261127T191019Z.json
+  run x08f   coroutines  X08a         storage   x08-freeze.pl    exit 0  0.9s  X08a.storage.20261127T191020Z.json
+  run x08f   session     X08a         behaviour x08-freeze.pl    exit 0  1.0s  X08a.behaviour.20261127T191021Z.json
+  run x08f   session     X08a         cost      x08-freeze.pl    exit 0  1.0s  X08a.cost.20261127T191022Z.json
+  run x08f   session     X08a         storage   x08-freeze.pl    exit 0  1.0s  X08a.storage.20261127T191023Z.json
+  run x08c   constraints X08a         behaviour x08-clpfd.pl     exit 0  1.2s  X08a.behaviour.20261127T191024Z.json
+  run x08c   constraints X08a         cost      x08-clpfd.pl     exit 0  1.2s  X08a.cost.20261127T191025Z.json
+  run x08c   constraints X08a         storage   x08-clpfd.pl     exit 0  1.2s  X08a.storage.20261127T191026Z.json
+  run x08w   constraints X08a         behaviour x08-wait.pl      exit 0  1.2s  X08a.behaviour.20261127T191028Z.json
+  run x08w   constraints X08a         cost      x08-wait.pl      exit 0  1.2s  X08a.cost.20261127T191029Z.json
+  run x08w   constraints X08a         storage   x08-wait.pl      exit 0  1.2s  X08a.storage.20261127T191030Z.json
+  run x08u   constraints X08a         behaviour x08-undef.pl     exit 0  1.2s  X08a.behaviour.20261127T191031Z.json
+  run x08c   session     X08a         behaviour x08-clpfd.pl     exit 0  1.2s  X08a.behaviour.20261127T191032Z.json
+  run x08c   session     X08a         cost      x08-clpfd.pl     exit 0  1.3s  X08a.cost.20261127T191034Z.json
+  run x08c   session     X08a         storage   x08-clpfd.pl     exit 0  1.2s  X08a.storage.20261127T191035Z.json
+  run x08w   session     X08a         behaviour x08-wait.pl      exit 0  1.3s  X08a.behaviour.20261127T191036Z.json
+  run x08w   session     X08a         cost      x08-wait.pl      exit 0  1.2s  X08a.cost.20261127T191037Z.json
+  run x08w   session     X08a         storage   x08-wait.pl      exit 0  1.2s  X08a.storage.20261127T191039Z.json
+  run x08u   session     X08a         behaviour x08-undef.pl     exit 0  1.2s  X08a.behaviour.20261127T191040Z.json
+  run x10t   tabling     X10a.all     behaviour x10-table.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191041Z.json
+  run x10t   tabling     X10a.all     cost      x10-table.pl     exit 0  0.6s  X10a.all.cost.20261127T191042Z.json
+  run x10t   tabling     X10a.all     storage   x10-table.pl     exit 0  0.6s  X10a.all.storage.20261127T191042Z.json
+  run xerr   plain       X01a         behaviour xerr-syntax.pl   exit 0  0.9s  X01a.behaviour.20261127T191043Z.json
+  run xlate  plain       X01a         behaviour xlate.pl         exit 0  1.0s  X01a.behaviour.20261127T191044Z.json
+  run xlate  session     X01a         behaviour xlate.pl         exit 0  1.0s  X01a.behaviour.20261127T191045Z.json
+  run xthr   session     X06a         behaviour xerr-throw.pl    exit 0  1.0s  X06a.behaviour.20261127T191046Z.json
+  run pgen   plain       X10a.all     behaviour probe-gen.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191047Z.json
+  run pgen   plain       X10a.all     cost      probe-gen.pl     exit 0  0.6s  X10a.all.cost.20261127T191047Z.json
+  run pgen   plain       X10a.all     storage   probe-gen.pl     exit 0  0.6s  X10a.all.storage.20261127T191048Z.json
+  run pwork  plain       X10a.all     behaviour probe-work.pl    exit 0  0.6s  X10a.all.behaviour.20261127T191048Z.json
+  run pwork  plain       X10a.all     cost      probe-work.pl    exit 0  0.6s  X10a.all.cost.20261127T191049Z.json
+  run pwork  plain       X10a.all     storage   probe-work.pl    exit 0  0.6s  X10a.all.storage.20261127T191050Z.json
+  run pw2    plain       X10a.all     behaviour probe-w2.pl      exit 0  0.6s  X10a.all.behaviour.20261127T191050Z.json
+  run pw2    plain       X10a.all     cost      probe-w2.pl      exit 0  0.6s  X10a.all.cost.20261127T191051Z.json
+  run pw2    plain       X10a.all     storage   probe-w2.pl      exit 0  0.6s  X10a.all.storage.20261127T191051Z.json
+  run pfrz   coroutines  X10a.all     behaviour probe-freeze.pl  exit 0  0.6s  X10a.all.behaviour.20261127T191052Z.json
+  run pfrz   coroutines  X10a.all     cost      probe-freeze.pl  exit 0  0.6s  X10a.all.cost.20261127T191053Z.json
+  run pfrz   coroutines  X10a.all     storage   probe-freeze.pl  exit 0  0.6s  X10a.all.storage.20261127T191053Z.json
+  run pclp   constraints X10a.all     behaviour probe-clpfd.pl   exit 0  0.7s  X10a.all.behaviour.20261127T191054Z.json
+  run pclp   constraints X10a.all     cost      probe-clpfd.pl   exit 0  0.7s  X10a.all.cost.20261127T191055Z.json
+  run pclp   constraints X10a.all     storage   probe-clpfd.pl   exit 0  0.7s  X10a.all.storage.20261127T191055Z.json
+  run ptab   tabling     X10a.all     behaviour probe-table.pl   exit 0  0.6s  X10a.all.behaviour.20261127T191056Z.json
+  run ptab   tabling     X10a.all     cost      probe-table.pl   exit 0  0.6s  X10a.all.cost.20261127T191057Z.json
+  run ptab   tabling     X10a.all     storage   probe-table.pl   exit 0  0.6s  X10a.all.storage.20261127T191057Z.json
+== (a) the system run directly against the answers, steps and store the harness collects
+  PASS  x01 plain stage 1: 3 answer(s) verbatim as the toplevel prints them
+  PASS  x01 plain stage 1: steps to the first answer 4 = statistics/2 difference - 1 (4)
+  info  x01 plain stage 1: call_with_inference_limit/3 smallest limit 5, statistics/2 difference - 1 4
+  PASS  x01 plain stage 1: steps at every answer [4, 6, 8] = call_with_inference_limit/3 per answer [4, 6, 8]
+  PASS  x01 plain stage 1: retained choicepoints at each answer [1, 1, 0] = the probe's cp_since/2 [1, 1, 0]
+  PASS  x01 plain stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x01 plain stage 2: 6 answer(s) verbatim as the toplevel prints them
+  PASS  x01 plain stage 2: steps to the first answer 8 = statistics/2 difference - 1 (8)
+  info  x01 plain stage 2: call_with_inference_limit/3 smallest limit 9, statistics/2 difference - 1 8
+  PASS  x01 plain stage 2: steps at every answer [8, 10, 15, 18, 23, 25] = call_with_inference_limit/3 per answer [8, 10, 15, 18, 23, 25]
+  PASS  x01 plain stage 2: steps to the end 27 = statistics/2 around (goal, fail ; true), first in a fresh process, 27
+  PASS  x01 plain stage 2: retained choicepoints at each answer [2, 1, 2, 1, 1, 1] = the probe's cp_since/2 [2, 1, 2, 1, 1, 1]
+  PASS  x01 plain stage 2: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x01 plain stage 3: 2 answer(s) verbatim as the toplevel prints them
+  PASS  x01 plain stage 3: steps to the first answer 23 = statistics/2 difference - 1 (23)
+  info  x01 plain stage 3: call_with_inference_limit/3 smallest limit 23, statistics/2 difference - 1 23  (they differ: QUESTIONS.md S16)
+  PASS  x01 plain stage 3: steps at every answer [23, 29] = call_with_inference_limit/3 per answer [23, 29]
+  PASS  x01 plain stage 3: steps to the end 42 = statistics/2 around (goal, fail ; true), first in a fresh process, 42
+  PASS  x01 plain stage 3: retained choicepoints at each answer [2, 1] = the probe's cp_since/2 [2, 1]
+  PASS  x01 plain stage 3: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x08f coroutines stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x08f coroutines stage 1: steps to the first answer 9 = statistics/2 difference - 1 (9)
+  info  x08f coroutines stage 1: call_with_inference_limit/3 smallest limit 7, statistics/2 difference - 1 9  (they differ: QUESTIONS.md S16)
+  PASS  x08f coroutines stage 1: steps at every answer [9] = call_with_inference_limit/3 per answer [9]
+  PASS  x08f coroutines stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x08f coroutines stage 1: attributed variables 1, residual goals 1 = term_attvars/2, copy_term/3 directly (1, 1)
+  PASS  x08f coroutines stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x08f coroutines stage 2: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x08f coroutines stage 2: steps to the first answer 12 = statistics/2 difference - 1 (12)
+  info  x08f coroutines stage 2: call_with_inference_limit/3 smallest limit 10, statistics/2 difference - 1 12  (they differ: QUESTIONS.md S16)
+  PASS  x08f coroutines stage 2: steps at every answer [12] = call_with_inference_limit/3 per answer [12]
+  PASS  x08f coroutines stage 2: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x08f coroutines stage 2: attributed variables 2, residual goals 2 = term_attvars/2, copy_term/3 directly (2, 2)
+  PASS  x08f coroutines stage 2: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x08f coroutines stage 3: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x08f coroutines stage 3: steps to the first answer 34 = statistics/2 difference - 1 (34)
+  info  x08f coroutines stage 3: call_with_inference_limit/3 smallest limit 31, statistics/2 difference - 1 34  (they differ: QUESTIONS.md S16)
+  PASS  x08f coroutines stage 3: steps at every answer [34] = call_with_inference_limit/3 per answer [34]
+  PASS  x08f coroutines stage 3: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x08f coroutines stage 3: attributed variables 0, residual goals 0 = term_attvars/2, copy_term/3 directly (0, 0)
+  PASS  x08f coroutines stage 3: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x08c constraints stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x08c constraints stage 1: steps to the first answer 113 = statistics/2 difference - 1 (113)
+  info  x08c constraints stage 1: call_with_inference_limit/3 smallest limit 101, statistics/2 difference - 1 113  (they differ: QUESTIONS.md S16)
+  PASS  x08c constraints stage 1: steps at every answer [113] = call_with_inference_limit/3 per answer [113]
+  PASS  x08c constraints stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x08c constraints stage 1: attributed variables 1, residual goals 1 = term_attvars/2, copy_term/3 directly (1, 1)
+  PASS  x08c constraints stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x08c constraints stage 2: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x08c constraints stage 2: steps to the first answer 479 = statistics/2 difference - 1 (479)
+  info  x08c constraints stage 2: call_with_inference_limit/3 smallest limit 462, statistics/2 difference - 1 479  (they differ: QUESTIONS.md S16)
+  PASS  x08c constraints stage 2: steps at every answer [479] = call_with_inference_limit/3 per answer [479]
+  PASS  x08c constraints stage 2: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x08c constraints stage 2: attributed variables 2, residual goals 3 = term_attvars/2, copy_term/3 directly (2, 3)
+  PASS  x08c constraints stage 2: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x08c constraints stage 3: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x08c constraints stage 3: steps to the first answer 562 = statistics/2 difference - 1 (562)
+  info  x08c constraints stage 3: call_with_inference_limit/3 smallest limit 545, statistics/2 difference - 1 562  (they differ: QUESTIONS.md S16)
+  PASS  x08c constraints stage 3: steps at every answer [562] = call_with_inference_limit/3 per answer [562]
+  PASS  x08c constraints stage 3: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x08c constraints stage 3: attributed variables 0, residual goals 0 = term_attvars/2, copy_term/3 directly (0, 0)
+  PASS  x08c constraints stage 3: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x10 plain stage 1: 3 answer(s) verbatim as the toplevel prints them
+  PASS  x10 plain stage 1: steps to the first answer 4 = statistics/2 difference - 1 (4)
+  info  x10 plain stage 1: call_with_inference_limit/3 smallest limit 5, statistics/2 difference - 1 4
+  PASS  x10 plain stage 1: steps at every answer [4, 6, 8] = call_with_inference_limit/3 per answer [4, 6, 8]
+  PASS  x10 plain stage 1: retained choicepoints at each answer [1, 1, 0] = the probe's cp_since/2 [1, 1, 0]
+  PASS  x10 plain stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x10t tabling stage 1: 4 answer(s) verbatim as the toplevel prints them
+  PASS  x10t tabling stage 1: steps to the first answer 73 = statistics/2 difference - 1 (73)
+  info  x10t tabling stage 1: call_with_inference_limit/3 smallest limit 14, statistics/2 difference - 1 73  (they differ: QUESTIONS.md S16)
+  PASS  x10t tabling stage 1: steps at every answer [73, 75, 77, 79] = call_with_inference_limit/3 per answer [73, 75, 77, 79]
+  PASS  x10t tabling stage 1: retained choicepoints at each answer [1, 1, 1, 0] = the probe's cp_since/2 [1, 1, 1, 0]
+  PASS  x10t tabling stage 1: tables 1, table answers 4 = current_table/2, trie_property/2 directly (1, 4); table_space_used 800, directly 504
+  PASS  x10t tabling stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x11 plain stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x11 plain stage 1: steps to the first answer 8 = statistics/2 difference - 1 (8)
+  info  x11 plain stage 1: call_with_inference_limit/3 smallest limit 8, statistics/2 difference - 1 8  (they differ: QUESTIONS.md S16)
+  PASS  x11 plain stage 1: steps at every answer [8] = call_with_inference_limit/3 per answer [8]
+  PASS  x11 plain stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x11 plain stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x11 plain stage 2: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x11 plain stage 2: steps to the first answer 13 = statistics/2 difference - 1 (13)
+  info  x11 plain stage 2: call_with_inference_limit/3 smallest limit 13, statistics/2 difference - 1 13  (they differ: QUESTIONS.md S16)
+  PASS  x11 plain stage 2: steps at every answer [13] = call_with_inference_limit/3 per answer [13]
+  PASS  x11 plain stage 2: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x11 plain stage 2: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x11 plain stage 3: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x11 plain stage 3: steps to the first answer 18 = statistics/2 difference - 1 (18)
+  info  x11 plain stage 3: call_with_inference_limit/3 smallest limit 18, statistics/2 difference - 1 18  (they differ: QUESTIONS.md S16)
+  PASS  x11 plain stage 3: steps at every answer [18] = call_with_inference_limit/3 per answer [18]
+  PASS  x11 plain stage 3: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x11 plain stage 3: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x12 plain stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x12 plain stage 1: steps to the first answer 4 = statistics/2 difference - 1 (4)
+  info  x12 plain stage 1: call_with_inference_limit/3 smallest limit 5, statistics/2 difference - 1 4
+  PASS  x12 plain stage 1: steps at every answer [4] = call_with_inference_limit/3 per answer [4]
+  PASS  x12 plain stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x12 plain stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  x12 plain stage 2: 1 answer(s) verbatim as the toplevel prints them
+  PASS  x12 plain stage 2: steps to the first answer 5 = statistics/2 difference - 1 (5)
+  info  x12 plain stage 2: call_with_inference_limit/3 smallest limit 6, statistics/2 difference - 1 5
+  PASS  x12 plain stage 2: steps at every answer [5] = call_with_inference_limit/3 per answer [5]
+  PASS  x12 plain stage 2: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  x12 plain stage 2: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  pgen plain stage 1: 20 answer(s) verbatim as the toplevel prints them
+  PASS  pgen plain stage 1: steps to the first answer 11 = statistics/2 difference - 1 (11)
+  info  pgen plain stage 1: call_with_inference_limit/3 smallest limit 12, statistics/2 difference - 1 11
+  PASS  pgen plain stage 1: steps at every answer [11, 13, 15, 19, 21, 23, 27, 29, 31, 37, 39, 41, 45, 47, 49, 53, 55, 57, 63, 65] = call_with_inference_limit/3 per answer [11, 13, 15, 19, 21, 23, 27, 29, 31, 37, 39, 41, 45, 47, 49, 53, 55, 57, 63, 65]
+  PASS  pgen plain stage 1: retained choicepoints at each answer [4, 4, 3, 4, 4, 3, 3, 3, 2, 4, 4, 3, 4, 4, 3, 3, 3, 2, 3, 3] = the probe's cp_since/2 [4, 4, 3, 4, 4, 3, 3, 3, 2, 4, 4, 3, 4, 4, 3, 3, 3, 2, 3, 3]
+  PASS  pgen plain stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  pwork plain stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  pwork plain stage 1: steps to the first answer 275563 = statistics/2 difference - 1 (275563)
+  info  pwork plain stage 1: call_with_inference_limit/3 smallest limit 275564, statistics/2 difference - 1 275563
+  PASS  pwork plain stage 1: steps at every answer [275563] = call_with_inference_limit/3 per answer [275563]
+  PASS  pwork plain stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  pwork plain stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  pw2 plain stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  pw2 plain stage 1: steps to the first answer 45758 = statistics/2 difference - 1 (45758)
+  info  pw2 plain stage 1: call_with_inference_limit/3 smallest limit 45759, statistics/2 difference - 1 45758
+  PASS  pw2 plain stage 1: steps at every answer [45758] = call_with_inference_limit/3 per answer [45758]
+  PASS  pw2 plain stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  pw2 plain stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  pfrz coroutines stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  pfrz coroutines stage 1: steps to the first answer 10 = statistics/2 difference - 1 (10)
+  info  pfrz coroutines stage 1: call_with_inference_limit/3 smallest limit 9, statistics/2 difference - 1 10  (they differ: QUESTIONS.md S16)
+  PASS  pfrz coroutines stage 1: steps at every answer [10] = call_with_inference_limit/3 per answer [10]
+  PASS  pfrz coroutines stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  pfrz coroutines stage 1: attributed variables 2, residual goals 3 = term_attvars/2, copy_term/3 directly (2, 3)
+  PASS  pfrz coroutines stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  pclp constraints stage 1: 1 answer(s) verbatim as the toplevel prints them
+  PASS  pclp constraints stage 1: steps to the first answer 881 = statistics/2 difference - 1 (881)
+  info  pclp constraints stage 1: call_with_inference_limit/3 smallest limit 865, statistics/2 difference - 1 881  (they differ: QUESTIONS.md S16)
+  PASS  pclp constraints stage 1: steps at every answer [881] = call_with_inference_limit/3 per answer [881]
+  PASS  pclp constraints stage 1: retained choicepoints at each answer [0] = the probe's cp_since/2 [0]
+  PASS  pclp constraints stage 1: attributed variables 3, residual goals 5 = term_attvars/2, copy_term/3 directly (3, 5)
+  PASS  pclp constraints stage 1: behaviour, cost and storage runs give the same answers and the same steps
+  PASS  ptab tabling stage 1: 20 answer(s) verbatim as the toplevel prints them
+  PASS  ptab tabling stage 1: steps to the first answer 1449 = statistics/2 difference - 1 (1449)
+  info  ptab tabling stage 1: call_with_inference_limit/3 smallest limit 4, statistics/2 difference - 1 1449  (they differ: QUESTIONS.md S16)
+  PASS  ptab tabling stage 1: steps at every answer [1449, 1451, 1453, 1455, 1457, 1459, 1461, 1463, 1465, 1467, 1469, 1471, 1473, 1475, 1477, 1479, 1481, 1483, 1485, 1487] = call_with_inference_limit/3 per answer [1449, 1451, 1453, 1455, 1457, 1459, 1461, 1463, 1465, 1467, 1469, 1471, 1473, 1475, 1477, 1479, 1481, 1483, 1485, 1487]
+  PASS  ptab tabling stage 1: retained choicepoints at each answer [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] = the probe's cp_since/2 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  PASS  ptab tabling stage 1: tables 1, table answers 200 = current_table/2, trie_property/2 directly (1, 200); table_space_used 22360, directly 504
+  PASS  ptab tabling stage 1: behaviour, cost and storage runs give the same answers and the same steps
+== (a) the systems file's probes, run through the harness, against probes/expected-macos-arm64.txt
+  PASS  probe work/0: steps of stage(1) and query(1) 275563 = the probe's delta(work) 275563 (call/1 + work's body + statistics/2, i.e. the same count)
+  PASS  probe work/0: the budget-relevant count 275563 - 1 = the probe's minlimit_work 275562
+  PASS  probe w2/0: steps 45758 = the probe's delta(w2) 45758
+  PASS  probe gen(4,_): the probe's histogram [2-1,3-8,4-24,5-32,6-16] = expected [2-1,3-8,4-24,5-32,6-16]
+  PASS  probe gen(4,_): retained choicepoints at the harness's 20 answers [4, 4, 3, 4, 4, 3, 3, 3, 2, 4, 4, 3, 4, 4, 3, 3, 3, 2, 3, 3] = the probe's first 20, less findall/3's 2 ([4, 4, 3, 4, 4, 3, 3, 3, 2, 4, 4, 3, 4, 4, 3, 3, 3, 2, 3, 3])
+  PASS  probe freeze: attributed variables 2, residual goals 3 = expected 2, 3
+  PASS  probe clpfd: attributed variables 3, residual goals 5 = expected 3, 5
+  PASS  probe path(1,_): tables 1, answers 200, table_space_used 22360 = expected 1, 200, 22360
+== (b) incremental (session) and reposed posing give the same answers
+  PASS  x01 plain vs session, X01a, behaviour: answers per stage
+  PASS  x01 plain vs session, X01a, cost: answers and restated steps per stage
+  PASS  x08f coroutines vs session, X08a, behaviour: answers per stage
+  PASS  x08f coroutines vs session, X08a, cost: answers and restated steps per stage
+  PASS  x08c constraints vs session, X08a, behaviour: answers per stage
+  PASS  x08c constraints vs session, X08a, cost: answers and restated steps per stage
+  PASS  x10 plain vs session, X10a.all, behaviour: answers per stage
+  PASS  x10 plain vs session, X10a.all, cost: answers and restated steps per stage
+  PASS  x10 plain vs session, X10a.any, behaviour: answers per stage
+  PASS  x10 plain vs session, X10a.any, cost: answers and restated steps per stage
+  PASS  x11 plain vs session, X11a, behaviour: answers per stage
+  PASS  x11 plain vs session, X11a, cost: answers and restated steps per stage
+  PASS  x12 plain vs session, X12a, behaviour: answers per stage
+  PASS  x12 plain vs session, X12a, cost: answers and restated steps per stage
+  PASS  x09 plain vs session, X09a.n5.up, behaviour: answers per stage
+  PASS  x09 plain vs session, X09a.n5.up, cost: answers and restated steps per stage
+  PASS  x09 plain vs session, X09a.n5.down, behaviour: answers per stage
+  PASS  x09 plain vs session, X09a.n5.down, cost: answers and restated steps per stage
+  PASS  x03 plain vs session, X03a.UV, behaviour: answers per stage
+  PASS  x03 plain vs session, X03a.UV, cost: answers and restated steps per stage
+  PASS  x03 plain vs session, X03a.VU, behaviour: answers per stage
+  PASS  x03 plain vs session, X03a.VU, cost: answers and restated steps per stage
+  PASS  x04 plain vs session, X04a.n10, behaviour: answers per stage
+  PASS  x04 plain vs session, X04a.n10, cost: answers and restated steps per stage
+  (x02 is not compared: a reposed run replays the commit as x = v, while the session computation keeps its own alternatives, so their answers after the commit may differ by design; P11)
+== (c) budget, safety limit and error paths
+  PASS  plain budget 5000: a stage of exactly 5000 steps finishes ([['finished']], steps 5000)
+  PASS  plain budget 5000: a stage of 5001 steps is budget, stopped at 5001 ([['budget']], 5001), observe() read at the stop: 'S = 4998 '
+  PASS  plain after budget: stage 2 reposed (reposed, after-budget), restart cost 5000 measured in-run
+  PASS  plain budget in program code without harness entries: stopped within slack (stage steps 5009 <= 5000 + 8 + 1)
+  PASS  plain safety limit: stage 2 stopped at 1 s (rerun), rerun at 3 s (safety-rerun, final-timeout), both timeout
+  PASS  plain after a final timeout: stage 3 reposed (after-timeout), its replay stopped by the limit; restart cost 57942810 read when it stopped
+  PASS  plain error: stage 2 error, verbatim "ERROR: [Thread main] '$cp_query'/1: Unknown procedure: undefined_relation/1\n% te"
+  PASS  plain after error: stage 3 reposed (after-error)
+  PASS  session budget 5000: a stage of exactly 5000 steps finishes ([['finished']], steps 5000)
+  PASS  session budget 5000: the incremental stage 1 (no query, 5000 steps) goes on; its separate run (stage + query, 5001) is budget ([['budget']])
+  PASS  session: stage 2 is posed into the same computation (incremental, configuration)
+  PASS  session budget in program code without harness entries: stopped within slack (stage steps 5009 <= 5000 + 8 + 1)
+  PASS  session safety limit: stage 2 stopped at 1 s (rerun), rerun at 3 s (safety-rerun, final-timeout), both timeout
+  PASS  session after a final timeout: stage 3 reposed (after-timeout), its replay stopped by the limit; restart cost 58544282 read when it stopped
+  PASS  session: the undefined procedure of stage 2 waits (session's S code) instead of an error ([['suspended']])
+  PASS  fixed safety limit: one attempt, fixed-limit-timeout
+  PASS  a syntax error: the system's message on stderr 'ERROR: [Thread main] /tmp/cp-swi-run-ucu7p0pb/program/xerr-syntax.pl:3:30: Syntax error: U', and the stage is error
+  PASS  session error (stage 2 throws): [['error']], verbatim 'ERROR: [Thread main] Unknown message: made_up_error(1)\n% ter'; stage 3 reposed after-error
+  PASS  h_wait/0 outside session: error
+  PASS  session: stage 1 waits ([['suspended']]), stage 2 posted into the waiting computation answers ['M = 5.\n\n']
+  PASS  session S code: a call of an undefined procedure waits ([['suspended']]); the stage that defines it gives ['M = 5.\n\n']
+  PASS  the same program in constraints: existence error ([['error']])
+== no anticipation: a later stage's constant is not in the process before its stage
+  PASS  plain: stages 1 and 2 (and their separate runs) see no trace of stage 3's constant among the process's atoms and strings; stage 3 does: ['stage 1: LATE-ABSENT', 'stage 2: LATE-ABSENT', 'stage 3: LATE-PRESENT']
+  PASS  session: stages 1 and 2 (and their separate runs) see no trace of stage 3's constant among the process's atoms and strings; stage 3 does: ['stage 1: LATE-ABSENT', 'stage 2: LATE-ABSENT', 'stage 3: LATE-PRESENT']
+== H calls cost the program nothing: x09-count.pl (h_count/1, h_candidate/0, h_held/2) and x09-nocount.pl
+  PASS  plain X09a.n5.up behaviour: steps with counters [15, 28] = without [15, 28]; problem operations {'up/2': 5, 'up/1': 1}
+  PASS  plain X09a.n5.up cost: steps with counters [15, 28] = without [15, 28]; problem operations {'up/2': 5, 'up/1': 1}
+  PASS  plain X09a.n5.up storage: steps with counters [15, 28] = without [15, 28]; problem operations {'up/2': 5, 'up/1': 1}
+  PASS  plain X09a.n5.down behaviour: steps with counters [9, 22] = without [9, 22]; problem operations {'down/2': 5, 'down/1': 1}
+  PASS  plain X09a.n5.down cost: steps with counters [9, 22] = without [9, 22]; problem operations {'down/2': 5, 'down/1': 1}
+  PASS  plain X09a.n5.down storage: steps with counters [9, 22] = without [9, 22]; problem operations {'down/2': 5, 'down/1': 1}
+  PASS  session X09a.n5.up behaviour: steps with counters [14, 28] = without [14, 28]; problem operations {'up/2': 5, 'up/1': 1}
+  PASS  session X09a.n5.up cost: steps with counters [14, 28] = without [14, 28]; problem operations {'up/2': 5, 'up/1': 1}
+  PASS  session X09a.n5.up storage: steps with counters [14, 28] = without [14, 28]; problem operations {'up/2': 5, 'up/1': 1}
+  PASS  session X09a.n5.down behaviour: steps with counters [8, 22] = without [8, 22]; problem operations {'down/2': 5, 'down/1': 1}
+  PASS  session X09a.n5.down cost: steps with counters [8, 22] = without [8, 22]; problem operations {'down/2': 5, 'down/1': 1}
+  PASS  session X09a.n5.down storage: steps with counters [8, 22] = without [8, 22]; problem operations {'down/2': 5, 'down/1': 1}
+== effects log (made-up X02)
+  PASS  plain: 7 classification entries appended after 0 earlier ones; replayed commitments [[{'stage': 2, 'value_verbatim': 'P = 1 ', 'selected_in_run': 'X02a.behaviour.20261127T190852Z'}]]
+  PASS  plain cost run: its 7 entries go to the observation log only
+  PASS  session: 5 classification entries appended after 0 earlier ones; replayed commitments []
+  PASS  session cost run: its 8 entries go to the observation log only
+== (d) every record of this run passes validate.py
+  PASS  147 records written, 0 kept as INVALID by the harness, validate.py: 0 invalid
+== check executes nothing
+  PASS  check plain noexec.pl: exit 0, no marker printed, no file written
+  PASS  check session noexec.pl: exit 0, no marker printed, no file written
+  -- the same program run by the harness does leave its trace (so the marker works):
+  PASS  harness run of noexec.pl prints the marker (stdout 'EXECUTED-initialization\nEXECUTED-stage\nEXECUTED-query\n') and writes the file
+  -- check on every qualification program:
+  PASS  check plain noexec.pl: exit 0
+  PASS  check constraints probe-clpfd.pl: exit 0
+  PASS  check coroutines probe-freeze.pl: exit 0
+  PASS  check plain probe-gen.pl: exit 0
+  PASS  check tabling probe-table.pl: exit 0
+  PASS  check plain probe-w2.pl: exit 0
+  PASS  check plain probe-work.pl: exit 0
+  PASS  check plain x01-flag.pl: exit 0
+  PASS  check plain x02-commit.pl: exit 0
+  PASS  check plain x03-spawn.pl: exit 0
+  PASS  check plain x04-budget.pl: exit 0
+  PASS  check plain x05-timeout.pl: exit 0
+  PASS  check plain x06-error.pl: exit 0
+  PASS  check plain x07-fixed.pl: exit 0
+  PASS  check constraints x08-clpfd.pl: exit 0
+  PASS  check coroutines x08-freeze.pl: exit 0
+  PASS  check plain x08-undef.pl: exit 0
+  PASS  check session x08-wait.pl: exit 0
+  PASS  check plain x09-count.pl: exit 0
+  PASS  check plain x09-nocount.pl: exit 0
+  PASS  check plain x10-modes.pl: exit 0
+  PASS  check tabling x10-table.pl: exit 0
+  PASS  check plain x11-replace.pl: exit 0
+  PASS  check plain x12-fallback.pl: exit 0
+  PASS  check plain xerr-syntax.pl: exit 1
+  PASS  check plain xerr-throw.pl: exit 0
+  PASS  check plain xlate.pl: exit 0
+== usage errors write no record and exit 2
+  PASS  run nosuch X01 X01a behaviour: exit 2, no record
+  PASS  run plain X01 nosuch behaviour: exit 2, no record
+  PASS  run plain X01 X01a nosuch: exit 2, no record
+  PASS  run plain X02 X01a behaviour: exit 2, no record
+== 229 checks, 229 passed, 0 failed (156 s)
