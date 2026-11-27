@@ -1,0 +1,34 @@
+% P03c. Reversible relations, conc, suffix (problems/03-reversible-relations.md).
+% One stage (a query): conc(<seq>, b, <seq>).
+%
+% The same text in plain, coroutines, constraints and session; tabling's
+% text differs only by its table directive (programs/swi-prolog/README.md).
+%
+% PROVENANCE
+%   author: implementation-swi-prolog, an agent (Claude Opus 5.5, claude-opus-5-5)
+%   precursor seen: no (the absys E01-E09 programs were not seen)
+%   idioms: sequences as Prolog lists, [] for the empty sequence and [H|T]
+%     for <h> ++ t; conc/3 as the two clauses of append/3 (Clocksin and
+%     Mellish, Programming in Prolog, 1981, chapter 3; Sterling and Shapiro,
+%     The Art of Prolog, 1986, chapter 3); one definition used in every
+%     direction, by unification (the same sources); the
+%     stage's constants read with memberchk/2, as in the harness
+%     contract's example (harnesses/swi-prolog/README.md, 2.7)
+% END PROVENANCE
+
+% CONSTANTS BEGIN
+% stage 1
+conc_first([1]).
+conc_whole([1, 2, 3]).
+% CONSTANTS END
+
+% conc(a, b, c): c is a followed by b
+conc([], B, B).
+conc([H|A], B, [H|C]) :- conc(A, B, C).
+
+unknowns(main, ['B']).
+
+% stage 1: conc(<seq>, b, <seq>)
+stage(1, [B], Cs) :- memberchk(conc_first(P), Cs), memberchk(conc_whole(R), Cs), conc(P, B, R).
+
+query(_, _).
