@@ -14,6 +14,7 @@ implemented as written, the reading taken is in
 | [`check`](check) | `check CONFIGURATION PROGRAM`: compiles and reads the program's syntax tree, executes nothing |
 | [`constants.py`](constants.py) | finds, checks and parses a program's constants block (used by `run` and `check`) |
 | [`S-mechanisms.md`](S-mechanisms.md) | the S mechanisms each configuration provides |
+| [`S/`](S) | extended's S mechanisms (`search.py`, `suspend.py`, `propagate.py`), with their tests in `S/tests/` |
 | [`QUESTIONS.md`](QUESTIONS.md) | what could not be implemented as written, and the reading taken |
 | [`qualification/`](qualification) | evidence that the harness does what this file says: [`qualify.py`](qualification/qualify.py) reruns all of it; [`output.txt`](qualification/output.txt) is its output |
 
@@ -92,12 +93,28 @@ From `systems/python/README.md`. All three have every mode (`PINS.md`).
 |---|---|---|---|
 | **core** | the language, its built-in functions and types, and `cp`; no imports. Any other standard-library module it imports is an external mechanism, to be listed | one after another (`side_by_side: false`) | incremental or reposed, as the program declares |
 | **stdlib-concurrency** | core, plus `threading`, `queue` and `asyncio` | side by side (`side_by_side: true`) | as declared |
-| **extended** | core, plus the S mechanisms listed in [`S-mechanisms.md`](S-mechanisms.md) (none at phase 4) | one after another | as declared |
+| **extended** | core, plus the S mechanisms listed in [`S-mechanisms.md`](S-mechanisms.md): the package `S` (`S.search`, `S.suspend`, `S.propagate`, in [`S/`](S)), and nothing else beyond core | one after another | as declared |
 
 The configurations differ, in the harness, only in how `spawn()` runs
-computations; `check` also rejects `threading`, `queue` and `asyncio`
-outside stdlib-concurrency. Whether extended includes stdlib-concurrency's
+computations, and in what a program may import: `check` rejects
+`threading`, `queue` and `asyncio` outside stdlib-concurrency, and `S`
+outside extended. Whether extended includes stdlib-concurrency's
 modules is QUESTIONS.md, Q2.
+
+**Imports of S (extended only).** In extended, and only there, the runtime
+puts a package object named `S` in `sys.modules` before the program starts,
+whose path is `harnesses/python/S`; nothing else is added to `sys.path`, and
+no module of `S` is run until the program imports it. A program writes
+`from S.search import search`, `from S.suspend import Var, Queue, deref`,
+`from S.propagate import Store`, and so on. Those modules are imported by
+the interpreter's own import system, whose instructions are counted as the
+program's, as for any import; the instructions of `S` code are counted as
+the program's, as it runs in the program's computation. In core and
+stdlib-concurrency there is no `S`: `check` reports an import of it as an
+error, and `run` gives the program's `ModuleNotFoundError`. Any other
+import in extended is classed as in core (an external mechanism, to be
+listed). The S mechanisms' tokens are counted once per mechanism for the
+configuration (`S-mechanisms.md`), not in each program.
 
 **Posing.** `systems/python/README.md` ("The same computation") allows both
 ways in every configuration: a program that reads each stage as it arrives
@@ -468,8 +485,9 @@ author may run before the program is fixed. In every configuration it:
    `runpy` or `importlib` (reading files or source, where every stage's
    constants are); an import of `threading`,
    `queue` or `asyncio` outside stdlib-concurrency; a `cp.` name that is not
-   in section 3.2; a program that never calls `cp.stage()`. Other imports
-   are listed as external mechanisms.
+   in section 3.2; a program that never calls `cp.stage()`; an import of
+   `S` outside extended (section 2). In extended an import of `S` is
+   noted as an S mechanism. Other imports are listed as external mechanisms.
 
 It never imports, executes or poses anything, writes no file, and prints
 nothing the program would compute; the qualification shows that a checked

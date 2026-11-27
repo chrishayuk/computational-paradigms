@@ -333,6 +333,20 @@ def main():
                 os.unlink(f)
     say("")
 
+    say("== (c2) extended admits the S mechanisms (S-mechanisms.md), and only extended")
+    d, _ = direct("x01_total.py", 3)
+    pe = subprocess.run(["harnesses/python/check", "extended", PROG + "/x01_extended.py"], cwd=REPO, capture_output=True, text=True)
+    pc = subprocess.run(["harnesses/python/check", "core", PROG + "/x01_extended.py"], cwd=REPO, capture_output=True, text=True)
+    _, re_ = run("extended", "X01", "X01a", "behaviour", "x01_extended.py")
+    got = [answers(final(re_, k)) for k in (1, 2, 3)] if re_ else None
+    check("S import: check passes it in extended and refuses it in core; run in extended gives the answers of the direct run of x01_total.py",
+          pe.returncode == 0 and "an S mechanism of extended" in pe.stdout and pc.returncode == 1 and "only the extended configuration adds" in pc.stdout
+          and got == [x["answers"] for x in d],
+          "extended answers %s, direct %s" % (got, [x["answers"] for x in d]))
+    say("   " + pe.stdout.strip().replace("\n", "\n   "))
+    say("   " + pc.stdout.strip().replace("\n", "\n   "))
+    say("")
+
     say("== (d) every record validates")
     recs = sorted(glob.glob(os.path.join(REPO, OUT, "**", "*.json"), recursive=True))
     recs = [x for x in recs if not x.endswith(".effects.jsonl")]

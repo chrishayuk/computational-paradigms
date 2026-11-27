@@ -45,6 +45,10 @@ What it checks:
   process, read from outside through `/proc/<pid>/mem`, holds stage 1's
   constant and not stage 2's; at stage 2 it holds stage 2's. A constant not
   tagged with a stage is rejected by `check` and `run`.
+- **(c2)** The S import (`../S-mechanisms.md`): `check` passes
+  `x01_extended.py` (X01 with its relation held by `S.suspend`) in extended
+  and refuses it in core; run in extended, it gives the answers of the
+  direct run of `x01_total.py`.
 - **(d)** Every record validates.
 - **(e)** `check` executes nothing (a program whose only effects are writing
   a file and printing a marker leaves neither), and reports syntax and

@@ -91,7 +91,12 @@ def main(argv):
             mods = [a.name for a in n.names] if isinstance(n, ast.Import) else [n.module or "." * n.level]
             for m in mods:
                 top = m.split(".")[0]
-                if top in CONCURRENCY:
+                if top == "S":
+                    if config == "extended":
+                        notes.append("line %d: imports %s: an S mechanism of extended (S-mechanisms.md), counted once per mechanism" % (n.lineno, m))
+                    else:
+                        errors.append("line %d: imports %s, an S mechanism, which only the extended configuration adds" % (n.lineno, m))
+                elif top in CONCURRENCY:
                     if config == "stdlib-concurrency":
                         notes.append("line %d: imports %s (a mechanism of stdlib-concurrency)" % (n.lineno, m))
                     else:

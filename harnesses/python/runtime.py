@@ -714,6 +714,12 @@ def main():
     sys.modules["__main__"] = mod
     sys.argv = [prog]
     sys.path[0:0] = [os.path.dirname(prog)]
+    if init.get("config") == "extended":
+        # extended only: the package S (harnesses/python/S, S-mechanisms.md) is
+        # importable; only the package object is made here, no module runs.
+        pkg = type(sys)("S")
+        pkg.__path__ = [os.path.join(os.path.dirname(os.path.abspath(__file__)), "S")]
+        sys.modules["S"] = pkg
 
     mc = _Comp("main")
     _COMPS["main"] = mc

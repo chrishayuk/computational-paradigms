@@ -1,0 +1,28 @@
+3.13.7
+PASS  test_propagate.test_linear_to_fixpoint
+PASS  test_propagate.test_exact_coefficients_and_inequalities
+PASS  test_propagate.test_failure_on_empty_domain
+PASS  test_propagate.test_relation_arc_consistency_and_residual
+PASS  test_propagate.test_label_with_trail
+PASS  test_propagate.test_take_one_solution_then_post_under_trail
+PASS  test_propagate.test_suspend_vars_as_variables
+PASS  test_search.test_order_and_count
+PASS  test_search.test_take_one_is_lazy
+PASS  test_search.test_root_and_empty
+PASS  test_search.test_deep_beyond_recursion_limit
+PASS  test_search.test_trail_restores_state
+PASS  test_search.test_stop_early_then_undo
+PASS  test_search.test_pruning_by_children
+PASS  test_suspend.test_deref_and_bind
+PASS  test_suspend.test_wake_in_suspension_order_fifo
+PASS  test_suspend.test_ready_now_and_any_of_several
+PASS  test_suspend.test_woken_goals_go_behind_ready_ones
+PASS  test_suspend.test_aliasing_moves_waiters
+PASS  test_suspend.test_dataflow_chain
+PASS  test_suspend.test_trail_with_search
+21 of 21 tests passed
+
+mechanism       lines  code lines  tokens
+search.py          51          17     176
+suspend.py        108          60     537
+propagate.py      158          96    1260
