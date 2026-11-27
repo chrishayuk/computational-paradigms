@@ -1,0 +1,67 @@
+{
+  "record_format": "cp-raw-record/1",
+  "made_up": true,
+  "notes": ["MADE UP by hand to test validate.py. Not a run, not a result. Problem X03 is invented (examples/made-up-stages.json). Shows: two spawned computations with their own budgets and states, a storage-mode run with sampled maxima, and answers taken on a separate run of stages 1..k because collecting them would consume the computation."],
+  "run": {
+    "run_id": "made-up-X03a.n4.UV.storage.20261127T140000Z",
+    "spec_tag": "spec-1.0",
+    "system": "swi-prolog",
+    "configuration": "session",
+    "problem": "X03",
+    "subproblem": "X03a",
+    "instance": "X03a.n4.UV",
+    "parameters": {"n": 4, "spawn_order": ["U", "V"]},
+    "mode": "storage",
+    "purpose": "example",
+    "program": {"path": "harnesses/examples/(no program: made up)", "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "repo_commit": null},
+    "constants": {"how": "none", "input_path": null, "input_sha256": null, "variant": null},
+    "system_build": {"commit": null, "image": "sha256:(made up)", "binary": "/usr/bin/swipl", "version_output": "SWI-Prolog version 11.0.1 (made up)", "instrumented": true},
+    "harness": {"path": "harnesses/swi-prolog/run", "commit": "0000000", "dirty": false},
+    "command": ["harnesses/swi-prolog/run", "session", "X03", "X03a.n4.UV", "storage", "(made up)", "results/swi-prolog/session/X03/raw"],
+    "posing": "incremental",
+    "limits": {"budget_steps": 1000000, "step_unit": "inference", "safety_limit_s": 60, "rerun_limit_s": 600},
+    "started_utc": "2026-11-27T14:00:00Z",
+    "ended_utc": "2026-11-27T14:00:09Z",
+    "complete": true,
+    "incomplete_reason": null
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "attempts": [
+        {
+          "attempt": 1, "limit_s": 60,
+          "posed": {"how": "fresh", "reason": "first-stage", "replayed": [], "replayed_commitments": [], "continued_after_budget": false, "instance_parameters_passed": {"n": "4"}},
+          "computations": [
+            {"id": "U", "spawned": true, "spawn_index": 1, "side_by_side": true,
+             "queries": [{"id": "U", "cap": 20, "answers": [], "ended_by": "budget", "collected_on": "separate-run"}],
+             "execution_state": {"states": ["budget"], "determined": true, "basis": "made up: the inference limit of U's engine was reached", "error_verbatim": null},
+             "steps": {"unit": "inference", "budget": 1000000, "budget_exhausted": true, "stage": null, "restated": 1000000, "restart_cost": null, "to_first_answer": null, "between_answers": [], "to_end": 1000000, "repeated_work": null},
+             "alternatives": {"unit": "retained choicepoints", "at_boundary": null, "at_budget": 2, "peak": {"value": 3, "kind": "sampled", "sample_interval": "heartbeat 10000 inferences"}, "held_as": "backtracking", "by_type": {"clause": 2}, "problem_defined": null},
+             "suspended": {"unit": "attributed variables", "at_boundary": 0, "peak": null, "items": {}},
+             "problem_operations": null},
+            {"id": "V", "spawned": true, "spawn_index": 2, "side_by_side": true,
+             "queries": [{"id": "V", "cap": 20, "answers": [{"index": 1, "verbatim": "Q = 4", "alternatives_at": 0}], "ended_by": "exhausted", "collected_on": "separate-run"}],
+             "execution_state": {"states": ["finished"], "determined": true, "basis": "made up: V's engine reported no more answers", "error_verbatim": null},
+             "steps": {"unit": "inference", "budget": 1000000, "budget_exhausted": false, "stage": null, "restated": 40, "restart_cost": null, "to_first_answer": 38, "between_answers": [], "to_end": 40, "repeated_work": null},
+             "alternatives": {"unit": "retained choicepoints", "at_boundary": 0, "at_budget": null, "peak": null, "held_as": "none", "by_type": null, "problem_defined": null},
+             "suspended": {"unit": "attributed variables", "at_boundary": 0, "peak": null, "items": {}},
+             "problem_operations": null}
+          ],
+          "observe": {"raw": "U: running, P unbound; V: Q = 4", "method": "made up", "taken_on": "separate-run", "bindings": {"P": "_", "Q": "4"}},
+          "print": null,
+          "store": {"quantities": {"global_used": {"boundary": 4096, "peak": {"value": 8192, "kind": "sampled", "sample_interval": "heartbeat 10000 inferences"}, "unit": "bytes"}}, "source": "statistics/2 after garbage_collect/0 (made up)"},
+          "wall_time_s": 4.1, "stdout": "", "stderr": "",
+          "exit": {"status": null, "signal": null},
+          "safety_limit": {"hit": false, "action": "none"},
+          "effects": [],
+          "manual_actions": [],
+          "separate_run": {"replayed": [1], "stdout": "V: Q = 4\n", "stderr": "", "exit": {"status": 0, "signal": null}, "wall_time_s": 4.0, "steps_restated": 1000040}
+        }
+      ]
+    }
+  ],
+  "effects": null,
+  "manual_actions": [],
+  "harness_faults": []
+}

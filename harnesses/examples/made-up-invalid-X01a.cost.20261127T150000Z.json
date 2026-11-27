@@ -1,0 +1,378 @@
+{
+ "record_format": "cp-raw-record/1",
+ "made_up": true,
+ "notes": [
+  "MADE UP and deliberately INVALID, to show that validate.py rejects: answers over the cap, a sampled maximum in a cost run, a reposed stage that does not replay 1..k-1, a rerun with the wrong limit, and a budget state that disagrees with budget_exhausted."
+ ],
+ "run": {
+  "run_id": "made-up-invalid-X01a.cost.20261127T150000Z",
+  "spec_tag": "spec-1.0",
+  "system": "python",
+  "configuration": "core",
+  "problem": "X01",
+  "subproblem": "X01a",
+  "instance": "X01a",
+  "parameters": {},
+  "mode": "cost",
+  "purpose": "example",
+  "program": {
+   "path": "harnesses/examples/(no program: made up)",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "repo_commit": null
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": null,
+   "image": "sha256:(made up)",
+   "binary": "/usr/local/bin/python3",
+   "version_output": "Python 3.13.7 (made up)",
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/python/run",
+   "commit": "0000000",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/python/run",
+   "core",
+   "X01",
+   "X01a",
+   "behaviour",
+   "(made up)",
+   "results/python/core/X01/raw"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "bytecode instruction",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T12:00:00Z",
+  "ended_utc": "2026-11-27T12:03:10Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [],
+  "environment": {
+   "PYTHONHASHSEED": "0"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 1,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "a1"
+          },
+          {
+           "index": 2,
+           "verbatim": "a2"
+          },
+          {
+           "index": 3,
+           "verbatim": "a3"
+          }
+         ],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "suspended"
+        ],
+        "determined": true,
+        "basis": "made up: the program's named pending structure held one entry",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "bytecode instruction",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": 120,
+        "restart_cost": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": 120,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's named pending structure",
+        "at_boundary": 0,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's named pending structure",
+        "at_boundary": 1,
+        "peak": {
+         "value": 1,
+         "kind": "sampled",
+         "sample_interval": "made up"
+        },
+        "items": {
+         "pending relations": 1
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "pending: [('eq', 'p', 'q')]",
+      "method": "made up",
+      "taken_on": "this-run",
+      "bindings": {
+       "p": "unknown",
+       "q": "unknown"
+      }
+     },
+     "print": "p = q",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.04,
+     "stdout": "ANSWER p = q (held)\nEND STAGE 1\n",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none"
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [],
+         "ended_by": "timeout",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "timeout"
+        ],
+        "determined": true,
+        "basis": "made up: the harness's 60 s limit stopped the process",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "bytecode instruction",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": null,
+        "restart_cost": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": null,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's named pending structure",
+        "at_boundary": null,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "unknown",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's named pending structure",
+        "at_boundary": null,
+        "peak": null,
+        "items": null
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "",
+      "method": "made up: nothing could be read after the stop",
+      "taken_on": "this-run",
+      "bindings": null
+     },
+     "print": null,
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 60.0,
+     "stdout": "",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": "SIGKILL"
+     },
+     "safety_limit": {
+      "hit": true,
+      "action": "rerun",
+      "how_stopped": "SIGKILL to the process group"
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null
+    },
+    {
+     "attempt": 2,
+     "limit_s": 120,
+     "posed": {
+      "how": "reposed",
+      "reason": "safety-rerun",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "p = 9, q = 9",
+           "steps_at": null
+          }
+         ],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "budget"
+        ],
+        "determined": true,
+        "basis": "made up: the program reported the end of the stage with nothing pending",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "bytecode instruction",
+        "budget": 1000120,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": 300,
+        "restart_cost": 120,
+        "restart_cost_source": "made-up-X01a.behaviour.20261127T120000Z stage 1",
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": 300,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's named pending structure",
+        "at_boundary": 0,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's named pending structure",
+        "at_boundary": 0,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "items": {}
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "pending: []; p = 9; q = 9",
+      "method": "made up",
+      "taken_on": "this-run",
+      "bindings": {
+       "p": "9",
+       "q": "9"
+      }
+     },
+     "print": "p = 9, q = 9",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 130.2,
+     "stdout": "ANSWER p = q (held)\nEND STAGE 1\nANSWER p = 9, q = 9\nEND STAGE 2\n",
+     "stderr": "",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none"
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": []
+}

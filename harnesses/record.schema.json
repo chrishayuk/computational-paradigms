@@ -1,0 +1,476 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "harnesses/record.schema.json",
+  "title": "Raw run record, cp-raw-record/1",
+  "description": "What one run of a per-system harness writes: one instance of one sub-problem, in one configuration and one mode. The same schema for every system. Fields are defined in harnesses/README.md, 'The raw record'. A value the harness cannot read is null, never guessed; why it is null may be said in the nearest 'notes'. validate.py checks this schema and the further rules listed in harnesses/README.md.",
+  "type": "object",
+  "required": ["record_format", "run", "stages", "effects", "manual_actions", "harness_faults"],
+  "additionalProperties": false,
+  "properties": {
+    "record_format": {"const": "cp-raw-record/1"},
+    "made_up": {
+      "type": "boolean",
+      "description": "true only in records written by hand to test validate.py (harnesses/examples/). A harness never writes it, or writes false."
+    },
+    "run": {"$ref": "#/$defs/run"},
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/stage"}
+    },
+    "effects": {
+      "description": "P11 only: the effects log as it stands after this run, and the entries this run appended. null for every other problem.",
+      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/effects"}]
+    },
+    "manual_actions": {
+      "description": "Actions by a person, outside the fixed harness, during this run, that apply to no single stage. Per-stage actions are in the stage.",
+      "type": "array",
+      "items": {"$ref": "#/$defs/manual_action"}
+    },
+    "harness_faults": {
+      "description": "Anything the harness itself failed to do (could not read a quantity, could not parse an answer, a crash of the harness rather than the system), verbatim. Empty if none.",
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nullable_int": {"oneOf": [{"type": "null"}, {"type": "integer", "minimum": 0}]},
+    "nullable_number": {"oneOf": [{"type": "null"}, {"type": "number", "minimum": 0}]},
+    "nullable_string": {"oneOf": [{"type": "null"}, {"type": "string"}]},
+    "stage_list": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+    "exec_state": {
+      "enum": ["finished", "alternatives pending", "suspended", "budget", "timeout", "error"]
+    },
+
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "spec_tag", "system", "configuration", "problem", "subproblem", "instance", "parameters", "mode", "program", "constants", "system_build", "harness", "command", "posing", "limits", "started_utc", "ended_utc", "complete"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1, "description": "unique; also the stem of the record's file name"},
+        "spec_tag": {"type": "string", "pattern": "^spec-[0-9]+\\.[0-9]+$"},
+        "system": {"enum": ["absys", "swi-prolog", "python", "algol-60"]},
+        "configuration": {"type": "string", "minLength": 1, "description": "as named in systems/<system>/README.md"},
+        "problem": {"type": "string", "pattern": "^(P(0[1-9]|1[0-6])|X[0-9]{2})$", "description": "P01-P16; X00-X99 only in made-up records"},
+        "subproblem": {"type": "string", "minLength": 1},
+        "instance": {"type": "string", "minLength": 1, "description": "an instance id of harnesses/stages.json"},
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "the instance's parameters, copied from harnesses/stages.json",
+          "properties": {
+            "n": {"type": "integer", "minimum": 1},
+            "order": {"type": "array", "items": {"type": "string"}},
+            "answers": {"enum": ["all", "any-one"]},
+            "cap": {"enum": [1, 20]},
+            "spawn_order": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "mode": {"enum": ["behaviour", "cost", "storage"]},
+        "purpose": {
+          "enum": ["primary", "variant", "qualification", "example"],
+          "description": "primary: a result run on the program's own constants; variant: the verifier's run on hidden constants; qualification: a harness test on a made-up program; example: a made-up record"
+        },
+        "program": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256"],
+          "properties": {
+            "path": {"type": "string", "minLength": 1, "description": "relative to the repository root"},
+            "sha256": {"$ref": "#/$defs/sha256"},
+            "repo_commit": {"$ref": "#/$defs/nullable_string"}
+          }
+        },
+        "constants": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["how", "input_path", "input_sha256", "variant"],
+          "properties": {
+            "how": {"enum": ["block", "input", "none"], "description": "block: a marked constants block inside the program; input: read from a file the harness passes; none: the sub-problem has no constants"},
+            "input_path": {"$ref": "#/$defs/nullable_string"},
+            "input_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+            "variant": {"$ref": "#/$defs/nullable_string", "description": "the hidden variant's id when run by the verifier, else null"}
+          }
+        },
+        "system_build": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["commit", "image", "binary", "version_output", "instrumented"],
+          "properties": {
+            "commit": {"$ref": "#/$defs/nullable_string", "description": "the pinned commit of the system as run (PINS.md), e.g. read from /opt/src/COMMITS"},
+            "image": {"$ref": "#/$defs/nullable_string", "description": "the container image digest or id the harness ran in"},
+            "binary": {"$ref": "#/$defs/nullable_string", "description": "the path of the executable run"},
+            "version_output": {"$ref": "#/$defs/nullable_string", "description": "the system's own version report, verbatim"},
+            "instrumented": {"type": "boolean", "description": "true when the build or the run carries the systems file's measurement instrumentation"}
+          }
+        },
+        "harness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "commit", "dirty"],
+          "properties": {
+            "path": {"type": "string"},
+            "commit": {"type": "string", "pattern": "^[0-9a-f]{7,40}$"},
+            "dirty": {"type": "boolean", "description": "the harness files differed from the commit when the run was made"}
+          }
+        },
+        "command": {"type": "array", "items": {"type": "string"}, "minItems": 1, "description": "the harness command line, as invoked"},
+        "posing": {"enum": ["incremental", "reposed"], "description": "how the configuration receives a stage after the first, from its systems file ('The same computation')"},
+        "limits": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["budget_steps", "step_unit", "safety_limit_s", "rerun_limit_s"],
+          "properties": {
+            "budget_steps": {"type": "integer", "minimum": 1},
+            "step_unit": {"type": "string", "minLength": 1},
+            "safety_limit_s": {"type": "number", "exclusiveMinimum": 0},
+            "rerun_limit_s": {"oneOf": [{"type": "null"}, {"type": "number", "exclusiveMinimum": 0}]}
+          }
+        },
+        "started_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"},
+        "ended_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"},
+        "complete": {"type": "boolean", "description": "every stage of the instance was posed and recorded"},
+        "incomplete_reason": {"$ref": "#/$defs/nullable_string"},
+        "confounds": {"type": "array", "items": {"type": "string"}, "description": "anything this harness does beyond passing stages in, collecting answers and reading state, as listed in its README"},
+        "environment": {"type": "object", "additionalProperties": {"type": "string"}, "description": "environment variables the harness set for the system (PYTHONHASHSEED, for instance)"}
+      }
+    },
+
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage", "attempts"],
+      "properties": {
+        "stage": {"type": "integer", "minimum": 1},
+        "attempts": {
+          "description": "the first attempt under the safety limit, and the one rerun under the raised limit if the first was stopped by it. The stage's result is the last attempt's; both are kept.",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/attempt"}
+        },
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+
+    "attempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attempt", "limit_s", "posed", "computations", "observe", "print", "store", "wall_time_s", "stdout", "stderr", "exit", "safety_limit", "effects", "manual_actions"],
+      "properties": {
+        "attempt": {"enum": [1, 2]},
+        "limit_s": {"type": "number", "exclusiveMinimum": 0},
+        "posed": {"$ref": "#/$defs/posed"},
+        "computations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/computation"}
+        },
+        "observe": {"$ref": "#/$defs/observe"},
+        "print": {"$ref": "#/$defs/nullable_string", "description": "the output of print(), verbatim: the system's own rendering of what it holds"},
+        "store": {"$ref": "#/$defs/store"},
+        "wall_time_s": {"type": "number", "minimum": 0, "description": "wall-clock time of the attempt, for the safety limit only; not a metric"},
+        "cpu_time_s": {"$ref": "#/$defs/nullable_number", "description": "process CPU time; P13 growth only"},
+        "max_rss_kb": {"$ref": "#/$defs/nullable_int", "description": "the operating system's maximum resident set size of the process; P13 growth only, from a run without the store instrumentation"},
+        "stdout": {"type": "string", "description": "verbatim, everything the system and program wrote to standard output during the attempt"},
+        "stderr": {"type": "string", "description": "verbatim"},
+        "exit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "signal"],
+          "properties": {
+            "status": {"oneOf": [{"type": "null"}, {"type": "integer"}], "description": "the exit status of the system's process at the end of the attempt, or null where the process keeps running into the next stage"},
+            "signal": {"$ref": "#/$defs/nullable_string"}
+          }
+        },
+        "safety_limit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hit", "action"],
+          "properties": {
+            "hit": {"type": "boolean"},
+            "action": {"enum": ["none", "rerun", "final-timeout", "fixed-limit-timeout"], "description": "rerun: a second attempt follows under the raised limit; final-timeout: the rerun also stopped; fixed-limit-timeout: the problem fixes the limit (P12, P13, P16), so no rerun"},
+            "how_stopped": {"$ref": "#/$defs/nullable_string", "description": "how the harness stopped the system (signal, engine abort), verbatim"}
+          }
+        },
+        "effects": {
+          "description": "P11: the effects log entries appended during this attempt, in order. Empty array for every other problem.",
+          "type": "array",
+          "items": {"$ref": "#/$defs/effect_entry"}
+        },
+        "manual_actions": {"type": "array", "items": {"$ref": "#/$defs/manual_action"}},
+        "separate_run": {
+          "description": "where collecting answers or observing would consume the computation the next stage extends (PROTOCOL.md, 'Observing must not consume the computation'): the separate run of stages 1 to k on which they were taken. null otherwise.",
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/separate_run"}]
+        },
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+
+    "posed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["how", "reason", "replayed", "replayed_commitments", "continued_after_budget"],
+      "properties": {
+        "how": {"enum": ["fresh", "incremental", "reposed"], "description": "fresh: stage 1 into a new computation; incremental: stage k into the computation that holds stages 1 to k-1; reposed: stages 1 to k replayed in order into a new computation"},
+        "reason": {"enum": ["first-stage", "configuration", "after-budget", "after-error", "after-timeout", "safety-rerun"], "description": "why the stage was posed this way"},
+        "replayed": {"$ref": "#/$defs/stage_list", "description": "the earlier stages replayed before this one, in order: [] unless reposed, and then exactly 1..k-1"},
+        "replayed_commitments": {
+          "description": "P11: each replayed commit stage, and the value v it was replayed as (x = v), verbatim as first selected",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["stage", "value_verbatim", "selected_in_run"],
+            "properties": {
+              "stage": {"type": "integer", "minimum": 1},
+              "value_verbatim": {"type": "string"},
+              "selected_in_run": {"type": "string", "description": "run_id of the run whose commit stage selected v (this run's own id if it was selected earlier in this run)"}
+            }
+          }
+        },
+        "continued_after_budget": {"type": "boolean", "description": "the previous stage ended in budget and this stage was posed into that same computation with a new budget"},
+        "instance_parameters_passed": {"type": "object", "description": "what the harness told the program about the instance (n, order, answers), verbatim"}
+      }
+    },
+
+    "computation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "spawned", "queries", "execution_state", "steps", "alternatives", "suspended", "problem_operations"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "description": "'main', or the computation's name in harnesses/stages.json"},
+        "spawned": {"type": "boolean", "description": "started with spawn() in this stage"},
+        "spawn_index": {"$ref": "#/$defs/nullable_int", "description": "1 for the first spawn() call of the stage, 2 for the second, ..."},
+        "side_by_side": {"oneOf": [{"type": "null"}, {"type": "boolean"}], "description": "for a spawned computation: spawn() returned at once and it ran beside the others (true), or the configuration ran it to its end or budget before the next (false)"},
+        "queries": {"type": "array", "items": {"$ref": "#/$defs/query"}},
+        "execution_state": {"$ref": "#/$defs/execution_state"},
+        "steps": {"$ref": "#/$defs/steps"},
+        "alternatives": {"$ref": "#/$defs/alternatives"},
+        "suspended": {"$ref": "#/$defs/suspended"},
+        "problem_operations": {
+          "description": "applications of each case of each relation the problem defines, as counted by the program's counters or the systems file's instrumentation, by name ('conc/1' for conc's case 1, for instance); null where not counted",
+          "oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}]
+        },
+        "candidates_examined": {"$ref": "#/$defs/nullable_int", "description": "P12: sequences s for which accept(s) was evaluated, as counted"}
+      }
+    },
+
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "cap", "answers", "ended_by", "collected_on"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "cap": {"enum": [1, 20]},
+        "answers": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["index", "verbatim"],
+            "properties": {
+              "index": {"type": "integer", "minimum": 1},
+              "verbatim": {"type": "string", "description": "the answer exactly as the system's standard mechanism for answers produced it"},
+              "steps_at": {"$ref": "#/$defs/nullable_int", "description": "steps of the stage when the answer was produced (cost mode)"},
+              "alternatives_at": {"$ref": "#/$defs/nullable_int", "description": "retained alternatives when the answer was produced, before the next was requested (storage mode, or wherever exact)"}
+            }
+          }
+        },
+        "ended_by": {"enum": ["exhausted", "cap", "budget", "timeout", "error", "no-enumeration"], "description": "why answers(cap) returned; no-enumeration: the configuration has no mechanism for further answers (the program prints what it computed and stops)"},
+        "collected_on": {"enum": ["this-run", "separate-run"]}
+      }
+    },
+
+    "execution_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["states", "determined", "basis", "error_verbatim"],
+      "properties": {
+        "states": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/exec_state"},
+          "description": "SPECIFICATION.md, Execution state, as far as the harness can tell it mechanically after answers(); 'alternatives pending' and 'suspended' may both hold"
+        },
+        "determined": {"type": "boolean", "description": "false where the harness cannot tell the state mechanically; states then lists what it could tell, possibly nothing, and the classifiers decide"},
+        "basis": {"type": "string", "minLength": 1, "description": "what the harness read to decide: the budget mechanism's signal, the system's own report of open choicepoints or suspended goals, exit status, ..."},
+        "error_verbatim": {"$ref": "#/$defs/nullable_string", "description": "the system's error, verbatim, when states includes error"}
+      }
+    },
+
+    "steps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit", "budget", "budget_exhausted", "stage", "restated", "restart_cost", "to_first_answer", "between_answers", "to_end", "repeated_work"],
+      "properties": {
+        "unit": {"type": "string", "minLength": 1},
+        "budget": {"type": "integer", "minimum": 1, "description": "the budget this computation had for this stage: budget_steps, plus the restart cost if reposed"},
+        "budget_exhausted": {"type": "boolean"},
+        "budget_enforced": {"type": "boolean", "description": "false where the configuration has no step count to enforce a budget by (ALGOL 60 x1sim, behaviour only); then only the safety limit stops the run, and budget_exhausted is false. Absent means true"},
+        "stage": {"$ref": "#/$defs/nullable_int", "description": "incremental cost: steps from the end of stage k-1 to the end of stage k, where the computation was received incrementally"},
+        "restated": {"$ref": "#/$defs/nullable_int", "description": "restated cost: steps from nothing to the end of stage k, in this run"},
+        "restart_cost": {"$ref": "#/$defs/nullable_int", "description": "for a reposed stage: the measured steps of running stages 1 to k-1 alone"},
+        "restart_cost_source": {"$ref": "#/$defs/nullable_string", "description": "where restart_cost was measured (run_id and stage)"},
+        "to_first_answer": {"$ref": "#/$defs/nullable_int"},
+        "between_answers": {"type": "array", "items": {"type": "integer", "minimum": 0}},
+        "to_end": {"$ref": "#/$defs/nullable_int"},
+        "repeated_work": {
+          "description": "from the source the systems file names (Absys trace; ALGOL 60 name_repeat_evaluations), by quantity; null where the systems file says it is not measured",
+          "oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}]
+        }
+      }
+    },
+
+    "alternatives": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit", "at_boundary", "at_budget", "peak", "held_as", "by_type", "problem_defined"],
+      "properties": {
+        "unit": {"type": "string", "minLength": 1, "description": "the systems file's unit of an alternative"},
+        "at_boundary": {"$ref": "#/$defs/nullable_int"},
+        "at_budget": {"$ref": "#/$defs/nullable_int"},
+        "peak": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/peak"}]},
+        "held_as": {"enum": ["all-live", "backtracking", "mixed", "none", "unknown"], "description": "whether the alternatives are all live at once or kept for backtracking, as the systems file says"},
+        "by_type": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}]},
+        "problem_defined": {
+          "description": "problem-defined alternatives (METRICS.md), by name, as counted by the program or instrumentation; null if not counted",
+          "oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}]
+        }
+      }
+    },
+
+    "suspended": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit", "at_boundary", "peak", "items"],
+      "properties": {
+        "unit": {"type": "string", "minLength": 1},
+        "at_boundary": {"$ref": "#/$defs/nullable_int"},
+        "peak": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/peak"}]},
+        "items": {
+          "description": "suspended or waiting work by kind, in the system's own terms (susp_equations, attributed variables, ...), at the stage boundary",
+          "oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}]
+        }
+      }
+    },
+
+    "peak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "kind"],
+      "properties": {
+        "value": {"type": "number", "minimum": 0},
+        "kind": {"enum": ["exact", "sampled"], "description": "sampled: a sampled maximum, never called a peak in results"},
+        "sample_interval": {"$ref": "#/$defs/nullable_string", "description": "for a sampled maximum: the interval, with its unit"}
+      }
+    },
+
+    "store": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["quantities"],
+      "properties": {
+        "quantities": {
+          "description": "the systems file's store vector, by quantity name; {} where not measured in this mode",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["boundary", "peak"],
+            "properties": {
+              "boundary": {"$ref": "#/$defs/nullable_number"},
+              "peak": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/peak"}]},
+              "unit": {"type": "string"}
+            }
+          }
+        },
+        "source": {"$ref": "#/$defs/nullable_string", "description": "the measurement used (--measure, tracemalloc, statistics/2, ...)"}
+      }
+    },
+
+    "observe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw", "method", "taken_on", "bindings"],
+      "properties": {
+        "raw": {"type": "string", "description": "the state observe() read at the end of the stage, verbatim, as the system gave it (including at the moment a budget ran out)"},
+        "method": {"type": "string", "minLength": 1, "description": "how it was read: which system facility, command or call"},
+        "taken_on": {"enum": ["this-run", "separate-run"]},
+        "bindings": {
+          "description": "the bindings held, by unknown, each as the system rendered it, verbatim; null where the raw state is not split by unknown mechanically",
+          "oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": {"type": "string"}}]
+        }
+      }
+    },
+
+    "separate_run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["replayed", "stdout", "stderr", "exit", "wall_time_s", "steps_restated"],
+      "properties": {
+        "replayed": {"$ref": "#/$defs/stage_list", "description": "stages 1 to k"},
+        "stdout": {"type": "string"},
+        "stderr": {"type": "string"},
+        "exit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "signal"],
+          "properties": {
+            "status": {"oneOf": [{"type": "null"}, {"type": "integer"}]},
+            "signal": {"$ref": "#/$defs/nullable_string"}
+          }
+        },
+        "wall_time_s": {"type": "number", "minimum": 0},
+        "steps_restated": {"$ref": "#/$defs/nullable_int"},
+        "effects_log": {"$ref": "#/$defs/nullable_string", "description": "P11: the observation log it wrote to, which is not judged"}
+      }
+    },
+
+    "effect_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seq", "entry", "run_id", "stage", "attempt", "during_replay_of", "log"],
+      "properties": {
+        "seq": {"type": "integer", "minimum": 1, "description": "position in the log, which is never reset"},
+        "entry": {"type": "string", "description": "the argument of emit, verbatim as the stub received it"},
+        "run_id": {"type": "string"},
+        "stage": {"type": "integer", "minimum": 1, "description": "the stage being posed when emit was called"},
+        "attempt": {"enum": [1, 2]},
+        "during_replay_of": {"oneOf": [{"type": "null"}, {"type": "integer", "minimum": 1}], "description": "the earlier stage being replayed when emit was called, in a reposed run; null when emitted while posing the stage itself. Entries with a value are candidates for 'duplicated only by reposing'; the classifiers decide"},
+        "log": {"enum": ["classification", "observation"]}
+      }
+    },
+
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["log_path", "observation_log_path", "entries_before_run", "log_after_run"],
+      "properties": {
+        "log_path": {"type": "string", "description": "the classification log of this configuration and instance"},
+        "observation_log_path": {"type": "string", "description": "the log written by separate observation runs and by cost and storage runs; not judged"},
+        "entries_before_run": {"type": "integer", "minimum": 0},
+        "log_after_run": {
+          "description": "the whole classification log after this run, in order, verbatim",
+          "type": "array",
+          "items": {"$ref": "#/$defs/effect_entry"}
+        }
+      }
+    },
+
+    "manual_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "by", "reason"],
+      "properties": {
+        "action": {"type": "string", "minLength": 1},
+        "by": {"type": "string", "minLength": 1},
+        "reason": {"type": "string"},
+        "kind": {"enum": ["restart-after-error", "choose-pending-computation", "reorder-program", "stage-specific-control", "other"], "description": "METRICS.md, Intervention"}
+      }
+    }
+  }
+}
