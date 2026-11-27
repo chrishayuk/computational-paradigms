@@ -1,0 +1,124 @@
+ALGOL 60 harness qualification, 20261127T180416Z, records in harnesses/algol-60/qualification/records/20261127T180416Z
+harness commit 81b0151339ca739e381c229375950eb2e9ee152c
+
+== A. The system run directly and the harness agree
+PASS  A1 report x01-incremental.alg: each stage's output as the harness recorded it equals the system's own output, run directly on the same input
+PASS  A2 report x01-incremental.alg: the answers the harness collected equal the [answer] texts of the direct output
+PASS  A1 x1 x01-incremental.alg: each stage's output as the harness recorded it equals the system's own output, run directly on the same input
+PASS  A2 x1 x01-incremental.alg: the answers the harness collected equal the [answer] texts of the direct output
+PASS  A1 x1 x01-x1.a60: each stage's output as the harness recorded it equals the system's own output, run directly on the same input
+PASS  A2 x1 x01-x1.a60: the answers the harness collected equal the [answer] texts of the direct output
+PASS  A1 x1sim x01-x1.a60: each stage's output as the harness recorded it equals the system's own output, run directly on the same input
+PASS  A2 x1sim x01-x1.a60: the answers the harness collected equal the [answer] texts of the direct output
+PASS  A1 report x02-incremental.alg: each stage's output as the harness recorded it equals the system's own output, run directly on the same input
+PASS  A2 report x02-incremental.alg: the answers the harness collected equal the [answer] texts of the direct output
+
+-- steps: the harness's counts against --max-steps itself
+PASS  A3 report x01-incremental.alg stage 1: restated steps 35: the interpreter run directly with --max-steps 35 does not stop, with 34 it stops
+PASS  A3 report x01-incremental.alg stage 2: restated steps 103: the interpreter run directly with --max-steps 103 does not stop, with 102 it stops
+PASS  A5 report x01-incremental.alg stage 2: incremental steps = restated(k) - restated(k-1)
+PASS  A3 report x01-incremental.alg stage 3: restated steps 170: the interpreter run directly with --max-steps 170 does not stop, with 169 it stops
+PASS  A5 report x01-incremental.alg stage 3: incremental steps = restated(k) - restated(k-1)
+PASS  A3 report x01-reposed.alg stage 1: restated steps 36: the interpreter run directly with --max-steps 36 does not stop, with 35 it stops
+PASS  A3 report x01-reposed.alg stage 2: restated steps 91: the interpreter run directly with --max-steps 91 does not stop, with 90 it stops
+PASS  A4 report x01-reposed.alg stage 2: restart cost 22 agrees with --max-steps on stages 1..1 alone
+PASS  A3 report x01-reposed.alg stage 3: restated steps 102: the interpreter run directly with --max-steps 102 does not stop, with 101 it stops
+PASS  A4 report x01-reposed.alg stage 3: restart cost 34 agrees with --max-steps on stages 1..2 alone
+PASS  A3 x1 x01-incremental.alg stage 1: restated steps 35: the interpreter run directly with --max-steps 35 does not stop, with 34 it stops
+PASS  A3 x1 x01-incremental.alg stage 2: restated steps 103: the interpreter run directly with --max-steps 103 does not stop, with 102 it stops
+PASS  A5 x1 x01-incremental.alg stage 2: incremental steps = restated(k) - restated(k-1)
+PASS  A3 x1 x01-incremental.alg stage 3: restated steps 170: the interpreter run directly with --max-steps 170 does not stop, with 169 it stops
+PASS  A5 x1 x01-incremental.alg stage 3: incremental steps = restated(k) - restated(k-1)
+PASS  A3 x1 x01-reposed.alg stage 1: restated steps 36: the interpreter run directly with --max-steps 36 does not stop, with 35 it stops
+PASS  A3 x1 x01-reposed.alg stage 2: restated steps 91: the interpreter run directly with --max-steps 91 does not stop, with 90 it stops
+PASS  A4 x1 x01-reposed.alg stage 2: restart cost 22 agrees with --max-steps on stages 1..1 alone
+PASS  A3 x1 x01-reposed.alg stage 3: restated steps 102: the interpreter run directly with --max-steps 102 does not stop, with 101 it stops
+PASS  A4 x1 x01-reposed.alg stage 3: restart cost 34 agrees with --max-steps on stages 1..2 alone
+
+-- the systems file's step probes (systems/algol-60/README.md, Units)
+PASS  A6 probe base: stage steps measured (14)
+PASS  A6 probe block: stage steps 17 - base 14 = 3, as the systems file says
+PASS  A6 probe proc: stage steps 17 - base 14 = 3, as the systems file says
+PASS  A6 probe forstep: stage steps 19 - base 14 = 5, as the systems file says
+PASS  A6 probe forlist: stage steps 15 - base 14 = 1, as the systems file says
+
+-- store: the harness's storage record against --measure run directly
+PASS  A7 report stage 1: every store figure the harness recorded equals algol60-measure --measure on stages 1..1 run directly
+PASS  A8 report stage 1: repeated work recorded from name_repeat_evaluations ({'name_repeat_evaluations': 0, 'name_first_evaluations': 0, 'name_evaluations': 0})
+PASS  A7 report stage 2: every store figure the harness recorded equals algol60-measure --measure on stages 1..2 run directly
+PASS  A8 report stage 2: repeated work recorded from name_repeat_evaluations ({'name_repeat_evaluations': 0, 'name_first_evaluations': 0, 'name_evaluations': 0})
+PASS  A7 report stage 3: every store figure the harness recorded equals algol60-measure --measure on stages 1..3 run directly
+PASS  A8 report stage 3: repeated work recorded from name_repeat_evaluations ({'name_repeat_evaluations': 0, 'name_first_evaluations': 0, 'name_evaluations': 0})
+PASS  A7 x1 stage 1: every store figure the harness recorded equals algol60-measure --measure on stages 1..1 run directly
+PASS  A8 x1 stage 1: repeated work recorded from name_repeat_evaluations ({'name_repeat_evaluations': 0, 'name_first_evaluations': 0, 'name_evaluations': 0})
+PASS  A7 x1 stage 2: every store figure the harness recorded equals algol60-measure --measure on stages 1..2 run directly
+PASS  A8 x1 stage 2: repeated work recorded from name_repeat_evaluations ({'name_repeat_evaluations': 0, 'name_first_evaluations': 0, 'name_evaluations': 0})
+PASS  A7 x1 stage 3: every store figure the harness recorded equals algol60-measure --measure on stages 1..3 run directly
+PASS  A8 x1 stage 3: repeated work recorded from name_repeat_evaluations ({'name_repeat_evaluations': 0, 'name_first_evaluations': 0, 'name_evaluations': 0})
+
+== B. Incremental and reposed posing give the same answers; modes agree
+PASS  B1 report X01: incremental (fresh,incremental,incremental) and reposed (fresh,reposed,reposed) runs give the same answers at every stage
+PASS  B1 x1 X01: incremental (fresh,incremental,incremental) and reposed (fresh,reposed,reposed) runs give the same answers at every stage
+PASS  B1 x1sim X01: incremental (fresh,incremental,incremental) and reposed (fresh,reposed,reposed) runs give the same answers at every stage
+PASS  B1 report X02: incremental (fresh,incremental,incremental) and reposed (fresh,reposed,reposed) runs give the same answers at every stage
+PASS  B2 X02 reposed: stage 3 replays the commit of stage 2 as v = '1 ', verbatim as first selected
+PASS  B3 X02 reposed: entries emitted while replaying stage 1 are marked during_replay_of 1
+PASS  B4 X02 incremental: one entry per emit of the computation (the re-created stages' emits are not appended again)
+PASS  B5 report: behaviour, cost and storage runs give the same answers
+PASS  B5 x1: behaviour, cost and storage runs give the same answers
+PASS  B6 report X03a.UV: spawned in the instance's order, each with its own query and budget, side by side false
+PASS  B6 x1sim X03a.UV: spawned in the instance's order, each with its own query and budget, side by side false
+PASS  B6 report X03a.VU: spawned in the instance's order, each with its own query and budget, side by side false
+PASS  B6 x1sim X03a.VU: spawned in the instance's order, each with its own query and budget, side by side false
+
+== C. Budget, safety limit, error and usage paths
+PASS  C1 report X04 stage 2: state budget, budget_exhausted, answers printed before the budget kept (['before the loop'])
+PASS  C2 report X04 stage 3: reposed after-budget (the interpreter cannot continue past --max-steps)
+PASS  C3 report X05 stage 2: state error with the interpreter's message verbatim ('harnesses/algol-60/qualification/programs/x05-error.alg: line 15: subscript 5 is outside the bounds [1:2] of a')
+PASS  C4 report X05 stage 3: reposed after-error
+PASS  C5 x1sim X05 stage 2: state error, x1sim's message verbatim ('Error: Index 5 is beyond limits for array [-67108863:-67108862]\n')
+PASS  C6 report X06 stage 2: the safety limit stops attempt 1 (action rerun), attempt 2 is reposed at the raised limit and stops too (final-timeout); answers before the stop kept (['before the wait'])
+PASS  C7 report X06 stage 3: reposed after-timeout
+PASS  C6 x1sim X06 stage 2: the safety limit stops attempt 1 (action rerun), attempt 2 is reposed at the raised limit and stops too (final-timeout); answers before the stop kept (['before the wait'])
+PASS  C7 x1sim X06 stage 3: reposed after-timeout
+PASS  C8 report X07: under a fixed limit the first stop is final (fixed-limit-timeout, no rerun)
+PASS  C9 cost mode for x1sim: usage error, exit 2, no record
+PASS  C9 an unknown configuration: usage error, exit 2, no record
+PASS  C9 an unknown instance: usage error, exit 2
+
+== E. check executes nothing
+PASS  E1 report: the marker program run directly prints its marker (b'MARKER-IF-EXECUTED-7f3a')
+PASS  E2 report: check exits 0, its output has no marker, and no file appears beside the program
+PASS  E1 x1: the marker program run directly prints its marker (b'MARKER-IF-EXECUTED-7f3a')
+PASS  E2 x1: check exits 0, its output has no marker, and no file appears beside the program
+PASS  E1 x1sim: the marker program run directly prints its marker (b'MARKER-IF-EXECUTED-7f3a')
+PASS  E2 x1sim: check exits 0, its output has no marker, and no file appears beside the program
+PASS  E3 report: check reports a program in the X1 form verbatim as an error (exit 1)
+PASS  E4 report: check accepts x01-incremental.alg
+PASS  E4 x1: check accepts x01-x1.a60
+PASS  E4 x1sim: check accepts x01-x1.a60
+
+== F. No anticipation: a stage's constants reach the program only when the stage is posed
+PASS  F1 report x01-incremental.alg behaviour: in all 45 processes the harness started (attempts and probes), the input before a stage's message holds no constants, and each pose or replay message of stage k carries exactly stage k's lines
+PASS  F1 report x01-reposed.alg behaviour: in all 46 processes the harness started (attempts and probes), the input before a stage's message holds no constants, and each pose or replay message of stage k carries exactly stage k's lines
+PASS  F1 x1 x01-incremental.alg cost: in all 152 processes the harness started (attempts and probes), the input before a stage's message holds no constants, and each pose or replay message of stage k carries exactly stage k's lines
+PASS  F1 x1sim x01-x1.a60 behaviour: in all 1 processes the harness started (attempts and probes), the input before a stage's message holds no constants, and each pose or replay message of stage k carries exactly stage k's lines
+PASS  F1 x1sim x01-x1-reposed.a60 behaviour: in all 3 processes the harness started (attempts and probes), the input before a stage's message holds no constants, and each pose or replay message of stage k carries exactly stage k's lines
+PASS  F1 report x06-timeout.alg behaviour: in all 91 processes the harness started (attempts and probes), the input before a stage's message holds no constants, and each pose or replay message of stage k carries exactly stage k's lines
+
+-- the stage re-created for its budget is marked as such
+PASS  F2 X01 cost stage 1: fresh, not marked re-created
+PASS  F2 X01 cost stage 2: marked recreated_for_budget, prefix_steps 35 = restated steps of stage 1, not charged to the stage
+PASS  F2 X01 cost stage 3: marked recreated_for_budget, prefix_steps 103 = restated steps of stage 2, not charged to the stage
+PASS  F2 X02 behaviour stage 1: fresh, not marked re-created
+PASS  F2 X02 behaviour stage 2: marked recreated_for_budget, prefix_steps 29 = restated steps of stage 1, not charged to the stage
+PASS  F2 X02 behaviour stage 3: marked recreated_for_budget, prefix_steps 46 = restated steps of stage 2, not charged to the stage
+PASS  F3 X02 stage 3: the note lists commit stage 2 as carried out again in the re-created prefix
+
+== D. Every record passes validate.py
+        48 record files
+PASS  D1 all 48 records valid (validate.py exit 0, 48 'valid')
+PASS  D2 no INVALID record was written
+PASS  D3 no record has a harness fault
+
+99 checks, 99 passed, 0 failed

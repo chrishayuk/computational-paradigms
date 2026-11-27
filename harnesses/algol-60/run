@@ -1,0 +1,1454 @@
+#!/usr/bin/env python3
+"""ALGOL 60 harness (harnesses/algol-60/README.md).
+
+    harnesses/algol-60/run CONFIGURATION PROBLEM INSTANCE MODE PROGRAM OUTDIR
+
+CONFIGURATION is report, x1 or x1sim (systems/algol-60/README.md). INSTANCE is
+an instance id of harnesses/stages.json. MODE is behaviour, cost or storage
+(x1sim: behaviour only). PROGRAM and OUTDIR are relative to the repository
+root (or absolute). Runs inside the pinned image; Python 3 standard library
+only.
+
+Exit status: 0 a valid record was written; 2 usage error, no record; 3 the
+harness failed and could not write a valid record.
+
+Environment read (all optional):
+  ALGOL60_CONSTANTS  the constants file to pass (default: PROGRAM with its
+                     extension replaced by .constants, if that file exists)
+  ALGOL60_VARIANT    the hidden variant's id, recorded in run.constants.variant
+  HARNESS_PURPOSE    primary (default), variant or qualification
+  HARNESS_IMAGE      the image digest, passed in by the launcher
+  HARNESS_STAGES     another stages file (qualification on made-up problems only)
+  HARNESS_INPUT_TRACE  qualification only: a file to which every write to the system's input is logged
+"""
+
+import datetime
+import hashlib
+import json
+import os
+import queue
+import re
+import shutil
+import signal
+import subprocess
+import sys
+import tempfile
+import threading
+import time
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
+SYSTEM = "algol-60"
+SPEC_TAG = "spec-1.0"
+
+CONFIGS = {
+    "report": {"kind": "interp", "flags": [], "modes": ("behaviour", "cost", "storage")},
+    "x1": {"kind": "interp", "flags": ["--x1"], "modes": ("behaviour", "cost", "storage")},
+    "x1sim": {"kind": "x1sim", "flags": [], "modes": ("behaviour",)},
+}
+ALGOL60 = "/usr/local/bin/algol60"
+ALGOL60_MEASURE = "/usr/local/bin/algol60-measure"
+X1SIM = "/usr/local/bin/x1sim"
+X1LIB = "/usr/local/lib/x1algol.lib"
+
+STEP_UNIT_INTERP = "algol60 interpreter step (tick, as --max-steps counts it; systems/algol-60/README.md, Units)"
+STEP_UNIT_X1SIM = "none: x1sim reports no step count (systems/algol-60/README.md, Units; harnesses/QUESTIONS.md Q12)"
+ALT_UNIT = "the program's named structures, as the program reports them in [alternatives NAME COUNT] (systems/algol-60/README.md, Units: Alternative, as Python)"
+SUSP_UNIT = "the program's named structures of held work, as the program reports them in [suspended NAME COUNT]"
+
+LIVE_QUANTITIES = ("frames", "slots", "arrays", "array_elements", "names", "call_depth")
+TOTAL_QUANTITIES = ("frames_made", "calls", "name_uses", "name_evaluations",
+                    "name_first_evaluations", "name_repeat_evaluations")
+REPEATED_WORK = ("name_repeat_evaluations", "name_first_evaluations", "name_evaluations")
+
+MSG_POSE, MSG_REPLAY, MSG_REPLAY_COMMIT, MSG_SPAWN = 1, 2, 3, 4
+END_TAG = "[end]"
+
+TRACE = os.environ.get("HARNESS_INPUT_TRACE")   # qualification only: log every write to a system's input
+PREFIX_GUARD_S = 900      # a re-created prefix or a measurement probe that runs longer is a harness fault
+CLOSE_GRACE_S = 10        # after the harness closes the input, the process must end within this
+
+CONFOUNDS_INTERP = [
+    "Re-creation of the computation (report, x1): the interpreter fixes its step limit (--max-steps) when the process starts and counts from the start, so to give each stage and each spawned computation its own budget the harness runs it in a fresh interpreter process that receives the earlier stages' messages exactly as they first arrived, one at a time, each after the previous [end], with --max-steps set to the measured step count at the start of the stage plus the budget. Such an attempt is recorded as incremental (nothing replayed, no restart cost) and is marked in its notes with 'recreated_for_budget: true' and the re-created prefix's steps (prefix_steps), which are not charged to the stage. It relies on the interpreter being deterministic; the re-created stages' output must be byte-identical to their recorded output, and a difference is a harness fault. Effects emitted by the re-created earlier stages are not appended to the effects log again; a commit stage in the re-created prefix is carried out again by the program, deterministically, and its output (its selected v included) must be byte-identical; the record's note lists such stages.",
+    "Step counts are read only through --max-steps, by bisection: the harness reruns the program on the same input with different limits and finds the least limit at which the interpreter does not report 'stopped after N steps'. Those probe runs are extra runs of the program; their output (emits included) is used only for that test and for the determinism check, and is not recorded or logged.",
+    "After the stage under test, the harness closes the program's standard input. The program's next read then fails with the interpreter's 'the input is exhausted' error, which ends the process. That error comes after the stage's [end] and is not the stage's execution state.",
+    "The safety limit of an incremental attempt is timed from writing the stage's message to the end of the stage; the re-created earlier stages are not inside it (they are guarded separately, at %d s, as a harness fault)." % PREFIX_GUARD_S,
+    "Output the interpreter still holds in its own buffer when the harness kills it at the safety limit is lost (the interpreter flushes its output at every read of input, at an error, at the step limit and at the end of the program), so answers and emits printed but not flushed before a safety-limit stop cannot be collected.",
+    "Repeated work and the store are read from the measurement build (algol60-measure --measure), which reports at the end of the process only: totals (frames_made, calls, name_* counts) are read at the stage boundary, since the process ends there, and the stage's repeated work is the difference of the build's totals between boundaries; the live quantities (frames, slots, arrays, array_elements, names, call_depth) are not readable at the boundary (the interpreter has unwound when the build reports), so their boundary is null, and their peak over the process is attributed to the stage only where it exceeds the peak at the end of the previous stage.",
+]
+CONFOUNDS_COMMON = [
+    "The harness writes on the program's standard input: one line of instance parameters, then one message line per stage, replayed stage, replayed commitment or spawned computation, each message that poses or replays stage k followed by stage k's lines of the constants file with their 'k:' tag removed (README, 2.2). No stage's constants are on the input before the stage is posed. This is how a stage is passed in; it is listed because the program reads it with the configuration's input procedures, whose calls are H.",
+    "Answers, observe() state, emit entries and the end of a stage are taken from the program's printed tags ([answer]...[/answer], [observe]...[/observe], [emit]...[/emit], [end]) by pattern matching on the standard output; the text between tags is kept verbatim. Answers beyond a query's cap are left in stdout and print but not collected.",
+    "A spawned computation (P09) is a procedure of the one program, started by the harness's spawn message, and runs to its end, budget or error before the next is spawned (side_by_side false). ALGOL 60 has no mechanism for separate computations; see QUESTIONS.md.",
+]
+CONFOUNDS_X1SIM = [
+    "x1sim compiles the program to an object file beside it, so the harness copies the program into a fresh temporary directory as prog.a60 and runs x1sim there, with HOME set to that directory and X1ALGOL_LIB unset, so that the library is /usr/local/lib/x1algol.lib.",
+    "x1sim has no step count, so no budget is enforced; only the safety limit stops it (QUESTIONS.md Q12 of the common part).",
+]
+
+
+# ------------------------------------------------------------------ util ---
+
+def utcnow():
+    return datetime.datetime.now(datetime.timezone.utc)
+
+
+def iso(t):
+    return t.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def sha256_bytes(b):
+    return hashlib.sha256(b).hexdigest()
+
+
+def decode(b, faults, what):
+    try:
+        return b.decode("utf-8")
+    except UnicodeDecodeError:
+        faults.append("%s was not valid UTF-8; undecodable bytes written as U+FFFD" % what)
+        return b.decode("utf-8", errors="replace")
+
+
+def git(*args):
+    try:
+        r = subprocess.run(["git", "-c", "safe.directory=*", "-C", ROOT] + list(args),
+                           capture_output=True, text=True, timeout=30)
+        return r.stdout.strip() if r.returncode == 0 else None
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def usage(msg):
+    sys.stderr.write("run: %s\n\n%s\n" % (msg, __doc__))
+    sys.exit(2)
+
+
+# --------------------------------------------------------------- process ---
+
+class Proc:
+    """One system process, its stdin written by a thread, stdout and stderr
+    collected by threads, waited for with os.wait4 (for CPU time and RSS)."""
+
+    def __init__(self, argv, cwd, env):
+        self.t0 = time.monotonic()
+        self.p = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                  stderr=subprocess.PIPE, cwd=cwd, env=env,
+                                  start_new_session=True)
+        self.cond = threading.Condition()
+        self.out = bytearray()
+        self.err = bytearray()
+        self.out_eof = False
+        self.err_eof = False
+        self.exited = False
+        self.status = None
+        self.signal = None
+        self.rusage = None
+        self.killed = False
+        self.q = queue.Queue()
+        threading.Thread(target=self._reader, args=(self.p.stdout, "out"), daemon=True).start()
+        threading.Thread(target=self._reader, args=(self.p.stderr, "err"), daemon=True).start()
+        threading.Thread(target=self._writer, daemon=True).start()
+        threading.Thread(target=self._waiter, daemon=True).start()
+
+    def _reader(self, f, which):
+        fd = f.fileno()
+        while True:
+            try:
+                b = os.read(fd, 65536)
+            except OSError:
+                b = b""
+            with self.cond:
+                if not b:
+                    if which == "out":
+                        self.out_eof = True
+                    else:
+                        self.err_eof = True
+                    self.cond.notify_all()
+                    return
+                (self.out if which == "out" else self.err).extend(b)
+                self.cond.notify_all()
+
+    def _writer(self):
+        while True:
+            item = self.q.get()
+            try:
+                if item is None:
+                    self.p.stdin.close()
+                    return
+                self.p.stdin.write(item)
+                self.p.stdin.flush()
+            except (BrokenPipeError, OSError, ValueError):
+                return
+
+    def _waiter(self):
+        try:
+            _, st, ru = os.wait4(self.p.pid, 0)
+        except ChildProcessError:
+            st, ru = 0, None
+        with self.cond:
+            if os.WIFSIGNALED(st):
+                self.signal = signal.Signals(os.WTERMSIG(st)).name
+                self.status = None
+            else:
+                self.status = os.WEXITSTATUS(st)
+            self.p.returncode = -1 if self.signal else self.status
+            self.rusage = ru
+            self.exited = True
+            self.cond.notify_all()
+
+    def write(self, b):
+        if TRACE:
+            with open(TRACE, "a") as f:
+                f.write(json.dumps({"pid": self.p.pid, "data": b.decode("utf-8", errors="replace")}) + "\n")
+        self.q.put(b)
+
+    def close_input(self):
+        self.q.put(None)
+
+    def done(self):
+        return self.exited and self.out_eof and self.err_eof
+
+    def wait_until(self, pred, deadline):
+        """Wait until pred(stdout bytes) holds ('ok'), the process has ended
+        ('exit'), or the deadline passes ('timeout')."""
+        with self.cond:
+            while True:
+                if pred(self.out):
+                    return "ok"
+                if self.done():
+                    return "exit"
+                rem = deadline - time.monotonic()
+                if rem <= 0:
+                    return "timeout"
+                self.cond.wait(min(rem, 1.0))
+
+    def kill(self):
+        self.killed = True
+        try:
+            os.killpg(self.p.pid, signal.SIGKILL)
+        except (ProcessLookupError, PermissionError):
+            pass
+        self.wait_end(30)
+
+    def wait_end(self, secs):
+        deadline = time.monotonic() + secs
+        with self.cond:
+            while not self.done():
+                rem = deadline - time.monotonic()
+                if rem <= 0:
+                    return False
+                self.cond.wait(min(rem, 1.0))
+        return True
+
+    def finish(self, grace=CLOSE_GRACE_S):
+        """Close the input, wait for the end; kill after the grace period."""
+        self.close_input()
+        if not self.wait_end(grace):
+            self.kill()
+            return False
+        return True
+
+
+def count_end(b):
+    return b.count(END_TAG.encode())
+
+
+def end_positions(text):
+    pos, out = 0, []
+    while True:
+        i = text.find(END_TAG, pos)
+        if i < 0:
+            return out
+        out.append(i + len(END_TAG))
+        pos = i + len(END_TAG)
+
+
+def split_segments(text):
+    """Segment i is the text from the end of segment i-1 through its [end];
+    the last element is the remainder after the last [end]."""
+    ends = end_positions(text)
+    segs, start = [], 0
+    for e in ends:
+        segs.append(text[start:e])
+        start = e
+    segs.append(text[start:])
+    return segs
+
+
+# ----------------------------------------------------------------- tags ---
+
+RE_ANSWER = re.compile(r"\[answer\](.*?)\[/answer\]", re.S)
+RE_OBSERVE = re.compile(r"\[observe\](.*?)\[/observe\]", re.S)
+RE_EMIT = re.compile(r"\[emit\](.*?)\[/emit\]", re.S)
+RE_BIND = re.compile(r"\[bind\s+([^\s\]]+)\s*\](.*?)\[/bind\]", re.S)
+NUM = r"([+-]?)\s*(\d+)"
+RE_ALT = re.compile(r"\[alternatives\s+([^\s\]]+)\s+" + NUM + r"\s*\]")
+RE_PALT = re.compile(r"\[problem-alternatives\s+([^\s\]]+)\s+" + NUM + r"\s*\]")
+RE_SUSP = re.compile(r"\[suspended\s+([^\s\]]+)\s+" + NUM + r"\s*\]")
+RE_OPS = re.compile(r"\[operations\s+([^\s\]]+)\s+" + NUM + r"\s*\]")
+RE_CAND = re.compile(r"\[candidates\s+" + NUM + r"\s*\]")
+RE_HELD = re.compile(r"\[held-as\s+(all-live|backtracking|mixed)\s*\]")
+
+
+def tag_counts(regex, text, faults, what):
+    d = None
+    for m in regex.finditer(text):
+        name, sign, digits = m.group(1), m.group(2), m.group(3)
+        if sign == "-":
+            faults.append("%s %s: a negative count %s%s was reported; not recorded" % (what, name, sign, digits))
+            continue
+        d = d or {}
+        if name in d:
+            faults.append("%s %s reported more than once in one observe block; the last is recorded" % (what, name))
+        d[name] = int(digits)
+    return d
+
+
+def parse_segment(text, faults):
+    """What the harness reads from one segment of the program's output."""
+    answers = [m.group(1) for m in RE_ANSWER.finditer(text)]
+    obs_blocks = [m.group(1) for m in RE_OBSERVE.finditer(text)]
+    obs = "".join(obs_blocks)
+    emits = [m.group(1) for m in RE_EMIT.finditer(text)]
+    unclosed = text.count("[answer]") - len(answers)
+    bindings = None
+    for m in RE_BIND.finditer(obs):
+        bindings = bindings or {}
+        bindings[m.group(1)] = m.group(2)
+    cand = None
+    cm = list(RE_CAND.finditer(obs))
+    if cm:
+        cand = int(cm[-1].group(2)) if cm[-1].group(1) != "-" else None
+    held = RE_HELD.findall(obs)
+    return {
+        "answers": answers,
+        "unclosed_answers": max(0, unclosed),
+        "observe": obs,
+        "observe_blocks": len(obs_blocks),
+        "emits": emits,
+        "bindings": bindings,
+        "alternatives": tag_counts(RE_ALT, obs, faults, "[alternatives]"),
+        "problem_alternatives": tag_counts(RE_PALT, obs, faults, "[problem-alternatives]"),
+        "suspended": tag_counts(RE_SUSP, obs, faults, "[suspended]"),
+        "operations": tag_counts(RE_OPS, obs, faults, "[operations]"),
+        "candidates": cand,
+        "held_as": held[-1] if held else None,
+    }
+
+
+# ---------------------------------------------------------- the harness ---
+
+class Harness:
+    def __init__(self, argv):
+        if len(argv) != 7:
+            usage("expected 6 arguments")
+        self.command = argv[:]
+        self.config_name, self.problem, self.instance_id, self.mode, prog, outdir = argv[1:]
+        if self.config_name not in CONFIGS:
+            usage("unknown configuration %r (report, x1, x1sim)" % self.config_name)
+        self.cfg = CONFIGS[self.config_name]
+        if self.mode not in ("behaviour", "cost", "storage"):
+            usage("unknown mode %r" % self.mode)
+        if self.mode not in self.cfg["modes"]:
+            usage("mode %s is not allowed for %s (systems/algol-60/README.md)" % (self.mode, self.config_name))
+        self.stages_path = os.environ.get("HARNESS_STAGES") or os.path.join(ROOT, "harnesses", "stages.json")
+        try:
+            self.stages_doc = json.load(open(self.stages_path, encoding="utf-8"))
+        except (OSError, ValueError) as e:
+            sys.stderr.write("run: cannot read the stages file %s: %s\n" % (self.stages_path, e))
+            sys.exit(3)
+        found = None
+        for p in self.stages_doc["problems"]:
+            for s in p["subproblems"]:
+                for i in s["instances"]:
+                    if i["id"] == self.instance_id:
+                        found = (p, s, i)
+        if not found:
+            usage("unknown instance %r" % self.instance_id)
+        self.prob, self.sub, self.inst = found
+        if self.prob["problem"] != self.problem:
+            usage("instance %s belongs to %s, not %s" % (self.instance_id, self.prob["problem"], self.problem))
+        self.prog_abs = prog if os.path.isabs(prog) else os.path.join(ROOT, prog)
+        self.prog_rel = os.path.relpath(self.prog_abs, ROOT)
+        if not os.path.isfile(self.prog_abs):
+            usage("no program at %s" % prog)
+        self.outdir = outdir if os.path.isabs(outdir) else os.path.join(ROOT, outdir)
+        lim = dict(self.stages_doc["default_limits"])
+        lim.update(self.prob.get("limits") or {})
+        self.budget = int(lim["budget_steps"])
+        self.safety_s = lim["safety_limit_s"]
+        self.rerun_s = lim["rerun_limit_s"]
+        self.enforced = self.cfg["kind"] == "interp"
+        self.step_unit = STEP_UNIT_INTERP if self.enforced else STEP_UNIT_X1SIM
+        self.faults = []
+        self.notes = []
+        self.effects_on = bool(self.prob.get("effects"))
+        self.purpose = os.environ.get("HARNESS_PURPOSE", "primary")
+        if self.purpose not in ("primary", "variant", "qualification"):
+            usage("HARNESS_PURPOSE must be primary, variant or qualification")
+
+        # ---- the program, read as bytes only
+        self.prog_bytes = open(self.prog_abs, "rb").read()
+        text = self.prog_bytes.decode("utf-8", errors="replace")
+        m = re.findall(r"HARNESS\s+POSING\s+(incremental|reposed)", text)
+        if len(set(m)) != 1:
+            usage("the program must declare exactly one of 'HARNESS POSING incremental' or "
+                  "'HARNESS POSING reposed' in a comment (README, 'File layout')")
+        self.posing = m[0]
+        cpath = os.environ.get("ALGOL60_CONSTANTS")
+        if cpath:
+            cpath = cpath if os.path.isabs(cpath) else os.path.join(ROOT, cpath)
+            if not os.path.isfile(cpath):
+                usage("ALGOL60_CONSTANTS names no file: %s" % cpath)
+        else:
+            c = os.path.splitext(self.prog_abs)[0] + ".constants"
+            cpath = c if os.path.isfile(c) else None
+        self.constants_path = cpath
+        self.constants_bytes = open(cpath, "rb").read() if cpath else b""
+        self.stage_consts = {}
+        if cpath:
+            ctext = self.constants_bytes.decode("utf-8", errors="replace")
+            nst = len(self.sub["stages"])
+            for no, line in enumerate(ctext.splitlines(), 1):
+                if not line.strip():
+                    continue
+                m = re.match(r"^\s*(\d+)\s*:(.*)$", line)
+                if not m or not 1 <= int(m.group(1)) <= nst:
+                    usage("constants file %s, line %d: every line must begin 'k:' with k a stage of the "
+                          "instance, 1..%d (README, 2.1): %r" % (cpath, no, nst, line))
+                self.stage_consts.setdefault(int(m.group(1)), []).append(m.group(2).strip() + "\n")
+
+        # ---- instance parameters, as the line the program reads first
+        self.params_line, self.params_passed = self.make_params_line()
+
+        # ---- segments: one per stage, or one per spawned computation
+        self.stage_specs = self.sub["stages"]
+        self.K = len(self.stage_specs)
+
+        # ---- effects logs
+        self.log_path = os.path.join(self.outdir, "%s.effects.jsonl" % self.instance_id)
+        self.obs_log_path = os.path.join(self.outdir, "%s.effects-observation.jsonl" % self.instance_id)
+        self.commitments = {}   # commit stage -> (v verbatim, run_id)
+
+        # ---- environment given to the system
+        self.tmp = tempfile.mkdtemp(prefix="algol60-harness-")
+        self.env = {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": self.tmp, "LC_ALL": "C.UTF-8"}
+        if self.cfg["kind"] == "x1sim":
+            shutil.copyfile(self.prog_abs, os.path.join(self.tmp, "prog.a60"))
+        self.probe_runs = 0
+
+    # ------------------------------------------------------------ params ---
+
+    def code_table(self, key):
+        seen = []
+        for i in self.sub["instances"]:
+            for v in i.get("parameters", {}).get(key, []):
+                if v not in seen:
+                    seen.append(v)
+        return seen
+
+    def make_params_line(self):
+        par = self.inst.get("parameters", {})
+        n = int(par.get("n", 0))
+        a = int(par.get("cap", 0))
+        if "answers" in par and "cap" not in par:
+            a = 20 if par["answers"] == "all" else 1
+        keys = [k for k in ("order", "spawn_order") if k in par]
+        if len(keys) > 1:
+            raise SystemExit("run: an instance with both order and spawn_order is not supported")
+        codes = []
+        table = {}
+        if keys:
+            tab = self.code_table(keys[0])
+            table = {v: i + 1 for i, v in enumerate(tab)}
+            codes = [table[v] for v in par[keys[0]]]
+        words = [n, a, len(codes)] + codes
+        line = " ".join(str(w) for w in words) + "\n"
+        passed = {"line": line, "n": n, "cap": a, "codes": codes}
+        if keys:
+            passed["code_of"] = table
+            passed["coded_parameter"] = keys[0]
+        return line, passed
+
+    def preamble(self):
+        """Only the instance line: no stage's constants are on the input before
+        that stage is posed (no anticipation)."""
+        return self.params_line.encode()
+
+    def consts(self, k):
+        """Stage k's constants lines, their 'k:' tags removed, sent after a
+        message that poses or replays stage k."""
+        return "".join(self.stage_consts.get(k, [])).encode()
+
+    def segments_of(self, k):
+        """[(computation id, spawned, spawn index, message bytes)] for posing stage k."""
+        st = self.stage_specs[k - 1]
+        if st.get("spawns"):
+            if st.get("spawn_fallback"):
+                # QUESTIONS.md A3: ALGOL 60 has no unknowns to share between computations.
+                return [(st["spawn_fallback"], False, None, ("%d %d\n" % (MSG_POSE, k)).encode() + self.consts(k))]
+            order = self.inst.get("parameters", {}).get("spawn_order") or st["spawns"]
+            segs = []
+            for idx, c in enumerate(order):
+                code = st["spawns"].index(c) + 1
+                segs.append((c, True, idx + 1, ("%d %d %d\n" % (MSG_SPAWN, k, code)).encode() + self.consts(k)))
+            return segs
+        comps = sorted(set(q["computation"] for q in st["queries"]))
+        return [(comps[0] if comps else "main", False, None, ("%d %d\n" % (MSG_POSE, k)).encode() + self.consts(k))]
+
+    def queries_of(self, k, comp):
+        st = self.stage_specs[k - 1]
+        qs = st["queries"]
+        if st.get("spawns") and st.get("spawn_fallback"):
+            qs = st.get("fallback_queries", qs)
+        out = []
+        for q in qs:
+            if q["computation"] == comp:
+                cap = q["cap"]
+                if cap is None:
+                    cap = self.inst["parameters"]["cap"]
+                out.append((q["id"], cap))
+        return out
+
+    def replay_items(self, k):
+        """Messages replaying stages 1..k-1 in a reposed run, in order."""
+        items = []
+        for j in range(1, k):
+            st = self.stage_specs[j - 1]
+            if st.get("spawns") and not st.get("spawn_fallback"):
+                # Never needed by stages.json: only one-stage problems spawn (P09a, P09b),
+                # and P16b's spawning stage 1 is posed by its fallback in ALGOL 60.
+                raise RuntimeError("replay of a spawning stage is not implemented (stage %d)" % j)
+            if st.get("commit") and j in self.commitments:
+                v, _ = self.commitments[j]
+                msg = ("%d %d\n" % (MSG_REPLAY_COMMIT, j)).encode() + v.encode() + b"\n" + self.consts(j)
+            else:
+                msg = ("%d %d\n" % (MSG_REPLAY, j)).encode() + self.consts(j)
+            items.append({"msg": msg, "wait": False, "stage": j, "comp": "main", "replay": True})
+        return items
+
+    # ------------------------------------------------------- the system ---
+
+    def argv(self, limit, measure):
+        if self.cfg["kind"] == "x1sim":
+            return [X1SIM, "prog.a60"], self.tmp
+        binary = ALGOL60_MEASURE if (measure or self.mode == "storage") else ALGOL60
+        a = [binary] + self.cfg["flags"]
+        if limit is not None:
+            a += ["--max-steps", str(limit)]
+        if measure:
+            a += ["--measure"]
+        a += [self.prog_rel]
+        return a, ROOT
+
+    def start(self, limit, measure=False):
+        argv, cwd = self.argv(limit, measure)
+        return Proc(argv, cwd, self.env)
+
+    def drive(self, items, limit, *, measure=False, attempt_from=0, limit_s=None):
+        """Run the program on the preamble and the items, with a step limit,
+        and close its input after the last item's [end].
+
+        Each item is a message. After writing an item whose 'wait' is true
+        (and after the last item), the harness waits for the program's [end]
+        for it before writing the next: an incremental program receives each
+        stage only after it has finished the one before. Items whose 'wait'
+        is false (the replayed stages of a reposed run) are written at once.
+        Items before attempt_from are a re-created prefix, guarded at
+        PREFIX_GUARD_S; the attempt's safety limit runs from writing item
+        attempt_from (for a reposed run, item 0: the whole run). Returns a
+        result dict.
+        """
+        pr = self.start(limit, measure)
+        pr.write(self.preamble())
+        res = {"proc": pr, "timed_out": False, "prefix_timeout": False, "how_stopped": None,
+               "attempt_t0": None, "attempt_t1": None}
+        n = len(items)
+        for idx, it in enumerate(items):
+            if idx == attempt_from:
+                res["attempt_t0"] = time.monotonic()
+            pr.write(it["msg"])
+            if not it["wait"] and idx < n - 1:
+                continue
+            if not it["wait"]:
+                # a replay measured alone (separate-run): its input ends with the last replayed message
+                pr.close_input()
+                r = pr.wait_until(lambda b: False, time.monotonic() + PREFIX_GUARD_S)
+                if r == "timeout":
+                    res["prefix_timeout"] = True
+                break
+            if idx >= attempt_from and limit_s:
+                deadline = res["attempt_t0"] + limit_s
+            else:
+                deadline = time.monotonic() + PREFIX_GUARD_S
+            r = pr.wait_until(lambda b, need=idx + 1: count_end(b) >= need, deadline)
+            if r == "timeout":
+                if idx < attempt_from:
+                    res["prefix_timeout"] = True
+                else:
+                    res["timed_out"] = True
+                break
+            if r == "exit":
+                break
+        if res["attempt_t0"] is None:
+            res["attempt_t0"] = time.monotonic()
+        res["attempt_t1"] = time.monotonic()
+        if res["timed_out"] or res["prefix_timeout"]:
+            pr.kill()
+            res["how_stopped"] = "SIGKILL to the system's process group by the harness"
+        elif not pr.finish():
+            self.notes.append("a process did not end within %d s of the harness closing its input, and was killed"
+                              % CLOSE_GRACE_S)
+        return self.collect(res, items)
+
+    def collect(self, res, items):
+        pr = res["proc"]
+        with pr.cond:
+            out_b, err_b = bytes(pr.out), bytes(pr.err)
+        res["stdout"] = decode(out_b, self.faults, "the system's stdout")
+        res["stderr"] = decode(err_b, self.faults, "the system's stderr")
+        res["segments"] = split_segments(res["stdout"])
+        res["n_end"] = len(res["segments"]) - 1
+        res["status"], res["signal"] = pr.status, pr.signal
+        res["exited"] = pr.exited
+        lines = [l for l in res["stderr"].splitlines() if l.strip()]
+        res["last_err"] = lines[-1] if lines else ""
+        res["stopped_by_limit"] = bool(re.search(r": stopped after \d+ steps\s*$", res["last_err"])) \
+            if self.enforced else False
+        res["measure"] = self.parse_measure(res["stderr"])
+        ru = pr.rusage
+        res["cpu_s"] = (ru.ru_utime + ru.ru_stime) if ru else None
+        res["rss_kb"] = int(ru.ru_maxrss) if ru else None
+        return res
+
+    @staticmethod
+    def parse_measure(stderr):
+        lines = stderr.splitlines()
+        if "quantity\tend\tpeak" not in lines:
+            return None
+        i = lines.index("quantity\tend\tpeak")
+        out = {}
+        for l in lines[i + 1:]:
+            m = re.match(r"^(\w+)\t(-?\d+)\t(-?\d+)$", l)
+            if not m:
+                break
+            out[m.group(1)] = (int(m.group(2)), int(m.group(3)))
+        return out
+
+    def error_text(self, res):
+        if self.cfg["kind"] == "x1sim":
+            return res["stderr"]
+        return res["last_err"]
+
+    # ---------------------------------------------------------- steps ---
+
+    def steps_to_end(self, items, lo, hi, check_texts=None):
+        """Least M in [lo, hi] for which the run of preamble + items, its
+        input closed after the last item, is not stopped by --max-steps M:
+        the steps until the program asks for input beyond the items, or ends.
+        None when even hi stops it."""
+        cache = {}
+
+        def ok(M):
+            if M in cache:
+                return cache[M]
+            self.probe_runs += 1
+            r = self.drive(items, M)
+            if r["prefix_timeout"] or r["timed_out"]:
+                raise HarnessFault("a measurement probe (limit %d) exceeded %d s" % (M, PREFIX_GUARD_S))
+            good = not r["stopped_by_limit"]
+            if good and check_texts is not None:
+                self.check_prefix(r["segments"], check_texts, "a measurement probe")
+            cache[M] = good
+            return good
+
+        lo = max(0, lo)
+        if not ok(hi):
+            return None
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if ok(mid):
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
+
+    def answer_steps(self, items, seg_index, n_answers, lo, hi):
+        """For answer i of segment seg_index: the least step limit at which the
+        answer is complete in the output (cost mode)."""
+        out = []
+        for i in range(1, n_answers + 1):
+            a, b = lo, hi
+
+            def has(M, i=i):
+                self.probe_runs += 1
+                r = self.drive(items, M)
+                if r["prefix_timeout"] or r["timed_out"]:
+                    raise HarnessFault("an answer-latency probe exceeded %d s" % PREFIX_GUARD_S)
+                segs = r["segments"]
+                if seg_index >= len(segs):
+                    return False
+                return len(RE_ANSWER.findall(segs[seg_index])) >= i
+            if not has(b):
+                out.append(None)
+                continue
+            while a < b:
+                mid = (a + b) // 2
+                if has(mid):
+                    b = mid
+                else:
+                    a = mid + 1
+            out.append(a)
+            lo = a
+        return out
+
+    def check_prefix(self, segs, texts, what):
+        for i, t in enumerate(texts):
+            if i >= len(segs) or segs[i] != t:
+                raise HarnessFault("determinism check failed: in %s, the output of earlier segment %d "
+                                   "differs from its recorded output" % (what, i + 1))
+
+
+class HarnessFault(Exception):
+    pass
+
+
+# ----------------------------------------------------------- the stages ---
+
+class Computation:
+    """The computation that the next incremental stage is received into: for
+    report and x1, the messages that built it (it is re-created from them),
+    with their recorded output and the measured step count at each boundary;
+    for x1sim, the live process."""
+
+    def __init__(self):
+        self.items = []
+        self.texts = []
+        self.bounds = []      # [step count at the end of the last item's segment] (interp)
+        self.peaks = {}       # peaks of the live store quantities over the process, at the last boundary
+        self.totals = None    # totals of the measurement build at the last boundary
+        self.proc = None      # x1sim: the live process
+        self.n_items = 0      # x1sim: messages the live process has received
+
+
+def empty_alternatives():
+    return {"unit": ALT_UNIT, "at_boundary": None, "at_budget": None, "peak": None,
+            "held_as": "unknown", "by_type": None, "problem_defined": None}
+
+
+def empty_suspended():
+    return {"unit": SUSP_UNIT, "at_boundary": None, "peak": None, "items": None}
+
+
+def main(argv):
+    try:
+        h = Harness(argv)
+    except SystemExit:
+        raise
+    started = utcnow()
+    run_id = "%s.%s.%s" % (h.instance_id, h.mode, started.strftime("%Y%m%dT%H%M%SZ"))
+    os.makedirs(h.outdir, exist_ok=True)
+    while os.path.exists(os.path.join(h.outdir, run_id + ".json")) or \
+            os.path.exists(os.path.join(h.outdir, run_id + ".INVALID.json")):
+        time.sleep(1)
+        started = utcnow()
+        run_id = "%s.%s.%s" % (h.instance_id, h.mode, started.strftime("%Y%m%dT%H%M%SZ"))
+    h.run_id = run_id
+
+    # effects log state
+    if h.effects_on:
+        if not os.path.exists(h.log_path):
+            open(h.log_path, "a").close()
+        if not os.path.exists(h.obs_log_path):
+            open(h.obs_log_path, "a").close()
+        h.entries_before = sum(1 for l in open(h.log_path, encoding="utf-8") if l.strip())
+        h.obs_before = sum(1 for l in open(h.obs_log_path, encoding="utf-8") if l.strip())
+
+    stages = []
+    comp = Computation()
+    alive = False             # is there a computation holding stages 1..k-1?
+    prev_states = set()
+    complete = True
+    incomplete_reason = None
+    try:
+        for k in range(1, h.K + 1):
+            st_rec, comp, alive, prev_states = run_stage(h, k, comp, alive, prev_states)
+            stages.append(st_rec)
+    except HarnessFault as e:
+        h.faults.append(str(e))
+        complete = False
+        incomplete_reason = "harness fault: %s" % e
+    except Exception as e:   # a crash of the harness: keep what was recorded
+        import traceback
+        h.faults.append("harness crashed: %s" % traceback.format_exc())
+        complete = False
+        incomplete_reason = "harness crashed: %r" % (e,)
+    if comp is not None and comp.proc is not None and not comp.proc.done():
+        comp.proc.finish()
+        h.notes.append("x1sim's live process was ended after the last stage by closing its input: "
+                       "exit %r, signal %r" % (comp.proc.status, comp.proc.signal))
+    if not stages:
+        sys.stderr.write("run: no stage could be recorded: %s\n" % "; ".join(h.faults))
+        sys.exit(3)
+    if len(stages) < h.K and complete:
+        complete = False
+        incomplete_reason = "only %d of %d stages recorded" % (len(stages), h.K)
+
+    rec = build_record(h, run_id, started, utcnow(), stages, complete, incomplete_reason)
+    path = os.path.join(h.outdir, run_id + ".json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(rec, f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    v = subprocess.run([sys.executable, os.path.join(ROOT, "harnesses", "validate.py"),
+                        "--stages", h.stages_path, path], capture_output=True, text=True)
+    shutil.rmtree(h.tmp, ignore_errors=True)
+    if v.returncode != 0:
+        bad = os.path.join(h.outdir, run_id + ".INVALID.json")
+        os.replace(path, bad)
+        sys.stderr.write(v.stdout + v.stderr)
+        sys.stderr.write("run: the record did not validate; kept as %s\n" % bad)
+        sys.exit(3)
+    sys.stdout.write(v.stdout)
+    print(os.path.relpath(path, ROOT) if path.startswith(ROOT) else path)
+    return 0
+
+
+def run_stage(h, k, comp, alive, prev_states):
+    """Pose stage k: attempt 1, and the safety rerun if the limit stopped it."""
+    attempts = []
+    stage_notes = []
+    for n in (1, 2):
+        limit_s = h.safety_s if n == 1 else h.rerun_s
+        if k == 1:
+            how, reason = "fresh", ("first-stage" if n == 1 else "safety-rerun")
+        elif n == 2:
+            how, reason = "reposed", "safety-rerun"
+        elif h.posing == "incremental" and alive:
+            how, reason = "incremental", "configuration"
+        else:
+            how = "reposed"
+            if "error" in prev_states:
+                reason = "after-error"
+            elif "timeout" in prev_states:
+                reason = "after-timeout"
+            elif "budget" in prev_states:
+                reason = "after-budget"
+            else:
+                reason = "configuration"
+            if h.posing == "incremental" and reason == "configuration":
+                stage_notes.append("the program declares incremental posing, but its computation ended "
+                                   "with the previous stage (the process ended), so this stage is reposed")
+        base = comp if (how == "incremental" or (k == 1 and n == 1)) else None
+        att, new_comp = attempt(h, k, n, limit_s, how, reason, base if base is not None else Computation())
+        attempts.append(att)
+        if att["safety_limit"]["hit"] and n == 1 and h.rerun_s is not None:
+            att["safety_limit"]["action"] = "rerun"
+            continue
+        if att["safety_limit"]["hit"]:
+            att["safety_limit"]["action"] = "final-timeout" if n == 2 else "fixed-limit-timeout"
+        break
+    final = attempts[-1]
+    states = set()
+    for c in final["computations"]:
+        states |= set(c["execution_state"]["states"])
+    alive = new_comp is not None
+    rec = {"stage": k, "attempts": attempts}
+    if stage_notes:
+        rec["notes"] = stage_notes
+    return rec, (new_comp if new_comp is not None else Computation()), alive, states
+
+
+def attempt(h, k, n, limit_s, how, reason, comp):
+    """One attempt at stage k. Returns (attempt record, the computation the
+    next stage can be received into, or None)."""
+    segs = h.segments_of(k)
+    replay = h.replay_items(k) if how == "reposed" else []
+    replayed_commitments = []
+    if how == "reposed":
+        for j in range(1, k):
+            if h.stage_specs[j - 1].get("commit") and j in h.commitments:
+                v, rid = h.commitments[j]
+                replayed_commitments.append({"stage": j, "value_verbatim": v, "selected_in_run": rid})
+    posed = {"how": how, "reason": reason,
+             "replayed": list(range(1, k)) if how == "reposed" else [],
+             "replayed_commitments": replayed_commitments,
+             "continued_after_budget": False,
+             "instance_parameters_passed": h.params_passed}
+    if h.cfg["kind"] == "x1sim":
+        return attempt_x1sim(h, k, n, limit_s, how, posed, comp, segs, replay)
+    return attempt_interp(h, k, n, limit_s, how, posed, comp, segs, replay)
+
+
+def seg_state(h, outcome, parsed, res):
+    """Execution state of one computation, from how its segment ended."""
+    if outcome == "timeout":
+        return {"states": ["timeout"], "determined": True,
+                "basis": "the safety limit stopped the attempt; the harness killed the process",
+                "error_verbatim": None}
+    if outcome == "budget":
+        return {"states": ["budget"], "determined": True,
+                "basis": "the interpreter's step limit fired: stderr ends %r" % res["last_err"],
+                "error_verbatim": None}
+    if outcome == "error":
+        return {"states": ["error"], "determined": True,
+                "basis": "the process ended with exit status %r, signal %r, before the program wrote [end]"
+                         % (res["status"], res["signal"]),
+                "error_verbatim": h.error_text(res) or "(no error text on stderr)"}
+    if outcome == "not-started":
+        return {"states": [], "determined": False,
+                "basis": "not started: the computation spawned before it in this stage ended the instance "
+                         "(its process ended), so there was no instance to start it in",
+                "error_verbatim": None}
+    states = []
+    alt = sum((parsed["alternatives"] or {}).values())
+    sus = sum((parsed["suspended"] or {}).values())
+    if alt > 0:
+        states.append("alternatives pending")
+    if sus > 0:
+        states.append("suspended")
+    if not states:
+        states = ["finished"]
+    how_end = "the program wrote [end] and asked for its next message" if outcome == "end" else \
+        "the program ended normally (exit status 0) without writing [end]"
+    basis = ("%s; ALGOL 60 holds no alternatives or suspended work of its own, so the state is read from "
+             "the program's [alternatives] and [suspended] reports in its observe block "
+             "(alternatives %d, suspended %d)" % (how_end, alt, sus))
+    return {"states": states, "determined": True, "basis": basis, "error_verbatim": None}
+
+
+def comp_record(h, cid, spawned, spawn_index, k, parsed, state, steps, outcome):
+    queries = []
+    for qid, cap in h.queries_of(k, cid):
+        ans = parsed["answers"] if parsed else []
+        got = ans[:cap]
+        if len(ans) > cap:
+            ended = "cap"
+        elif outcome in ("budget", "timeout", "error"):
+            ended = outcome
+        else:
+            ended = "no-enumeration"
+        queries.append({"id": qid, "cap": cap,
+                        "answers": [{"index": i + 1, "verbatim": a, "steps_at": None, "alternatives_at": None}
+                                    for i, a in enumerate(got)],
+                        "ended_by": ended, "collected_on": "this-run"})
+    alts = empty_alternatives()
+    susp = empty_suspended()
+    ops = None
+    cand = None
+    if parsed:
+        if parsed["alternatives"] is not None:
+            alts["by_type"] = parsed["alternatives"]
+            alts["at_boundary"] = sum(parsed["alternatives"].values())
+            alts["held_as"] = parsed["held_as"] or "unknown"
+        else:
+            alts["held_as"] = parsed["held_as"] or "none"
+        alts["problem_defined"] = parsed["problem_alternatives"]
+        if parsed["suspended"] is not None:
+            susp["items"] = parsed["suspended"]
+            susp["at_boundary"] = sum(parsed["suspended"].values())
+        ops = parsed["operations"]
+        cand = parsed["candidates"]
+    c = {"id": cid, "spawned": spawned, "spawn_index": spawn_index,
+         "side_by_side": (False if spawned else None),
+         "queries": queries, "execution_state": state, "steps": steps,
+         "alternatives": alts, "suspended": susp, "problem_operations": ops}
+    if h.prob["problem"] == "P12" or cand is not None:
+        c["candidates_examined"] = cand
+    return c
+
+
+def null_steps(h, budget):
+    s = {"unit": h.step_unit, "budget": budget, "budget_exhausted": False,
+         "stage": None, "restated": None, "restart_cost": None, "restart_cost_method": None,
+         "restart_cost_source": None, "to_first_answer": None, "between_answers": [],
+         "to_end": None, "repeated_work": None}
+    if not h.enforced:
+        s["budget_enforced"] = False
+    return s
+
+
+def outcome_of(res, need):
+    """How the segment that is the n-th item ended."""
+    if res["n_end"] >= need:
+        return "end"
+    if res["timed_out"]:
+        return "timeout"
+    if res["stopped_by_limit"]:
+        return "budget"
+    if res["status"] == 0 and res["signal"] is None:
+        return "exit0"
+    return "error"
+
+
+def log_effects(h, k, n, entries):
+    """Append (entry, during_replay_of) pairs to the right log; return records."""
+    if not h.effects_on or not entries:
+        return []
+    logname = "classification" if h.mode == "behaviour" else "observation"
+    path = h.log_path if logname == "classification" else h.obs_log_path
+    have = sum(1 for l in open(path, encoding="utf-8") if l.strip())
+    out = []
+    with open(path, "a", encoding="utf-8") as f:
+        for entry, rep in entries:
+            have += 1
+            e = {"seq": have, "entry": entry, "run_id": h.run_id, "stage": k, "attempt": n,
+                 "during_replay_of": rep, "log": logname}
+            f.write(json.dumps(e, ensure_ascii=False) + "\n")
+            out.append(e)
+    return out
+
+
+def store_record(h, measure, prev_peaks, reposed):
+    """The store vector from one --measure report (README, 'Storage mode')."""
+    if measure is None:
+        return {"quantities": {}, "source": None}, {}
+    q = {}
+    peaks = {}
+    for name in LIVE_QUANTITIES:
+        if name not in measure:
+            continue
+        _, pk = measure[name]
+        peaks[name] = pk
+        prev = prev_peaks.get(name)
+        if reposed or prev is None or pk > prev:
+            peak = {"value": pk, "kind": "exact", "sample_interval": None}
+        else:
+            peak = None
+        q[name] = {"boundary": None, "peak": peak, "unit": "count"}
+    for name in TOTAL_QUANTITIES:
+        if name in measure:
+            q[name] = {"boundary": measure[name][0], "peak": None, "unit": "count, total since the process started"}
+    return {"quantities": q, "source": "algol60-measure --measure (commit 151cdff), the process's end-of-run report"}, peaks
+
+
+def attempt_interp(h, k, n, limit_s, how, posed, comp, segs, replay):
+    """report and x1: each computation of the stage in its own process (README,
+    'How the harness drives the interpreter')."""
+    B = h.budget
+    comps = []
+    att_notes = []
+    stdout_parts, stderr_parts, print_parts = [], [], []
+    wall = 0.0
+    timed_out = False
+    how_stopped = None
+    effects = []
+    store = {"quantities": {}, "source": None}
+    exit_rec = {"status": None, "signal": None}
+    cpu = rss = None
+    obs_raw, obs_bind = "", None
+    new_comp = None
+    stopped = False         # an earlier computation of this stage ended the instance
+    cur = comp
+    for si, (cid, spawned, sidx, msg) in enumerate(segs):
+        if stopped or timed_out:
+            comps.append(comp_record(h, cid, spawned, sidx, k, None, seg_state(h, "not-started", None, None),
+                                     null_steps(h, B), "not-started"))
+            continue
+        item = {"msg": msg, "wait": True, "stage": k, "comp": cid, "replay": False}
+        reposed_run = how == "reposed" and si == 0
+        if reposed_run:
+            # ---- a reposed run: the replayed stages and stage k written at once
+            prefix = replay
+            items = prefix + [item]
+            U = max(1, len(prefix)) * B
+            restart = h.steps_to_end(prefix, 0, U) if prefix else 0
+            if restart is None:
+                restart = U
+                rc_source = ("separate-run: the replay of stages 1..%d alone did not reach the request for stage %d "
+                             "within %d steps, the sum of the replayed stages' budgets; that sum is recorded, the "
+                             "replay was not measured to its end (QUESTIONS.md A6)" % (k - 1, k, U))
+                att_notes.append("the replay of stages 1..%d did not end within the sum of their budgets" % (k - 1))
+            else:
+                rc_source = ("separate-run: stages 1..%d replayed alone (their messages written at once, the input "
+                             "closed after them), the least --max-steps at which the interpreter did not stop, "
+                             "found by bisection" % (k - 1))
+            base_steps = restart
+            limit = restart + B
+            attempt_from = 0
+            check_texts = None
+        else:
+            prefix = cur.items
+            items = prefix + [item]
+            if prefix:
+                if not cur.bounds or cur.bounds[-1] is None:
+                    raise HarnessFault("no measured step count at the end of the computation's last stage")
+                base_steps = cur.bounds[-1]
+            else:
+                base_steps = 0
+            limit = base_steps + B
+            restart = None
+            rc_source = None
+            attempt_from = len(prefix)
+            check_texts = cur.texts
+        remaining = max(0.001, limit_s - wall)
+        res = h.drive(items, limit, measure=(h.mode == "storage"), attempt_from=attempt_from, limit_s=remaining)
+        if res["prefix_timeout"]:
+            raise HarnessFault("the re-created earlier stages of stage %d exceeded %d s" % (k, PREFIX_GUARD_S))
+        if check_texts is not None and not res["timed_out"] and not res["stopped_by_limit"]:
+            h.check_prefix(res["segments"], check_texts, "the re-creation for stage %d" % k)
+        outcome = outcome_of(res, len(items))
+        if reposed_run and outcome != "end" and res["n_end"] < len(prefix):
+            att_notes.append("the run ended during the replay of stage %d (%d of %d replayed stages wrote [end]); "
+                             "stage %d itself was not reached" % (res["n_end"] + 1, res["n_end"], len(prefix), k))
+        segtexts = res["segments"]
+        seg_text = segtexts[len(prefix)] if outcome == "end" else "".join(segtexts[len(prefix):])
+        attempt_out = "".join(segtexts[len(prefix):])
+        parsed = parse_segment(seg_text, h.faults)
+        if parsed["unclosed_answers"]:
+            att_notes.append("%d answer(s) of computation %s were opened with [answer] but not closed before the "
+                             "stage ended; not collected" % (parsed["unclosed_answers"], cid))
+        if parsed["observe_blocks"] > 1:
+            att_notes.append("computation %s printed %d observe blocks; observe.raw is their contents joined in order"
+                             % (cid, parsed["observe_blocks"]))
+        state = seg_state(h, outcome, parsed, res)
+        steps = null_steps(h, limit if reposed_run else B)
+        steps["budget_exhausted"] = outcome == "budget"
+        if restart is not None:
+            steps["restart_cost"] = restart
+            steps["restart_cost_method"] = "separate-run"
+            steps["restart_cost_source"] = rc_source
+
+        # ---- the step count at the end of this computation's stage
+        end_steps = None
+        more = (k < h.K or si < len(segs) - 1) and h.posing == "incremental"
+        if outcome in ("end", "error", "exit0") and (h.mode != "behaviour" or (more and outcome == "end")):
+            end_steps = h.steps_to_end(items, base_steps, limit,
+                                       check_texts=(segtexts[:len(items)] if outcome == "end" else None))
+            if end_steps is None:
+                raise HarnessFault("the step count at the end of stage %d could not be measured" % k)
+        if outcome == "budget":
+            steps["restated"] = limit
+            steps["stage"] = None if reposed_run else limit - base_steps
+        elif end_steps is not None:
+            steps["restated"] = end_steps
+            if not reposed_run:
+                steps["stage"] = end_steps - base_steps
+            steps["to_end"] = end_steps - base_steps
+        elif h.mode == "behaviour" and outcome in ("end", "exit0"):
+            att_notes.append("the step count at the end of computation %s was not measured in behaviour mode (no "
+                             "later budget needs it); the cost run gives it" % cid)
+
+        # ---- cost mode: answer latency, repeated work
+        n_coll = sum(len(q["answers"]) for q in comp_record(h, cid, spawned, sidx, k, parsed, state, steps, outcome)["queries"])
+        comp_sa = None
+        if h.mode == "cost" and n_coll and end_steps is not None:
+            sa = h.answer_steps(items, len(prefix), n_coll, base_steps, end_steps)
+            comp_sa = [None if x is None else x - base_steps for x in sa]
+            steps["to_first_answer"] = comp_sa[0]
+            steps["between_answers"] = [comp_sa[i] - comp_sa[i - 1] for i in range(1, len(comp_sa))
+                                        if comp_sa[i] is not None and comp_sa[i - 1] is not None]
+        meas = None
+        if h.mode == "storage":
+            meas = res["measure"]
+        elif h.mode == "cost" and outcome != "timeout":
+            h.probe_runs += 1
+            meas = h.drive(items, limit, measure=True)["measure"]
+        if meas is not None:
+            totals = {q: meas[q][0] for q in REPEATED_WORK if q in meas}
+            if reposed_run:
+                steps["repeated_work"] = totals
+                att_notes.append("repeated work of computation %s is the measurement build's totals over the whole "
+                                 "reposed run, replay included" % cid)
+            elif cur.totals is not None or not prefix:
+                prevt = cur.totals or {}
+                steps["repeated_work"] = {q: totals[q] - prevt.get(q, 0) for q in totals}
+        elif h.mode in ("cost", "storage") and outcome != "timeout":
+            att_notes.append("no --measure report was read for computation %s" % cid)
+        peaks = {}
+        if h.mode == "storage":
+            store, peaks = store_record(h, meas, {} if reposed_run else cur.peaks, reposed=reposed_run)
+
+        crec = comp_record(h, cid, spawned, sidx, k, parsed, state, steps, outcome)
+        if comp_sa is not None:
+            for q in crec["queries"]:
+                for a in q["answers"]:
+                    if a["index"] - 1 < len(comp_sa):
+                        a["steps_at"] = comp_sa[a["index"] - 1]
+        comps.append(crec)
+
+        # ---- effects: the replayed stages' (reposed run) and this stage's
+        ent = []
+        if reposed_run:
+            for j, t in enumerate(segtexts[:len(prefix)]):
+                for e in parse_segment(t, h.faults)["emits"]:
+                    ent.append((e, prefix[j]["stage"]))
+            if res["n_end"] < len(prefix):
+                # the run stopped inside the replay: its emits there are in the unfinished remainder
+                pass
+        for e in parsed["emits"]:
+            ent.append((e, None))
+        effects += log_effects(h, k, n, ent)
+
+        # ---- a commit stage: keep v as first selected
+        if h.stage_specs[k - 1].get("commit") and parsed["answers"] and k not in h.commitments:
+            h.commitments[k] = (parsed["answers"][0], h.run_id)
+
+        # ---- what the attempt shows
+        stdout_parts.append(res["stdout"] if reposed_run else attempt_out)
+        if prefix and not reposed_run:
+            pstages = sorted(set(it["stage"] for it in prefix))
+            commits = [j for j in pstages if h.stage_specs[j - 1].get("commit")]
+            att_notes.append("recreated_for_budget: true; computation: %s; prefix_messages: %d; prefix_stages: %s; "
+                             "prefix_steps: %d; prefix_commit_stages_carried_out_again: %s" %
+                             (cid, len(prefix), json.dumps(pstages), base_steps, json.dumps(commits)))
+            att_notes.append("computation %s ran in a computation re-created for its budget (README 3.1, QUESTIONS.md "
+                             "A2): a fresh process received the %d earlier message(s) as they first arrived; their "
+                             "%d steps (prefix_steps) are not charged to this stage (steps.stage and the budget count "
+                             "from the end of the prefix; steps.restated includes them); their output was "
+                             "byte-identical to the recorded output and is not repeated in stdout; their emits were "
+                             "not logged again%s" % (cid, len(prefix), base_steps,
+                             ("; commit stage(s) %s in the prefix were carried out again by the program, "
+                              "deterministically, output checked identical" % commits) if commits else ""))
+        stderr_parts.append(res["stderr"])
+        print_parts.append(seg_text)
+        obs_raw += parsed["observe"]
+        if parsed["bindings"] is not None:
+            obs_bind = dict(obs_bind or {}, **parsed["bindings"])
+        wall += max(0.0, res["attempt_t1"] - res["attempt_t0"])
+        exit_rec = {"status": res["status"], "signal": res["signal"]}
+        if h.prob["problem"] == "P13" and h.mode != "storage":
+            cpu, rss = res["cpu_s"], res["rss_kb"]
+        if outcome == "end":
+            att_notes.append("computation %s: after its [end] the harness closed the input; the process then ended "
+                             "with exit status %r, stderr ending %r" % (cid, res["status"], res["last_err"]))
+        if res["timed_out"]:
+            timed_out = True
+            how_stopped = res["how_stopped"]
+
+        # ---- the computation the next stage or computation is received into
+        if outcome == "end" and h.posing == "incremental":
+            nc = Computation()
+            nc.items = items[:-1] + [dict(item, wait=True)]
+            nc.texts = segtexts[:len(items)]
+            nc.bounds = [end_steps]
+            nc.peaks = peaks
+            if meas is not None:
+                nc.totals = {q: meas[q][0] for q in REPEATED_WORK if q in meas}
+            cur = nc
+            new_comp = nc
+        else:
+            new_comp = None
+            if outcome != "end":
+                stopped = True
+
+    att = {"attempt": n, "limit_s": limit_s, "posed": posed, "computations": comps,
+           "observe": {"raw": obs_raw,
+                       "method": "the program's [observe]...[/observe] block(s) printed at the end of the stage "
+                                 "(README, 'observe()'); bindings from its [bind NAME]...[/bind] tags",
+                       "taken_on": "this-run", "bindings": obs_bind},
+           "print": "".join(print_parts), "store": store,
+           "wall_time_s": round(wall, 3), "cpu_time_s": cpu, "max_rss_kb": rss,
+           "stdout": "".join(stdout_parts), "stderr": "".join(stderr_parts),
+           "exit": exit_rec,
+           "safety_limit": {"hit": timed_out, "action": "none", "how_stopped": how_stopped},
+           "effects": effects, "manual_actions": [], "separate_run": None}
+    if att_notes:
+        att["notes"] = att_notes
+    return att, new_comp
+
+
+def attempt_x1sim(h, k, n, limit_s, how, posed, comp, segs, replay):
+    """x1sim: one live process for an incremental program; a new process for a
+    reposed stage. No step count, no budget."""
+    B = h.budget
+    comps, att_notes = [], []
+    stdout_parts, print_parts = [], []
+    effects = []
+    obs_raw, obs_bind = "", None
+    timed_out, how_stopped = False, None
+    t_start = time.monotonic()
+    deadline = t_start + limit_s
+    pr = comp.proc if how == "incremental" else None
+    err_mark = len(pr.err) if pr is not None else 0
+    out_mark = len(pr.out) if pr is not None else 0
+    n_items_before = comp.n_items if (pr is not None and hasattr(comp, "n_items")) else 0
+    stopped = False
+    if pr is None:
+        argv, cwd = h.argv(None, False)
+        pr = Proc(argv, cwd, h.env)
+        pr.write(h.preamble())
+        out_mark = 0
+        n_items_before = 0
+        if how == "reposed":
+            for it in replay:
+                pr.write(it["msg"])
+            r = pr.wait_until(lambda b: count_end(b) >= len(replay), deadline) if replay else "ok"
+            if r == "timeout":
+                pr.kill()
+                timed_out, how_stopped = True, "SIGKILL to the system's process group by the harness"
+                att_notes.append("the safety limit stopped the run during the replay of the earlier stages")
+            elif r == "exit":
+                stopped = True
+                att_notes.append("the process ended during the replay of the earlier stages (exit status %r)"
+                                 % pr.status)
+            n_items_before = len(replay)
+    replay_text = None
+    if how == "reposed" and replay:
+        with pr.cond:
+            txt = bytes(pr.out).decode("utf-8", errors="replace")
+        replay_segs = split_segments(txt)
+        replay_text = "".join(replay_segs[:len(replay)])
+    ent = []
+    if replay_text is not None:
+        rs = split_segments(replay_text)
+        for j in range(min(len(replay), len(rs))):
+            for e in parse_segment(rs[j], h.faults)["emits"]:
+                ent.append((e, replay[j]["stage"]))
+    alive = True
+    for si, (cid, spawned, sidx, msg) in enumerate(segs):
+        if stopped or timed_out:
+            if si == 0 and (timed_out or replay):
+                oc = "timeout" if timed_out else ("exit0" if pr.status == 0 and pr.signal is None else "error")
+                res0 = {"status": pr.status, "signal": pr.signal, "last_err": "",
+                        "stderr": decode(bytes(pr.err), h.faults, "stderr")}
+                state = seg_state(h, oc, parse_segment("", h.faults), res0)
+                comps.append(comp_record(h, cid, spawned, sidx, k, None, state, null_steps(h, B), oc))
+            else:
+                comps.append(comp_record(h, cid, spawned, sidx, k, None, seg_state(h, "not-started", None, None),
+                                         null_steps(h, B), "not-started"))
+            continue
+        pr.write(msg)
+        need = n_items_before + 1
+        r = pr.wait_until(lambda b, need=need: count_end(b) >= need, deadline)
+        if r == "timeout":
+            pr.kill()
+            timed_out, how_stopped = True, "SIGKILL to the system's process group by the harness"
+        with pr.cond:
+            out_now = bytes(pr.out).decode("utf-8", errors="replace")
+        segs_all = split_segments(out_now)
+        if r == "ok":
+            seg_text = segs_all[need - 1]
+            outcome = "end"
+        else:
+            if r == "exit" or timed_out:
+                pr.wait_end(5)
+            seg_text = "".join(segs_all[need - 1:])
+            if timed_out:
+                outcome = "timeout"
+            elif pr.status == 0 and pr.signal is None:
+                outcome = "exit0"
+            else:
+                outcome = "error"
+        n_items_before = need
+        parsed = parse_segment(seg_text, h.faults)
+        res = {"status": pr.status, "signal": pr.signal, "stderr": decode(bytes(pr.err)[err_mark:], h.faults, "stderr"),
+               "last_err": ""}
+        state = seg_state(h, outcome, parsed, res)
+        steps = null_steps(h, B)
+        comps.append(comp_record(h, cid, spawned, sidx, k, parsed, state, steps, outcome))
+        for e in parsed["emits"]:
+            ent.append((e, None))
+        st = h.stage_specs[k - 1]
+        if st.get("commit") and parsed["answers"] and k not in h.commitments:
+            h.commitments[k] = (parsed["answers"][0], h.run_id)
+        print_parts.append(seg_text)
+        obs_raw += parsed["observe"]
+        if parsed["bindings"] is not None:
+            obs_bind = dict(obs_bind or {}, **parsed["bindings"])
+        if outcome != "end":
+            stopped = True
+            alive = False
+    effects = log_effects(h, k, n, ent)
+    with pr.cond:
+        out_all = bytes(pr.out)
+        err_all = bytes(pr.err)
+    stdout = decode(out_all[out_mark:] if how == "incremental" else out_all, h.faults, "stdout")
+    stderr = decode(err_all[err_mark:], h.faults, "stderr")
+    keep = alive and h.posing == "incremental"
+    if not keep and not pr.done():
+        pr.finish()
+    exit_rec = {"status": None, "signal": None} if keep else {"status": pr.status, "signal": pr.signal}
+    wall = time.monotonic() - t_start
+    if how == "incremental" and comp.proc is not None:
+        att_notes.append("received into x1sim's live process, which holds the earlier stages")
+    att = {"attempt": n, "limit_s": limit_s, "posed": posed, "computations": comps,
+           "observe": {"raw": obs_raw,
+                       "method": "the program's [observe]...[/observe] block(s) printed at the end of the stage "
+                                 "(README, 'observe()'); bindings from its [bind NAME]...[/bind] tags",
+                       "taken_on": "this-run", "bindings": obs_bind},
+           "print": "".join(print_parts), "store": {"quantities": {}, "source": None},
+           "wall_time_s": round(wall, 3), "cpu_time_s": None, "max_rss_kb": None,
+           "stdout": stdout, "stderr": stderr, "exit": exit_rec,
+           "safety_limit": {"hit": timed_out, "action": "none", "how_stopped": how_stopped},
+           "effects": effects, "manual_actions": [], "separate_run": None}
+    if att_notes:
+        att["notes"] = att_notes
+    if keep:
+        nc = Computation()
+        nc.proc = pr
+        nc.n_items = n_items_before
+        return att, nc
+    return att, None
+
+
+# ---------------------------------------------------------------- record ---
+
+def build_record(h, run_id, started, ended, stages, complete, incomplete_reason):
+    commits = {}
+    try:
+        for l in open("/opt/src/COMMITS"):
+            p = l.split()
+            if len(p) == 2:
+                commits[p[0]] = p[1]
+    except OSError:
+        h.faults.append("cannot read /opt/src/COMMITS")
+    if h.cfg["kind"] == "x1sim":
+        binary, key, vcmd = X1SIM, "x1sim", [X1SIM, "--version"]
+    elif h.mode == "storage":
+        binary, key, vcmd = ALGOL60_MEASURE, "algol-60-measure", [ALGOL60_MEASURE, "--version"]
+    else:
+        binary, key, vcmd = ALGOL60, "algol-60", [ALGOL60, "--version"]
+    try:
+        vout = subprocess.run(vcmd, capture_output=True, text=True, timeout=30).stdout
+    except (OSError, subprocess.SubprocessError):
+        vout = None
+    hcommit = git("rev-parse", "HEAD") or "0000000"
+    dirty = bool(git("status", "--porcelain", "--", "harnesses/algol-60/run", "harnesses/algol-60/check"))
+    confounds = list(CONFOUNDS_COMMON)
+    confounds += CONFOUNDS_INTERP if h.enforced else CONFOUNDS_X1SIM
+    notes = list(h.notes)
+    if h.mode == "cost":
+        notes.append("cost mode: steps from the baseline build by bisection over --max-steps; repeated work from "
+                     "one extra run of the measurement build (algol60-measure --measure) per computation")
+    if h.enforced:
+        notes.append("%d measurement probe run(s) of the program were made (bisection over --max-steps and, in "
+                     "cost mode, the measurement build); their output is not recorded" % h.probe_runs)
+    if TRACE:
+        notes.append("every write to the system's input was also logged to %s (HARNESS_INPUT_TRACE, qualification)" % TRACE)
+    if h.stages_path != os.path.join(ROOT, "harnesses", "stages.json"):
+        notes.append("stages file: %s (HARNESS_STAGES)" % os.path.relpath(h.stages_path, ROOT))
+    run = {
+        "run_id": run_id, "spec_tag": SPEC_TAG, "system": SYSTEM, "configuration": h.config_name,
+        "problem": h.prob["problem"], "subproblem": h.sub["id"], "instance": h.instance_id,
+        "parameters": h.inst.get("parameters", {}), "mode": h.mode, "purpose": h.purpose,
+        "program": {"path": h.prog_rel, "sha256": sha256_bytes(h.prog_bytes), "repo_commit": git("rev-parse", "HEAD")},
+        "constants": {"how": "input" if h.constants_path else "none",
+                      "input_path": os.path.relpath(h.constants_path, ROOT) if h.constants_path else None,
+                      "input_sha256": sha256_bytes(h.constants_bytes) if h.constants_path else None,
+                      "variant": os.environ.get("ALGOL60_VARIANT") or None},
+        "system_build": {"commit": commits.get(key), "image": os.environ.get("HARNESS_IMAGE") or None,
+                         "binary": binary, "version_output": vout,
+                         "instrumented": h.mode in ("cost", "storage")},
+        "harness": {"path": "harnesses/algol-60/run", "commit": hcommit[:40], "dirty": dirty},
+        "command": h.command,
+        "posing": h.posing,
+        "limits": {"budget_steps": h.budget, "step_unit": h.step_unit,
+                   "safety_limit_s": h.safety_s, "rerun_limit_s": h.rerun_s},
+        "started_utc": iso(started), "ended_utc": iso(ended),
+        "complete": complete, "incomplete_reason": incomplete_reason,
+        "confounds": confounds,
+        "environment": {"PATH": h.env["PATH"], "HOME": "(a fresh empty temporary directory)",
+                        "LC_ALL": h.env["LC_ALL"]},
+    }
+    effects = None
+    if h.effects_on:
+        log = [json.loads(l) for l in open(h.log_path, encoding="utf-8") if l.strip()]
+        effects = {"log_path": os.path.relpath(h.log_path, ROOT),
+                   "observation_log_path": os.path.relpath(h.obs_log_path, ROOT),
+                   "entries_before_run": h.entries_before, "log_after_run": log}
+    return {"record_format": "cp-raw-record/1", "made_up": False, "run": run, "stages": stages,
+            "effects": effects, "manual_actions": [], "harness_faults": h.faults, "notes": notes}
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

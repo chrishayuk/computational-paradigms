@@ -1,0 +1,40 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING incremental;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: harness-algol-60 (qualification program for the made-up problem X01, not a result, in the X1 system's input and output);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report (1962), the X1 system's read, print, PRINTTEXT and NLCR (Kruseman Aretz 2003, chapter 7);
+  c̲o̲m̲m̲e̲n̲t̲ X01 (made up). One unknown integer x. Stage 1: x at least c1. Stage 2: x at most c2. Stage 3: x differs from c3. Constants file: a line 1: c1, a line 2: c2, a line 3: c3;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, c1, c2, c3, lo, hi, ex, x, tested, held;
+  b̲o̲o̲l̲e̲a̲n̲ haslo, hashi, hasex;
+
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  haslo := hashi := hasex := f̲a̲l̲s̲e̲; tested := 0;
+
+  f̲o̲r̲ i := 1 w̲h̲i̲l̲e̲ t̲r̲u̲e̲ d̲o̲
+  b̲e̲g̲i̲n̲
+    code := read; k := read;
+    i̲f̲ k = 1 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ c1 := read; lo := c1; haslo := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ c2 := read; hi := c2; hashi := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 3 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ c3 := read; ex := c3; hasex := t̲r̲u̲e̲ e̲n̲d̲;
+
+    i̲f̲ haslo ∧ hashi t̲h̲e̲n̲
+      f̲o̲r̲ x := lo s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ hi d̲o̲
+      b̲e̲g̲i̲n̲
+        tested := tested + 1;
+        i̲f̲ ¬(hasex ∧ x = ex) t̲h̲e̲n̲
+        b̲e̲g̲i̲n̲ PRINTTEXT(`[answer]x = '); print(x); PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+      e̲n̲d̲;
+
+    held := (i̲f̲ haslo t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0) + (i̲f̲ hashi t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0) + (i̲f̲ hasex t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0);
+    PRINTTEXT(`[observe]');
+    i̲f̲ haslo t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`x at least '); print(lo) e̲n̲d̲;
+    i̲f̲ hashi t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`x at most '); print(hi) e̲n̲d̲;
+    i̲f̲ hasex t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`x differs from '); print(ex) e̲n̲d̲;
+    NLCR;
+    i̲f̲ ¬(haslo ∧ hashi) t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended held-relations '); print(held); PRINTTEXT(`]') e̲n̲d̲;
+    PRINTTEXT(`[operations x-tested '); print(tested); PRINTTEXT(`]');
+    PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]')
+  e̲n̲d̲
+e̲n̲d̲

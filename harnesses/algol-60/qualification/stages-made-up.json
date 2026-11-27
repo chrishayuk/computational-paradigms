@@ -1,0 +1,558 @@
+{
+ "format": "cp-stages/1",
+ "spec_tag": "spec-1.0",
+ "about": [
+  "MADE UP for the qualification of the ALGOL 60 harness. Problems X01-X08 are invented and are not in the suite; no constant of any problem P01-P16 is used. Nothing here is a result."
+ ],
+ "vocabulary": {
+  "kind": {
+   "adds": "",
+   "replaces": "",
+   "retracts": "",
+   "commit": "",
+   "query": ""
+  },
+  "answers": {
+   "all": "answers(20)",
+   "any-one": "answers(1)"
+  }
+ },
+ "default_limits": {
+  "budget_steps": 1000000,
+  "safety_limit_s": 60,
+  "rerun_limit_s": 600,
+  "source": "PROTOCOL.md, Running"
+ },
+ "problems": [
+  {
+   "problem": "X01",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: bounds on one integer (the README example)",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X01a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "x"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X01a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "x >= <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "x <= <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "x != <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X02",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: a choice, an effect and a commit",
+   "effects": true,
+   "subproblems": [
+    {
+     "id": "X02a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "p"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X02a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "p in 1..<k>; emit(p)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "commit",
+       "description": "commit",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": true,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "p != <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X03",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: two spawned computations",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X03a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "u",
+      "v"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X03a.UV",
+       "parameters": {
+        "n": 10,
+        "spawn_order": [
+         "U",
+         "V"
+        ]
+       }
+      },
+      {
+       "id": "X03a.VU",
+       "parameters": {
+        "n": 10,
+        "spawn_order": [
+         "V",
+         "U"
+        ]
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "U: u = sum 1..n; V: v = n * n",
+       "queries": [
+        {
+         "id": "U",
+         "computation": "U",
+         "answers": "all",
+         "cap": 20
+        },
+        {
+         "id": "V",
+         "computation": "V",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": [
+        "U",
+        "V"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X04",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: a stage that does not end (budget)",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X04a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "x"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X04a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "x = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "x loops",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "x = x + <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X05",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: a stage that ends in an error",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X05a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "x"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X05a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "x = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "a[x] = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "x = x + <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X06",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: a stage that waits for input it is never given (safety limit, rerun)",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X06a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "x"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X06a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "x = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "x waits",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "x = x + <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 1000000,
+    "safety_limit_s": 2,
+    "rerun_limit_s": 8,
+    "line": 1,
+    "source": "made up: short limits so the qualification runs quickly"
+   }
+  },
+  {
+   "problem": "X07",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: a fixed safety limit (as P12, P13, P16)",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X07a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "x"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X07a.n5",
+       "parameters": {
+        "n": 5
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "x waits",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 100000000,
+    "safety_limit_s": 2,
+    "rerun_limit_s": null,
+    "line": 1,
+    "source": "made up: a fixed limit, not raised"
+   }
+  },
+  {
+   "problem": "X08",
+   "file": "(made up: harnesses/algol-60/qualification)",
+   "title": "Made up: step and store probes",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X08a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "x"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X08a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "probe",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

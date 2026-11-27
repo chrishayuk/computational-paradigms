@@ -1,0 +1,8 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING incremental;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: harness-algol-60 (not a problem program);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the X1 system's PRINTTEXT;
+  c̲o̲m̲m̲e̲n̲t̲ Its only effect, if it were run, would be to print the marker below. Used to show that check executes nothing;
+  PRINTTEXT(`MARKER-IF-EXECUTED-7f3a')
+e̲n̲d̲

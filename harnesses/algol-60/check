@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""ALGOL 60 syntax check, which executes nothing (harnesses/algol-60/README.md, 'check').
+
+    harnesses/algol-60/check CONFIGURATION PROGRAM
+
+report : algol60 --check PROGRAM          (compiles; reports errors and warnings)
+x1     : algol60 --x1 --check PROGRAM     (the same, in the X1 dialect)
+x1sim  : x1algc PROGRAM x1algol.lib       (the X1 compiler alone, in a fresh temporary
+                                           directory; its object code is discarded and
+                                           x1sim, the simulator, is never started)
+
+It also reads the program's bytes for the harness's own declaration
+(HARNESS POSING incremental|reposed). The system's messages are printed
+verbatim. Exit status: 0 no error reported; 1 an error was reported;
+2 usage error.
+"""
+
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+def main(argv):
+    if len(argv) != 3 or argv[1] not in ("report", "x1", "x1sim"):
+        sys.stderr.write(__doc__)
+        return 2
+    config, prog = argv[1], argv[2]
+    path = prog if os.path.isabs(prog) else os.path.join(ROOT, prog)
+    if not os.path.isfile(path):
+        sys.stderr.write("check: no program at %s\n" % prog)
+        return 2
+    rel = os.path.relpath(path, ROOT)
+    ok = True
+    text = open(path, "rb").read().decode("utf-8", errors="replace")
+    decl = set(re.findall(r"HARNESS\s+POSING\s+(incremental|reposed)", text))
+    if len(decl) == 1:
+        print("harness: posing declared: %s" % decl.pop())
+    else:
+        print("harness: ERROR: the program must declare exactly one of 'HARNESS POSING incremental' "
+              "or 'HARNESS POSING reposed' in a comment (found %s)" % (sorted(decl) or "none"))
+        ok = False
+    const = os.path.splitext(path)[0] + ".constants"
+    print("harness: constants file: %s" % (os.path.relpath(const, ROOT) if os.path.isfile(const) else "none"))
+    env = {"PATH": "/usr/local/bin:/usr/bin:/bin", "LC_ALL": "C.UTF-8"}
+    tmp = tempfile.mkdtemp(prefix="algol60-check-")
+    env["HOME"] = tmp
+    try:
+        if config in ("report", "x1"):
+            cmd = ["/usr/local/bin/algol60"] + (["--x1"] if config == "x1" else []) + ["--check", rel]
+            print("system: %s" % " ".join(cmd))
+            r = subprocess.run(cmd, cwd=ROOT, env=env, capture_output=True, timeout=120)
+            sys.stdout.write(r.stdout.decode("utf-8", errors="replace"))
+            sys.stdout.write(r.stderr.decode("utf-8", errors="replace"))
+            print("system: exit status %d" % r.returncode)
+            ok = ok and r.returncode == 0
+        else:
+            shutil.copyfile(path, os.path.join(tmp, "prog.a60"))
+            cmd = ["/usr/local/bin/x1algc", "prog.a60", "/usr/local/lib/x1algol.lib"]
+            print("system: %s  (in a temporary directory; standard output, the object code, is kept "
+                  "only to show the compiler's messages when it fails)" % " ".join(cmd))
+            with open(os.path.join(tmp, "prog.x1"), "wb") as obj:
+                r = subprocess.run(cmd, cwd=tmp, env=env, stdout=obj, stderr=subprocess.PIPE, timeout=120)
+            sys.stdout.write(r.stderr.decode("utf-8", errors="replace"))
+            if r.returncode != 0:
+                # x1algc writes its error report on standard output, after any object code
+                out = open(os.path.join(tmp, "prog.x1"), "rb").read().decode("utf-8", errors="replace")
+                sys.stdout.write(out)
+            else:
+                n = sum(1 for _ in open(os.path.join(tmp, "prog.x1"), "rb"))
+                print("system: compiled; %d lines of object code discarded, not run" % n)
+            print("system: exit status %d" % r.returncode)
+            print("note: the X1 compiler detects fewer errors than algol60 --check; a program it accepts "
+                  "can still stop at run time")
+            ok = ok and r.returncode == 0
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return 0 if ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
