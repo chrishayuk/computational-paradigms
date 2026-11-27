@@ -1,0 +1,11 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no.
+% CONSTANTS BEGIN
+s1 = [3, 4]
+a1 = 'w'
+% CONSTANTS END
+% STAGE 1
+% SPAWN U
+u = s1
+% SPAWN V
+v = a1

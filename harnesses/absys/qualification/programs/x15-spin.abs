@@ -1,0 +1,10 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no. IDIOM: a recursive lambda.
+% CONSTANTS BEGIN
+c = 5
+% CONSTANTS END
+spin = lambda A {spin(A)}
+% STAGE 1
+spin(w)
+% STAGE 2
+w = c

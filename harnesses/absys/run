@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""harnesses/absys/run CONFIGURATION PROBLEM SUBPROBLEM MODE PROGRAM OUTDIR
+
+The Absys harness (harnesses/README.md, section 3; harnesses/absys/README.md).
+Runs inside cp-agent-systems:spec-1.0, with its python3 and standard library only."""
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import absys_harness  # noqa: E402
+
+if __name__ == "__main__":
+    sys.exit(absys_harness.run_main(sys.argv))

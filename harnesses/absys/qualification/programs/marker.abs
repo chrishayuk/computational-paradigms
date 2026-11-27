@@ -1,0 +1,5 @@
+% AUTHOR: harness-absys (an agent). MADE UP: a check test; its only effect, if it ran, would be to output a marker.
+% STAGE 1
+tout("MARKER-OUTPUT", 'it-ran')
+spin = lambda A {spin(A)}
+spin(z)

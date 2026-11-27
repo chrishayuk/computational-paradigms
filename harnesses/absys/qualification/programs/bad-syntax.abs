@@ -1,0 +1,9 @@
+% AUTHOR: harness-absys (an agent). MADE UP: a check test with errors on purpose.
+% STAGE 1
+x = [1, 2
+y = 3
+% STAGE 2
+f = lambda X, X {X = 1}
+? x
+% STAGE 3
+z = [

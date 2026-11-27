@@ -1,0 +1,11 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no. A program with a syntax error in stage 2, on purpose.
+% CONSTANTS BEGIN
+c = 8
+% CONSTANTS END
+% STAGE 1
+g = c
+% STAGE 2
+h = )
+% STAGE 3
+h = g

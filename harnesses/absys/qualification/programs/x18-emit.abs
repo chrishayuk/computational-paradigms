@@ -1,0 +1,13 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no. IDIOM: tout, Elcock 1990 note 11; here the harness's emit.
+% CONSTANTS BEGIN
+dropped = 'red'
+% CONSTANTS END
+colour = lambda C {C = 'red'} or {C = 'green'} or {C = 'blue'}
+% STAGE 1
+colour(m)
+tout("emit", m)
+% STAGE 2
+% (commit: Absys has nothing to do here)
+% STAGE 3
+not(m = dropped)

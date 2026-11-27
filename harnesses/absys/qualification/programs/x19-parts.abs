@@ -1,0 +1,10 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no.
+% PARAMETERS n
+% CONSTANTS BEGIN
+tailv = [9]
+% CONSTANTS END
+% PART A
+s = [n|r]
+% PART B
+r = tailv

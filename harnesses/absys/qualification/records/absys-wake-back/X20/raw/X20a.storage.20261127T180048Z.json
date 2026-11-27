@@ -1,0 +1,482 @@
+{
+ "record_format": "cp-raw-record/1",
+ "made_up": false,
+ "run": {
+  "run_id": "X20a.storage.20261127T180048Z",
+  "spec_tag": "spec-1.0",
+  "system": "absys",
+  "configuration": "absys-wake-back",
+  "problem": "X20",
+  "subproblem": "X20a",
+  "instance": "X20a",
+  "parameters": {},
+  "mode": "storage",
+  "purpose": "qualification",
+  "program": {
+   "path": "harnesses/absys/qualification/programs/x20-arith.ab1",
+   "sha256": "e0aaaec7bf9cc9ba8c00a5aee3a091069c88c24642e02a2d38b0bea23b1f9c6b",
+   "repo_commit": "f56eb30f4dd07c46da2cef440e8f575b900027fb"
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": "545044976e1a5ee7fc5471a7cb02b972fd507984",
+   "image": null,
+   "binary": "/usr/local/bin/absys-measure",
+   "version_output": null,
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/absys/run",
+   "commit": "f56eb30f4dd07c46da2cef440e8f575b900027fb",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/absys/run",
+   "absys-wake-back",
+   "X20",
+   "X20a",
+   "storage",
+   "harnesses/absys/qualification/programs/x20-arith.ab1",
+   "harnesses/absys/qualification/records/absys-wake-back/X20/raw"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "step",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T18:00:48.054Z",
+  "ended_utc": "2026-11-27T18:00:48.309Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "behaviour runs use the instrumented build absys-measure (branch measure, 5450449) with --full and without --measure, not the baseline absys (efd5203), so that every list and derivation is printed in full (systems/absys/README.md, Output); --full changes only the printer",
+   "in behaviour runs the harness writes each section of the program to `absys-measure repl` on standard input, line by line as the program file has it, and after each section a `.help` line, whose fixed reply marks where the system's output for the section ends; a section that ends inside an unfinished assertion makes the repl read `.help` as its continuation and report a syntax error",
+   "the state is read with the repl's own commands `?` and `? NAME` after a stage (and after each spawned computation's section); they read the state and change nothing",
+   "instance parameters that a program declares (% PARAMETERS) are given to the system as assertions `NAME = VALUE` written by the harness in the program's notation, before the prelude",
+   "a program written in PART sections has part order[k-1] fed at stage k, as the instance's order names it",
+   "spawn(): Absys has one computation per session; a spawned computation's section is accepted into it, after the previous one has run to its end or its budget (side_by_side false), and that computation's answers and state are read right after its section",
+   "the budget is the system's own, --steps, which counts per assertion: a stage of several assertions can take more than the problem's budget in all before the system reports budget",
+   "cost and storage runs read steps and store from --measure, which reports them only for a whole text: each stage k of such a run is a new process on the text of the prelude and stages 1 to k, so those records show reposed stages, with the steps of stages 1 to k-1 as restart cost; the incremental behaviour run does not pay it",
+   "the restart cost of a reposed stage in a behaviour run (after an error or a safety-limit stop) is measured on a separate run of the replayed text with `absys-measure json`, which reports the steps of each assertion without sampling the store",
+   "in P11 runs (and in cost runs with the default budget) the system's trace is switched on (`.trace`, --trace), to read when tout performs an output; printing the trace changes nothing the machine does",
+   "answers(cap) takes the first cap derivations of the system's printed state, in the system's order; every derivation is in observe.raw",
+   "the constants block is never given to the system: the harness replaces each constant's name, in the text of the section that uses it, by its value, when that section is given"
+  ],
+  "environment": {}
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "  derivation #0 (hibernating)\n    p  uninstantiated\n    q  uninstantiated\n    suspended   p + 3 = q  (waits for two of its numbers: p, q)\n",
+           "steps_at": 2
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "suspended"
+        ],
+        "determined": true,
+        "basis": "a derivation prints suspended processes",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "step",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 2,
+        "restated": 2,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": 2,
+        "between_answers": [],
+        "to_end": 2,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "derivation",
+        "at_boundary": 1,
+        "at_budget": null,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "held_as": "all-live",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "suspended processes the system prints (waiting on an uninstantiated variable), summed over derivations",
+        "at_boundary": 1,
+        "peak": null,
+        "items": {
+         "susp_equations": 0,
+         "susp_applications": 0,
+         "susp_relations": 1,
+         "susp_negations": 0
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "1 derivation:\n  derivation #0 (hibernating)\n    p  uninstantiated\n    q  uninstantiated\n    suspended   p + 3 = q  (waits for two of its numbers: p, q)\n",
+      "method": "the state absys FILE prints at the end of the text of stages 1 to 1 (--full)",
+      "taken_on": "this-run",
+      "bindings": null
+     },
+     "print": "1 derivation:\n  derivation #0 (hibernating)\n    p  uninstantiated\n    q  uninstantiated\n    suspended   p + 3 = q  (waits for two of its numbers: p, q)\n",
+     "store": {
+      "quantities": {
+       "derivations": {
+        "boundary": 1,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "sub_derivations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "variables": {
+        "boundary": 2,
+        "peak": {
+         "value": 2,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "bindings": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_equations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_applications": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_relations": {
+        "boundary": 1,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_negations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "pending": {
+        "boundary": 0,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "term_nodes": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       }
+      },
+      "source": "--measure (absys-measure, branch measure): each quantity after the stage's last assertion, and the largest value it had after any step of the stage's assertions, or when each was added (exact at the granularity of steps)"
+     },
+     "wall_time_s": 0.032,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "1 derivation:\n  derivation #0 (hibernating)\n    p  uninstantiated\n    q  uninstantiated\n    suspended   p + 3 = q  (waits for two of its numbers: p, q)\n",
+     "stderr": "line\tassertion\tsteps\tquantity\tnow\tpeak\n3\tq = p + 3\t2\tderivations\t1\t1\n3\tq = p + 3\t2\tsub_derivations\t0\t0\n3\tq = p + 3\t2\tvariables\t2\t2\n3\tq = p + 3\t2\tbindings\t0\t0\n3\tq = p + 3\t2\tsusp_equations\t0\t0\n3\tq = p + 3\t2\tsusp_applications\t0\t0\n3\tq = p + 3\t2\tsusp_relations\t1\t1\n3\tq = p + 3\t2\tsusp_negations\t0\t0\n3\tq = p + 3\t2\tpending\t0\t1\n3\tq = p + 3\t2\tterm_nodes\t0\t0\n",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "measured run: absys-measure FILE --measure --full --wake back --notation 1969 --steps 1000000, FILE the text of the parameters, prelude and stages 1 to 1 (4 lines), the system's process started anew"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "reposed",
+      "reason": "configuration",
+      "replayed": [
+       1
+      ],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "  derivation #0 (hibernating)\n    p = 4\n    q = 7\n",
+           "steps_at": 4
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "no derivation is still elaborating, none prints a suspended process, and no error was reported",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "step",
+        "budget": 1000002,
+        "budget_exhausted": false,
+        "stage": 4,
+        "restated": 6,
+        "restart_cost": 2,
+        "restart_cost_method": "in-run",
+        "restart_cost_source": "this run: the steps --measure reports for the assertions of the parameters, prelude and stages 1 to 1, which come before stage 2's text",
+        "to_first_answer": 4,
+        "between_answers": [],
+        "to_end": 4,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "derivation",
+        "at_boundary": 1,
+        "at_budget": null,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "held_as": "all-live",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "suspended processes the system prints (waiting on an uninstantiated variable), summed over derivations",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {
+         "susp_equations": 0,
+         "susp_applications": 0,
+         "susp_relations": 0,
+         "susp_negations": 0
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "1 derivation:\n  derivation #0 (hibernating)\n    p = 4\n    q = 7\n",
+      "method": "the state absys FILE prints at the end of the text of stages 1 to 2 (--full)",
+      "taken_on": "this-run",
+      "bindings": null
+     },
+     "print": "1 derivation:\n  derivation #0 (hibernating)\n    p = 4\n    q = 7\n",
+     "store": {
+      "quantities": {
+       "derivations": {
+        "boundary": 1,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "sub_derivations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "variables": {
+        "boundary": 2,
+        "peak": {
+         "value": 2,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "bindings": {
+        "boundary": 2,
+        "peak": {
+         "value": 2,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_equations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_applications": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_relations": {
+        "boundary": 1,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_negations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "pending": {
+        "boundary": 0,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "term_nodes": {
+        "boundary": 2,
+        "peak": {
+         "value": 2,
+         "kind": "exact"
+        },
+        "unit": "count"
+       }
+      },
+      "source": "--measure (absys-measure, branch measure): each quantity after the stage's last assertion, and the largest value it had after any step of the stage's assertions, or when each was added (exact at the granularity of steps)"
+     },
+     "wall_time_s": 0.032,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "1 derivation:\n  derivation #0 (hibernating)\n    p = 4\n    q = 7\n",
+     "stderr": "line\tassertion\tsteps\tquantity\tnow\tpeak\n3\tq = p + 3\t2\tderivations\t1\t1\n3\tq = p + 3\t2\tsub_derivations\t0\t0\n3\tq = p + 3\t2\tvariables\t2\t2\n3\tq = p + 3\t2\tbindings\t0\t0\n3\tq = p + 3\t2\tsusp_equations\t0\t0\n3\tq = p + 3\t2\tsusp_applications\t0\t0\n3\tq = p + 3\t2\tsusp_relations\t1\t1\n3\tq = p + 3\t2\tsusp_negations\t0\t0\n3\tq = p + 3\t2\tpending\t0\t1\n3\tq = p + 3\t2\tterm_nodes\t0\t0\n5\tp = 4\t4\tderivations\t1\t1\n5\tp = 4\t4\tsub_derivations\t0\t0\n5\tp = 4\t4\tvariables\t2\t2\n5\tp = 4\t4\tbindings\t2\t2\n5\tp = 4\t4\tsusp_equations\t0\t0\n5\tp = 4\t4\tsusp_applications\t0\t0\n5\tp = 4\t4\tsusp_relations\t1\t1\n5\tp = 4\t4\tsusp_negations\t0\t0\n5\tp = 4\t4\tpending\t0\t1\n5\tp = 4\t4\tterm_nodes\t2\t2\n",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "measured run: absys-measure FILE --measure --full --wake back --notation 1969 --steps 1000000, FILE the text of the parameters, prelude and stages 1 to 2 (6 lines), the system's process started anew"
+     ]
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": [
+  "system: absys-measure 545044976e1a5ee7fc5471a7cb02b972fd507984 (branch measure, on the pinned main efd52032934d34359c8bb828d80819d18997be52); absys has no version option, so version_output is null and the commits are from /opt/src/COMMITS",
+  "notation: 1969 (from the program's file name, as the system decides it); flags of the configuration: --wake back",
+  "stages file: harnesses/absys/qualification/stages-qualification.json (ABSYS_HARNESS_STAGES)"
+ ]
+}

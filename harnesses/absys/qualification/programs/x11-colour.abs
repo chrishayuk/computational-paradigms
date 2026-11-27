@@ -1,0 +1,15 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no. IDIOM: alternatives with or, Elcock 1990 p. 8; not, p. 14.
+% CONSTANTS BEGIN
+gone = 'green'
+kept = 'blue'
+% CONSTANTS END
+colour = lambda C {C = 'red'} or
+    {C = 'green'} or
+    {C = 'blue'}
+% STAGE 1
+colour(k)
+% STAGE 2
+not(k = gone)
+% STAGE 3
+k = kept

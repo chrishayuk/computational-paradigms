@@ -1,0 +1,10 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no. IDIOM: arithmetic as a relation, Foster and Elcock 1969.
+% CONSTANTS BEGIN
+c1 = 3
+c2 = 4
+% CONSTANTS END
+% STAGE 1
+q = p + c1
+% STAGE 2
+p = c2

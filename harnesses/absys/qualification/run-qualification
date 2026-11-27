@@ -1,0 +1,422 @@
+#!/usr/bin/env python3
+"""Qualification of harnesses/absys: reruns every test and writes its output.
+
+Run inside the pinned image, from the repository root:
+
+    container run --rm --platform linux/amd64 --volume "$PWD":/work --workdir /work \
+        cp-agent-systems:spec-1.0 harnesses/absys/qualification/run-qualification
+
+It removes and rewrites harnesses/absys/qualification/records/, and writes its
+report to standard output and to harnesses/absys/qualification/output.txt.
+Every program it runs is made up (programs/); none is a program for P01-P16,
+and none uses a problem's constants.
+"""
+
+import glob
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+os.chdir(REPO)
+Q = "harnesses/absys/qualification"
+STAGES = Q + "/stages-qualification.json"
+PROGS = Q + "/programs"
+RECS = Q + "/records"
+RUN = "harnesses/absys/run"
+CHECK = "harnesses/absys/check"
+BIN, BASE = "/usr/local/bin/absys-measure", "/usr/local/bin/absys"
+FLAGS = {"absys": [], "absys-depth-first": ["--search", "depth-first"], "absys-wake-back": ["--wake", "back"]}
+
+lines_out = []
+results = []
+
+
+def say(s=""):
+    print(s)
+    lines_out.append(s)
+
+
+def verdict(name, ok, detail=""):
+    results.append((name, ok))
+    say("%s  %s%s" % ("PASS" if ok else "FAIL", name, (": " + detail) if detail else ""))
+
+
+def run_harness(config, problem, inst, mode, prog, env_extra=None):
+    env = dict(os.environ, ABSYS_HARNESS_STAGES=STAGES, ABSYS_HARNESS_PURPOSE="qualification")
+    env.update(env_extra or {})
+    outdir = "%s/%s/%s/raw" % (RECS, config, problem)
+    r = subprocess.run([RUN, config, problem, inst, mode, "%s/%s" % (PROGS, prog), outdir],
+                       capture_output=True, text=True, env=env)
+    path = None
+    for line in r.stdout.splitlines():
+        if line.endswith(".json") and not line.endswith(": valid") and os.path.exists(line):
+            path = line
+    if path is None:
+        cand = sorted(glob.glob("%s/%s.%s.*.json" % (outdir, inst, mode)))
+        path = cand[-1] if cand else None
+    return r.returncode, path, r.stdout + r.stderr
+
+
+def load(p):
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def final(rec, k):
+    return rec["stages"][k - 1]["attempts"][-1]
+
+
+def answers_of(att):
+    return {c["id"]: [[a["verbatim"] for a in q["answers"]] for q in c["queries"]] for c in att["computations"]}
+
+
+def constants_out(lines):
+    """Independently of the harness: drop the constants block, and put each constant's value in
+    place of its name in the lines that are not comments (the test programs quote no name)."""
+    table, out, inside = {}, [], False
+    for l in lines:
+        if "CONSTANTS BEGIN" in l:
+            inside = True
+            continue
+        if "CONSTANTS END" in l:
+            inside = False
+            continue
+        if inside:
+            if l.strip() and not l.strip().startswith("%"):
+                name, value = l.split("=", 1)
+                table[name.strip()] = value.strip()
+            continue
+        out.append(l)
+    res = []
+    for l in out:
+        if not l.lstrip().startswith("%"):
+            for name, value in table.items():
+                l = re.sub(r"(?<![\w'-])%s(?![\w'-])" % re.escape(name), lambda m: value, l)
+        res.append(l)
+    return res
+
+
+def prefix_text(prog, k, params=None, order=None):
+    """Independently of the harness: the text of the parameters, prelude and stages 1..k."""
+    with open("%s/%s" % (PROGS, prog), encoding="utf-8") as f:
+        lines = constants_out(f.read().splitlines(keepends=True))
+    head = "".join("%s = %s\n" % kv for kv in (params or []))
+    if order:
+        # a PART program: the prelude, then the parts in the order given
+        parts, cur, prelude = {}, None, []
+        for l in lines:
+            m = re.match(r"^\s*%\s*PART\s+(\S+)\s*$", l)
+            if m:
+                cur = parts.setdefault(m.group(1), [])
+            (prelude if cur is None else cur).append(l)
+        return head + "".join(prelude) + "".join("".join(parts[p]) for p in order[:k])
+    out = []
+    for l in lines:
+        m = re.match(r"^\s*%\s*STAGE\s+(\d+)\s*$", l)
+        if m and int(m.group(1)) > k:
+            break
+        out.append(l)
+    return head + "".join(out)
+
+
+def direct(argv, text, ext):
+    path = "/tmp/qual-direct." + ext
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+    argv = [path if a == "FILE" else a for a in argv]
+    if path not in argv:
+        argv = argv[:1] + [path] + argv[1:]
+    r = subprocess.run(argv, capture_output=True, text=True, timeout=120)
+    return r
+
+
+def state_part(out):
+    """absys FILE's output from the state at the end: without the budget's notes before it."""
+    m = re.search(r"(?m)^(\d+ derivations?|No derivation survives)", out)
+    return out[m.start():] if m else out
+
+
+def measure_rows(err):
+    rows, cur = [], None
+    lines = err.split("\n")
+    if "line\tassertion\tsteps\tquantity\tnow\tpeak" not in lines:
+        return rows
+    for l in lines[lines.index("line\tassertion\tsteps\tquantity\tnow\tpeak") + 1:]:
+        p = l.split("\t")
+        if len(p) != 6:
+            continue
+        if p[3] == "derivations":
+            cur = {"steps": int(p[2]), "now": {}, "peak": {}}
+            rows.append(cur)
+        cur["now"][p[3]] = int(p[4])
+        cur["peak"][p[3]] = int(p[5])
+    return rows
+
+
+def main():
+    shutil.rmtree(RECS, ignore_errors=True)
+    os.makedirs(RECS)
+    say("Qualification of harnesses/absys")
+    say("system builds: " + open("/opt/src/COMMITS").read().replace("\n", "; "))
+    say("harness commit: " + (subprocess.run(["git", "-c", "safe.directory=*", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()))
+    say()
+
+    # ------------------------------------------------------------ the runs
+    say("== 1. Runs of the harness on made-up programs (every configuration, every mode)")
+    runs = [
+        ("absys", "X10", "X10a", "x10-pair.abs"),
+        ("absys-wake-back", "X10", "X10a", "x10-pair.abs"),
+        ("absys", "X11", "X11a", "x11-colour.abs"),
+        ("absys-depth-first", "X11", "X11a", "x11-colour.abs"),
+        ("absys", "X12", "X12a", "x12-spin.abs"),
+        ("absys", "X13", "X13a", "x13a-error.abs"),
+        ("absys", "X13", "X13b", "x13b-unfinished.abs"),
+        ("absys", "X15", "X15a", "x15-spin.abs"),
+        ("absys", "X16", "X16a", "x16-spin.abs"),
+        ("absys", "X17", "X17a.UV", "x17-spawn.abs"),
+        ("absys", "X17", "X17a.VU", "x17-spawn.abs"),
+        ("absys", "X18", "X18a", "x18-emit.abs"),
+        ("absys-depth-first", "X18", "X18a", "x18-emit.abs"),
+        ("absys", "X19", "X19a.AB", "x19-parts.abs"),
+        ("absys", "X19", "X19a.BA", "x19-parts.abs"),
+        ("absys", "X20", "X20a", "x20-arith.ab1"),
+        ("absys-wake-back", "X20", "X20a", "x20-arith.ab1"),
+    ]
+    recs = {}
+    for (cfg, prob, inst, prog) in runs:
+        for mode in ("behaviour", "cost", "storage"):
+            rc, path, out = run_harness(cfg, prob, inst, mode, prog)
+            recs[(cfg, inst, mode)] = path
+            verdict("run %s %s %s %s" % (cfg, inst, mode, prog), rc == 0 and path is not None, "exit %d, %s" % (rc, path))
+    rc, path, out = run_harness("absys", "X21", "X21a", "behaviour", "x21-spin.abs")
+    recs[("absys", "X21a", "behaviour")] = path
+    verdict("run absys X21a behaviour x21-spin.abs (the system's process exhausts the container's memory)", rc == 0 and path is not None, "exit %d, %s" % (rc, path))
+    say()
+
+    # ------------------------------------------- (a) the system run directly
+    say("== 2 (a). The system run directly agrees with what the harness collected")
+    direct_cases = [
+        ("absys", "X10a", "x10-pair.abs", 3, None, None),
+        ("absys-wake-back", "X10a", "x10-pair.abs", 3, None, None),
+        ("absys", "X11a", "x11-colour.abs", 3, None, None),
+        ("absys-depth-first", "X11a", "x11-colour.abs", 3, None, None),
+        ("absys", "X12a", "x12-spin.abs", 2, None, None),
+        ("absys", "X18a", "x18-emit.abs", 3, None, None),
+        ("absys", "X19a.AB", "x19-parts.abs", 2, [("n", 3)], ["A", "B"]),
+        ("absys", "X19a.BA", "x19-parts.abs", 2, [("n", 3)], ["B", "A"]),
+        ("absys", "X20a", "x20-arith.ab1", 2, None, None),
+        ("absys-wake-back", "X20a", "x20-arith.ab1", 2, None, None),
+    ]
+    for (cfg, inst, prog, K, params, order) in direct_cases:
+        ext = prog.rsplit(".", 1)[1]
+        notation = {"abs": "1990", "ab1": "1969", "ab2": "1982"}[ext]
+        beh = load(recs[(cfg, inst, "behaviour")])
+        cost = load(recs[(cfg, inst, "cost")])
+        sto = load(recs[(cfg, inst, "storage")])
+        prev_restated = 0
+        for k in range(1, K + 1):
+            text = prefix_text(prog, k, params, order)
+            common = FLAGS[cfg] + ["--notation", notation, "--steps", "1000000"]
+            full = direct([BIN, "--full"] + common, text, ext)
+            base = direct([BASE] + common, text, ext)
+            meas = direct([BIN, "--measure"] + common, text, ext)
+            p_beh = final(beh, k)["print"]
+            full.stdout, base.stdout = state_part(full.stdout), state_part(base.stdout)
+            verdict("%s %s stage %d: harness print() (repl `?`) == absys-measure FILE --full on stages 1..%d" % (cfg, inst, k, k), p_beh == full.stdout)
+            verdict("%s %s stage %d: harness print() == the baseline absys FILE (efd5203), nothing cut short" % (cfg, inst, k), p_beh == base.stdout)
+            verdict("%s %s stage %d: cost and storage print() == the same" % (cfg, inst, k), final(cost, k)["print"] == full.stdout and final(sto, k)["print"] == full.stdout)
+            rows = measure_rows(meas.stderr)
+            restated = sum(r["steps"] for r in rows)
+            c = final(cost, k)["computations"][0]["steps"]
+            verdict("%s %s stage %d: steps (restated %d, stage %d) == --measure run directly (%d, %d)" % (cfg, inst, k, c["restated"], c["stage"], restated, restated - prev_restated),
+                    c["restated"] == restated and c["stage"] == restated - prev_restated)
+            if k > 1:
+                verdict("%s %s stage %d: restart cost %s == steps of stages 1..%d run alone (%d)" % (cfg, inst, k, c["restart_cost"], k - 1, prev_restated), c["restart_cost"] == prev_restated)
+            prev_restated = restated
+            q = final(sto, k)["store"]["quantities"]
+            verdict("%s %s stage %d: storage boundary vector == --measure's last row run directly" % (cfg, inst, k),
+                    bool(rows) and all(q[name]["boundary"] == rows[-1]["now"][name] for name in rows[-1]["now"]))
+    # spawned computations: the state after each spawned computation's section
+    for inst in ("X17a.UV", "X17a.VU"):
+        beh = load(recs[("absys", inst, "behaviour")])
+        order = ["U", "V"] if inst.endswith("UV") else ["V", "U"]
+        with open(PROGS + "/x17-spawn.abs") as f:
+            lines = constants_out(f.read().splitlines(keepends=True))
+        pre, secs, cur = [], {}, None
+        for l in lines:
+            m = re.match(r"^\s*%\s*SPAWN\s+(\S+)\s*$", l)
+            if m:
+                cur = secs.setdefault(m.group(1), [])
+            (pre if cur is None else cur).append(l)
+        text = "".join(pre)
+        att = final(beh, 1)
+        for c in order:
+            text += "".join(secs[c])
+            d = direct([BIN, "--full", "--notation", "1990", "--steps", "1000000"], text, "abs")
+            d.stdout = state_part(d.stdout)
+            comp = [x for x in att["computations"] if x["id"] == c][0]
+            got = "".join(a["verbatim"] for a in comp["queries"][0]["answers"])
+            want = "".join(re.findall(r"(?ms)^  derivation #.*?(?=^  derivation #|\Z)", d.stdout))
+            verdict("absys %s: computation %s's answers == absys FILE --full on the text up to its section" % (inst, c), got == want)
+    # a constant reaches the system only with the stage that uses it
+    for mode in ("behaviour", "cost", "storage"):
+        r = load(recs[("absys", "X10a", mode)])
+        p1, p2, p3 = (final(r, k)["print"] for k in (1, 2, 3))
+        verdict("X10a %s: stage 1's state holds neither constant (41, 'red') nor their names" % mode,
+                all(s not in p1 for s in ("41", "'red'", "c1", "c2")))
+        verdict("X10a %s: stage 2's state holds stage 2's constant (41) and not stage 3's ('red')" % mode,
+                "41" in p2 and "'red'" not in p2 and "c1" not in p2)
+        verdict("X10a %s: stage 3's state holds both" % mode, "41" in p3 and "'red'" in p3)
+        if mode == "behaviour":
+            sent = "".join(st["attempts"][-1]["stdout"] for st in r["stages"])
+            verdict("X10a behaviour: the constants block's names never reach the system (no `c1`, `c2` in what it printed)", "c1" not in sent and "c2" not in sent)
+    # the restart cost's json steps == --measure's steps
+    for prog, ext in (("x10-pair.abs", "abs"), ("x20-arith.ab1", "ab1"), ("x11-colour.abs", "abs")):
+        notation = {"abs": "1990", "ab1": "1969"}[ext]
+        for k in (1, 2):
+            text = prefix_text(prog, k)
+            j = direct([BIN, "json", "FILE", "--full", "--notation", notation, "--steps", "1000000"], text, ext)
+            m = direct([BIN, "--measure", "--notation", notation, "--steps", "1000000"], text, ext)
+            js = [int(s["steps"]) for s in json.loads(j.stdout)["steps"]]
+            ms = [r["steps"] for r in measure_rows(m.stderr)]
+            verdict("%s stages 1..%d: absys-measure json's steps per assertion == --measure's (%s)" % (prog, k, ms), js == ms)
+    # the behaviour run's state with and without the trace
+    beh = load(recs[("absys", "X18a", "behaviour")])
+    d = direct([BIN, "--full", "--trace", "--notation", "1990", "--steps", "1000000"], prefix_text("x18-emit.abs", 1), "abs")
+    ev = [l.split("output", 1)[1].strip() for l in d.stdout.splitlines() if re.match(r"^  (  )*#\d+\s+output\s", l)]
+    got = [e["entry"] for e in final(beh, 1)["effects"]]
+    verdict("absys X18a stage 1: the effects log's entries == the outputs absys FILE --trace shows performed (%s)" % ev, got == [e[len("emit = "):] for e in ev])
+    say()
+
+    # --------------------------------------- (b) incremental against reposed
+    say("== 3 (b). Incremental and reposed posing give the same answers")
+    for (cfg, prob, inst, prog) in [("absys", "X10", "X10a", "x10-pair.abs"), ("absys-depth-first", "X11", "X11a", "x11-colour.abs"),
+                                    ("absys", "X12", "X12a", "x12-spin.abs"), ("absys", "X17", "X17a.VU", "x17-spawn.abs"),
+                                    ("absys", "X18", "X18a", "x18-emit.abs"), ("absys", "X19", "X19a.BA", "x19-parts.abs"),
+                                    ("absys-wake-back", "X20", "X20a", "x20-arith.ab1")]:
+        rc, path, out = run_harness(cfg, prob, inst, "behaviour", prog, {"ABSYS_HARNESS_POSING": "reposed"})
+        verdict("run %s %s behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed)" % (cfg, inst), rc == 0, path)
+        inc, rep = load(recs[(cfg, inst, "behaviour")]), load(path)
+        cost = load(recs[(cfg, inst, "cost")])
+        for k in range(1, len(inc["stages"]) + 1):
+            a, b = final(inc, k), final(rep, k)
+            verdict("%s %s stage %d: incremental (%s) and reposed (%s) answers are identical" % (cfg, inst, k, a["posed"]["how"], b["posed"]["how"]),
+                    answers_of(a) == answers_of(b) and a["print"] == b["print"])
+            if not any(x["spawned"] for x in a["computations"]):
+                verdict("%s %s stage %d: behaviour (repl) and cost (absys FILE, stages 1..%d) answers are identical" % (cfg, inst, k, k), answers_of(a) == answers_of(final(cost, k)))
+    say()
+
+    # ------------------------------------- (c) budget, safety limit, errors
+    say("== 4 (c). Budget, safety limit and error paths")
+
+    def states(path, k, n=-1):
+        r = load(path)
+        a = r["stages"][k - 1]["attempts"][n]
+        return a, [c["execution_state"]["states"] for c in a["computations"]]
+
+    for mode in ("behaviour", "cost", "storage"):
+        p = recs[("absys", "X12a", mode)]
+        a1, s1 = states(p, 1)
+        a2, s2 = states(p, 2)
+        verdict("X12a %s: stage 1 ends in budget" % mode, s1 == [["budget"]])
+        verdict("X12a %s: stage 2 %s after the budget (continued_after_budget %s), and ends in budget" % (mode, a2["posed"]["how"], a2["posed"]["continued_after_budget"]),
+                s2 == [["budget"]] and (a2["posed"]["continued_after_budget"] if mode == "behaviour" else a2["posed"]["how"] == "reposed"))
+        p = recs[("absys", "X15a", mode)]
+        r = load(p)
+        acts = [(st["stage"], a["attempt"], a["posed"]["reason"], a["safety_limit"]["action"]) for st in r["stages"] for a in st["attempts"]]
+        verdict("X15a %s: safety limit, rerun, final timeout, then stage 2 reposed after the timeout: %s" % (mode, acts),
+                acts == [(1, 1, "first-stage", "rerun"), (1, 2, "safety-rerun", "final-timeout"), (2, 1, "after-timeout", "rerun"), (2, 2, "safety-rerun", "final-timeout")])
+        p = recs[("absys", "X16a", mode)]
+        a1, s1 = states(p, 1)
+        verdict("X16a %s: a fixed limit stops the stage once (%s)" % (mode, a1["safety_limit"]["action"]), a1["safety_limit"]["action"] == "fixed-limit-timeout" and s1 == [["timeout"]])
+        for inst in ("X13a", "X13b"):
+            p = recs[("absys", inst, mode)]
+            a2, s2 = states(p, 2)
+            a3, s3 = states(p, 3)
+            verdict("%s %s: stage 2 ends in error (%r), stage 3 is reposed after it" % (inst, mode, a2["computations"][0]["execution_state"]["error_verbatim"]),
+                    "error" in s2[0] and a3["posed"]["reason"] == "after-error" and a3["posed"]["how"] == "reposed")
+    a1, s1 = states(recs[("absys", "X21a", "behaviour")], 1)
+    verdict("X21a behaviour: the process killed from outside is an error, with the signal (%s)" % a1["exit"], s1 == [["error"]] and a1["exit"]["signal"] == "SIGKILL")
+    say()
+
+    # ------------------------------------------------- check executes nothing
+    say("== 5. check executes nothing")
+    r = subprocess.run([CHECK, "absys", PROGS + "/marker.abs"], capture_output=True, text=True)
+    say("    $ harnesses/absys/check absys %s/marker.abs" % PROGS)
+    for l in (r.stdout + r.stderr).splitlines():
+        say("    " + l)
+    verdict("check on marker.abs: no error, and the marker the program would output is not in check's output", r.returncode == 0 and "MARKER-OUTPUT" not in r.stdout + r.stderr and "it-ran" not in r.stdout + r.stderr)
+    real = subprocess.run([BIN, PROGS + "/marker.abs", "--steps", "1000"], capture_output=True, text=True)
+    verdict("marker.abs run for real (absys FILE --steps 1000) does output the marker, so check would have shown it had it run anything", "MARKER-OUTPUT = 'it-ran'" in real.stdout)
+    j = subprocess.run([BIN, "json", PROGS + "/marker.abs", "--steps", "0"], capture_output=True, text=True)
+    doc = json.loads(j.stdout)
+    verdict("the parse used by check (json --steps 0) takes no step, records no event and performs no output, for every assertion",
+            all(s["steps"] == 0 and s["eventCount"] == 0 and not any(d["outputs"] for d in s["derivations"]) for s in doc["steps"]))
+    r = subprocess.run([CHECK, "absys", PROGS + "/bad-syntax.abs"], capture_output=True, text=True)
+    say("    $ harnesses/absys/check absys %s/bad-syntax.abs" % PROGS)
+    for l in (r.stdout + r.stderr).splitlines():
+        say("    " + l)
+    verdict("check on bad-syntax.abs: exit 1, the system's own messages for each error, the repl command, and the unfinished section",
+            r.returncode == 1 and "is bound twice" in r.stdout and "command to the repl" in r.stdout and "unfinished assertion" in r.stdout and "found `y`" in r.stdout)
+    for prog in sorted(os.listdir(PROGS)):
+        if prog in ("bad-syntax.abs", "x13a-error.abs", "x13b-unfinished.abs"):
+            continue
+        r = subprocess.run([CHECK, "absys", "%s/%s" % (PROGS, prog)], capture_output=True, text=True)
+        verdict("check absys %s: no error" % prog, r.returncode == 0, r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr)
+    for prog in ("x13a-error.abs", "x13b-unfinished.abs"):
+        r = subprocess.run([CHECK, "absys", "%s/%s" % (PROGS, prog)], capture_output=True, text=True)
+        verdict("check absys %s: reports the error made on purpose" % prog, r.returncode == 1, " | ".join(l for l in r.stdout.splitlines() if l.startswith("error")))
+    say()
+
+    # ----------------------------------------------------- (d) validate.py
+    say("== 6 (d). Every record passes validate.py")
+    files = sorted(glob.glob(RECS + "/**/*.json", recursive=True))
+    r = subprocess.run([sys.executable, "harnesses/validate.py", "--stages", STAGES] + files, capture_output=True, text=True)
+    for l in r.stdout.splitlines():
+        say("    " + l)
+    invalid = [f for f in files if f.endswith(".INVALID.json")]
+    verdict("validate.py on all %d records" % len(files), r.returncode == 0 and not invalid)
+    say()
+    say("== 7. Records too large to publish are truncated after they are validated")
+    import hashlib
+    LIMIT, KEEP = 400000, 4000
+    cut = []
+    for f in files:
+        if os.path.getsize(f) <= LIMIT:
+            continue
+        raw = open(f, "rb").read()
+        digest, size = hashlib.sha256(raw).hexdigest(), len(raw)
+        rec = json.loads(raw)
+        for st in rec["stages"]:
+            for a in st["attempts"]:
+                for key in ("stdout", "stderr", "print"):
+                    v = a.get(key)
+                    if isinstance(v, str) and len(v) > 2 * KEEP:
+                        a[key] = v[:KEEP] + "\n[... TRUNCATED by the qualification: %d characters removed ...]\n" % (len(v) - 2 * KEEP) + v[-KEEP:]
+        rec.setdefault("notes", []).append("TRUNCATED for publication by run-qualification: long stdout, stderr and print strings keep their first and last %d characters. The full record, as the harness wrote and validate.py checked it, was %d bytes with SHA-256 %s" % (KEEP, size, digest))
+        with open(f, "w", encoding="utf-8") as g:
+            json.dump(rec, g, ensure_ascii=False, indent=1)
+            g.write("\n")
+        cut.append(f)
+        say("    %s: %d bytes, SHA-256 %s, truncated to %d bytes" % (f, size, digest, os.path.getsize(f)))
+    r = subprocess.run([sys.executable, "harnesses/validate.py", "--stages", STAGES] + cut, capture_output=True, text=True)
+    verdict("the %d truncated record(s) still pass validate.py" % len(cut), r.returncode == 0)
+    total = sum(os.path.getsize(f) for f in files)
+    verdict("all records together are %d bytes (under 5 MB)" % total, total < 5000000)
+    say()
+    bad = [n for n, ok in results if not ok]
+    say("%d checks, %d passed, %d failed" % (len(results), len(results) - len(bad), len(bad)))
+    for n in bad:
+        say("FAILED: " + n)
+    with open(Q + "/output.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(lines_out) + "\n")
+    return 1 if bad else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,13 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no. IDIOM: a lambda procedure, as in Elcock 1990 p. 8.
+% CONSTANTS BEGIN
+c1 = 41
+c2 = 'red'
+% CONSTANTS END
+pair = lambda A, B, P {P = [A, B]}
+% STAGE 1
+pair(a, b, pr)
+% STAGE 2
+pr = [c1, d]
+% STAGE 3
+d = c2

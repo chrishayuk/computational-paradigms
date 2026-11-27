@@ -1,0 +1,5 @@
+% AUTHOR: harness-absys (an agent), for the harness's qualification. MADE UP: not a problem program.
+% PRECURSOR-SEEN: no. A derivation that never ends, under a budget larger than 1 GiB of memory allows.
+spin = lambda A {spin(A)}
+% STAGE 1
+spin(w)

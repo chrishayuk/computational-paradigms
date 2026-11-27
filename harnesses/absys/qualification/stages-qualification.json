@@ -1,0 +1,804 @@
+{
+ "format": "cp-stages/1",
+ "spec_tag": "spec-1.0",
+ "about": [
+  "MADE UP for the qualification of harnesses/absys. Problems X10-X20 are invented, are not in the suite and use none of its constants. Nothing here is a result."
+ ],
+ "vocabulary": {
+  "kind": {
+   "adds": "",
+   "replaces": "",
+   "retracts": "",
+   "commit": "",
+   "query": ""
+  },
+  "answers": {
+   "all": "answers(20)",
+   "any-one": "answers(1)"
+  }
+ },
+ "default_limits": {
+  "budget_steps": 1000000,
+  "safety_limit_s": 60,
+  "rerun_limit_s": 600,
+  "source": "PROTOCOL.md, Running"
+ },
+ "problems": [
+  {
+   "problem": "X10",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: a pair built in stages",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X10a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "a",
+      "b",
+      "pr",
+      "d"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X10a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "pair(a, b, pr)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "pr = [<k>, d]",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "d = <atom>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X11",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: alternatives narrowed",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X11a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "k"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X11a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "colour(k)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "not(k = <atom>)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "k = <atom>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X12",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: an endless derivation",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X12a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "w"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X12a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "spin(w)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "w = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X13",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: errors in a stage's text",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X13a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "g",
+      "h"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X13a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "g = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "a syntax error",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "h = g",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    },
+    {
+     "id": "X13b",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "g",
+      "h"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X13b",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "g = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "an assertion left unfinished",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "h = g",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X15",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: the safety limit, with a rerun",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X15a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "w"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X15a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "spin(w)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "w = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 4000000,
+    "safety_limit_s": 0.5,
+    "rerun_limit_s": 1.2,
+    "line": 1,
+    "source": "made up: small limits, so that the safety limit stops a stage in a few seconds"
+   }
+  },
+  {
+   "problem": "X16",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: a fixed safety limit",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X16a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "w"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X16a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "spin(w)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ],
+   "limits": {
+    "budget_steps": 4000000,
+    "safety_limit_s": 0.5,
+    "rerun_limit_s": null,
+    "line": 1,
+    "source": "made up: a fixed limit, not raised"
+   }
+  },
+  {
+   "problem": "X17",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: two spawned computations",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X17a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "u",
+      "v"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X17a.UV",
+       "parameters": {
+        "spawn_order": [
+         "U",
+         "V"
+        ]
+       }
+      },
+      {
+       "id": "X17a.VU",
+       "parameters": {
+        "spawn_order": [
+         "V",
+         "U"
+        ]
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "U: u = <seq>; V: v = <atom>",
+       "queries": [
+        {
+         "id": "U",
+         "computation": "U",
+         "answers": "all",
+         "cap": 20
+        },
+        {
+         "id": "V",
+         "computation": "V",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": [
+        "U",
+        "V"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X18",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: an effect and a commit",
+   "effects": true,
+   "subproblems": [
+    {
+     "id": "X18a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "m"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X18a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "colour(m) and emit(m)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "commit",
+       "description": "commit",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": true,
+       "spawns": []
+      },
+      {
+       "stage": 3,
+       "line": 3,
+       "kind": "adds",
+       "description": "not(m = <atom>)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "any-one",
+         "cap": 1
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X19",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: parts in an arrival order, with a parameter",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X19a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "s",
+      "r"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X19a.AB",
+       "parameters": {
+        "n": 3,
+        "order": [
+         "A",
+         "B"
+        ]
+       }
+      },
+      {
+       "id": "X19a.BA",
+       "parameters": {
+        "n": 3,
+        "order": [
+         "B",
+         "A"
+        ]
+       }
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "the part the order names first",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "the part the order names second",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X20",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: arithmetic in the 1969 notation",
+   "effects": false,
+   "subproblems": [
+    {
+     "id": "X20a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "p",
+      "q"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X20a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "adds",
+       "description": "q = p + <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      },
+      {
+       "stage": 2,
+       "line": 2,
+       "kind": "adds",
+       "description": "p = <k>",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "problem": "X21",
+   "file": "(made up for the Absys harness's qualification)",
+   "title": "Made up: the system's process killed from outside the harness",
+   "effects": false,
+   "limits": {
+    "budget_steps": 30000000,
+    "safety_limit_s": 60,
+    "rerun_limit_s": 600,
+    "line": 1,
+    "source": "made up: a budget large enough for the system to exhaust a 1 GiB container's memory"
+   },
+   "subproblems": [
+    {
+     "id": "X21a",
+     "line": 1,
+     "title": "made up",
+     "unknowns": [
+      "w"
+     ],
+     "readings": [],
+     "instances": [
+      {
+       "id": "X21a",
+       "parameters": {}
+      }
+     ],
+     "stages": [
+      {
+       "stage": 1,
+       "line": 1,
+       "kind": "query",
+       "description": "spin(w)",
+       "queries": [
+        {
+         "id": "q",
+         "computation": "main",
+         "answers": "all",
+         "cap": 20
+        }
+       ],
+       "commit": false,
+       "spawns": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
