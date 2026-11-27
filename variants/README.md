@@ -35,8 +35,13 @@ Anyone can check a published plaintext:
 
 The first comparison: Absys, SWI-Prolog, Python and ALGOL 60. Sealed on
 27 November 2026, before the freeze, by a custodian agent with its own
-context. 138 variants over P01–P16, at least two for every sub-problem
-with constants. Three sub-problems (P04d, P04f, P08b) have no constant to
+context. 120 variants over P01–P16, at least two for every sub-problem
+with constants. A variant is one complete set of substituted constants
+with its own stage-by-stage valid outcomes. One that serves several
+sub-problems (P02, P13, P14, P15a1/a2, P15b/b2), or gives its constants per
+size n (P12, P13, P16), is counted once. *(The custodian's first report
+said 138, an addition error; its own per-problem table, and its
+reconciliation, give 120.)* Three sub-problems (P04d, P04f, P08b) have no constant to
 vary, and have none. Sizes and arrival orders were not varied. Each
 variant's valid outcomes were derived stage by stage and confirmed by a
 checking script, sealed with them. Plaintext SHA-256:
