@@ -1,4 +1,8 @@
-# Python programs, wave 1, batch 1A (P01-P03)
+# Python programs, wave 1, batches 1A (P01-P03) and 1B (P04-P08)
+
+Batch 1B is in its own section, after batch 1A's ("Batch 1B (P04-P08)").
+
+## Batch 1A (P01-P03)
 
 *Written by `implementation-python`, an agent (Claude Opus 5.5,
 `claude-opus-5-5`), on 2026-11-27, at `spec-1.0.1`, from the problem files
@@ -18,7 +22,7 @@ block tagged by stage, and is run as
 
     harnesses/python/run CONFIGURATION PROBLEM INSTANCE MODE programs/python/CONFIGURATION/SUBPROBLEM.py OUTDIR
 
-## Shared texts
+### Shared texts
 
 - **P03a-P03f: core and stdlib-concurrency share one text.** The files in
   `stdlib-concurrency/` are byte-for-byte copies of those in `core/`. The
@@ -37,14 +41,14 @@ block tagged by stage, and is run as
 - Within a configuration, P02a, P02b and P02c share everything but their
   stage dispatch and constants block.
 
-## Per configuration and sub-problem
+### Per configuration and sub-problem
 
 All programs: primary; author `implementation-python` (an agent, Claude
 Opus 5.5); precursor seen: none. "Idioms" lists the sources each file's
 `PROVENANCE` block cites; "S" is the S mechanisms used (`S-mechanisms.md`),
 and any of the program's own.
 
-### core
+#### core
 
 | sub-problem | program | expressibility (as I see it) | how | S |
 |---|---|---|---|---|
@@ -71,7 +75,7 @@ Reference, "Assignment expressions", "The while statement", "The for
 statement", "Yield expressions", "Binary arithmetic operations", "Value
 comparisons"; PEP 255 (generators), PEP 380 (`yield from`).
 
-### stdlib-concurrency
+#### stdlib-concurrency
 
 | sub-problem | program | expressibility (as I see it) | how | S |
 |---|---|---|---|---|
@@ -88,7 +92,7 @@ Idioms (stdlib-concurrency, beyond core's): The Python Library Reference,
 and "Condition Objects" (`wait_for`, `notify_all`, a condition in a `with`
 statement). External mechanism: `threading`.
 
-### extended
+#### extended
 
 | sub-problem | program | expressibility (as I see it) | how | S |
 |---|---|---|---|---|
@@ -129,7 +133,7 @@ machine-oriented logic based on the resolution principle", JACM 12(1), 1965
 (unification, resolution); The Python Language Reference, "Data model"
 ("Emulating callable objects", "Basic customization").
 
-## What the programs report
+### What the programs report
 
 - **Answers** (`cp.answer`) are values only: one line per solution, giving
   each unknown that has a value (or, in extended, that is bound to a term
@@ -146,7 +150,7 @@ machine-oriented logic based on the resolution principle", JACM 12(1), 1965
 - Sequences are printed as the problem writes them, ⟨1,2,3⟩; a cyclic term
   (extended P01c) as `⟨1⟩ ++ ⟨1⟩ ++ … (cyclic)`.
 
-## Ambiguities, and the reading taken
+### Ambiguities, and the reading taken
 
 1. **File names.** The harness README fixes how a program is written, not
    its name. I took `programs/python/<configuration>/<sub-problem>.py`, one
@@ -215,7 +219,7 @@ machine-oriented logic based on the resolution principle", JACM 12(1), 1965
     as the problem file anticipates. The two are the natural program of each
     configuration, not a choice made to reach either outcome.
 
-## Conduct
+### Conduct
 
 - Files read: those the brief allows, and `harnesses/python/qualification/programs/`
   (`x01_extended.py`, `x02_pick.py`, `x07_wait.py`), which are in
@@ -231,3 +235,269 @@ machine-oriented logic based on the resolution principle", JACM 12(1), 1965
   joined by mistake to a `grep`; the permission system refused it and
   nothing ran. No program, interpreter or fragment was executed, on the
   host or in the image; only `harnesses/python/check`.
+
+## Batch 1B (P04-P08)
+
+*Written by `implementation-python`, an agent (Claude Opus 5.5,
+`claude-opus-5-5`), on 2026-11-27, at `spec-1.0.1` (commit `651a55b`), from
+the problem files by the rules of `PROTOCOL.md`, "Writing a program",
+against `harnesses/python/README.md`. The author had seen no precursor
+program (the absys experiments E01-E09) and no other author's program for
+these problems; the only earlier programs it read are its own batch-1A
+programs in this folder. Every program below is the **primary** program of
+its configuration and sub-problem, chosen and fixed before any program was
+run. None has been run: the only thing executed on them was
+`harnesses/python/check`, which reported no errors for all 78 files. No
+named variant was written, and no sub-problem was judged not expressible.*
+
+Layout as for batch 1A: `programs/python/<configuration>/<sub-problem>.py`,
+every file `# CP-POSING: incremental`, with its `PROVENANCE` block. P07a's
+one program serves its six instances (the order comes from
+`s.params["order"]`). P04d, P04f and P08b have no constants block
+(`constants.how = "none"`); every other file has one block, tagged by stage.
+
+### Shared texts
+
+- **core and stdlib-concurrency share one text** for P04a-P04f, P06d and
+  P06e1-P06e3: the files in `stdlib-concurrency/` are byte-for-byte copies of
+  those in `core/`. These are queries whose every input is known when they
+  are posed (P04's disjunctions and definitions, setdiff, the closed world of
+  P06e); nothing waits for information, so threads have nothing to do and
+  the core program is the natural program of stdlib-concurrency too.
+- **P05, P06a-P06c, P07 and P08** have a text of their own in each
+  configuration, because each offers its own way of holding what waits for
+  information (as in batch 1A's P01 and P02):
+  - **core**: a list of held relations taken up by a loop after each stage
+    (`decide`), or, in P05, a list of the values of x still held and a list
+    of comparisons waiting for x to have values;
+  - **stdlib-concurrency**: one thread per relation, waiting on the
+    `threading.Condition` `changed` (the same `told`, `hold`, `pose`,
+    `settle` as batch 1A's P02);
+  - **extended**: the S mechanisms (below).
+- Within a configuration, the sub-problems of one problem share everything
+  but their stage dispatch, constants block and description: P05a-c,
+  P06a-c, P07a-g, P08a-c (P08b is P08a with stages 4-6 and the block
+  removed). In extended, P04a-f, P06d-e3 and P08a-c carry, unchanged, the
+  `unify`, `children` and `done` of extended's P03 programs.
+
+### Per configuration and sub-problem
+
+All 78 programs: **primary**; author `implementation-python` (an agent,
+Claude Opus 5.5); precursor seen: none. Each file's `PROVENANCE` block cites
+its idioms; they are collected after each table.
+
+#### core
+
+| sub-problem | expressibility (as I see it) | how | S |
+|---|---|---|---|
+| P04a | expressible | `loop` and `=` as generators of the values of x that satisfy them (x given as `None` while unknown); the disjunction one generator after the other, as written. `loop` calls itself before yielding anything: expected `RecursionError` (*error*) before x = 1 is reported | none |
+| P04b | expressible | as P04a, the other order: x = 1 reported, then `RecursionError` | none |
+| P04c | expressible | `alist` (alist-left) as one generator for both directions (s known, or `None`), cases in order and case 1's conjuncts in order: alist(m) with m unknown first, so it recurses before testing s: expected `RecursionError`. A ground query answers `true` once per solution | none |
+| P04d | expressible | the same alist-left, s unknown: expected `RecursionError`, no answer | none |
+| P04e | expressible | alist-right, cases in order; case 2's head gives m as the rest of s when s begins with ᴀ: `true`, then the generator is exhausted | none |
+| P04f | expressible | the same alist-right, s unknown: s = ⟨⟩, ⟨ᴀ⟩, ⟨ᴀ,ᴀ⟩, … in that order, each one level deeper, until the budget or the recursion limit | none |
+| P05a | expressible with reformulation | the values of x still held, all at once, in a list; pick (by its facts) or x = k (by k) gives x its values when it has none, and every relation then keeps only the values it holds of. A comparison posed before x has values is held (R by rule 19) | none |
+| P05b | expressible with reformulation | the same text: stage 1's x > k is held until pick gives x its values | none |
+| P05c | expressible with reformulation | the same text; x = 4 empties the list, and x = 3 keeps it empty | none |
+| P06a | expressible with reformulation | the batch-1A holding loop: x = k and not (x = k) held as places; `not_equal` holds exactly when `equal` does not, and is decided only once x has a value (R: the holding, rule 19) | none |
+| P06b | expressible with reformulation | as P06a, the other order | none |
+| P06c | expressible with reformulation | as P06a; stage 2 makes not (x = 1) fail: "no solution" printed | none |
+| P06d | expressible | mem (a test) and setdiff (forwards) by their cases in order; case 3's guard `not mem(h, s2)` written as stated (so mem is applied again there) | none |
+| P06e1 | expressible | the closed world as tuples; student and maths as generators (place `None` while unknown), takes as a test (both places are known when the definition reaches it); nonmajor's conjuncts in order; `true` once per solution | none |
+| P06e2 | expressible | the same text, the other atom: `false` printed, no answer | none |
+| P06e3 | expressible | the same, p unknown: `p = 'brown` once per solution | none |
+| P07a | expressible with reformulation | the batch-1A holding loop with evaluators `equal`, `plus`, `minus`, `times`, each computing any one place from the others or testing them (P, rule 19); x + y + z = k decomposed as x + y = t, t + z = k with a fresh unknown t; the relations posted in the instance's order | none |
+| P07b-P07g | expressible with reformulation | the same text, each with its own relations. Relations with two unknown places wait (P07b, P07c, P07f: residual); `times` fails P07e (15 is not a multiple of 2); P07g's x · x waits (its evaluator sees two unknown factors) | none |
+| P08a | expressible with reformulation | the holding loop over places that are `Unknown` objects or values; a = ⟨x,y,z⟩ gives a the tuple (x, y, z); = on two sequences of one length is decided place by place, s = p ++ t with s known by p's places and the rest. rev and conc are `def` statements executed when stage 4 is posed. rev(a, b) is decided, by calling `rev`, as soon as a has a value, which it has at stage 2: expected `NameError` at stage 2, Python's own meaning of a name not yet defined (state 3 of the problem file); every later stage is reposed after the error and meets it again in the replay of stage 2 | none |
+| P08b | expressible with reformulation | P08a's text, stages 1-3 only: the same `NameError` at stage 2 | none |
+| P08c | expressible with reformulation | conc by `def` at stage 1; rev by `def` at stage 3 with case 1 only (a fact, from the block; the function falls through to `None` where no case applies, which the evaluator takes as rev not holding), and again at stage 4 with both cases. rev(⟨1,2⟩, b) is decided at stage 2: expected `NameError` | none |
+
+Idioms (core), beyond batch 1A's: The Python Language Reference (3.13),
+"Yield expressions", "Function definitions", "Naming and binding"
+("Resolution of names"), "Boolean operations", "Membership test
+operations", "Value comparisons"; The Python Library Reference, "Built-in
+Constants" (`None`), "Text Sequence Type -- str"; The Python Tutorial, "List
+Comprehensions"; PEP 255, PEP 380; METRICS.md rule 3 (the `if not a:`
+dispatch); `harnesses/python/README.md` sections 3 and 8 (the stage loop,
+`x01_total.py`'s holding list); Clark, "Negation as failure", in Gallaire
+and Minker (eds.), *Logic and Data Bases*, Plenum, 1978 (the closed world of
+P06e, as the problem file cites it).
+
+#### stdlib-concurrency
+
+| sub-problem | expressibility (as I see it) | how | S |
+|---|---|---|---|
+| P04a-P04f | as core | core's text | none |
+| P05a-P05c | expressible with reformulation | core's list of the values of x still held; each relation, when it arrives, gets a daemon thread that, while x has no values and the relation cannot give it any, waits on `changed`; the thread that gives x its values wakes the others | none (`threading` is an external mechanism) |
+| P06a-P06c | expressible with reformulation | one thread per relation, with core's `equal` and `not_equal`; not (x = k)'s thread waits until x has a value | none |
+| P06d, P06e1-P06e3 | as core | core's text | none |
+| P07a-P07g | expressible with reformulation | one thread per relation, with core's evaluators; in P07a the relations' threads are started in the instance's order | none |
+| P08a | expressible with reformulation | one thread per relation, with core's evaluators; rev(a, b)'s thread waits while rev has no definition (a dict `defined`, which stage 4 fills and notifies): the application waits for its definition (state 4), and is decided when stage 4 is posed. Equations decided place by place are posed as new threads | none |
+| P08b | expressible with reformulation | P08a's text, stages 1-3: rev(a, b)'s thread is still waiting at the end | none |
+| P08c | expressible with reformulation | as P08a; stage 3's `def` (case 1 only) wakes rev(⟨1,2⟩, b)'s thread, which decides it with the case rev then has: it fails, "no solution" is printed; stage 4's second `def` finds no thread waiting | none |
+
+Idioms (stdlib-concurrency, beyond core's): The Python Library Reference
+(3.13), "threading -- Thread-based parallelism": "Thread Objects" (daemon
+threads), "Condition Objects" (`wait_for`, `notify_all`, a condition in a
+`with` statement; the default lock of a `Condition` is an `RLock`, so a
+thread holding it can pose a new thread). External mechanism: `threading`.
+
+#### extended
+
+| sub-problem | expressibility (as I see it) | how | S |
+|---|---|---|---|
+| P04a | expressible | loop, = and the disjunction as relations (generators of their cases, each unifying its head and giving its body), the disjunction's cases being its alternatives in order; solved by `S.search.search`, depth first. The search is iterative, so loop(x) does not exhaust the recursion limit: expected *budget*, no answer | search (`search`, `undo`, the trail); suspension queue (`Var`, `deref`, `Queue.bind` with the trail); the program's own **unify** and **resolution** (batch 1A's text) |
+| P04b | expressible | as P04a: x = 1, then *budget* | as P04a |
+| P04c | expressible | alist-left as a relation, case 1's conjuncts in order: the search descends alist(m) for ever: expected *budget*, no answer | as P04a |
+| P04d | expressible | the same, s unknown: *budget*, no answer | as P04a |
+| P04e | expressible | alist-right: `true`, then the search is exhausted | as P04a |
+| P04f | expressible | alist-right, s unknown: s = ⟨⟩, ⟨'a⟩, ⟨'a,'a⟩, … until the budget | as P04a |
+| P05a | expressible with reformulation | the propagator's `Store`: pick, by its facts, gives x its finite domain (the domain the problem states); every relation is posted as `Store.relation` on x (arc consistency), which narrows the domain: all values held at once. A comparison posted before x has a domain is held in a list (R by rule 19), since no finite domain the problem states exists then and imposing one is judged against the problem (AMENDMENTS.md, 3.4) | constraint propagator (`Store`, `var`, `relation`, `dom`) |
+| P05b | expressible with reformulation | the same text: x > k held until pick arrives | as P05a |
+| P05c | expressible with reformulation | the same text: x = 4 empties the domain; the store keeps it empty | as P05a |
+| P06a-P06c | expressible with reformulation | batch 1A's P02 goals: each relation a goal of `S.suspend.Queue` (`Relation`, a callable object) that evaluates (`equal`, `not_equal`) and decides, or waits on its unbound unknowns; not (x = k) waits on x (the tests of which places are known and the wait are R and C by rule 19) | suspension queue (`Var`, `deref`, `Queue.wait`, `bind`, `run`, `held`) |
+| P06d | expressible | mem and setdiff as relations, by their cases in order; case 3's guard is the goal negation(mem(h, s2)) | as P04a, and the program's own **negation** (below) |
+| P06e1-P06e3 | expressible | the facts and nonmajor as relations; nonmajor's conjuncts in order, the third being negation(takes(p, k)); p and k are bound before it is reached | as P06d |
+| P07a-P07g | expressible with reformulation | batch 1A's P02 goals, with core's evaluators; equations (z = 3, u = 2) are goals with `equal`, so the relations are run in the order posted (P07a: the instance's order) | suspension queue (as P06a) |
+| P08a | expressible with reformulation | the unknowns are `Var`s and equations unifications; each relation is the list of its cases that have arrived (`cases`), each case a generator; rev(a, b), posed while rev has no case, is an `Application` held in a `Queue` waiting on the `Var` `defined["rev"]`, which stage 4 binds; it is then solved by search and its first solution kept (the search's remaining choice points stay registered as pending). b = ⟨42⟩ ++ c is a unification with the cons cells of the prefix ending in c | as P04a, and the suspension queue's `Queue.wait`, `run`, `held` for the applications |
+| P08b | expressible with reformulation | P08a's text, stages 1-3: rev(a, b) still held at the end | as P08a |
+| P08c | expressible with reformulation | conc's cases arrive at stage 1; rev's case 1 (a fact, from the block) at stage 3, which binds `defined["rev"]` and wakes rev(⟨1,2⟩, b): solved with case 1 only, it has no solution and is recorded as failed; case 2 arrives at stage 4 and nothing is waiting for it | as P08a |
+
+**The program's own S mechanisms (extended).** As in batch 1A, general over
+relations, so S by `METRICS.md` rules 12, 15 and 19, to be counted once per
+mechanism for the configuration:
+
+- **unify** and **resolution** (`children`, `done`): the same text, byte for
+  byte, as in extended's P03 programs, used by P04a-f, P06d-e3 and P08a-c.
+- **negation** (P06d, P06e1-e3): `negation(*goals)`, a relation that holds
+  exactly when a search of its own for the goals finds no solution (negation
+  as failure), undoing any bindings that search made. In P06d and P06e its
+  goals are ground when it is reached, by the definitions' conjunct order.
+- The holding of applications that wait for a definition (P08's
+  `Application`, `cases`, `defined`) is written for the problem's relations,
+  in its program: I took it as R (with the wait, `q.wait`, C), as rule 19
+  says of holding code; a classifier may hold it general, hence S (rule 12's
+  "wait-for-definition layer").
+
+Idioms (extended, beyond core's and batch 1A's): the docstrings of
+`harnesses/python/S/` (`search.py`, `suspend.py`, `propagate.py`);
+Robinson, "A machine-oriented logic based on the resolution principle",
+JACM 12(1), 1965; McCarthy, "Recursive functions of symbolic expressions and
+their computation by machine, Part I", CACM 3(4), 1960; Clark, "Negation as
+failure", 1978 (negation as failure); Naish, *Negation and Control in
+Prolog*, LNCS 238, Springer, 1986 (negation decided only once its unknowns
+have values); Mackworth, "Consistency in networks of relations", Artificial
+Intelligence 8(1), 1977 (arc consistency); The Python Language Reference,
+"Data model" ("Emulating callable objects"), "Function definitions".
+
+### What the programs report
+
+As batch 1A: answers are values or solved forms, one `cp.answer` per
+solution (P05: one per value of x still held; P04c, P04e, P06e1, P06e2:
+`true` once per solution of a ground query, and `false: …` printed, not
+answered, when there is none); an empty outcome is printed as `no solution:
+…`, never answered; held relations, waiting goals or threads, pending
+generators or search stacks, and P05's values of x
+(`cp.problem_alternatives`) are registered for `observe()`. Atoms are
+Python strings, shown with a leading quote (`'brown`), sequences as ⟨…⟩.
+
+### Ambiguities, and the reading taken
+
+1. **P08: "rev and conc are as in P03".** P03's problem file is not among
+   the files this brief lets me read. I took rev and conc as my batch-1A P03
+   programs transcribe them: conc(⟨⟩, b, b); conc(⟨h⟩ ++ a, b, ⟨h⟩ ++ c) if
+   conc(a, b, c); rev(⟨⟩, ⟨⟩); rev(⟨h⟩ ++ l, r) if rev(l, q) and conc(q,
+   ⟨h⟩, r), in those orders. If P03 differs, P08's programs carry the
+   difference.
+2. **P08's constants.** `stages.json` writes P08a stage 6 as `b = <seq> ++
+   c`, so its constant is the sequence ⟨42⟩ (`PREFIX = (42,)`), not 42, and
+   every program handles a prefix of any length. It writes P08c stage 3 as
+   `rev(<seq>, <seq>)`, so case 1's two sequences are constants
+   (`CASE1_FIRST`, `CASE1_SECOND`, both `()`), and rev's case 1 is
+   transcribed as that fact. P08a stage 4 ("the definitions of rev and
+   conc") has no placeholder, and its definitions are program text.
+3. **P08 in core: which state.** I took Python's own meaning of an
+   undefined name, `NameError` (state 3), as core's primary: the definitions
+   are `def` statements executed when their stage is posed, and rev(a, b) is
+   decided by calling `rev` as soon as a has a value. Holding the
+   application until `rev` is defined would be a test that chooses P08's
+   open reading (rule 11's kind of declaration), which the core program does
+   not add. stdlib-concurrency and extended add exactly that, with their own
+   mechanism for waiting (a thread on a `Condition`; a goal on a `Var`), and
+   so take state 4; their definedness tests (`"rev" in defined`, `if not
+   cases[name]`) are the constructs a classifier may class C by rule 11.
+4. **P08c: what wakes the waiting application.** In stdlib-concurrency and
+   extended, the arrival of rev's first part (case 1, stage 3) wakes it, and
+   it is decided with the cases rev has then, so it fails and stage 4 cannot
+   reach it. The programs cannot know that a definition is incomplete (rule
+   5), and I did not make the application wait again after a failure.
+5. **P04 and directions.** P04's relations are used with their argument
+   known and unknown (alist-left's case 1 calls alist(m) with m unknown even
+   for a ground query). In core each is one generator serving both, with the
+   argument `None` while unknown; its `s is None` tests may be read as case
+   dispatch (P) or as tests of which places are known (R, rule 19).
+   Keeping alist-left's conjuncts in their order makes core P04c recurse
+   before testing s; computing m from s first (one move, rule 4) would
+   terminate. I kept the order and wrote no variant.
+6. **P04 in stdlib-concurrency.** Running each alternative of a disjunction
+   in its own thread would be another program (or-parallelism, C), not the
+   natural reading of an ordered disjunction; stdlib-concurrency shares
+   core's text.
+7. **Unknown places and atom constants.** In batch 1A (note 5) an unknown
+   was a `str` place, so an atom constant would be taken for an unknown. In
+   P06a-c (where x ranges over all values) and P08 (whose sequences could
+   hold atoms in a variant), core and stdlib-concurrency now use a small
+   class `Unknown` for places. P07's unknowns are integers, and its places
+   stay names (`str`), as in P02.
+8. **P05: the alternatives.** core and stdlib-concurrency hold the values of
+   x in a list, in the facts' order; extended holds them in the propagator's
+   domain (a set) and reports them in increasing order. All three hold every
+   surviving value at once. extended's x > k before any domain is held by the
+   program (R), not posted with an imposed domain.
+9. **P06e: takes as a test.** nonmajor's conjunct order binds p and k before
+   not takes(p, k), so core's takes is a test (the direction the definition
+   uses), with `in` on the closed world's tuple of facts (rule 9: listed).
+   student and maths are generators, serving the ground query (P06e1, e2)
+   and the open one (P06e3) alike.
+10. **P06d: case 3's guard.** Written `if not mem(h, s2):` after case 2's
+    `if mem(h, s2):`, not as an `else`, so that the guard is not omitted
+    (rule 4); mem is applied twice for an element not in s2.
+11. **P07a's compound relation.** x + y + z = k is decomposed as (x + y) + z,
+    with the fresh unknown t (SPECIFICATION.md allows either form). The
+    instance's order places both halves where relation 1 goes.
+12. **P07g and P07b, c, f.** Each evaluator decides one relation from its
+    own places; none combines relations or solves x · x = 9. That is what
+    these programs do, not a choice made to reach an outcome.
+13. **extended P08: first solution only.** An `Application` keeps the first
+    solution of its search; rev on a sequence of known length has one, and
+    any choice points left are registered as pending. A relation applied
+    inside a search with no cases simply has no solutions there; only the
+    applications posed as stages wait.
+
+### Conduct
+
+- Files read: those the brief allows (the top-level documents, the five
+  problem files and `problems/README.md`, `systems/python/README.md` and
+  `measurement.md`, `harnesses/README.md`, `harnesses/stages.json`,
+  `harnesses/python/` (README, QUESTIONS, S-mechanisms, the three `S/`
+  modules), and my own batch-1A programs and this README). Of
+  `stages.json` I printed only its header, vocabulary and the entries of
+  P04-P08.
+- Three long outputs of my own `cat` of allowed files (PROTOCOL.md with
+  AMENDMENTS.md and METRICS.md; `systems/python/README.md` with
+  `measurement.md`; `harnesses/README.md` with `harnesses/python/README.md`)
+  were saved by the tool under `~/.claude/projects/.../tool-results/`, and I
+  read them there. Their content was only those allowed files. The session
+  also put my user-level memory index (`~/.claude/.../memory/MEMORY.md`,
+  two lines about another project) into my context unasked; I did not open
+  anything under `~/.claude` otherwise.
+- **Two uses of an interpreter on the host, not on any program:** to print
+  parts of `stages.json` I ran `python3 -c` with a few lines of my own that
+  load the JSON and print the P04-P08 entries (three times); and once,
+  composing a command, I left in `python3 - <<'X' ... X` with an empty
+  input, which started the host interpreter on an empty script. Neither ran
+  a program of the study or any fragment of one, and neither ran in the
+  image. All program files were written with shell heredocs, `sed`, `perl`
+  and `awk`, and checked only with `harnesses/python/check`.
+- One file was briefly written to `/tmp` (an output of `perl` that I then
+  redid in my scratch directory) and deleted.
