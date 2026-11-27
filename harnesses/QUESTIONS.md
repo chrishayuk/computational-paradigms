@@ -84,17 +84,28 @@ plus 10⁶", and `METRICS.md` defines restart cost as "the step count of
 running stages 1 to k−1 alone, measured". It does not say whether that
 run includes collecting stage k−1's answers, nor which run measures it.
 
-**Implemented:** the restart cost of stage k is the restated steps of
-this run's own run of stages 1 to k−1, that is, stage k−1's final
-attempt, including its `answers(cap)`. It is known before stage k is
-posed, in every mode that counts steps, so the budget can be set without
-an extra run; the cost-mode figure is the one of record. Where stage k−1
-gave no count (a timeout that left nothing readable), the restart cost is
-`null`, the budget is the problem's budget alone, and the record says so
-in a note; `validate.py` warns. *Why:* it is the only measurement of
-"stages 1 to k−1 alone" that the protocol already makes; a separate run
-without answer collection would not exist for systems whose stage is a
-query.
+**Implemented:** the restart cost is always measured, in the system's
+step unit, and the budget of a reposed stage k is always that plus 10⁶
+(10⁸ for P12, P13, P16):
+- **in-run**, by default: the harness reads the system's step count at
+  the moment stage k is first posed in the reposed run, after the replay
+  of stages 1 to k−1 (each replayed stage having the budget it had when
+  first posed). That count is the restart cost; the stage then runs on
+  with 10⁶ more steps. In a configuration that poses stages 1 to k as one
+  conjunction, "first posed" is the first entry into stage k's part,
+  marked by the program's H call for it; work done after backtracking
+  into earlier stages counts in the stage, not in the restart cost;
+- **separate-run**, only where the system cannot read its count at that
+  moment: stages 1 to k−1 are run alone first, posed as in the replay,
+  without `answers()`, and their steps are the restart cost.
+
+`restart_cost_method` records which. A reposed stage with no measured
+restart cost is invalid (`validate.py`), except in a configuration that
+has no step count at all (ALGOL 60 x1sim), whose records say
+`budget_enforced: false` and `restart_cost: null`, as in Q12. *Why:*
+`PROTOCOL.md` requires the measured restart cost plus the budget, so the
+budget cannot fall back to the budget alone; in-run measurement measures
+the replay actually spent, without an extra run.
 
 ## Q7. What follows a timeout, and how the rerun is posed
 
@@ -244,8 +255,10 @@ either.
 
 ## Q19. Readings classified twice
 
-P01c, P08 (closed and open), P09d (P09d1 and P09d2) and P15b are run once
-and classified under each of their readings.
+P01c (finite and rational), P08 (closed and open) and P09d (P09d1 and
+P09d2) are run once and classified under each of their readings. P15b and
+P15b2 have one reading only, the stream reading of P09d2 with fairness
+(problems/15 lines 25, 38–44), and `stages.json` lists that one.
 
 **Implemented:** each is one instance and one run; `stages.json` lists
 its readings; nothing in the harness depends on a reading.

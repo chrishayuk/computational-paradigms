@@ -484,10 +484,15 @@ def check_attempt(rec, run, k, a, n_attempts, prev_final, where, E, W):
         if steps["unit"] != lim["step_unit"]:
             E.append("%s: steps.unit %r, run.limits.step_unit is %r" % (cw, steps["unit"], lim["step_unit"]))
         if how == "reposed":
-            if steps["restart_cost"] is not None and steps["budget"] != lim["budget_steps"] + steps["restart_cost"]:
-                E.append("%s: a reposed stage's budget is restart cost + %d" % (cw, lim["budget_steps"]))
+            enforced = steps.get("budget_enforced") is not False
             if steps["restart_cost"] is None:
-                W.append("%s: reposed, but no restart cost recorded" % cw)
+                if enforced:
+                    E.append("%s: reposed, but no measured restart cost (PROTOCOL.md, Running: measured restart cost plus the budget)" % cw)
+            else:
+                if steps["budget"] != lim["budget_steps"] + steps["restart_cost"]:
+                    E.append("%s: a reposed stage's budget is restart cost + %d" % (cw, lim["budget_steps"]))
+                if steps.get("restart_cost_method") not in ("in-run", "separate-run"):
+                    E.append("%s: restart_cost without restart_cost_method" % cw)
         elif steps["budget"] != lim["budget_steps"]:
             E.append("%s: budget %r, expected %r" % (cw, steps["budget"], lim["budget_steps"]))
         for q in c["queries"]:

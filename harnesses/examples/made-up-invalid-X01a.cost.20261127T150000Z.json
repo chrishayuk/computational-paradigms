@@ -313,11 +313,12 @@
         "stage": null,
         "restated": 300,
         "restart_cost": 120,
-        "restart_cost_source": "made-up-X01a.behaviour.20261127T120000Z stage 1",
+        "restart_cost_source": "made-up-invalid-X01a.cost.20261127T150000Z stage 2: step count when stage 2 was first posed",
         "to_first_answer": null,
         "between_answers": [],
         "to_end": 300,
-        "repeated_work": null
+        "repeated_work": null,
+        "restart_cost_method": "in-run"
        },
        "alternatives": {
         "unit": "entries of the program's named pending structure",

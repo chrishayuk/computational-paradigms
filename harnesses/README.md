@@ -314,12 +314,27 @@ emit into each language is the system harness's).
   The budget is a classification within a system, never compared across
   systems. Each spawned computation has its own budget; P16b stages 2
   and 3 have one for the whole.
-- **A reposed run** has a budget of its **restart cost plus 10⁶** (10⁸
-  where the problem says). The restart cost is the measured steps of
-  running stages 1 to k−1 alone (`METRICS.md`), taken as the restated
-  steps of this run's own run of stages 1 to k−1, that is, stage k−1's
-  final attempt (Q6). It is recorded in `steps.restart_cost`, with
-  `restart_cost_source`.
+- **A reposed run** has a budget of its **measured restart cost plus
+  10⁶** (10⁸ where the problem says). The restart cost is always
+  measured, in the system's step unit, never estimated or taken from
+  another run (Q6):
+  - **in-run** (the default): the harness reads the system's step count
+    at the moment stage k is first posed in the reposed run, after the
+    replay of stages 1 to k−1. That count is the restart cost, and the
+    stage then has 10⁶ more steps: its budget is the restart cost plus
+    10⁶. During the replay each replayed stage has the budget it had
+    when first posed (10⁶ each);
+  - **separate-run**, only where the system cannot read its count at that
+    moment: the harness first runs stages 1 to k−1 alone, posed exactly
+    as in the replay and with no `answers()` call, and measures its
+    steps; that is the restart cost, and the reposed run's budget is it
+    plus 10⁶.
+
+  It is recorded in `steps.restart_cost`, with `restart_cost_method`
+  (`in-run` or `separate-run`) and `restart_cost_source`. The only
+  exception is a configuration with no step count at all (ALGOL 60
+  x1sim, Q12), whose records have `budget_enforced: false` and
+  `restart_cost: null`.
 - **After budget.** If stage k ends in *budget* and the configuration can
   keep its computation and continue it, stage k+1 is posed into that same
   computation, with a new budget (`continued_after_budget: true`). Only
@@ -415,7 +430,7 @@ read is `null`, never estimated.
 |---|---|
 | `attempt`, `limit_s` | 1 under 60 s (600 s for P12, P13, P16); 2 for the rerun under 600 s |
 | `posed` | `how` (`fresh`, `incremental`, `reposed`), `reason` (`first-stage`, `configuration`, `after-budget`, `after-error`, `after-timeout`, `safety-rerun`), `replayed` (the earlier stages replayed, `[1 … k−1]` when reposed), `replayed_commitments` (P11), `continued_after_budget`, `instance_parameters_passed` |
-| `computations[]` | per computation: `id`, `spawned`, `spawn_index`, `side_by_side`; its `queries` (each with `id`, `cap`, `answers` verbatim with `steps_at` and `alternatives_at` where measured, `ended_by`, `collected_on`); its `execution_state` (`states`, `determined`, `basis`, `error_verbatim`); its `steps` (`unit`, `budget`, `budget_exhausted`, `budget_enforced`, incremental `stage`, `restated`, `restart_cost`, `to_first_answer`, `between_answers`, `to_end`, `repeated_work`); its `alternatives` in the systems file's unit (`at_boundary`, `at_budget`, `peak`, `held_as`: all live at once or kept for backtracking, `by_type`, `problem_defined`); its `suspended` work in the system's own terms (`at_boundary`, `peak`, `items` by kind with counts); `problem_operations` by relation case; `candidates_examined` (P12) |
+| `computations[]` | per computation: `id`, `spawned`, `spawn_index`, `side_by_side`; its `queries` (each with `id`, `cap`, `answers` verbatim with `steps_at` and `alternatives_at` where measured, `ended_by`, `collected_on`); its `execution_state` (`states`, `determined`, `basis`, `error_verbatim`); its `steps` (`unit`, `budget`, `budget_exhausted`, `budget_enforced`, incremental `stage`, `restated`, `restart_cost` with `restart_cost_method`, `to_first_answer`, `between_answers`, `to_end`, `repeated_work`); its `alternatives` in the systems file's unit (`at_boundary`, `at_budget`, `peak`, `held_as`: all live at once or kept for backtracking, `by_type`, `problem_defined`); its `suspended` work in the system's own terms (`at_boundary`, `peak`, `items` by kind with counts); `problem_operations` by relation case; `candidates_examined` (P12) |
 | `observe` | `raw` verbatim, `method`, `taken_on`, `bindings` |
 | `print` | verbatim |
 | `store` | the systems file's vector, by quantity: `boundary`, `peak` (`exact` or `sampled`, with its interval) |
@@ -449,8 +464,10 @@ Beyond the schema:
    incremental stage replays nothing, and is not used in a reposing
    configuration except to continue after budget. After an error the next
    stage is reposed. A `continued_after_budget` stage follows a *budget*.
-5. A reposed stage's budget is its restart cost plus the problem's
-   budget; any other stage's is the problem's budget.
+5. A reposed stage has a measured restart cost, with its method, and
+   its budget is that plus the problem's budget; any other stage's is the
+   problem's budget. Only a computation with `budget_enforced: false`
+   may have no restart cost.
 6. A second attempt exists only after the safety limit stopped the first,
    under the problem's rerun limit; none under a fixed limit. A *timeout*
    state and a safety-limit stop go together.

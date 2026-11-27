@@ -310,7 +310,7 @@
           "stages": [
             {"stage": 1, "line": 67, "kind": "adds", "description": "the definition of conc", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
             {"stage": 2, "line": 68, "kind": "adds", "description": "rev(<seq>, b), with rev not yet defined", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
-            {"stage": 3, "line": 69, "kind": "adds", "description": "rev, case 1 only: rev(<>, <>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 3, "line": 69, "kind": "adds", "description": "rev, case 1 only: rev(<seq>, <seq>)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
             {"stage": 4, "line": 70, "kind": "adds", "description": "rev, case 2", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
           ]
         }
@@ -572,10 +572,10 @@
           "unknowns": ["r1", "r2"], "readings": [],
           "instances": [{"id": "P14a", "parameters": {}}],
           "stages": [
-            {"stage": 1, "line": 30, "kind": "adds", "description": "message INC", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
-            {"stage": 2, "line": 31, "kind": "adds", "description": "message INC", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 1, "line": 30, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 31, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
             {"stage": 3, "line": 32, "kind": "adds", "description": "message READ(r1)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
-            {"stage": 4, "line": 33, "kind": "adds", "description": "message INC", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 33, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
             {"stage": 5, "line": 34, "kind": "adds", "description": "message READ(r2)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
           ]
         },
@@ -593,12 +593,12 @@
           "notes": ["The stages of P14a, then stages 6 and 7 (line 43). No stage closes the stream (line 50)."],
           "instances": [{"id": "P14c", "parameters": {}}],
           "stages": [
-            {"stage": 1, "line": 30, "kind": "adds", "description": "message INC (P14a stage 1)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
-            {"stage": 2, "line": 31, "kind": "adds", "description": "message INC (P14a stage 2)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 1, "line": 30, "kind": "adds", "description": "message <atom> (P14a stage 1)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 2, "line": 31, "kind": "adds", "description": "message <atom> (P14a stage 2)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
             {"stage": 3, "line": 32, "kind": "adds", "description": "message READ(r1) (P14a stage 3)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
-            {"stage": 4, "line": 33, "kind": "adds", "description": "message INC (P14a stage 4)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 4, "line": 33, "kind": "adds", "description": "message <atom> (P14a stage 4)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
             {"stage": 5, "line": 34, "kind": "adds", "description": "message READ(r2) (P14a stage 5)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
-            {"stage": 6, "line": 47, "kind": "adds", "description": "message INC", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
+            {"stage": 6, "line": 47, "kind": "adds", "description": "message <atom>", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []},
             {"stage": 7, "line": 48, "kind": "adds", "description": "message READ(r3)", "queries": [{"id": "q", "computation": "main", "answers": "all", "cap": 20}], "commit": false, "spawns": []}
           ]
         }
