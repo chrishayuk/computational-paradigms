@@ -1,0 +1,197 @@
+{
+ "record_format": "cp-raw-record/1",
+ "run": {
+  "run_id": "P03f.behaviour.20261127T195012Z",
+  "spec_tag": "spec-1.0",
+  "system": "python",
+  "configuration": "extended",
+  "problem": "P03",
+  "subproblem": "P03f",
+  "instance": "P03f",
+  "parameters": {},
+  "mode": "behaviour",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/python/extended/P03f.py",
+   "sha256": "da729f9af9f9e7b44237fb813917a4357f8d5a009798533ef2bb4d3bf3f3780c",
+   "repo_commit": "eaad40ea625b24659b2ba53aa37a89b3951aab5b"
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": null,
+   "image": null,
+   "binary": "/usr/local/bin/python3",
+   "version_output": "Python 3.13.7 (main, Sep 30 2025, 10:24:57) [GCC 14.2.0]\n",
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/python/run",
+   "commit": "eaad40ea625b24659b2ba53aa37a89b3951aab5b",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/python/run",
+   "extended",
+   "P03",
+   "P03f",
+   "behaviour",
+   "programs/python/extended/P03f.py",
+   "results/python/extended/P03/raw/"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T19:50:12.504946Z",
+  "ended_utc": "2026-11-27T19:50:18.486536Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "The harness runtime (harnesses/python/runtime.py) runs inside the program's interpreter process. It imports marshal, os, sys, threading and time (and, through threading, _collections, _weakrefset, itertools, types and warnings) before the program starts, so a program's own import of these runs no module code and counts no instructions.",
+   "The program's module is exec'd under three runtime frames, not run as the interpreter's own script: about three fewer frames are available before RecursionError at the default recursion limit (1000, not changed).",
+   "Two runtime threads (control and watcher) run beside the program in every configuration; neither runs program code (except finalizers run by gc.collect() in storage mode) and neither is counted.",
+   "The budget counter is the step meter (sys.monitoring INSTRUCTION) in every mode, behaviour included (harnesses/QUESTIONS.md Q17); a computation is stopped at its budget by pausing its thread inside the monitoring callback, never by an exception.",
+   "The instructions of the program's own H call sites are counted as the program's; those executed inside the H calls are not, nor those of the traceback module while it formats an uncaught exception (instruction events are switched off then if no other computation is running; a thread the program started that is still running is not counted meanwhile).",
+   "Spawned computations run in threads the runtime starts; in core and extended one after another, in stdlib-concurrency side by side.",
+   "The end of a stage is read from the program (its next cp.stage(), its end, its budget, its error) or from quiescence: every running computation alive and executing no instruction for 0.5 s, sampled by wall clock (README.md, section 6).",
+   "Answers are what the program passes to cp.answer(), which prints them as print() would; answers after the cap are printed but not collected.",
+   "observe() reads only the objects the program registered, rendered by an iterative equivalent of repr(); the states alternatives pending and suspended come only from registrations.",
+   "In storage mode tracemalloc (1 frame, started before the program) traces the runtime's own allocations during the stage with the program's, and gc.collect() runs at each stage boundary.",
+   "Standard output and standard error are files; the runtime flushes sys.stdout and sys.stderr at every stage boundary.",
+   "P13's CPU time and maximum resident set size are the whole interpreter process's (resource.getrusage(RUSAGE_SELF)), runtime threads included.",
+   "A thread a program starts with _thread.start_new_thread directly, not through threading.Thread, is not attributed to any computation and its instructions are not counted.",
+   "The program is compiled from its text with the constants block's lines emptied, and its constants are given to it as s.constants with their stage (README.md 3.1); tracebacks show that text, not the file on disk."
+  ],
+  "environment": {
+   "PYTHONHASHSEED": "0"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "a = ⟨3,2,1⟩",
+           "steps_at": 16561
+          }
+         ],
+         "ended_by": "budget",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "budget"
+        ],
+        "determined": true,
+        "basis": "the instruction budget ran out: the computation's thread is paused in the sys.monitoring callback at exactly its budget",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+        "budget": 1000000,
+        "budget_exhausted": true,
+        "stage": 1000000,
+        "restated": 1000000,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": 16561,
+        "between_answers": [],
+        "to_end": 1000000,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's registered pending structures (cp.pending)",
+        "at_boundary": 108,
+        "at_budget": 108,
+        "peak": null,
+        "held_as": "unknown",
+        "by_type": {
+         "choice points of the search": 108
+        },
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's registered waiting structures (cp.suspended)",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {}
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "main.bindings = {'a': (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, ())))))))))))))))))}\nmain.pending[choice points of the search] = [(<tuple_iterator object at 0x7ffffed9a080>, 0), (<generator object children at 0x7ffffed2f2e0>, 0), (<generator object children at 0x7ffffed2f5b0>, 1), (<generator object children at 0x7ffffed2f790>, 2), (<generator object children at 0x7ffffed2f970>, 3), (<generator object children at 0x7ffffed2fb50>, 4), (<generator object children at 0x7ffffed2fd30>, 5), (<generator object children at 0x7ffffed2ff10>, 6), (<generator object children at 0x7ffffec04130>, 7), (<generator object children at 0x7ffffec04310>, 8), (<generator object children at 0x7ffffec044f0>, 9), (<generator object children at 0x7ffffec046d0>, 10), (<generator object children at 0x7ffffec048b0>, 11), (<generator object children at 0x7ffffec04a90>, 12), (<generator object children at 0x7ffffec04c70>, 13), (<generator object children at 0x7ffffec04e50>, 14), (<generator object children at 0x7ffffec05030>, 15), (<generator object children at 0x7ffffec05210>, 16), (<generator object children at 0x7ffffec053f0>, 17), (<generator object children at 0x7ffffec055d0>, 19), (<generator object children at 0x7ffffec056c0>, 20), (<generator object children at 0x7ffffec057b0>, 23), (<generator object children at 0x7ffffec058a0>, 24), (<generator object children at 0x7ffffec05990>, 27), (<generator object children at 0x7ffffec05a80>, 30), (<generator object children at 0x7ffffec05b70>, 31), (<generator object children at 0x7ffffec05c60>, 34), (<generator object children at 0x7ffffec05d50>, 37), (<generator object children at 0x7ffffec05e40>, 40), (<generator object children at 0x7ffffec05f30>, 41), (<generator object children at 0x7ffffec06020>, 44), (<generator object children at 0x7ffffec06110>, 47), (<generator object children at 0x7ffffec06200>, 50), (<generator object children at 0x7ffffec062f0>, 53), (<generator object children at 0x7ffffec063e0>, 54), (<generator object children at 0x7ffffec064d0>, 57), (<generator object children at 0x7ffffec065c0>, 60), (<generator object children at 0x7ffffec066b0>, 63), (<generator object children at 0x7ffffec067a0>, 66), (<generator object children at 0x7ffffec06890>, 69), (<generator object children at 0x7ffffec06980>, 70), (<generator object children at 0x7ffffec06a70>, 73), (<generator object children at 0x7ffffec06b60>, 76), (<generator object children at 0x7ffffec06c50>, 79), (<generator object children at 0x7ffffec06d40>, 82), (<generator object children at 0x7ffffec06e30>, 85), (<generator object children at 0x7ffffec06f20>, 88), (<generator object children at 0x7ffffec07010>, 89), (<generator object children at 0x7ffffec07100>, 92), (<generator object children at 0x7ffffec071f0>, 95), (<generator object children at 0x7ffffec072e0>, 98), (<generator object children at 0x7ffffec073d0>, 101), (<generator object children at 0x7ffffec074c0>, 104), (<generator object children at 0x7ffffec075b0>, 107), (<generator object children at 0x7ffffec076a0>, 110), (<generator object children at 0x7ffffec07790>, 111), (<generator object children at 0x7ffffec07880>, 114), (<generator object children at 0x7ffffec07970>, 117), (<generator object children at 0x7ffffec07a60>, 120), (<generator object children at 0x7ffffec07b50>, 123), (<generator object children at 0x7ffffec07c40>, 126), (<generator object children at 0x7ffffec07d30>, 129), (<generator object children at 0x7ffffec07e20>, 132), (<generator object children at 0x7ffffec07f10>, 135), (<generator object children at 0x7ffffebe8040>, 136), (<generator object children at 0x7ffffebe8130>, 139), (<generator object children at 0x7ffffebe8220>, 142), (<generator object children at 0x7ffffebe8310>, 145), (<generator object children at 0x7ffffebe8400>, 148), (<generator object children at 0x7ffffebe84f0>, 151), (<generator object children at 0x7ffffebe85e0>, 154), (<generator object children at 0x7ffffebe86d0>, 157), (<generator object children at 0x7ffffebe87c0>, 160), (<generator object children at 0x7ffffebe88b0>, 163), (<generator object children at 0x7ffffebe89a0>, 164), (<generator object children at 0x7ffffebe8a90>, 167), (<generator object children at 0x7ffffebe8b80>, 170), (<generator object children at 0x7ffffebe8c70>, 173), (<generator object children at 0x7ffffebe8d60>, 176), (<generator object children at 0x7ffffebe8e50>, 179), (<generator object children at 0x7ffffebe8f40>, 182), (<generator object children at 0x7ffffebe9030>, 185), (<generator object children at 0x7ffffebe9120>, 188), (<generator object children at 0x7ffffebe9210>, 191), (<generator object children at 0x7ffffebe9300>, 194), (<generator object children at 0x7ffffebe93f0>, 195), (<generator object children at 0x7ffffebe94e0>, 198), (<generator object children at 0x7ffffebe95d0>, 201), (<generator object children at 0x7ffffebe96c0>, 204), (<generator object children at 0x7ffffebe97b0>, 207), (<generator object children at 0x7ffffebe98a0>, 210), (<generator object children at 0x7ffffebe9990>, 213), (<generator object children at 0x7ffffebe9a80>, 216), (<generator object children at 0x7ffffebe9b70>, 219), (<generator object children at 0x7ffffebe9c60>, 222), (<generator object children at 0x7ffffebe9d50>, 225), (<generator object children at 0x7ffffebe9e40>, 228), (<generator object children at 0x7ffffebe9f30>, 229), (<generator object children at 0x7ffffebea020>, 232), (<generator object children at 0x7ffffebea110>, 235), (<generator object children at 0x7ffffebea200>, 238), (<generator object children at 0x7ffffebea2f0>, 241), (<generator object children at 0x7ffffebea3e0>, 244), (<generator object children at 0x7ffffebea4d0>, 247), (<generator object children at 0x7ffffebea5c0>, 250), (<generator object children at 0x7ffffebea6b0>, 253), (<generator object children at 0x7ffffebea7a0>, 256), (<generator object children at 0x7ffffebea890>, 259)]\n",
+      "method": "the harness runtime, in the program's process, at the end of the stage (or at the budget), reads the objects registered with cp.bindings, cp.pending, cp.suspended, cp.held and cp.problem_alternatives, and renders each with an iterative equivalent of repr(); bindings are split from the registered bindings mapping",
+      "taken_on": "this-run",
+      "bindings": {
+       "a": "(h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, (h, ())))))))))))))))))"
+      }
+     },
+     "print": "a = ⟨3,2,1⟩\n",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.966001,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "a = ⟨3,2,1⟩\n",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": "SIGKILL"
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "stage 1's constants were delivered with it: BACKWARDS",
+      "after print(), the harness ended the run (cp.stage() returned None, or nothing could be sent); the process had not exited 5 s later and was killed: SIGKILL, 5 s after the harness ended the run (cp.stage() returned None)"
+     ]
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": []
+}

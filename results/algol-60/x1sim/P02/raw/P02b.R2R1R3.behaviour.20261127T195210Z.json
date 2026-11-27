@@ -1,0 +1,480 @@
+{
+ "record_format": "cp-raw-record/1",
+ "made_up": false,
+ "run": {
+  "run_id": "P02b.R2R1R3.behaviour.20261127T195210Z",
+  "spec_tag": "spec-1.0",
+  "system": "algol-60",
+  "configuration": "x1sim",
+  "problem": "P02",
+  "subproblem": "P02b",
+  "instance": "P02b.R2R1R3",
+  "parameters": {
+   "order": [
+    "R2",
+    "R1",
+    "R3"
+   ]
+  },
+  "mode": "behaviour",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/algol-60/x1sim/P02b.R2R1R3.a60",
+   "sha256": "fe09854a0432961efc0421b65c4aa383af97be0b1b302d4e61df3ca3c93e11c5",
+   "repo_commit": "eaad40ea625b24659b2ba53aa37a89b3951aab5b"
+  },
+  "constants": {
+   "how": "input",
+   "input_path": "programs/algol-60/x1sim/P02b.R2R1R3.constants",
+   "input_sha256": "1b7e8f9580c8f79cbbbc334a90b6283b98a4c818b029b0755e2a3ee7d659ca6a",
+   "variant": null
+  },
+  "system_build": {
+   "commit": "938fa031a00557110b5a5834b2b43404853f2201",
+   "image": null,
+   "binary": "/usr/local/bin/x1sim",
+   "version_output": "Version 0.1.345-938fa03\n",
+   "instrumented": false
+  },
+  "harness": {
+   "path": "harnesses/algol-60/run",
+   "commit": "eaad40ea625b24659b2ba53aa37a89b3951aab5b",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/algol-60/run",
+   "x1sim",
+   "P02",
+   "P02b.R2R1R3",
+   "behaviour",
+   "programs/algol-60/x1sim/P02b.R2R1R3.a60",
+   "results/algol-60/x1sim/P02/raw/"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "none: x1sim reports no step count (systems/algol-60/README.md, Units; harnesses/QUESTIONS.md Q12)",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T19:52:10Z",
+  "ended_utc": "2026-11-27T19:52:10Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "The harness writes on the program's standard input: one line of instance parameters, then one message line per stage, replayed stage, replayed commitment or spawned computation, each message that poses or replays stage k followed by stage k's lines of the constants file with their 'k:' tag removed (README, 2.2). No stage's constants are on the input before the stage is posed. This is how a stage is passed in; it is listed because the program reads it with the configuration's input procedures, whose calls are H.",
+   "Answers, observe() state, emit entries and the end of a stage are taken from the program's printed tags ([answer]...[/answer], [observe]...[/observe], [emit]...[/emit], [end]) by pattern matching on the standard output; the text between tags is kept verbatim. Answers beyond a query's cap are left in stdout and print but not collected.",
+   "A spawned computation (P09) is a procedure of the one program, started by the harness's spawn message, and runs to its end, budget or error before the next is spawned (side_by_side false). ALGOL 60 has no mechanism for separate computations; see QUESTIONS.md.",
+   "x1sim compiles the program to an object file beside it, so the harness copies the program into a fresh temporary directory as prog.a60 and runs x1sim there, with HOME set to that directory and X1ALGOL_LIB unset, so that the library is /usr/local/lib/x1algol.lib.",
+   "x1sim has no step count, so no budget is enforced; only the safety limit stops it (QUESTIONS.md Q12 of the common part)."
+  ],
+  "environment": {
+   "PATH": "/usr/local/bin:/usr/bin:/bin",
+   "HOME": "(a fresh empty temporary directory)",
+   "LC_ALL": "C.UTF-8"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {
+       "line": "0 0 3 2 1 3\n",
+       "n": 0,
+       "cap": 0,
+       "codes": [
+        2,
+        1,
+        3
+       ],
+       "code_of": {
+        "R1": 1,
+        "R2": 2,
+        "R3": 3
+       },
+       "coded_parameter": "order"
+      }
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "u held, v held, w held, where w . u = v",
+           "steps_at": null,
+           "alternatives_at": null
+          }
+         ],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "suspended"
+        ],
+        "determined": true,
+        "basis": "the program wrote [end] and asked for its next message; ALGOL 60 holds no alternatives or suspended work of its own, so the state is read from the program's [alternatives] and [suspended] reports in its observe block (alternatives 0, suspended 1)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "none: x1sim reports no step count (systems/algol-60/README.md, Units; harnesses/QUESTIONS.md Q12)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": null,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": null,
+        "repeated_work": null,
+        "budget_enforced": false
+       },
+       "alternatives": {
+        "unit": "the program's named structures, as the program reports them in [alternatives NAME COUNT] (systems/algol-60/README.md, Units: Alternative, as Python)",
+        "at_boundary": null,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "the program's named structures of held work, as the program reports them in [suspended NAME COUNT]",
+        "at_boundary": 1,
+        "peak": null,
+        "items": {
+         "held-relations": 1
+        }
+       },
+       "problem_operations": {
+        "R1-examined": 0,
+        "R2-examined": 1,
+        "R3-examined": 0
+       }
+      }
+     ],
+     "observe": {
+      "raw": "held relations: w . u = v\n[suspended held-relations 1]\n[operations R1-examined 0]\n[operations R2-examined 1]\n[operations R3-examined 0]\n",
+      "method": "the program's [observe]...[/observe] block(s) printed at the end of the stage (README, 'observe()'); bindings from its [bind NAME]...[/bind] tags",
+      "taken_on": "this-run",
+      "bindings": null
+     },
+     "print": "[answer]u held, v held, w held, where w . u = v[/answer]\n[observe]held relations: w . u = v\n[suspended held-relations 1]\n[operations R1-examined 0]\n[operations R2-examined 1]\n[operations R3-examined 0]\n[/observe]\n[end]",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.045,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "[answer]u held, v held, w held, where w . u = v[/answer]\n[observe]held relations: w . u = v\n[suspended held-relations 1]\n[operations R1-examined 0]\n[operations R2-examined 1]\n[operations R3-examined 0]\n[/observe]\n[end]",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {
+       "line": "0 0 3 2 1 3\n",
+       "n": 0,
+       "cap": 0,
+       "codes": [
+        2,
+        1,
+        3
+       ],
+       "code_of": {
+        "R1": 1,
+        "R2": 2,
+        "R3": 3
+       },
+       "coded_parameter": "order"
+      }
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "u held, v held, w held, where u + v = 16, w . u = v",
+           "steps_at": null,
+           "alternatives_at": null
+          }
+         ],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "suspended"
+        ],
+        "determined": true,
+        "basis": "the program wrote [end] and asked for its next message; ALGOL 60 holds no alternatives or suspended work of its own, so the state is read from the program's [alternatives] and [suspended] reports in its observe block (alternatives 0, suspended 2)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "none: x1sim reports no step count (systems/algol-60/README.md, Units; harnesses/QUESTIONS.md Q12)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": null,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": null,
+        "repeated_work": null,
+        "budget_enforced": false
+       },
+       "alternatives": {
+        "unit": "the program's named structures, as the program reports them in [alternatives NAME COUNT] (systems/algol-60/README.md, Units: Alternative, as Python)",
+        "at_boundary": null,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "the program's named structures of held work, as the program reports them in [suspended NAME COUNT]",
+        "at_boundary": 2,
+        "peak": null,
+        "items": {
+         "held-relations": 2
+        }
+       },
+       "problem_operations": {
+        "R1-examined": 1,
+        "R2-examined": 2,
+        "R3-examined": 0
+       }
+      }
+     ],
+     "observe": {
+      "raw": "held relations: u + v = 16, w . u = v\n[suspended held-relations 2]\n[operations R1-examined 1]\n[operations R2-examined 2]\n[operations R3-examined 0]\n",
+      "method": "the program's [observe]...[/observe] block(s) printed at the end of the stage (README, 'observe()'); bindings from its [bind NAME]...[/bind] tags",
+      "taken_on": "this-run",
+      "bindings": null
+     },
+     "print": "[answer]u held, v held, w held, where u + v = 16, w . u = v[/answer]\n[observe]held relations: u + v = 16, w . u = v\n[suspended held-relations 2]\n[operations R1-examined 1]\n[operations R2-examined 2]\n[operations R3-examined 0]\n[/observe]\n[end]",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.001,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "[answer]u held, v held, w held, where u + v = 16, w . u = v[/answer]\n[observe]held relations: u + v = 16, w . u = v\n[suspended held-relations 2]\n[operations R1-examined 1]\n[operations R2-examined 2]\n[operations R3-examined 0]\n[/observe]\n[end]",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "received into x1sim's live process, which holds the earlier stages"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 3,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {
+       "line": "0 0 3 2 1 3\n",
+       "n": 0,
+       "cap": 0,
+       "codes": [
+        2,
+        1,
+        3
+       ],
+       "code_of": {
+        "R1": 1,
+        "R2": 2,
+        "R3": 3
+       },
+       "coded_parameter": "order"
+      }
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "u = 2, v = 14, w = 7",
+           "steps_at": null,
+           "alternatives_at": null
+          }
+         ],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "the program wrote [end] and asked for its next message; ALGOL 60 holds no alternatives or suspended work of its own, so the state is read from the program's [alternatives] and [suspended] reports in its observe block (alternatives 0, suspended 0)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "none: x1sim reports no step count (systems/algol-60/README.md, Units; harnesses/QUESTIONS.md Q12)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": null,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": null,
+        "repeated_work": null,
+        "budget_enforced": false
+       },
+       "alternatives": {
+        "unit": "the program's named structures, as the program reports them in [alternatives NAME COUNT] (systems/algol-60/README.md, Units: Alternative, as Python)",
+        "at_boundary": null,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "the program's named structures of held work, as the program reports them in [suspended NAME COUNT]",
+        "at_boundary": null,
+        "peak": null,
+        "items": null
+       },
+       "problem_operations": {
+        "R1-examined": 3,
+        "R2-examined": 4,
+        "R3-examined": 1
+       }
+      }
+     ],
+     "observe": {
+      "raw": "held relations: none\n[bind u]2[/bind]\n[bind v]14[/bind]\n[bind w]7[/bind]\n[operations R1-examined 3]\n[operations R2-examined 4]\n[operations R3-examined 1]\n",
+      "method": "the program's [observe]...[/observe] block(s) printed at the end of the stage (README, 'observe()'); bindings from its [bind NAME]...[/bind] tags",
+      "taken_on": "this-run",
+      "bindings": {
+       "u": "2",
+       "v": "14",
+       "w": "7"
+      }
+     },
+     "print": "[answer]u = 2, v = 14, w = 7[/answer]\n[observe]held relations: none\n[bind u]2[/bind]\n[bind v]14[/bind]\n[bind w]7[/bind]\n[operations R1-examined 3]\n[operations R2-examined 4]\n[operations R3-examined 1]\n[/observe]\n[end]",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.001,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "[answer]u = 2, v = 14, w = 7[/answer]\n[observe]held relations: none\n[bind u]2[/bind]\n[bind v]14[/bind]\n[bind w]7[/bind]\n[operations R1-examined 3]\n[operations R2-examined 4]\n[operations R3-examined 1]\n[/observe]\n[end]",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "received into x1sim's live process, which holds the earlier stages"
+     ]
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": [
+  "x1sim's live process was ended after the last stage by closing its input: exit 1, signal None"
+ ]
+}

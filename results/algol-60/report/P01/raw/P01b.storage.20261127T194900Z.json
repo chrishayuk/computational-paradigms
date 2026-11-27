@@ -1,0 +1,492 @@
+{
+ "record_format": "cp-raw-record/1",
+ "made_up": false,
+ "run": {
+  "run_id": "P01b.storage.20261127T194900Z",
+  "spec_tag": "spec-1.0",
+  "system": "algol-60",
+  "configuration": "report",
+  "problem": "P01",
+  "subproblem": "P01b",
+  "instance": "P01b",
+  "parameters": {},
+  "mode": "storage",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/algol-60/report/P01b.alg",
+   "sha256": "9760b5a826949a6bdaafac709a1394f1e06230e2ef1f2a61659ea8c8d90f4a1e",
+   "repo_commit": "eaad40ea625b24659b2ba53aa37a89b3951aab5b"
+  },
+  "constants": {
+   "how": "input",
+   "input_path": "programs/algol-60/report/P01b.constants",
+   "input_sha256": "702b54c4abb446b6aa9a20b0b883e3b90deb533a61067ccd410df294e8ded7fc",
+   "variant": null
+  },
+  "system_build": {
+   "commit": "151cdff1b7281a9bc1ce8e2069be8fc67ac19a77",
+   "image": null,
+   "binary": "/usr/local/bin/algol60-measure",
+   "version_output": "algol60 0.1.1\n",
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/algol-60/run",
+   "commit": "eaad40ea625b24659b2ba53aa37a89b3951aab5b",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/algol-60/run",
+   "report",
+   "P01",
+   "P01b",
+   "storage",
+   "programs/algol-60/report/P01b.alg",
+   "results/algol-60/report/P01/raw/"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "algol60 interpreter step (tick, as --max-steps counts it; systems/algol-60/README.md, Units)",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T19:49:00Z",
+  "ended_utc": "2026-11-27T19:49:02Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "The harness writes on the program's standard input: one line of instance parameters, then one message line per stage, replayed stage, replayed commitment or spawned computation, each message that poses or replays stage k followed by stage k's lines of the constants file with their 'k:' tag removed (README, 2.2). No stage's constants are on the input before the stage is posed. This is how a stage is passed in; it is listed because the program reads it with the configuration's input procedures, whose calls are H.",
+   "Answers, observe() state, emit entries and the end of a stage are taken from the program's printed tags ([answer]...[/answer], [observe]...[/observe], [emit]...[/emit], [end]) by pattern matching on the standard output; the text between tags is kept verbatim. Answers beyond a query's cap are left in stdout and print but not collected.",
+   "A spawned computation (P09) is a procedure of the one program, started by the harness's spawn message, and runs to its end, budget or error before the next is spawned (side_by_side false). ALGOL 60 has no mechanism for separate computations; see QUESTIONS.md.",
+   "Re-creation of the computation (report, x1): the interpreter fixes its step limit (--max-steps) when the process starts and counts from the start, so to give each stage and each spawned computation its own budget the harness runs it in a fresh interpreter process that receives the earlier stages' messages exactly as they first arrived, one at a time, each after the previous [end], with --max-steps set to the measured step count at the start of the stage plus the budget. Such an attempt is recorded as incremental (nothing replayed, no restart cost) and is marked in its notes with 'recreated_for_budget: true' and the re-created prefix's steps (prefix_steps), which are not charged to the stage. It relies on the interpreter being deterministic; the re-created stages' output must be byte-identical to their recorded output, and a difference is a harness fault. Effects emitted by the re-created earlier stages are not appended to the effects log again; a commit stage in the re-created prefix is carried out again by the program, deterministically, and its output (its selected v included) must be byte-identical; the record's note lists such stages.",
+   "Step counts are read only through --max-steps, by bisection: the harness reruns the program on the same input with different limits and finds the least limit at which the interpreter does not report 'stopped after N steps'. Those probe runs are extra runs of the program; their output (emits included) is used only for that test and for the determinism check, and is not recorded or logged.",
+   "After the stage under test, the harness closes the program's standard input. The program's next read then fails with the interpreter's 'the input is exhausted' error, which ends the process. That error comes after the stage's [end] and is not the stage's execution state.",
+   "The safety limit of an incremental attempt is timed from writing the stage's message to the end of the stage; the re-created earlier stages are not inside it (they are guarded separately, at 900 s, as a harness fault).",
+   "Output the interpreter still holds in its own buffer when the harness kills it at the safety limit is lost (the interpreter flushes its output at every read of input, at an error, at the step limit and at the end of the program), so answers and emits printed but not flushed before a safety-limit stop cannot be collected.",
+   "Repeated work and the store are read from the measurement build (algol60-measure --measure), which reports at the end of the process only: totals (frames_made, calls, name_* counts) are read at the stage boundary, since the process ends there, and the stage's repeated work is the difference of the build's totals between boundaries; the live quantities (frames, slots, arrays, array_elements, names, call_depth) are not readable at the boundary (the interpreter has unwound when the build reports), so their boundary is null, and their peak over the process is attributed to the stage only where it exceeds the peak at the end of the previous stage."
+  ],
+  "environment": {
+   "PATH": "/usr/local/bin:/usr/bin:/bin",
+   "HOME": "(a fresh empty temporary directory)",
+   "LC_ALL": "C.UTF-8"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {
+       "line": "0 0 0\n",
+       "n": 0,
+       "cap": 0,
+       "codes": []
+      }
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "s held, t held, where conc((1 , 2 ), s, t)",
+           "steps_at": null,
+           "alternatives_at": null
+          }
+         ],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "suspended"
+        ],
+        "determined": true,
+        "basis": "the program wrote [end] and asked for its next message; ALGOL 60 holds no alternatives or suspended work of its own, so the state is read from the program's [alternatives] and [suspended] reports in its observe block (alternatives 0, suspended 1)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "algol60 interpreter step (tick, as --max-steps counts it; systems/algol-60/README.md, Units)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 153,
+        "restated": 153,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": 153,
+        "repeated_work": {
+         "name_repeat_evaluations": 0,
+         "name_first_evaluations": 0,
+         "name_evaluations": 0
+        }
+       },
+       "alternatives": {
+        "unit": "the program's named structures, as the program reports them in [alternatives NAME COUNT] (systems/algol-60/README.md, Units: Alternative, as Python)",
+        "at_boundary": null,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "the program's named structures of held work, as the program reports them in [suspended NAME COUNT]",
+        "at_boundary": 1,
+        "peak": null,
+        "items": {
+         "held-relations": 1
+        }
+       },
+       "problem_operations": {
+        "conc/1": 0,
+        "conc/2": 0
+       }
+      }
+     ],
+     "observe": {
+      "raw": "held relations: conc((1 , 2 ), s, t)\n[suspended held-relations 1 ]\n[operations conc/1 0 ]\n[operations conc/2 0 ]\n",
+      "method": "the program's [observe]...[/observe] block(s) printed at the end of the stage (README, 'observe()'); bindings from its [bind NAME]...[/bind] tags",
+      "taken_on": "this-run",
+      "bindings": null
+     },
+     "print": "[answer]s held, t held, where conc((1 , 2 ), s, t)[/answer]\n[observe]held relations: conc((1 , 2 ), s, t)\n[suspended held-relations 1 ]\n[operations conc/1 0 ]\n[operations conc/2 0 ]\n[/observe]\n[end]",
+     "store": {
+      "quantities": {
+       "frames": {
+        "boundary": null,
+        "peak": {
+         "value": 7,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "slots": {
+        "boundary": null,
+        "peak": {
+         "value": 35,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "arrays": {
+        "boundary": null,
+        "peak": {
+         "value": 2,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "array_elements": {
+        "boundary": null,
+        "peak": {
+         "value": 2000,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "names": {
+        "boundary": null,
+        "peak": {
+         "value": 0,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "call_depth": {
+        "boundary": null,
+        "peak": {
+         "value": 2,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "frames_made": {
+        "boundary": 16,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "calls": {
+        "boundary": 9,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_uses": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_evaluations": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_first_evaluations": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_repeat_evaluations": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       }
+      },
+      "source": "algol60-measure --measure (commit 151cdff), the process's end-of-run report"
+     },
+     "wall_time_s": 0.024,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "[answer]s held, t held, where conc((1 , 2 ), s, t)[/answer]\n[observe]held relations: conc((1 , 2 ), s, t)\n[suspended held-relations 1 ]\n[operations conc/1 0 ]\n[operations conc/2 0 ]\n[/observe]\n[end]",
+     "stderr": "quantity\tend\tpeak\nframes\t0\t7\nslots\t0\t35\narrays\t0\t2\narray_elements\t0\t2000\nnames\t0\t0\ncall_depth\t0\t2\nframes_made\t16\t16\ncalls\t9\t9\nname_uses\t0\t0\nname_evaluations\t0\t0\nname_first_evaluations\t0\t0\nname_repeat_evaluations\t0\t0\nprograms/algol-60/report/P01b.alg: line 119: ininteger: the input is exhausted\n",
+     "exit": {
+      "status": 1,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "computation main: after its [end] the harness closed the input; the process then ended with exit status 1, stderr ending 'programs/algol-60/report/P01b.alg: line 119: ininteger: the input is exhausted'"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {
+       "line": "0 0 0\n",
+       "n": 0,
+       "cap": 0,
+       "codes": []
+      }
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "s = (3 ), t = (1 , 2 , 3 )",
+           "steps_at": null,
+           "alternatives_at": null
+          }
+         ],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "the program wrote [end] and asked for its next message; ALGOL 60 holds no alternatives or suspended work of its own, so the state is read from the program's [alternatives] and [suspended] reports in its observe block (alternatives 0, suspended 0)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "algol60 interpreter step (tick, as --max-steps counts it; systems/algol-60/README.md, Units)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 187,
+        "restated": 340,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": 187,
+        "repeated_work": {
+         "name_repeat_evaluations": 0,
+         "name_first_evaluations": 0,
+         "name_evaluations": 0
+        }
+       },
+       "alternatives": {
+        "unit": "the program's named structures, as the program reports them in [alternatives NAME COUNT] (systems/algol-60/README.md, Units: Alternative, as Python)",
+        "at_boundary": null,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "the program's named structures of held work, as the program reports them in [suspended NAME COUNT]",
+        "at_boundary": null,
+        "peak": null,
+        "items": null
+       },
+       "problem_operations": {
+        "conc/1": 1,
+        "conc/2": 2
+       }
+      }
+     ],
+     "observe": {
+      "raw": "held relations: none\n[bind s](3 )[/bind]\n[bind t](1 , 2 , 3 )[/bind]\n[operations conc/1 1 ]\n[operations conc/2 2 ]\n",
+      "method": "the program's [observe]...[/observe] block(s) printed at the end of the stage (README, 'observe()'); bindings from its [bind NAME]...[/bind] tags",
+      "taken_on": "this-run",
+      "bindings": {
+       "s": "(3 )",
+       "t": "(1 , 2 , 3 )"
+      }
+     },
+     "print": "[answer]s = (3 ), t = (1 , 2 , 3 )[/answer]\n[observe]held relations: none\n[bind s](3 )[/bind]\n[bind t](1 , 2 , 3 )[/bind]\n[operations conc/1 1 ]\n[operations conc/2 2 ]\n[/observe]\n[end]",
+     "store": {
+      "quantities": {
+       "frames": {
+        "boundary": null,
+        "peak": {
+         "value": 12,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "slots": {
+        "boundary": null,
+        "peak": {
+         "value": 39,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "arrays": {
+        "boundary": null,
+        "peak": null,
+        "unit": "count"
+       },
+       "array_elements": {
+        "boundary": null,
+        "peak": null,
+        "unit": "count"
+       },
+       "names": {
+        "boundary": null,
+        "peak": null,
+        "unit": "count"
+       },
+       "call_depth": {
+        "boundary": null,
+        "peak": {
+         "value": 5,
+         "kind": "exact",
+         "sample_interval": null
+        },
+        "unit": "count"
+       },
+       "frames_made": {
+        "boundary": 39,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "calls": {
+        "boundary": 24,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_uses": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_evaluations": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_first_evaluations": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       },
+       "name_repeat_evaluations": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "count, total since the process started"
+       }
+      },
+      "source": "algol60-measure --measure (commit 151cdff), the process's end-of-run report"
+     },
+     "wall_time_s": 0.0,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "[answer]s = (3 ), t = (1 , 2 , 3 )[/answer]\n[observe]held relations: none\n[bind s](3 )[/bind]\n[bind t](1 , 2 , 3 )[/bind]\n[operations conc/1 1 ]\n[operations conc/2 2 ]\n[/observe]\n[end]",
+     "stderr": "quantity\tend\tpeak\nframes\t0\t12\nslots\t0\t39\narrays\t0\t2\narray_elements\t0\t2000\nnames\t0\t0\ncall_depth\t0\t5\nframes_made\t39\t39\ncalls\t24\t24\nname_uses\t0\t0\nname_evaluations\t0\t0\nname_first_evaluations\t0\t0\nname_repeat_evaluations\t0\t0\nprograms/algol-60/report/P01b.alg: line 119: ininteger: the input is exhausted\n",
+     "exit": {
+      "status": 1,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "recreated_for_budget: true; computation: main; prefix_messages: 1; prefix_stages: [1]; prefix_steps: 153; prefix_commit_stages_carried_out_again: []",
+      "computation main ran in a computation re-created for its budget (README 3.1, QUESTIONS.md A2): a fresh process received the 1 earlier message(s) as they first arrived; their 153 steps (prefix_steps) are not charged to this stage (steps.stage and the budget count from the end of the prefix; steps.restated includes them); their output was byte-identical to the recorded output and is not repeated in stdout; their emits were not logged again",
+      "computation main: after its [end] the harness closed the input; the process then ended with exit status 1, stderr ending 'programs/algol-60/report/P01b.alg: line 119: ininteger: the input is exhausted'"
+     ]
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": [
+  "41 measurement probe run(s) of the program were made (bisection over --max-steps and, in cost mode, the measurement build); their output is not recorded"
+ ]
+}
