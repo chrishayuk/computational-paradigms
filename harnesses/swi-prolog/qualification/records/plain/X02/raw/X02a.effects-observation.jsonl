@@ -12,3 +12,17 @@
 {"seq": 12, "entry": "committed(1)", "run_id": "X02a.storage.20261127T190854Z", "stage": 3, "attempt": 1, "during_replay_of": 2, "log": "observation"}
 {"seq": 13, "entry": "chose(2)", "run_id": "X02a.storage.20261127T190854Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
 {"seq": 14, "entry": "chose(3)", "run_id": "X02a.storage.20261127T190854Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 15, "entry": "chose(1)", "run_id": "X02a.cost.20261127T191409Z", "stage": 1, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 16, "entry": "chose(1)", "run_id": "X02a.cost.20261127T191409Z", "stage": 2, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 17, "entry": "committed(1)", "run_id": "X02a.cost.20261127T191409Z", "stage": 2, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 18, "entry": "chose(1)", "run_id": "X02a.cost.20261127T191409Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 19, "entry": "committed(1)", "run_id": "X02a.cost.20261127T191409Z", "stage": 3, "attempt": 1, "during_replay_of": 2, "log": "observation"}
+{"seq": 20, "entry": "chose(2)", "run_id": "X02a.cost.20261127T191409Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 21, "entry": "chose(3)", "run_id": "X02a.cost.20261127T191409Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 22, "entry": "chose(1)", "run_id": "X02a.storage.20261127T191410Z", "stage": 1, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 23, "entry": "chose(1)", "run_id": "X02a.storage.20261127T191410Z", "stage": 2, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 24, "entry": "committed(1)", "run_id": "X02a.storage.20261127T191410Z", "stage": 2, "attempt": 1, "during_replay_of": null, "log": "observation"}
+{"seq": 25, "entry": "chose(1)", "run_id": "X02a.storage.20261127T191410Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 26, "entry": "committed(1)", "run_id": "X02a.storage.20261127T191410Z", "stage": 3, "attempt": 1, "during_replay_of": 2, "log": "observation"}
+{"seq": 27, "entry": "chose(2)", "run_id": "X02a.storage.20261127T191410Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}
+{"seq": 28, "entry": "chose(3)", "run_id": "X02a.storage.20261127T191410Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "observation"}

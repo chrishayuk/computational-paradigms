@@ -1,60 +1,60 @@
 Qualification of harnesses/absys
 system builds: absys efd52032934d34359c8bb828d80819d18997be52; absys-measure 545044976e1a5ee7fc5471a7cb02b972fd507984; algol-60 6e8740ccd3d104c5db67149a8f4fa4b52782cc2c; algol-60-measure 151cdff1b7281a9bc1ce8e2069be8fc67ac19a77; x1sim 938fa031a00557110b5a5834b2b43404853f2201; 
-harness commit: f56eb30f4dd07c46da2cef440e8f575b900027fb
+harness commit: f646f19327e1213e07da259d0ac12f6e5f3c4a35
 
 == 1. Runs of the harness on made-up programs (every configuration, every mode)
-PASS  run absys X10a behaviour x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T175937Z.json
-PASS  run absys X10a cost x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys/X10/raw/X10a.cost.20261127T175937Z.json
-PASS  run absys X10a storage x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys/X10/raw/X10a.storage.20261127T175938Z.json
-PASS  run absys-wake-back X10a behaviour x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.behaviour.20261127T175938Z.json
-PASS  run absys-wake-back X10a cost x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.cost.20261127T175939Z.json
-PASS  run absys-wake-back X10a storage x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.storage.20261127T175939Z.json
-PASS  run absys X11a behaviour x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys/X11/raw/X11a.behaviour.20261127T175940Z.json
-PASS  run absys X11a cost x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys/X11/raw/X11a.cost.20261127T175940Z.json
-PASS  run absys X11a storage x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys/X11/raw/X11a.storage.20261127T175941Z.json
-PASS  run absys-depth-first X11a behaviour x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T175941Z.json
-PASS  run absys-depth-first X11a cost x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.cost.20261127T175942Z.json
-PASS  run absys-depth-first X11a storage x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.storage.20261127T175942Z.json
-PASS  run absys X12a behaviour x12-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T175943Z.json
-PASS  run absys X12a cost x12-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X12/raw/X12a.cost.20261127T175944Z.json
-PASS  run absys X12a storage x12-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X12/raw/X12a.storage.20261127T175952Z.json
-PASS  run absys X13a behaviour x13a-error.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13a.behaviour.20261127T175955Z.json
-PASS  run absys X13a cost x13a-error.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13a.cost.20261127T175956Z.json
-PASS  run absys X13a storage x13a-error.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13a.storage.20261127T175956Z.json
-PASS  run absys X13b behaviour x13b-unfinished.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13b.behaviour.20261127T175957Z.json
-PASS  run absys X13b cost x13b-unfinished.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13b.cost.20261127T175958Z.json
-PASS  run absys X13b storage x13b-unfinished.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13b.storage.20261127T175959Z.json
-PASS  run absys X15a behaviour x15-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X15/raw/X15a.behaviour.20261127T180000Z.json
-PASS  run absys X15a cost x15-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X15/raw/X15a.cost.20261127T180009Z.json
-PASS  run absys X15a storage x15-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X15/raw/X15a.storage.20261127T180020Z.json
-PASS  run absys X16a behaviour x16-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X16/raw/X16a.behaviour.20261127T180030Z.json
-PASS  run absys X16a cost x16-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X16/raw/X16a.cost.20261127T180031Z.json
-PASS  run absys X16a storage x16-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X16/raw/X16a.storage.20261127T180032Z.json
-PASS  run absys X17a.UV behaviour x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.behaviour.20261127T180033Z.json
-PASS  run absys X17a.UV cost x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.cost.20261127T180034Z.json
-PASS  run absys X17a.UV storage x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.storage.20261127T180035Z.json
-PASS  run absys X17a.VU behaviour x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T180035Z.json
-PASS  run absys X17a.VU cost x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.cost.20261127T180036Z.json
-PASS  run absys X17a.VU storage x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.storage.20261127T180036Z.json
-PASS  run absys X18a behaviour x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T180037Z.json
-PASS  run absys X18a cost x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys/X18/raw/X18a.cost.20261127T180037Z.json
-PASS  run absys X18a storage x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys/X18/raw/X18a.storage.20261127T180038Z.json
-PASS  run absys-depth-first X18a behaviour x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.behaviour.20261127T180039Z.json
-PASS  run absys-depth-first X18a cost x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.cost.20261127T180039Z.json
-PASS  run absys-depth-first X18a storage x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.storage.20261127T180040Z.json
-PASS  run absys X19a.AB behaviour x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.behaviour.20261127T180041Z.json
-PASS  run absys X19a.AB cost x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.cost.20261127T180042Z.json
-PASS  run absys X19a.AB storage x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.storage.20261127T180042Z.json
-PASS  run absys X19a.BA behaviour x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T180043Z.json
-PASS  run absys X19a.BA cost x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.cost.20261127T180043Z.json
-PASS  run absys X19a.BA storage x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.storage.20261127T180044Z.json
-PASS  run absys X20a behaviour x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys/X20/raw/X20a.behaviour.20261127T180044Z.json
-PASS  run absys X20a cost x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys/X20/raw/X20a.cost.20261127T180045Z.json
-PASS  run absys X20a storage x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys/X20/raw/X20a.storage.20261127T180046Z.json
-PASS  run absys-wake-back X20a behaviour x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T180046Z.json
-PASS  run absys-wake-back X20a cost x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.cost.20261127T180047Z.json
-PASS  run absys-wake-back X20a storage x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.storage.20261127T180048Z.json
-PASS  run absys X21a behaviour x21-spin.abs (the system's process exhausts the container's memory): exit 0, harnesses/absys/qualification/records/absys/X21/raw/X21a.behaviour.20261127T180048Z.json
+PASS  run absys X10a behaviour x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T191353Z.json
+PASS  run absys X10a cost x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys/X10/raw/X10a.cost.20261127T191353Z.json
+PASS  run absys X10a storage x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys/X10/raw/X10a.storage.20261127T191353Z.json
+PASS  run absys-wake-back X10a behaviour x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.behaviour.20261127T191354Z.json
+PASS  run absys-wake-back X10a cost x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.cost.20261127T191354Z.json
+PASS  run absys-wake-back X10a storage x10-pair.abs: exit 0, harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.storage.20261127T191355Z.json
+PASS  run absys X11a behaviour x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys/X11/raw/X11a.behaviour.20261127T191355Z.json
+PASS  run absys X11a cost x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys/X11/raw/X11a.cost.20261127T191356Z.json
+PASS  run absys X11a storage x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys/X11/raw/X11a.storage.20261127T191356Z.json
+PASS  run absys-depth-first X11a behaviour x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T191357Z.json
+PASS  run absys-depth-first X11a cost x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.cost.20261127T191357Z.json
+PASS  run absys-depth-first X11a storage x11-colour.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.storage.20261127T191358Z.json
+PASS  run absys X12a behaviour x12-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T191358Z.json
+PASS  run absys X12a cost x12-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X12/raw/X12a.cost.20261127T191400Z.json
+PASS  run absys X12a storage x12-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X12/raw/X12a.storage.20261127T191406Z.json
+PASS  run absys X13a behaviour x13a-error.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13a.behaviour.20261127T191408Z.json
+PASS  run absys X13a cost x13a-error.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13a.cost.20261127T191409Z.json
+PASS  run absys X13a storage x13a-error.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13a.storage.20261127T191409Z.json
+PASS  run absys X13b behaviour x13b-unfinished.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13b.behaviour.20261127T191410Z.json
+PASS  run absys X13b cost x13b-unfinished.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13b.cost.20261127T191410Z.json
+PASS  run absys X13b storage x13b-unfinished.abs: exit 0, harnesses/absys/qualification/records/absys/X13/raw/X13b.storage.20261127T191411Z.json
+PASS  run absys X15a behaviour x15-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X15/raw/X15a.behaviour.20261127T191411Z.json
+PASS  run absys X15a cost x15-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X15/raw/X15a.cost.20261127T191419Z.json
+PASS  run absys X15a storage x15-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X15/raw/X15a.storage.20261127T191427Z.json
+PASS  run absys X16a behaviour x16-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X16/raw/X16a.behaviour.20261127T191434Z.json
+PASS  run absys X16a cost x16-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X16/raw/X16a.cost.20261127T191435Z.json
+PASS  run absys X16a storage x16-spin.abs: exit 0, harnesses/absys/qualification/records/absys/X16/raw/X16a.storage.20261127T191436Z.json
+PASS  run absys X17a.UV behaviour x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.behaviour.20261127T191437Z.json
+PASS  run absys X17a.UV cost x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.cost.20261127T191438Z.json
+PASS  run absys X17a.UV storage x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.storage.20261127T191438Z.json
+PASS  run absys X17a.VU behaviour x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T191439Z.json
+PASS  run absys X17a.VU cost x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.cost.20261127T191439Z.json
+PASS  run absys X17a.VU storage x17-spawn.abs: exit 0, harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.storage.20261127T191439Z.json
+PASS  run absys X18a behaviour x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T191440Z.json
+PASS  run absys X18a cost x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys/X18/raw/X18a.cost.20261127T191440Z.json
+PASS  run absys X18a storage x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys/X18/raw/X18a.storage.20261127T191441Z.json
+PASS  run absys-depth-first X18a behaviour x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.behaviour.20261127T191441Z.json
+PASS  run absys-depth-first X18a cost x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.cost.20261127T191442Z.json
+PASS  run absys-depth-first X18a storage x18-emit.abs: exit 0, harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.storage.20261127T191442Z.json
+PASS  run absys X19a.AB behaviour x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.behaviour.20261127T191443Z.json
+PASS  run absys X19a.AB cost x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.cost.20261127T191443Z.json
+PASS  run absys X19a.AB storage x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.storage.20261127T191443Z.json
+PASS  run absys X19a.BA behaviour x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T191444Z.json
+PASS  run absys X19a.BA cost x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.cost.20261127T191444Z.json
+PASS  run absys X19a.BA storage x19-parts.abs: exit 0, harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.storage.20261127T191445Z.json
+PASS  run absys X20a behaviour x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys/X20/raw/X20a.behaviour.20261127T191445Z.json
+PASS  run absys X20a cost x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys/X20/raw/X20a.cost.20261127T191446Z.json
+PASS  run absys X20a storage x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys/X20/raw/X20a.storage.20261127T191446Z.json
+PASS  run absys-wake-back X20a behaviour x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T191447Z.json
+PASS  run absys-wake-back X20a cost x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.cost.20261127T191447Z.json
+PASS  run absys-wake-back X20a storage x20-arith.ab1: exit 0, harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.storage.20261127T191447Z.json
+PASS  run absys X21a behaviour x21-spin.abs (the system's process exhausts the container's memory): exit 0, harnesses/absys/qualification/records/absys/X21/raw/X21a.behaviour.20261127T191448Z.json
 
 == 2 (a). The system run directly agrees with what the harness collected
 PASS  absys X10a stage 1: harness print() (repl `?`) == absys-measure FILE --full on stages 1..1
@@ -220,40 +220,40 @@ PASS  x11-colour.abs stages 1..2: absys-measure json's steps per assertion == --
 PASS  absys X18a stage 1: the effects log's entries == the outputs absys FILE --trace shows performed (["emit = 'red'", "emit = 'green'", "emit = 'blue'"])
 
 == 3 (b). Incremental and reposed posing give the same answers
-PASS  run absys X10a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T180104Z.json
+PASS  run absys X10a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T191500Z.json
 PASS  absys X10a stage 1: incremental (fresh) and reposed (fresh) answers are identical
 PASS  absys X10a stage 1: behaviour (repl) and cost (absys FILE, stages 1..1) answers are identical
 PASS  absys X10a stage 2: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys X10a stage 2: behaviour (repl) and cost (absys FILE, stages 1..2) answers are identical
 PASS  absys X10a stage 3: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys X10a stage 3: behaviour (repl) and cost (absys FILE, stages 1..3) answers are identical
-PASS  run absys-depth-first X11a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T180105Z.json
+PASS  run absys-depth-first X11a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T191501Z.json
 PASS  absys-depth-first X11a stage 1: incremental (fresh) and reposed (fresh) answers are identical
 PASS  absys-depth-first X11a stage 1: behaviour (repl) and cost (absys FILE, stages 1..1) answers are identical
 PASS  absys-depth-first X11a stage 2: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys-depth-first X11a stage 2: behaviour (repl) and cost (absys FILE, stages 1..2) answers are identical
 PASS  absys-depth-first X11a stage 3: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys-depth-first X11a stage 3: behaviour (repl) and cost (absys FILE, stages 1..3) answers are identical
-PASS  run absys X12a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T180106Z.json
+PASS  run absys X12a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T191501Z.json
 PASS  absys X12a stage 1: incremental (fresh) and reposed (fresh) answers are identical
 PASS  absys X12a stage 1: behaviour (repl) and cost (absys FILE, stages 1..1) answers are identical
 PASS  absys X12a stage 2: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys X12a stage 2: behaviour (repl) and cost (absys FILE, stages 1..2) answers are identical
-PASS  run absys X17a.VU behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T180109Z.json
+PASS  run absys X17a.VU behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T191504Z.json
 PASS  absys X17a.VU stage 1: incremental (fresh) and reposed (fresh) answers are identical
-PASS  run absys X18a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T180110Z.json
+PASS  run absys X18a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T191504Z.json
 PASS  absys X18a stage 1: incremental (fresh) and reposed (fresh) answers are identical
 PASS  absys X18a stage 1: behaviour (repl) and cost (absys FILE, stages 1..1) answers are identical
 PASS  absys X18a stage 2: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys X18a stage 2: behaviour (repl) and cost (absys FILE, stages 1..2) answers are identical
 PASS  absys X18a stage 3: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys X18a stage 3: behaviour (repl) and cost (absys FILE, stages 1..3) answers are identical
-PASS  run absys X19a.BA behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T180111Z.json
+PASS  run absys X19a.BA behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T191505Z.json
 PASS  absys X19a.BA stage 1: incremental (fresh) and reposed (fresh) answers are identical
 PASS  absys X19a.BA stage 1: behaviour (repl) and cost (absys FILE, stages 1..1) answers are identical
 PASS  absys X19a.BA stage 2: incremental (incremental) and reposed (reposed) answers are identical
 PASS  absys X19a.BA stage 2: behaviour (repl) and cost (absys FILE, stages 1..2) answers are identical
-PASS  run absys-wake-back X20a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T180111Z.json
+PASS  run absys-wake-back X20a behaviour, every stage reposed (ABSYS_HARNESS_POSING=reposed): harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T191505Z.json
 PASS  absys-wake-back X20a stage 1: incremental (fresh) and reposed (fresh) answers are identical
 PASS  absys-wake-back X20a stage 1: behaviour (repl) and cost (absys FILE, stages 1..1) answers are identical
 PASS  absys-wake-back X20a stage 2: incremental (incremental) and reposed (reposed) answers are identical
@@ -270,14 +270,14 @@ PASS  X12a cost: stage 1 ends in budget
 PASS  X12a cost: stage 2 reposed after the budget (continued_after_budget False), and ends in budget
 PASS  X15a cost: safety limit, rerun, final timeout, then stage 2 reposed after the timeout: [(1, 1, 'first-stage', 'rerun'), (1, 2, 'safety-rerun', 'final-timeout'), (2, 1, 'after-timeout', 'rerun'), (2, 2, 'safety-rerun', 'final-timeout')]
 PASS  X16a cost: a fixed limit stops the stage once (fixed-limit-timeout)
-PASS  X13a cost: stage 2 ends in error ('/tmp/absys-measure-abfq4jv0/stages-1-to-2.abs:6:5: expected a term, found `)`\n'), stage 3 is reposed after it
-PASS  X13b cost: stage 2 ends in error ('/tmp/absys-measure-hhge098f/stages-1-to-2.abs:7:1: expected a term, found the end of the text\n'), stage 3 is reposed after it
+PASS  X13a cost: stage 2 ends in error ('/tmp/absys-measure-pxi1_69a/stages-1-to-2.abs:6:5: expected a term, found `)`\n'), stage 3 is reposed after it
+PASS  X13b cost: stage 2 ends in error ('/tmp/absys-measure-u42c0btg/stages-1-to-2.abs:7:1: expected a term, found the end of the text\n'), stage 3 is reposed after it
 PASS  X12a storage: stage 1 ends in budget
 PASS  X12a storage: stage 2 reposed after the budget (continued_after_budget False), and ends in budget
 PASS  X15a storage: safety limit, rerun, final timeout, then stage 2 reposed after the timeout: [(1, 1, 'first-stage', 'rerun'), (1, 2, 'safety-rerun', 'final-timeout'), (2, 1, 'after-timeout', 'rerun'), (2, 2, 'safety-rerun', 'final-timeout')]
 PASS  X16a storage: a fixed limit stops the stage once (fixed-limit-timeout)
-PASS  X13a storage: stage 2 ends in error ('/tmp/absys-measure-11jixc63/stages-1-to-2.abs:6:5: expected a term, found `)`\n'), stage 3 is reposed after it
-PASS  X13b storage: stage 2 ends in error ('/tmp/absys-measure-t8a2azw2/stages-1-to-2.abs:7:1: expected a term, found the end of the text\n'), stage 3 is reposed after it
+PASS  X13a storage: stage 2 ends in error ('/tmp/absys-measure-v8d3x0rg/stages-1-to-2.abs:6:5: expected a term, found `)`\n'), stage 3 is reposed after it
+PASS  X13b storage: stage 2 ends in error ('/tmp/absys-measure-m_kfid2q/stages-1-to-2.abs:7:1: expected a term, found the end of the text\n'), stage 3 is reposed after it
 PASS  X21a behaviour: the process killed from outside is an error, with the signal ({'status': -9, 'signal': 'SIGKILL'})
 
 == 5. check executes nothing
@@ -310,75 +310,75 @@ PASS  check absys x13a-error.abs: reports the error made on purpose: error: line
 PASS  check absys x13b-unfinished.abs: reports the error made on purpose: error: line 9 (stage 2): the section ends inside an unfinished assertion: h = [1,
 
 == 6 (d). Every record passes validate.py
-    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T175941Z.json: valid
-    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T180105Z.json: valid
-    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.cost.20261127T175942Z.json: valid
-    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.storage.20261127T175942Z.json: valid
-    harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.behaviour.20261127T180039Z.json: valid
-    harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.cost.20261127T180039Z.json: valid
+    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T191357Z.json: valid
+    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.behaviour.20261127T191501Z.json: valid
+    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.cost.20261127T191357Z.json: valid
+    harnesses/absys/qualification/records/absys-depth-first/X11/raw/X11a.storage.20261127T191358Z.json: valid
+    harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.behaviour.20261127T191441Z.json: valid
+    harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.cost.20261127T191442Z.json: valid
       warning: stage 3 attempt 1: reposed past commit stage 2 with no replayed commitment (the system selected nothing?)
-    harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.storage.20261127T180040Z.json: valid
+    harnesses/absys/qualification/records/absys-depth-first/X18/raw/X18a.storage.20261127T191442Z.json: valid
       warning: stage 3 attempt 1: reposed past commit stage 2 with no replayed commitment (the system selected nothing?)
-    harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.behaviour.20261127T175938Z.json: valid
-    harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.cost.20261127T175939Z.json: valid
-    harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.storage.20261127T175939Z.json: valid
-    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T180046Z.json: valid
-    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T180111Z.json: valid
-    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.cost.20261127T180047Z.json: valid
-    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.storage.20261127T180048Z.json: valid
-    harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T175937Z.json: valid
-    harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T180104Z.json: valid
-    harnesses/absys/qualification/records/absys/X10/raw/X10a.cost.20261127T175937Z.json: valid
-    harnesses/absys/qualification/records/absys/X10/raw/X10a.storage.20261127T175938Z.json: valid
-    harnesses/absys/qualification/records/absys/X11/raw/X11a.behaviour.20261127T175940Z.json: valid
-    harnesses/absys/qualification/records/absys/X11/raw/X11a.cost.20261127T175940Z.json: valid
-    harnesses/absys/qualification/records/absys/X11/raw/X11a.storage.20261127T175941Z.json: valid
-    harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T175943Z.json: valid
-    harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T180106Z.json: valid
-    harnesses/absys/qualification/records/absys/X12/raw/X12a.cost.20261127T175944Z.json: valid
-    harnesses/absys/qualification/records/absys/X12/raw/X12a.storage.20261127T175952Z.json: valid
-    harnesses/absys/qualification/records/absys/X13/raw/X13a.behaviour.20261127T175955Z.json: valid
-    harnesses/absys/qualification/records/absys/X13/raw/X13a.cost.20261127T175956Z.json: valid
-    harnesses/absys/qualification/records/absys/X13/raw/X13a.storage.20261127T175956Z.json: valid
-    harnesses/absys/qualification/records/absys/X13/raw/X13b.behaviour.20261127T175957Z.json: valid
-    harnesses/absys/qualification/records/absys/X13/raw/X13b.cost.20261127T175958Z.json: valid
-    harnesses/absys/qualification/records/absys/X13/raw/X13b.storage.20261127T175959Z.json: valid
-    harnesses/absys/qualification/records/absys/X15/raw/X15a.behaviour.20261127T180000Z.json: valid
-    harnesses/absys/qualification/records/absys/X15/raw/X15a.cost.20261127T180009Z.json: valid
-    harnesses/absys/qualification/records/absys/X15/raw/X15a.storage.20261127T180020Z.json: valid
-    harnesses/absys/qualification/records/absys/X16/raw/X16a.behaviour.20261127T180030Z.json: valid
-    harnesses/absys/qualification/records/absys/X16/raw/X16a.cost.20261127T180031Z.json: valid
-    harnesses/absys/qualification/records/absys/X16/raw/X16a.storage.20261127T180032Z.json: valid
-    harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.behaviour.20261127T180033Z.json: valid
-    harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.cost.20261127T180034Z.json: valid
-    harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.storage.20261127T180035Z.json: valid
-    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T180035Z.json: valid
-    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T180109Z.json: valid
-    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.cost.20261127T180036Z.json: valid
-    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.storage.20261127T180036Z.json: valid
-    harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T180037Z.json: valid
-    harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T180110Z.json: valid
+    harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.behaviour.20261127T191354Z.json: valid
+    harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.cost.20261127T191354Z.json: valid
+    harnesses/absys/qualification/records/absys-wake-back/X10/raw/X10a.storage.20261127T191355Z.json: valid
+    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T191447Z.json: valid
+    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.behaviour.20261127T191505Z.json: valid
+    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.cost.20261127T191447Z.json: valid
+    harnesses/absys/qualification/records/absys-wake-back/X20/raw/X20a.storage.20261127T191447Z.json: valid
+    harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T191353Z.json: valid
+    harnesses/absys/qualification/records/absys/X10/raw/X10a.behaviour.20261127T191500Z.json: valid
+    harnesses/absys/qualification/records/absys/X10/raw/X10a.cost.20261127T191353Z.json: valid
+    harnesses/absys/qualification/records/absys/X10/raw/X10a.storage.20261127T191353Z.json: valid
+    harnesses/absys/qualification/records/absys/X11/raw/X11a.behaviour.20261127T191355Z.json: valid
+    harnesses/absys/qualification/records/absys/X11/raw/X11a.cost.20261127T191356Z.json: valid
+    harnesses/absys/qualification/records/absys/X11/raw/X11a.storage.20261127T191356Z.json: valid
+    harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T191358Z.json: valid
+    harnesses/absys/qualification/records/absys/X12/raw/X12a.behaviour.20261127T191501Z.json: valid
+    harnesses/absys/qualification/records/absys/X12/raw/X12a.cost.20261127T191400Z.json: valid
+    harnesses/absys/qualification/records/absys/X12/raw/X12a.storage.20261127T191406Z.json: valid
+    harnesses/absys/qualification/records/absys/X13/raw/X13a.behaviour.20261127T191408Z.json: valid
+    harnesses/absys/qualification/records/absys/X13/raw/X13a.cost.20261127T191409Z.json: valid
+    harnesses/absys/qualification/records/absys/X13/raw/X13a.storage.20261127T191409Z.json: valid
+    harnesses/absys/qualification/records/absys/X13/raw/X13b.behaviour.20261127T191410Z.json: valid
+    harnesses/absys/qualification/records/absys/X13/raw/X13b.cost.20261127T191410Z.json: valid
+    harnesses/absys/qualification/records/absys/X13/raw/X13b.storage.20261127T191411Z.json: valid
+    harnesses/absys/qualification/records/absys/X15/raw/X15a.behaviour.20261127T191411Z.json: valid
+    harnesses/absys/qualification/records/absys/X15/raw/X15a.cost.20261127T191419Z.json: valid
+    harnesses/absys/qualification/records/absys/X15/raw/X15a.storage.20261127T191427Z.json: valid
+    harnesses/absys/qualification/records/absys/X16/raw/X16a.behaviour.20261127T191434Z.json: valid
+    harnesses/absys/qualification/records/absys/X16/raw/X16a.cost.20261127T191435Z.json: valid
+    harnesses/absys/qualification/records/absys/X16/raw/X16a.storage.20261127T191436Z.json: valid
+    harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.behaviour.20261127T191437Z.json: valid
+    harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.cost.20261127T191438Z.json: valid
+    harnesses/absys/qualification/records/absys/X17/raw/X17a.UV.storage.20261127T191438Z.json: valid
+    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T191439Z.json: valid
+    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.behaviour.20261127T191504Z.json: valid
+    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.cost.20261127T191439Z.json: valid
+    harnesses/absys/qualification/records/absys/X17/raw/X17a.VU.storage.20261127T191439Z.json: valid
+    harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T191440Z.json: valid
+    harnesses/absys/qualification/records/absys/X18/raw/X18a.behaviour.20261127T191504Z.json: valid
       warning: stage 3 attempt 1: reposed past commit stage 2 with no replayed commitment (the system selected nothing?)
-    harnesses/absys/qualification/records/absys/X18/raw/X18a.cost.20261127T180037Z.json: valid
+    harnesses/absys/qualification/records/absys/X18/raw/X18a.cost.20261127T191440Z.json: valid
       warning: stage 3 attempt 1: reposed past commit stage 2 with no replayed commitment (the system selected nothing?)
-    harnesses/absys/qualification/records/absys/X18/raw/X18a.storage.20261127T180038Z.json: valid
+    harnesses/absys/qualification/records/absys/X18/raw/X18a.storage.20261127T191441Z.json: valid
       warning: stage 3 attempt 1: reposed past commit stage 2 with no replayed commitment (the system selected nothing?)
-    harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.behaviour.20261127T180041Z.json: valid
-    harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.cost.20261127T180042Z.json: valid
-    harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.storage.20261127T180042Z.json: valid
-    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T180043Z.json: valid
-    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T180111Z.json: valid
-    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.cost.20261127T180043Z.json: valid
-    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.storage.20261127T180044Z.json: valid
-    harnesses/absys/qualification/records/absys/X20/raw/X20a.behaviour.20261127T180044Z.json: valid
-    harnesses/absys/qualification/records/absys/X20/raw/X20a.cost.20261127T180045Z.json: valid
-    harnesses/absys/qualification/records/absys/X20/raw/X20a.storage.20261127T180046Z.json: valid
-    harnesses/absys/qualification/records/absys/X21/raw/X21a.behaviour.20261127T180048Z.json: valid
+    harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.behaviour.20261127T191443Z.json: valid
+    harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.cost.20261127T191443Z.json: valid
+    harnesses/absys/qualification/records/absys/X19/raw/X19a.AB.storage.20261127T191443Z.json: valid
+    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T191444Z.json: valid
+    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.behaviour.20261127T191505Z.json: valid
+    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.cost.20261127T191444Z.json: valid
+    harnesses/absys/qualification/records/absys/X19/raw/X19a.BA.storage.20261127T191445Z.json: valid
+    harnesses/absys/qualification/records/absys/X20/raw/X20a.behaviour.20261127T191445Z.json: valid
+    harnesses/absys/qualification/records/absys/X20/raw/X20a.cost.20261127T191446Z.json: valid
+    harnesses/absys/qualification/records/absys/X20/raw/X20a.storage.20261127T191446Z.json: valid
+    harnesses/absys/qualification/records/absys/X21/raw/X21a.behaviour.20261127T191448Z.json: valid
 PASS  validate.py on all 59 records
 
 == 7. Records too large to publish are truncated after they are validated
-    harnesses/absys/qualification/records/absys/X12/raw/X12a.cost.20261127T175944Z.json: 108018510 bytes, SHA-256 1819aad2fec6bfebb79fb119e01435384dd325fcea51d3b7d1187d3ba59a6fc7, truncated to 34530 bytes
+    harnesses/absys/qualification/records/absys/X12/raw/X12a.cost.20261127T191400Z.json: 108018512 bytes, SHA-256 e1d0fd99bce16d0178a82707dc0254349c7725b26dce63ab535d4267eea80448, truncated to 34532 bytes
 PASS  the 1 truncated record(s) still pass validate.py
-PASS  all records together are 1171747 bytes (under 5 MB)
+PASS  all records together are 1171741 bytes (under 5 MB)
 
 290 checks, 290 passed, 0 failed

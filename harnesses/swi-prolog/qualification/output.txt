@@ -5,157 +5,158 @@
 [4/6] Fetching init image [0s]
 [5/6] Unpacking init image [0s]
 [6/6] Starting container [0s]
-[6/6] Starting container [0s]
-SWI-Prolog harness qualification, 2026-11-27T19:08:37Z
+[6/6] Starting container [1s]
+[6/6] Starting container [1s]
+SWI-Prolog harness qualification, 2026-11-27T19:13:52Z
 SWI-Prolog version 11.0.1 for x86_64-linux
 == runs (made-up programs, made-up stages file harnesses/swi-prolog/qualification/stages-made-up.json)
-  run x01    plain       X01a         behaviour x01-flag.pl      exit 0  1.0s  X01a.behaviour.20261127T190837Z.json
-  run x01    plain       X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190838Z.json
-  run x01    plain       X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190839Z.json
-  run x01    tabling     X01a         behaviour x01-flag.pl      exit 0  0.9s  X01a.behaviour.20261127T190840Z.json
-  run x01    tabling     X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190841Z.json
-  run x01    tabling     X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190842Z.json
-  run x01    coroutines  X01a         behaviour x01-flag.pl      exit 0  0.9s  X01a.behaviour.20261127T190843Z.json
-  run x01    coroutines  X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190844Z.json
-  run x01    coroutines  X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190845Z.json
-  run x01    constraints X01a         behaviour x01-flag.pl      exit 0  0.9s  X01a.behaviour.20261127T190846Z.json
-  run x01    constraints X01a         cost      x01-flag.pl      exit 0  0.9s  X01a.cost.20261127T190847Z.json
-  run x01    constraints X01a         storage   x01-flag.pl      exit 0  0.9s  X01a.storage.20261127T190848Z.json
-  run x01    session     X01a         behaviour x01-flag.pl      exit 0  1.0s  X01a.behaviour.20261127T190849Z.json
-  run x01    session     X01a         cost      x01-flag.pl      exit 0  1.0s  X01a.cost.20261127T190850Z.json
-  run x01    session     X01a         storage   x01-flag.pl      exit 0  1.0s  X01a.storage.20261127T190851Z.json
-  run x02    plain       X02a         behaviour x02-commit.pl    exit 0  0.9s  X02a.behaviour.20261127T190852Z.json
-  run x02    plain       X02a         cost      x02-commit.pl    exit 0  1.0s  X02a.cost.20261127T190853Z.json
-  run x02    plain       X02a         storage   x02-commit.pl    exit 0  0.9s  X02a.storage.20261127T190854Z.json
-  run x03    plain       X03a.UV      behaviour x03-spawn.pl     exit 0  0.6s  X03a.UV.behaviour.20261127T190854Z.json
-  run x03    plain       X03a.UV      cost      x03-spawn.pl     exit 0  0.6s  X03a.UV.cost.20261127T190855Z.json
-  run x03    plain       X03a.UV      storage   x03-spawn.pl     exit 0  0.6s  X03a.UV.storage.20261127T190856Z.json
-  run x03    plain       X03a.VU      behaviour x03-spawn.pl     exit 0  0.6s  X03a.VU.behaviour.20261127T190856Z.json
-  run x03    plain       X03a.VU      cost      x03-spawn.pl     exit 0  0.6s  X03a.VU.cost.20261127T190857Z.json
-  run x03    plain       X03a.VU      storage   x03-spawn.pl     exit 0  0.6s  X03a.VU.storage.20261127T190857Z.json
-  run x04    plain       X04a.n10     behaviour x04-budget.pl    exit 0  0.9s  X04a.n10.behaviour.20261127T190858Z.json
-  run x04    plain       X04a.n10     cost      x04-budget.pl    exit 0  0.9s  X04a.n10.cost.20261127T190859Z.json
-  run x04    plain       X04a.n4997   behaviour x04-budget.pl    exit 0  0.9s  X04a.n4997.behaviour.20261127T190900Z.json
-  run x04    plain       X04a.n4997   cost      x04-budget.pl    exit 0  0.9s  X04a.n4997.cost.20261127T190901Z.json
-  run x04    plain       X04a.n4998   behaviour x04-budget.pl    exit 0  0.9s  X04a.n4998.behaviour.20261127T190902Z.json
-  run x04    plain       X04a.n4998   cost      x04-budget.pl    exit 0  0.9s  X04a.n4998.cost.20261127T190903Z.json
-  run x05    plain       X05a         behaviour x05-timeout.pl   exit 0  8.9s  X05a.behaviour.20261127T190904Z.json
-  run x06    plain       X06a         behaviour x06-error.pl     exit 0  0.9s  X06a.behaviour.20261127T190912Z.json
-  run x06    plain       X06a         cost      x06-error.pl     exit 0  0.9s  X06a.cost.20261127T190913Z.json
-  run x06    plain       X06a         storage   x06-error.pl     exit 0  0.9s  X06a.storage.20261127T190914Z.json
-  run x09    plain       X09a.n5.up   behaviour x09-count.pl     exit 0  0.8s  X09a.n5.up.behaviour.20261127T190915Z.json
-  run x09    plain       X09a.n5.up   cost      x09-count.pl     exit 0  0.8s  X09a.n5.up.cost.20261127T190916Z.json
-  run x09    plain       X09a.n5.up   storage   x09-count.pl     exit 0  0.8s  X09a.n5.up.storage.20261127T190917Z.json
-  run x09n   plain       X09a.n5.up   behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.up.behaviour.20261127T190918Z.json
-  run x09n   plain       X09a.n5.up   cost      x09-nocount.pl   exit 0  0.7s  X09a.n5.up.cost.20261127T190918Z.json
-  run x09n   plain       X09a.n5.up   storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.up.storage.20261127T190919Z.json
-  run x09    plain       X09a.n5.down behaviour x09-count.pl     exit 0  0.8s  X09a.n5.down.behaviour.20261127T190920Z.json
-  run x09    plain       X09a.n5.down cost      x09-count.pl     exit 0  0.8s  X09a.n5.down.cost.20261127T190921Z.json
-  run x09    plain       X09a.n5.down storage   x09-count.pl     exit 0  0.8s  X09a.n5.down.storage.20261127T190921Z.json
-  run x09n   plain       X09a.n5.down behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.down.behaviour.20261127T190922Z.json
-  run x09n   plain       X09a.n5.down cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.down.cost.20261127T190923Z.json
-  run x09n   plain       X09a.n5.down storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.down.storage.20261127T190924Z.json
-  run x10    plain       X10a.all     behaviour x10-modes.pl     exit 0  0.6s  X10a.all.behaviour.20261127T190924Z.json
-  run x10    plain       X10a.all     cost      x10-modes.pl     exit 0  0.6s  X10a.all.cost.20261127T190925Z.json
-  run x10    plain       X10a.all     storage   x10-modes.pl     exit 0  0.6s  X10a.all.storage.20261127T190926Z.json
-  run x10    plain       X10a.any     behaviour x10-modes.pl     exit 0  0.6s  X10a.any.behaviour.20261127T190926Z.json
-  run x10    plain       X10a.any     cost      x10-modes.pl     exit 0  0.6s  X10a.any.cost.20261127T190927Z.json
-  run x10    plain       X10a.any     storage   x10-modes.pl     exit 0  0.6s  X10a.any.storage.20261127T190927Z.json
-  run x11    plain       X11a         behaviour x11-replace.pl   exit 0  1.0s  X11a.behaviour.20261127T190928Z.json
-  run x11    plain       X11a         cost      x11-replace.pl   exit 0  0.9s  X11a.cost.20261127T190929Z.json
-  run x11    plain       X11a         storage   x11-replace.pl   exit 0  0.9s  X11a.storage.20261127T190930Z.json
-  run x12    plain       X12a         behaviour x12-fallback.pl  exit 0  0.8s  X12a.behaviour.20261127T190931Z.json
-  run x12    plain       X12a         cost      x12-fallback.pl  exit 0  0.8s  X12a.cost.20261127T190931Z.json
-  run x12    plain       X12a         storage   x12-fallback.pl  exit 0  0.8s  X12a.storage.20261127T190932Z.json
-  run x02    session     X02a         behaviour x02-commit.pl    exit 0  1.0s  X02a.behaviour.20261127T190933Z.json
-  run x02    session     X02a         cost      x02-commit.pl    exit 0  1.0s  X02a.cost.20261127T190934Z.json
-  run x02    session     X02a         storage   x02-commit.pl    exit 0  1.0s  X02a.storage.20261127T190935Z.json
-  run x03    session     X03a.UV      behaviour x03-spawn.pl     exit 0  0.6s  X03a.UV.behaviour.20261127T190936Z.json
-  run x03    session     X03a.UV      cost      x03-spawn.pl     exit 0  0.6s  X03a.UV.cost.20261127T190937Z.json
-  run x03    session     X03a.UV      storage   x03-spawn.pl     exit 0  0.6s  X03a.UV.storage.20261127T190937Z.json
-  run x03    session     X03a.VU      behaviour x03-spawn.pl     exit 0  0.6s  X03a.VU.behaviour.20261127T190938Z.json
-  run x03    session     X03a.VU      cost      x03-spawn.pl     exit 0  0.6s  X03a.VU.cost.20261127T190938Z.json
-  run x03    session     X03a.VU      storage   x03-spawn.pl     exit 0  0.6s  X03a.VU.storage.20261127T190939Z.json
-  run x04    session     X04a.n10     behaviour x04-budget.pl    exit 0  1.0s  X04a.n10.behaviour.20261127T190939Z.json
-  run x04    session     X04a.n10     cost      x04-budget.pl    exit 0  1.0s  X04a.n10.cost.20261127T190940Z.json
-  run x04    session     X04a.n4997   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4997.behaviour.20261127T190941Z.json
-  run x04    session     X04a.n4997   cost      x04-budget.pl    exit 0  1.0s  X04a.n4997.cost.20261127T190942Z.json
-  run x04    session     X04a.n4998   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4998.behaviour.20261127T190943Z.json
-  run x04    session     X04a.n4998   cost      x04-budget.pl    exit 0  1.0s  X04a.n4998.cost.20261127T190944Z.json
-  run x05    session     X05a         behaviour x05-timeout.pl   exit 0  8.9s  X05a.behaviour.20261127T190945Z.json
-  run x06    session     X06a         behaviour x06-error.pl     exit 0  1.2s  X06a.behaviour.20261127T190954Z.json
-  run x06    session     X06a         cost      x06-error.pl     exit 0  1.1s  X06a.cost.20261127T190955Z.json
-  run x06    session     X06a         storage   x06-error.pl     exit 0  1.1s  X06a.storage.20261127T190956Z.json
-  run x09    session     X09a.n5.up   behaviour x09-count.pl     exit 0  0.8s  X09a.n5.up.behaviour.20261127T190958Z.json
-  run x09    session     X09a.n5.up   cost      x09-count.pl     exit 0  0.8s  X09a.n5.up.cost.20261127T190958Z.json
-  run x09    session     X09a.n5.up   storage   x09-count.pl     exit 0  0.8s  X09a.n5.up.storage.20261127T190959Z.json
-  run x09n   session     X09a.n5.up   behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.up.behaviour.20261127T191000Z.json
-  run x09n   session     X09a.n5.up   cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.up.cost.20261127T191001Z.json
-  run x09n   session     X09a.n5.up   storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.up.storage.20261127T191001Z.json
-  run x09    session     X09a.n5.down behaviour x09-count.pl     exit 0  0.8s  X09a.n5.down.behaviour.20261127T191002Z.json
-  run x09    session     X09a.n5.down cost      x09-count.pl     exit 0  0.8s  X09a.n5.down.cost.20261127T191003Z.json
-  run x09    session     X09a.n5.down storage   x09-count.pl     exit 0  0.8s  X09a.n5.down.storage.20261127T191004Z.json
-  run x09n   session     X09a.n5.down behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.down.behaviour.20261127T191005Z.json
-  run x09n   session     X09a.n5.down cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.down.cost.20261127T191005Z.json
-  run x09n   session     X09a.n5.down storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.down.storage.20261127T191006Z.json
-  run x10    session     X10a.all     behaviour x10-modes.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191007Z.json
-  run x10    session     X10a.all     cost      x10-modes.pl     exit 0  0.6s  X10a.all.cost.20261127T191008Z.json
-  run x10    session     X10a.all     storage   x10-modes.pl     exit 0  0.6s  X10a.all.storage.20261127T191008Z.json
-  run x10    session     X10a.any     behaviour x10-modes.pl     exit 0  0.6s  X10a.any.behaviour.20261127T191009Z.json
-  run x10    session     X10a.any     cost      x10-modes.pl     exit 0  0.6s  X10a.any.cost.20261127T191009Z.json
-  run x10    session     X10a.any     storage   x10-modes.pl     exit 0  0.6s  X10a.any.storage.20261127T191010Z.json
-  run x11    session     X11a         behaviour x11-replace.pl   exit 0  1.0s  X11a.behaviour.20261127T191011Z.json
-  run x11    session     X11a         cost      x11-replace.pl   exit 0  1.0s  X11a.cost.20261127T191012Z.json
-  run x11    session     X11a         storage   x11-replace.pl   exit 0  1.0s  X11a.storage.20261127T191013Z.json
-  run x12    session     X12a         behaviour x12-fallback.pl  exit 0  0.8s  X12a.behaviour.20261127T191013Z.json
-  run x12    session     X12a         cost      x12-fallback.pl  exit 0  0.8s  X12a.cost.20261127T191014Z.json
-  run x12    session     X12a         storage   x12-fallback.pl  exit 0  0.8s  X12a.storage.20261127T191015Z.json
-  run x07    plain       X07a         behaviour x07-fixed.pl     exit 0  2.5s  X07a.behaviour.20261127T191016Z.json
-  run x08f   coroutines  X08a         behaviour x08-freeze.pl    exit 0  0.9s  X08a.behaviour.20261127T191018Z.json
-  run x08f   coroutines  X08a         cost      x08-freeze.pl    exit 0  0.9s  X08a.cost.20261127T191019Z.json
-  run x08f   coroutines  X08a         storage   x08-freeze.pl    exit 0  0.9s  X08a.storage.20261127T191020Z.json
-  run x08f   session     X08a         behaviour x08-freeze.pl    exit 0  1.0s  X08a.behaviour.20261127T191021Z.json
-  run x08f   session     X08a         cost      x08-freeze.pl    exit 0  1.0s  X08a.cost.20261127T191022Z.json
-  run x08f   session     X08a         storage   x08-freeze.pl    exit 0  1.0s  X08a.storage.20261127T191023Z.json
-  run x08c   constraints X08a         behaviour x08-clpfd.pl     exit 0  1.2s  X08a.behaviour.20261127T191024Z.json
-  run x08c   constraints X08a         cost      x08-clpfd.pl     exit 0  1.2s  X08a.cost.20261127T191025Z.json
-  run x08c   constraints X08a         storage   x08-clpfd.pl     exit 0  1.2s  X08a.storage.20261127T191026Z.json
-  run x08w   constraints X08a         behaviour x08-wait.pl      exit 0  1.2s  X08a.behaviour.20261127T191028Z.json
-  run x08w   constraints X08a         cost      x08-wait.pl      exit 0  1.2s  X08a.cost.20261127T191029Z.json
-  run x08w   constraints X08a         storage   x08-wait.pl      exit 0  1.2s  X08a.storage.20261127T191030Z.json
-  run x08u   constraints X08a         behaviour x08-undef.pl     exit 0  1.2s  X08a.behaviour.20261127T191031Z.json
-  run x08c   session     X08a         behaviour x08-clpfd.pl     exit 0  1.2s  X08a.behaviour.20261127T191032Z.json
-  run x08c   session     X08a         cost      x08-clpfd.pl     exit 0  1.3s  X08a.cost.20261127T191034Z.json
-  run x08c   session     X08a         storage   x08-clpfd.pl     exit 0  1.2s  X08a.storage.20261127T191035Z.json
-  run x08w   session     X08a         behaviour x08-wait.pl      exit 0  1.3s  X08a.behaviour.20261127T191036Z.json
-  run x08w   session     X08a         cost      x08-wait.pl      exit 0  1.2s  X08a.cost.20261127T191037Z.json
-  run x08w   session     X08a         storage   x08-wait.pl      exit 0  1.2s  X08a.storage.20261127T191039Z.json
-  run x08u   session     X08a         behaviour x08-undef.pl     exit 0  1.2s  X08a.behaviour.20261127T191040Z.json
-  run x10t   tabling     X10a.all     behaviour x10-table.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191041Z.json
-  run x10t   tabling     X10a.all     cost      x10-table.pl     exit 0  0.6s  X10a.all.cost.20261127T191042Z.json
-  run x10t   tabling     X10a.all     storage   x10-table.pl     exit 0  0.6s  X10a.all.storage.20261127T191042Z.json
-  run xerr   plain       X01a         behaviour xerr-syntax.pl   exit 0  0.9s  X01a.behaviour.20261127T191043Z.json
-  run xlate  plain       X01a         behaviour xlate.pl         exit 0  1.0s  X01a.behaviour.20261127T191044Z.json
-  run xlate  session     X01a         behaviour xlate.pl         exit 0  1.0s  X01a.behaviour.20261127T191045Z.json
-  run xthr   session     X06a         behaviour xerr-throw.pl    exit 0  1.0s  X06a.behaviour.20261127T191046Z.json
-  run pgen   plain       X10a.all     behaviour probe-gen.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191047Z.json
-  run pgen   plain       X10a.all     cost      probe-gen.pl     exit 0  0.6s  X10a.all.cost.20261127T191047Z.json
-  run pgen   plain       X10a.all     storage   probe-gen.pl     exit 0  0.6s  X10a.all.storage.20261127T191048Z.json
-  run pwork  plain       X10a.all     behaviour probe-work.pl    exit 0  0.6s  X10a.all.behaviour.20261127T191048Z.json
-  run pwork  plain       X10a.all     cost      probe-work.pl    exit 0  0.6s  X10a.all.cost.20261127T191049Z.json
-  run pwork  plain       X10a.all     storage   probe-work.pl    exit 0  0.6s  X10a.all.storage.20261127T191050Z.json
-  run pw2    plain       X10a.all     behaviour probe-w2.pl      exit 0  0.6s  X10a.all.behaviour.20261127T191050Z.json
-  run pw2    plain       X10a.all     cost      probe-w2.pl      exit 0  0.6s  X10a.all.cost.20261127T191051Z.json
-  run pw2    plain       X10a.all     storage   probe-w2.pl      exit 0  0.6s  X10a.all.storage.20261127T191051Z.json
-  run pfrz   coroutines  X10a.all     behaviour probe-freeze.pl  exit 0  0.6s  X10a.all.behaviour.20261127T191052Z.json
-  run pfrz   coroutines  X10a.all     cost      probe-freeze.pl  exit 0  0.6s  X10a.all.cost.20261127T191053Z.json
-  run pfrz   coroutines  X10a.all     storage   probe-freeze.pl  exit 0  0.6s  X10a.all.storage.20261127T191053Z.json
-  run pclp   constraints X10a.all     behaviour probe-clpfd.pl   exit 0  0.7s  X10a.all.behaviour.20261127T191054Z.json
-  run pclp   constraints X10a.all     cost      probe-clpfd.pl   exit 0  0.7s  X10a.all.cost.20261127T191055Z.json
-  run pclp   constraints X10a.all     storage   probe-clpfd.pl   exit 0  0.7s  X10a.all.storage.20261127T191055Z.json
-  run ptab   tabling     X10a.all     behaviour probe-table.pl   exit 0  0.6s  X10a.all.behaviour.20261127T191056Z.json
-  run ptab   tabling     X10a.all     cost      probe-table.pl   exit 0  0.6s  X10a.all.cost.20261127T191057Z.json
-  run ptab   tabling     X10a.all     storage   probe-table.pl   exit 0  0.6s  X10a.all.storage.20261127T191057Z.json
+  run x01    plain       X01a         behaviour x01-flag.pl      exit 0  1.1s  X01a.behaviour.20261127T191353Z.json
+  run x01    plain       X01a         cost      x01-flag.pl      exit 0  1.0s  X01a.cost.20261127T191354Z.json
+  run x01    plain       X01a         storage   x01-flag.pl      exit 0  1.0s  X01a.storage.20261127T191355Z.json
+  run x01    tabling     X01a         behaviour x01-flag.pl      exit 0  1.0s  X01a.behaviour.20261127T191356Z.json
+  run x01    tabling     X01a         cost      x01-flag.pl      exit 0  1.0s  X01a.cost.20261127T191357Z.json
+  run x01    tabling     X01a         storage   x01-flag.pl      exit 0  1.0s  X01a.storage.20261127T191358Z.json
+  run x01    coroutines  X01a         behaviour x01-flag.pl      exit 0  1.0s  X01a.behaviour.20261127T191359Z.json
+  run x01    coroutines  X01a         cost      x01-flag.pl      exit 0  1.0s  X01a.cost.20261127T191400Z.json
+  run x01    coroutines  X01a         storage   x01-flag.pl      exit 0  1.0s  X01a.storage.20261127T191401Z.json
+  run x01    constraints X01a         behaviour x01-flag.pl      exit 0  1.0s  X01a.behaviour.20261127T191402Z.json
+  run x01    constraints X01a         cost      x01-flag.pl      exit 0  1.0s  X01a.cost.20261127T191403Z.json
+  run x01    constraints X01a         storage   x01-flag.pl      exit 0  1.0s  X01a.storage.20261127T191404Z.json
+  run x01    session     X01a         behaviour x01-flag.pl      exit 0  1.1s  X01a.behaviour.20261127T191405Z.json
+  run x01    session     X01a         cost      x01-flag.pl      exit 0  1.1s  X01a.cost.20261127T191406Z.json
+  run x01    session     X01a         storage   x01-flag.pl      exit 0  1.1s  X01a.storage.20261127T191407Z.json
+  run x02    plain       X02a         behaviour x02-commit.pl    exit 0  1.0s  X02a.behaviour.20261127T191408Z.json
+  run x02    plain       X02a         cost      x02-commit.pl    exit 0  1.0s  X02a.cost.20261127T191409Z.json
+  run x02    plain       X02a         storage   x02-commit.pl    exit 0  1.1s  X02a.storage.20261127T191410Z.json
+  run x03    plain       X03a.UV      behaviour x03-spawn.pl     exit 0  0.6s  X03a.UV.behaviour.20261127T191411Z.json
+  run x03    plain       X03a.UV      cost      x03-spawn.pl     exit 0  0.6s  X03a.UV.cost.20261127T191412Z.json
+  run x03    plain       X03a.UV      storage   x03-spawn.pl     exit 0  0.6s  X03a.UV.storage.20261127T191413Z.json
+  run x03    plain       X03a.VU      behaviour x03-spawn.pl     exit 0  0.6s  X03a.VU.behaviour.20261127T191413Z.json
+  run x03    plain       X03a.VU      cost      x03-spawn.pl     exit 0  0.6s  X03a.VU.cost.20261127T191414Z.json
+  run x03    plain       X03a.VU      storage   x03-spawn.pl     exit 0  0.6s  X03a.VU.storage.20261127T191415Z.json
+  run x04    plain       X04a.n10     behaviour x04-budget.pl    exit 0  1.0s  X04a.n10.behaviour.20261127T191415Z.json
+  run x04    plain       X04a.n10     cost      x04-budget.pl    exit 0  1.0s  X04a.n10.cost.20261127T191416Z.json
+  run x04    plain       X04a.n4997   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4997.behaviour.20261127T191417Z.json
+  run x04    plain       X04a.n4997   cost      x04-budget.pl    exit 0  1.0s  X04a.n4997.cost.20261127T191418Z.json
+  run x04    plain       X04a.n4998   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4998.behaviour.20261127T191419Z.json
+  run x04    plain       X04a.n4998   cost      x04-budget.pl    exit 0  1.0s  X04a.n4998.cost.20261127T191420Z.json
+  run x05    plain       X05a         behaviour x05-timeout.pl   exit 0  9.1s  X05a.behaviour.20261127T191421Z.json
+  run x06    plain       X06a         behaviour x06-error.pl     exit 0  1.0s  X06a.behaviour.20261127T191430Z.json
+  run x06    plain       X06a         cost      x06-error.pl     exit 0  1.0s  X06a.cost.20261127T191431Z.json
+  run x06    plain       X06a         storage   x06-error.pl     exit 0  1.0s  X06a.storage.20261127T191432Z.json
+  run x09    plain       X09a.n5.up   behaviour x09-count.pl     exit 0  0.8s  X09a.n5.up.behaviour.20261127T191433Z.json
+  run x09    plain       X09a.n5.up   cost      x09-count.pl     exit 0  0.8s  X09a.n5.up.cost.20261127T191434Z.json
+  run x09    plain       X09a.n5.up   storage   x09-count.pl     exit 0  0.8s  X09a.n5.up.storage.20261127T191435Z.json
+  run x09n   plain       X09a.n5.up   behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.up.behaviour.20261127T191436Z.json
+  run x09n   plain       X09a.n5.up   cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.up.cost.20261127T191437Z.json
+  run x09n   plain       X09a.n5.up   storage   x09-nocount.pl   exit 0  0.9s  X09a.n5.up.storage.20261127T191438Z.json
+  run x09    plain       X09a.n5.down behaviour x09-count.pl     exit 0  0.8s  X09a.n5.down.behaviour.20261127T191439Z.json
+  run x09    plain       X09a.n5.down cost      x09-count.pl     exit 0  0.8s  X09a.n5.down.cost.20261127T191439Z.json
+  run x09    plain       X09a.n5.down storage   x09-count.pl     exit 0  0.8s  X09a.n5.down.storage.20261127T191440Z.json
+  run x09n   plain       X09a.n5.down behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.down.behaviour.20261127T191441Z.json
+  run x09n   plain       X09a.n5.down cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.down.cost.20261127T191442Z.json
+  run x09n   plain       X09a.n5.down storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.down.storage.20261127T191443Z.json
+  run x10    plain       X10a.all     behaviour x10-modes.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191444Z.json
+  run x10    plain       X10a.all     cost      x10-modes.pl     exit 0  0.6s  X10a.all.cost.20261127T191444Z.json
+  run x10    plain       X10a.all     storage   x10-modes.pl     exit 0  0.6s  X10a.all.storage.20261127T191445Z.json
+  run x10    plain       X10a.any     behaviour x10-modes.pl     exit 0  0.6s  X10a.any.behaviour.20261127T191445Z.json
+  run x10    plain       X10a.any     cost      x10-modes.pl     exit 0  0.6s  X10a.any.cost.20261127T191446Z.json
+  run x10    plain       X10a.any     storage   x10-modes.pl     exit 0  0.6s  X10a.any.storage.20261127T191447Z.json
+  run x11    plain       X11a         behaviour x11-replace.pl   exit 0  1.0s  X11a.behaviour.20261127T191447Z.json
+  run x11    plain       X11a         cost      x11-replace.pl   exit 0  1.0s  X11a.cost.20261127T191448Z.json
+  run x11    plain       X11a         storage   x11-replace.pl   exit 0  1.0s  X11a.storage.20261127T191449Z.json
+  run x12    plain       X12a         behaviour x12-fallback.pl  exit 0  0.8s  X12a.behaviour.20261127T191450Z.json
+  run x12    plain       X12a         cost      x12-fallback.pl  exit 0  0.8s  X12a.cost.20261127T191451Z.json
+  run x12    plain       X12a         storage   x12-fallback.pl  exit 0  0.8s  X12a.storage.20261127T191452Z.json
+  run x02    session     X02a         behaviour x02-commit.pl    exit 0  1.1s  X02a.behaviour.20261127T191453Z.json
+  run x02    session     X02a         cost      x02-commit.pl    exit 0  1.0s  X02a.cost.20261127T191454Z.json
+  run x02    session     X02a         storage   x02-commit.pl    exit 0  1.0s  X02a.storage.20261127T191455Z.json
+  run x03    session     X03a.UV      behaviour x03-spawn.pl     exit 0  0.6s  X03a.UV.behaviour.20261127T191456Z.json
+  run x03    session     X03a.UV      cost      x03-spawn.pl     exit 0  0.6s  X03a.UV.cost.20261127T191457Z.json
+  run x03    session     X03a.UV      storage   x03-spawn.pl     exit 0  0.6s  X03a.UV.storage.20261127T191457Z.json
+  run x03    session     X03a.VU      behaviour x03-spawn.pl     exit 0  0.6s  X03a.VU.behaviour.20261127T191458Z.json
+  run x03    session     X03a.VU      cost      x03-spawn.pl     exit 0  0.6s  X03a.VU.cost.20261127T191459Z.json
+  run x03    session     X03a.VU      storage   x03-spawn.pl     exit 0  0.6s  X03a.VU.storage.20261127T191459Z.json
+  run x04    session     X04a.n10     behaviour x04-budget.pl    exit 0  1.1s  X04a.n10.behaviour.20261127T191500Z.json
+  run x04    session     X04a.n10     cost      x04-budget.pl    exit 0  1.0s  X04a.n10.cost.20261127T191501Z.json
+  run x04    session     X04a.n4997   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4997.behaviour.20261127T191502Z.json
+  run x04    session     X04a.n4997   cost      x04-budget.pl    exit 0  1.1s  X04a.n4997.cost.20261127T191503Z.json
+  run x04    session     X04a.n4998   behaviour x04-budget.pl    exit 0  1.0s  X04a.n4998.behaviour.20261127T191504Z.json
+  run x04    session     X04a.n4998   cost      x04-budget.pl    exit 0  1.1s  X04a.n4998.cost.20261127T191505Z.json
+  run x05    session     X05a         behaviour x05-timeout.pl   exit 0  9.0s  X05a.behaviour.20261127T191506Z.json
+  run x06    session     X06a         behaviour x06-error.pl     exit 0  1.2s  X06a.behaviour.20261127T191515Z.json
+  run x06    session     X06a         cost      x06-error.pl     exit 0  1.2s  X06a.cost.20261127T191516Z.json
+  run x06    session     X06a         storage   x06-error.pl     exit 0  1.1s  X06a.storage.20261127T191517Z.json
+  run x09    session     X09a.n5.up   behaviour x09-count.pl     exit 0  0.8s  X09a.n5.up.behaviour.20261127T191518Z.json
+  run x09    session     X09a.n5.up   cost      x09-count.pl     exit 0  0.9s  X09a.n5.up.cost.20261127T191519Z.json
+  run x09    session     X09a.n5.up   storage   x09-count.pl     exit 0  0.8s  X09a.n5.up.storage.20261127T191520Z.json
+  run x09n   session     X09a.n5.up   behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.up.behaviour.20261127T191521Z.json
+  run x09n   session     X09a.n5.up   cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.up.cost.20261127T191522Z.json
+  run x09n   session     X09a.n5.up   storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.up.storage.20261127T191523Z.json
+  run x09    session     X09a.n5.down behaviour x09-count.pl     exit 0  0.8s  X09a.n5.down.behaviour.20261127T191523Z.json
+  run x09    session     X09a.n5.down cost      x09-count.pl     exit 0  0.8s  X09a.n5.down.cost.20261127T191524Z.json
+  run x09    session     X09a.n5.down storage   x09-count.pl     exit 0  0.9s  X09a.n5.down.storage.20261127T191525Z.json
+  run x09n   session     X09a.n5.down behaviour x09-nocount.pl   exit 0  0.8s  X09a.n5.down.behaviour.20261127T191526Z.json
+  run x09n   session     X09a.n5.down cost      x09-nocount.pl   exit 0  0.8s  X09a.n5.down.cost.20261127T191527Z.json
+  run x09n   session     X09a.n5.down storage   x09-nocount.pl   exit 0  0.8s  X09a.n5.down.storage.20261127T191528Z.json
+  run x10    session     X10a.all     behaviour x10-modes.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191528Z.json
+  run x10    session     X10a.all     cost      x10-modes.pl     exit 0  0.6s  X10a.all.cost.20261127T191529Z.json
+  run x10    session     X10a.all     storage   x10-modes.pl     exit 0  0.6s  X10a.all.storage.20261127T191530Z.json
+  run x10    session     X10a.any     behaviour x10-modes.pl     exit 0  0.6s  X10a.any.behaviour.20261127T191530Z.json
+  run x10    session     X10a.any     cost      x10-modes.pl     exit 0  0.6s  X10a.any.cost.20261127T191531Z.json
+  run x10    session     X10a.any     storage   x10-modes.pl     exit 0  0.6s  X10a.any.storage.20261127T191531Z.json
+  run x11    session     X11a         behaviour x11-replace.pl   exit 0  1.0s  X11a.behaviour.20261127T191532Z.json
+  run x11    session     X11a         cost      x11-replace.pl   exit 0  1.0s  X11a.cost.20261127T191533Z.json
+  run x11    session     X11a         storage   x11-replace.pl   exit 0  1.0s  X11a.storage.20261127T191534Z.json
+  run x12    session     X12a         behaviour x12-fallback.pl  exit 0  0.8s  X12a.behaviour.20261127T191535Z.json
+  run x12    session     X12a         cost      x12-fallback.pl  exit 0  0.8s  X12a.cost.20261127T191536Z.json
+  run x12    session     X12a         storage   x12-fallback.pl  exit 0  0.8s  X12a.storage.20261127T191537Z.json
+  run x07    plain       X07a         behaviour x07-fixed.pl     exit 0  2.5s  X07a.behaviour.20261127T191538Z.json
+  run x08f   coroutines  X08a         behaviour x08-freeze.pl    exit 0  1.0s  X08a.behaviour.20261127T191540Z.json
+  run x08f   coroutines  X08a         cost      x08-freeze.pl    exit 0  1.0s  X08a.cost.20261127T191541Z.json
+  run x08f   coroutines  X08a         storage   x08-freeze.pl    exit 0  1.0s  X08a.storage.20261127T191542Z.json
+  run x08f   session     X08a         behaviour x08-freeze.pl    exit 0  1.0s  X08a.behaviour.20261127T191543Z.json
+  run x08f   session     X08a         cost      x08-freeze.pl    exit 0  1.0s  X08a.cost.20261127T191544Z.json
+  run x08f   session     X08a         storage   x08-freeze.pl    exit 0  1.0s  X08a.storage.20261127T191545Z.json
+  run x08c   constraints X08a         behaviour x08-clpfd.pl     exit 0  1.3s  X08a.behaviour.20261127T191546Z.json
+  run x08c   constraints X08a         cost      x08-clpfd.pl     exit 0  1.2s  X08a.cost.20261127T191547Z.json
+  run x08c   constraints X08a         storage   x08-clpfd.pl     exit 0  1.3s  X08a.storage.20261127T191548Z.json
+  run x08w   constraints X08a         behaviour x08-wait.pl      exit 0  1.3s  X08a.behaviour.20261127T191550Z.json
+  run x08w   constraints X08a         cost      x08-wait.pl      exit 0  1.3s  X08a.cost.20261127T191551Z.json
+  run x08w   constraints X08a         storage   x08-wait.pl      exit 0  1.3s  X08a.storage.20261127T191552Z.json
+  run x08u   constraints X08a         behaviour x08-undef.pl     exit 0  1.3s  X08a.behaviour.20261127T191554Z.json
+  run x08c   session     X08a         behaviour x08-clpfd.pl     exit 0  1.3s  X08a.behaviour.20261127T191555Z.json
+  run x08c   session     X08a         cost      x08-clpfd.pl     exit 0  1.3s  X08a.cost.20261127T191556Z.json
+  run x08c   session     X08a         storage   x08-clpfd.pl     exit 0  1.3s  X08a.storage.20261127T191557Z.json
+  run x08w   session     X08a         behaviour x08-wait.pl      exit 0  1.3s  X08a.behaviour.20261127T191559Z.json
+  run x08w   session     X08a         cost      x08-wait.pl      exit 0  1.4s  X08a.cost.20261127T191600Z.json
+  run x08w   session     X08a         storage   x08-wait.pl      exit 0  1.4s  X08a.storage.20261127T191601Z.json
+  run x08u   session     X08a         behaviour x08-undef.pl     exit 0  1.4s  X08a.behaviour.20261127T191603Z.json
+  run x10t   tabling     X10a.all     behaviour x10-table.pl     exit 0  0.6s  X10a.all.behaviour.20261127T191604Z.json
+  run x10t   tabling     X10a.all     cost      x10-table.pl     exit 0  0.7s  X10a.all.cost.20261127T191605Z.json
+  run x10t   tabling     X10a.all     storage   x10-table.pl     exit 0  0.7s  X10a.all.storage.20261127T191606Z.json
+  run xerr   plain       X01a         behaviour xerr-syntax.pl   exit 0  1.0s  X01a.behaviour.20261127T191606Z.json
+  run xlate  plain       X01a         behaviour xlate.pl         exit 0  1.0s  X01a.behaviour.20261127T191607Z.json
+  run xlate  session     X01a         behaviour xlate.pl         exit 0  1.1s  X01a.behaviour.20261127T191608Z.json
+  run xthr   session     X06a         behaviour xerr-throw.pl    exit 0  1.0s  X06a.behaviour.20261127T191609Z.json
+  run pgen   plain       X10a.all     behaviour probe-gen.pl     exit 0  0.7s  X10a.all.behaviour.20261127T191610Z.json
+  run pgen   plain       X10a.all     cost      probe-gen.pl     exit 0  0.6s  X10a.all.cost.20261127T191611Z.json
+  run pgen   plain       X10a.all     storage   probe-gen.pl     exit 0  0.6s  X10a.all.storage.20261127T191612Z.json
+  run pwork  plain       X10a.all     behaviour probe-work.pl    exit 0  0.6s  X10a.all.behaviour.20261127T191612Z.json
+  run pwork  plain       X10a.all     cost      probe-work.pl    exit 0  0.6s  X10a.all.cost.20261127T191613Z.json
+  run pwork  plain       X10a.all     storage   probe-work.pl    exit 0  0.6s  X10a.all.storage.20261127T191614Z.json
+  run pw2    plain       X10a.all     behaviour probe-w2.pl      exit 0  0.6s  X10a.all.behaviour.20261127T191614Z.json
+  run pw2    plain       X10a.all     cost      probe-w2.pl      exit 0  0.6s  X10a.all.cost.20261127T191615Z.json
+  run pw2    plain       X10a.all     storage   probe-w2.pl      exit 0  0.6s  X10a.all.storage.20261127T191615Z.json
+  run pfrz   coroutines  X10a.all     behaviour probe-freeze.pl  exit 0  0.6s  X10a.all.behaviour.20261127T191616Z.json
+  run pfrz   coroutines  X10a.all     cost      probe-freeze.pl  exit 0  0.6s  X10a.all.cost.20261127T191616Z.json
+  run pfrz   coroutines  X10a.all     storage   probe-freeze.pl  exit 0  0.6s  X10a.all.storage.20261127T191617Z.json
+  run pclp   constraints X10a.all     behaviour probe-clpfd.pl   exit 0  0.7s  X10a.all.behaviour.20261127T191618Z.json
+  run pclp   constraints X10a.all     cost      probe-clpfd.pl   exit 0  0.7s  X10a.all.cost.20261127T191618Z.json
+  run pclp   constraints X10a.all     storage   probe-clpfd.pl   exit 0  0.7s  X10a.all.storage.20261127T191619Z.json
+  run ptab   tabling     X10a.all     behaviour probe-table.pl   exit 0  0.6s  X10a.all.behaviour.20261127T191620Z.json
+  run ptab   tabling     X10a.all     cost      probe-table.pl   exit 0  0.6s  X10a.all.cost.20261127T191620Z.json
+  run ptab   tabling     X10a.all     storage   probe-table.pl   exit 0  0.6s  X10a.all.storage.20261127T191621Z.json
 == (a) the system run directly against the answers, steps and store the harness collects
   PASS  x01 plain stage 1: 3 answer(s) verbatim as the toplevel prints them
   PASS  x01 plain stage 1: steps to the first answer 4 = statistics/2 difference - 1 (4)
@@ -342,7 +343,7 @@ SWI-Prolog version 11.0.1 for x86_64-linux
   PASS  plain after budget: stage 2 reposed (reposed, after-budget), restart cost 5000 measured in-run
   PASS  plain budget in program code without harness entries: stopped within slack (stage steps 5009 <= 5000 + 8 + 1)
   PASS  plain safety limit: stage 2 stopped at 1 s (rerun), rerun at 3 s (safety-rerun, final-timeout), both timeout
-  PASS  plain after a final timeout: stage 3 reposed (after-timeout), its replay stopped by the limit; restart cost 57942810 read when it stopped
+  PASS  plain after a final timeout: stage 3 reposed (after-timeout), its replay stopped by the limit; restart cost 54094230 read when it stopped
   PASS  plain error: stage 2 error, verbatim "ERROR: [Thread main] '$cp_query'/1: Unknown procedure: undefined_relation/1\n% te"
   PASS  plain after error: stage 3 reposed (after-error)
   PASS  session budget 5000: a stage of exactly 5000 steps finishes ([['finished']], steps 5000)
@@ -350,10 +351,10 @@ SWI-Prolog version 11.0.1 for x86_64-linux
   PASS  session: stage 2 is posed into the same computation (incremental, configuration)
   PASS  session budget in program code without harness entries: stopped within slack (stage steps 5009 <= 5000 + 8 + 1)
   PASS  session safety limit: stage 2 stopped at 1 s (rerun), rerun at 3 s (safety-rerun, final-timeout), both timeout
-  PASS  session after a final timeout: stage 3 reposed (after-timeout), its replay stopped by the limit; restart cost 58544282 read when it stopped
+  PASS  session after a final timeout: stage 3 reposed (after-timeout), its replay stopped by the limit; restart cost 54747626 read when it stopped
   PASS  session: the undefined procedure of stage 2 waits (session's S code) instead of an error ([['suspended']])
   PASS  fixed safety limit: one attempt, fixed-limit-timeout
-  PASS  a syntax error: the system's message on stderr 'ERROR: [Thread main] /tmp/cp-swi-run-ucu7p0pb/program/xerr-syntax.pl:3:30: Syntax error: U', and the stage is error
+  PASS  a syntax error: the system's message on stderr 'ERROR: [Thread main] /tmp/cp-swi-run-y_v5j0ag/program/xerr-syntax.pl:3:30: Syntax error: U', and the stage is error
   PASS  session error (stage 2 throws): [['error']], verbatim 'ERROR: [Thread main] Unknown message: made_up_error(1)\n% ter'; stage 3 reposed after-error
   PASS  h_wait/0 outside session: error
   PASS  session: stage 1 waits ([['suspended']]), stage 2 posted into the waiting computation answers ['M = 5.\n\n']
@@ -376,9 +377,9 @@ SWI-Prolog version 11.0.1 for x86_64-linux
   PASS  session X09a.n5.down cost: steps with counters [8, 22] = without [8, 22]; problem operations {'down/2': 5, 'down/1': 1}
   PASS  session X09a.n5.down storage: steps with counters [8, 22] = without [8, 22]; problem operations {'down/2': 5, 'down/1': 1}
 == effects log (made-up X02)
-  PASS  plain: 7 classification entries appended after 0 earlier ones; replayed commitments [[{'stage': 2, 'value_verbatim': 'P = 1 ', 'selected_in_run': 'X02a.behaviour.20261127T190852Z'}]]
+  PASS  plain: 7 classification entries appended after 7 earlier ones; replayed commitments [[{'stage': 2, 'value_verbatim': 'P = 1 ', 'selected_in_run': 'X02a.behaviour.20261127T191408Z'}]]
   PASS  plain cost run: its 7 entries go to the observation log only
-  PASS  session: 5 classification entries appended after 0 earlier ones; replayed commitments []
+  PASS  session: 5 classification entries appended after 5 earlier ones; replayed commitments []
   PASS  session cost run: its 8 entries go to the observation log only
 == (d) every record of this run passes validate.py
   PASS  147 records written, 0 kept as INVALID by the harness, validate.py: 0 invalid
@@ -420,4 +421,4 @@ SWI-Prolog version 11.0.1 for x86_64-linux
   PASS  run plain X01 nosuch behaviour: exit 2, no record
   PASS  run plain X01 X01a nosuch: exit 2, no record
   PASS  run plain X02 X01a behaviour: exit 2, no record
-== 229 checks, 229 passed, 0 failed (156 s)
+== 229 checks, 229 passed, 0 failed (165 s)

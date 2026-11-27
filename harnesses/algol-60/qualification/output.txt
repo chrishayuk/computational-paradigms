@@ -1,5 +1,13 @@
-ALGOL 60 harness qualification, 20261127T180416Z, records in harnesses/algol-60/qualification/records/20261127T180416Z
-harness commit 81b0151339ca739e381c229375950eb2e9ee152c
+[0/6] [0s]
+[1/6] Fetching image [0s]
+[2/6] Unpacking image [0s]
+[3/6] Fetching kernel [0s]
+[4/6] Fetching init image [0s]
+[5/6] Unpacking init image [0s]
+[6/6] Starting container [0s]
+[6/6] Starting container [1s]
+ALGOL 60 harness qualification, 20261127T191353Z, records in harnesses/algol-60/qualification/records/20261127T191353Z
+harness commit f646f19327e1213e07da259d0ac12f6e5f3c4a35
 
 == A. The system run directly and the harness agree
 PASS  A1 report x01-incremental.alg: each stage's output as the harness recorded it equals the system's own output, run directly on the same input
