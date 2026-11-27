@@ -1,19 +1,21 @@
-# Brief: implementation author for SYSTEM, batch 1A (P01–P03)
+# Brief: implementation author for SYSTEM, BATCH (PROBLEMRANGE)
 
 You are the implementation author (`PROTOCOL.md`, "Roles", phase 5) for
-SYSTEM in batch 1A of wave 1: problems P01, P02 and P03. You are working in
-CLONE, your own clone of the public repository at tag `spec-1.0.1`. You
+SYSTEM in BATCH of wave 1: problems PROBLEMLIST. You are working in
+CLONE, your own clone of the public repository at BASE. You
 have no other context: you have not seen any earlier work on this study.
 
 ## What you may read
 
 - `README.md`, `SPECIFICATION.md`, `METRICS.md`, `PROTOCOL.md`,
   `AMENDMENTS.md`;
-- `problems/README.md`, `problems/01-unknown-equality.md`,
-  `problems/02-late-information.md`, `problems/03-reversible-relations.md`;
+- `problems/README.md` and PROBLEMFILES;
 - `systems/SYSTEMDIR/` in full;
 - `harnesses/README.md`, `harnesses/stages.json`, and `harnesses/SYSTEMDIR/`
   in full (its README is the contract your programs are written against);
+- your own system's programs from earlier batches, `programs/SYSTEMDIR/`, and
+  its README, which you extend with a section for this batch. They were
+  written before any program was run, and hold no outcome;
 - inside the image IMAGE: the system and its own documentation and
   examples (SOURCES).
 
@@ -21,7 +23,7 @@ have no other context: you have not seen any earlier work on this study.
 
 Anything else, in particular: `calibration/` (it holds other authors'
 programs and outputs for some of these problems), `reviews/`, `variants/`,
-`results/`, other systems' folders and harnesses, any other problem file,
+`results/`, `transcripts/`, `programs/AUDIT-*.md`, other systems' folders and harnesses, any other problem file,
 SOURCESFORBIDDEN anything under `~/.claude`, `~/cp-private`,
 `~/chris-source`, or `~/cp-roles` outside CLONE, and the web. If you come
 across any of these by accident, stop reading and say so in your report.
@@ -42,7 +44,7 @@ execution other than `check` is reported as a breach of protocol.
 ## What to write
 
 For every configuration of SYSTEM in `systems/SYSTEMDIR/README.md`
-(CONFIGS), and every sub-problem of P01, P02 and P03 in `stages.json`:
+(CONFIGS), and every sub-problem of PROBLEMLIST in `stages.json`:
 
 1. **The primary program**, under `programs/SYSTEMDIR/<configuration>/`,
    named and laid out as `harnesses/SYSTEMDIR/README.md` requires, written
