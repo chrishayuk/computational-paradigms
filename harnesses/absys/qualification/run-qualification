@@ -26,7 +26,8 @@ os.chdir(REPO)
 Q = "harnesses/absys/qualification"
 STAGES = Q + "/stages-qualification.json"
 PROGS = Q + "/programs"
-RECS = Q + "/records"
+TAG = os.environ.get("QUAL_TAG", "")      # a second image's run keeps its own records and output
+RECS = Q + "/records" + ("-" + TAG if TAG else "")
 RUN = "harnesses/absys/run"
 CHECK = "harnesses/absys/check"
 BIN, BASE = "/usr/local/bin/absys-measure", "/usr/local/bin/absys"
@@ -50,6 +51,7 @@ def run_harness(config, problem, inst, mode, prog, env_extra=None):
     env = dict(os.environ, ABSYS_HARNESS_STAGES=STAGES, ABSYS_HARNESS_PURPOSE="qualification")
     env.update(env_extra or {})
     outdir = "%s/%s/%s/raw" % (RECS, config, problem)
+    env.pop("HARNESS_EXACT_PEAK", None) if "HARNESS_EXACT_PEAK" not in (env_extra or {}) else None
     r = subprocess.run([RUN, config, problem, inst, mode, "%s/%s" % (PROGS, prog), outdir],
                        capture_output=True, text=True, env=env)
     path = None
@@ -373,6 +375,37 @@ def main():
         verdict("check absys %s: reports the error made on purpose" % prog, r.returncode == 1, " | ".join(l for l in r.stdout.splitlines() if l.startswith("error")))
     say()
 
+    # ------------------------------------------- the store's peak (--peak-every)
+    say("== 5b. How the store's peak is taken (--peak-every, absys-measure 8a0eefd)")
+    probe = subprocess.run([BIN, PROGS + "/x10-pair.abs", "--measure", "--peak-every", "0"], capture_output=True)
+    new = probe.returncode == 0
+    say("    absys-measure %s --peak-every: %s" % ([l.split()[1] for l in open("/opt/src/COMMITS") if l.startswith("absys-measure ")][0][:7],
+                                                 "accepted" if new else "rejected (the old build): every peak exact, as before"))
+    for cfg, inst in (("absys", "X10a"), ("absys", "X11a"), ("absys-depth-first", "X11a")):
+        cost, sto = load(recs[(cfg, inst, "cost")]), load(recs[(cfg, inst, "storage")])
+        cp = [q["peak"] for st in cost["stages"] for a in st["attempts"] for q in a["store"]["quantities"].values()]
+        sp = [q["peak"] for st in sto["stages"] for a in st["attempts"] for q in a["store"]["quantities"].values()]
+        if new:
+            verdict("%s %s cost: --peak-every 0, every store peak null" % (cfg, inst), cp and all(p is None for p in cp) and "--peak-every 0" in " ".join(final(cost, 1)["notes"]))
+            verdict("%s %s storage: --peak-every 1000, every store peak sampled, with its interval" % (cfg, inst),
+                    sp and all(p["kind"] == "sampled" and p["sample_interval"].startswith("every 1000 steps") for p in sp))
+        else:
+            verdict("%s %s cost and storage: the old build, every store peak exact, no --peak-every passed" % (cfg, inst),
+                    cp + sp and all(p["kind"] == "exact" for p in cp + sp) and not any("--peak-every" in n for st in sto["stages"] for a in st["attempts"] for n in a["notes"] if n.startswith("measured run")))
+    rc, path, out = run_harness("absys", "X11", "X11a", "storage", "x11-colour.abs", {"HARNESS_EXACT_PEAK": "1", "HARNESS_RUN_LABEL": "qualification label: exact peak"})
+    r = load(path)
+    exact = [q["peak"] for st in r["stages"] for a in st["attempts"] for q in a["store"]["quantities"].values()]
+    verdict("HARNESS_EXACT_PEAK=1 storage run: every peak exact, and the label is in the notes verbatim",
+            rc == 0 and exact and all(p["kind"] == "exact" for p in exact) and "qualification label: exact peak" in r["notes"])
+    for k in (1, 2, 3):
+        m = direct([BIN, "--measure", "--notation", "1990", "--steps", "1000000"], prefix_text("x11-colour.abs", k), "abs")
+        rows = measure_rows(m.stderr)
+        n_before = len(measure_rows(direct([BIN, "--measure", "--notation", "1990", "--steps", "1000000"], prefix_text("x11-colour.abs", k - 1), "abs").stderr)) if k > 1 else 0
+        want = {q: max(r_["peak"][q] for r_ in rows[n_before:]) for q in rows[0]["peak"]}
+        got = {q: v["peak"]["value"] for q, v in final(r, k)["store"]["quantities"].items()}
+        verdict("X11a stage %d: the exact peaks equal --measure's (every step) run directly" % k, got == want)
+    say()
+
     # ----------------------------------------------------- (d) validate.py
     say("== 6 (d). Every record passes validate.py")
     files = sorted(glob.glob(RECS + "/**/*.json", recursive=True))
@@ -413,7 +446,7 @@ def main():
     say("%d checks, %d passed, %d failed" % (len(results), len(results) - len(bad), len(bad)))
     for n in bad:
         say("FAILED: " + n)
-    with open(Q + "/output.txt", "w", encoding="utf-8") as f:
+    with open(Q + "/output%s.txt" % ("-" + TAG if TAG else ""), "w", encoding="utf-8") as f:
         f.write("\n".join(lines_out) + "\n")
     return 1 if bad else 0
 

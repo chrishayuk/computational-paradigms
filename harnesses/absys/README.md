@@ -66,14 +66,21 @@ and `--steps B`, the problem's budget. All three modes are allowed for
 every configuration. Every configuration is incremental
 (`run.posing: "incremental"`).
 
-**The binary.** Every mode runs `absys-measure` (branch `measure`,
-`5450449`, which is the pinned `efd5203` with `--measure` and `--full`
-added). Behaviour runs pass `--full` and not `--measure`: `--full` only
+**The binary.** Every mode runs `absys-measure` (branch `measure`: the
+pinned `efd5203` with `--measure` and `--full` added; `5450449` in
+`cp-agent-systems:spec-1.0`, `8a0eefd` in `cp-agent-systems:spec-1.0-m2`,
+which adds `--peak-every`, section 4). Its commit is read from
+`/opt/src/COMMITS`. Behaviour runs pass `--full` and not `--measure`: `--full` only
 prints lists and derivations without cutting them short, so that
 `observe()` and `answers()` read every answer (systems file, Output). The
 qualification shows its output identical to the baseline `absys`'s on
 every test (QUESTIONS, A2). `system_build.commit` is `5450449…`, read from
-`/opt/src/COMMITS`, and `instrumented: true`. Absys has no version option,
+`/opt/src/COMMITS`, and `instrumented: true`.
+
+Two more environment variables: `HARNESS_EXACT_PEAK=1` makes storage
+runs take the peak after every step (section 4), for small-scale
+validation; `HARNESS_RUN_LABEL`, if set, is copied verbatim into the
+record's `notes`. Absys has no version option,
 so `version_output` is `null`.
 
 ## 3. The program contract
@@ -443,8 +450,8 @@ Its H tokens: none. Snippets for the other forms are in
 | mode | process | what is of record |
 |---|---|---|
 | behaviour | one `absys-measure repl --full` for the run (a new one only to repose) | answers, `observe`, `print`, execution state, the effects log. No step count: the repl reports none |
-| cost | per stage, `absys-measure FILE --measure --full` on stages 1..k; `--trace` too where the budget is 10⁶ | `steps.stage` (the steps of stage k's assertions: the incremental cost), `steps.restated` (all of the run), `restart_cost` (stages 1..k−1, in-run), `to_end`, `repeated_work` |
-| storage | the same command, with `--trace` only in P11 | the store vector, `alternatives.peak` (derivations, exact), the state's suspended processes |
+| cost | per stage, `absys-measure FILE --measure --peak-every 0 --full` on stages 1..k; `--trace` too where the budget is 10⁶ | `steps.stage` (the steps of stage k's assertions: the incremental cost), `steps.restated` (all of the run), `restart_cost` (stages 1..k−1, in-run), `to_end`, `repeated_work` |
+| storage | the same command with `--peak-every 1000` (`1` under `HARNESS_EXACT_PEAK=1`), and `--trace` only in P11 | the store vector, `alternatives.peak` (derivations, exact), the state's suspended processes |
 
 - **Steps** are the system's (one step of the machine, as `--steps`
   counts them), read only from `--measure`'s table, the systems file's
@@ -453,11 +460,20 @@ Its H tokens: none. Snippets for the other forms are in
   gave; the figure of record is the mode's. Behaviour records have
   `steps.stage: null`.
 - **Store** (`store.quantities`): the ten quantities of `--measure`, each
-  with `boundary` (after the stage's last assertion) and `peak` (the
-  largest value after any step of the stage's assertions, or when each
-  was added), `kind: "exact"` (exact at the granularity of steps). A stage
-  with no assertion has the boundary of the last assertion before it and
-  no peak.
+  with `boundary`, after the stage's last assertion (exact in every
+  setting), and `peak`, which depends on how often the system takes it
+  (`--peak-every`, absys-measure `8a0eefd`; QUESTIONS, A15):
+
+  | run | `--peak-every` | `peak` |
+  |---|---|---|
+  | cost | 0: only when an assertion is added and when its elaboration ends | `null`, with a note: not a peak |
+  | storage | 1000: every 1000 steps, and at the start and end of each assertion | `kind: "sampled"`, `sample_interval`: "every 1000 steps, and at the start and end of each assertion (absys-measure --peak-every 1000)" |
+  | storage, `HARNESS_EXACT_PEAK=1` | 1: after every step | `kind: "exact"` |
+  | either, with a build that rejects `--peak-every` (`5450449`) | not passed: after every step | `kind: "exact"`, as before |
+
+  `alternatives.peak` (derivations) follows the same rule. Step counts and
+  standard output are the same at every setting. A stage with no
+  assertion has the boundary of the last assertion before it and no peak.
 - **Suspended work** (`suspended`) is what the system prints as suspended,
   in every mode, counted by kind under `--measure`'s names
   (`susp_equations` for an equation between unknowns, `susp_applications`

@@ -25,7 +25,7 @@ REPO = os.path.dirname(os.path.dirname(HERE))
 DEFAULT_STAGES = os.path.join(REPO, "harnesses", "stages.json")
 VALIDATE = os.path.join(REPO, "harnesses", "validate.py")
 
-BIN = "/usr/local/bin/absys-measure"        # branch measure, 5450449: --measure and --full
+BIN = "/usr/local/bin/absys-measure"        # branch measure (5450449, or 8a0eefd with --peak-every): --measure and --full
 BASELINE_BIN = "/usr/local/bin/absys"       # main, efd5203: the behavioural reference
 COMMITS_FILE = "/opt/src/COMMITS"
 
@@ -59,7 +59,7 @@ HELP_B = REPL_HELP.encode()
 EATEN_B = re.compile(rb"(?m)^error at \d+:1: `\.` is not in the (?:1969 )?notation[^\n]*\n")
 
 CONFOUNDS = [
-    "behaviour runs use the instrumented build absys-measure (branch measure, 5450449) with --full and without --measure, not the baseline absys (efd5203), so that every list and derivation is printed in full (systems/absys/README.md, Output); --full changes only the printer",
+    "behaviour runs use the instrumented build absys-measure (branch measure; its commit is in system_build.commit) with --full and without --measure, not the baseline absys (efd5203), so that every list and derivation is printed in full (systems/absys/README.md, Output); --full changes only the printer",
     "in behaviour runs the harness writes each section of the program to `absys-measure repl` on standard input, line by line as the program file has it, and after each section a `.help` line, whose fixed reply marks where the system's output for the section ends; a section that ends inside an unfinished assertion makes the repl read `.help` as its continuation and report a syntax error",
     "the state is read with the repl's own commands `?` and `? NAME` after a stage (and after each spawned computation's section); they read the state and change nothing",
     "instance parameters that a program declares (% PARAMETERS) are given to the system as assertions `NAME = VALUE` written by the harness in the program's notation, before the prelude",
@@ -641,6 +641,11 @@ class Harness:
         self.B = int(self.lim["budget_steps"])
         self.effects = bool(self.prob.get("effects"))
         self.trace = self.effects or (self.mode == "cost" and self.B <= 1000000)
+        # how often --measure takes the store's peak (absys-measure 8a0eefd, --peak-every)
+        self.peak_every = None
+        self.exact_peak = os.environ.get("HARNESS_EXACT_PEAK") == "1"
+        if self.mode in ("cost", "storage") and peak_every_supported():
+            self.peak_every = "0" if self.mode == "cost" else ("1" if self.exact_peak else "1000")
         os.makedirs(self.outdir, exist_ok=True)
 
     # ---- the record skeleton
@@ -698,10 +703,35 @@ class Harness:
             "confounds": CONFOUNDS + (["qualification only: ABSYS_HARNESS_POSING=reposed, every stage after the first is posed by reposing stages 1 to k into a new session"] if self.force_repose else []),
             "environment": {},
         }
+        if os.environ.get("HARNESS_RUN_LABEL"):
+            self.notes.append(os.environ["HARNESS_RUN_LABEL"])
+        if self.mode in ("cost", "storage"):
+            if self.peak_every is None:
+                self.notes.append("--peak-every: absys-measure %s rejects it; --measure takes the peak after every step, as before" % commits.get("absys-measure"))
+            else:
+                self.notes.append("--peak-every %s: absys-measure %s %s" % (self.peak_every, commits.get("absys-measure"),
+                                  {"0": "takes the store's peak only when an assertion is added and when its elaboration ends; cost mode records no peak",
+                                   "1": "takes the peak after every step (HARNESS_EXACT_PEAK=1): exact",
+                                   "1000": "takes the peak every 1000 steps and at the start and end of each assertion: a sampled maximum"}[self.peak_every]))
         self.notes.append("system: absys-measure %s (branch measure, on the pinned main %s); absys has no version option, so version_output is null and the commits are from %s" % (commits.get("absys-measure"), commits.get("absys"), COMMITS_FILE))
         self.notes.append("notation: %s (from the program's file name, as the system decides it); flags of the configuration: %s" % (self.program.notation, " ".join(CONFIGS[self.config]) or "none"))
         if self.stages_path != DEFAULT_STAGES:
             self.notes.append("stages file: %s (ABSYS_HARNESS_STAGES)" % relpath(self.stages_path))
+
+    def peak(self, value):
+        """A peak from --measure, as the --peak-every setting lets it be read."""
+        if self.peak_every == "0":
+            return None          # taken only at the ends of assertions: not a peak
+        if self.peak_every == "1000":
+            return {"value": value, "kind": "sampled", "sample_interval": SAMPLE_INTERVAL}
+        return {"value": value, "kind": "exact"}
+
+    def store_source(self):
+        if self.peak_every == "0":
+            return "--measure --peak-every 0: each quantity after the stage's last assertion (exact); the peak is not taken (null): with --peak-every 0 the system samples only when an assertion is added and when its elaboration ends, which is not a peak"
+        if self.peak_every == "1000":
+            return "--measure --peak-every 1000: each quantity after the stage's last assertion (exact), and the largest value sampled every 1000 steps and at the start and end of each of the stage's assertions (a sampled maximum, not a peak)"
+        return "--measure%s: each quantity after the stage's last assertion, and the largest value it had after any step of the stage's assertions, or when each was added (exact at the granularity of steps)" % (" --peak-every 1" if self.peak_every == "1" else "")
 
     def sys_flags(self):
         return CONFIGS[self.config] + ["--notation", self.program.notation, "--steps", str(self.B)]
@@ -1130,7 +1160,7 @@ class Harness:
         path = os.path.join(tmp, "stages-1-to-%d.%s" % (k, EXT[self.program.notation]))
         with open(path, "w", encoding="utf-8") as f:
             f.write(text)
-        argv = [BIN, path, "--measure", "--full"] + self.sys_flags() + (["--trace"] if self.trace else []) + (["--each"] if each else [])
+        argv = [BIN, path, "--measure", "--full"] + (["--peak-every", self.peak_every] if self.peak_every is not None else []) + self.sys_flags() + (["--trace"] if self.trace else []) + (["--each"] if each else [])
         att["notes"].append("measured run: absys-measure FILE %s, FILE the text of the parameters, prelude and stages 1 to %d (%d lines), the system's process started anew" % (" ".join(argv[2:]), k, len(text.splitlines())))
         t0 = time.monotonic()
         p = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -1216,7 +1246,7 @@ class Harness:
                 nowv = reports[upto[-1]]["now"]
                 c["alternatives"]["at_boundary"] = nowv["derivations"]
                 if mine:
-                    c["alternatives"]["peak"] = {"value": max(reports[i]["peak"]["derivations"] for i in mine), "kind": "exact"}
+                    c["alternatives"]["peak"] = self.peak(max(reports[i]["peak"]["derivations"] for i in mine))
                 if "budget" in c["execution_state"]["states"]:
                     c["alternatives"]["at_budget"] = nowv["derivations"]
             return c
@@ -1232,8 +1262,8 @@ class Harness:
         mine = [i for i, u in enumerate(rep_unit) if u is not None and u.stage == k]
         if ok and mine:
             nowv = reports[mine[-1]]["now"]
-            att["store"] = {"quantities": {q: {"boundary": nowv[q], "peak": {"value": max(reports[i]["peak"][q] for i in mine), "kind": "exact"}, "unit": "count"} for q in MEASURE_FIELDS},
-                            "source": "--measure (absys-measure, branch measure): each quantity after the stage's last assertion, and the largest value it had after any step of the stage's assertions, or when each was added (exact at the granularity of steps)"}
+            att["store"] = {"quantities": {q: {"boundary": nowv[q], "peak": self.peak(max(reports[i]["peak"][q] for i in mine)), "unit": "count"} for q in MEASURE_FIELDS},
+                            "source": self.store_source()}
         elif ok and reports:
             nowv = reports[-1]["now"]
             att["store"] = {"quantities": {q: {"boundary": nowv[q], "peak": None, "unit": "count"} for q in MEASURE_FIELDS},
@@ -1295,6 +1325,25 @@ class Harness:
             return 3
         print(relpath(out))
         return 0
+
+
+SAMPLE_INTERVAL = "every 1000 steps, and at the start and end of each assertion (absys-measure --peak-every 1000)"
+_PEAK_EVERY = []
+
+
+def peak_every_supported():
+    """Whether absys-measure accepts --peak-every (8a0eefd); the older 5450449 rejects it."""
+    if not _PEAK_EVERY:
+        tmp = tempfile.mkdtemp(prefix="absys-probe-")
+        path = os.path.join(tmp, "probe.abs")
+        with open(path, "w") as f:
+            f.write("probe = 1\n")
+        try:
+            r = subprocess.run([BIN, path, "--measure", "--peak-every", "0"], capture_output=True, timeout=30)
+            _PEAK_EVERY.append(r.returncode == 0)
+        except (OSError, subprocess.SubprocessError):
+            _PEAK_EVERY.append(False)
+    return _PEAK_EVERY[0]
 
 
 def died(status, stderr):

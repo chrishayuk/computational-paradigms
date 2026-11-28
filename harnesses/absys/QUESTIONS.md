@@ -218,3 +218,33 @@ has none (only Python and SWI-Prolog have `probes/`).
 
 **Implemented:** the qualification uses its own made-up programs, and the
 system's own output run directly as the reference.
+
+## A15. The cost of an exact peak (found in batch 1B)
+
+absys-measure `5450449`, under `--measure`, reads the whole computation
+after every step to keep an exact peak (`src/session.rs`, `Session::run`).
+With many live derivations that costs far more than the steps: 10⁴ steps
+of an unbounded alternative took over 20 s with `--measure`, against 0.4 s
+without it. So cost and storage runs reached the safety limit (60 s, then
+600 s) long before the step budget, which says nothing about the machine.
+
+**Changed:** absys-measure `8a0eefd` (image `cp-agent-systems:spec-1.0-m2`)
+adds `--peak-every N`; standard output and every step count are the same
+at every N. The harness now passes:
+
+- in **cost** runs, `--peak-every 0`: they need only each assertion's
+  steps. The values taken at the ends of assertions are not a peak, so
+  every store peak, and `alternatives.peak`, is `null`, with a note;
+- in **storage** runs, `--peak-every 1000`, and records each peak as
+  `kind: "sampled"` with its interval. Boundary values stay exact. A
+  sampled maximum may appear only in a storage record (`validate.py`,
+  rule 8), so this fits the contract;
+- with `HARNESS_EXACT_PEAK=1`, `--peak-every 1` in storage runs, and
+  peaks `kind: "exact"`, for small-scale validation.
+
+Behaviour runs are unchanged. The harness tries `--peak-every` once per
+run; a build that rejects it (`5450449`, image `cp-agent-systems:spec-1.0`)
+gets the old command, and every peak is exact as before, so the earlier
+records stay reproducible. The measurement commit in the notes is read
+from `/opt/src/COMMITS`. `HARNESS_RUN_LABEL`, if set, is copied into the
+notes, to label the reruns.
