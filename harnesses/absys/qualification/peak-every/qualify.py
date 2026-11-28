@@ -10,8 +10,9 @@ between OLD and NEW at --peak-every 1, 0 and 1000; the --measure report's
 steps and boundary values must be identical; NEW at 1 must equal OLD's
 peak exactly; and each sampled peak must lie between the boundary value
 and the exact peak. A program for which neither OLD nor NEW at 1 finishes in 30 s is
-reported LIMITED: its sampled settings are compared with each other
-only, and it needs a lower budget for an exact reference. Prints one line per program and a summary;
+reported LIMITED: --peak-every 1000 is compared with 0 on standard
+output, steps and boundary values (no peak can be checked), and it needs
+a lower budget for an exact reference. Prints one line per program and a summary;
 exit 1 if any check fails.
 """
 import re, subprocess, sys, time
@@ -53,8 +54,11 @@ for prog in progs:
     res = {pe: run(new, prog, pe) for pe in (1, 0, 1000)}
     ok, why = True, []
     ref = o or res[1][0]
+    exact = ref is not None
+    if not exact:                     # no exact reference: compare the sampled settings with --peak-every 0
+        ref = res[0][0]
     for pe, (r, t) in res.items():
-        if r is None or ref is None:
+        if r is None or ref is None or (not exact and pe == 0):
             continue
         if r[0] != ref[0] or r[1] != ref[1]:
             ok = False; why.append(f"stdout differs at {pe}")
@@ -66,18 +70,18 @@ for prog in progs:
                 bn, bp = b["q"].get(q, (None, None))
                 if bn != now:
                     ok = False; why.append(f"{q} boundary differs at {pe}")
-                if pe == 1 and bp != pk:
+                if exact and pe == 1 and bp != pk:
                     ok = False; why.append(f"{q} exact peak differs")
-                if pe != 1 and bp is not None and not (max(now, b["q"][q][0]) <= bp <= pk):
+                if exact and pe != 1 and bp is not None and not (max(now, b["q"][q][0]) <= bp <= pk):
                     ok = False; why.append(f"{q} sampled peak {bp} outside [{now}, {pk}] at {pe}")
     if o is not None and res[1][0] is not None and o[2] != res[1][0][2]:
         ok = False; why.append("--measure report differs at 1")
-    exact_ref = (o is not None) or (res[1][0] is not None)
+    exact_ref = exact
     fails += not ok
     times = " ".join(f"{k}:{'timeout' if v[0] is None else f'{v[1]:.1f}s'}" for k, v in [("old", (o, to))] + [(str(pe), res[pe]) for pe in res])
     verdict = "FAIL" if not ok else ("ok  " if exact_ref else "LIMITED")   # LIMITED: no exact reference finished;
     limited += ok and not exact_ref                                            # only the sampled settings were compared
-    lines.append(f"{verdict} {prog}  {times}  {'; '.join(sorted(set(why))) or ('' if exact_ref else 'no exact reference finished: sampled settings compared with each other only')}")
+    lines.append(f"{verdict} {prog}  {times}  {'; '.join(sorted(set(why))) or ('' if exact_ref else 'no exact reference finished: --peak-every 1000 compared with 0 on output, steps and boundaries only')}")
 print("\n".join(lines))
 print(f"\n{len(progs) - fails - limited} of {len(progs)} programs pass against an exact reference; {limited} limited (no exact reference finished); {fails} fail")
 sys.exit(1 if fails else 0)

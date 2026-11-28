@@ -49,7 +49,7 @@ compared was the same; a figure from macOS is marked as such.
 
   | configuration | budget | programs | against an exact reference | limited | fail |
   |---|---|---|---|---|---|
-  | absys | 10^4 | 56 (batches 1A and 1B, the variants, the system's examples) | 54 | 2 (P04d, P04f: no exact reference finished in 30 s) | 0 |
+  | absys | 10^4 | 56 (batches 1A and 1B, the variants, the system's examples) | 54 | 2 (P04d, P04f: no exact reference finished in 30 s; `--peak-every` 1000 and 0 agree on output, steps and boundaries) | 0 |
   | absys | 10^3 | 3 (P04d, P04f, P03f) | 3 | 0 | 0 |
   | absys-depth-first | 10^4, P04 at 10^3 | 39 + 6 | 45 | 0 | 0 |
   | absys-wake-back | 10^4, P04 at 10^3 | 39 + 6 | 45 | 0 | 0 |
