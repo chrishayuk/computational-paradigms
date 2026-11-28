@@ -4,13 +4,16 @@
 FROM docker.io/library/rust@sha256:82150a52ec202c1b14d7817e14516c392bb7f5cfebd88f1ed531cb37ebd39922 AS build
 RUN apt-get update && apt-get install -y --no-install-recommends cmake g++ make git ca-certificates \
  && rm -rf /var/lib/apt/lists/*
+# The measurement build: 5450449 for every original record; 8a0eefd
+# (--peak-every) for the labelled measurement reruns (PINS.md).
+ARG ABSYS_MEASURE=5450449
 WORKDIR /opt/src
 RUN git clone https://github.com/chrishayuk/absys absys \
  && git -C absys checkout --detach efd5203 \
  && cargo build --release --manifest-path absys/Cargo.toml \
  && cp absys/target/release/absys /usr/local/bin/absys \
  && git clone https://github.com/chrishayuk/absys absys-measure \
- && git -C absys-measure checkout --detach 5450449 \
+ && git -C absys-measure checkout --detach ${ABSYS_MEASURE} \
  && cargo build --release --manifest-path absys-measure/Cargo.toml \
  && cp absys-measure/target/release/absys /usr/local/bin/absys-measure \
  && rm -rf absys/target absys-measure/target

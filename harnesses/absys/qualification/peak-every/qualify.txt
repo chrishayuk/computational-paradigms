@@ -1,0 +1,71 @@
+ok   /opt/src/absys-measure/examples/alternatives.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/append.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/assertions-not-assignments.abs  old:0.1s 1:0.1s 0:0.0s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/assertions.ab1  old:0.0s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/map.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/mem-1982.ab2  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/relation-list.ab2  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/reverse.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/setdiff.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/students.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   /opt/src/absys-measure/examples/triples.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P01a.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P01b.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P01c.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P02a.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P02b.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P02c.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P03a.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P03b.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P03c.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P03d.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P03e.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P03f.ab1  old:0.7s 1:0.6s 0:0.2s 1000:0.2s  
+ok   programs/absys/absys/P04a.ab1  old:0.1s 1:0.1s 0:0.1s 1000:-0.0s  
+ok   programs/absys/absys/P04b.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P04c.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P04d.ab1  old:timeout 1:timeout 0:1.8s 1000:1.8s  
+ok   programs/absys/absys/P04e.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P04f.ab1  old:timeout 1:timeout 0:1.5s 1000:1.6s  
+ok   programs/absys/absys/P05a.ab1  old:0.6s 1:0.6s 0:0.3s 1000:0.3s  
+ok   programs/absys/absys/P05b.ab1  old:1.0s 1:1.0s 0:0.2s 1000:0.2s  
+ok   programs/absys/absys/P05c.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P06a.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P06b.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P06c.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P06d.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P06e1.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P06e2.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P06e3.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07a.132.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07a.213.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07a.231.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07a.312.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07a.321.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07a.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07b.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07c.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07d.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07e.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07f.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P07g.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P08a.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P08b.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P08c.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/variants/P06d.set.abs  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/variants/P08c.redefine.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+
+56 of 56 programs pass
+ok   programs/absys/absys/P04d.ab1  old:0.1s 1:0.2s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P04f.ab1  old:0.2s 1:0.2s 0:0.1s 1000:0.1s  
+ok   programs/absys/absys/P03f.ab1  old:0.1s 1:0.1s 0:0.1s 1000:0.1s  
+
+3 of 3 programs pass
+## flags: --search depth-first, budget 10^4
+39 of 39 programs pass
+## flags: --search depth-first, budget 10^3, P04
+6 of 6 programs pass
+## flags: --wake back, budget 10^4
+39 of 39 programs pass
+## flags: --wake back, budget 10^3, P04
+6 of 6 programs pass

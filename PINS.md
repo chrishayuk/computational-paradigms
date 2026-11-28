@@ -9,6 +9,7 @@ separately.
 |---|---|---|---|
 | Absys | the reconstruction, https://github.com/chrishayuk/absys, `main` | `efd5203` | behaviour |
 | | the same, branch `measure` (`--measure`, `--full`) | `5450449` | cost and storage; `--full` output |
+| | the same, branch `measure`, adding `--peak-every N` | `8a0eefd` | labelled measurement reruns only (`results/absys/*/*/raw-rerun-m2/`), reported separately from the original records |
 | | the behavioural reference, before the printer fix | `7bb61e6` | kept, not run |
 | SWI-Prolog | the `swipl:11.0.1` image | `sha256:b51af487f3306fe240eae8c13159c85b5526509952e1b949cc22f48a1f82a742` | every mode |
 | Python | the `python:3.13.7` image (CPython 3.13.7) | `sha256:fe841081ec55481496a4ab25e538833741295d57d2abdec8d38d74d65fb4715b` | every mode |
@@ -34,6 +35,21 @@ compared was the same; a figure from macOS is marked as such.
 - **Absys `5450449`** is the measurement branch rebased onto `efd5203`.
   Against `efd5203`, with measurement on and off, its output is the same
   byte for byte (`systems/absys/README.md`).
+- **Absys `8a0eefd`** adds one option to `5450449`, `--peak-every N`:
+  how often `--measure` takes the peak (1, the default: every step, as
+  `5450449` does; 0: only at the start and end of each assertion). It was
+  made in wave 1, batch 1B, after `5450449`'s per-step walk of the whole
+  computation was found to stop cost and storage runs at the safety limit
+  long before the step budget (P03f, P04d, P04f). The machine is unchanged.
+  Qualified by `harnesses/absys/qualification/peak-every/qualify.py` on
+  every Absys program of batches 1A and 1B, in all three configurations: at
+  every setting, standard output and every step count byte for byte the
+  same as `5450449`; at 1, the peak identical; otherwise, each sampled peak
+  between the boundary value and the exact peak (`qualify.txt` beside the
+  script). It is used only for the reruns of the measurements those runs
+  could not make, which are labelled and kept apart; every original record
+  stands. Image `cp-systems:spec-1.0-m2` (`sandbox/Containerfile.systems`,
+  `--build-arg ABSYS_MEASURE=8a0eefd`).
 - **ALGOL 60 `151cdff`** was checked against `6e8740c` on all 100 programs
   of that repository, in both dialects, with measurement on and off (200
   runs).
