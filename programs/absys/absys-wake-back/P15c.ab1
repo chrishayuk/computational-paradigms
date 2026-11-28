@@ -1,0 +1,16 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used: a relation with alternatives, equations, atoms.
+% IDIOM: a relation as name'=lambda x begin {A or B} end, primes for new local names, quoted atoms: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1; examples/alternatives.ab1);
+% IDIOM: a case's head as equations on the lambda's parameters: Elcock 1990 p. 8 (app, examples/append.abs).
+% P15c. Unknown g. One stage: grant(<atom>, <atom>, g), any one (the harness's cap is 1).
+% No construct selects one alternative: Absys keeps both derivations (harnesses/absys/QUESTIONS.md, A6, A8); none is written.
+% CONSTANTS BEGIN
+ga = 'a'   % stage 1: grant(ga, gb, g)
+gb = 'b'   % stage 1: grant(ga, gb, g)
+% CONSTANTS END
+% grant, P15c, cases 1 and 2 in that order: grant(p, q, p) and grant(p, q, q), each head as an equation on the third place.
+grant'=lambda p, q, w
+    begin {w = p or w = q} end
+% STAGE 1
+grant(ga, gb, g)

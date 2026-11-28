@@ -1,0 +1,20 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NAMED VARIANT, not the primary (programs/absys/P13a.ab1 is). Chosen as a variant before any run.
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic (systems/absys/README.md, Notation).
+% IDIOM: a relation as name'=lambda x begin {A or B} end, primes for new local names, lists [a;b] and [h&t]: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: a case's head as equations on the lambda's parameters: Elcock 1990 p. 8 (app, examples/append.abs);
+% IDIOM: arithmetic as an assertion usable in every direction: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets (docs/decisions.md rule 23).
+% PARAMETERS n
+% P13a, every instance: n is the harness's parameter (README 3.4). Unknown s. One stage: range(<k>, n, s).
+% CONSTANTS BEGIN
+rk = 1   % stage 1: range(rk, n, s)
+% CONSTANTS END
+% REFORMULATION THAT CHANGES THE MEANING (systems/absys/README.md, Notation: calibration's range): case 1's m > n is
+% written m = n + 1, and case 2's m <= n is dropped. On range(m, n, s) with m <= n + 1 the solutions are the problem's;
+% with m > n + 1 there are none, where the problem has s = <>. Case 2 also applies at m = n + 1 and goes on for ever.
+range'=lambda a, b, w
+    begin {w = [] a = b + 1 or
+           w = [a&t'] a1' = a + 1 range(a1, b, t)} end
+% STAGE 1
+range(rk, n, s)

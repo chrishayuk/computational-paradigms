@@ -1,0 +1,45 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1969 (.ab1). position needs i = j + 1 (arithmetic, only the 1969 notation) and h != e and b != <> (not, only the
+% 1990 notation): the problem's constructs are found in no single notation (systems/absys/README.md, Notation). The notation
+% used is 1969, with the two != reformulated, as batch 1B's P05a.
+% IDIOM: a relation as name'=lambda x begin {A or B} end, primes for new local names, lists [a;b] and [h&t]: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: a case's head as equations on the lambda's parameters: Elcock 1990 p. 8 (app, examples/append.abs);
+% IDIOM: arithmetic as an assertion usable in every direction: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets (docs/decisions.md rule 23);
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations);
+% IDIOM: gt, pos and ne are batch 1B's reformulation of > and != (programs/absys/P05a.ab1), unchanged;
+% IDIOM: an unbounded producer, a relation whose one case applies itself to the tail: batch 1C's genu (programs/absys/P09d.ab1), under the stream reading of P09d2.
+% P15b. Unknowns i, m, z. One stage: zeros(z) and merge(z, <seq>, m) and position(<k>, m, i), in that order, as one
+% conjunction; any one (the harness's cap is 1).
+% CONSTANTS BEGIN
+bs = [9]   % stage 1: merge(z, bs, m)
+pk = 9   % stage 1: position(pk, m, i)
+% CONSTANTS END
+% REFORMULATION (R): the problem's h != e is a primitive comparison, and the 1969 notation has no not (systems/absys/README.md, Notation).
+% gt(a, b), a > b over the integers: a = b + d for a positive integer d.
+gt'=lambda a, b
+    begin a = b + d' pos(d) end
+% pos(q), q a positive integer: the least relation with pos(1), and pos(e + 1) if pos(e).
+pos'=lambda q
+    begin {q = 1 or pos(e') q = e + 1} end
+% ne(a, b), a != b over the integers, is a > b or b > a. The items compared here are integers (zeros' 0 and the items of <seq>).
+ne'=lambda a, b
+    begin {gt(a, b) or gt(b, a)} end
+% zeros, P15b, its one case: zeros(<0> ++ s) if zeros(s), its head as an equation; read as the greatest relation (P09d2's stream reading).
+zeros'=lambda p
+    begin p = [0&u'] zeros(u) end
+% merge, P15a, cases 1-4 in that order, each head as equations on the parameters, then the case's conjuncts in order.
+% REFORMULATION (R): case 3's b != <> and case 4's a != <> are written as the patterns b = <g> ++ v and a = <g> ++ v,
+% which for a sequence (merge's arguments are sequences) is the same; the 1969 notation has no not.
+merge'=lambda p, q, w
+    begin {p = [] w = q or
+           p = [h'&t'] q = [] w = [h&t] or
+           p = [h1'&t1'] w = [h1&m1'] q = [g1'&v1'] merge(t1, q, m1) or
+           q = [h2'&t2'] w = [h2&m2'] p = [g2'&v2'] merge(p, t2, m2)} end
+% position, P15b, cases 1 and 2 in that order. Case 1: position(e, <e> ++ t, 1), its head as equations.
+% Case 2: its head equation m = <h> ++ t, then h != e (ne, R), then position(e, t, j), then i = j + 1.
+position'=lambda e, p, q
+    begin {p = [e&t'] q = 1 or
+           p = [h'&v'] ne(h, e) position(e, v, j') q = j + 1} end
+% STAGE 1
+begin zeros(z) merge(z, bs, m) position(pk, m, i) end

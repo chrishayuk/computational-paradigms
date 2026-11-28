@@ -1,0 +1,40 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1990 (.abs), the earliest notation with every construct used: the cases' "otherwise" is holder != none and
+% queue != <>, written with not, which only the 1990 notation has (docs/decisions.md rule 18); no arithmetic is needed.
+% IDIOM: a relation as alternatives of conjunctions, {R = [], S = T} or {R = [X|L], T = [X|N], app(L, S, N)}: Elcock 1990 p. 8 (app, examples/append.abs; tutorial ch. 4);
+% IDIOM: not(A), an independent computation with the criteria reversed: Elcock 1990 p. 14 (tutorial ch. 7: not(X = 1));
+% IDIOM: {A, B} for one conjunction, one assertion: Elcock 1990 p. 8 (examples/append.abs);
+% IDIOM: a named quantity as the list of the values it has taken, with an open tail: batch 1C's P10 (programs/absys/P10a.ab1), here in the 1990 notation.
+% P15d. Unknowns (quantities) holder, queue. Stage 1 <atom> requests; stage 2 <atom> requests; stage 3 <atom> releases.
+% REFORMULATION (R): an Absys variable takes one value and keeps it; an equation is an assertion, not an assignment
+% (docs/decisions.md rules 9 and 17; examples/assertions-not-assignments.abs). So, as in P10 (batch 1C), a named quantity
+% is written as the list of the values it has taken, in order, with an open tail: its value is the last element. A
+% replacing stage equates each tail with [v|t], v a new name for the quantity's new value and t the new tail, and states
+% the stage's case relation between the old values and the new. The names h0, ht0, h1, ... are written for the purpose
+% (indexing, R: problems/10-state-replacement.md, Observations).
+% CONSTANTS BEGIN
+rq1 = 'a'   % stage 1: rq1 requests
+rq2 = 'b'   % stage 2: rq2 requests
+rl3 = 'a'   % stage 3: rl3 releases
+% CONSTANTS END
+% REFORMULATION (R): queue ++ <p> needs concatenation of a list already held, which Absys has only as a relation defined
+% for it: app, Elcock 1990's own text (p. 8), cases <> and <h> ++ t in that order.
+app = lambda R, S, T {R = [], S = T} or
+    {R = [X|L], T = [X|N], app(L, S, N)}
+% request(p, h, q, h2, q2): p requests, with holder h and queue q before the stage, and h2 and q2 after it (P15d, its cases in order).
+% Case 1: holder = none, holder becomes p (the queue is unchanged). Case 2, otherwise: queue becomes queue ++ <p> (the holder is unchanged).
+request = lambda P, H, Q, H2, Q2 {H = 'none', H2 = P, Q2 = Q} or
+    {not(H = 'none'), H2 = H, app(Q, [P], Q2)}
+% release(p, h, q, h2, q2): p releases, where holder = p (P15d, its cases in order).
+% Case 1: queue = <>, holder becomes none (the queue is unchanged). Case 2, otherwise, with queue = <h> ++ t: holder becomes h and queue becomes t.
+release = lambda P, H, Q, H2, Q2 {H = P, Q = [], H2 = 'none', Q2 = Q} or
+    {H = P, not(Q = []), Q = [X|T], H2 = X, Q2 = T}
+% holder and queue start as none and <> (P15d).
+{holder = [h0|ht0], h0 = 'none', queue = [q0|qt0], q0 = []}
+% STAGE 1
+{ht0 = [h1|ht1], qt0 = [q1|qt1], request(rq1, h0, q0, h1, q1)}
+% STAGE 2
+{ht1 = [h2|ht2], qt1 = [q2|qt2], request(rq2, h1, q1, h2, q2)}
+% STAGE 3
+{ht2 = [h3|ht3], qt2 = [q3|qt3], release(rl3, h2, q2, h3, q3)}

@@ -1,0 +1,28 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic (systems/absys/README.md, Notation; docs/decisions.md rule 23).
+% IDIOM: a relation as name'=lambda x begin ... end: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: arithmetic as an assertion usable in every direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets (docs/decisions.md rule 23);
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% P16d.n100, one instance of stages.json: its size and arrival order are structure, not constants (stages.json, about), so
+% the relations are written out, in the instance's order, as P12's facts were (batch 1C). Unknowns x1 ... (and y1 ...),
+% the problem's x_1 ... (y_1 ...).
+% P16d. % Two chains of n = 100 unknowns each, x1 ... x100 and y1 ... y100, which share no unknown, posed as one computation.
+% Stage 1: every succ(x_i, x_{i+1}), then every succ(y_i, y_{i+1}), ascending, as one conjunction.
+% Stage 2 x_1 = <k>. Stage 3 x_n = <k>.
+% CONSTANTS BEGIN
+dk2 = 0   % stage 2: x1 = dk2
+dk3 = 0   % stage 3: x100 = dk3
+% CONSTANTS END
+% succ, P16 Vocabulary: succ(a, b) is the relation b = a + 1.
+succ'=lambda a, b
+    begin b = a + 1 end
+% STAGE 1
+begin
+succ(x1, x2) succ(x2, x3) succ(x3, x4) succ(x4, x5) succ(x5, x6) succ(x6, x7) succ(x7, x8) succ(x8, x9) succ(x9, x10) succ(x10, x11) succ(x11, x12) succ(x12, x13) succ(x13, x14) succ(x14, x15) succ(x15, x16) succ(x16, x17) succ(x17, x18) succ(x18, x19) succ(x19, x20) succ(x20, x21) succ(x21, x22) succ(x22, x23) succ(x23, x24) succ(x24, x25) succ(x25, x26) succ(x26, x27) succ(x27, x28) succ(x28, x29) succ(x29, x30) succ(x30, x31) succ(x31, x32) succ(x32, x33) succ(x33, x34) succ(x34, x35) succ(x35, x36) succ(x36, x37) succ(x37, x38) succ(x38, x39) succ(x39, x40) succ(x40, x41) succ(x41, x42) succ(x42, x43) succ(x43, x44) succ(x44, x45) succ(x45, x46) succ(x46, x47) succ(x47, x48) succ(x48, x49) succ(x49, x50) succ(x50, x51) succ(x51, x52) succ(x52, x53) succ(x53, x54) succ(x54, x55) succ(x55, x56) succ(x56, x57) succ(x57, x58) succ(x58, x59) succ(x59, x60) succ(x60, x61) succ(x61, x62) succ(x62, x63) succ(x63, x64) succ(x64, x65) succ(x65, x66) succ(x66, x67) succ(x67, x68) succ(x68, x69) succ(x69, x70) succ(x70, x71) succ(x71, x72) succ(x72, x73) succ(x73, x74) succ(x74, x75) succ(x75, x76) succ(x76, x77) succ(x77, x78) succ(x78, x79) succ(x79, x80) succ(x80, x81) succ(x81, x82) succ(x82, x83) succ(x83, x84) succ(x84, x85) succ(x85, x86) succ(x86, x87) succ(x87, x88) succ(x88, x89) succ(x89, x90) succ(x90, x91) succ(x91, x92) succ(x92, x93) succ(x93, x94) succ(x94, x95) succ(x95, x96) succ(x96, x97) succ(x97, x98) succ(x98, x99) succ(x99, x100)
+succ(y1, y2) succ(y2, y3) succ(y3, y4) succ(y4, y5) succ(y5, y6) succ(y6, y7) succ(y7, y8) succ(y8, y9) succ(y9, y10) succ(y10, y11) succ(y11, y12) succ(y12, y13) succ(y13, y14) succ(y14, y15) succ(y15, y16) succ(y16, y17) succ(y17, y18) succ(y18, y19) succ(y19, y20) succ(y20, y21) succ(y21, y22) succ(y22, y23) succ(y23, y24) succ(y24, y25) succ(y25, y26) succ(y26, y27) succ(y27, y28) succ(y28, y29) succ(y29, y30) succ(y30, y31) succ(y31, y32) succ(y32, y33) succ(y33, y34) succ(y34, y35) succ(y35, y36) succ(y36, y37) succ(y37, y38) succ(y38, y39) succ(y39, y40) succ(y40, y41) succ(y41, y42) succ(y42, y43) succ(y43, y44) succ(y44, y45) succ(y45, y46) succ(y46, y47) succ(y47, y48) succ(y48, y49) succ(y49, y50) succ(y50, y51) succ(y51, y52) succ(y52, y53) succ(y53, y54) succ(y54, y55) succ(y55, y56) succ(y56, y57) succ(y57, y58) succ(y58, y59) succ(y59, y60) succ(y60, y61) succ(y61, y62) succ(y62, y63) succ(y63, y64) succ(y64, y65) succ(y65, y66) succ(y66, y67) succ(y67, y68) succ(y68, y69) succ(y69, y70) succ(y70, y71) succ(y71, y72) succ(y72, y73) succ(y73, y74) succ(y74, y75) succ(y75, y76) succ(y76, y77) succ(y77, y78) succ(y78, y79) succ(y79, y80) succ(y80, y81) succ(y81, y82) succ(y82, y83) succ(y83, y84) succ(y84, y85) succ(y85, y86) succ(y86, y87) succ(y87, y88) succ(y88, y89) succ(y89, y90) succ(y90, y91) succ(y91, y92) succ(y92, y93) succ(y93, y94) succ(y94, y95) succ(y95, y96) succ(y96, y97) succ(y97, y98) succ(y98, y99) succ(y99, y100)
+end
+% STAGE 2
+x1 = dk2
+% STAGE 3
+x100 = dk3

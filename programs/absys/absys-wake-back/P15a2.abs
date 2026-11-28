@@ -1,0 +1,20 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1990 (.abs), the earliest notation with every construct used: b != <> is written with not, which only the 1990
+% notation has (docs/decisions.md rule 18; batch 1B, P06); merge needs no arithmetic.
+% IDIOM: a relation as alternatives of conjunctions, {R = [], S = T} or {R = [X|L], T = [X|N], app(L, S, N)}, each case's head as equations on the parameters: Elcock 1990 p. 8 (app, examples/append.abs; tutorial ch. 4);
+% IDIOM: not(A), an independent computation with the criteria reversed: Elcock 1990 p. 14 (tutorial ch. 7: not(X = 1)).
+% P15a2. Unknown m. One stage: merge(<seq>, <seq>, m), all (the harness's cap is 20). The same text as P15a1.abs.
+% CONSTANTS BEGIN
+ma = [1, 2]   % stage 1: merge(ma, mb, m)
+mb = [3, 4]   % stage 1: merge(ma, mb, m)
+% CONSTANTS END
+% merge, P15a, cases 1-4 in that order. Case 1: merge(<>, b, b). Case 2: merge(<h> ++ a, <>, <h> ++ a).
+% Case 3: its head (a's and m's equations), then b != <>, then merge(a, b, m). Case 4: its head (b's and m's), then a != <>, then merge(a, b, m).
+% b != <> is not(B = []): negation and equality, the problem's connectives (as x != k in batch 1C, P11c).
+merge = lambda A, B, M {A = [], M = B} or
+    {A = [H|T], B = [], M = [H|T]} or
+    {A = [H|T], M = [H|N], not(B = []), merge(T, B, N)} or
+    {B = [H|T], M = [H|N], not(A = []), merge(A, T, N)}
+% STAGE 1
+merge(ma, mb, m)
