@@ -29,7 +29,8 @@ transcripts/README.md):
 4. both: the owner's home directory is written as ~ ("/Users/<name>" and
    the "-Users-<name>-" form of project folder names), and the account
    name anywhere else (the owner column of `ls -l`, for instance) as
-   <owner>.
+   <owner>, and the owner's email address (in `git log` output, for
+   instance) as <owner-email>.
 
 After writing, the output is screened for what the rules are meant to
 remove, and the script fails if any of it is left.
@@ -39,6 +40,7 @@ import json, re, sys
 HOME = "/Users/christopherhay"
 HOME_DASH = "-Users-christopherhay-"
 USER = "christopherhay"
+EMAIL = re.compile(r"[\w.+-]+@googlemail\.com")
 KEEP = ("Today's date", "You are powered by", "Note: ", "Your final report is delivered",
         "Attribution for git commits", "While auto mode", "<artifact-content-authored-by-others/>",
         "Called the Read tool", "Result of calling the Read tool")
@@ -75,7 +77,8 @@ PARAPHRASES = ["two one-line entries about absys source papers and commit traile
                "titles only: one on access to Absys sources, one on commit trailers",
                "titles on access to Absys sources and on commit trailers",
                "two titles, about Absys sources and commit trailers",
-               "two lines about commit trailers and Absys sources"]
+               "two lines about commit trailers and Absys sources",
+               "about a different project's sources and commit trailers"]
 SEP = r"(?:\s|\\n)+"
 PARA = re.compile("|".join(SEP.join(re.escape(w) for w in p.split()) for p in PARAPHRASES))
 
@@ -86,6 +89,7 @@ def clean(x):
         if n:
             counts["an agent's paraphrase of the memory index entries"] = counts.get("an agent's paraphrase of the memory index entries", 0) + n
             x = PARA.sub("[redacted by tools/redact-transcripts.py: what the entries are about]", x)
+        x = EMAIL.sub("<owner-email>", x)
         return REM.sub(reminder, x).replace(HOME_DASH, "-HOME-").replace(HOME, "~").replace(USER, "<owner>")
     if isinstance(x, list):
         return [clean(v) for v in x]

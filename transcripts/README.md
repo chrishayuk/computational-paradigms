@@ -116,6 +116,42 @@ all harness authors.
 As in batch 1A, the Claude agents disclose that the memory index was put
 into their context (six of the fourteen). Those disclosures are kept.
 
+## Batch 1C
+
+`batch-1C/`, by the same rules and the same script. The script now also
+writes the owner's email address as `<owner-email>`: the SWI-Prolog
+author ran `git log`, whose output lists commit authors (one transcript).
+
+| file | role | agent |
+|---|---|---|
+| `implementation-<system>.jsonl` | implementation authors, batch 1C (audit: `programs/AUDIT-1C.md`) | Claude |
+| `classifier-A-<system>-<problems>.jsonl` | classifier A, one agent per system and range of problems | Claude |
+| `classifier-B-<system>-<problems>.jsonl` | classifier B (`codex exec --json`) | Codex |
+| `briefs/` | each role's brief, as rendered for it | |
+
+| transcript | bookkeeping entries dropped | paraphrase redacted |
+|---|---|---|
+| `implementation-absys.jsonl` | 61 | 0 |
+| `implementation-swi-prolog.jsonl` | 78 | 0 |
+| `implementation-python.jsonl` | 90 | 0 |
+| `implementation-algol-60.jsonl` | 87 | 0 |
+| `classifier-A-absys-P09-P11.jsonl` | 73 | 0 |
+| `classifier-A-swi-prolog-P09-P11.jsonl` | 92 | 0 |
+| `classifier-A-swi-prolog-P12.jsonl` | 47 | 0 |
+| `classifier-A-python-P09-P10.jsonl` | 109 | 0 |
+| `classifier-A-python-P11-P12.jsonl` | 79 | 1 |
+| `classifier-A-algol-60-P09-P10.jsonl` | 82 | 0 |
+| `classifier-A-algol-60-P11-P12.jsonl` | 73 | 0 |
+| Codex logs and briefs | — | — |
+
+The Claude agents' disclosures that the memory index was put into their
+context are kept (six of the eleven). The one paraphrase, in
+`classifier-A-python-P11-P12.jsonl`, was also in that agent's notes,
+`results/python/classes-1C/A/parts/python-P11-P12/python.notes.md`, and
+was redacted there with the same marker before the notes were committed.
+
+The transcripts of Absys P12's classifiers will be added with its results.
+
 ## Correction to the batch 1A redaction
 
 The batch 1A screen looked for one wording of what the memory index's
