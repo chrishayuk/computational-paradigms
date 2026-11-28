@@ -26,11 +26,53 @@ enumerates them. One line per run goes to results/SYSTEM/batch-log.tsv.
                       (one log per job when jobs run in parallel; from batch 1C);
                       --skip-logged then reads PATH
 """
-import json, os, subprocess, sys, time
+import gzip, json, os, subprocess, sys, time
 
 EXT = {"absys": [".ab1", ".ab2", ".abs"], "swi-prolog": [".pl"], "python": [".py"],
        "algol-60": [".alg", ".a60"]}
 MODES = {"x1sim": ["behaviour"]}          # PROTOCOL / systems file: x1sim is behaviour only
+
+def stopped_by_limit(path):
+    """A record stopped by either limit (P13, Budget): the safety limit hit, or a
+    query ended by the step budget or the time limit, at any stage."""
+    try:
+        r = json.load(gzip.open(path) if path.endswith(".gz") else open(path))
+    except Exception:
+        return False
+    for st in r.get("stages", []):
+        for a in st.get("attempts", []):
+            if (a.get("safety_limit") or {}).get("hit"):
+                return True
+            for c in a.get("computations") or []:
+                for q in c.get("queries") or []:
+                    if q.get("ended_by") in ("budget", "timeout"):
+                        return True
+    return False
+
+_limit_cache = {}
+def smaller_n_stopped(out, sp, inst, prog_path, mode):
+    """P13's rule (QUESTIONS.md Q10): the larger values of n are not run after a run
+    stopped by a limit, per configuration, task (sub-problem and program) and mode.
+    Returns the smaller instance whose record was stopped, or None."""
+    n = (inst.get("parameters") or {}).get("n")
+    for other in sp["instances"]:
+        m = (other.get("parameters") or {}).get("n")
+        if other is inst or m is None or n is None or m >= n:
+            continue
+        for f in sorted(os.listdir(out)) if os.path.isdir(out) else []:
+            if not (f.startswith(other["id"] + "." + mode + ".") and (f.endswith(".json") or f.endswith(".json.gz"))):
+                continue
+            path = os.path.join(out, f)
+            if path not in _limit_cache:
+                try:
+                    r = json.load(gzip.open(path) if path.endswith(".gz") else open(path))
+                    same = r["run"]["program"]["path"] == prog_path
+                except Exception:
+                    same = False
+                _limit_cache[path] = same and stopped_by_limit(path)
+            if _limit_cache[path]:
+                return other["id"]
+    return None
 
 def main():
     args = sys.argv[1:]
@@ -91,6 +133,12 @@ def main():
                                 continue
                             out = f"results/{system}/{cfg}/{p['problem']}/raw/"
                             os.makedirs(out, exist_ok=True)
+                            if (p.get("limits") or {}).get("stop_larger_n_after_limit"):
+                                prev = smaller_n_stopped(out, sp, inst, f"{root}/{cfg}/{prog}", mode)
+                                if prev:
+                                    line = f"{time.strftime('%FT%TZ', time.gmtime())}\t{cfg}\t{inst['id']}\t{prog}\t{mode}\tnot run: {prev} was stopped by a limit (P13, Budget)"
+                                    print(line, flush=True); log.write(line + "\n"); log.flush()
+                                    continue
                             t = time.time()
                             r = subprocess.run([f"harnesses/{system}/run", cfg, p["problem"], inst["id"], mode,
                                                 f"{root}/{cfg}/{prog}", out], capture_output=True, text=True)
