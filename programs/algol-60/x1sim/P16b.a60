@@ -1,0 +1,260 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING incremental;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), Boolean arrays (5.2), procedures with value parameters (4.7, 5.4), the for statement with step-until and while elements (4.6), conditional statements (4.5), the X1 system's input and output procedures read, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), a program that reads each stage as it arrives, which counts as the same computation (systems file, The same computation), the message loop and observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of each relation until enough of its places are known, with a list for each unknown of the relations it occurs in and a queue of the unknowns newly given values, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 3: k, of x1 = k. Stages 1 and 2 have no constants: their relations are given by the instance's size n, from the instance line;
+  c̲o̲m̲m̲e̲n̲t̲ P16b. Integer unknowns x1 to xn+1, and total, each a Boolean that says whether it has a value and an integer that holds it. There are four contributors and m = n/4, called q in the program, since m names the count of codes on the instance line. ALGOL 60 has no separate computations that share unknowns, so the four contributions are posed as one conjunction, in the order of the contributors, at stage 1 (harnesses/algol-60/QUESTIONS.md, A3). Stage 1: contributor c gives succ(x_i, x_i+1) for i = (c - 1)m + 1 to cm, ascending, for c = 1 to 4. Stage 2: total = x1 + x_m+1 + x_2m+1 + x_3m+1 + x_4m+1. Stage 3: x1 = k. Each relation is held as posed, and is examined when it arrives and again when one of its places is given a value, never otherwise. succ(a, b) is the relation b = a + 1. Its evaluator gives b the value a + 1 when a is known, or a the value b - 1 when b is known, or tests b = a + 1 when both are, and is then decided, and when neither is known it waits. The relation of total, a sum of five places, gives its sixth place its value when five of its six are known, or tests it when all six are, and otherwise waits. x1 = k gives x1 the value k, or tests it. For each unknown the program keeps the list of the relations it occurs in, in the order they arrived, and a queue of the unknowns given values and not yet followed. After each relation is posed, the queue is emptied: for each unknown in it, every relation still held on its list is examined, in the order of the list. Nothing eliminates unknowns between two waiting relations. The store is sized from n;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, nu, nrmax, q;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  q := n ÷ 4;
+  nu := 4 × q + 2;
+  nrmax := nu + 2;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ nr, nheld, nknown, no, qh, qt, kval, j, c, w, w2, tot, sx, sw, sd, tx, fx, mostx, u, o, r;
+  b̲o̲o̲l̲e̲a̲n̲ inconsistent;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ rk, ra, rb, rc, ex[1:nrmax], val, ohd, otl, qu[1:nu], orel, onext[1:2 × nrmax], sp[1:5];
+  b̲o̲o̲l̲e̲a̲n̲ a̲r̲r̲a̲y̲ held[1:nrmax], kn[1:nu];
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ occur(u, r);
+    v̲a̲l̲u̲e̲ u, r; i̲n̲t̲e̲g̲e̲r̲ u, r;
+  c̲o̲m̲m̲e̲n̲t̲ the relation r is put at the end of the list of unknown u;
+  b̲e̲g̲i̲n̲
+    no := no + 1; orel[no] := r; onext[no] := 0;
+    i̲f̲ ohd[u] = 0 t̲h̲e̲n̲ ohd[u] := no e̲l̲s̲e̲ onext[otl[u]] := no;
+    otl[u] := no
+  e̲n̲d̲ occur;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ give(u, v);
+    v̲a̲l̲u̲e̲ u, v; i̲n̲t̲e̲g̲e̲r̲ u, v;
+  c̲o̲m̲m̲e̲n̲t̲ unknown u is given the value v, and joins the queue;
+  b̲e̲g̲i̲n̲
+    val[u] := v; kn[u] := t̲r̲u̲e̲; nknown := nknown + 1;
+    qt := qt + 1; qu[qt] := u
+  e̲n̲d̲ give;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ decide(r);
+    v̲a̲l̲u̲e̲ r; i̲n̲t̲e̲g̲e̲r̲ r;
+  c̲o̲m̲m̲e̲n̲t̲ the relation r is decided, and is held no longer;
+  b̲e̲g̲i̲n̲ held[r] := f̲a̲l̲s̲e̲; nheld := nheld - 1 e̲n̲d̲ decide;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine(r);
+    v̲a̲l̲u̲e̲ r; i̲n̲t̲e̲g̲e̲r̲ r;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of relation r: kind 1 is succ(a, b), kind 2 is a = c, kind 3 is a = the sum of the five places sp[1] to sp[5];
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ a, b, t, s, miss, unk;
+    a := ra[r]; b := rb[r];
+    ex[r] := ex[r] + 1;
+    i̲f̲ rk[r] = 1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      sx := sx + 1;
+      i̲f̲ ex[r] > mostx t̲h̲e̲n̲ mostx := ex[r];
+      i̲f̲ kn[a] ∧ kn[b] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ sd := sd + 1; i̲f̲ val[b] ≠ val[a] + 1 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲; decide(r) e̲n̲d̲
+      e̲l̲s̲e̲ i̲f̲ kn[a] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ sd := sd + 1; give(b, val[a] + 1); decide(r) e̲n̲d̲
+      e̲l̲s̲e̲ i̲f̲ kn[b] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ sd := sd + 1; give(a, val[b] - 1); decide(r) e̲n̲d̲
+      e̲l̲s̲e̲ sw := sw + 1
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ rk[r] = 2 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      fx := fx + 1;
+      i̲f̲ kn[a] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ i̲f̲ val[a] ≠ rc[r] t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲ e̲n̲d̲
+      e̲l̲s̲e̲ give(a, rc[r]);
+      decide(r)
+    e̲n̲d̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲
+      tx := tx + 1;
+      s := 0; unk := 0; miss := 0;
+      f̲o̲r̲ t := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ 5 d̲o̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ kn[sp[t]] t̲h̲e̲n̲ s := s + val[sp[t]] e̲l̲s̲e̲ b̲e̲g̲i̲n̲ unk := unk + 1; miss := t e̲n̲d̲
+      e̲n̲d̲;
+      i̲f̲ unk = 0 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ kn[a] t̲h̲e̲n̲ b̲e̲g̲i̲n̲ i̲f̲ val[a] ≠ s t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲ e̲n̲d̲
+        e̲l̲s̲e̲ give(a, s);
+        decide(r)
+      e̲n̲d̲
+      e̲l̲s̲e̲ i̲f̲ unk = 1 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ kn[a] t̲h̲e̲n̲ b̲e̲g̲i̲n̲ give(sp[miss], val[a] - s); decide(r) e̲n̲d̲
+      e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ examine;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ propagate;
+  c̲o̲m̲m̲e̲n̲t̲ the queue is emptied: for each unknown in it, in turn, every relation still held on its list is examined;
+  f̲o̲r̲ w := 0 w̲h̲i̲l̲e̲ qh ≤ qt d̲o̲
+  b̲e̲g̲i̲n̲
+    u := qu[qh]; qh := qh + 1;
+    o := ohd[u];
+    f̲o̲r̲ w2 := 0 w̲h̲i̲l̲e̲ o ≠ 0 d̲o̲
+    b̲e̲g̲i̲n̲
+      r := orel[o];
+      i̲f̲ held[r] t̲h̲e̲n̲ examine(r);
+      o := onext[o]
+    e̲n̲d̲
+  e̲n̲d̲ propagate;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ pose(kind, a, b, c);
+    v̲a̲l̲u̲e̲ kind, a, b, c; i̲n̲t̲e̲g̲e̲r̲ kind, a, b, c;
+  c̲o̲m̲m̲e̲n̲t̲ a relation arrives: it is held, put on the lists of its unknowns, examined, and what it gives is followed;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ t;
+    nr := nr + 1;
+    rk[nr] := kind; ra[nr] := a; rb[nr] := b; rc[nr] := c; ex[nr] := 0;
+    held[nr] := t̲r̲u̲e̲; nheld := nheld + 1;
+    occur(a, nr);
+    i̲f̲ kind = 1 t̲h̲e̲n̲ occur(b, nr);
+    i̲f̲ kind = 3 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ f̲o̲r̲ t := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ 5 d̲o̲ occur(sp[t], nr) e̲n̲d̲;
+    examine(nr);
+    propagate
+  e̲n̲d̲ pose;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ num(v);
+    v̲a̲l̲u̲e̲ v; i̲n̲t̲e̲g̲e̲r̲ v;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: an integer, a minus sign if it is negative and then its decimal digits, with no spaces;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ d;
+    i̲f̲ v < 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`-'); num(-v) e̲n̲d̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ v ≥ 10 t̲h̲e̲n̲ num(v ÷ 10);
+      d := v - v ÷ 10 × 10;
+      i̲f̲ d = 0 t̲h̲e̲n̲ PRINTTEXT(`0') e̲l̲s̲e̲ i̲f̲ d = 1 t̲h̲e̲n̲ PRINTTEXT(`1') e̲l̲s̲e̲ i̲f̲ d = 2 t̲h̲e̲n̲ PRINTTEXT(`2')
+      e̲l̲s̲e̲ i̲f̲ d = 3 t̲h̲e̲n̲ PRINTTEXT(`3') e̲l̲s̲e̲ i̲f̲ d = 4 t̲h̲e̲n̲ PRINTTEXT(`4') e̲l̲s̲e̲ i̲f̲ d = 5 t̲h̲e̲n̲ PRINTTEXT(`5')
+      e̲l̲s̲e̲ i̲f̲ d = 6 t̲h̲e̲n̲ PRINTTEXT(`6') e̲l̲s̲e̲ i̲f̲ d = 7 t̲h̲e̲n̲ PRINTTEXT(`7') e̲l̲s̲e̲ i̲f̲ d = 8 t̲h̲e̲n̲ PRINTTEXT(`8')
+      e̲l̲s̲e̲ PRINTTEXT(`9')
+    e̲n̲d̲
+  e̲n̲d̲ num;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ uname(u);
+    v̲a̲l̲u̲e̲ u; i̲n̲t̲e̲g̲e̲r̲ u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the name of unknown u;
+  i̲f̲ u = tot t̲h̲e̲n̲ PRINTTEXT(`total') e̲l̲s̲e̲ b̲e̲g̲i̲n̲ PRINTTEXT(`x'); num(u) e̲n̲d̲ uname;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ place(u);
+    v̲a̲l̲u̲e̲ u; i̲n̲t̲e̲g̲e̲r̲ u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a place of a relation, its value if known, else the name of its unknown;
+  i̲f̲ kn[u] t̲h̲e̲n̲ num(val[u]) e̲l̲s̲e̲ uname(u);
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ values;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: every unknown with a value, in order, separated by commas, five to a line;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ v, c;
+    c := 0;
+    f̲o̲r̲ v := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nu d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ kn[v] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ c > 0 t̲h̲e̲n̲ PRINTTEXT(`, ');
+        i̲f̲ c > 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ i̲f̲ c - c ÷ 5 × 5 = 0 t̲h̲e̲n̲ NLCR e̲n̲d̲;
+        uname(v); PRINTTEXT(` = '); num(val[v]); c := c + 1
+      e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ values;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ relations;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: every relation still held, in the order it arrived, separated by commas, five to a line;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ h, c, t;
+    c := 0;
+    f̲o̲r̲ h := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nr d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ held[h] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        i̲f̲ c > 0 t̲h̲e̲n̲ PRINTTEXT(`, ');
+        i̲f̲ c > 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ i̲f̲ c - c ÷ 5 × 5 = 0 t̲h̲e̲n̲ NLCR e̲n̲d̲;
+        i̲f̲ rk[h] = 1 t̲h̲e̲n̲
+        b̲e̲g̲i̲n̲ PRINTTEXT(`succ('); uname(ra[h]); PRINTTEXT(`, '); uname(rb[h]); PRINTTEXT(`)') e̲n̲d̲
+        e̲l̲s̲e̲ i̲f̲ rk[h] = 2 t̲h̲e̲n̲
+        b̲e̲g̲i̲n̲ uname(ra[h]); PRINTTEXT(` = '); num(rc[h]) e̲n̲d̲
+        e̲l̲s̲e̲
+        b̲e̲g̲i̲n̲
+          place(ra[h]); PRINTTEXT(` = ');
+          f̲o̲r̲ t := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ 5 d̲o̲
+          b̲e̲g̲i̲n̲ place(sp[t]); i̲f̲ t < 5 t̲h̲e̲n̲ PRINTTEXT(` + ') e̲n̲d̲
+        e̲n̲d̲;
+        c := c + 1
+      e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ relations;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ binds;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a bind tag for every unknown with a value;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ v;
+    f̲o̲r̲ v := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nu d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ kn[v] t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[bind '); uname(v); PRINTTEXT(`]'); num(val[v]); b̲e̲g̲i̲n̲ PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲ e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ binds;
+
+  nr := nheld := nknown := no := sx := sw := sd := tx := fx := mostx := 0;
+  qh := 1; qt := 0;
+  tot := nu;
+  inconsistent := f̲a̲l̲s̲e̲;
+  f̲o̲r̲ u := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nu d̲o̲
+  b̲e̲g̲i̲n̲ kn[u] := f̲a̲l̲s̲e̲; ohd[u] := 0; otl[u] := 0 e̲n̲d̲;
+
+  f̲o̲r̲ i := 1 w̲h̲i̲l̲e̲ t̲r̲u̲e̲ d̲o̲
+  b̲e̲g̲i̲n̲
+    c̲o̲m̲m̲e̲n̲t̲ harness words: one message, and the stage it poses;
+    code := read; k := read;
+    i̲f̲ k = 1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      c̲o̲m̲m̲e̲n̲t̲ stage 1: the four contributions, one conjunction, contributor c giving succ(x_i, x_i+1) for i = (c - 1)m + 1 to cm, ascending;
+      f̲o̲r̲ c := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ 4 d̲o̲
+      b̲e̲g̲i̲n̲ f̲o̲r̲ j := (c - 1) × q + 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ c × q d̲o̲ pose(1, j, j + 1, 0) e̲n̲d̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 2 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      c̲o̲m̲m̲e̲n̲t̲ stage 2: total = x1 + x_m+1 + x_2m+1 + x_3m+1 + x_4m+1;
+      f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ 5 d̲o̲ sp[j] := (j - 1) × q + 1;
+      pose(3, tot, 0, 0)
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 3 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      c̲o̲m̲m̲e̲n̲t̲ stage 3: x1 = k, with k from the constants;
+      kval := read;
+      pose(2, 1, 0, kval)
+    e̲n̲d̲;
+
+    c̲o̲m̲m̲e̲n̲t̲ the answer: the unknowns with values, and the relations still held;
+    i̲f̲ ¬inconsistent t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      PRINTTEXT(`[answer]');
+      i̲f̲ nknown = 0 t̲h̲e̲n̲ PRINTTEXT(`no unknown is known') e̲l̲s̲e̲ values;
+      i̲f̲ nheld > 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`,'); NLCR e̲n̲d̲; PRINTTEXT(`where '); relations e̲n̲d̲;
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+    e̲n̲d̲;
+
+    c̲o̲m̲m̲e̲n̲t̲ observe: the relations held, the values known, and how often the relations were examined;
+    PRINTTEXT(`[observe]');
+    i̲f̲ inconsistent t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+    b̲e̲g̲i̲n̲ PRINTTEXT(`the four contributions were posed as one conjunction, in one computation'); NLCR e̲n̲d̲;
+    PRINTTEXT(`held relations: ');
+    i̲f̲ nheld = 0 t̲h̲e̲n̲ PRINTTEXT(`none') e̲l̲s̲e̲ relations;
+    NLCR;
+    binds;
+    i̲f̲ nheld > 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended held-relations '); num(nheld); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲ e̲n̲d̲;
+    PRINTTEXT(`unknowns known: '); num(nknown); PRINTTEXT(` of '); num(nu); NLCR;
+    PRINTTEXT(`[operations succ-examined '); num(sx); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations succ-decided '); num(sd); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations succ-waited '); num(sw); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations total-examined '); num(tx); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations equation-examined '); num(fx); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`most examinations of one succ relation: '); num(mostx); NLCR;
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲

@@ -1,0 +1,101 @@
+begin
+  comment HARNESS POSING reposed;
+  comment PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  comment PROVENANCE precursor seen: no;
+  comment PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), recursive procedures and function designators with value parameters (4.7, 5.4), the for statement (4.6) and conditional statements (4.5), the input and output procedures ininteger and outstring as the interpreter gives them (IFIP 1964, systems file), sequences as parallel arrays of heads and tail indices (systems file, Values, and problems/13-deterministic-scale.md, Representation), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  comment CONSTANTS a line 1: k, the first place of range(k, n, s). n is the instance's size, from the instance line;
+  comment P13b, prescribed. range(k, n, s) and sum(s, total), in that order. range computes s from k and n by its cases, in order, as a function, the direction the query uses. Case 1: range(m, n, the empty sequence) if m is greater than n. Case 2: range(m, n, the sequence of m alone ++ t) if m is at most n and range(m + 1, n, t). sum computes its second place from s by its cases, in order, as a function. Case 1: sum(the empty sequence, 0). Case 2: sum(the sequence of h alone ++ t, k) if sum(t, j) and k = h + j, its conjuncts in order. A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence of hd[c] alone ++ the sequence tl[c], so that taking the tail is the one subscript tl[c], in constant time. range makes one cell for each element, sum makes none, and the store is sized from k and n. The problem's unknown k is called total here, since k names the stage number;
+  integer n, cap, m, i, code, k, lo, size;
+  comment harness words: the instance line, and the one message, which poses stage 1;
+  ininteger(0, n); ininteger(0, cap); ininteger(0, m);
+  for i := 1 step 1 until m do ininteger(0, code);
+  ininteger(0, code); ininteger(0, k);
+  comment the stage's constant;
+  ininteger(0, lo);
+  size := if lo > n then 1 else n - lo + 2;
+  begin
+  integer top, s0, total, range1, range2, sum1, sum2;
+  integer array hd, tl[1:size];
+
+  integer procedure cons(h, t);
+    value h, t; integer h, t;
+  comment a new cell, the sequence of h alone ++ the sequence t;
+  begin top := top + 1; hd[top] := h; tl[top] := t; cons := top end cons;
+
+  integer procedure range(m, n);
+    value m, n; integer m, n;
+  comment range(m, n, s), computing s by its cases, in order;
+  if m > n then
+  begin range1 := range1 + 1; range := 0 end
+  else
+  begin
+    integer t;
+    range2 := range2 + 1;
+    t := range(m + 1, n);
+    range := cons(m, t)
+  end range;
+
+  integer procedure sum(s);
+    value s; integer s;
+  comment sum(s, k), computing k by its cases, in order;
+  if s = 0 then
+  begin sum1 := sum1 + 1; sum := 0 end
+  else
+  begin
+    integer j;
+    sum2 := sum2 + 1;
+    j := sum(tl[s]);
+    sum := hd[s] + j
+  end sum;
+
+  procedure num(v);
+    value v; integer v;
+  comment output adapter: an integer, a minus sign if it is negative and then its decimal digits, with no spaces;
+  begin
+    integer d;
+    if v < 0 then begin outstring(1, "-"); num(-v) end
+    else
+    begin
+      if v ≥ 10 then num(v ÷ 10);
+      d := v - v ÷ 10 × 10;
+      if d = 0 then outstring(1, "0") else if d = 1 then outstring(1, "1") else if d = 2 then outstring(1, "2")
+      else if d = 3 then outstring(1, "3") else if d = 4 then outstring(1, "4") else if d = 5 then outstring(1, "5")
+      else if d = 6 then outstring(1, "6") else if d = 7 then outstring(1, "7") else if d = 8 then outstring(1, "8")
+      else outstring(1, "9")
+    end
+  end num;
+
+  procedure printseq(p);
+    value p; integer p;
+  comment output adapter: a sequence, its elements in parentheses, separated by commas, with a new line after every ten elements so that no line of the X1 passes its 144 positions;
+  begin
+    integer j, c;
+    outstring(1, "(");
+    c := 0;
+    for j := 0 while p ≠ 0 do
+    begin
+      num(hd[p]); p := tl[p]; c := c + 1;
+      if p ≠ 0 then outstring(1, ", ");
+      if c = 10 then begin outstring(1, "\n"); c := 0 end
+    end;
+    outstring(1, ")")
+  end printseq;
+
+  top := range1 := range2 := sum1 := sum2 := 0;
+
+  comment the query: range(k, n, s) and sum(s, total), in that order;
+  s0 := range(lo, n);
+  total := sum(s0);
+
+  outstring(1, "[answer]k = "); num(total); outstring(1, ", s = "); printseq(s0); outstring(1, "[/answer]\n");
+  comment observe: the applications of each case, and the store held after the answer;
+  outstring(1, "[observe]");
+  outstring(1, "cells held after the answer: "); num(top); outstring(1, ", the cells of s, kept as long as the program runs\n");
+  outstring(1, "[bind k]"); num(total); outstring(1, "[/bind]\n");
+  outstring(1, "[operations range/1 "); num(range1); outstring(1, "]\n");
+  outstring(1, "[operations range/2 "); num(range2); outstring(1, "]\n");
+  outstring(1, "[operations sum/1 "); num(sum1); outstring(1, "]\n");
+  outstring(1, "[operations sum/2 "); num(sum2); outstring(1, "]\n");
+  outstring(1, "[/observe]\n[end]")
+  end
+end

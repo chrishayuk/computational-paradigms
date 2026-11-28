@@ -1,6 +1,6 @@
-# ALGOL 60 programs, wave 1: batch 1A (P01–P03), batch 1B (P04–P08) and batch 1C (P09–P12)
+# ALGOL 60 programs, wave 1: batch 1A (P01–P03), batch 1B (P04–P08), batch 1C (P09–P12) and batch 1D (P13–P16)
 
-*Batch 1B and batch 1C have their own sections, [below](#batch-1b-p04p08) and [after it](#batch-1c-p09p12). What follows up to batch 1B is batch 1A's, unchanged.*
+*Batches 1B, 1C and 1D have their own sections, [below](#batch-1b-p04p08), [after it](#batch-1c-p09p12) and [last](#batch-1d-p13p16). What follows up to batch 1B is batch 1A's, unchanged.*
 
 *Phase 5 (`PROTOCOL.md`, "Phases"), against `spec-1.0.1`. Written to the
 program contract of `harnesses/algol-60/README.md`, section 2. Every program
@@ -1178,4 +1178,481 @@ P11b from P11a and P11d from P11c, to rename variables in the P12 text, to
 make the instance copies and constants files, and the converter to the X1
 texts, with its check against batch 1B's texts), and `git`, `ls`, `cat`,
 `sed`, `grep`, `diff`, `cmp`, `wc` and `cp`. Nothing executed a program of the
+study, the system, or an interpreter on a program.
+
+---
+
+# Batch 1D (P13–P16)
+
+*Phase 5, against `spec-1.0.1`, written to the program contract of
+`harnesses/algol-60/README.md`, section 2. Every program was fixed before any
+was run. The only thing run on them is the harness's `check`, which executes
+nothing. It reports no error and no warning for any of them, in any
+configuration: the report texts in report, and the X1 texts in both x1 and
+x1sim.*
+
+**Author of every program:** `implementation-algol-60`, an agent (Claude
+Opus 5.5, model id `claude-opus-5-5`). This batch's author has its own context
+and had not seen any earlier work on the study except what is listed under
+"What the author read and ran" below. That includes the batch 1A–1C sections
+of this README and some of their programs, which the brief allows and which
+hold no outcome. **Precursors:** the author had not seen any precursor
+program: not the absys experiments E01–E09, not the calibration programs (which
+hold programs for P13), and no program of this study other than the batch
+1A–1C ALGOL 60 programs.
+
+**S mechanisms used:** none, in any program. Every procedure that holds a
+relation, decides it, or passes its solutions on is written for that problem's
+own relations, so by `METRICS.md` rule 19 it is R in the core configuration,
+not S. Ambiguity 14 says where a classifier could read P16 another way.
+
+**Named variants:** none. No sub-problem was judged not expressible. For each
+sub-problem one program was chosen before any was run, and it is the primary.
+
+## Layout, and which texts are shared
+
+The layout is that of batches 1A–1C: `programs/algol-60/<configuration>/<file>.<ext>`
+with its `.constants` beside it, `.alg` for report and `.a60` for x1 and x1sim.
+
+- **One file per sub-problem, for all its instances.** n and the arrival order
+  come from the instance line, and no constant depends on them, so (as batch
+  1B's `P07a`) one program and one constants file serve every instance of a
+  sub-problem: `P13a` serves `P13a.n100` … `P13a.n100000`, `P16a` its nine
+  instances (three sizes, three orders), and `P16b`, `P16c`, `P16d`, `P16d2`
+  their three sizes. Run them as, for instance,
+
+      harnesses/algol-60/run report P13 P13c.n1000 behaviour programs/algol-60/report/P13c.alg OUTDIR
+      harnesses/algol-60/run x1sim  P16 P16a.n100.interleaved behaviour programs/algol-60/x1sim/P16a.a60 OUTDIR
+
+  Every other sub-problem has one instance, of its own name.
+- **No constants file** for `P13e`, `P13f` and `P16d2`: their stages have no
+  constant (ambiguities 3 and 16).
+- **x1 and x1sim share one text**, as before: every `.a60` file of this batch
+  in `x1/` is byte-identical to the file of the same name in `x1sim/`, and so
+  are the constants files.
+- **The X1 text is made from the report text by the fixed substitution of
+  batches 1B and 1C** (reserved words underlined outside comments and strings,
+  `Boolean` written `boolean`, `go to` written `goto`; `ininteger(0, v)` written
+  `v := read`; `outstring(1, "t")` written ``PRINTTEXT(`t')``, a `\n` in it
+  written `NLCR`, the statements one call becomes wrapped in `begin … end`; the
+  comment on idioms changed to name the X1 procedures). This batch carried it
+  out with a `sed` script, which only rewrites text, and checked that no string
+  in a report text holds a reserved word (which the substitution would
+  underline). The report texts write `¬ ∧ ≠ ≤ ≥ × ÷` as symbols and print every
+  integer with the digit-by-digit output adapter `num` (no `outinteger`), so
+  nothing else changes. Same algorithm, same structure, same constants.
+- **Identical texts within a configuration:** `P14a` = `P14c` (P14c is P14a's
+  stages and two more). Nearly identical: `P15a1` and `P15a2` differ only in
+  the `go to` that leaves at the first answer; `P15b` and `P15b2` only in the
+  order of merge's arguments; `P16d` and `P16c` only in stage 3's relation.
+
+## Programs, per configuration and sub-problem
+
+Every program below is **primary**, and exists in all three configurations:
+`report/<file>.alg`, and `x1/<file>.a60` = `x1sim/<file>.a60`. The
+expressibility is the author's reading, for the classifiers to confirm. It is
+the same in all three configurations, which share the algorithm, and nothing
+in these problems uses a feature one configuration has and another lacks (but
+see ambiguity 1 on the X1's store and integers).
+
+| sub-problem | file | instances | posing | expressibility |
+|---|---|---|---|---|
+| P13a | `P13a` | n = 10², 10³, 10⁴, 10⁵ | reposed (one stage) | expressible |
+| P13b | `P13b` | the same | reposed (one stage) | expressible |
+| P13c | `P13c` | the same | reposed (one stage) | expressible |
+| P13d | `P13d` | the same | reposed (one stage) | expressible |
+| P13e | `P13e` (no constants) | the same | reposed (one stage) | expressible (native) |
+| P13f | `P13f` (no constants) | the same | reposed (one stage) | expressible (native) |
+| P14a | `P14a` | one | incremental | expressible |
+| P14b | `P14b` | one | reposed (one stage) | expressible |
+| P14c | `P14c` (= `P14a`) | one | incremental | expressible |
+| P15a1 | `P15a1` | one | reposed (one stage) | expressible with reformulation |
+| P15a2 | `P15a2` | one | reposed (one stage) | expressible with reformulation |
+| P15b | `P15b` | one | reposed (one stage) | expressible with reformulation (ambiguity 10) |
+| P15b2 | `P15b2` | one | reposed (one stage) | expressible with reformulation (ambiguity 10) |
+| P15c | `P15c` | one | reposed (one stage) | expressible with reformulation |
+| P15d | `P15d` | one | incremental | expressible |
+| P16a | `P16a` | three sizes × three orders | incremental | expressible with reformulation |
+| P16b | `P16b` | three sizes | incremental (stage 1 by the spawn fallback) | expressible with reformulation |
+| P16c | `P16c` | three sizes | incremental | expressible with reformulation |
+| P16d | `P16d` | three sizes | incremental | expressible with reformulation |
+| P16d2 | `P16d2` (no constants) | three sizes | incremental | expressible with reformulation |
+
+Single-stage sub-problems are declared `reposed`, as before: with one stage
+both posings send the same input. The incremental programs handle a replay
+message `2 j` as `1 j`: P16's programs dispatch on the stage number, and P14's
+and P15d's do not look at it at all (ambiguity 6).
+
+### P13: the definitions as functions, and arrays for the native tasks
+
+- **Representation (prescribed).** A sequence is batch 1A's cell: an index into
+  the integer arrays `hd` and `tl`, 0 being ⟨⟩ and a cell c being ⟨hd[c]⟩ ++
+  tl[c], so taking the tail is one subscript, in constant time, as the problem's
+  section "Representation" requires of ALGOL 60 ("arrays with an index for the
+  tail"). `cons` makes a cell. No cell is ever given back: ALGOL 60 has no
+  reclaiming of store. The arrays are sized from the stage's k and n, for the
+  cells the definitions make.
+- **P13a.** `range(m, n)` computes s by its two cases, in order, as a function
+  (the direction the query uses): case 1 when m > n gives ⟨⟩; case 2 computes
+  t := range(m + 1, n) and then makes the cell ⟨m⟩ ++ t. A mode-faithful
+  transcription (rule 3): *expressible*. The recursion is n deep.
+- **P13b.** `range`, then `sum(s)` by its two cases in order, case 2 taking its
+  conjuncts in order: j := sum(tl[s]), then k := hd[s] + j. The answer is
+  `k = …, s = (…)`.
+- **P13c.** `range`, then `rev` and `conc` exactly as batch 1A's P03e
+  transcribes them (rev's case 2: q := rev(l), then conc(q, ⟨h⟩)); quadratic,
+  n(n+1)/2 applications of conc's cases. The store is sized for the n cells of
+  s, the n cells ⟨h⟩ and the n(n−1)/2 cells conc copies (ambiguity 1).
+- **P13d.** `range`, then `revacc(s)` by its one case, `racc(s, ⟨⟩)`, and
+  `racc(a, c)` by its two cases: case 1 when a = ⟨⟩ gives c; case 2 gives
+  racc(tl[a], ⟨hd[a]⟩ ++ c). Linear: 2n cells. ALGOL 60 has no tail calls, so
+  racc's recursion is n deep too.
+- **P13e, P13f (native).** The algorithm: the sequence ⟨1, …, n⟩ is built in an
+  integer array `s[1:n]` by a `for` statement (`s[i] := i`) and held there until
+  the answer is printed; P13e then adds its elements in order into `total` by a
+  second `for` statement, P13f copies them in reverse order into a second array
+  (`r[i] := s[n + 1 − i]`). Both linear in steps, n (P13e) or 2n (P13f)
+  elements of store. This is the systems file's "integer array with a length"
+  and the Revised Report's `for` statement over an array (4.6), the period's
+  own idiom; rule 18 makes its tokens P.
+- **Answers.** The whole of s and r is printed, ten elements to a line, so that
+  no line of the X1 passes its 144 positions (the tags are kept whole; the
+  harness reads answers across lines). The unknown the problem calls k is
+  `total` in the program, since `k` there is the stage number; it is printed
+  and bound as `k`.
+- **Observe.** The cells (or elements) held after the answer, which the
+  program keeps until it ends, and `[operations …]` counters (H) for each case:
+  `range/1`, `range/2`, `sum/1`, `sum/2`, `rev/1`, `rev/2`, `conc/1`, `conc/2`,
+  `revacc/1`, `racc/1`, `racc/2`. Nothing is suspended and no alternative is
+  held: every stage is *finished* if it ends. The native programs count the
+  elements built and added (or moved) in plain text, since they apply no case
+  of a defined relation.
+- **Recursion at n = 10⁵.** The systems file lists no flag that raises the
+  interpreter's depth of recursion, so none is set; if the depth is exceeded,
+  the error is the result (`problems/13-deterministic-scale.md`,
+  Representation).
+
+### P14: the counter as the running program
+
+- **P14a, P14c.** The counter is implemented as a process holding its count,
+  which the problem allows as a transcription: the incremental program itself,
+  which reads each message as it arrives (the systems file's "same
+  computation") and answers before reading the next. The count is one integer
+  variable, 0 at first (run(m, 0)). Each message is taken by run's case for
+  its head: INC (case 2) adds one; READ(r) (case 3) gives the next unknown,
+  r1, r2, …, the count. Case 1 would close the stream, and no stage closes it.
+  A message with no case of run makes run false from then on (`no solution`).
+  Each stage answers with every unknown bound so far (`r1 = 2, r2 = 3`), or
+  `no unknowns` before the first READ (the stage's one, empty, solution). r₁ is
+  reported at stage 3, before later messages arrive. The observe block gives
+  the count held, `[bind r1]`, … and `[operations run/2 …]`, `run/3`.
+- **P14b.** `run(s, c)` transcribed by its three cases, in order, as a recursive
+  Boolean procedure over the sequence of the stage (read as cells), with the
+  count passed down as its second place: P, the relation as the problem
+  defines it. Answer `r1 = 2, r2 = 3`.
+- **How the count is held** (P14's observation): as a variable of the running
+  program between messages, which waits on its next read. The harness re-creates
+  that process for each stage's budget in report and x1 (its `QUESTIONS.md`,
+  A2), and keeps one live process in x1sim. The waiting is not tagged
+  `[suspended …]` (ambiguity 7).
+
+### P15: merge, fairness, and a resource
+
+- **P15a1, P15a2.** `merge(a, b, m, found)` is its four cases, in order, as a
+  procedure that passes each solution to `found` (batch 1B's P04 design and
+  batch 1C's P12): case 1 sets m := b; case 2, when a ≠ ⟨⟩ and b = ⟨⟩, m := a;
+  cases 3 and 4 make the cell of m with its head and its tail still to come,
+  and pass the tail by name to the recursive merge, which gives it its value
+  in place (batch 1C's P12 idiom), and give the cell back when done (C,
+  rule 16). Interleavings come depth first, in the order of the cases:
+  ⟨1,2,3,4⟩, ⟨1,3,2,4⟩, ⟨1,3,4,2⟩, ⟨3,1,2,4⟩, ⟨3,1,4,2⟩, ⟨3,4,1,2⟩, the same at
+  every run (the interpreter is deterministic). P15a2 prints all six and
+  finishes; P15a1 prints the first and leaves the recursion by a `go to` (C, as
+  P12's any mode). `[problem-alternatives interleavings 0]`: nothing is held
+  after the stage, in either. R: the parameter `found` (rule 5).
+- **P15b, P15b2.** The conjuncts in order: `zeros` by its one case, as a
+  function, as batch 1C's P09d transcribes genu: it must have z's tail before
+  it can make z's cell, and before merge can begin, and it never returns. So
+  merge (P15a's) and `position` (its two cases, in order, as a function,
+  0 for no solution) are never reached, in either argument order, and nothing
+  is reported: the expectation is the budget (or the interpreter's limit on the
+  depth of recursion) in report and x1, and the safety
+  limit or the X1's stack in x1sim. No fair merge was written: merge's cases in
+  order take from z first, and fairness is a requirement the problem says the
+  definition does not give (ambiguity 10).
+- **P15c.** `grant(p, q, g, found)` is its two facts, in order. The query asks for
+  one answer: `found` reports g = p (`g = 1`, ᴀ being 1) and leaves by a `go to`
+  (C), so the second fact is never tried, and nothing is kept that could
+  revisit the choice: the choice is the order of the facts, and it is
+  committed. `[operations grant/1 1]`, `grant/2 0`.
+- **P15d.** holder and queue are named quantities, each one variable (batch 1C's
+  P10a), replaced by assignment at each stage by the problem's cases: a
+  request gives holder p if it is none, else queue becomes queue ++ ⟨p⟩ (++ by
+  conc's cases, copying); a release by the holder gives holder none if queue is
+  empty, else holder becomes queue's head and queue its tail. Answers:
+  `holder = 1, queue = ()`, `holder = 1, queue = (2)`, `holder = 2, queue = ()`.
+  ʙ's waiting is held as an element of queue, a value, and stage 3's release
+  grants it: ʙ's request is not posed again. A grant is never withdrawn by a
+  later request. `[bind holder]`, `[bind queue]`, and counters for the cases of
+  request, release and conc.
+
+### P16: relations held on lists of their unknowns
+
+ALGOL 60 has no unknowns. Each unknown is a Boolean (has it a value?) and an
+integer, in arrays sized from n: x_i is unknown i, y_i (P16c, P16d) unknown
+n + i, total (P16b) the last. Each relation is held as posed in arrays of its
+kind and places, with a Boolean that says it is still held. Its **evaluator**
+(rule 19) decides it from the places known: succ(a, b) gives b the value a + 1
+when a is known, or a the value b − 1 when b is known, or tests b = a + 1 when
+both are; an equation x = k gives x its value or tests it; P16b's total
+relation gives its sixth place when five of its six are known, or tests it;
+P16d2's x_n = x_1 gives either place the other's value, or tests it. Otherwise
+it waits.
+
+**Unlike batches 1A–1C**, which examine every held relation in order, again and
+again, until a pass gives nothing, these programs keep for each unknown the
+list of the relations it occurs in (in arrival order) and a queue of the
+unknowns given values: a relation is examined when it arrives, and again only
+when one of its places is given a value; after each relation is posed the
+queue is emptied. So each succ relation is examined at most twice (on arrival,
+and once when its first place becomes known, when it is decided), the work
+after a value arrives is confined to what that value reaches, and P16c's stage
+2 examines no y relation. This design was chosen before any program was run,
+because the passes of batch 1A would examine every held relation again for
+every unknown given a value along a chain followed against the arrival order,
+about n²/2 examinations at stage 2 (ambiguity 14). Both are written for the
+problem's own relations.
+
+- **P16a.** Stage 1 poses succ(x_i, x_i+1), i = 1 … n − 1, in the order the
+  instance line gives (ascending, descending, or odd i ascending then even i
+  ascending); nothing is known, so each waits. Stage 2 poses x_j = k,
+  j = ⌈n/2⌉ (computed as (n + 1) ÷ 2), and the values spread outward from x_j.
+- **P16b.** ALGOL 60 has no separate computations sharing unknowns, so stage 1
+  is posed to `main` as one conjunction (the harness's `spawn_fallback`,
+  `QUESTIONS.md` A3): the four contributions in the order of the contributors,
+  each ascending, n relations over x_1 … x_{n+1}. Stage 2 poses
+  total = x_1 + x_{m+1} + x_{2m+1} + x_{3m+1} + x_{4m+1}, which waits; stage 3,
+  x_1 = k, and then total = 10m once the fifth of its places is known.
+- **P16c.** Both chains in one computation: the x relations, then the y
+  relations, ascending. Stage 2 x_1 = k; stage 3 y_1 = k. Counters
+  `[operations succ-x-examined N]` and `succ-y-examined` give each chain's
+  examinations since the computation started.
+- **P16d.** As P16c, with stage 3 x_n = k: x_n is known from stage 2, the test
+  fails at once, and no answer is printed; the observe block says `no
+  solution`. Nothing held is withdrawn or changed: the x values and the y
+  relations stay as they were, and the observe block shows them.
+- **P16d2.** Stage 2 (the problem's stage 3) poses x_n = x_1, with no value known:
+  it waits, like every succ, and the contradiction (x_n = x_1 + n − 1) is not
+  found, since nothing combines two waiting relations. That is batch 1B's P07f
+  reading, for the same reason (elimination is not written).
+- **Answers.** Every unknown with a value (`x1 = 0, x2 = 1, …`), or `no unknown
+  is known`, then `where` and every relation still held, in arrival order
+  (`succ(x1, x2), …`), five to a line for the X1's 144 positions. With n = 10⁴
+  an answer is long (tens of thousands of items); it is printed in full.
+- **Observe.** The held relations again (state the program acts on), a
+  `[bind …]` for every unknown with a value, `[suspended held-relations N]`
+  while any relation waits, and counters (H) since the computation started:
+  `succ-examined`, `succ-decided`, `succ-waited` (examinations that ended with
+  the relation still waiting), `equation-examined` (or `total-examined`,
+  `equality-examined`), and the most examinations of any one succ relation.
+  succ is not defined by cases, so these count examinations, the observation
+  P16 asks for, as batch 1A's P02 does.
+
+## Constants files (batch 1D)
+
+| file | contents | layout |
+|---|---|---|
+| P13a, P13b, P13c, P13d | `1: 1` | k of range(k, n, s); n from the instance line |
+| P13e, P13f | none | |
+| P14a | `1: 1`, `2: 1`, `3: 2`, `4: 1`, `5: 2` | each stage's message: 1 INC, 2 READ |
+| P14c | as P14a, and `6: 1`, `7: 2` | the same |
+| P14b | `1: 5 1 1 2 1 2` | L, then the messages of the sequence |
+| P15a1, P15a2 | `1: 2 1 2 2 3 4` | La, a, Lb, b of merge(a, b, m) |
+| P15b, P15b2 | `1: 1 9 9` | L, then the known sequence of merge, then e of position(e, m, i) |
+| P15c | `1: 1 2` | p q of grant(p, q, g): ᴀ 1, ʙ 2 |
+| P15d | `1: 1 1`, `2: 1 2`, `3: 2 1` | r p: r 1 a request, 2 a release; p the atom, ᴀ 1, ʙ 2 |
+| P16a | `2: 0` | k of x_j = k; stage 1 from n and the order |
+| P16b | `3: 0` | k of x_1 = k; stages 1 and 2 from n |
+| P16c | `2: 0`, `3: 5` | k of x_1 = k; k of y_1 = k |
+| P16d | `2: 0`, `3: 0` | k of x_1 = k; k of x_n = k |
+| P16d2 | none | both stages from n |
+
+No stage's code reads another stage's constants, and nothing in a program
+depends on a later stage (rule 5). The lists and queue of P16 are built for
+whatever relations arrive, not for the stages to come.
+
+## Idioms and their sources (batch 1D)
+
+Cited in each program's `PROVENANCE idioms` comment:
+
+- the Revised Report on ALGOL 60 (1962): blocks and arrays with bounds computed
+  at run time (5.2.4.2), Boolean arrays (5.2), recursive procedures and
+  function designators with value and name parameters (4.7, 5.4), a
+  subscripted variable as an actual parameter called by name and assigned to
+  (4.7.3.2, P15's tail of m), procedures as actual parameters (4.7.5, 5.4.4),
+  the `for` statement with `step … until` and `while` elements, and over the
+  subscripts of an array (4.6, P13e and P13f), conditional statements and
+  expressions (3.3, 4.5), the assignment statement as replacement (4.2, P15d),
+  and the `go to` statement leaving procedures (4.3, P15a1, P15b, P15c);
+- a parameterless procedure passed as an actual parameter for each solution:
+  Knuth's man or boy test (1964, `examples/man-or-boy-1964.alg` in the image),
+  cited after batch 1B's reading of it, not reread; leaving a deep recursion by
+  a `go to`: `examples/exits.alg` in the image, cited after batch 1C's reading
+  of it, not reread;
+- *report*: `ininteger` and `outstring` (IFIP 1964, systems file); *x1, x1sim*:
+  `read`, `PRINTTEXT`, `NLCR` and the X1 compiler's representation (harness
+  README, 2.1). This batch's programs do not cite Kruseman Aretz 2003, which
+  its author did not read;
+- sequences as parallel arrays of heads and tails, an array with a length,
+  atoms as codes: the systems file, Values, and P13's "arrays with an index
+  for the tail";
+- rev and conc as batch 1A's P03e transcribes them (P13c); genu's transcription
+  in batch 1C's P09d (P15b's zeros); named quantities as batch 1C's P10a
+  (P15d);
+- the message loop, instance line and observe block: the harness README's
+  example X01;
+- holding a relation until it can be decided, on lists of its unknowns with a
+  queue of the unknowns given values: no period source; written for P16
+  (rule 19).
+
+The X1 manual's rules, as batches 1B and 1C state them, followed in all three
+texts: declarations in the order scalars, arrays, procedures; no conditional
+statement straight after `do`; identifiers unique in their first nine
+characters; every formal parameter specified. Neither dialect stops evaluating
+`∧` early, so no subscript is guarded by `∧` (P15's merge tests a ≠ ⟨⟩ and
+b ≠ ⟨⟩ by nested `if`s).
+
+## Ambiguities, and the reading taken (batch 1D)
+
+1. **P13c's store, and the X1's.** Without reclaiming, rev makes n(n+1)/2 + n
+   cells, all declared when the stage's block is entered: 5·10⁷ in each of two
+   arrays at n = 10⁴, 5·10⁹ at n = 10⁵. *Reading:* the arrays are sized for the
+   cells the definitions make, and nothing gives a cell back (a free list would
+   be C, rule 16, and was not written). At n = 10⁴ the interpreter may fail to
+   allocate them (an *error*) before the budget is reached; that is the cost of
+   having no dynamic store, and is recorded as whatever happens. The X1 had a
+   small store and 26-bit integers: in x1sim P13c (and the larger n of the
+   others) is expected to stop on store, and n(n+1) overflows at n = 10⁴, before
+   any step of rev. The x1 configuration runs on the interpreter, with its store.
+2. **P13: recursion depth.** The prescribed definitions are recursive, and each
+   is transcribed recursively, n deep (racc too: ALGOL 60 has no tail calls).
+   No flag raises the depth (none is in the systems file), so an error at
+   n = 10⁵ is the result, as the problem says.
+3. **P13e, P13f have no constants.** `stages.json` gives their stage no
+   constant, so the sequence ⟨1, …, n⟩'s first element, 1, is in the program,
+   and n comes from the instance line. P13a–d read range's first place k from
+   the constants.
+4. **P13: printing the answer.** The valid outcomes include s (and r), so the
+   whole sequence is printed, 10⁵ elements at the largest n. The output
+   adapter's steps (H) are in the stage's steps.
+5. **P14: the message is a constant of every stage.** `stages.json` writes
+   P14a's INC stages as `message <atom>`, a constant, and its READ stages as
+   `message READ(r1)`, without one. *Reading:* every stage's line gives its
+   message as a code (INC 1, READ 2), READ included, and the program takes each
+   message by its content, as a counter receiving messages does, not by the
+   stage's number. A variant constants file must give a line for every stage,
+   in this layout.
+6. **P14, P15d: dispatch on the message, not the stage.** Both programs read
+   the stage number and do not use it: a replay (`2 j`) and a first posing
+   (`1 j`) carry the same constants and are carried out alike. P15d's stage
+   kind (request or release) is in its constants for the same reason
+   (ambiguity 5).
+7. **P14: is the waiting counter *suspended*?** The program holds its count and
+   waits on its next read, in every stage; so does every incremental program of
+   batches 1A–1C, and none tags that waiting. *Reading:* it is not tagged
+   `[suspended …]`, so the harness will record each stage as *finished*; the
+   observe block says the count is held by the running program, which waits on
+   its next message. A classifier may read P14c's question ("suspended waiting
+   for messages, or finished and restarted") as answered *suspended* in x1sim,
+   which keeps one live process, and as re-created in report and x1.
+8. **P14: an answer with no unknowns.** Before the first READ the stage has one
+   solution, with no unknowns. *Reading:* it is reported as one answer,
+   `no unknowns`.
+9. **P15a: what an interleaving held is.** *Reading:* after the stage nothing is
+   held (`[problem-alternatives interleavings 0]`); during it, the recursion
+   holds the cases not yet tried, as P12's did, and the observe block gives its
+   peak depth.
+10. **P15b, P15b2: the stream reading and fairness.** ALGOL 60 has no infinite
+    values and no lazy ones, and the transcription of zeros in the order of the
+    conjuncts never returns. *Reading:* as batch 1C's P09d (its ambiguity 4),
+    the eager transcription is the program of record, and the stream reading is
+    not reached: nothing is reported, in both argument orders. The
+    expressibility is *expressible with reformulation* only for merge's `found`
+    parameter. A classifier who holds that the greatest relation, or the
+    fairness the problem adds, cannot be transcribed in ALGOL 60 would call
+    P15b *not expressible*. A demand-driven zeros (a procedure called by name
+    for the next element) and a merge that alternates its inputs would be a
+    reformulation of zeros' form, of the conjuncts' order and of merge's cases
+    (and the alternation a fairness construct, C); it was not written.
+11. **P15b: which numbers are constants.** `stages.json` writes merge(z,
+    `<seq>`, m) and position(`<k>`, m, i). *Reading:* ⟨9⟩ and 9 are the
+    constants; zeros' 0 belongs to its definition, in the program.
+12. **P15c: committed choice.** *Reading:* the any-one query stops at the first
+    fact's solution by a `go to` (C); the second fact is never tried, and the
+    choice is fixed by the order of the facts, the same at every run.
+13. **P15d: a release by someone who is not the holder.** The problem defines a
+    release only "where holder = p". *Reading:* any other release (or an
+    unknown stage kind) is not defined: the program reports no answer, says
+    `no solution` in the observe block, and leaves holder and queue as they
+    were. ʙ's waiting is a value of queue, not tagged `[suspended …]`.
+14. **P16: lists of each unknown's relations, and a queue.** *Reading:* this is
+    holding code written for the problem's own relations (succ, the equations,
+    the total), so it is R in the core configuration (rule 19), and P16 is
+    *expressible with reformulation*. A classifier who reads the occurrence
+    lists and the queue as a propagator general over relations would class them
+    S, making P16 *not expressible* in the configurations as listed and these
+    programs named variants. The design departs from batches 1A–1C's passes
+    over every held relation; that was chosen before any run, and the passes
+    were not written for P16.
+15. **P16: the relations of stage 1 are generated from n and the order.** They
+    have no constants (`stages.json`). *Reading:* the program poses them from
+    the instance line, in the order the problem fixes; j = ⌈n/2⌉ is computed
+    from n. P16b's m is n ÷ 4 (`q` in the program, since `m` there is the
+    instance line's count of codes); if n were not a multiple of 4 the four
+    contributions would cover 4m relations.
+16. **P16d2's stages.** `stages.json` numbers them 1 and 2; the problem file 1
+    and 3. *Reading:* `stages.json`'s numbering, and x_n = x_1 has no constant,
+    so there is no constants file.
+17. **P16: the size of answers and observe blocks.** Every value, every held
+    relation and a bind tag for every unknown with a value are printed, in
+    full, at every stage: at n = 10⁴, tens of thousands of items, twice.
+    *Reading:* that is what the program holds and the problem's outcomes name;
+    the output adapters' steps (H) are in the stage's steps.
+18. **Fixed store.** P14a and P14c hold at most 1000 READ unknowns; P15a's cells
+    2000; P15b's and P15d's 10000. P13, P14b and P16 size their store from the
+    input. A variant needing more would stop with an index error, not a wrong
+    answer.
+19. **The values unknowns range over.** As before: integers, an atom being its
+    code, sequences flat sequences of integers.
+
+## What the author read and ran (batch 1D)
+
+Read: `README.md`, `SPECIFICATION.md`, `METRICS.md`, `PROTOCOL.md`,
+`AMENDMENTS.md`; `problems/README.md` and the files of P13, P14, P15 and P16;
+of P07 the lines about P07f (a search), of P09 its section P09d and its
+observations, and of P10 its first 60 lines (to P10d's heading);
+`systems/algol-60/README.md`; `harnesses/stages.json` (its top-level keys,
+the lines that name P13–P16, and lines 520–740, P13 to the end);
+`harnesses/algol-60/README.md`, `S-mechanisms.md`, `QUESTIONS.md`, the first
+80 lines of `check`, and the lines of `run` that hold its tag patterns; this
+README in full; the batch 1A–1C programs `report/P03e.alg`, `report/P09e.alg`
+and part of `x1/P09e.a60`, `report/P09d.alg`, part of `report/P09c.alg` and
+of `x1/P09c.a60` (the output adapter `num`), `report/P12a.n8.any.alg`,
+`x1/P10a.a60`, and the lines of `report/P08a.alg`, `x1/P08a.a60` and
+`x1/P12a.n8.any.a60` that a search for procedure headings and `goto` showed,
+and the names of the batch 1B programs that declare a `Boolean array`. Not
+read: `harnesses/README.md` (allowed, not needed), and nothing in the image:
+no command was run in it but `check`, so no idiom is cited from the image
+except through the earlier batches' reading, as said above. No file outside
+the brief's list was read.
+
+Ran: `harnesses/algol-60/check` on every program in its configuration (the X1
+texts in x1 and in x1sim), in the brief's form, one container run each, from a
+small host shell loop that filters the output; once by mistake with the
+arguments not split (the check printed its usage and ran nothing). On the host:
+`python3 -c` once, to print the top-level keys of `harnesses/stages.json` (it
+read the JSON file and ran no program of the study or the system); `sed` to
+edit the report texts and to make the X1 texts from them, `grep` to check
+that no string holds a reserved word or a character the X1 code lacks, and
+`git`, `ls`, `cat`, `cp`, `cmp`, `diff`. Nothing executed a program of the
 study, the system, or an interpreter on a program.

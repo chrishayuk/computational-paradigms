@@ -1,0 +1,141 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), recursive procedures with value and name parameters, a subscripted variable given as the actual parameter called by name and assigned to (4.7.3.2, 5.4), and procedures as actual parameters (4.7.5, 5.4.4), each solution being passed to a parameterless procedure in the way of the procedures passed as parameters in Knuth's man or boy test (1964, examples/man-or-boy-1964.alg in the image, cited after batch 1B's reading of it), the for statement (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), sequences as parallel arrays of heads and tail indices (systems file, Values), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: La a1 ... aLa Lb b1 ... bLb, the length and then the elements of each of the two known sequences a and b of merge(a, b, m);
+  c̲o̲m̲m̲e̲n̲t̲ P15a2. merge(a, b, m), all, with a and b known and m unknown, by its four cases in order, as a procedure that passes each solution to the parameterless procedure found and returns when it has no more. Case 1: merge(the empty sequence, b, b). Case 2: merge(the sequence of h alone ++ a, the empty sequence, the sequence of h alone ++ a). Case 3: merge(the sequence of h alone ++ a, b, the sequence of h alone ++ m) if b is not empty and merge(a, b, m). Case 4: merge(a, the sequence of h alone ++ b, the sequence of h alone ++ m) if a is not empty and merge(a, b, m). In cases 3 and 4 the cell of m is made with its head h and its tail still to come, and the tail is passed by name to the recursive merge, which gives it its value in place, so m is complete whenever found runs. The cell is given back when the case is done. A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence of hd[c] alone ++ the sequence tl[c];
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, la;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants: the first sequence, and then the second;
+  la := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ top, a0, b0, lb, mv, nsol, mg1, mg2, mg3, mg4, depth, peak;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ hd, tl[1:2000];
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ cons(h, t);
+    v̲a̲l̲u̲e̲ h, t; i̲n̲t̲e̲g̲e̲r̲ h, t;
+  c̲o̲m̲m̲e̲n̲t̲ a new cell, the sequence of h alone ++ the sequence t;
+  b̲e̲g̲i̲n̲ top := top + 1; hd[top] := h; tl[top] := t; cons := top e̲n̲d̲ cons;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ readseq(len);
+    v̲a̲l̲u̲e̲ len; i̲n̲t̲e̲g̲e̲r̲ len;
+  c̲o̲m̲m̲e̲n̲t̲ a sequence of len elements, read from the input in order;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j, e, first, last, cl;
+    first := last := 0;
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ len d̲o̲
+    b̲e̲g̲i̲n̲
+      e := read; cl := cons(e, 0);
+      i̲f̲ last = 0 t̲h̲e̲n̲ first := cl e̲l̲s̲e̲ tl[last] := cl;
+      last := cl
+    e̲n̲d̲;
+    readseq := first
+  e̲n̲d̲ readseq;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ merge(a, b, m, found);
+    v̲a̲l̲u̲e̲ a, b; i̲n̲t̲e̲g̲e̲r̲ a, b, m; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ merge(a, b, m), m unknown, by its cases in order, each solution passed to found;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ c;
+    depth := depth + 1; i̲f̲ depth > peak t̲h̲e̲n̲ peak := depth;
+    c̲o̲m̲m̲e̲n̲t̲ case 1: merge(the empty sequence, b, b);
+    i̲f̲ a = 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ mg1 := mg1 + 1; m := b; found e̲n̲d̲;
+    c̲o̲m̲m̲e̲n̲t̲ case 2: merge(the sequence of h alone ++ a, the empty sequence, the sequence of h alone ++ a);
+    i̲f̲ a ≠ 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ b = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ mg2 := mg2 + 1; m := a; found e̲n̲d̲
+    e̲n̲d̲;
+    c̲o̲m̲m̲e̲n̲t̲ case 3: merge(the sequence of h alone ++ a, b, the sequence of h alone ++ m) if b is not empty and merge(a, b, m);
+    i̲f̲ a ≠ 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ b ≠ 0 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        mg3 := mg3 + 1;
+        c := cons(hd[a], 0);
+        m := c;
+        merge(tl[a], b, tl[c], found);
+        top := top - 1
+      e̲n̲d̲
+    e̲n̲d̲;
+    c̲o̲m̲m̲e̲n̲t̲ case 4: merge(a, the sequence of h alone ++ b, the sequence of h alone ++ m) if a is not empty and merge(a, b, m);
+    i̲f̲ b ≠ 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ a ≠ 0 t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        mg4 := mg4 + 1;
+        c := cons(hd[b], 0);
+        m := c;
+        merge(a, tl[b], tl[c], found);
+        top := top - 1
+      e̲n̲d̲
+    e̲n̲d̲;
+    depth := depth - 1
+  e̲n̲d̲ merge;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ num(v);
+    v̲a̲l̲u̲e̲ v; i̲n̲t̲e̲g̲e̲r̲ v;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: an integer, a minus sign if it is negative and then its decimal digits, with no spaces;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ d;
+    i̲f̲ v < 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`-'); num(-v) e̲n̲d̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ v ≥ 10 t̲h̲e̲n̲ num(v ÷ 10);
+      d := v - v ÷ 10 × 10;
+      i̲f̲ d = 0 t̲h̲e̲n̲ PRINTTEXT(`0') e̲l̲s̲e̲ i̲f̲ d = 1 t̲h̲e̲n̲ PRINTTEXT(`1') e̲l̲s̲e̲ i̲f̲ d = 2 t̲h̲e̲n̲ PRINTTEXT(`2')
+      e̲l̲s̲e̲ i̲f̲ d = 3 t̲h̲e̲n̲ PRINTTEXT(`3') e̲l̲s̲e̲ i̲f̲ d = 4 t̲h̲e̲n̲ PRINTTEXT(`4') e̲l̲s̲e̲ i̲f̲ d = 5 t̲h̲e̲n̲ PRINTTEXT(`5')
+      e̲l̲s̲e̲ i̲f̲ d = 6 t̲h̲e̲n̲ PRINTTEXT(`6') e̲l̲s̲e̲ i̲f̲ d = 7 t̲h̲e̲n̲ PRINTTEXT(`7') e̲l̲s̲e̲ i̲f̲ d = 8 t̲h̲e̲n̲ PRINTTEXT(`8')
+      e̲l̲s̲e̲ PRINTTEXT(`9')
+    e̲n̲d̲
+  e̲n̲d̲ num;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printseq(p);
+    v̲a̲l̲u̲e̲ p; i̲n̲t̲e̲g̲e̲r̲ p;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a sequence, its elements in parentheses, separated by commas, with a new line after every ten elements so that no line of the X1 passes its 144 positions;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j, c;
+    PRINTTEXT(`(');
+    c := 0;
+    f̲o̲r̲ j := 0 w̲h̲i̲l̲e̲ p ≠ 0 d̲o̲
+    b̲e̲g̲i̲n̲
+      num(hd[p]); p := tl[p]; c := c + 1;
+      i̲f̲ p ≠ 0 t̲h̲e̲n̲ PRINTTEXT(`, ');
+      i̲f̲ c = 10 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ NLCR; c := 0 e̲n̲d̲
+    e̲n̲d̲;
+    PRINTTEXT(`)')
+  e̲n̲d̲ printseq;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ each solution m of merge is reported;
+  b̲e̲g̲i̲n̲
+    nsol := nsol + 1;
+    PRINTTEXT(`[answer]m = '); printseq(mv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+  e̲n̲d̲ found;
+
+  top := nsol := mg1 := mg2 := mg3 := mg4 := depth := peak := 0;
+  a0 := readseq(la);
+  lb := read;
+  b0 := readseq(lb);
+
+  c̲o̲m̲m̲e̲n̲t̲ the query: merge(a, b, m), all;
+  merge(a0, b0, mv, found);
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the interleavings reported, the applications of each case, and what is held after the last;
+  PRINTTEXT(`[observe]');
+  i̲f̲ nsol = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  PRINTTEXT(`all answers asked: interleavings reported '); num(nsol);
+  b̲e̲g̲i̲n̲ PRINTTEXT(`, depth first, by the cases in order'); NLCR e̲n̲d̲;
+  PRINTTEXT(`recursion of merge at most '); num(peak); b̲e̲g̲i̲n̲ PRINTTEXT(` deep, the cases not yet tried kept, to backtrack, by the recursion itself'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[problem-alternatives interleavings 0]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations merge/1 '); num(mg1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations merge/2 '); num(mg2); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations merge/3 '); num(mg3); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations merge/4 '); num(mg4); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲

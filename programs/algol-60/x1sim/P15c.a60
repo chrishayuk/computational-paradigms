@@ -1,0 +1,70 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for procedures with value and name parameters (4.7, 5.4) and procedures as actual parameters (4.7.5, 5.4.4), each solution being passed to a parameterless procedure in the way of the procedures passed as parameters in Knuth's man or boy test (1964, examples/man-or-boy-1964.alg in the image, cited after batch 1B's reading of it), a go to statement that leaves a procedure at once (4.3, examples/exits.alg in the image, cited after batch 1C's reading of it), the for statement (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), atoms as integer codes (systems file, Values), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: p q, the two requests of grant(p, q, g), each as the code of its atom, A being 1 and B being 2;
+  c̲o̲m̲m̲e̲n̲t̲ P15c. grant(p, q, g), any one, by its two facts in order, as a procedure that passes each solution g to the parameterless procedure found. Fact 1: grant(p, q, p). Fact 2: grant(p, q, q). The query asks for any one answer: found reports the first solution, g = p, and leaves the procedure at once by a go to statement, so fact 2 is never tried, and nothing is kept that could revisit the choice. The choice is made by the order of the facts;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, p, q, g, nsol, gr1, gr2;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ grant(p, q, g, found);
+    v̲a̲l̲u̲e̲ p, q; i̲n̲t̲e̲g̲e̲r̲ p, q, g; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ grant(p, q, g), g unknown, by its facts in order, each solution passed to found;
+  b̲e̲g̲i̲n̲
+    c̲o̲m̲m̲e̲n̲t̲ fact 1: grant(p, q, p);
+    gr1 := gr1 + 1;
+    g := p;
+    found;
+    c̲o̲m̲m̲e̲n̲t̲ fact 2: grant(p, q, q);
+    gr2 := gr2 + 1;
+    g := q;
+    found
+  e̲n̲d̲ grant;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ num(v);
+    v̲a̲l̲u̲e̲ v; i̲n̲t̲e̲g̲e̲r̲ v;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: an integer, a minus sign if it is negative and then its decimal digits, with no spaces;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ d;
+    i̲f̲ v < 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`-'); num(-v) e̲n̲d̲
+    e̲l̲s̲e̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ v ≥ 10 t̲h̲e̲n̲ num(v ÷ 10);
+      d := v - v ÷ 10 × 10;
+      i̲f̲ d = 0 t̲h̲e̲n̲ PRINTTEXT(`0') e̲l̲s̲e̲ i̲f̲ d = 1 t̲h̲e̲n̲ PRINTTEXT(`1') e̲l̲s̲e̲ i̲f̲ d = 2 t̲h̲e̲n̲ PRINTTEXT(`2')
+      e̲l̲s̲e̲ i̲f̲ d = 3 t̲h̲e̲n̲ PRINTTEXT(`3') e̲l̲s̲e̲ i̲f̲ d = 4 t̲h̲e̲n̲ PRINTTEXT(`4') e̲l̲s̲e̲ i̲f̲ d = 5 t̲h̲e̲n̲ PRINTTEXT(`5')
+      e̲l̲s̲e̲ i̲f̲ d = 6 t̲h̲e̲n̲ PRINTTEXT(`6') e̲l̲s̲e̲ i̲f̲ d = 7 t̲h̲e̲n̲ PRINTTEXT(`7') e̲l̲s̲e̲ i̲f̲ d = 8 t̲h̲e̲n̲ PRINTTEXT(`8')
+      e̲l̲s̲e̲ PRINTTEXT(`9')
+    e̲n̲d̲
+  e̲n̲d̲ num;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ the first solution g is reported, and the query is left there;
+  b̲e̲g̲i̲n̲
+    nsol := nsol + 1;
+    PRINTTEXT(`[answer]g = '); num(g); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲;
+    g̲o̲t̲o̲ done
+  e̲n̲d̲ found;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  nsol := gr1 := gr2 := 0;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants: the two requests;
+  p := read; q := read;
+
+  c̲o̲m̲m̲e̲n̲t̲ the query: grant(p, q, g), any one;
+  grant(p, q, g, found);
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: which fact gave the grant, and what is kept. The query comes here by the go to statement in found;
+done:
+  PRINTTEXT(`[observe]');
+  i̲f̲ nsol = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`atoms as codes: A is 1, B is 2'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`committed: the grant was given by the first fact, the second was never tried, and nothing is kept to try it'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[bind g]'); num(g); b̲e̲g̲i̲n̲ PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations grant/1 '); num(gr1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations grant/2 '); num(gr2); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+e̲n̲d̲
