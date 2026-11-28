@@ -32,45 +32,52 @@ EXT = {"absys": [".ab1", ".ab2", ".abs"], "swi-prolog": [".pl"], "python": [".py
        "algol-60": [".alg", ".a60"]}
 MODES = {"x1sim": ["behaviour"]}          # PROTOCOL / systems file: x1sim is behaviour only
 
-def stopped_by_limit(path):
-    """A record stopped by either limit (P13, Budget): the safety limit hit, or a
-    query ended by the step budget or the time limit, at any stage."""
-    try:
-        r = json.load(gzip.open(path) if path.endswith(".gz") else open(path))
-    except Exception:
-        return False
+def stopped_by_limit(r):
+    """A record stopped by either limit (P13, Budget), at any stage: the safety limit
+    hit; or, for a computation, the step budget exhausted (steps.budget_exhausted),
+    an execution state of budget or timeout, or a query ended by budget or timeout."""
     for st in r.get("stages", []):
         for a in st.get("attempts", []):
             if (a.get("safety_limit") or {}).get("hit"):
                 return True
             for c in a.get("computations") or []:
+                if (c.get("steps") or {}).get("budget_exhausted"):
+                    return True
+                if {"budget", "timeout"} & set((c.get("execution_state") or {}).get("states") or []):
+                    return True
                 for q in c.get("queries") or []:
                     if q.get("ended_by") in ("budget", "timeout"):
                         return True
     return False
 
-_limit_cache = {}
+_record_cache = {}            # record path -> (program path, stopped by a limit): facts of the record alone
+def record_facts(path):
+    if path not in _record_cache:
+        try:
+            r = json.load(gzip.open(path) if path.endswith(".gz") else open(path))
+            _record_cache[path] = (r["run"]["program"]["path"], stopped_by_limit(r))
+        except Exception:
+            _record_cache[path] = (None, False)
+    return _record_cache[path]
+
 def smaller_n_stopped(out, sp, inst, prog_path, mode):
     """P13's rule (QUESTIONS.md Q10): the larger values of n are not run after a run
     stopped by a limit, per configuration, task (sub-problem and program) and mode.
-    Returns the smaller instance whose record was stopped, or None."""
+    Only records that validated count: a harness fault (*.INVALID.json) does not
+    trigger the rule. Returns the smaller instance whose record was stopped, or None."""
     n = (inst.get("parameters") or {}).get("n")
+    names = sorted(os.listdir(out)) if os.path.isdir(out) else []
     for other in sp["instances"]:
         m = (other.get("parameters") or {}).get("n")
         if other is inst or m is None or n is None or m >= n:
             continue
-        for f in sorted(os.listdir(out)) if os.path.isdir(out) else []:
-            if not (f.startswith(other["id"] + "." + mode + ".") and (f.endswith(".json") or f.endswith(".json.gz"))):
+        for f in names:
+            if not f.startswith(other["id"] + "." + mode + ".") or ".INVALID." in f:
                 continue
-            path = os.path.join(out, f)
-            if path not in _limit_cache:
-                try:
-                    r = json.load(gzip.open(path) if path.endswith(".gz") else open(path))
-                    same = r["run"]["program"]["path"] == prog_path
-                except Exception:
-                    same = False
-                _limit_cache[path] = same and stopped_by_limit(path)
-            if _limit_cache[path]:
+            if not (f.endswith(".json") or f.endswith(".json.gz")):
+                continue
+            program, stopped = record_facts(os.path.join(out, f))
+            if program == prog_path and stopped:
                 return other["id"]
     return None
 
