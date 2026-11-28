@@ -1,0 +1,60 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING incremental;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for assignment statements (4.2), procedures (5.4), the for statement with a while element (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), the message loop and observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of a relation until its places are known, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: f, of the relation d = f . b, at all times. A line 2: e, of b becomes e. A line 3: e, of b becomes b + e. A line 4: e, of b becomes e;
+  c̲o̲m̲m̲e̲n̲t̲ P10b. Named quantities b and d, each an integer variable with a Boolean that says whether it has a value. Stage 1 poses the standing relation d = f . b, which is held, as posed, by a Boolean. Stages 2 to 4 replace the value of b by assignment, as in P10a. After every stage the standing relation, if posed, is examined: while b has no value it waits, and when b has one it gives d the value f . b, again after every stage, whatever value d had;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, e, f, b, d, recomputed;
+  b̲o̲o̲l̲e̲a̲n̲ bk, dk, r1;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine1;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of the standing relation d = f . b, in the direction the problem defines it: d from b, whenever b has a value;
+  i̲f̲ bk t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ d := f × b; dk := t̲r̲u̲e̲; recomputed := recomputed + 1 e̲n̲d̲ examine1;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  bk := dk := r1 := f̲a̲l̲s̲e̲; recomputed := 0;
+
+  f̲o̲r̲ i := 1 w̲h̲i̲l̲e̲ t̲r̲u̲e̲ d̲o̲
+  b̲e̲g̲i̲n̲
+    c̲o̲m̲m̲e̲n̲t̲ harness words: one message, the stage it poses, and then that stage's constants;
+    code := read; k := read;
+    i̲f̲ k = 1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ c̲o̲m̲m̲e̲n̲t̲ d = f . b, at all times;
+      f := read; r1 := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 2 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ c̲o̲m̲m̲e̲n̲t̲ b becomes e;
+      e := read; b := e; bk := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 3 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ c̲o̲m̲m̲e̲n̲t̲ b becomes b + e;
+      e := read; b := b + e e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ k = 4 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ c̲o̲m̲m̲e̲n̲t̲ b becomes e;
+      e := read; b := e e̲n̲d̲;
+
+    i̲f̲ r1 t̲h̲e̲n̲ examine1;
+
+    c̲o̲m̲m̲e̲n̲t̲ the answer: b and d, as their values, or held by the relation;
+    PRINTTEXT(`[answer]b');
+    i̲f̲ bk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` = '); print(b) e̲n̲d̲ e̲l̲s̲e̲ i̲f̲ r1 t̲h̲e̲n̲ PRINTTEXT(` held') e̲l̲s̲e̲ PRINTTEXT(` has no value');
+    PRINTTEXT(`, d');
+    i̲f̲ dk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` = '); print(d) e̲n̲d̲ e̲l̲s̲e̲ i̲f̲ r1 t̲h̲e̲n̲ PRINTTEXT(` held') e̲l̲s̲e̲ PRINTTEXT(` has no value');
+    i̲f̲ r1 ∧ ¬bk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`, where d = '); print(f); PRINTTEXT(` . b') e̲n̲d̲;
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲;
+
+    c̲o̲m̲m̲e̲n̲t̲ observe: the standing relation, the values held, and how many times d has been recomputed;
+    PRINTTEXT(`[observe]');
+    PRINTTEXT(`standing relations: ');
+    i̲f̲ r1 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`d = '); print(f); PRINTTEXT(` . b') e̲n̲d̲ e̲l̲s̲e̲ PRINTTEXT(`none');
+    i̲f̲ r1 ∧ bk t̲h̲e̲n̲ PRINTTEXT(`, examined after every stage, d recomputed from the value b has now');
+    NLCR;
+    i̲f̲ bk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind b]'); print(b); b̲e̲g̲i̲n̲ PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲ e̲n̲d̲;
+    i̲f̲ dk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind d]'); print(d); b̲e̲g̲i̲n̲ PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲ e̲n̲d̲;
+    i̲f̲ r1 ∧ ¬bk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended held-relations 1]'); NLCR e̲n̲d̲;
+    PRINTTEXT(`[operations d-recomputed '); print(recomputed); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲

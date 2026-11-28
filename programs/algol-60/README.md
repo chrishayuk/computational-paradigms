@@ -1,6 +1,6 @@
-# ALGOL 60 programs, wave 1: batch 1A (P01–P03) and batch 1B (P04–P08)
+# ALGOL 60 programs, wave 1: batch 1A (P01–P03), batch 1B (P04–P08) and batch 1C (P09–P12)
 
-*Batch 1B has its own section, [below](#batch-1b-p04p08). What follows up to it is batch 1A's, unchanged.*
+*Batch 1B and batch 1C have their own sections, [below](#batch-1b-p04p08) and [after it](#batch-1c-p09p12). What follows up to batch 1B is batch 1A's, unchanged.*
 
 *Phase 5 (`PROTOCOL.md`, "Phases"), against `spec-1.0.1`. Written to the
 program contract of `harnesses/algol-60/README.md`, section 2. Every program
@@ -728,3 +728,454 @@ heredocs and a scratch script) only to edit text: to derive programs from one
 another, to make the X1 texts from the report texts, and to measure the length
 of one answer line. Nothing else executed a program, the system, or an
 interpreter on a program.
+
+---
+
+# Batch 1C (P09–P12)
+
+*Phase 5, against `spec-1.0.1`, written to the program contract of
+`harnesses/algol-60/README.md`, section 2. Every program was fixed before any
+was run. The only thing run on them is the harness's `check`, which executes
+nothing. It reports no error and no warning for any of them, in any
+configuration: the report texts in report, and the X1 texts in both x1 and
+x1sim.*
+
+**Author of every program:** `implementation-algol-60`, an agent (Claude
+Opus 5.5, model id `claude-opus-5-5`). This batch's author has its own context
+and had not seen any earlier work on the study except what is listed under
+"What the author read and ran" below. That includes the batch 1A and 1B
+sections of this README and some of their programs, which the brief allows and
+which hold no outcome. **Precursors:** the author had not seen any precursor
+program: not the absys experiments E01–E09, not the calibration programs, and
+no program of this study other than the batch 1A and 1B ALGOL 60 programs.
+
+**S mechanisms used:** none, in any program. Every procedure that holds a
+relation, decides it, or passes its solutions on is written for that problem's
+own relations, so by `METRICS.md` rule 19 it is R in the core configuration,
+not S. Ambiguity 12 below says where a classifier could read P12 another way.
+
+**Named variants:** none. No sub-problem was judged not expressible. For each
+sub-problem one program was chosen before any was run, and it is the primary.
+
+## Layout, and which texts are shared
+
+The layout is that of batches 1A and 1B: `programs/algol-60/<configuration>/<instance>.<ext>`
+with its `.constants` beside it, `.alg` for report and `.a60` for x1 and x1sim.
+Every sub-problem of this batch has constants, so every program has a
+constants file.
+
+- **x1 and x1sim share one text**, as before: every `.a60` file in `x1/` is
+  byte-identical to the file of the same name in `x1sim/`, and so are the
+  constants files.
+- **The X1 text is made from the report text by the fixed substitution of
+  batch 1B**, carried out by a short Python script that only rewrites text (it
+  executes no ALGOL, and is not part of the study): reserved words underlined
+  outside comments and strings (`Boolean` written `boolean`, `go to` written
+  as the one word `goto`); `ininteger(0, v)` written `v := read`;
+  `outinteger(1, e)` written `print(e)`; `outstring(1, "t")` written
+  ``PRINTTEXT(`t')``, a `\n` in it written `NLCR`, the statements one call
+  becomes wrapped in `begin … end` when there are more than one; and the
+  comment on idioms changed to name the X1 procedures. Before it was used, the
+  script was checked by converting eight report texts of batches 1A and 1B:
+  for the five of batch 1B (P04f, P05a, P06d, P07b, P08a) its output is
+  byte-identical to the X1 texts committed for them. The report texts of this
+  batch write `¬ ∧ ∨ ≠ ≤ ≥ × ÷` as symbols, so nothing else changes. Same
+  algorithm, same structure, same constants.
+- **Identical texts within a configuration:**
+  - `P09a.AB` = `P09a.BA`, and their constants files: the spawn order comes
+    from the instance line, and the program runs whichever computation the
+    harness's message names.
+  - **P12: one text for all 24 instances** (`P12a`–`P12d` × `n8`, `n12`,
+    `n16` × `all`, `any`). n and the answer mode come from the instance line.
+    The facts of accept depend on n (`stages.json`), so the constants
+    differ between n and between sub-problems, and each instance has its own
+    constants file (ambiguity 14). The files of the same sub-problem and n
+    (`.all` and `.any`) have the same constants.
+  - P11a and P11b differ only in the order of two conjuncts; P11c and P11d
+    only in which stage commits and which poses x ≠ c.
+
+## Programs, per configuration and sub-problem
+
+Every program below is **primary**, and exists in all three configurations:
+`report/<id>.alg`, and `x1/<id>.a60` = `x1sim/<id>.a60`, each with its
+`<id>.constants`. The expressibility is the author's reading, for the
+classifiers to confirm. It is the same in all three configurations, which
+share the algorithm, and nothing in these problems uses a feature one
+configuration has and another lacks.
+
+| sub-problem | files (`<id>`) | posing | expressibility |
+|---|---|---|---|
+| P09a (both orders) | `P09a.AB`, `P09a.BA` (identical) | incremental (spawn messages) | expressible with reformulation |
+| P09b | `P09b` | incremental (spawn messages) | expressible with reformulation |
+| P09c | `P09c` | reposed (one stage) | expressible |
+| P09d | `P09d` | reposed (one stage) | expressible (ambiguity 4) |
+| P09e | `P09e` | reposed (one stage) | expressible with reformulation |
+| P10a | `P10a` | incremental | expressible |
+| P10b | `P10b` | incremental | expressible with reformulation |
+| P10c | `P10c` | incremental | expressible |
+| P10d | `P10d` | incremental | expressible with reformulation |
+| P11a | `P11a` | reposed (one stage) | expressible |
+| P11b | `P11b` | reposed (one stage) | expressible |
+| P11c | `P11c` | incremental | expressible with reformulation |
+| P11d | `P11d` | incremental | expressible with reformulation |
+| P12a, P12b, P12c, P12d (each at n = 8, 12, 16, all and any) | `P12<x>.n<n>.<mode>` (24 identical texts) | reposed (one stage) | expressible with reformulation (ambiguity 12) |
+
+Single-stage sub-problems are declared `reposed`, as in batches 1A and 1B:
+with one stage both posings send the same input. Incremental programs handle a
+replay message `2 j` as `1 j`, since they dispatch on the stage number; P11c
+and P11d also handle `3 j` (a replayed commitment, below).
+
+### P09: computations one after another
+
+ALGOL 60 has one computation. A spawned computation is a part of the one
+program, run by the message `4 1 c` to its end before the program reads the
+next message (harness README, 2.6): `side_by_side: false`. The computations
+share the program's variables (the "one database").
+
+- **P09a.** A is `loop(xk, x, found)`, batch 1B's P04 procedure, by loop's one
+  case: it calls itself and never returns. B is `rev` computing b from a by its
+  cases, in order, with `conc` computing its third place, batch 1A's P03e
+  transcription, mode-faithful. In the order A, B, A never ends: in report and
+  x1 it is stopped by its budget, which ends the process, so B is not started
+  (harness `QUESTIONS.md`, A3); in x1sim it runs until the safety limit or the
+  X1's stack. In the order B, A, B reports `b = (3, 2, 1)` and finishes, and
+  then A starts. That the order matters is the result the problem asks to
+  record; no scheduler was written to interleave them (it would be S, and
+  ALGOL 60 has no coroutines to build one from).
+- **P09b.** Each equation is a procedure, batch 1B's `equals`, that tests its
+  unknown when known and otherwise gives it the value for as long as `found`
+  runs. A is `x = c1` and then, in `found`, `x = c2`; it reports nothing and
+  its observe block says `no solution`. B is `y = c3`, which reports `y = 3`.
+  A's failure only ends A's procedure; B runs as if A had not.
+- **P09c.** `gen` computes s from n by its two cases, in order, as a function
+  (the direction the query uses), and `sum3` computes total from s by its one
+  case: s must have at least three elements p, q, r, and total is p + q + r.
+  The conjuncts run in order, so `gen` has finished before `sum3` starts; the
+  observe block says so. One answer, `total = 6, s = (1, 2, 3, 4, 5)`.
+  *Expressible*: both are mode-faithful transcriptions (rule 3).
+- **P09d.** `genu` is its one case as a function: the sequence of n followed by
+  the s of `genu(n + 1)`. It never returns, so no cell is made and `sum3` is
+  never reached. In report and x1 the expectation is the budget; in x1sim the
+  safety limit or the X1's stack. Nothing is reported (ambiguity 4).
+- **P09e.** Batch 1B's P07b design: each relation held as posed, with an
+  evaluator that gives the other place its value when one is known, or tests
+  the relation when both are. Neither x nor y is known, so neither relation
+  acts: the answer is `x held, y held, where x = y + 1, y = x - 1`, and the
+  observe block gives `[suspended held-relations 2]`, which tells the state
+  apart from completion. No deadlock is reported as such; the program has no
+  notion of one. The holding code is R (rule 19).
+- Counters (H): `loop/1`, `rev/1`, `rev/2`, `conc/1`, `conc/2`, `gen/1`,
+  `gen/2`, `genu/1`, `sum3/1`, `R1-examined`, `R2-examined`. Integers inside
+  P09a's and P09c's sequences are printed digit by digit (an output adapter),
+  so that a longer sequence in a variant does not run past the X1's seven
+  `print` columns on a line.
+
+### P10: named quantities as variables
+
+- **P10a, P10c.** A named quantity is an integer variable, with a Boolean that
+  says whether it has a value yet. "b becomes e" is an assignment, its right
+  side taken at the values before the stage, which is what the assignment
+  statement does (Revised Report 4.2). In P10c, "d becomes 2 · b" is an
+  assignment too, so d keeps 20 when b is replaced. Earlier values are not
+  kept, and cannot be retrieved; the observe block says so. *Expressible*: the
+  replacement is native.
+- **P10b.** The standing relation d = f · b is held, as posed, by a Boolean.
+  After every stage its evaluator is examined: while b has no value it waits
+  (`[suspended held-relations 1]`); once b has one it gives d the value f · b,
+  again after every stage, whatever d was. The answer at stage 1 is
+  `b held, d held, where d = 2 . b` (the product printed as `.`, as in batch
+  1A); then `b = 10, d = 20`, `b = 15, d = 30`, `b = 7, d = 14`. The counter
+  `[operations d-recomputed N]` gives how many times d has been recomputed
+  since the computation started: once per stage after b has a value. The
+  holding is R (rule 19); computing d from b is P.
+- **P10d.** pick's facts are read at stage 1 and held as given. Each
+  comparison is held as posed by a Boolean that says it is in force; a
+  withdrawal sets it out of force, and the observe block lists it as
+  withdrawn. After every stage the values of x are those facts that pass every
+  comparison in force, tested again from the facts. So at stage 3 the value
+  1 comes back, all values of x are held at once, and nothing is restated.
+  The holding is R. `[problem-alternatives x N]` and the counters `pick/i`
+  and `x-gt-tested` as in batch 1B's P05 (ambiguity 8).
+
+### P11: effects, one outcome at a time
+
+`emit(m)` is bound as printing `[emit]m[/emit]` (harness README, 2.5). An
+answer, and an entry emitted, is x alone, printed digit by digit with no
+spaces, so that a replayed commitment v can be read back with `ininteger` or
+`read` (ambiguity 11). Every P11 query is for any one outcome.
+
+- **P11a, P11b.** pick's facts are tried in order, one at a time: a fact gives
+  x its value, and the conjuncts after pick are carried out on it in the order
+  written, `x ≥ c` and then `emit(x)` in P11a, `emit(x)` and then `x ≥ c` in
+  P11b. The loop over the facts stops at the first x that passes the whole
+  conjunction (`for … while ¬ok ∧ cur < nf`): the query asks for one answer.
+  P11a emits only 2; P11b emits 1, then 2. No deferral is arranged: emit is
+  carried out where the conjunction places it. The stop in the loop's
+  condition is C, the construct that ends the search at the answer
+  (`problems/11-irreversible-effects.md`, Rules; the end of the query is where
+  commitment happens, in ALGOL 60's terms).
+- **P11c, P11d.** The same, held between stages. The program keeps pick's
+  facts, the position reached in them, and every relation posed after
+  `pick(x) and emit(x)`, in the order posed. At stage 1 the first fact gives x
+  = 1, `emit(1)` is carried out, and x = 1 is reported. When a later stage's
+  relation refutes the outcome held, the next facts are tried in the same way:
+  each gives x its value, `emit(x)` is carried out again (it is stage 1's
+  conjunct, after pick), and the relations posed so far are tested. Commit
+  selects the outcome held, v, reports it, and adds the information x = v,
+  held as one more relation (ambiguity 9). A replayed commitment (`3 j`, then
+  v) adds x = v in the same way, without selecting. So:
+  - P11c: stage 1 emits 1; stage 2's x ≠ 1 refutes it, and 2 is emitted and
+    reported; stage 3 commits to 2. L = ⟨1, 2⟩.
+  - P11d: stage 1 emits 1; stage 2 commits to 1; stage 3's x ≠ 1 refutes it,
+    the remaining facts are tried, 2 and 3 are emitted and fail x = 1, and no
+    solution is reported. L = ⟨1, 2, 3⟩.
+
+  These are the author's expectations from the text, not results. The holding
+  of the relations and of the position is R (rule 19). The observe block
+  gives `[bind x]`, the relations held, the commitment, the facts tried and
+  untried, `[held-as backtracking]` and `[problem-alternatives x N]` (the
+  outcome held and the untried facts), and the counters `pick/i`
+  (ambiguity 10).
+
+### P12: choice by its cases, depth first
+
+`choice(n, s)`, with s unknown, is a procedure with its two cases in order,
+passing each solution to the parameterless procedure `found` (batch 1B's P04
+design): case 1 sets s to ⟨⟩ and calls `found`; case 2, if n > 0, makes the
+cell of s with its head e and its tail t still to come, and for e = ʟ and then
+e = ʀ calls `choice(n − 1, t)` with t the tail of that cell, passed by name
+(Revised Report 4.7.3.2), so that the recursive call gives the tail its value
+in place. s is then complete whenever `found` runs, with no reordering of the
+head (no move). `found` is `accept`: a closed world of facts, read from the
+constants as sequences, each tested against s in order by the equality of
+sequences; each fact equal to s is one solution, reported as
+`s = (l, l, r)`. The candidates come in the order of the problem's
+depth-first reference (⟨⟩ first, ʟ repeated n times the n + 1st, ⟨ʀ⟩ the
+2ⁿ + 1st, ʀ repeated n times the last).
+
+- **all** (cap 20): the whole space is covered and every solution printed,
+  and the program finishes; the harness collects the first 20.
+- **any** (cap 1): at the first solution, a `go to` statement leaves the
+  recursion at once for the label `done` before the observe block (Revised
+  Report 4.3; `examples/exits.alg` in the image shows the same exit from a
+  deep recursion). That `go to` is C. Which mode applies is read from the
+  instance line's cap (1 for `any-one`).
+- After each answer the program prints, outside any tag, `candidates
+  examined so far: N`, so the candidates before each solution are in the
+  stage's print. The observe block gives `[candidates N]` (accept evaluated),
+  `[operations choice/1 N]` and `choice/2` (each application of case 2 with
+  one e), the peak length of the partial sequence held and the peak number of
+  alternatives e = ʀ kept for backtracking (H counters, as text), and
+  `[problem-alternatives partial-sequences 0]`: at the end of the stage the
+  program holds no partial sequence, in either mode.
+- R and C, by the author's reading: the parameter `found` (an extra argument,
+  rule 5) is R; giving back the cell made for s (`top := top - 1`) is C
+  (rule 16); the `go to` of the any mode is C. Making the cell of s and
+  setting its head and tail are operations on the encoding (rule 15), P.
+- Store: the facts' cells are fixed at 2000 in one place, and the search uses
+  n + 1 more (ambiguity 15).
+
+## Constants files (batch 1C)
+
+| instance | file contents | layout |
+|---|---|---|
+| P09a.AB, P09a.BA | `1: 3 1 2 3` | L, then the sequence of B's rev(⟨…⟩, b); A reads the line and does not use it |
+| P09b | `1: 1 2 3` | c1 c2 of A (x = c1 and x = c2), c3 of B (y = c3) |
+| P09c | `1: 1` | g of gen(g, s) |
+| P09d | `1: 1` | g of genu(g, s) |
+| P09e | `1: 1 1` | c1 of x = y + c1, c2 of y = x − c2 |
+| P10a | `1: 10`, `2: 5`, `3: 7` | e of b becomes e; e of b becomes b + e; e of b becomes e |
+| P10b | `1: 2`, `2: 10`, `3: 5`, `4: 7` | f of d = f · b; then P10a's three |
+| P10c | `1: 10`, `2: 2`, `3: 5`, `4: 7` | e of b becomes e; f of d becomes f · b; e of b becomes b + e; e of b becomes e |
+| P10d | `1: 3 1 2 3`, `2: 1` | F and pick's facts; c of x > c (stage 3 has none) |
+| P11a, P11b | `1: 3 1 2 3 2` | F and pick's facts, then c of x ≥ c |
+| P11c | `1: 3 1 2 3`, `2: 1` | F and pick's facts; c of x ≠ c (stage 3, commit, has none) |
+| P11d | `1: 3 1 2 3`, `3: 1` | F and pick's facts; (stage 2, commit, has none); c of x ≠ c |
+| P12a.n`N`.* | `1: 2 1 2 N 1 … 1` | F, then each fact as its length and atoms: ⟨ʀ⟩, then ʟ repeated N times (ʟ is 1, ʀ is 2) |
+| P12b.n`N`.* | `1: 1 1 2` | ⟨ʀ⟩ |
+| P12c.n`N`.* | `1: 1 N 2 … 2` | ʀ repeated N times |
+| P12d.n`N`.* | `1: 1 N 1 … 1` | ʟ repeated N times |
+
+In P09a and P09b the harness sends stage 1's line after each spawn message, so
+each computation reads all of it (ambiguity 1). No stage's code reads another
+stage's constants, and nothing in a program depends on a later stage (rule 5).
+
+## Idioms and their sources (batch 1C)
+
+Cited in each program's `PROVENANCE idioms` comment:
+
+- the Revised Report on ALGOL 60 (1962): as in batches 1A and 1B, and also the
+  assignment statement as replacement (4.2, P10), a subscripted variable given
+  as an actual parameter called by name and assigned to (4.7.3.2, P12's tail),
+  and the go to statement leaving procedures (4.3, P12's any mode);
+- a parameterless procedure passed as an actual parameter for each solution:
+  Knuth's man or boy test (1964, `examples/man-or-boy-1964.alg` in the image,
+  read by batch 1B; cited after it, not reread);
+- the depth-first enumeration of a space by a recursive procedure: Wirth's
+  eight queens (`examples/queens.alg` in the image, read), for P12;
+- leaving a deep recursion at once by a `go to`: `examples/exits.alg` in the
+  image (read), for P12;
+- *report*: `ininteger`, `outinteger`, `outstring` (IFIP 1964, systems file);
+  *x1, x1sim*: `read`, `print`, `PRINTTEXT`, `NLCR` and the X1 compiler's
+  representation (harness README, 2.1), cited after Kruseman Aretz 2003,
+  chapter 7, second-hand, as batches 1A and 1B did; the X1's line of 144
+  positions and at most seven `print` columns on a line from `docs/x1.md` in
+  the image (read); `goto` written as one underlined word, as the x1sim
+  examples write it (seen in a search of them);
+- sequences as parallel arrays of heads and tails, facts as arrays of codes:
+  the systems file, Values;
+- the message loop, instance line and observe block: the harness README's
+  example X01; the spawn message (2.2, 2.6) and its qualification program
+  `x03-spawn.alg`; emit and the replayed commitment (2.5) and the
+  qualification program `x02-incremental.alg`, whose answer is the integer
+  alone so that v can be read back;
+- holding a relation, a standing relation, or the position reached in pick's
+  facts, until it can be decided or is refuted: no period source; written for
+  these problems (rule 19).
+
+The X1 manual's rules followed in all three texts, as in batch 1B:
+declarations in the order scalars, arrays, procedures (property 15); no
+conditional statement straight after `do` (property 12); identifiers unique in
+their first nine characters (property 3); every formal parameter specified
+(property 19). Neither dialect stops evaluating `∧` and `∨` early, so no
+subscript is guarded by `∧` (P09's `sum3` tests the length by nested `if`s).
+
+## Ambiguities, and the reading taken (batch 1C)
+
+1. **P09a, P09b: the constants of a spawning stage.** The harness sends all of
+   stage 1's lines after each spawn message (README 2.2). *Reading:* both
+   computations read the whole line; each uses its own part. In P09a, A reads
+   B's sequence and does not use it; in P09b, A and B each read c1 c2 c3.
+2. **P09a, P09b: is running side by side part of the problem?** ALGOL 60 has no
+   separate computations; the harness spawns them one after another
+   (`side_by_side: false`). *Reading:* the definitions are transcribed, and the
+   sequential running is the configuration's behaviour, a result, not a
+   matter of expressibility. P09a and P09b are *expressible with
+   reformulation* only because of the `found` parameter (batch 1B's reading of
+   P04). A classifier who takes concurrent running as part of what the problem
+   asks to be expressed would call P09a *not expressible*; a hand-written
+   scheduler would be S, and was not written.
+3. **P09c, P09d: which numbers are constants.** `stages.json` writes the stage
+   as `gen(<k>, s)` and `genu(<k>, s)`. *Reading:* only that k is a stage
+   constant, in the constants file; gen's bound 5 and sum3's three elements
+   belong to the definitions and are in the program text. A variant that
+   changed the bound would need the program changed.
+4. **P09d under its two readings.** The transcription is eager: `genu` must
+   return before `sum3` can look at s, and it never returns. *Reading:* that
+   is the transcription, and P09d is *expressible* (mode-faithful). Under the
+   finite reading P09d1 nothing is reported, which is the valid outcome; under
+   the stream reading P09d2 total = 6 is never computed. A demand-driven
+   producer (sum3 asking a generator procedure for three elements, by call by
+   name) would change the order of the conjuncts and genu's form, a
+   reformulation the problem does not give; it was not written.
+5. **P09e.** *Reading:* as batch 1B's P07b, the relations are held and nothing
+   is solved; the program reports the residual with both relations held, and
+   neither enumerates the pairs nor reports a deadlock.
+6. **P10b: the standing relation.** *Reading:* its evaluator gives d from b,
+   the direction the problem defines ("d is defined by a relation that must
+   hold whenever b has a value"); it does not give b from d, since d is never
+   given a value by a stage. While b has no value the relation is reported as
+   suspended. After that it is re-examined after every stage, but it is not
+   tagged as suspended, since it has been decided for the value b has; the
+   observe block names it as a standing relation. A classifier may read a
+   standing relation as held work at every stage.
+7. **P10: what a named quantity without a value is.** *Reading:* a Boolean per
+   quantity; P10a's and P10c's answers say `has no value` (P10c's d before
+   stage 2), and P10b's say `held` while the relation waits, as batch 1A's
+   answers do.
+8. **P10d: holding pick's facts, and no anticipation.** Batch 1B's P05
+   programs drop a value that fails a test and do not keep it. P10d's program
+   keeps pick's facts as given at stage 1 and recomputes the values of x from
+   them at every stage, from the comparisons in force. *Reading:* that is how
+   a closed world of facts is held, and stage 2's code (it sets its comparison
+   in force) does not depend on stage 3, so it is not anticipation (rule 5);
+   but the author wrote it knowing that a withdrawal follows, and a classifier
+   may weigh that. The withdrawn value comes back without restating.
+9. **P11: what commit is.** The problem says commit selects v and adds the
+   information x = v. *Reading:* exactly that: x = v is held as one more
+   relation, tested in the order posed. Nothing discards pick's untried
+   facts. So in P11d, when stage 3 refutes the committed outcome, the program
+   tries the remaining facts, and the conjunct `emit(x)`, which comes before
+   the relations in the order written, is carried out for each: L gets
+   entries for outcomes that were never committed. A program that discarded
+   the untried alternatives at commit (a cut, C) would avoid them; it was not
+   written, since nothing in the problem's statement of commit removes
+   alternatives.
+10. **P11c, P11d: the untried facts.** They are kept and are resumed if a
+    later stage refutes the outcome held, which is neither a request for more
+    answers (*alternatives pending*) nor quite work waiting for information
+    (*suspended*). *Reading:* as batch 1B's ambiguity 7, they are reported as
+    problem-defined alternatives with `[held-as backtracking]`, not as
+    `[alternatives …]` or `[suspended …]`, so the harness will read the
+    execution state as *finished*. A classifier may class it otherwise from
+    the observe block.
+11. **P11: the form of an answer.** The harness passes the commit stage's
+    answer back verbatim as v, to be read as an integer. *Reading:* an answer
+    is x alone, its digits printed with no padding, in all three texts, since
+    the X1's `print` pads and signs an integer in a column.
+12. **P12: "a search written by hand is supporting code".** ALGOL 60 has no
+    search of its own. *Reading:* `choice` is its two cases transcribed, in
+    order, as a procedure that passes on its solutions, and the order in
+    which they come is the language's own order of procedure calls, depth
+    first; nothing in it is general over relations, it keeps no queue or
+    stack of its own, and accept is its facts. So it is R in the core
+    configuration (rule 19, batch 1B's reading of P04), and P12 is
+    *expressible with reformulation*. A classifier who reads the problem's
+    rule as covering any program that enumerates choice's solutions would
+    class `choice` S, making P12 *not expressible* in the configurations as
+    listed, and these programs named variants.
+13. **P12: the two answer modes.** *Reading:* *all* covers the whole space and
+    prints every solution (the space is finite, so the program finishes);
+    *any* stops at the first, by a `go to` (C). The mode is read from the
+    instance line's cap, which `stages.json` sets to 1 for `any-one` and 20
+    for `all`.
+14. **P12: constants that depend on n.** `stages.json` says accept's facts
+    depend on n. *Reading:* one constants file per instance, each giving the
+    facts in full, ʟ and ʀ as the codes 1 and 2; the program text is the same
+    for all 24. The verifier will need one variant constants file per
+    instance, or per sub-problem and n.
+15. **Fixed store.** P12's facts at most 2000 cells in all, and at most 2000
+    facts; P09d's 1000 cells (never used, since genu never returns); pick's
+    facts at most 1000 in P10d and P11. P09a's and P09c's store is sized from
+    the input. A variant needing more would stop with an index error, not a
+    wrong answer.
+16. **The values unknowns range over.** As before: integers, an atom being its
+    code, sequences flat sequences of integers.
+
+## What the author read and ran (batch 1C)
+
+Read: `README.md`, `SPECIFICATION.md`, `METRICS.md`, `PROTOCOL.md`,
+`AMENDMENTS.md`; `problems/README.md` and the files of P09, P10, P11, P12, and
+of P03, P04 and P05 for the definitions; `systems/algol-60/README.md`;
+`harnesses/README.md`; `harnesses/stages.json` (its preamble, lines 1–40, the
+lines naming each sub-problem's id, and lines 318–520, P09 to the start of
+P12d's instances); `harnesses/algol-60/README.md`, `QUESTIONS.md`,
+`S-mechanisms.md` and `check`, the lines of `run` that mention spawn or
+observe, the list of the qualification programs and records, the
+qualification programs `x03-spawn.alg` and `x02-incremental.alg` with its
+constants, and the lines of `qualification/stages-made-up.json` about X02 and
+X03; this README; the batch 1B programs `report/P04a.alg`, `report/P04f.alg`,
+`report/P05a.alg`, `report/P07b.alg` and `x1/P05a.a60`, and the batch 1A
+program `report/P03e.alg`; and, through the converter's check, the differences
+between its output and the committed X1 texts of P01b, P02a, P03e, P04f, P05a,
+P06d, P07b and P08a. In the image: the listings of `/opt/src/algol-60` (top
+level, `docs/`, `examples/`, `historical/`) and `/opt/src/x1sim` (top level,
+`doc/`, `examples/`); `/opt/src/algol-60/docs/x1.md`, `examples/exits.alg`,
+`examples/queens.alg` and `examples/own.alg`; the lines of
+`/opt/src/x1sim/doc/library-procedures.md`, `README.md` and
+`examples/README.md` that mention read or print; and the lines of the
+`/opt/src/x1sim/examples/*.a60` files that write `goto`, `own` or `label`. The
+top-level listing of `/opt/src/algol-60` shows the name of the `compare/`
+directory; nothing in it was listed or read. The examples' listing shows
+their `.out` files; none was read.
+
+Ran: `harnesses/algol-60/check` on every program in its configuration (the X1
+texts in x1 and in x1sim), in the brief's form, one container run each, from
+a small host shell loop that filters the output. Also, beyond the brief's
+list: in the image, `ls`, `cat` and `grep` to read the documentation above
+(four container runs); on the host, `python3` only to edit text (to derive
+P11b from P11a and P11d from P11c, to rename variables in the P12 text, to
+make the instance copies and constants files, and the converter to the X1
+texts, with its check against batch 1B's texts), and `git`, `ls`, `cat`,
+`sed`, `grep`, `diff`, `cmp`, `wc` and `cp`. Nothing executed a program of the
+study, the system, or an interpreter on a program.

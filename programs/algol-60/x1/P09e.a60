@@ -1,0 +1,115 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks, procedures (5.4), the for statement with a while element (4.6), conditional statements and expressions (3.3, 4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8), and the holding of each relation until enough of its places are known, written for this problem (METRICS.md, rule 19), with no period source;
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: c1 c2, the integers of R1, x = y + c1, and R2, y = x - c2;
+  c̲o̲m̲m̲e̲n̲t̲ P09e. Integer unknowns x, y. One computation of two parts: R1, then R2. Each unknown is a Boolean that says whether it has a value and an integer that holds it. Each relation is held as posed until one of its unknowns is known, when it gives the other its value, or until both are, when it is tested. Every held relation is examined in the order posed, again and again, until a whole pass gives no unknown a value. Each relation waits for a value that only the other could give, so neither acts, and both are held;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, c1, c2, xv, yv, held, pass, x1, x2;
+  b̲o̲o̲l̲e̲a̲n̲ xk, yk, r1, r2, changed, inconsistent;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine1;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of R1, x = y + c1;
+  b̲e̲g̲i̲n̲
+    x1 := x1 + 1;
+    i̲f̲ xk ∧ yk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ i̲f̲ xv ≠ yv + c1 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲; r1 := f̲a̲l̲s̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ xk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ yv := xv - c1; yk := t̲r̲u̲e̲; r1 := f̲a̲l̲s̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ yk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ xv := yv + c1; xk := t̲r̲u̲e̲; r1 := f̲a̲l̲s̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+  e̲n̲d̲ examine1;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ examine2;
+  c̲o̲m̲m̲e̲n̲t̲ the evaluator of R2, y = x - c2;
+  b̲e̲g̲i̲n̲
+    x2 := x2 + 1;
+    i̲f̲ xk ∧ yk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ i̲f̲ yv ≠ xv - c2 t̲h̲e̲n̲ inconsistent := t̲r̲u̲e̲; r2 := f̲a̲l̲s̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ xk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ yv := xv - c2; yk := t̲r̲u̲e̲; r2 := f̲a̲l̲s̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ yk t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ xv := yv + c2; xk := t̲r̲u̲e̲; r2 := f̲a̲l̲s̲e̲; changed := t̲r̲u̲e̲ e̲n̲d̲
+  e̲n̲d̲ examine2;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ propagate;
+  c̲o̲m̲m̲e̲n̲t̲ every held relation is examined, in the order posed, again and again until a whole pass gives no unknown a value;
+  b̲e̲g̲i̲n̲
+    changed := t̲r̲u̲e̲;
+    f̲o̲r̲ pass := 1 w̲h̲i̲l̲e̲ changed d̲o̲
+    b̲e̲g̲i̲n̲
+      changed := f̲a̲l̲s̲e̲;
+      i̲f̲ r1 t̲h̲e̲n̲ examine1;
+      i̲f̲ r2 t̲h̲e̲n̲ examine2
+    e̲n̲d̲
+  e̲n̲d̲ propagate;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ uname(u);
+    v̲a̲l̲u̲e̲ u; i̲n̲t̲e̲g̲e̲r̲ u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the name of unknown u, 1 for x, 2 for y;
+  i̲f̲ u = 1 t̲h̲e̲n̲ PRINTTEXT(`x') e̲l̲s̲e̲ PRINTTEXT(`y');
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ place(known, v, u);
+    v̲a̲l̲u̲e̲ known, v, u; b̲o̲o̲l̲e̲a̲n̲ known; i̲n̲t̲e̲g̲e̲r̲ v, u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a place of a relation, its value if known, else the name of its unknown;
+  i̲f̲ known t̲h̲e̲n̲ print(v) e̲l̲s̲e̲ uname(u);
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ state(known, v, inheld, u);
+    v̲a̲l̲u̲e̲ known, v, inheld, u; b̲o̲o̲l̲e̲a̲n̲ known, inheld; i̲n̲t̲e̲g̲e̲r̲ v, u;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: an unknown, as its value, or held by a relation, or free;
+  b̲e̲g̲i̲n̲
+    uname(u);
+    i̲f̲ known t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(` = '); print(v) e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ inheld t̲h̲e̲n̲ PRINTTEXT(` held')
+    e̲l̲s̲e̲ PRINTTEXT(` free')
+  e̲n̲d̲ state;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ relations;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: the relations held, separated by commas, with the values known put in their places;
+  b̲e̲g̲i̲n̲
+    i̲f̲ r1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲ place(xk, xv, 1); PRINTTEXT(` = '); place(yk, yv, 2); PRINTTEXT(` + '); print(c1) e̲n̲d̲;
+    i̲f̲ r2 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ r1 t̲h̲e̲n̲ PRINTTEXT(`, ');
+      place(yk, yv, 2); PRINTTEXT(` = '); place(xk, xv, 1); PRINTTEXT(` - '); print(c2)
+    e̲n̲d̲
+  e̲n̲d̲ relations;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants;
+  c1 := read; c2 := read;
+  xk := yk := inconsistent := f̲a̲l̲s̲e̲;
+  x1 := x2 := 0;
+  r1 := r2 := t̲r̲u̲e̲;
+
+  propagate;
+
+  c̲o̲m̲m̲e̲n̲t̲ the answer: every unknown, and the relations still held;
+  i̲f̲ ¬inconsistent t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲
+    PRINTTEXT(`[answer]');
+    state(xk, xv, r1 ∨ r2, 1); PRINTTEXT(`, ');
+    state(yk, yv, r1 ∨ r2, 2);
+    i̲f̲ r1 ∨ r2 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`, where '); relations e̲n̲d̲;
+    b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲
+  e̲n̲d̲;
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the relations held, the values known, how many relations wait, and how often each was examined;
+  held := (i̲f̲ r1 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0) + (i̲f̲ r2 t̲h̲e̲n̲ 1 e̲l̲s̲e̲ 0);
+  PRINTTEXT(`[observe]');
+  i̲f̲ inconsistent t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  PRINTTEXT(`held relations: ');
+  i̲f̲ held = 0 t̲h̲e̲n̲ PRINTTEXT(`none') e̲l̲s̲e̲ relations;
+  NLCR;
+  i̲f̲ xk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind x]'); print(xv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲ e̲n̲d̲;
+  i̲f̲ yk t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`[bind y]'); print(yv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/bind]'); NLCR e̲n̲d̲ e̲n̲d̲;
+  i̲f̲ held > 0 t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[suspended held-relations '); print(held); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲ e̲n̲d̲;
+  PRINTTEXT(`[operations R1-examined '); print(x1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations R2-examined '); print(x2); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+e̲n̲d̲
