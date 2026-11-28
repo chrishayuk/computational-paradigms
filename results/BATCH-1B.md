@@ -122,6 +122,17 @@ listed at phase 4. SWI-Prolog *session*'s listed wait-for-definition code
 (158 tokens) is exercised only by its P08 primaries. No Absys or ALGOL 60
 program uses S.
 
+## Diagnostics (not records of the study)
+
+- **ALGOL 60 *x1sim*, P04a:** its behaviour record says the process was
+  killed by SIGKILL, with no message, below the safety limit. A diagnostic
+  run of the same harness command, in the same image under the same 4 GB
+  limit, showed the container's `memory.events` `oom_kill` going from 0 to
+  1, and `memory.peak` at 4,177,874,944 bytes. So it ran out of memory.
+  P04c and P04d stop with a stack overflow, and P04e and P04f with
+  "Unknown descriptor of formal argument", from the reconstructed X1
+  run-time.
+
 ## Harness and measurement defects
 
 Recorded here, apart from the computational findings. The records stand
