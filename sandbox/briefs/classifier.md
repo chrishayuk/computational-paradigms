@@ -23,7 +23,8 @@ OUT.
 - the raw run records of these problems,
   `results/SYSTEMDIR/<configuration>/<problem>/raw/`, the labelled
   measurement reruns beside them (`raw-rerun-m2/`, where there are any),
-  and the logs `results/SYSTEMDIR/batch-log.tsv` and
+  and the logs: `results/SYSTEMDIR/batch-log.tsv` (to batch 1B),
+  `results/SYSTEMDIR/logs/` (one log per job, from batch 1C) and
   `results/SYSTEMDIR/rerun-m2-log.tsv`;
 - the tokens, `results/SYSTEMDIR/tokens/`.
 
@@ -65,7 +66,7 @@ the class, name it.
 
 ## 2. Outcomes
 
-Every behaviour run of __PROBLEMLIST__ in `batch-log.tsv` has a record. For each one, every
+Every behaviour run of __PROBLEMLIST__ in the logs has a record. For each one, every
 configuration, instance and program (named variants included), classify
 **every stage** against the problem file's valid outcomes for that
 instance:
