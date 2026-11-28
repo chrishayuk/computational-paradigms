@@ -22,5 +22,5 @@ log=results/$sys/logs/$batch-$cfg-$p.tsv
 mkdir -p "$co/results/$sys/logs"
 container run --rm --platform linux/amd64 --cpus 2 --memory $mem \
   --mount type=bind,source="$co",target=/work,readonly --volume "$co/results":/work/results \
-  --workdir /work "${env[@]}" $img \
+  --workdir /work ${env[@]+"${env[@]}"} $img \
   python3 tools/run-batch.py $sys $p --configs $cfg --skip-logged --log $log
