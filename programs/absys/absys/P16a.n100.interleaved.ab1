@@ -1,0 +1,23 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic (systems/absys/README.md, Notation; docs/decisions.md rule 23).
+% IDIOM: a relation as name'=lambda x begin ... end: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: arithmetic as an assertion usable in every direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets (docs/decisions.md rule 23);
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% P16a.n100.interleaved, one instance of stages.json: its size and arrival order are structure, not constants (stages.json, about), so
+% the relations are written out, in the instance's order, as P12's facts were (batch 1C). Unknowns x1 ... (and y1 ...),
+% the problem's x_1 ... (y_1 ...).
+% P16a. Stage 1 succ(x_i, x_{i+1}) for i = 1, ..., 99, in the order interleaved: the relations with odd i ascending, then those with even i ascending, as one conjunction.
+% Stage 2 x_j = <k>, j = ceil(n/2) = 50.
+% CONSTANTS BEGIN
+xjk = 0   % stage 2: x50 = xjk
+% CONSTANTS END
+% succ, P16 Vocabulary: succ(a, b) is the relation b = a + 1.
+succ'=lambda a, b
+    begin b = a + 1 end
+% STAGE 1
+begin
+succ(x1, x2) succ(x3, x4) succ(x5, x6) succ(x7, x8) succ(x9, x10) succ(x11, x12) succ(x13, x14) succ(x15, x16) succ(x17, x18) succ(x19, x20) succ(x21, x22) succ(x23, x24) succ(x25, x26) succ(x27, x28) succ(x29, x30) succ(x31, x32) succ(x33, x34) succ(x35, x36) succ(x37, x38) succ(x39, x40) succ(x41, x42) succ(x43, x44) succ(x45, x46) succ(x47, x48) succ(x49, x50) succ(x51, x52) succ(x53, x54) succ(x55, x56) succ(x57, x58) succ(x59, x60) succ(x61, x62) succ(x63, x64) succ(x65, x66) succ(x67, x68) succ(x69, x70) succ(x71, x72) succ(x73, x74) succ(x75, x76) succ(x77, x78) succ(x79, x80) succ(x81, x82) succ(x83, x84) succ(x85, x86) succ(x87, x88) succ(x89, x90) succ(x91, x92) succ(x93, x94) succ(x95, x96) succ(x97, x98) succ(x99, x100) succ(x2, x3) succ(x4, x5) succ(x6, x7) succ(x8, x9) succ(x10, x11) succ(x12, x13) succ(x14, x15) succ(x16, x17) succ(x18, x19) succ(x20, x21) succ(x22, x23) succ(x24, x25) succ(x26, x27) succ(x28, x29) succ(x30, x31) succ(x32, x33) succ(x34, x35) succ(x36, x37) succ(x38, x39) succ(x40, x41) succ(x42, x43) succ(x44, x45) succ(x46, x47) succ(x48, x49) succ(x50, x51) succ(x52, x53) succ(x54, x55) succ(x56, x57) succ(x58, x59) succ(x60, x61) succ(x62, x63) succ(x64, x65) succ(x66, x67) succ(x68, x69) succ(x70, x71) succ(x72, x73) succ(x74, x75) succ(x76, x77) succ(x78, x79) succ(x80, x81) succ(x82, x83) succ(x84, x85) succ(x86, x87) succ(x88, x89) succ(x90, x91) succ(x92, x93) succ(x94, x95) succ(x96, x97) succ(x98, x99)
+end
+% STAGE 2
+x50 = xjk

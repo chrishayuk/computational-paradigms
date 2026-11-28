@@ -898,3 +898,374 @@ being opened: at the start of the session its environment supplied the
 two-line index of an auto-memory file under `~/.claude/projects/…`. The
 files it points to were not opened. Nothing else outside the list was
 read.
+
+# Batch 1D: P13, P14, P15, P16
+
+*Phase 5, wave 1, against `spec-1.0.1` and the contract of
+`harnesses/absys/README.md`. No program here has been run. Only
+`harnesses/absys/check` was used, and it reports no errors and no warnings
+for any of them, primary or variant, in each of the three configurations.*
+
+**Author of every program:** `implementation-absys`, an agent (Claude
+Opus 5.5, model id `claude-opus-5-5`), in a fresh context with no other
+knowledge of this study than the files listed at the end. It had not seen
+any earlier work on it, and in particular no result of batches 1A-1C.
+
+**Precursor programs (E01-E09): not seen.** No text of them was read:
+`/opt/src/absys/research/`, `/opt/src/absys-measure/research/` and
+`/opt/src/absys/docs/research.md` were not opened. None of P13-P16 was
+seen in any form other than its problem file.
+
+## Layout
+
+    programs/absys/<configuration>/P13a.ab1 P13b.ab1 P13c.ab1 P13d.ab1 P13e.ab1 P13f.ab1
+                                  P14a.ab1 P14b.ab1 P14c.ab1
+                                  P15a1.abs P15a2.abs P15b.ab1 P15b2.ab1 P15c.ab1 P15d.abs
+                                  P16a.n<N>.<order>.ab1   (N = 100, 1000, 10000; order = ascending, descending, interleaved)
+                                  P16b.n<N>.ab1  P16c.n<N>.ab1  P16d.n<N>.ab1  P16d2.n<N>.ab1
+    programs/absys/<configuration>/variants/P13a.eq.ab1 ... P13d.eq.ab1   named variants
+
+for each of `absys`, `absys-depth-first`, `absys-wake-back`. **The three
+configurations share one text** for every sub-problem and variant, byte
+for byte, for the reason given for batch 1A: the flags change how the
+machine schedules derivations and returned relations, not the language,
+so the natural program is the same text in each.
+
+Which file serves which instance of `stages.json`:
+
+| instances | file |
+|---|---|
+| `P13x.n100` … `P13x.n100000` | `P13x.ab1`: n is the harness's parameter (`% PARAMETERS n`, README 3.4) |
+| `P14a`, `P14b`, `P14c`, `P15a1`, `P15a2`, `P15b`, `P15b2`, `P15c`, `P15d` | the file of that name |
+| `P16a.n<N>.<order>`, `P16b.n<N>`, `P16c.n<N>`, `P16d.n<N>`, `P16d2.n<N>` | the file of that name: one per instance, the relations written out (P16, below) |
+
+## Notation
+
+By the rule of `systems/absys/README.md` (the earliest notation with every
+construct the problem needs):
+
+| sub-problem | notation | why |
+|---|---|---|
+| P13a-d | 1969 | range's m > n and m ≤ n are comparisons, which no notation has; reformulated with arithmetic, 1969 only (as P09c, batch 1C) |
+| P13e, P13f | 1969 | arithmetic, and `key` for the consumer (both 1969 only) |
+| P14 | 1969 | arithmetic (c + 1) and `key` |
+| P15a1, P15a2 | 1990 | b ≠ ⟨⟩ needs `not`, 1990 only; no arithmetic |
+| P15b, P15b2 | 1969 | i = j + 1 needs arithmetic (1969 only), and h ≠ e, b ≠ ⟨⟩ need `not` (1990 only): constructs in no single notation. 1969 is used, with both ≠ reformulated, as P05a (batch 1B) |
+| P15c | 1969 | alternatives and equations |
+| P15d | 1990 | the cases' "otherwise" (holder ≠ none, queue ≠ ⟨⟩) needs `not`; no arithmetic |
+| P16 | 1969 | arithmetic (succ) |
+
+## Per configuration and sub-problem
+
+The same entries hold for `absys`, `absys-depth-first` and
+`absys-wake-back`. "S used": none anywhere (`harnesses/absys/S-mechanisms.md`;
+no program contains code that supplies a mechanism the configuration
+lacks). C constructs: `key` in P13e, P13f and P14 only.
+
+| sub-problem | program | primary or variant | expressibility, as the author sees it |
+|---|---|---|---|
+| P13a | `P13a.ab1`: gt, le, pos, nonneg, range; `range(rk, n, s)` | primary | **expressible with reformulation** (> and ≤) |
+| P13b | `P13b.ab1`: the same and sum; `begin range(rk, n, s) sum(s, k) end` | primary | **expressible with reformulation** |
+| P13c | `P13c.ab1`: the same, conc and rev; `begin range(rk, n, s) rev(s, r) end` | primary | **expressible with reformulation** |
+| P13d | `P13d.ab1`: the same, revacc and racc; `begin range(rk, n, s) revacc(s, r) end` | primary | **expressible with reformulation** |
+| P13a-d | `variants/P13x.eq.ab1`: range with m > n as m = n + 1 and m ≤ n dropped | **named variant** | meaning changed (calibration's range: `systems/absys/README.md`, Notation) |
+| P13e | `P13e.ab1` (native): upto, total; `begin upto(n, [], s) total(s, 0, k) end` | primary | expressible (native: not reformulation, METRICS.md rule 18) |
+| P13f | `P13f.ab1` (native): upto, backw; `begin upto(n, [], s) backw(s, [], r) end` | primary | expressible (native) |
+| P14a | `P14a.ab1`: run with `key`; stage 1 `run(ms, 0)` and the first message; one message per stage | primary | expressible |
+| P14b | `P14b.ab1`: run; `run([...], 0)` | primary | expressible |
+| P14c | `P14c.ab1`: P14a's text, and stages 6 and 7 | primary | expressible |
+| P15a1, P15a2 | `P15a1.abs`, `P15a2.abs` (the same text): merge; `merge(ma, mb, m)` | primary | expressible |
+| P15b | `P15b.ab1`: gt, pos, ne, zeros, merge, position; `begin zeros(z) merge(z, bs, m) position(pk, m, i) end` | primary | **expressible with reformulation** (h ≠ e; b ≠ ⟨⟩ and a ≠ ⟨⟩) |
+| P15b2 | `P15b2.ab1`: the same, `merge(bs, z, m)` | primary | **expressible with reformulation** |
+| P15c | `P15c.ab1`: grant; `grant(ga, gb, g)` | primary | expressible (ambiguity 7) |
+| P15d | `P15d.abs`: app, request, release; holder and queue as lists of values | primary | **expressible with reformulation** (replacement; ++) |
+| P16a | `P16a.n<N>.<order>.ab1`: succ; the n − 1 relations as one conjunction in the order; `x<j> = xjk` | primary | expressible |
+| P16b | `P16b.n<N>.ab1`: succ; SPAWN C1-C4, each its segment as one conjunction; total; `x1 = bk` | primary | expressible (ambiguity 10) |
+| P16c | `P16c.n<N>.ab1`: succ; x then y relations as one conjunction; `x1 = ck2`; `y1 = ck3` | primary | expressible |
+| P16d | `P16d.n<N>.ab1`: the same stage 1; `x1 = dk2`; `x<n> = dk3` | primary | expressible |
+| P16d2 | `P16d2.n<N>.ab1`: the same stage 1; `x<n> = x1` | primary | expressible |
+
+Nothing was judged *not expressible*. Expressibility is the author's
+judgement, recorded before any run; it anticipates no outcome. Several of
+these texts may well run to the budget or report nothing in some
+configurations (P13a-d, whose guards never fail when false; P13e and P13f,
+whose builder goes on below 0 after the answer; P15b under depth-first
+search; P16d2's contradiction, which no value reveals); that is a result,
+not a reason to reformulate.
+
+### P13
+
+- **The prescribed tasks (P13a-d).** range's guards m > n and m ≤ n are
+  comparisons, which no notation of the pinned reconstruction has. They
+  are reformulated exactly as batch 1C's gen (P09c) was: `gt(a, b)` is
+  `a = b + d'` and `pos(d)`; `le(a, b)` is `b = a + d'` and `nonneg(d)`;
+  `pos` and `nonneg` are batch 1B's and 1C's texts, unchanged. Over the
+  integers these are > and ≤ on every input, so the solutions of range are
+  the problem's on every input (any start <k>, any n), and the author
+  judges P13a-d *expressible with reformulation*, with these as the
+  programs of record (`systems/absys/README.md`, Notation: "where a
+  reformulation without the comparison keeps the meaning on every input
+  … it is the program of record"). R: gt, le, pos, nonneg. The rest is
+  transcribed: range, sum, conc, rev, revacc and racc by their cases, in
+  order, each head as equations on the lambda's parameters (Elcock 1990's
+  `app`), then each case's conjuncts in the order written; m + 1 as a fresh
+  unknown `a1' = a + 1`.
+- **What the reformulation does to the prescribed algorithm**, recorded so
+  that the classifiers can weigh it (ambiguity 1): `pos` of a known
+  argument has no failing derivation (batch 1B, P05). So at every level of
+  range the case whose guard is false (case 1 while m ≤ n, case 2 at
+  m = n + 1) leaves a derivation that never ends, and the guard that is
+  true costs steps in proportion to n − m, with an endless derivation of
+  its own beyond its success. The problem operations of range, sum, rev and
+  racc are still the problem's; the work added is the guards'.
+- **Named variants** `variants/P13x.eq.ab1`: range with m > n written
+  m = n + 1 and m ≤ n dropped, the calibration reformulation that
+  `systems/absys/README.md` names as changing the meaning (with a start
+  above n + 1 it has no solution, where the problem has s = ⟨⟩; case 2
+  applies again at m = n + 1 and goes on for ever). Not primary, chosen
+  before any run. To be run and reported.
+- conc and rev are batch 1A's texts (P03e) with their local names renamed
+  (`h, t, u, v, w` for `h, k, m, n, r`), so that no local name is one of
+  this text's top-level names: the parameter `n` and the unknowns `s`, `k`,
+  `r`. Renaming changes no token's class.
+- racc's case 2 holds "for every sequence b"; Absys does not restrict an
+  unknown to sequences, and here the place is always a list.
+- **The native tasks (P13e, P13f).** The algorithm, recorded as the
+  problem asks: ⟨1, …, n⟩ is built by counting q down from n to 0 with an
+  accumulator (`upto(q, a, w)`: w = ⟨1, …, q⟩ ++ a), so that it is built
+  from its last element to its first with no concatenation, and bound to s
+  by one equation when q = 0. P13e then sums it with a running total
+  (`total`), P13f reverses it with an accumulator (`backw`): both linear,
+  and both written with `key p`, FE69's `map` idiom, so that they wait for
+  the list instead of making lists of every length (`docs/decisions.md`
+  rule 21). The sequence is built and held, as the problem requires.
+  upto's second case has no guard q > 0: no notation with arithmetic has a
+  comparison or a negation, and pos would leave an endless derivation at
+  every step. Without the guard the text is correct for every n ≥ 0, which
+  every instance has (n is structure, not a constant): at q = 0 the first
+  case gives the sequence, and the second goes on below 0, where the first
+  never holds again; that derivation never gives a solution and never
+  ends (ambiguity 2). P13e and P13f have no stage constant
+  (`stages.json`), so no constants block.
+
+### P14
+
+- run is the problem's relation, its three cases in order, each head as
+  equations on the lambda's parameters; c + 1 as a fresh unknown
+  `c1' = c + 1`. The problem allows a relation or a process, and says both
+  are transcriptions (P). In Absys the relation is the process: an
+  application of run waiting for the next cell of its list holds the
+  count as its argument.
+- `key p` (C, as in batch 1C's P10b): without it, run applied to a list
+  not yet present would make lists of every length (FE69's `map`;
+  `docs/decisions.md` rule 21) instead of waiting for the next message.
+- **Messages.** ɪɴᴄ is the atom `'inc'`; ʀᴇᴀᴅ(r) is the list `['read';r]`,
+  Absys having no other compound term. The stream is a list `ms` with an
+  open tail. Stage 1 starts the counter, `run(ms, 0)` ("the messages are
+  posed with run(m, 0)"), and gives the first message, `ms = [inc1&t1]`;
+  each later stage equates the open tail with `[message&new tail]`. No
+  stage closes the stream.
+- P14b is one stage, `run([inc1;inc2;['read';r1];inc4;['read';r2]], 0)`,
+  with the same run.
+- Constants: `stages.json` writes each ɪɴᴄ stage as "message <atom>", so the
+  atom of each ɪɴᴄ message is a constant (`inc1`, `inc2`, `inc4`, `inc6`),
+  tagged by stage. ʀᴇᴀᴅ's tag `'read'` and run's `'inc'` are vocabulary.
+
+### P15
+
+- **P15a** (1990): merge's four cases in order, each head as equations,
+  then the guard, then the recursive application. b ≠ ⟨⟩ is
+  `not(B = [])`: negation and equality, the problem's connectives (as
+  batch 1C took x ≠ k in P11c); the arguments are known, so `not` is
+  decided at once. P15a1 and P15a2 are the same text; the harness's cap
+  makes the answer mode.
+- **P15b, P15b2** (1969): zeros, its one case, as an unbounded producer,
+  under P09d2's stream reading (batch 1C's genu). merge as in P15a, but
+  the 1969 notation has no `not`, so case 3's b ≠ ⟨⟩ and case 4's a ≠ ⟨⟩
+  are written as the patterns `q = [g1'&v1']` and `p = [g2'&v2']`, which
+  for sequences (merge's arguments are sequences) is the same: R.
+  position's h ≠ e is `ne(h, e)`, batch 1B's reformulation (`gt(a, b) or
+  gt(b, a)`, with gt and pos), R; i = j + 1 is the problem's. The query is
+  one conjunction, in the order given. Nothing is written for fairness:
+  the problem asks whether the system's own merge is fair, and adding an
+  arbitration would be C. Limits, recorded for the classifiers: ne is ≠
+  only for integers (the items here are integers: zeros' 0 and the items
+  of <seq>); and with h = e the case 2 guard does not fail, it never ends,
+  as pos with a known argument never fails.
+- **P15c** (1969): grant's two cases, `{w = p or w = q}`. Absys keeps both
+  derivations and has no construct that selects one (harness QUESTIONS,
+  A6, A8); `answers(1)` reports the first printed. Nothing is written for
+  commitment (ambiguity 7).
+- **P15d** (1990): holder and queue are named quantities "as in P10", and
+  are encoded as batch 1C encoded P10's: each the list of the values it
+  has taken, with an open tail (R). They start, in the prelude, as
+  `'none'` and `[]` ("starting as none and ⟨⟩"). Each stage equates both
+  tails with `[new value|new tail]` and states the stage's case relation
+  between the old values and the new: `request(p, h, q, h2, q2)` and
+  `release(p, h, q, h2, q2)`, their cases in the problem's order. A
+  quantity a case does not mention keeps its value (`Q2 = Q`, `H2 = H`).
+  "Otherwise" is `not(H = 'none')` and `not(Q = [])`; "where holder = p"
+  is `H = P` in each case of release. queue ++ ⟨p⟩ needs concatenation of
+  a list already held, which Absys has only as a relation defined for it:
+  Elcock 1990's `app`, R. The problem allows a process instead; the
+  quantities are written as P10's so that `observe()` reads them by name.
+  none is the atom `'none'`.
+
+### P16
+
+- succ is defined as the vocabulary gives it, `succ'=lambda a, b begin
+  b = a + 1 end`, and every relation is an application of it,
+  `succ(x1, x2)`. The unknowns x_1 … and y_1 … are `x1` … and `y1` ….
+- **Each instance is its own file**, with its relations written out in the
+  instance's arrival order, as P12's facts were (batch 1C). Sizes and
+  orders are structure, not constants (`stages.json`, about), and the
+  hidden variants do not vary them. Writing the order into the text, not
+  choosing it with the program's own code from the `order` parameter,
+  avoids steps and C tokens the problem does not have (harness QUESTIONS,
+  A9; batch 1B's P07a). The files were written by a shell script from the
+  problem's definitions of the orders; the script is not part of the
+  program and is not in the repository (ambiguity 9).
+- **Each stage's relations are one conjunction**, `begin … end`, one
+  assertion with one budget, in the order given, as P02c and P07 (batch
+  1A, ambiguity 2). In P16b, each contributor's segment is one
+  conjunction, in its own SPAWN subsection (`C1`-`C4`, as `stages.json`
+  names them). Layout: a hundred relations to a line, which changes no token (fewer lines make `check`, which parses the assertion again after each line, fast enough to run).
+- P16a stage 2: `x<j> = xjk`, j = ⌈n/2⌉ (50, 500, 5000), which is
+  structure; the value is the constant. P16b stage 2 is written as the
+  problem writes it, `total = x1 + x<m+1> + … + x<4m+1>`, a compound
+  relation (`SPECIFICATION.md`, Arithmetic). P16d2's stage 2 is
+  `x<n> = x1`; it has no constant, so no block.
+- Constants: `xjk`, `bk`, `ck2`, `ck3`, `dk2`, `dk3`, tagged by stage.
+
+### Idioms and their sources
+
+| idiom | source | used in |
+|---|---|---|
+| a relation as `name'=lambda x begin {A or B} end`, primes for new local names | Foster and Elcock 1969, `map`, `item` (`examples/map.ab1`, `examples/triples.ab1`) | P13, P14, P15b, P15c, P16 |
+| a case's head as equations on the lambda's parameters | Elcock 1990 p. 8, `app` (`examples/append.abs`) | P13, P14, P15 |
+| alternatives of conjunctions, `{…} or {…}`, in the 1990 notation | Elcock 1990 p. 8 (`examples/append.abs`; tutorial ch. 4) | P15a, P15d |
+| `app`, Elcock's own text | Elcock 1990 p. 8 | P15d |
+| conc and rev | batch 1A's texts (P03e), locals renamed | P13c |
+| gt, le, pos, nonneg (> and ≤ from arithmetic) | batch 1B (P05) and 1C (P09c) | P13a-d |
+| gt, pos, ne (≠ from arithmetic) | batch 1B (P05a) | P15b |
+| an unbounded producer | batch 1C's genu (P09d) | P15b |
+| a relation over a list, with `key` so that it waits for the list | Foster and Elcock 1969, `map` (`examples/map.ab1`; `docs/decisions.md` rule 21) | P13e, P13f, P14 |
+| a list with an open tail, extended by equating the tail | Foster and Elcock 1969, `[h&t]` (tutorial ch. 8, ch. 10) | P14 |
+| a named quantity as the list of its values | batch 1C's P10 | P15d |
+| arithmetic as an assertion usable in every direction | Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets | P13, P14, P15b, P16 |
+| `not(A)` | Elcock 1990 p. 14 (tutorial ch. 7) | P15a, P15d |
+| `begin … end` (1969), `{A, B}` (1990) for one conjunction | Foster and Elcock 1969 (`docs/decisions.md`, Three notations); Elcock 1990 p. 8 | P13, P15b, P15d, P16 |
+
+These sources are cited as batches 1A-1C cite them. This batch's author
+could not open the reconstruction's documentation itself (below).
+
+### Constants
+
+As in batches 1A-1C: one block per program, one constant per line, each
+tagged with the stage that uses it, referred to by name only in that
+stage. The names are used for nothing else. No program depends on the
+values within the problem's domain: P13's start <k> any integer (with
+the reformulated guards; the eq variants only for a start at most
+n + 1); P14's ɪɴᴄ atoms are the message ɪɴᴄ; P15a's sequences any
+sequences; P15b's <seq> and <k> any integers (ne is ≠ on integers only);
+P15c's and P15d's atoms any atoms other than `'none'`; P16's values any
+integers. P13e, P13f and P16d2 have no constants and no block.
+
+## Ambiguities, and the readings taken
+
+1. **P13a-d: expressible with reformulation, or not expressible.**
+   `systems/absys/README.md` lists P13a-d's range among the sub-problems
+   that need a comparison, and gives calibration's reformulation as one
+   that changes the meaning. The reformulation taken here (batch 1C's,
+   from P09c) keeps the meaning on every integer input, so by the rule it
+   is the program of record. But P13's prescribed tasks are meant to hold
+   the algorithm fixed, and these guards add work in proportion to n − m
+   at every level and leave endless derivations. A classifier may judge
+   that the prescribed algorithm is not kept, and P13a-d *not
+   expressible*, with both programs as named variants.
+2. **P13e, P13f: a native builder that does not stop.** No terminating
+   count is writable in a notation with arithmetic, as far as the author
+   could establish; the native builder gives the sequence and then goes on
+   below 0 in a derivation of its own that never gives a solution. Whether
+   ÷ could give a terminating sign test was considered and not used: its
+   semantics could not be checked. The algorithm is recorded; whether the
+   endless derivation makes the native program a different computation
+   from the task is the classifiers'.
+3. **`key` in a native program (P13e, P13f)** is C by the table, and P by
+   METRICS.md rule 18 (a native algorithm's tokens are P). Both readings
+   are open; the author records it as used for the native algorithm.
+4. **P14's messages.** ʀᴇᴀᴅ(r) as `['read';r]` and ɪɴᴄ as `'inc'` is an
+   encoding of the messages as Absys values, taken as P. The ɪɴᴄ atoms of
+   the stages are constants because `stages.json` places a placeholder
+   there; a variant that changed one to anything but ɪɴᴄ would leave run no
+   case.
+5. **Where P14's `run(m, 0)` is posed.** At stage 1, with the first
+   message, not in the prelude: the problem poses the messages with it,
+   and the prelude holds the definitions.
+6. **P15b's ≠** reformulated with arithmetic (as P05a), and merge's
+   ≠ ⟨⟩ as a pattern; P15a's merge is a different text (1990, with `not`),
+   by the rule for notations.
+7. **P15c's committed choice.** Absys has no construct that commits to one
+   derivation. The query is *any one*; the program states the relation, and
+   whether the choice is committed is the system's behaviour, as the
+   problem's observation asks. Taken as *expressible*, as P11's commit was
+   (batch 1C, ambiguity 5).
+8. **P15d's "otherwise" and the precondition.** Otherwise is ≠, written
+   with `not` (the systems file lists P15d among the sub-problems needing a
+   comparison; the 1990 `not` decides holder ≠ none and queue ≠ ⟨⟩ since
+   both are known). "where holder = p" is a condition of each case of
+   release. Initial values in the prelude, since the problem gives them
+   before stage 1.
+9. **P16's relations written out.** One file per instance; the files were
+   generated by a shell script from the problem's definitions of the
+   orders (`bash` and `awk`, writing text only; nothing was executed on a
+   program). A verifier substitutes each file's block.
+10. **P16b: spawned contributors in one computation.** The harness spawns
+    the four into the one session, where they share every unknown
+    (QUESTIONS, A5), and does not use the fallback. The program gives each
+    contribution in its own SPAWN subsection; that the contributions are
+    then one computation is the configuration's behaviour.
+11. **Several relations in one stage** (P13b-f, P15b, P16) are one
+    conjunction, as P02c (batch 1A, ambiguity 2); in P14a stage 1 the
+    counter's start and the first message are two assertions.
+12. **Which unknowns are reported.** Named as `stages.json` names them
+    (`s`, `k`, `r`, `r1`-`r3`, `m`, `i`, `z`, `g`, `holder`, `queue`,
+    `total`). P16's `x_1 … x_n` are not plain identifiers, so the harness
+    asks for none of them by name (`unknown_names`); `?` prints every one.
+    P15d's `holder` and `queue` are the lists of values; the current value
+    is the last element, also printed as `h3`, `q3` (as P10, batch 1C,
+    ambiguity 3).
+
+## What was read, and anything outside the brief
+
+Read: the brief's list, that is `README.md`, `SPECIFICATION.md`,
+`METRICS.md`, `PROTOCOL.md`, `AMENDMENTS.md`, `problems/README.md`, the
+problem files of P13-P16 and of P07, P09 and P10, `systems/absys/README.md`,
+`harnesses/README.md` (sections 4 and 11 in full, and a search of the
+rest), `harnesses/stages.json` (P13-P16, and its header), `harnesses/absys/`
+(`README.md`, `QUESTIONS.md`, `S-mechanisms.md`, `check`, the parts of
+`absys_harness.py` that read a program, substitute constants, name
+unknowns and check; the qualification's `README.md` and every program in
+`qualification/programs/`), batch 1A-1C's programs (P03e, P05a, P09a,
+P09c, P09d, P10a, P10b, P10d, P11c, P12a.n8 in full) and this README.
+
+**The reconstruction's documentation in the image was not read.** Two
+attempts to read `/opt/src/absys` with `container run` (`tar` to copy it
+out, then `ls`) were refused by the author's permission system; no other
+attempt was made. Its idioms are cited above as batches 1A-1C cite them.
+
+Commands other than `check`, disclosed: `python3 -c` three times, to read
+and print the P13-P16 entries of `harnesses/stages.json` (reading a JSON
+file; no program of the study); one accidental `python3 -` with no input,
+which read nothing and ran nothing; `bash` and `awk` to write the P16
+files and the P13 variants (text only); `sed`, `cp`, `diff`, `git`. No
+Absys program, harness `run` or interpreter was run on a program or a
+fragment of one.
+
+Outside the brief's list: at the start of the session its environment
+supplied the two-line index of an auto-memory file under
+`~/.claude/projects/…`; the files it points to were not opened. The tool
+that ran the author's commands saved one long output (the text of
+`PROTOCOL.md` and `SPECIFICATION.md`, both on the list) to a file under
+`~/.claude/projects/…/tool-results/`, which the author read back; it held
+nothing but those two files. Nothing else outside the list was read.

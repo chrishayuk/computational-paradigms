@@ -1,0 +1,26 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic and key (systems/absys/README.md, Notation; docs/decisions.md rules 21, 23).
+% IDIOM: a relation as name'=lambda x begin {A or B} end, primes for new local names, lists [h&t]: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: a relation over the items of a list, with key so that it waits for the list: Foster and Elcock 1969, map (examples/map.ab1: map'=lambda p, f key p begin ... end; docs/decisions.md rule 21);
+% IDIOM: arithmetic as an assertion usable in every direction: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets (docs/decisions.md rule 23);
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% PARAMETERS n
+% P13f, native (problems/13-deterministic-scale.md: "by whatever means is the system's own idiom"; METRICS.md rule 18: not reformulation).
+% Every instance (P13f.n100 ... P13f.n100000): n is the harness's parameter (README 3.4). Unknown r; the sequence built is s.
+% No stage constant (stages.json: "native: build the sequence of n integers and reverse it"), so no constants block.
+% THE ALGORITHM: the sequence <1, ..., n> is built as in P13e.ab1, by counting q down from n to 0 with an accumulator,
+% and bound to s in one equation when q = 0. It is then reversed with an accumulator, by a relation that waits (key)
+% until the list is there: linear, with no concatenation.
+% upto's second case has no guard q > 0: no notation with arithmetic has a comparison or a negation (systems/absys/README.md,
+% Notation). It is correct for every n >= 0, which every instance has: at q = 0 the first case gives the sequence, and the
+% second goes on below 0, where the first case never holds again, so that derivation never gives a solution and never ends.
+upto'=lambda q, a, w
+    begin {q = 0 w = a or
+           q1' = q - 1 upto(q1, [q&a], w)} end
+% backw(p, a, w): w is the items of p in reverse order, followed by a.
+backw'=lambda p, a, w key p
+    begin {p = [] w = a or
+           p = [h'&t'] backw(t, [h&a], w)} end
+% STAGE 1
+begin upto(n, [], s) backw(s, [], r) end

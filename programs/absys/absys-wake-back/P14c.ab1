@@ -1,0 +1,38 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1D, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used: arithmetic (c + 1) and key (docs/decisions.md rules 21, 23).
+% IDIOM: a relation over the items of a list, with key so that it waits for the list: Foster and Elcock 1969, map (examples/map.ab1: map'=lambda p, f key p begin {null(p) or p = [r'&s'] f(r) map(s,f)} end; docs/decisions.md rule 21);
+% IDIOM: a case's head as equations on the lambda's parameters: Elcock 1990 p. 8 (app, examples/append.abs);
+% IDIOM: lists [a;b] and [h&t], a list with a tail still unknown, extended by equating the tail: Foster and Elcock 1969 (tutorial ch. 8, ch. 10);
+% IDIOM: arithmetic as an assertion usable in every direction: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets.
+% P14c. Unknowns r1, r2, r3. The stages of P14a (stage 1 starts the counter, run(m, 0), and gives INC), then stage 6 INC and stage 7 READ(r3). No stage closes the stream.
+% The messages are the items of a list ms with an open tail; each stage equates the tail with [message&new tail].
+% The message INC is the atom 'inc'; READ(r) is the list ['read';r] (Absys has no other compound term).
+% CONSTANTS BEGIN
+inc1 = 'inc'   % stage 1: the message <atom> (INC)
+inc2 = 'inc'   % stage 2: the message <atom> (INC)
+inc4 = 'inc'   % stage 4: the message <atom> (INC)
+inc6 = 'inc'   % stage 6: the message <atom> (INC)
+% CONSTANTS END
+% run, P14 Vocabulary, cases 1, 2 and 3 in that order, each head as equations on the parameters.
+% Case 2: run(<INC> ++ s, c) if run(s, c + 1), c + 1 as a fresh unknown. Case 3: run(<READ(r)> ++ s, c) if r = c and run(s, c).
+% key p (C): run waits until its list of messages has a first cell, instead of making lists of every length (FE69 map; rule 21).
+run'=lambda p, c key p
+    begin {p = [] or
+           p = ['inc'&u'] c1' = c + 1 run(u, c1) or
+           p = [['read';v']&w'] v = c run(w, c)} end
+% STAGE 1
+run(ms, 0)
+ms = [inc1&t1]
+% STAGE 2
+t1 = [inc2&t2]
+% STAGE 3
+t2 = [['read';r1]&t3]
+% STAGE 4
+t3 = [inc4&t4]
+% STAGE 5
+t4 = [['read';r2]&t5]
+% STAGE 6
+t5 = [inc6&t6]
+% STAGE 7
+t6 = [['read';r3]&t7]
