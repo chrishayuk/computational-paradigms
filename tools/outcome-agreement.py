@@ -7,7 +7,8 @@ Each file is a classifier's output (sandbox/briefs/classifier.md). Stages
 are matched on (configuration, instance, program, stage). Where a
 classifier gives several entries for one stage (one per reading of P01c,
 or one per attempt), the attempts before a final attempt are dropped and
-the remaining entries are compared as a set. Simplification and the identical-to-posed flag
+the remaining entries are compared as a set, value by reading where readings are given (as an
+object {reading: value}, or as one entry per reading). Simplification and the identical-to-posed flag
 are compared only where either classifier gives a residual, and a stage
 both classifiers mark not reached is compared on that alone. Prints, per axis, the
 agreement, and every stage on which the classifiers differ, with both.
@@ -31,6 +32,21 @@ def load(path):
         out[(e["configuration"], e["instance"], e["program"], e["stage"])].append(e)
     return out
 
+def per_reading(e, ax):
+    """An axis's value(s), paired with the reading where a classifier gives
+    readings: either as an object {reading: value} on one entry, or as one
+    entry per reading with a `reading` field. Values without a reading are
+    compared as they are."""
+    v = e.get(ax)
+    if isinstance(v, str) and "reading)" in v:  # "complete (rational reading); unsound (finite reading)"
+        return {f"{x.split('(')[1].split()[0]}: {x.split('(')[0].strip().lower()}" for x in v.split(";")}
+    if isinstance(v, dict):
+        return {f"{k}: {norm(x)}" for k, x in v.items()}
+    if e.get("reading") and ax in ("semantic", "simplification"):
+        return {f"{e['reading']}: {x}" for x in flat(norm(v))}
+    return set(flat(norm(v)))
+
+
 def flat(v):
     return v if isinstance(v, tuple) else (v,)
 
@@ -48,8 +64,12 @@ for k in keys:
             agree[ax] += 1; continue                # applies to a residual only (SPECIFICATION, Outcomes 2)
         if ax != "reached" and unreached:
             agree[ax] += 1; continue                # both: not reached (AMENDMENTS 3.2); nothing to class
-        sa = sorted({x for e in a for x in flat(norm(e.get(ax)))}, key=str)
-        sb = sorted({x for e in b for x in flat(norm(e.get(ax)))}, key=str)
+        sa = sorted({x for e in a for x in per_reading(e, ax)}, key=str)
+        sb = sorted({x for e in b for x in per_reading(e, ax)}, key=str)
+        labelled = lambda s: s and all(isinstance(x, str) and ": " in x for x in s)
+        if labelled(sa) != labelled(sb):        # one value given without readings: the same under every reading
+            strip = lambda s: sorted({x.split(": ", 1)[1] if isinstance(x, str) and ": " in x else x for x in s}, key=str)
+            sa, sb = strip(sa), strip(sb)
         if sa == sb: agree[ax] += 1
         else: diffs.append((k, ax, sa, sb))
 print(f"stages: {len(keys)} (A {len(A)}, B {len(B)})")
