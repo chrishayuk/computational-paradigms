@@ -31,7 +31,7 @@ OUT.
 
 Anything else, in particular `calibration/`, `reviews/`, `variants/`,
 `transcripts/`, any earlier batch's classes and results
-(`results/SYSTEMDIR/classes/`, `results/*/*/*.md`, `results/BATCH-*.md`), the
+(`results/SYSTEMDIR/classes/`, `results/SYSTEMDIR/classes-*/`, `results/*/*/*.md`, `results/BATCH-*.md`), the
 author's notes above, other systems' folders, anything outside CLONE
 except OUT (above all `~/cp-roles`, `~/cp-private`, `~/.claude`,
 `~/.codex`, `~/chris-source`), and the web. If you come across any of
