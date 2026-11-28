@@ -11,7 +11,7 @@ figure a record's, and a figure a record does not have is shown as
 unavailable (AMENDMENTS.md 3.1). Where the classifiers differ, both are
 shown and the stage is marked disputed.
 """
-import collections, glob, importlib.util, json, os, subprocess, sys
+import collections, glob, gzip, importlib.util, json, os, subprocess, sys
 
 _spec = importlib.util.spec_from_file_location("outcome_agreement", os.path.join(os.path.dirname(os.path.abspath(__file__)), "outcome-agreement.py"))
 OA = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(OA)   # one comparison for the result files and the agreement output
@@ -82,8 +82,10 @@ def records(system, cfg, prob, mode, folder="raw"):
     """(instance, program path within the configuration) -> (file, record). The
     program path keeps a variants/ folder, as the classifiers name it."""
     out = {}
-    for f in sorted(glob.glob(f"results/{system}/{cfg}/{prob}/{folder}/*.{mode}.*.json")):
-        d = json.load(open(f))
+    fs = glob.glob(f"results/{system}/{cfg}/{prob}/{folder}/*.{mode}.*.json")
+    fs += glob.glob(f"results/{system}/{cfg}/{prob}/{folder}/*.{mode}.*.json.gz")   # records over 50 MB
+    for f in sorted(fs):
+        d = json.load(gzip.open(f) if f.endswith(".gz") else open(f))
         prog = d["run"]["program"]["path"].split(f"programs/{system}/{cfg}/", 1)[-1]
         out[(d["run"]["instance"], prog)] = (f, d)
     return out

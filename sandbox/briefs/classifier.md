@@ -39,8 +39,10 @@ these by accident, stop reading and say so in your notes.
 
 You may run read-only commands (`cat`, `grep`, `jq`, `python3` on the
 records and token files) and write your own checking scripts in OUT. Do
-not run any program or the system itself. Some records are large (up to
-40 MB, mostly verbatim output): read them with tools, not whole.
+not run any program or the system itself. Some records are large (hundreds of
+MB, mostly verbatim output): read them with tools, not whole. Records
+over 50 MB are committed gzip-compressed, as `.json.gz`; read them with
+`zcat` or Python's `gzip`.
 
 ## 1. Tokens
 
