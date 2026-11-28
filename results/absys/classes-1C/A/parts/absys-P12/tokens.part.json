@@ -1,0 +1,1139 @@
+{
+ "absys/P12a.n12.ab1": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 5,
+   "to": 31,
+   "class": "P",
+   "construct": "constants block: acc2 = <sequence>, accept's fact 2 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 32,
+   "to": 102,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 103,
+   "to": 110,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 111,
+   "to": 114,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 115,
+   "to": 115,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 116,
+   "to": 122,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 123,
+   "to": 126,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 127,
+   "to": 135,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 136,
+   "to": 140,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 141,
+   "to": 146,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 147,
+   "to": 148,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 149,
+   "to": 163,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 164,
+   "to": 175,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12a.n16.ab1": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 5,
+   "to": 39,
+   "class": "P",
+   "construct": "constants block: acc2 = <sequence>, accept's fact 2 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 40,
+   "to": 110,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 111,
+   "to": 118,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 119,
+   "to": 122,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 123,
+   "to": 123,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 124,
+   "to": 130,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 131,
+   "to": 134,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 135,
+   "to": 143,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 144,
+   "to": 148,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 149,
+   "to": 154,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 155,
+   "to": 156,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 157,
+   "to": 171,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 172,
+   "to": 183,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12a.n8.ab1": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 5,
+   "to": 23,
+   "class": "P",
+   "construct": "constants block: acc2 = <sequence>, accept's fact 2 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 24,
+   "to": 94,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 95,
+   "to": 102,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 103,
+   "to": 106,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 107,
+   "to": 107,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 108,
+   "to": 114,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 115,
+   "to": 118,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 119,
+   "to": 127,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 128,
+   "to": 132,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 133,
+   "to": 138,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 139,
+   "to": 140,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 141,
+   "to": 155,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 156,
+   "to": 167,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12b.n12.ab1": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 5,
+   "to": 75,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 76,
+   "to": 83,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 84,
+   "to": 87,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 88,
+   "to": 88,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 89,
+   "to": 95,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 96,
+   "to": 99,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 100,
+   "to": 108,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 109,
+   "to": 113,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 114,
+   "to": 119,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 120,
+   "to": 121,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 122,
+   "to": 130,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 131,
+   "to": 142,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12b.n16.ab1": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 5,
+   "to": 75,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 76,
+   "to": 83,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 84,
+   "to": 87,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 88,
+   "to": 88,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 89,
+   "to": 95,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 96,
+   "to": 99,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 100,
+   "to": 108,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 109,
+   "to": 113,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 114,
+   "to": 119,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 120,
+   "to": 121,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 122,
+   "to": 130,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 131,
+   "to": 142,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12b.n8.ab1": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 5,
+   "to": 75,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 76,
+   "to": 83,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 84,
+   "to": 87,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 88,
+   "to": 88,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 89,
+   "to": 95,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 96,
+   "to": 99,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 100,
+   "to": 108,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 109,
+   "to": 113,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 114,
+   "to": 119,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 120,
+   "to": 121,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 122,
+   "to": 130,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 131,
+   "to": 142,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12c.n12.ab1": [
+  {
+   "from": 0,
+   "to": 26,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 27,
+   "to": 97,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 98,
+   "to": 105,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 106,
+   "to": 109,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 110,
+   "to": 110,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 111,
+   "to": 117,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 118,
+   "to": 121,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 122,
+   "to": 130,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 131,
+   "to": 135,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 136,
+   "to": 141,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 142,
+   "to": 143,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 144,
+   "to": 152,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 153,
+   "to": 164,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12c.n16.ab1": [
+  {
+   "from": 0,
+   "to": 34,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 35,
+   "to": 105,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 106,
+   "to": 113,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 114,
+   "to": 117,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 118,
+   "to": 118,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 119,
+   "to": 125,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 126,
+   "to": 129,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 130,
+   "to": 138,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 139,
+   "to": 143,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 144,
+   "to": 149,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 150,
+   "to": 151,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 152,
+   "to": 160,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 161,
+   "to": 172,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12c.n8.ab1": [
+  {
+   "from": 0,
+   "to": 18,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 19,
+   "to": 89,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 90,
+   "to": 97,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 98,
+   "to": 101,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 102,
+   "to": 102,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 103,
+   "to": 109,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 110,
+   "to": 113,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 114,
+   "to": 122,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 123,
+   "to": 127,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 128,
+   "to": 133,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 134,
+   "to": 135,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 136,
+   "to": 144,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 145,
+   "to": 156,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12d.n12.ab1": [
+  {
+   "from": 0,
+   "to": 26,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 27,
+   "to": 97,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 98,
+   "to": 105,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 106,
+   "to": 109,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 110,
+   "to": 110,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 111,
+   "to": 117,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 118,
+   "to": 121,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 122,
+   "to": 130,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 131,
+   "to": 135,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 136,
+   "to": 141,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 142,
+   "to": 143,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 144,
+   "to": 152,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 153,
+   "to": 164,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12d.n16.ab1": [
+  {
+   "from": 0,
+   "to": 34,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 35,
+   "to": 105,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 106,
+   "to": 113,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 114,
+   "to": 117,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 118,
+   "to": 118,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 119,
+   "to": 125,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 126,
+   "to": 129,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 130,
+   "to": 138,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 139,
+   "to": 143,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 144,
+   "to": 149,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 150,
+   "to": 151,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 152,
+   "to": 160,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 161,
+   "to": 172,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ],
+ "absys/P12d.n8.ab1": [
+  {
+   "from": 0,
+   "to": 18,
+   "class": "P",
+   "construct": "constants block: acc1 = <sequence>, accept's fact 1 as the problem's closed-world facts give it (the table the harness substitutes into accept)",
+   "rule": "rule 6 (a set of facts the problem states is P); SPECIFICATION 'the information of each stage'"
+  },
+  {
+   "from": 19,
+   "to": 89,
+   "class": "R",
+   "construct": "gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the problem does not give, standing for the primitive comparison n > 0 by an enumeration of the values 1..16",
+   "rule": "METRICS class R (a definition the problem file does not give); systems/absys/README.md Notation (n > 0 replaced by an enumeration of the finitely many values used); not rule 6's C, since removing it changes the solution set (rule 1)"
+  },
+  {
+   "from": 90,
+   "to": 97,
+   "class": "P",
+   "construct": "choice'=lambda m, w begin { : the head of choice's definition (two parameters, n and s)",
+   "rule": "rule 10 (introducing tokens take the class of the definition); class P (a definition as the problem gives it)"
+  },
+  {
+   "from": 98,
+   "to": 101,
+   "class": "P",
+   "construct": "choice case 1: w = [] (choice(n, <>), its head as an equation)",
+   "rule": "class P; rule 2 (a head test of the problem's own case)"
+  },
+  {
+   "from": 102,
+   "to": 102,
+   "class": "P",
+   "construct": "or between choice's cases 1 and 2 (the definition's disjunction of cases)",
+   "rule": "rule 6 (a disjunction the problem states); rule 20"
+  },
+  {
+   "from": 103,
+   "to": 109,
+   "class": "P",
+   "construct": "choice case 2 head: w = [e'&t'] (s = <e> ++ t)",
+   "rule": "class P; rule 2"
+  },
+  {
+   "from": 110,
+   "to": 113,
+   "class": "R",
+   "construct": "choice case 2 conjunct gtz(m), standing for n > 0 (application of the reformulated comparison)",
+   "rule": "METRICS class R (the reformulation of n > 0); rule 10 (the call is classed with the construct it applies, not the surrounding case)"
+  },
+  {
+   "from": 114,
+   "to": 122,
+   "class": "P",
+   "construct": "choice case 2 conjunct {e = 'l' or e = 'r'} (e = L or e = R, in that order)",
+   "rule": "rule 6 (a disjunction the problem states); class P"
+  },
+  {
+   "from": 123,
+   "to": 127,
+   "class": "P",
+   "construct": "choice case 2 conjunct m1' = m - 1 (n - 1 as a fresh unknown)",
+   "rule": "SPECIFICATION Arithmetic (a compound or decomposed arithmetic relation is a transcription); rule 8 (relation, not one-way evaluation)"
+  },
+  {
+   "from": 128,
+   "to": 133,
+   "class": "P",
+   "construct": "choice case 2 conjunct choice(m1, t) (choice(n - 1, t))",
+   "rule": "class P"
+  },
+  {
+   "from": 134,
+   "to": 135,
+   "class": "P",
+   "construct": "} end closing choice's definition",
+   "rule": "rule 10"
+  },
+  {
+   "from": 136,
+   "to": 144,
+   "class": "P",
+   "construct": "accept'=lambda u begin ... end: accept given by facts in a closed world, the facts as alternatives (u = acc1 [or u = acc2])",
+   "rule": "rule 6 (a set of facts the problem states is P); class P"
+  },
+  {
+   "from": 145,
+   "to": 156,
+   "class": "P",
+   "construct": "the stage's query: begin choice(n, s) accept(s) end, in the order written",
+   "rule": "class P (the query); presentation order kept, so no move (rule 4)"
+  }
+ ]
+}

@@ -101,6 +101,126 @@
   tokens 44-44 A=P B=H: )
       A: stage 1: , tout("emit", x), the emit stub on x | B: emit adapter closing
 
+## absys/P12a.n12.ab1: 176 tokens, agreement 111/176 (63.1%)
+  class  A      B
+  P      101    101
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 37-101 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12a.n16.ab1: 184 tokens, agreement 119/184 (64.7%)
+  class  A      B
+  P      109    109
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 45-109 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12a.n8.ab1: 168 tokens, agreement 103/168 (61.3%)
+  class  A      B
+  P      93     93
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 29-93 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12b.n12.ab1: 143 tokens, agreement 78/143 (54.5%)
+  class  A      B
+  P      68     68
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 10-74 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12b.n16.ab1: 143 tokens, agreement 78/143 (54.5%)
+  class  A      B
+  P      68     68
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 10-74 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12b.n8.ab1: 143 tokens, agreement 78/143 (54.5%)
+  class  A      B
+  P      68     68
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 10-74 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12c.n12.ab1: 165 tokens, agreement 100/165 (60.6%)
+  class  A      B
+  P      90     90
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 32-96 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12c.n16.ab1: 173 tokens, agreement 108/173 (62.4%)
+  class  A      B
+  P      98     98
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 40-104 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12c.n8.ab1: 157 tokens, agreement 92/157 (58.6%)
+  class  A      B
+  P      82     82
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 24-88 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12d.n12.ab1: 165 tokens, agreement 100/165 (60.6%)
+  class  A      B
+  P      90     90
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 32-96 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12d.n16.ab1: 173 tokens, agreement 108/173 (62.4%)
+  class  A      B
+  P      98     98
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 40-104 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
+## absys/P12d.n8.ab1: 157 tokens, agreement 92/157 (58.6%)
+  class  A      B
+  P      82     82
+  C      0      65
+  R      75     10
+  S      0      0
+  H      0      0
+  tokens 24-88 A=R B=C: { q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or q = 9 
+      A: gtz'=lambda q begin {q = 1 or ... or q = 16} end: a definition the pro | B: gtz body: explicit enumeration of positive values 1 through 16
+
 ## absys/variants/P09a.AB.or.ab1: 116 tokens, agreement 116/116 (100.0%)
   class  A      B
   P      113    113
@@ -150,8 +270,9 @@
       A: , tout("emit", x) | B: emit adapter closing
 
 ## per system
-  absys: 1105/1143 (96.7%)
+  absys: 2272/3090 (73.5%)
 
 ## disagreements by (A, B) class
+  R→C: 780
   P→H: 20
   P→R: 18

@@ -1,0 +1,108 @@
+{
+  "distinct_texts": 12,
+  "token_totals": {
+    "P": 1047,
+    "C": 780,
+    "R": 120,
+    "S": 0,
+    "H": 0
+  },
+  "total_tokens": 1947,
+  "behaviour_stages": 72,
+  "semantic": {
+    "complete": 56,
+    "none reported": 16
+  },
+  "execution": {
+    "finished": 56,
+    "timeout": 16
+  },
+  "measurement_records_compared": 144,
+  "mode_differences": 0,
+  "table": [
+    [
+      "absys/P12a.n12.ab1",
+      176,
+      101,
+      65,
+      10
+    ],
+    [
+      "absys/P12a.n16.ab1",
+      184,
+      109,
+      65,
+      10
+    ],
+    [
+      "absys/P12a.n8.ab1",
+      168,
+      93,
+      65,
+      10
+    ],
+    [
+      "absys/P12b.n12.ab1",
+      143,
+      68,
+      65,
+      10
+    ],
+    [
+      "absys/P12b.n16.ab1",
+      143,
+      68,
+      65,
+      10
+    ],
+    [
+      "absys/P12b.n8.ab1",
+      143,
+      68,
+      65,
+      10
+    ],
+    [
+      "absys/P12c.n12.ab1",
+      165,
+      90,
+      65,
+      10
+    ],
+    [
+      "absys/P12c.n16.ab1",
+      173,
+      98,
+      65,
+      10
+    ],
+    [
+      "absys/P12c.n8.ab1",
+      157,
+      82,
+      65,
+      10
+    ],
+    [
+      "absys/P12d.n12.ab1",
+      165,
+      90,
+      65,
+      10
+    ],
+    [
+      "absys/P12d.n16.ab1",
+      173,
+      98,
+      65,
+      10
+    ],
+    [
+      "absys/P12d.n8.ab1",
+      157,
+      82,
+      65,
+      10
+    ]
+  ]
+}

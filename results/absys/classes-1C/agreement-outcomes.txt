@@ -1,10 +1,10 @@
-stages: 99 (A 99, B 99)
-  reached: 99/99
-  semantic: 83/99
-  representation: 54/99
-  simplification: 88/99
-  identical_to_posed: 85/99
-  execution_state: 99/99
+stages: 171 (A 171, B 171)
+  reached: 171/171
+  semantic: 155/171
+  representation: 126/171
+  simplification: 160/171
+  identical_to_posed: 157/171
+  execution_state: 171/171
 
 differences (stage, axis, A, B):
    | ('absys', 'P09a.AB', 'variants/P09a.AB.or.ab1', 1) | semantic | ['complete', 'none reported'] | ['complete', 'unsound']

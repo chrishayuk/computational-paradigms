@@ -142,15 +142,15 @@ author ran `git log`, whose output lists commit authors (one transcript).
 | `classifier-A-python-P11-P12.jsonl` | 79 | 1 |
 | `classifier-A-algol-60-P09-P10.jsonl` | 82 | 0 |
 | `classifier-A-algol-60-P11-P12.jsonl` | 73 | 0 |
+| `classifier-A-absys-P12.jsonl` | 47 | 1 |
 | Codex logs and briefs | — | — |
 
 The Claude agents' disclosures that the memory index was put into their
-context are kept (six of the eleven). The one paraphrase, in
-`classifier-A-python-P11-P12.jsonl`, was also in that agent's notes,
-`results/python/classes-1C/A/parts/python-P11-P12/python.notes.md`, and
-was redacted there with the same marker before the notes were committed.
-
-The transcripts of Absys P12's classifiers will be added with its results.
+context are kept (seven of the twelve). The two paraphrases, in
+`classifier-A-python-P11-P12.jsonl` and `classifier-A-absys-P12.jsonl`,
+were also in those agents' notes (`results/<system>/classes-1C/A/parts/`),
+and were redacted there with the same marker before the notes were
+committed. The script now matches the known wordings regardless of case.
 
 ## Correction to the batch 1A redaction
 

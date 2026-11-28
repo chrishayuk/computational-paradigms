@@ -80,7 +80,7 @@ PARAPHRASES = ["two one-line entries about absys source papers and commit traile
                "two lines about commit trailers and Absys sources",
                "about a different project's sources and commit trailers"]
 SEP = r"(?:\s|\\n)+"
-PARA = re.compile("|".join(SEP.join(re.escape(w) for w in p.split()) for p in PARAPHRASES))
+PARA = re.compile("|".join(SEP.join(re.escape(w) for w in p.split()) for p in PARAPHRASES), re.I)
 
 
 def clean(x):
