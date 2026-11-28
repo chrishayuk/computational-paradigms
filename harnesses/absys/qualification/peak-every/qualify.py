@@ -9,8 +9,9 @@ program: standard output (answers and state) must be byte-identical
 between OLD and NEW at --peak-every 1, 0 and 1000; the --measure report's
 steps and boundary values must be identical; NEW at 1 must equal OLD's
 peak exactly; and each sampled peak must lie between the boundary value
-and the exact peak. A run that OLD cannot finish in 30 s is compared on
-the settings that finish. Prints one line per program and a summary;
+and the exact peak. A program for which neither OLD nor NEW at 1 finishes in 30 s is
+reported LIMITED: its sampled settings are compared with each other
+only, and it needs a lower budget for an exact reference. Prints one line per program and a summary;
 exit 1 if any check fails.
 """
 import re, subprocess, sys, time
@@ -46,7 +47,7 @@ def reports(err):
     return out
 
 
-fails, lines = 0, []
+fails, limited, lines = 0, 0, []
 for prog in progs:
     o, to = run(old, prog)
     res = {pe: run(new, prog, pe) for pe in (1, 0, 1000)}
@@ -71,9 +72,12 @@ for prog in progs:
                     ok = False; why.append(f"{q} sampled peak {bp} outside [{now}, {pk}] at {pe}")
     if o is not None and res[1][0] is not None and o[2] != res[1][0][2]:
         ok = False; why.append("--measure report differs at 1")
+    exact_ref = (o is not None) or (res[1][0] is not None)
     fails += not ok
     times = " ".join(f"{k}:{'timeout' if v[0] is None else f'{v[1]:.1f}s'}" for k, v in [("old", (o, to))] + [(str(pe), res[pe]) for pe in res])
-    lines.append(f"{'ok  ' if ok else 'FAIL'} {prog}  {times}  {'; '.join(sorted(set(why)))}")
+    verdict = "FAIL" if not ok else ("ok  " if exact_ref else "LIMITED")   # LIMITED: no exact reference finished;
+    limited += ok and not exact_ref                                            # only the sampled settings were compared
+    lines.append(f"{verdict} {prog}  {times}  {'; '.join(sorted(set(why))) or ('' if exact_ref else 'no exact reference finished: sampled settings compared with each other only')}")
 print("\n".join(lines))
-print(f"\n{len(progs) - fails} of {len(progs)} programs pass")
+print(f"\n{len(progs) - fails - limited} of {len(progs)} programs pass against an exact reference; {limited} limited (no exact reference finished); {fails} fail")
 sys.exit(1 if fails else 0)

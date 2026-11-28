@@ -41,13 +41,23 @@ compared was the same; a figure from macOS is marked as such.
   made in wave 1, batch 1B, after `5450449`'s per-step walk of the whole
   computation was found to stop cost and storage runs at the safety limit
   long before the step budget (P03f, P04d, P04f). The machine is unchanged.
-  Qualified by `harnesses/absys/qualification/peak-every/qualify.py` on
-  every Absys program of batches 1A and 1B, in all three configurations: at
-  every setting, standard output and every step count byte for byte the
-  same as `5450449`; at 1, the peak identical; otherwise, each sampled peak
-  between the boundary value and the exact peak (`qualify.txt` beside the
-  script). It is used only for the reruns of the measurements those runs
-  could not make, which are labelled and kept apart; every original record
+  Qualified by `harnesses/absys/qualification/peak-every/qualify.py`
+  (output in `qualify.txt` beside it). At every setting, standard output
+  and every step count must be byte for byte the same as `5450449`; at 1,
+  the peak identical; otherwise, each sampled peak between the boundary
+  value and the exact peak. By configuration:
+
+  | configuration | budget | programs | against an exact reference | limited | fail |
+  |---|---|---|---|---|---|
+  | absys | 10^4 | 56 (batches 1A and 1B, the variants, the system's examples) | 54 | 2 (P04d, P04f: no exact reference finished in 30 s) | 0 |
+  | absys | 10^3 | 3 (P04d, P04f, P03f) | 3 | 0 | 0 |
+  | absys-depth-first | 10^4, P04 at 10^3 | 39 + 6 | 45 | 0 | 0 |
+  | absys-wake-back | 10^4, P04 at 10^3 | 39 + 6 | 45 | 0 | 0 |
+
+  So the two limited cases are qualified against an exact reference only
+  at the lower budget. The fixed build is used only for the reruns of the
+  measurements the old one could not make, which are labelled and kept
+  apart; every original record
   stands. Image `cp-systems:spec-1.0-m2` (`sandbox/Containerfile.systems`,
   `--build-arg ABSYS_MEASURE=8a0eefd`).
 - **ALGOL 60 `151cdff`** was checked against `6e8740c` on all 100 programs
