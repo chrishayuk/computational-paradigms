@@ -47,6 +47,34 @@
   S      0      0
   H      0      0
 
+## absys/P05a.ab1: 111 tokens, agreement 99/111 (89.2%)
+  class  A      B
+  P      50     38
+  C      0      0
+  R      61     73
+  S      0      0
+  H      0      0
+  tokens 99-110 A=P B=R: gt ( x , gtk ) ne ( x , nek )
+      A: stage 2: gt(x, gtk), the information x > 1 | B: stage 2 gt(x,gtk), reformulated greater-than
+
+## absys/P05b.ab1: 79 tokens, agreement 73/79 (92.4%)
+  class  A      B
+  P      41     35
+  C      0      0
+  R      38     44
+  S      0      0
+  H      0      0
+  tokens 69-74 A=P B=R: gt ( x , gtk )
+      A: stage 1: gt(x, gtk), the information x > 1 | B: stage 1 gt(x,gtk), reformulated greater-than
+
+## absys/P05c.ab1: 44 tokens, agreement 44/44 (100.0%)
+  class  A      B
+  P      44     44
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
 ## absys/P06a.abs: 15 tokens, agreement 15/15 (100.0%)
   class  A      B
   P      15     15
@@ -240,6 +268,7 @@
   H      0      0
 
 ## per system
-  absys: 1436/1436 (100.0%)
+  absys: 1652/1670 (98.9%)
 
 ## disagreements by (A, B) class
+  P→R: 18

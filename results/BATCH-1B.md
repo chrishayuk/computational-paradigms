@@ -6,11 +6,10 @@ against bias"). The results are `results/<system>/<configuration>/P0{4..8}.md`,
 assembled by `tools/write-results.py --classes classes-1B` from the
 records and both classifiers' files.
 
-**Pending: Absys P05.** Each of its runs takes about an hour: every stage
-reaches the safety limit (60 s, then 600 s), and each reposed stage has a
-restart-cost replay of up to 6,000 s. Its records, classification and
-result files are added when they are complete. Everything else in this
-summary excludes Absys P05.
+**Absys P05** came last. Its P05a and P05b runs take up to about an hour
+each: stages reach the safety limit (60 s, then 600 s), and each reposed
+stage has a restart-cost replay. Its records, labelled reruns,
+classification and result files are now included throughout.
 
 ## Chronology
 
@@ -23,7 +22,8 @@ summary excludes Absys P05.
 | Absys measurement build `8a0eefd` (`--peak-every`), qualified; harness `98baa62` | `6aced67`, `98baa62`, `0c7cfc5` |
 | labelled measurement reruns (Absys) | `5f7af01`, `c7c7a58` |
 | tokens, classifier brief for 1B | `5f7af01`, `fa93843` |
-| classifications A (Claude) and B (Codex), result files | this commit |
+| classifications A (Claude) and B (Codex), result files (Absys P05 pending) | `95f7ade` |
+| Absys P05: records, P05b reruns; its classifications from clones at `1f291be`; result files | `923cf09`, `32d0559`; this commit |
 
 No program was changed after any run (owner's decision: "Proceed with
 Batch 1B as written, without correcting the primary programs before
@@ -33,14 +33,17 @@ execution").
 
 | system | runs | records that validate | harness faults (`*.INVALID.json`) |
 |---|---|---|---|
-| Absys (excluding P05) | 270 | 270 | 0 |
+| Absys | 297 | 289 | 8 |
 | SWI-Prolog | 510 | 494 | 16 |
 | Python | 279 | 279 | 0 |
 | ALGOL 60 | 217 | 217 | 0 |
 
 Measurement reruns, labelled, beside the originals (`results/absys/RERUN-M2.md`):
-12 in batch 1B (P04d and P04f, cost and storage, in each Absys
-configuration) and 6 in batch 1A (P03f). P04d and P04f's reruns end where
+18 in batch 1B (P04d, P04f and P05b, cost and storage, in each Absys
+configuration) and 6 in batch 1A (P03f). P05b's reruns reach the step
+budget in every stage, so its measurements are recovered. P05a was not
+rerun: its behaviour runs reach the safety limit too, so the stop is the
+computation's, and its measurements stay **unavailable**. P04d and P04f's reruns end where
 their behaviour runs do: the process is killed when the container's 4 GB
 of memory runs out, before the step budget. So their steps and store at
 the budget stay **unavailable**.
@@ -48,13 +51,13 @@ the budget stay **unavailable**.
 ## Tokens by class, per classifier
 
 Over every program text of the configuration, each shared text counted in
-each configuration that runs it. Absys P05 is excluded.
+each configuration that runs it.
 
 | system | configuration | tokens | A: P C R S H | B: P C R S H | agreement |
 |---|---|---|---|---|---|
-| absys | absys | 1436 | 1421 0 15 0 0 | 1421 0 15 0 0 | 100.0% |
-| absys | absys-depth-first | 1436 | 1421 0 15 0 0 | 1421 0 15 0 0 | 100.0% |
-| absys | absys-wake-back | 1436 | 1421 0 15 0 0 | 1421 0 15 0 0 | 100.0% |
+| absys | absys | 1670 | 1556 0 114 0 0 | 1538 0 132 0 0 | 98.9% |
+| absys | absys-depth-first | 1670 | 1556 0 114 0 0 | 1538 0 132 0 0 | 98.9% |
+| absys | absys-wake-back | 1670 | 1556 0 114 0 0 | 1538 0 132 0 0 | 98.9% |
 | swi-prolog | plain | 3939 | 2390 101 104 0 1344 | 1793 151 651 0 1344 | 84.8% |
 | swi-prolog | tabling | 4003 | 2390 165 104 0 1344 | 1793 215 651 0 1344 | 85.1% |
 | swi-prolog | coroutines | 4381 | 2550 383 104 0 1344 | 1799 443 795 0 1344 | 82.9% |
@@ -78,7 +81,7 @@ are given).
 
 | system | stages | semantic | representation | simplification | identical to posed | execution state |
 |---|---|---|---|---|---|---|
-| absys | 138 | 138 | 126 | 126 | 117 | 138 |
+| absys | 162 | 162 | 147 | 147 | 138 | 162 |
 | swi-prolog | 310 | 273 | 284 | 308 | 308 | 307 |
 | python | 147 | 145 | 146 | 147 | 147 | 147 |
 | algol-60 | 147 | 144 | 147 | 129 | 135 | 147 |
@@ -111,6 +114,8 @@ Conclusions that change if one classifier's classes replace the other's:
 | ALGOL 60 P08: simplification of the held application | reduced | closed: inconsistency undetected; open: reducible |
 | P06c stage 2 (ALGOL 60), where the program reports "no solution" but `observe()` reads x = 1 | complete | unsound |
 | P08 SWI-Prolog *session*, closed reading | complete and unsound by stage | complete |
+| Absys P05a–b: the stage applications `gt(x, k)` and `ne(x, k)` | P (the information posed) | R (the reformulated comparison) |
+| Absys P05b stage 2: the derivations held at the budget | residual, reducible (every printed derivation, finished or not, read as the report: their union is {2, 3}) | explicit |
 
 ## Supporting mechanisms
 
@@ -150,8 +155,10 @@ as made.
     `unknown-fail` (3): step figures recorded where storage records must
     have none.
   - *constraints* P05a storage (1): a negative `between_answers`.
-- **Absys P05a behaviour (absys, absys-wake-back):** invalid for the same
-  restart-cost reason, around a genuine timeout. (Absys P05 is pending.)
+- **Absys P05a, 8 invalid records** (behaviour and cost in all three
+  configurations, storage in absys-depth-first and absys-wake-back):
+  invalid for the same restart-cost reason, around a genuine timeout at
+  stage 2. Stage 3 is *not reached*: the replays did not get past stage 1.
 - **SWI-Prolog, storage runs of P04a–d** in the four non-tabling
   configurations: an unparsed harness event recorded as *error*. The
   classifiers read them as *budget*, as in behaviour.
@@ -176,8 +183,9 @@ as made.
   1C, each batch runs from a read-only checkout of one commit.
 - **The batch log.** `results/<system>/batch-log.tsv` was appended to by
   parallel jobs, and some lines are interleaved. The records, one file per
-  run, are the evidence; the log is kept as it was. From batch 1C, each job
-  has a log of its own.
+  run, are the evidence; the log is kept as it was. It holds no line at all for the
+  *absys* configuration's P05 runs, whose 9 records exist. From batch 1C,
+  each job has a log of its own (`tools/run-job.sh`).
 - **Classifier briefs.** The first ten briefs (Python, ALGOL 60) said "batch
   1A" in their opening sentence. Their title, problem files and paths were
   1B's, and the classifiers read them so. Fixed in `fa93843`, before the
@@ -187,11 +195,12 @@ as made.
 - **Classifier provenance.** A: Claude agents (Claude Opus 5.5), one per
   system and problem range. B: Codex (codex-cli 0.166.0, `codex exec`).
   Each worked in a clone and wrote outside the repository. Every command
-  and read in their 16 transcripts was checked against the brief: none
+  and read in their 18 transcripts was checked against the brief: none
   executed a program or the system, none read `calibration/`, `reviews/`,
   `variants/`, `transcripts/`, earlier classes or results, the authors'
   notes or the other classifier's output. Several directory listings (of
   A and of B) showed the names of forbidden files or folders, which were
-  not opened; each is disclosed in that classifier's notes. Two A agents
+  not opened; each is disclosed in that classifier's notes. The Absys P05 classifier A read the first five lines of
+  `results/absys/RERUN-M2.md` by accident, stopped, and disclosed it. Two A agents
   and one B run wrote a scratch file outside their folder, deleted it and
   disclosed it.

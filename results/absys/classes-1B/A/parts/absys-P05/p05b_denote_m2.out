@@ -1,0 +1,30 @@
+#### absys-depth-first/P05/raw-rerun-m2/P05b.cost.20261128T041837Z.json.gz
+record P05b.cost.20261128T041837Z.json.gz stage 1 attempt 1 | 999 derivations (2 still elaborating when the budget ran out):
+  UNION == {x > 1}: True
+record P05b.cost.20261128T041837Z.json.gz stage 2 attempt 1 | 4 derivations (2 still elaborating when the budget ran out):
+  UNION == {2,3}: True
+#### absys-depth-first/P05/raw-rerun-m2/P05b.storage.20261128T041856Z.json
+record P05b.storage.20261128T041856Z.json stage 1 attempt 1 | 999 derivations (2 still elaborating when the budget ran out):
+  UNION == {x > 1}: True
+record P05b.storage.20261128T041856Z.json stage 2 attempt 1 | 4 derivations (2 still elaborating when the budget ran out):
+  UNION == {2,3}: True
+#### absys-wake-back/P05/raw-rerun-m2/P05b.cost.20261128T041909Z.json.gz
+record P05b.cost.20261128T041909Z.json.gz stage 1 attempt 1 | 1288 derivations (516 still elaborating when the budget ran out):
+  UNION == {x > 1}: True
+record P05b.cost.20261128T041909Z.json.gz stage 2 attempt 1 | 731 derivations (729 still elaborating when the budget ran out):
+  UNION == {2,3}: True
+#### absys-wake-back/P05/raw-rerun-m2/P05b.storage.20261128T041928Z.json.gz
+record P05b.storage.20261128T041928Z.json.gz stage 1 attempt 1 | 1288 derivations (516 still elaborating when the budget ran out):
+  UNION == {x > 1}: True
+record P05b.storage.20261128T041928Z.json.gz stage 2 attempt 1 | 731 derivations (729 still elaborating when the budget ran out):
+  UNION == {2,3}: True
+#### absys/P05/raw-rerun-m2/P05b.cost.20261128T041949Z.json.gz
+record P05b.cost.20261128T041949Z.json.gz stage 1 attempt 1 | 1288 derivations (516 still elaborating when the budget ran out):
+  UNION == {x > 1}: True
+record P05b.cost.20261128T041949Z.json.gz stage 2 attempt 1 | 731 derivations (729 still elaborating when the budget ran out):
+  UNION == {2,3}: True
+#### absys/P05/raw-rerun-m2/P05b.storage.20261128T042013Z.json.gz
+record P05b.storage.20261128T042013Z.json.gz stage 1 attempt 1 | 1288 derivations (516 still elaborating when the budget ran out):
+  UNION == {x > 1}: True
+record P05b.storage.20261128T042013Z.json.gz stage 2 attempt 1 | 731 derivations (729 still elaborating when the budget ran out):
+  UNION == {2,3}: True

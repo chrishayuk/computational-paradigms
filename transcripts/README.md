@@ -110,10 +110,11 @@ all harness authors.
 | `classifier-A-python-P08.jsonl` | 78 | 1 |
 | `classifier-A-algol-60-P04-P06.jsonl` | 76 | 0 |
 | `classifier-A-algol-60-P07-P08.jsonl` | 83 | 0 |
+| `classifier-A-absys-P05.jsonl` | 72 | 0 |
 | Codex logs and briefs | — | — |
 
 As in batch 1A, the Claude agents disclose that the memory index was put
-into their context (six of the thirteen). Those disclosures are kept.
+into their context (seven of the fourteen). Those disclosures are kept.
 
 ## Correction to the batch 1A redaction
 

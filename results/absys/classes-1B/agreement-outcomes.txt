@@ -1,12 +1,15 @@
-stages: 138 (A 138, B 138)
-  reached: 138/138
-  semantic: 138/138
-  representation: 126/138
-  simplification: 126/138
-  identical_to_posed: 117/138
-  execution_state: 138/138
+stages: 162 (A 162, B 162)
+  reached: 162/162
+  semantic: 162/162
+  representation: 147/162
+  simplification: 147/162
+  identical_to_posed: 138/162
+  execution_state: 162/162
 
 differences (stage, axis, A, B):
+   | ('absys', 'P05b', 'P05b.ab1', 2) | representation | ['residual'] | ['explicit']
+   | ('absys', 'P05b', 'P05b.ab1', 2) | simplification | ['reducible'] | [None]
+   | ('absys', 'P05b', 'P05b.ab1', 2) | identical_to_posed | ['false'] | [None]
    | ('absys', 'P07b', 'P07b.ab1', 1) | identical_to_posed | ['true'] | ['false']
    | ('absys', 'P08a', 'P08a.ab1', 2) | identical_to_posed | ['true'] | ['false']
    | ('absys', 'P08a', 'P08a.ab1', 3) | simplification | ['reduced'] | ['reducible']
@@ -22,6 +25,9 @@ differences (stage, axis, A, B):
    | ('absys', 'P08b', 'P08b.ab1', 3) | identical_to_posed | ['true'] | ['false']
    | ('absys', 'P08c', 'P08c.ab1', 1) | representation | ['explicit'] | ['solved form']
    | ('absys', 'P08c', 'variants/P08c.redefine.ab1', 1) | representation | ['explicit'] | ['solved form']
+   | ('absys-depth-first', 'P05b', 'P05b.ab1', 2) | representation | ['residual'] | ['explicit']
+   | ('absys-depth-first', 'P05b', 'P05b.ab1', 2) | simplification | ['reducible'] | [None]
+   | ('absys-depth-first', 'P05b', 'P05b.ab1', 2) | identical_to_posed | ['false'] | [None]
    | ('absys-depth-first', 'P07b', 'P07b.ab1', 1) | identical_to_posed | ['true'] | ['false']
    | ('absys-depth-first', 'P08a', 'P08a.ab1', 2) | identical_to_posed | ['true'] | ['false']
    | ('absys-depth-first', 'P08a', 'P08a.ab1', 3) | simplification | ['reduced'] | ['reducible']
@@ -37,6 +43,9 @@ differences (stage, axis, A, B):
    | ('absys-depth-first', 'P08b', 'P08b.ab1', 3) | identical_to_posed | ['true'] | ['false']
    | ('absys-depth-first', 'P08c', 'P08c.ab1', 1) | representation | ['explicit'] | ['solved form']
    | ('absys-depth-first', 'P08c', 'variants/P08c.redefine.ab1', 1) | representation | ['explicit'] | ['solved form']
+   | ('absys-wake-back', 'P05b', 'P05b.ab1', 2) | representation | ['residual'] | ['explicit']
+   | ('absys-wake-back', 'P05b', 'P05b.ab1', 2) | simplification | ['reducible'] | [None]
+   | ('absys-wake-back', 'P05b', 'P05b.ab1', 2) | identical_to_posed | ['false'] | [None]
    | ('absys-wake-back', 'P07b', 'P07b.ab1', 1) | identical_to_posed | ['true'] | ['false']
    | ('absys-wake-back', 'P08a', 'P08a.ab1', 2) | identical_to_posed | ['true'] | ['false']
    | ('absys-wake-back', 'P08a', 'P08a.ab1', 3) | simplification | ['reduced'] | ['reducible']

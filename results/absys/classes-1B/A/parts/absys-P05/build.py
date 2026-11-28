@@ -1,0 +1,120 @@
+import json
+O = '/Users/christopherhay/cp-roles/classes-1B-A/absys-P05/absys.json'
+CF = ['absys', 'absys-depth-first', 'absys-wake-back']
+def sp(a, b, c, con, rule): return {"from": a, "to": b, "class": c, "construct": con, "rule": rule}
+PICK = [sp(0, 3, "P", "pick definition: head pick'=lambda p", "P: the vocabulary's relation pick (rule 1); every token of the construct takes its class"),
+        sp(4, 18, "P", "pick body: begin {p = pk1 or p = pk2 or p = pk3} end, the closed world of three facts, in the problem's order, as alternatives", "rule 6: a set of facts the problem states is P; rule 1")]
+GT = [sp(19, 24, "R", "gt definition head gt'=lambda a, b (x > k as a defined relation)", "R: a definition the problem does not give; the problem's x > k is a primitive comparison, which no Absys notation has (systems/absys/README.md, Notation); rules 3 and 14 (written because the primitive cannot be transcribed), R throughout"),
+      sp(25, 35, "R", "gt body: begin a = b + d' pos(d) end", "R throughout (rules 3, 14): the arithmetic a = b + d and the application pos(d) are parts of the reformulated definition, not of any relation the problem states")]
+POS = [sp(36, 39, "R", "pos definition head pos'=lambda q", "R: a relation (positive integers) the problem does not give; rule 3"),
+       sp(40, 56, "R", "pos body: begin {q = 1 or pos(e') q = e + 1} end, its two cases", "R throughout (rules 3, 14)")]
+NE = [sp(57, 62, "R", "ne definition head ne'=lambda a, b (x != k as a defined relation)", "R: the problem's x != k is a primitive comparison; the 1969 notation, needed for arithmetic, has no not; rule 3"),
+      sp(63, 79, "R", "ne body: begin {gt(a, b) or gt(b, a)} end", "R throughout (rules 3, 14); the disjunction is the program's, not the problem's (rule 6 does not make it P)")]
+def const(i, name, what): return sp(i, i+2, "P", "constants block: %s" % name, "P: %s (rule 1; the harness substitutes it, README 3.9, but the line is the problem's information)" % what)
+tok = {}
+a = PICK + GT + POS + NE + [const(80, 'pk1 = 1', "the first fact of pick"), const(83, 'pk2 = 2', "the second fact of pick"), const(86, 'pk3 = 3', "the third fact of pick"),
+     const(89, 'gtk = 1', "stage 2's constant"), const(92, 'nek = 2', "stage 3's constant"),
+     sp(95, 98, "P", "stage 1: pick(x)", "P: the information of stage 1 (rule 1)"),
+     sp(99, 104, "P", "stage 2: gt(x, gtk), the information x > 1", "P: the stage's information; removing it changes the solutions (rule 1). Only the definition of gt is R"),
+     sp(105, 110, "P", "stage 3: ne(x, nek), the information x != 2", "P: the stage's information (rule 1); the definition of ne is R")]
+b = PICK + GT + POS + [const(57, 'pk1 = 1', "the first fact of pick"), const(60, 'pk2 = 2', "the second fact of pick"), const(63, 'pk3 = 3', "the third fact of pick"),
+     const(66, 'gtk = 1', "stage 1's constant"),
+     sp(69, 74, "P", "stage 1: gt(x, gtk), the information x > 1", "P: the stage's information (rule 1); the definition of gt is R"),
+     sp(75, 78, "P", "stage 2: pick(x)", "P: the information of stage 2 (rule 1)")]
+c = PICK + [const(19, 'pk1 = 1', "the first fact of pick"), const(22, 'pk2 = 2', "the second fact of pick"), const(25, 'pk3 = 3', "the third fact of pick"),
+     const(28, 'xeq2 = 4', "stage 2's constant"), const(31, 'xeq3 = 3', "stage 3's constant"),
+     sp(34, 37, "P", "stage 1: pick(x)", "P: the information of stage 1 (rule 1)"),
+     sp(38, 40, "P", "stage 2: x = xeq2, the equation x = 4", "P: the stage's information; equality is a connective the problem states (class P)"),
+     sp(41, 43, "P", "stage 3: x = xeq3, the equation x = 3", "P: the stage's information")]
+tok['absys/P05a.ab1'] = a; tok['absys/P05b.ab1'] = b; tok['absys/P05c.ab1'] = c
+
+REC = {
+ 'absys': {'P05a': 'results/absys/absys/P05/raw/P05a.behaviour.20261127T234623Z.INVALID.json',
+           'P05b': 'results/absys/absys/P05/raw/P05b.behaviour.20261128T020349Z.json.gz',
+           'P05c': 'results/absys/absys/P05/raw/P05c.behaviour.20261128T025033Z.json'},
+ 'absys-depth-first': {'P05a': 'results/absys/absys-depth-first/P05/raw/P05a.behaviour.20261127T234624Z.INVALID.json',
+           'P05b': 'results/absys/absys-depth-first/P05/raw/P05b.behaviour.20261128T033304Z.json',
+           'P05c': 'results/absys/absys-depth-first/P05/raw/P05c.behaviour.20261128T041721Z.json'},
+ 'absys-wake-back': {'P05a': 'results/absys/absys-wake-back/P05/raw/P05a.behaviour.20261127T234648Z.INVALID.json',
+           'P05b': 'results/absys/absys-wake-back/P05/raw/P05b.behaviour.20261128T020936Z.json.gz',
+           'P05c': 'results/absys/absys-wake-back/P05/raw/P05c.behaviour.20261128T025749Z.json'}}
+HELD = {'absys': 'all live at once (derivations, held_as all-live)', 'absys-wake-back': 'all live at once (derivations, held_as all-live)',
+        'absys-depth-first': 'all held at once as derivations, only the first running one elaborated until it hibernates or fails (held_as mixed)'}
+out = []
+def E(cf, inst, prog, st, **k):
+    e = {"configuration": cf, "instance": inst, "program": prog, "record": REC[cf][inst], "stage": st}
+    e.update(k); out.append(e)
+for cf in CF:
+    H = HELD[cf]
+    # P05a
+    E(cf, 'P05a', 'P05a.ab1', 1, reached=True, semantic="complete", representation="explicit", simplification=None, identical_to_posed=None,
+      residual_size=None, execution_state=["finished"], residual_equivalence="not a residual: 3 derivations, x = 1, x = 2, x = 3, exactly the valid {1, 2, 3}",
+      observations="x is bound to a value in each of 3 derivations, %s; 3 problem-defined alternatives (values of x) held; no suspended work (0 printed); nothing withdrawn; no manual action. Answer completeness 3/3, 0 invalid." % H,
+      rule="SPECIFICATION Outcomes 1-3", harness_fault=True)
+    E(cf, 'P05a', 'P05a.ab1', 2, reached=True, semantic="none reported", representation=None, simplification=None, identical_to_posed=None,
+      residual_size=None, execution_state=["timeout"], residual_equivalence=None,
+      observations="Posed incrementally; killed by the 60 s safety limit with nothing read (stdout empty), rerun once by reposing stage 1 with the raised limit and killed again at 600 s: timeout is final. The separate restart-cost run of stages 1-2 (absys-measure json, %s) shows the stage-2 assertion running to the full 10^6-step budget (restart cost 1000016 = 16 + 10^6) without every derivation hibernating, so with no time limit the stage would end in budget, not finish. Cause, from the program: gt(x, 1) applies pos(d), whose recursive case pos(e'), q = e + 1 is open on every derivation, also for a known d (pos(0) recurses to pos(-1), ...; pos(1) succeeds by its first case and also recurses), so no derivation's elaboration ends. No alternatives, suspended work or bindings could be read (unavailable, not 0, AMENDMENTS 3.1). The stage-1 answer x = 1, invalid now, was not withdrawn in anything shown, since nothing was shown. Valid outcome x in {2, 3} not obtained: answer completeness 0/2. No manual action." % {'absys': '1385 s', 'absys-depth-first': '3476 s', 'absys-wake-back': '1462 s'}[cf],
+      rule="SPECIFICATION Outcomes 3 (timeout after the one rerun); PROTOCOL Running, safety limit; AMENDMENTS 3.1", harness_fault=True)
+    E(cf, 'P05a', 'P05a.ab1', 3, reached=False, semantic="not reached", representation=None, simplification=None, identical_to_posed=None,
+      residual_size=None, execution_state=["not reached"], residual_equivalence=None,
+      observations="Posed by reposing stages 1-2 after stage 2's final timeout. In both attempts (60 s, then 600 s) the replay printed only stage 1's result ('1 -> 3 derivations') and never finished stage 2's assertion, so ne(x, 2) was never given to the system. Not reached: the run was stopped by stage 2's non-terminating elaboration, not by any failure of stage 3. The record's own 'timeout' for this stage is the replay's. Valid outcome x = 3 not obtained. No manual action.",
+      rule="AMENDMENTS 3.2; brief, Harness faults (a reposed stage whose replay did not reach it is not reached)", harness_fault=True)
+    # P05b
+    if cf == 'absys-depth-first':
+        s1size = "999 derivations at the budget: 997 hibernating with x = 2..998 explicit; 1 still elaborating whose x is determined as 999 by a chain of 994 suspended +-relations and 5 pending checks; 1 still elaborating open tail, x = 1 + d1, d1 = e2 + 1, ..., e998 + 1 = e997 (998 suspended relations) with e999 + 1 = e998 and pos(e999) to do, i.e. x >= 1000. 1992 suspended relations printed in all (store: 499499 susp_relations, 503496 variables). Input: 1 relation, x > 1 (1 occurrence of x); in the program, one application gt(x, 1)"
+        s1eq = "Equivalent. Union of the derivations' denotations, checked by p05b_denote.py: explicit {2..998} and {999}, open tail {x >= 1000}; no gap, no duplicate, no inconsistent fully known relation, so the union is {x > 1} exactly. pos's least relation is the positive integers, so a pending pos(e) means e >= 1."
+        s1obs = "Unknown x: uninstantiated in the 2 elaborating derivations, held under suspended relations '(waits for two of its numbers)'. Alternatives: 999 derivations, %s. Suspended: 1992 arithmetic relations (printer count), all susp_relations. Problem-defined alternatives: x's values 2..999 explicit and x >= 1000 held in one derivation. Answer completeness (infinite outcome): a finite representation equivalent to it was given (yes, as the union of derivations), with 998 explicit answers. Comparison on an unknown: held as suspended arithmetic relations under the reformulated gt/pos, and enumerated by pos's alternatives, not reported as one residual relation x > 1. Nothing withdrawn; no manual action." % H
+        s2size = "4 derivations at the budget: 2 hibernating, x = 2 and x = 3; 1 still elaborating with x = 1410 and pending checks and pick(1410); 1 open tail, x >= 1411 (1409 suspended relations, e1410 + 1 = e1409, pos(e1410) and pick(x) to do). 1409 suspended relations printed. Input: 2 relations (x > 1, pick(x))"
+        s2eq = "Equivalent. The two hibernating derivations give {2, 3}; the elaborating one has x = 1410 with pick(1410) to do, which is false in pick's closed world; the open tail holds x >= 1411 and pick(x), whose conjunction is empty. Union = {2, 3} (p05b_denote.py). Reducible: the two dead derivations hold relations still to decide; {x = 2} or {x = 3} is smaller."
+        s2obs = "Posed incrementally into the session after stage 1's budget (continued_after_budget: true), with a new budget; it again ran out. The 995 stage-1 derivations with x = 4..999 failed when pick(x) was added: their answers, valid at stage 1 and invalid now, were withdrawn by the derivations' disappearing from the printed state, with no other sign. Alternatives: 4 derivations, %s; 2 of them denote nothing but are still held. Suspended: 1409 relations. Problem-defined alternatives: x = 2, x = 3 held, plus two derivations that cannot succeed. Answer completeness 2/2, 0 invalid. No manual action." % H
+        s2state = ["budget", "suspended"]
+    else:
+        s1size = "1288 derivations at the budget: 772 hibernating with x = 2..773 explicit; 515 still elaborating whose x is bound or determined (774..1288) under pending arithmetic checks; 1 still elaborating open tail, x = 1 + d1, d1 = e2 + 1, ..., e1288 + 1 = e1287 (1288 suspended relations) with pos(e1288) to do, i.e. x >= 1289. %s suspended relations printed in all. Input: 1 relation, x > 1 (1 occurrence of x); in the program, one application gt(x, 1)" % ('208914' if cf == 'absys' else '332692')
+        s1eq = "Equivalent. Union of the derivations' denotations, checked by p05b_denote.py: explicit {2..1288} (1287 values, from bindings and from the suspended chains with their visible pending items), open tail {x >= 1289}; no gap, no duplicate, no inconsistent fully known relation: the union is {x > 1} exactly. pos's least relation is the positive integers, so a pending pos(e) means e >= 1."
+        s1obs = "Unknown x: uninstantiated in %s derivations, held under suspended relations '(waits for two of its numbers)'. Alternatives: 1288 derivations, %s. Suspended: %s arithmetic relations (printer count; susp_relations only). Problem-defined alternatives: values 2..1288 and x >= 1289 held at once. Answer completeness (infinite outcome): a finite representation equivalent to it given (yes, as the union of derivations), 772 values hibernating. Comparison on an unknown: held as suspended arithmetic under the reformulated gt/pos and enumerated by pos's alternatives. Nothing withdrawn; no manual action." % ('323', H, '208914' if cf == 'absys' else '332692')
+        s2size = "731 derivations at the budget: 2 hibernating, x = 2 and x = 3; 728 still elaborating whose x is a single value outside {1, 2, 3} (bound, least 1093, or determined by a suspended chain), with pick(x) to do; 1 open tail x >= 1821 with pick(x) to do. %s suspended relations printed. Input: 2 relations (x > 1, pick(x))" % ('415635' if cf == 'absys' else '663318')
+        s2eq = "Equivalent. The two hibernating derivations give {2, 3}; every other derivation conjoins pick(x), posed into every derivation, with a value of x outside {1, 2, 3} or with x >= 1821, which is empty in pick's closed world. Union = {2, 3} (p05b_denote.py, on the final attempt). Reducible: 729 dead derivations still hold relations to decide."
+        s2obs = "Attempt 1, posed incrementally after stage 1's budget (continued_after_budget: true), was killed by the 60 s safety limit while elaborating (harness fault: invalid UTF-8 in its stdout); the stage was rerun once by reposing stage 1 (restart cost 1000006) with the raised limit, and that attempt ended at the budget (budget 2000006 for the reposed run). Classified from the rerun; attempt 1's partial state had the same 731 derivations. The stage-1 derivations with x = 4..773 (hibernating) failed on pick(x): those answers, valid at stage 1 and invalid now, were withdrawn by disappearing from the printed state, with no other sign; 728 derivations with x outside pick are still held. Alternatives: 731 derivations, %s. Suspended: %s relations. Problem-defined alternatives: x = 2, x = 3, plus 729 derivations that cannot succeed. Answer completeness 2/2, 0 invalid. No manual action (the rerun is the harness's)." % (H, '415635' if cf == 'absys' else '663318')
+        s2state = ["budget", "suspended"]
+    E(cf, 'P05b', 'P05b.ab1', 1, reached=True, semantic="complete", representation="residual", simplification="reducible", identical_to_posed=False,
+      residual_size=s1size, execution_state=["budget", "suspended"], residual_equivalence=s1eq, observations=s1obs,
+      rule="SPECIFICATION Outcomes 1 (bindings held when the budget runs out are reported), 2 (residual: relations remain to decide), simplification (one relation x > 1 is smaller)", harness_fault=False)
+    E(cf, 'P05b', 'P05b.ab1', 2, reached=True, semantic="complete", representation="residual", simplification="reducible", identical_to_posed=False,
+      residual_size=s2size, execution_state=s2state, residual_equivalence=s2eq, observations=s2obs,
+      rule="SPECIFICATION Outcomes 1-3; timeout rerun rule (PROTOCOL Running); the representation is of the whole report, of which the hibernating derivations alone would be explicit", harness_fault=False)
+    # P05c
+    E(cf, 'P05c', 'P05c.ab1', 1, reached=True, semantic="complete", representation="explicit", simplification=None, identical_to_posed=None,
+      residual_size=None, execution_state=["finished"], residual_equivalence="not a residual: x = 1, x = 2, x = 3 in 3 derivations, the valid {1, 2, 3}",
+      observations="x bound in each of 3 derivations, %s; no suspended work; nothing withdrawn; no manual action. Answer completeness 3/3." % H, rule="SPECIFICATION Outcomes 1-3", harness_fault=False)
+    E(cf, 'P05c', 'P05c.ab1', 2, reached=True, semantic="complete", representation="explicit", simplification=None, identical_to_posed=None,
+      residual_size=None, execution_state=["finished"], residual_equivalence="the empty set, reported as empty: 'No derivation survives: the assertions are unsatisfiable.'",
+      observations="All three derivations fail on x = 4; the system says no derivation survives. Answer completeness (empty outcome): reported that there are none, yes. The three stage-1 answers were withdrawn, shown by that message and 0 derivations. Nothing held, suspended or pending. No manual action.",
+      rule="SPECIFICATION Outcomes 1 (complete: an empty set reported as empty; not inconsistency undetected)", harness_fault=False)
+    E(cf, 'P05c', 'P05c.ab1', 3, reached=True, semantic="complete", representation="explicit", simplification=None, identical_to_posed=None,
+      residual_size=None, execution_state=["finished"], residual_equivalence="the empty set, reported as empty again",
+      observations="Stage 3 could be posed: x = 3 was accepted incrementally into the session with no derivations (0 steps in the cost record), and the system again reports that no derivation survives. Answer completeness: none reported as none, yes. Nothing withdrawn (nothing held). No manual action.",
+      rule="SPECIFICATION Outcomes 1", harness_fault=False)
+
+MD = []
+for cf in CF:
+    for mode, rec in (('cost', {'absys': 'results/absys/absys/P05/raw/P05b.cost.20261128T020616Z.json', 'absys-depth-first': 'results/absys/absys-depth-first/P05/raw/P05b.cost.20261128T033310Z.json', 'absys-wake-back': 'results/absys/absys-wake-back/P05/raw/P05b.cost.20261128T021340Z.json'}[cf]),
+                      ('storage', {'absys': 'results/absys/absys/P05/raw/P05b.storage.20261128T022825Z.json', 'absys-depth-first': 'results/absys/absys-depth-first/P05/raw/P05b.storage.20261128T035515Z.json', 'absys-wake-back': 'results/absys/absys-wake-back/P05/raw/P05b.storage.20261128T023545Z.json'}[cf])):
+        MD.append({"configuration": cf, "instance": "P05b", "program": "P05b.ab1", "mode": mode, "record": rec, "stage": 1,
+                   "behaviour": {"semantic": "complete", "representation": "residual", "simplification": "reducible", "execution_state": ["budget", "suspended"]},
+                   "this_mode": {"semantic": "none reported", "representation": None, "simplification": None, "execution_state": ["timeout"]},
+                   "note": "The measurement build 5450449 walks the whole state after every step (no --peak-every); stage 1's text was killed at 60 s and again at 600 s with nothing printed. The behaviour run reached the budget in %s. A limit of the measurement, not evidence about the model (PROTOCOL, Modes of running); the m2 rerun beside it agrees with the behaviour run." % {'absys': '17 s', 'absys-depth-first': '2 s', 'absys-wake-back': '36 s'}[cf]})
+        MD.append({"configuration": cf, "instance": "P05b", "program": "P05b.ab1", "mode": mode, "record": rec, "stage": 2,
+                   "behaviour": {"semantic": "complete", "representation": "residual", "simplification": "reducible", "execution_state": ["budget", "suspended"]},
+                   "this_mode": {"semantic": "not reached", "representation": None, "simplification": None, "execution_state": ["not reached"], "record_says": "timeout, both attempts"},
+                   "note": "Stage 2 is a new process on the text of stages 1-2; stage 1's part alone needs more than 600 s in this build (stage 1's own process was killed at 600 s with nothing printed), so the process was killed before pick(x) was elaborated: not reached, stopped by the instrumented stage 1 (AMENDMENTS 3.2). Limit of the measurement."})
+json.dump({"tokens": tok, "outcomes": out, "mode_differences": MD,
+           "expressibility": [e for cf in CF for e in (
+               {"configuration": cf, "subproblem": "P05a", "direction": None, "expressibility": "expressible with reformulation",
+                "reason": "x > k and x != k are primitive comparisons that no Absys notation has; the program defines gt (a = b + d, pos(d)), pos (the positive integers, least relation of two cases) and ne (gt(a,b) or gt(b,a)) in the 1969 notation, the only one with arithmetic: R tokens 19-79 (61). On integers they keep the meaning (ne equals != only on integers; here x is an integer, since pick's facts and stage 2's x > k make it one). Operationally the reformulation never terminates: pos's recursive case stays open in every derivation, so stage 2 timed out and stage 3 was never reached. That is an execution outcome, not a change of meaning. Caveat for hidden variants: a non-integer constant for stage 3's != would make ne fail where != holds."},
+               {"configuration": cf, "subproblem": "P05b", "direction": None, "expressibility": "expressible with reformulation",
+                "reason": "x > k reformulated as gt/pos over arithmetic (R tokens 19-56, 38); its meaning on the integers is kept, as the stage-1 residual (union = {x > 1}) shows. It is held as an endless enumeration of pos's alternatives, which ends in budget at both stages."},
+               {"configuration": cf, "subproblem": "P05c", "direction": None, "expressibility": "expressible",
+                "reason": "pick's closed world of facts is transcribed as a disjunction of equations (rule 6) and the stages are equations: no R tokens."})],
+           "late_definition": [],
+           "s_mechanisms": [{"configuration": cf, "program": p, "mechanism": "none", "listed_at_phase_4": None, "tokens": 0} for cf in CF for p in ('P05a.ab1', 'P05b.ab1', 'P05c.ab1')]},
+          open(O, 'w'), indent=1, ensure_ascii=False)

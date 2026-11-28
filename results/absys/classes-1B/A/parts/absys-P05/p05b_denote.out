@@ -1,0 +1,85 @@
+#### absys/P05/raw/P05b.behaviour.20261128T020349Z.json.gz
+record P05b.behaviour.20261128T020349Z.json.gz stage 1 attempt 1 | 1288 derivations (516 still elaborating when the budget ran out):
+   772 ('hibernating', 'value')
+   1 ('still elaborating', 'open tail: x >= 1289')
+   515 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 1287 min 2 max 1288 duplicates 0
+  gaps []
+  open tails (lower bounds) [1289]
+  UNION == {x > 1}: True
+record P05b.behaviour.20261128T020349Z.json.gz stage 2 attempt 1 | 731 derivations (729 still elaborating when the budget ran out):
+UNRESOLVED 6908 
+   2 ('hibernating', 'value')
+   728 ('pick pending on a value outside pick: denotes nothing', '')
+   1 ('still elaborating', 'UNRESOLVED')
+   728 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 2 min 2 max 3 duplicates 0
+  gaps []
+  open tails (lower bounds) []
+  UNION == {2,3}: True
+record P05b.behaviour.20261128T020349Z.json.gz stage 2 attempt 2 | 731 derivations (729 still elaborating when the budget ran out):
+   2 ('hibernating', 'value')
+   1 ('open tail with pick(x): x >= 1821 and x in pick: denotes nothing', '')
+   728 ('pick pending on a value outside pick: denotes nothing', '')
+   1 ('still elaborating', 'open tail: x >= 1821')
+   728 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 2 min 2 max 3 duplicates 0
+  gaps []
+  open tails (lower bounds) []
+  UNION == {2,3}: True
+#### absys-wake-back/P05/raw/P05b.behaviour.20261128T020936Z.json.gz
+record P05b.behaviour.20261128T020936Z.json.gz stage 1 attempt 1 | 1288 derivations (516 still elaborating when the budget ran out):
+   772 ('hibernating', 'value')
+   1 ('still elaborating', 'open tail: x >= 1289')
+   515 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 1287 min 2 max 1288 duplicates 0
+  gaps []
+  open tails (lower bounds) [1289]
+  UNION == {x > 1}: True
+record P05b.behaviour.20261128T020936Z.json.gz stage 2 attempt 1 | 731 derivations (729 still elaborating when the budget ran out):
+UNRESOLVED 6392 
+   2 ('hibernating', 'value')
+   591 ('pick pending on a value outside pick: denotes nothing', '')
+   1 ('still elaborating', 'UNRESOLVED')
+   591 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 2 min 2 max 3 duplicates 0
+  gaps []
+  open tails (lower bounds) []
+  UNION == {2,3}: True
+record P05b.behaviour.20261128T020936Z.json.gz stage 2 attempt 2 | 731 derivations (729 still elaborating when the budget ran out):
+   2 ('hibernating', 'value')
+   1 ('open tail with pick(x): x >= 1821 and x in pick: denotes nothing', '')
+   728 ('pick pending on a value outside pick: denotes nothing', '')
+   1 ('still elaborating', 'open tail: x >= 1821')
+   728 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 2 min 2 max 3 duplicates 0
+  gaps []
+  open tails (lower bounds) []
+  UNION == {2,3}: True
+#### absys-depth-first/P05/raw/P05b.behaviour.20261128T033304Z.json
+record P05b.behaviour.20261128T033304Z.json stage 1 attempt 1 | 999 derivations (2 still elaborating when the budget ran out):
+   997 ('hibernating', 'value')
+   1 ('still elaborating', 'open tail: x >= 1000')
+   1 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 998 min 2 max 999 duplicates 0
+  gaps []
+  open tails (lower bounds) [1000]
+  UNION == {x > 1}: True
+record P05b.behaviour.20261128T033304Z.json stage 2 attempt 1 | 4 derivations (2 still elaborating when the budget ran out):
+   2 ('hibernating', 'value')
+   1 ('open tail with pick(x): x >= 1411 and x in pick: denotes nothing', '')
+   1 ('pick pending on a value outside pick: denotes nothing', '')
+   1 ('still elaborating', 'open tail: x >= 1411')
+   1 ('still elaborating', 'value')
+  inconsistent fully-known relations seen: 0
+  distinct explicit values 2 min 2 max 3 duplicates 0
+  gaps []
+  open tails (lower bounds) []
+  UNION == {2,3}: True
