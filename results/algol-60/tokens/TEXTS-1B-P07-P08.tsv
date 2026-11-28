@@ -1,0 +1,17 @@
+text	also the text of
+report/P07a.alg	
+report/P07b.alg	
+report/P07c.alg	
+report/P07d.alg	report/P07e.alg
+report/P07f.alg	
+report/P07g.alg	
+report/P08a.alg	report/P08b.alg
+report/P08c.alg	
+x1/P07a.a60	x1sim/P07a.a60
+x1/P07b.a60	x1sim/P07b.a60
+x1/P07c.a60	x1sim/P07c.a60
+x1/P07d.a60	x1/P07e.a60 x1sim/P07d.a60 x1sim/P07e.a60
+x1/P07f.a60	x1sim/P07f.a60
+x1/P07g.a60	x1sim/P07g.a60
+x1/P08a.a60	x1/P08b.a60 x1sim/P08a.a60 x1sim/P08b.a60
+x1/P08c.a60	x1sim/P08c.a60
