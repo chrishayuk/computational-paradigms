@@ -1,0 +1,132 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING reposed;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for blocks and arrays whose bounds are computed at run time (5.2.4.2), recursive procedures with value and name parameters, a subscripted variable given as the actual parameter called by name and assigned to (4.7.3.2, 5.4), and procedures as actual parameters (4.7.5, 5.4.4), each solution being passed to a parameterless procedure in the way of the procedures passed as parameters in Knuth's man or boy test (1964, examples/man-or-boy-1964.alg in the image), the depth-first enumeration of a space by a recursive procedure, as in Wirth's eight queens (1971, examples/queens.alg in the image), a go to statement that leaves a deep recursion at once (4.3, examples/exits.alg in the image), the for statement (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), sequences as parallel arrays of heads and tail indices and facts as arrays of codes (systems file, Values), and the observe block of the harness README example X01 (harnesses/algol-60/README.md, 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: F, the number of facts of accept, and then each fact, its length L and its L atoms, in order. The atom l is the code 1, the atom r the code 2. The size n and the answer mode come from the harness, not from the constants;
+  c̲o̲m̲m̲e̲n̲t̲ P12. One stage: choice(n, s) and accept(s), in that order, s unknown. choice is transcribed by its cases, in order, as a procedure that passes each of its solutions to the procedure found, and returns when it has no more. Case 1: choice(n, the empty sequence). Case 2: choice(n, the sequence of e alone ++ t) if n is greater than 0 and (e = l or e = r, in that order) and choice(n - 1, t). The head of case 2 makes the cell of s, with its tail t to come, and t is the tail of that cell, passed by name to the recursive call, which gives it its value. accept is a closed world of facts, tested on each s that choice gives, fact by fact in order, by the equality of sequences. Each fact equal to s is one solution. For a query for any one answer, the instance's cap 1, the search is left at the first solution. A sequence is a cell index into the arrays hd and tl, 0 being the empty sequence, and a cell c being the sequence hd[c] followed by the sequence tl[c]. The store is fixed at 2000 cells for the facts, in one place, and n + 1 more for the search;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k;
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line, and the one message, which poses stage 1;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  code := read; k := read;
+  b̲e̲g̲i̲n̲
+  i̲n̲t̲e̲g̲e̲r̲ top, lcode, rcode, nfacts, f, len, sv, nsol, cand, ch1, ch2, depth, peakdepth, pend, peakpend;
+  b̲o̲o̲l̲e̲a̲n̲ anyone;
+  i̲n̲t̲e̲g̲e̲r̲ a̲r̲r̲a̲y̲ hd, tl[0:2000 + n + 1], fact[1:2000];
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ cons(h, t);
+    v̲a̲l̲u̲e̲ h, t; i̲n̲t̲e̲g̲e̲r̲ h, t;
+  c̲o̲m̲m̲e̲n̲t̲ a new cell, the sequence h followed by the sequence t;
+  b̲e̲g̲i̲n̲ top := top + 1; hd[top] := h; tl[top] := t; cons := top e̲n̲d̲ cons;
+
+  i̲n̲t̲e̲g̲e̲r̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ readseq(len);
+    v̲a̲l̲u̲e̲ len; i̲n̲t̲e̲g̲e̲r̲ len;
+  c̲o̲m̲m̲e̲n̲t̲ a sequence of len elements, read from the input in order;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j, e, first, last, cl;
+    first := last := 0;
+    f̲o̲r̲ j := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ len d̲o̲
+    b̲e̲g̲i̲n̲
+      e := read; cl := cons(e, 0);
+      i̲f̲ last = 0 t̲h̲e̲n̲ first := cl e̲l̲s̲e̲ tl[last] := cl;
+      last := cl
+    e̲n̲d̲;
+    readseq := first
+  e̲n̲d̲ readseq;
+
+  b̲o̲o̲l̲e̲a̲n̲ p̲r̲o̲c̲e̲d̲u̲r̲e̲ same(p, q);
+    v̲a̲l̲u̲e̲ p, q; i̲n̲t̲e̲g̲e̲r̲ p, q;
+  c̲o̲m̲m̲e̲n̲t̲ the equality of two sequences;
+  same := i̲f̲ p = 0 t̲h̲e̲n̲ q = 0 e̲l̲s̲e̲ i̲f̲ q = 0 t̲h̲e̲n̲ f̲a̲l̲s̲e̲ e̲l̲s̲e̲ i̲f̲ hd[p] = hd[q] t̲h̲e̲n̲ same(tl[p], tl[q]) e̲l̲s̲e̲ f̲a̲l̲s̲e̲;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ choice(n, s, found);
+    v̲a̲l̲u̲e̲ n; i̲n̲t̲e̲g̲e̲r̲ n, s; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ choice(n, s), s unknown, by its cases in order, each solution passed to found;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ c;
+    c̲o̲m̲m̲e̲n̲t̲ case 1: choice(n, the empty sequence);
+    ch1 := ch1 + 1;
+    s := 0;
+    found;
+    c̲o̲m̲m̲e̲n̲t̲ case 2: choice(n, the sequence of e alone ++ t) if n is greater than 0 and (e = l or e = r) and choice(n - 1, t);
+    i̲f̲ n > 0 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      c := cons(0, 0);
+      s := c;
+      depth := depth + 1; i̲f̲ depth > peakdepth t̲h̲e̲n̲ peakdepth := depth;
+      pend := pend + 1; i̲f̲ pend > peakpend t̲h̲e̲n̲ peakpend := pend;
+      ch2 := ch2 + 1;
+      hd[c] := lcode;
+      choice(n - 1, tl[c], found);
+      pend := pend - 1;
+      ch2 := ch2 + 1;
+      hd[c] := rcode;
+      choice(n - 1, tl[c], found);
+      depth := depth - 1;
+      top := top - 1
+    e̲n̲d̲
+  e̲n̲d̲ choice;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ printseq(p);
+    v̲a̲l̲u̲e̲ p; i̲n̲t̲e̲g̲e̲r̲ p;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: a sequence, its atoms in parentheses, separated by commas, l and r by name;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ j;
+    PRINTTEXT(`(');
+    f̲o̲r̲ j := 0 w̲h̲i̲l̲e̲ p ≠ 0 d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ hd[p] = lcode t̲h̲e̲n̲ PRINTTEXT(`l') e̲l̲s̲e̲ i̲f̲ hd[p] = rcode t̲h̲e̲n̲ PRINTTEXT(`r') e̲l̲s̲e̲ print(hd[p]);
+      p := tl[p];
+      i̲f̲ p ≠ 0 t̲h̲e̲n̲ PRINTTEXT(`, ')
+    e̲n̲d̲;
+    PRINTTEXT(`)')
+  e̲n̲d̲ printseq;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ accept;
+  c̲o̲m̲m̲e̲n̲t̲ accept(s), for the s that choice has given, by its facts in order. Each fact equal to s is one solution, and is reported. A query for any one answer is left at the first;
+  b̲e̲g̲i̲n̲
+    i̲n̲t̲e̲g̲e̲r̲ f;
+    cand := cand + 1;
+    f̲o̲r̲ f := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nfacts d̲o̲
+    b̲e̲g̲i̲n̲
+      i̲f̲ same(sv, fact[f]) t̲h̲e̲n̲
+      b̲e̲g̲i̲n̲
+        nsol := nsol + 1;
+        PRINTTEXT(`[answer]s = '); printseq(sv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲;
+        PRINTTEXT(`candidates examined so far: '); print(cand); NLCR;
+        i̲f̲ anyone t̲h̲e̲n̲ g̲o̲t̲o̲ done
+      e̲n̲d̲
+    e̲n̲d̲
+  e̲n̲d̲ accept;
+
+  top := 0;
+  lcode := 1; rcode := 2;
+  anyone := cap = 1;
+  nsol := cand := ch1 := ch2 := depth := peakdepth := pend := peakpend := 0;
+
+  c̲o̲m̲m̲e̲n̲t̲ the stage's constants: the facts of accept;
+  nfacts := read;
+  f̲o̲r̲ f := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ nfacts d̲o̲
+  b̲e̲g̲i̲n̲
+    len := read;
+    fact[f] := readseq(len)
+  e̲n̲d̲;
+
+  c̲o̲m̲m̲e̲n̲t̲ the query: choice(n, s) and accept(s), in that order;
+  choice(n, sv, accept);
+
+  c̲o̲m̲m̲e̲n̲t̲ observe: the candidates examined, the applications of each case of choice, and the partial sequences held. A query for any one answer comes here by the go to statement in accept;
+done:
+  PRINTTEXT(`[observe]');
+  i̲f̲ nsol = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+  i̲f̲ anyone t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`a query for any one answer'); NLCR e̲n̲d̲ e̲l̲s̲e̲ b̲e̲g̲i̲n̲ PRINTTEXT(`a query for all answers'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[candidates '); print(cand); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations choice/1 '); print(ch1); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`[operations choice/2 '); print(ch2); b̲e̲g̲i̲n̲ PRINTTEXT(`]'); NLCR e̲n̲d̲;
+  PRINTTEXT(`partial sequence held, depth first: at most '); print(peakdepth);
+  PRINTTEXT(` cells, with at most '); print(peakpend); b̲e̲g̲i̲n̲ PRINTTEXT(` alternatives e = r kept for backtracking'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[problem-alternatives partial-sequences 0]'); NLCR e̲n̲d̲;
+  b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR; PRINTTEXT(`[end]') e̲n̲d̲
+  e̲n̲d̲
+e̲n̲d̲

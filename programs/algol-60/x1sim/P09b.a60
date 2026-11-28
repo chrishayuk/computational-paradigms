@@ -1,0 +1,60 @@
+b̲e̲g̲i̲n̲
+  c̲o̲m̲m̲e̲n̲t̲ HARNESS POSING incremental;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE author: implementation-algol-60, an agent (Claude Opus 5.5, claude-opus-5-5);
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE precursor seen: no;
+  c̲o̲m̲m̲e̲n̲t̲ PROVENANCE idioms: the Revised Report on ALGOL 60 (1962) for procedures with value and name parameters (4.7, 5.4) and procedures as actual parameters (4.7.5, 5.4.4), each solution being passed to a parameterless procedure in the way of the procedures passed as parameters in Knuth's man or boy test (1964, examples/man-or-boy-1964.alg in the image), the for statement (4.6) and conditional statements (4.5), the X1 system's input and output procedures read, print, PRINTTEXT and NLCR, as the harness README gives them (harnesses/algol-60/README.md, 2.1) and its own X1 programs cite them (Kruseman Aretz 2003, chapter 7), and the X1 compiler's representation, with underlined reserved words and the operator symbols (harness README, 2.1), and the message loop, spawn message and observe block of the harness README (harnesses/algol-60/README.md, 2.2, 2.6 and the example X01 of 2.8);
+  c̲o̲m̲m̲e̲n̲t̲ CONSTANTS a line 1: c1 c2 c3, the integers of computation A, x = c1 and x = c2, and of computation B, y = c3. The harness sends the line after each spawn message of stage 1, and each computation reads all of it;
+  c̲o̲m̲m̲e̲n̲t̲ P09b. Two computations, spawned one after the other by the harness, in the instance's spawn order. A: x = c1 and x = c2, its conjuncts in that order. B: y = c3. Each equation is a procedure that passes its solution, if any, to the procedure found: with its unknown known it is tested, else the unknown is given the value for as long as found runs. ALGOL 60 has one computation only, so a spawned computation is a procedure of this program, run to its end before the next message is read. Both share the variables of the outer block, and A and B have no unknown in common;
+  i̲n̲t̲e̲g̲e̲r̲ n, cap, m, i, code, k, c, c1, c2, c3, xv, yv, na, nb;
+  b̲o̲o̲l̲e̲a̲n̲ xk, yk;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ equals(uk, u, cv, found);
+    v̲a̲l̲u̲e̲ cv; b̲o̲o̲l̲e̲a̲n̲ uk; i̲n̲t̲e̲g̲e̲r̲ u, cv; p̲r̲o̲c̲e̲d̲u̲r̲e̲ found;
+  c̲o̲m̲m̲e̲n̲t̲ u = cv: tested if u is known, else u is given the value cv for as long as found runs;
+  i̲f̲ uk t̲h̲e̲n̲
+  b̲e̲g̲i̲n̲ i̲f̲ u = cv t̲h̲e̲n̲ found e̲n̲d̲
+  e̲l̲s̲e̲
+  b̲e̲g̲i̲n̲ u := cv; uk := t̲r̲u̲e̲; found; uk := f̲a̲l̲s̲e̲ e̲n̲d̲ equals;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ answera;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: one solution of A, the value of x;
+  b̲e̲g̲i̲n̲ na := na + 1; PRINTTEXT(`[answer]x = '); print(xv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲ e̲n̲d̲ answera;
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ seconda;
+  c̲o̲m̲m̲e̲n̲t̲ the second conjunct of A, once the first has given its solution;
+  equals(xk, xv, c2, answera);
+
+  p̲r̲o̲c̲e̲d̲u̲r̲e̲ answerb;
+  c̲o̲m̲m̲e̲n̲t̲ output adapter: one solution of B, the value of y;
+  b̲e̲g̲i̲n̲ nb := nb + 1; PRINTTEXT(`[answer]y = '); print(yv); b̲e̲g̲i̲n̲ PRINTTEXT(`[/answer]'); NLCR e̲n̲d̲ e̲n̲d̲ answerb;
+
+  c̲o̲m̲m̲e̲n̲t̲ harness words: the instance line;
+  n := read; cap := read; m := read;
+  f̲o̲r̲ i := 1 s̲t̲e̲p̲ 1 u̲n̲t̲i̲l̲ m d̲o̲ code := read;
+  xk := yk := f̲a̲l̲s̲e̲;
+  na := nb := 0;
+
+  f̲o̲r̲ i := 1 w̲h̲i̲l̲e̲ t̲r̲u̲e̲ d̲o̲
+  b̲e̲g̲i̲n̲
+    c̲o̲m̲m̲e̲n̲t̲ harness words: one message, spawn computation c of stage k, and then the stage's constants;
+    code := read; k := read; c := read;
+    c1 := read; c2 := read; c3 := read;
+    i̲f̲ c = 1 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      c̲o̲m̲m̲e̲n̲t̲ computation A: x = c1 and x = c2, with x unknown;
+      equals(xk, xv, c1, seconda);
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[observe]computation A ended'); NLCR e̲n̲d̲;
+      i̲f̲ na = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR e̲n̲d̲
+    e̲n̲d̲
+    e̲l̲s̲e̲ i̲f̲ c = 2 t̲h̲e̲n̲
+    b̲e̲g̲i̲n̲
+      c̲o̲m̲m̲e̲n̲t̲ computation B: y = c3, with y unknown;
+      equals(yk, yv, c3, answerb);
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[observe]computation B ended'); NLCR e̲n̲d̲;
+      i̲f̲ nb = 0 t̲h̲e̲n̲ b̲e̲g̲i̲n̲ PRINTTEXT(`no solution'); NLCR e̲n̲d̲;
+      b̲e̲g̲i̲n̲ PRINTTEXT(`[/observe]'); NLCR e̲n̲d̲
+    e̲n̲d̲;
+    PRINTTEXT(`[end]')
+  e̲n̲d̲
+e̲n̲d̲
