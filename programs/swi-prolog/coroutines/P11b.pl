@@ -1,0 +1,42 @@
+% P11b. Irreversible effects, the effect before the test (problems/11-irreversible-effects.md).
+% One stage, a query for any one outcome: pick(x) and emit(x) and x >= <k>,
+% in that order. The outcome is committed when it is reported (answers(1)).
+%
+% The conjunction is written as the problem states it, with nothing that
+% defers emit: emit(x) is called wherever the conjunction reaches it, on
+% whatever value x has then. x >= k waits by freeze/2 until x is known; pick
+% binds x first, so it is compared at once. This text is coroutines' only
+% (programs/swi-prolog/README.md).
+%
+% PROVENANCE
+%   author: implementation-swi-prolog, an agent (Claude Opus 5.5, claude-opus-5-5)
+%   precursor seen: no (the absys E01-E09 programs were not seen)
+%   idioms: a relation given by facts in a closed world, its facts the
+%     constants of the stage that first uses them, in the order the problem
+%     gives them, enumerated by backtracking with member/2 of
+%     library(lists), as in the harness contract's example
+%     (harnesses/swi-prolog/README.md, 2.7; SWI-Prolog manual, section
+%     "library(lists)"), and as in this system's P05 programs; the other
+%     constants read with memberchk/2, as in the same example; a conjunction
+%     by ,/2 in the order written (ISO/IEC 13211-1, 7.8.5); emit(x) as the
+%     harness's effects stub, emit/1 (harnesses/swi-prolog/README.md, 2.3);
+%     x >= k delayed until x is known, by freeze/2, and then compared by
+%     >=/2 (SWI-Prolog manual, section "Coroutining", freeze/2; ISO 8.7), as
+%     in this system's P05 coroutines programs
+% END PROVENANCE
+
+% CONSTANTS BEGIN
+% stage 1
+pick(1).
+pick(2).
+pick(3).
+at_least(2).
+% CONSTANTS END
+
+unknowns(main, ['X']).
+
+% stage 1: pick(x) and emit(x) and x >= k
+stage(1, [X], Cs) :-
+    member(pick(X), Cs), emit(X), memberchk(at_least(K), Cs), freeze(X, X >= K).
+
+query(_, _).
