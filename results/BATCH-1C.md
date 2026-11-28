@@ -111,8 +111,10 @@ Outcomes on which **both** classifiers agree, and which are not
   same text runs in *x1*.
 - **Absys P12, *absys* and *absys-wake-back*, n = 16 (all four
   sub-problems, both answer modes): none reported, timeout.** Each was
-  stopped at the safety limit (60 s, then 600 s) before printing anything;
-  steps, store and alternatives are unavailable. At n = 8 and 12 they are
+  stopped at P12's fixed limit of 600 s, in one attempt, before printing
+  anything (P12 has no rerun: `problems/12-large-alternative-space.md`,
+  Limits; `harnesses/QUESTIONS.md` Q11; `safety_limit.action` is
+  `fixed-limit-timeout`); steps, store and alternatives are unavailable. At n = 8 and 12 they are
   complete, and *absys-depth-first* is complete at every n. At n = 12 the
   largest number of derivations held is about 130,000 in *absys* and
   *absys-wake-back*, against 108–152 in *absys-depth-first* (classifier A,
