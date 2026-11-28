@@ -1,0 +1,894 @@
+=== absys ('P09a.AB', 'absys/P09a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050240Z.json.gz faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (1000000, 2000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050244Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (1000000, 2000006, None, True)} same
+=== absys ('P09a.AB', 'absys/variants/P09a.AB.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050246Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050247Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050249Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys ('P09a.AB', 'absys/variants/P09a.BA.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050250Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050251Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050253Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys ('P09a.BA', 'absys/P09a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050254Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050255Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (48, 54, None, False)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000054, None, True)} same
+  [storage] P09a.BA.storage.20261128T050258Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (48, 54, None, False)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000054, None, True)} same
+=== absys ('P09a.BA', 'absys/variants/P09a.AB.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050259Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050300Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.BA.storage.20261128T050302Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys ('P09a.BA', 'absys/variants/P09a.BA.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050303Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050304Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.BA.storage.20261128T050307Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys ('P09b', 'absys/P09b.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09b.behaviour.20261128T050308Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (None, None, None, False)}
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P09b.cost.20261128T050308Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (2, 2, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (0, 2, None, False)} same
+  [storage] P09b.storage.20261128T050309Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (2, 2, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (0, 2, None, False)} same
+=== absys ('P09b', 'absys/variants/P09b.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09b.behaviour.20261128T050310Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P09b.cost.20261128T050310Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+  [storage] P09b.storage.20261128T050310Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+=== absys ('P09c', 'absys/P09c.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09c.behaviour.20261128T050311Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('83f802164c', 2575) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 16, 'ans': '2b4fa62da1', 'alts': 16, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09c.cost.20261128T050945Z.json.gz faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('83f802164c', 2575) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 16, 'ans': '2b4fa62da1', 'alts': 16, 'susp': 0, 'steps': (1000012, 1000012, None, True)} same
+  [storage] P09c.storage.20261128T051628Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('83f802164c', 2575) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 16, 'ans': '2b4fa62da1', 'alts': 16, 'susp': 0, 'steps': (1000012, 1000012, None, True)} same
+=== absys ('P09d', 'absys/P09d.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09d.behaviour.20261128T052315Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09d.cost.20261128T052622Z.json.gz faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (1000004, 1000004, None, True)} same
+  [storage] P09d.storage.20261128T052708Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (1000004, 1000004, None, True)} same
+=== absys ('P09e', 'absys/P09e.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09e.behaviour.20261128T052756Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+  [cost] P09e.cost.20261128T052756Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (3, 3, None, False)} same
+  [storage] P09e.storage.20261128T052757Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (3, 3, None, False)} same
+=== absys ('P10a', 'absys/P10a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10a.behaviour.20261128T050242Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P10a.cost.20261128T050242Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+  [storage] P10a.storage.20261128T050243Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+=== absys ('P10b', 'absys/P10b.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10b.behaviour.20261128T050243Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+    st4 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+  [cost] P10b.cost.20261128T050244Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (4, 4, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (10, 14, 4, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (12, 26, 14, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (12, 38, 26, False)} same
+  [storage] P10b.storage.20261128T050244Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (4, 4, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (10, 14, 4, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (12, 26, 14, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (12, 38, 26, False)} same
+=== absys ('P10c', 'absys/P10c.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10c.behaviour.20261128T050245Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st4 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P10c.cost.20261128T050245Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (3, 12, 9, False)} same
+  [storage] P10c.storage.20261128T050246Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (3, 12, 9, False)} same
+=== absys ('P10d', 'absys/P10d.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10d.behaviour.20261128T050247Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)}
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)}
+  [cost] P10d.cost.20261128T055047Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (14, 14, None, False)} same
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)} same
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)} same
+  [storage] P10d.storage.20261128T063624Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (14, 14, None, False)} same
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)} same
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)} same
+=== absys ('P11a', 'absys/variants/P11a.ne.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11a.behaviour.20261128T050246Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11a.cost.20261128T050246Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+  [storage] P11a.storage.20261128T050247Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+=== absys ('P11b', 'absys/variants/P11b.ne.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11b.behaviour.20261128T050247Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11b.cost.20261128T050248Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+  [storage] P11b.storage.20261128T050248Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+=== absys ('P11c', 'absys/P11c.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11c.behaviour.20261128T050249Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11c.cost.20261128T050249Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (0, 26, 26, False)} same
+  [storage] P11c.storage.20261128T050250Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (0, 26, 26, False)} same
+=== absys ('P11d', 'absys/P11d.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11d.behaviour.20261128T050250Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11d.cost.20261128T050251Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (0, 13, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+  [storage] P11d.storage.20261128T050251Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (0, 13, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+=== absys-depth-first ('P09a.AB', 'P09a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050236Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050238Z.json.gz faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (1000000, 2000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050242Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (1000000, 2000006, None, True)} same
+=== absys-depth-first ('P09a.AB', 'variants/P09a.AB.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050243Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('26e39fabb0', 250) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050244Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('26e39fabb0', 250) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050247Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('26e39fabb0', 250) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-depth-first ('P09a.AB', 'variants/P09a.BA.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050248Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050249Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050251Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-depth-first ('P09a.BA', 'P09a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050252Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050253Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (48, 54, None, False)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000054, None, True)} same
+  [storage] P09a.BA.storage.20261128T050255Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (48, 54, None, False)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000054, None, True)} same
+=== absys-depth-first ('P09a.BA', 'variants/P09a.AB.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050256Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('26e39fabb0', 250) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050257Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('26e39fabb0', 250) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.BA.storage.20261128T050300Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('26e39fabb0', 250) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '963d49197c', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-depth-first ('P09a.BA', 'variants/P09a.BA.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050301Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050302Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.BA.storage.20261128T050304Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-depth-first ('P09b', 'P09b.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09b.behaviour.20261128T050305Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (None, None, None, False)}
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P09b.cost.20261128T050306Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (2, 2, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (0, 2, None, False)} same
+  [storage] P09b.storage.20261128T050307Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (2, 2, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (0, 2, None, False)} same
+=== absys-depth-first ('P09b', 'variants/P09b.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09b.behaviour.20261128T050307Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P09b.cost.20261128T050307Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+  [storage] P09b.storage.20261128T050308Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+=== absys-depth-first ('P09c', 'P09c.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09c.behaviour.20261128T050308Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, None, False)}
+  [cost] P09c.cost.20261128T051409Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, None, False)} same
+  [storage] P09c.storage.20261128T052510Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, None, False)} same
+=== absys-depth-first ('P09d', 'P09d.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09d.behaviour.20261128T053610Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09d.cost.20261128T053909Z.json.gz faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (1000004, 1000004, None, True)} same
+  [storage] P09d.storage.20261128T053953Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (1000004, 1000004, None, True)} same
+=== absys-depth-first ('P09e', 'P09e.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09e.behaviour.20261128T054037Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+  [cost] P09e.cost.20261128T054038Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (3, 3, None, False)} same
+  [storage] P09e.storage.20261128T054038Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (3, 3, None, False)} same
+=== absys-depth-first ('P10a', 'P10a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10a.behaviour.20261128T050236Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P10a.cost.20261128T050237Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+  [storage] P10a.storage.20261128T050237Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+=== absys-depth-first ('P10b', 'P10b.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10b.behaviour.20261128T050238Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+    st4 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+  [cost] P10b.cost.20261128T050238Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (4, 4, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (10, 14, 4, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (12, 26, 14, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (12, 38, 26, False)} same
+  [storage] P10b.storage.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (4, 4, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (10, 14, 4, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (12, 26, 14, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (12, 38, 26, False)} same
+=== absys-depth-first ('P10c', 'P10c.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10c.behaviour.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st4 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P10c.cost.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (3, 12, 9, False)} same
+  [storage] P10c.storage.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (3, 12, 9, False)} same
+=== absys-depth-first ('P10d', 'P10d.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10d.behaviour.20261128T050241Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)}
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)}
+  [cost] P10d.cost.20261128T062420Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (14, 14, None, False)} same
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)} same
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)} same
+  [storage] P10d.storage.20261128T073208Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (14, 14, None, False)} same
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)} same
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)} same
+=== absys-depth-first ('P11a', 'variants/P11a.ne.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11a.behaviour.20261128T050235Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11a.cost.20261128T050235Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+  [storage] P11a.storage.20261128T050236Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+=== absys-depth-first ('P11b', 'variants/P11b.ne.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11b.behaviour.20261128T050236Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11b.cost.20261128T050237Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+  [storage] P11b.storage.20261128T050237Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+=== absys-depth-first ('P11c', 'P11c.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11c.behaviour.20261128T050238Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11c.cost.20261128T050238Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (0, 26, 26, False)} same
+  [storage] P11c.storage.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (0, 26, 26, False)} same
+=== absys-depth-first ('P11d', 'P11d.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11d.behaviour.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11d.cost.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (0, 13, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+  [storage] P11d.storage.20261128T050241Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (0, 13, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+=== absys-wake-back ('P09a.AB', 'P09a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050236Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050237Z.json.gz faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (1000000, 2000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050242Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('610152883e', 177) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '997ba8380b', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': 'e16d9b65cf', 'alts': 1, 'susp': 0, 'steps': (1000000, 2000006, None, True)} same
+=== absys-wake-back ('P09a.AB', 'variants/P09a.AB.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050243Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050244Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050246Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-wake-back ('P09a.AB', 'variants/P09a.BA.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.AB.behaviour.20261128T050247Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.AB.cost.20261128T050248Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.AB.storage.20261128T050251Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-wake-back ('P09a.BA', 'P09a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050252Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050253Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (48, 54, None, False)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000054, None, True)} same
+  [storage] P09a.BA.storage.20261128T050255Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('331bd9bd69', 171) eff=[]
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '3d7bfbbec2', 'alts': 1, 'susp': 0, 'steps': (48, 54, None, False)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '608f8e3750', 'alts': 1, 'susp': 0, 'steps': (1000000, 1000054, None, True)} same
+=== absys-wake-back ('P09a.BA', 'variants/P09a.AB.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050256Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050257Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.BA.storage.20261128T050300Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('04140d54e8', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': 'ed6be94e16', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-wake-back ('P09a.BA', 'variants/P09a.BA.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09a.BA.behaviour.20261128T050301Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09a.BA.cost.20261128T050302Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+  [storage] P09a.BA.storage.20261128T050304Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0284a18a21', 228) eff=[]
+      B: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+      A: {'states': ['budget'], 'ended': 'budget', 'n': 2, 'ans': '66550add77', 'alts': 2, 'susp': 0, 'steps': (0, 1000006, None, True)} same
+=== absys-wake-back ('P09b', 'P09b.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09b.behaviour.20261128T050305Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (None, None, None, False)}
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P09b.cost.20261128T050306Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (2, 2, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (0, 2, None, False)} same
+  [storage] P09b.storage.20261128T050306Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('80143b50f4', 57) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (2, 2, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 0, 'ans': 'da39a3ee5e', 'alts': 0, 'susp': 0, 'steps': (0, 2, None, False)} same
+=== absys-wake-back ('P09b', 'variants/P09b.or.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09b.behaviour.20261128T050307Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P09b.cost.20261128T050307Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+  [storage] P09b.storage.20261128T050308Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('f46c317c9a', 47) eff=[]
+      A: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+      B: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'e051903fb4', 'alts': 1, 'susp': 0, 'steps': (0, 5, None, False)} same
+=== absys-wake-back ('P09c', 'P09c.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09c.behaviour.20261128T050308Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('83f802164c', 2575) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 16, 'ans': '2b4fa62da1', 'alts': 16, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09c.cost.20261128T050952Z.json.gz faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('83f802164c', 2575) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 16, 'ans': '2b4fa62da1', 'alts': 16, 'susp': 0, 'steps': (1000012, 1000012, None, True)} same
+  [storage] P09c.storage.20261128T051619Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('83f802164c', 2575) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 16, 'ans': '2b4fa62da1', 'alts': 16, 'susp': 0, 'steps': (1000012, 1000012, None, True)} same
+=== absys-wake-back ('P09d', 'P09d.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09d.behaviour.20261128T052303Z.json faults=[]
+    st1 att=2 posed=('fresh', 'safety-rerun') safety=['rerun', 'none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (None, None, None, True)}
+  [cost] P09d.cost.20261128T052611Z.json.gz faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (1000004, 1000004, None, True)} same
+  [storage] P09d.storage.20261128T052657Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('ff7a879b62', 4444711) eff=[]
+      main: {'states': ['budget'], 'ended': 'budget', 'n': 1, 'ans': '9f2c720640', 'alts': 1, 'susp': 0, 'steps': (1000004, 1000004, None, True)} same
+=== absys-wake-back ('P09e', 'P09e.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P09e.behaviour.20261128T052745Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+  [cost] P09e.cost.20261128T052746Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (3, 3, None, False)} same
+  [storage] P09e.storage.20261128T052746Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('0f2da1c024', 187) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '4c81b02b0b', 'alts': 1, 'susp': 2, 'steps': (3, 3, None, False)} same
+=== absys-wake-back ('P10a', 'P10a.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10a.behaviour.20261128T050237Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P10a.cost.20261128T050237Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+  [storage] P10a.storage.20261128T050238Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('df932f3c44', 110) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'd50dbf6b9f', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('137837724d', 136) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'a0b7ac1c54', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+=== absys-wake-back ('P10b', 'P10b.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10b.behaviour.20261128T050238Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+    st4 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (None, None, None, False)}
+  [cost] P10b.cost.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (4, 4, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (10, 14, 4, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (12, 26, 14, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (12, 38, 26, False)} same
+  [storage] P10b.storage.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('6fc435cda8', 139) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '2d624451ef', 'alts': 1, 'susp': 1, 'steps': (4, 4, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('0c8056350b', 184) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '927422619c', 'alts': 1, 'susp': 2, 'steps': (10, 14, 4, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('743758d725', 214) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': '9a2c4e3ddc', 'alts': 1, 'susp': 2, 'steps': (12, 26, 14, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('048f72ec3f', 243) eff=[]
+      main: {'states': ['suspended'], 'ended': 'exhausted', 'n': 1, 'ans': 'e6b327a241', 'alts': 1, 'susp': 2, 'steps': (12, 38, 26, False)} same
+=== absys-wake-back ('P10c', 'P10c.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10c.behaviour.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+    st4 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P10c.cost.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (3, 12, 9, False)} same
+  [storage] P10c.storage.20261128T050241Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('c892ca93ad', 83) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'bbd81853ca', 'alts': 1, 'susp': 0, 'steps': (3, 3, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('4f89610976', 125) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': 'b8d31fcbd9', 'alts': 1, 'susp': 0, 'steps': (3, 6, 3, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('886d1abac2', 152) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '7363ebc4ae', 'alts': 1, 'susp': 0, 'steps': (3, 9, 6, False)} same
+    st4 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('ed6b1a9285', 178) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 1, 'ans': '187597f1fe', 'alts': 1, 'susp': 0, 'steps': (3, 12, 9, False)} same
+=== absys-wake-back ('P10d', 'P10d.ab1') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P10d.behaviour.20261128T050242Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)}
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)}
+  [cost] P10d.cost.20261128T055044Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (14, 14, None, False)} same
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)} same
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)} same
+  [storage] P10d.storage.20261128T063625Z.INVALID.json faults=['stage 3 attempt 1: no restart cost: the separate run of stages 1 to 2 (/usr/local/bin/absys-measure json) was stopped after 600 s']
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('fc141c489c', 194) eff=[]
+      main: {'states': ['finished'], 'ended': 'exhausted', 'n': 3, 'ans': '2eaeec4b94', 'alts': 3, 'susp': 0, 'steps': (14, 14, None, False)} same
+    st2 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 14, False)} same
+    st3 att=2 posed=('reposed', 'safety-rerun') safety=['rerun', 'final-timeout'] raw=('da39a3ee5e', 0) eff=[]
+      main: {'states': ['timeout'], 'ended': 'timeout', 'n': 0, 'ans': 'da39a3ee5e', 'alts': None, 'susp': None, 'steps': (None, None, 1000014, False)} same
+=== absys-wake-back ('P11a', 'variants/P11a.ne.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11a.behaviour.20261128T050238Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11a.cost.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+  [storage] P11a.storage.20261128T050239Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+=== absys-wake-back ('P11b', 'variants/P11b.ne.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11b.behaviour.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11b.cost.20261128T050240Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+  [storage] P11b.storage.20261128T050241Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (23, 23, None, False)} same
+=== absys-wake-back ('P11c', 'P11c.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11c.behaviour.20261128T050241Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11c.cost.20261128T050242Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (0, 26, 26, False)} same
+  [storage] P11c.storage.20261128T050242Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (0, 26, 26, False)} same
+=== absys-wake-back ('P11d', 'P11d.abs') modes=['behaviour', 'cost', 'storage']
+  [behaviour] P11d.behaviour.20261128T050243Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st2 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (None, None, None, False)}
+    st3 att=1 posed=('incremental', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=[]
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (None, None, None, False)}
+  [cost] P11d.cost.20261128T050243Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (0, 13, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same
+  [storage] P11d.storage.20261128T050244Z.json faults=[]
+    st1 att=1 posed=('fresh', 'first-stage') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (13, 13, None, False)} same
+    st2 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('96a2c2f41b', 230) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': '47d6954dd4', 'alts': 3, 'susp': 0, 'steps': (0, 13, 13, False)} same
+    st3 att=1 posed=('reposed', 'configuration') safety=['none'] raw=('60b4f30473', 158) eff=['1', '2', '3']
+      main: {'states': ['finished'], 'ended': 'cap', 'n': 1, 'ans': 'b48f96f806', 'alts': 2, 'susp': 0, 'steps': (13, 26, 13, False)} same

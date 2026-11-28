@@ -1,0 +1,141 @@
+{
+  "unique_texts": 32,
+  "program_paths": 65,
+  "record_count": 210,
+  "behaviour_entries": 160,
+  "unique_text_token_totals": {
+    "P": 2603,
+    "H": 1330,
+    "C": 417,
+    "R": 444
+  },
+  "per_configuration_token_totals": {
+    "plain": {
+      "P": 1115,
+      "C": 95,
+      "R": 182,
+      "S": 0,
+      "H": 580
+    },
+    "tabling": {
+      "P": 1115,
+      "C": 129,
+      "R": 182,
+      "S": 0,
+      "H": 580
+    },
+    "coroutines": {
+      "P": 1119,
+      "C": 202,
+      "R": 226,
+      "S": 0,
+      "H": 580
+    },
+    "constraints": {
+      "P": 1096,
+      "C": 144,
+      "R": 118,
+      "S": 0,
+      "H": 580
+    },
+    "session": {
+      "P": 1096,
+      "C": 144,
+      "R": 118,
+      "S": 0,
+      "H": 580
+    }
+  },
+  "semantics": {
+    "none reported": 16,
+    "complete": 143,
+    "unsound": 1
+  },
+  "representations": {
+    "None": 16,
+    "explicit": 124,
+    "solved form": 5,
+    "residual": 15
+  },
+  "simplification": {
+    "None": 145,
+    "reducible": 6,
+    "inconsistency undetected": 3,
+    "reduced": 6
+  },
+  "effects_at_problem_end": {
+    "exact": 5,
+    "extra": 15
+  },
+  "mode_differences": 8,
+  "fault_records": [
+    "results/swi-prolog/plain/P09/raw/P09a.BA.storage.20261128T050635Z.json",
+    "results/swi-prolog/plain/P09/raw/P09d.storage.20261128T050651Z.json",
+    "results/swi-prolog/coroutines/P09/raw/P09a.BA.storage.20261128T050456Z.json",
+    "results/swi-prolog/constraints/P09/raw/P09a.BA.storage.20261128T050256Z.json",
+    "results/swi-prolog/session/P09/raw/P09a.AB.storage.20261128T050824Z.json",
+    "results/swi-prolog/session/P09/raw/P09a.BA.storage.20261128T050826Z.json"
+  ],
+  "unavailable_suspended_boundaries": [
+    [
+      "plain",
+      "P09a.AB",
+      "storage",
+      "A"
+    ],
+    [
+      "plain",
+      "P09a.BA",
+      "storage",
+      "A"
+    ],
+    [
+      "plain",
+      "P09d",
+      "storage",
+      "main"
+    ],
+    [
+      "coroutines",
+      "P09a.AB",
+      "storage",
+      "A"
+    ],
+    [
+      "coroutines",
+      "P09a.BA",
+      "storage",
+      "A"
+    ],
+    [
+      "constraints",
+      "P09a.AB",
+      "storage",
+      "A"
+    ],
+    [
+      "constraints",
+      "P09a.BA",
+      "storage",
+      "A"
+    ],
+    [
+      "session",
+      "P09a.AB",
+      "storage",
+      "A"
+    ],
+    [
+      "session",
+      "P09a.AB",
+      "storage",
+      "B"
+    ],
+    [
+      "session",
+      "P09a.BA",
+      "storage",
+      "A"
+    ]
+  ]
+}

@@ -1,0 +1,4419 @@
+[
+ {
+  "configuration": "plain",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09a.AB.behaviour.20261128T050632Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), A then B: in A then B, B ran only after A had exhausted its own budget. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09a.AB.behaviour.20261128T050632Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (A then B); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09a.BA.behaviour.20261128T050634Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), B then A: in B then A, B was reported before A started. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09a.BA.behaviour.20261128T050634Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (B then A); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09a.AB.behaviour.20261128T051007Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid outcome for A is none; the tabled loop/1 completed its table with no answer and the query failed ('false.'), which reports that there are none",
+  "observations": "A: loop(x) tabled; SLG completes the table of loop(_) with no answer and fails. Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), A then B; B was reported whether A ran first or second, since A ends. No unknown left: x has no binding. No alternatives (0 choicepoints, storage), no suspended work.",
+  "rule": "SPECIFICATION Outcomes 1 (complete; empty set reported as empty); P09a valid outcomes: none for A",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09a.AB.behaviour.20261128T051007Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (A then B); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09a.BA.behaviour.20261128T051009Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid outcome for A is none; the tabled loop/1 completed its table with no answer and the query failed ('false.'), which reports that there are none",
+  "observations": "A: loop(x) tabled; SLG completes the table of loop(_) with no answer and fails. Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), B then A; B was reported whether A ran first or second, since A ends. No unknown left: x has no binding. No alternatives (0 choicepoints, storage), no suspended work.",
+  "rule": "SPECIFICATION Outcomes 1 (complete; empty set reported as empty); P09a valid outcomes: none for A",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09a.BA.behaviour.20261128T051009Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (B then A); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09a.AB.behaviour.20261128T050453Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), A then B: in A then B, B ran only after A had exhausted its own budget. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09a.AB.behaviour.20261128T050453Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (A then B); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09a.BA.behaviour.20261128T050455Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), B then A: in B then A, B was reported before A started. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09a.BA.behaviour.20261128T050455Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (B then A); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09a.AB.behaviour.20261128T050253Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), A then B: in A then B, B ran only after A had exhausted its own budget. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09a.AB.behaviour.20261128T050253Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (A then B); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09a.BA.behaviour.20261128T050255Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), B then A: in B then A, B was reported before A started. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09a.BA.behaviour.20261128T050255Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (B then A); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09a.AB.behaviour.20261128T050823Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), A then B: in A then B, B ran only after A had exhausted its own budget. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09a.AB",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09a.AB.behaviour.20261128T050823Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (A then B); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09a.BA.behaviour.20261128T050825Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "valid outcome for A is none; nothing was reported before the budget ran out",
+  "observations": "A: loop(x) recurses to the budget (10^6 inferences, restated 1000009); x stays a free variable (observe: 'true'). Computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5), B then A: in B then A, B was reported before A started. No alternatives or suspended work recorded at the budget.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported) and 3 (budget); P09a valid outcomes: none for A. Budget, not nontermination proved",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09a.BA",
+  "program": "P09a.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09a.BA.behaviour.20261128T050825Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = <3, 2, 1> is the one valid outcome",
+  "observations": "B: rev(<1,2,3>, b) answered 'B = [3, 2, 1].' and exited without choicepoints. Its outcome does not depend on the order (B then A); it was not reported while A ran, since the computations ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5). A's budget did not affect B (each has its own budget).",
+  "rule": "SPECIFICATION Outcomes 1-3; P09a valid outcome for B",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = [3, 2, 1].\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09b.behaviour.20261128T050636Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid outcome for A is none; x = 1 and x = 2 failed and the query reported none ('false.')",
+  "observations": "A failed at once (7 inferences); its failure did not affect B. Ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5).",
+  "rule": "SPECIFICATION Outcomes 1 (complete, empty set reported as empty); P09b",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09b.behaviour.20261128T050636Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "y = 3 is the one valid outcome",
+  "observations": "B answered 'Y = 3.' after A had failed: A's failure did not affect B.",
+  "rule": "SPECIFICATION Outcomes 1-3; P09b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "Y = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09b.behaviour.20261128T051011Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid outcome for A is none; x = 1 and x = 2 failed and the query reported none ('false.')",
+  "observations": "A failed at once (7 inferences); its failure did not affect B. Ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5).",
+  "rule": "SPECIFICATION Outcomes 1 (complete, empty set reported as empty); P09b",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09b.behaviour.20261128T051011Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "y = 3 is the one valid outcome",
+  "observations": "B answered 'Y = 3.' after A had failed: A's failure did not affect B.",
+  "rule": "SPECIFICATION Outcomes 1-3; P09b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "Y = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09b.behaviour.20261128T050457Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid outcome for A is none; x = 1 and x = 2 failed and the query reported none ('false.')",
+  "observations": "A failed at once (7 inferences); its failure did not affect B. Ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5).",
+  "rule": "SPECIFICATION Outcomes 1 (complete, empty set reported as empty); P09b",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09b.behaviour.20261128T050457Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "y = 3 is the one valid outcome",
+  "observations": "B answered 'Y = 3.' after A had failed: A's failure did not affect B.",
+  "rule": "SPECIFICATION Outcomes 1-3; P09b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "Y = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09b.behaviour.20261128T050257Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid outcome for A is none; x = 1 and x = 2 failed and the query reported none ('false.')",
+  "observations": "A failed at once (7 inferences); its failure did not affect B. Ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5).",
+  "rule": "SPECIFICATION Outcomes 1 (complete, empty set reported as empty); P09b",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09b.behaviour.20261128T050257Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "y = 3 is the one valid outcome",
+  "observations": "B answered 'Y = 3.' after A had failed: A's failure did not affect B.",
+  "rule": "SPECIFICATION Outcomes 1-3; P09b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "Y = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09b.behaviour.20261128T050827Z.json",
+  "stage": 1,
+  "computation": "A",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid outcome for A is none; x = 1 and x = 2 failed and the query reported none ('false.')",
+  "observations": "A failed at once (7 inferences); its failure did not affect B. Ran sequential, not side by side (side_by_side false; harness README 2.2, QUESTIONS S5).",
+  "rule": "SPECIFICATION Outcomes 1 (complete, empty set reported as empty); P09b",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09b",
+  "program": "P09b.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09b.behaviour.20261128T050827Z.json",
+  "stage": 1,
+  "computation": "B",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "y = 3 is the one valid outcome",
+  "observations": "B answered 'Y = 3.' after A had failed: A's failure did not affect B.",
+  "rule": "SPECIFICATION Outcomes 1-3; P09b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "Y = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09c",
+  "program": "P09c.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09c.behaviour.20261128T050638Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "total = 6, s = <1,2,3,4,5>: the one valid outcome",
+  "observations": "The producer gen ran to its end before the consumer sum3 was called (textual order, no coroutining): the consumer did not act on s before the producer finished. A retry was offered and failed ('false.'): 1 choicepoint at the answer (storage).",
+  "rule": "SPECIFICATION Outcomes 1-3",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3, 4, 5],\nTotal = 6 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09c",
+  "program": "P09c.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09c.behaviour.20261128T051013Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "total = 6, s = <1,2,3,4,5>: the one valid outcome",
+  "observations": "The producer gen ran to its end before the consumer sum3 was called (textual order, no coroutining): the consumer did not act on s before the producer finished. Tabled: answer from the completed table, no choicepoint.",
+  "rule": "SPECIFICATION Outcomes 1-3",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3, 4, 5],\nTotal = 6.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09c",
+  "program": "P09c.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09c.behaviour.20261128T050459Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reducible",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, gen(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations (gen(1, s), sum3(s, total))",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: gen(4, a) holds of exactly a = <4, 5> (case 2 twice, then case 1 at 6 > 5), so the residual denotes exactly s = <1,2,3,4,5>, total = 6. Reducible: the explicit s = <1,2,3,4,5> has no relation left",
+  "observations": "The consumer acted on s before the producer finished: sum3's head bound s to <p,q,r> ++ m, which woke gen three times; the rest of the producer, gen(4, _A), is held as one frozen goal (1 attributed variable, 1 residual goal). The unknown tail of s is a free variable with a freeze attribute. No choicepoints. ",
+  "rule": "SPECIFICATION Outcomes 1-2 (residual, reducible: a smaller equivalent representation exists)",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, gen(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09c",
+  "program": "P09c.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09c.behaviour.20261128T050259Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reducible",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, gen(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations (gen(1, s), sum3(s, total))",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: gen(4, a) holds of exactly a = <4, 5> (case 2 twice, then case 1 at 6 > 5), so the residual denotes exactly s = <1,2,3,4,5>, total = 6. Reducible: the explicit s = <1,2,3,4,5> has no relation left",
+  "observations": "The consumer acted on s before the producer finished: sum3's head bound s to <p,q,r> ++ m, which woke gen three times; the rest of the producer, gen(4, _A), is held as one frozen goal (1 attributed variable, 1 residual goal). The unknown tail of s is a free variable with a freeze attribute. No choicepoints. ",
+  "rule": "SPECIFICATION Outcomes 1-2 (residual, reducible: a smaller equivalent representation exists)",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, gen(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09c",
+  "program": "P09c.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09c.behaviour.20261128T050829Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reducible",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, gen(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations (gen(1, s), sum3(s, total))",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: gen(4, a) holds of exactly a = <4, 5> (case 2 twice, then case 1 at 6 > 5), so the residual denotes exactly s = <1,2,3,4,5>, total = 6. Reducible: the explicit s = <1,2,3,4,5> has no relation left",
+  "observations": "The consumer acted on s before the producer finished: sum3's head bound s to <p,q,r> ++ m, which woke gen three times; the rest of the producer, gen(4, _A), is held as one frozen goal (1 attributed variable, 1 residual goal). The unknown tail of s is a free variable with a freeze attribute. No choicepoints. Session: answers collected in the engine (the instance's last stage).",
+  "rule": "SPECIFICATION Outcomes 1-2 (residual, reducible: a smaller equivalent representation exists)",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, gen(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09d.behaviour.20261128T050640Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d1",
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "finite reading: valid outcome none; nothing finished was reported, and total was never bound",
+  "observations": "The producer genu ran first and never ended; at the budget s was bound to a prefix <1, ..., 1,000,004> with a free tail (observe, read in the exception hook), and total was unbound: the consumer never acted on s. No choicepoints or suspended work.",
+  "rule": "P09d1/P09d2 readings (problems/09); SPECIFICATION Outcomes 1, 3 (budget)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09d.behaviour.20261128T050640Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d2",
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "stream reading: valid outcome total = 6; total was never computed, since sum3 was never called",
+  "observations": "The producer genu ran first and never ended; at the budget s was bound to a prefix <1, ..., 1,000,004> with a free tail (observe, read in the exception hook), and total was unbound: the consumer never acted on s. No choicepoints or suspended work. Producer state (P09d2): budget.",
+  "rule": "P09d1/P09d2 readings (problems/09); SPECIFICATION Outcomes 1, 3 (budget)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09d.behaviour.20261128T051015Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d1",
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "finite reading: valid outcome none; nothing finished was reported, and total was never bound",
+  "observations": "The producer genu ran first and never ended; at the budget s was bound to a prefix <1, ..., 83,333> with a free tail (observe, read in the exception hook), and total was unbound: the consumer never acted on s. Tabling: each genu call is a new tabled variant; the budget stopped it with 1 open choicepoint (storage).",
+  "rule": "P09d1/P09d2 readings (problems/09); SPECIFICATION Outcomes 1, 3 (budget)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09d.behaviour.20261128T051015Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d2",
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "stream reading: valid outcome total = 6; total was never computed, since sum3 was never called",
+  "observations": "The producer genu ran first and never ended; at the budget s was bound to a prefix <1, ..., 83,333> with a free tail (observe, read in the exception hook), and total was unbound: the consumer never acted on s. Tabling: each genu call is a new tabled variant; the budget stopped it with 1 open choicepoint (storage). Producer state (P09d2): budget.",
+  "rule": "P09d1/P09d2 readings (problems/09); SPECIFICATION Outcomes 1, 3 (budget)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09d.behaviour.20261128T050501Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d1",
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "inconsistency undetected",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, genu(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Finite reading: genu has no finite instance, so genu(4, a) denotes the empty set and the whole answer denotes no solution, equivalent to the valid outcome none; the system has not reported that there are none",
+  "observations": "Answer 'S = [1, 2, 3|_A], Total = 6, freeze(_A, genu(4, _A))': total = 6 is bound, but conditional on a held producer goal that has no finite solution. The answer is not a finished outcome (state suspended). Read as total = 6 alone it would be unsound; read with its residual, as SPECIFICATION Outcomes 2 asks, it denotes the empty set. The consumer acted on s before the producer finished (sum3's head woke genu three times).",
+  "rule": "P09d1 (problems/09); SPECIFICATION Outcomes 1 (complete, emptiness recorded by simplification) and 2",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, genu(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09d.behaviour.20261128T050501Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d2",
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, genu(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Stream reading: genu read as the greatest relation; genu(4, a) holds of a = <4,5,6,...>, so the answer denotes total = 6 and s = <1,2,3,...>, the valid outcome. No smaller finite representation of the infinite s exists",
+  "observations": "total = 6 computed while the producer is held, demand-driven and idle: producer state suspended (one frozen genu(4, _A), 1 attributed variable). The consumer acted on s before the producer finished.",
+  "rule": "P09d2 (problems/09): complete for total whether or not the producer ever stops; producer state recorded separately",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, genu(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09d.behaviour.20261128T050302Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d1",
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "inconsistency undetected",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, genu(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Finite reading: genu has no finite instance, so genu(4, a) denotes the empty set and the whole answer denotes no solution, equivalent to the valid outcome none; the system has not reported that there are none",
+  "observations": "Answer 'S = [1, 2, 3|_A], Total = 6, freeze(_A, genu(4, _A))': total = 6 is bound, but conditional on a held producer goal that has no finite solution. The answer is not a finished outcome (state suspended). Read as total = 6 alone it would be unsound; read with its residual, as SPECIFICATION Outcomes 2 asks, it denotes the empty set. The consumer acted on s before the producer finished (sum3's head woke genu three times).",
+  "rule": "P09d1 (problems/09); SPECIFICATION Outcomes 1 (complete, emptiness recorded by simplification) and 2",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, genu(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09d.behaviour.20261128T050302Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d2",
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, genu(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Stream reading: genu read as the greatest relation; genu(4, a) holds of a = <4,5,6,...>, so the answer denotes total = 6 and s = <1,2,3,...>, the valid outcome. No smaller finite representation of the infinite s exists",
+  "observations": "total = 6 computed while the producer is held, demand-driven and idle: producer state suspended (one frozen genu(4, _A), 1 attributed variable). The consumer acted on s before the producer finished.",
+  "rule": "P09d2 (problems/09): complete for total whether or not the producer ever stops; producer state recorded separately",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, genu(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09d.behaviour.20261128T050831Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d1",
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "inconsistency undetected",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, genu(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Finite reading: genu has no finite instance, so genu(4, a) denotes the empty set and the whole answer denotes no solution, equivalent to the valid outcome none; the system has not reported that there are none",
+  "observations": "Answer 'S = [1, 2, 3|_A], Total = 6, freeze(_A, genu(4, _A))': total = 6 is bound, but conditional on a held producer goal that has no finite solution. The answer is not a finished outcome (state suspended). Read as total = 6 alone it would be unsound; read with its residual, as SPECIFICATION Outcomes 2 asks, it denotes the empty set. The consumer acted on s before the producer finished (sum3's head woke genu three times).",
+  "rule": "P09d1 (problems/09); SPECIFICATION Outcomes 1 (complete, emptiness recorded by simplification) and 2",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, genu(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09d",
+  "program": "P09d.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09d.behaviour.20261128T050831Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": "P09d2",
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": false,
+  "residual_size": "1 relation held, genu(4, a), beside s = <1,2,3> ++ a and total = 6; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Stream reading: genu read as the greatest relation; genu(4, a) holds of a = <4,5,6,...>, so the answer denotes total = 6 and s = <1,2,3,...>, the valid outcome. No smaller finite representation of the infinite s exists",
+  "observations": "total = 6 computed while the producer is held, demand-driven and idle: producer state suspended (one frozen genu(4, _A), 1 attributed variable). The consumer acted on s before the producer finished.",
+  "rule": "P09d2 (problems/09): complete for total whether or not the producer ever stops; producer state recorded separately",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "S = [1, 2, 3|_A],\nTotal = 6,\nfreeze(_A, genu(4, _A)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P09e",
+  "program": "P09e.pl",
+  "record": "results/swi-prolog/plain/P09/raw/P09e.behaviour.20261128T050652Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": "valid outcomes: every integer pair with x = y + 1; nothing was reported",
+  "observations": "is/2 raised an instantiation error at once (6 inferences): sum(y, 1, x) had neither y nor x known, so its last clause evaluated x - 1 with x unbound. The system neither held, enumerated nor reported a deadlock; the error is distinguishable from completion.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (error, recorded verbatim in the record)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P09e",
+  "program": "P09e.pl",
+  "record": "results/swi-prolog/tabling/P09/raw/P09e.behaviour.20261128T051019Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": "valid outcomes: every integer pair with x = y + 1; nothing was reported",
+  "observations": "is/2 raised an instantiation error at once (6 inferences): sum(y, 1, x) had neither y nor x known, so its last clause evaluated x - 1 with x unbound. The system neither held, enumerated nor reported a deadlock; the error is distinguishable from completion.",
+  "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (error, recorded verbatim in the record)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P09e",
+  "program": "P09e.pl",
+  "record": "results/swi-prolog/coroutines/P09/raw/P09e.behaviour.20261128T050503Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reducible",
+  "identical_to_posed": true,
+  "residual_size": "2 relations held (sum_known(y, 1, x) and diff_known(x, 1, y), each under when/2); input: 2 relations, x = y + 1 and y = x - 1",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: each held goal, once woken, decides its relation over the integers (it computes the third place by is/2 or tests it), so the conjunction denotes {(x, y) : x = y + 1, y = x - 1} = {(x, y) : x = y + 1}, the valid outcomes. Reducible: x = y + 1 alone is equivalent, with one relation fewer",
+  "observations": "The system suspended: two when/2 goals, one per relation (2 attributed variables, 2 residual goals), with conditions simplified to 'either place known'. Unknowns x and y are free variables with when attributes. State suspended, distinguishable from completion. It did not enumerate or report a deadlock.",
+  "rule": "SPECIFICATION Outcomes 1-2; identical to the posed information: the two relations are held as posed, untransformed",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "when((nonvar(Y), nonvar(X);nonvar(X);nonvar(Y)), sum_known(Y, 1, X)),\nwhen((nonvar(X), nonvar(Y);nonvar(Y);nonvar(X)), diff_known(X, 1, Y)).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P09e",
+  "program": "P09e.pl",
+  "record": "results/swi-prolog/constraints/P09/raw/P09e.behaviour.20261128T050304Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reducible",
+  "identical_to_posed": false,
+  "residual_size": "2 relations held, both Y+1 #= X; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: clpfd rewrote y = x - 1 as y + 1 = x, the same relation as x = y + 1 over the integers, so the residual denotes exactly the valid outcomes. Reducible: the two goals are the same constraint, and one alone is equivalent",
+  "observations": "The solver held both constraints (2 attributed variables, 2 residual goals), without domains; nothing enumerated. State suspended, distinguishable from completion. Unknowns are clpfd variables with no domain bound.",
+  "rule": "SPECIFICATION Outcomes 1-2 (reducible; not identical to the posed information, since the second relation was transformed)",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "Y+1#=X,\nY+1#=X.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P09e",
+  "program": "P09e.pl",
+  "record": "results/swi-prolog/session/P09/raw/P09e.behaviour.20261128T050833Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reducible",
+  "identical_to_posed": false,
+  "residual_size": "2 relations held, both Y+1 #= X; input: 2 relations",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: clpfd rewrote y = x - 1 as y + 1 = x, the same relation as x = y + 1 over the integers, so the residual denotes exactly the valid outcomes. Reducible: the two goals are the same constraint, and one alone is equivalent",
+  "observations": "The solver held both constraints (2 attributed variables, 2 residual goals), without domains; nothing enumerated. State suspended, distinguishable from completion. Unknowns are clpfd variables with no domain bound. Session: answers collected in the engine.",
+  "rule": "SPECIFICATION Outcomes 1-2 (reducible; not identical to the posed information, since the second relation was transformed)",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "Y+1#=X,\nY+1#=X.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10a.behaviour.20261128T050656Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 10, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. ",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10a.behaviour.20261128T050656Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 15, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10a.behaviour.20261128T050656Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 7, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10a.behaviour.20261128T051022Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 10, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. ",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10a.behaviour.20261128T051022Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 15, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10a.behaviour.20261128T051022Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 7, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10a.behaviour.20261128T050507Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 10, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. ",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10a.behaviour.20261128T050507Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 15, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10a.behaviour.20261128T050507Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 7, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10a.behaviour.20261128T050309Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 10, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. ",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10a.behaviour.20261128T050309Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 15, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10a.behaviour.20261128T050309Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 7, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Reposed: stages 1..k replayed in a fresh process, every replacement carried out.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10a.behaviour.20261128T050838Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 10, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Session: the stage was received into the engine; its answer was collected on a separate run of stages 1..k, the engine holding only the database fact (observe 'true').",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10a.behaviour.20261128T050838Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 15, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. Session: the stage was received into the engine; its answer was collected on a separate run of stages 1..k, the engine holding only the database fact (observe 'true').",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10a",
+  "program": "P10a.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10a.behaviour.20261128T050838Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "b = 7, the valid outcome",
+  "observations": "b is held as one fact b(V), replaced natively by retractall/1 and assertz/1; the earlier value is not retrievable after it is replaced. ",
+  "rule": "SPECIFICATION Outcomes 1-3; P10a",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10b.behaviour.20261128T050659Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": "valid outcome d = 2 * b with neither valued; nothing was reported",
+  "observations": "The query applied the standing relation d is 2 * b with b unknown: instantiation error. plain cannot hold the relation. Stage 2 was reposed after the error.",
+  "rule": "SPECIFICATION Outcomes 1, 3 (error)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10b.behaviour.20261128T050659Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed (after the stage-1 error).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/after-error"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10b.behaviour.20261128T050659Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 30",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 30.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10b.behaviour.20261128T050659Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 14",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 14.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10b.behaviour.20261128T051025Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": "valid outcome d = 2 * b with neither valued; nothing was reported",
+  "observations": "The query applied the standing relation d is 2 * b with b unknown: instantiation error. plain cannot hold the relation. Stage 2 was reposed after the error.",
+  "rule": "SPECIFICATION Outcomes 1, 3 (error)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10b.behaviour.20261128T051025Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed (after the stage-1 error).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/after-error"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10b.behaviour.20261128T051025Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 30",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 30.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10b.behaviour.20261128T051025Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 14",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 14.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10b.behaviour.20261128T050510Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation held, d = 2 * b (as freeze(B, D is 2*B)); input: 1 relation",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: the held goal computes d = 2 * b as soon as b is known, and holds nothing else, so it denotes d = 2 * b over the integers with neither valued. Reduced: one relation, each unknown once",
+  "observations": "b has no value (no fact b/1; the query left B unknown); the relation is held as one frozen goal on B (1 attributed variable). D is not propagated to B if D were given first (is/2 one way), which the stages never do.",
+  "rule": "SPECIFICATION Outcomes 1-2",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "freeze(B, D is 2*B).\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10b.behaviour.20261128T050510Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10b.behaviour.20261128T050510Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 30",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 30.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10b.behaviour.20261128T050510Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 14",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 14.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10b.behaviour.20261128T050312Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation held, 2*B #= D; input: 1 relation",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: the clpfd constraint 2*B #= D is the relation d = 2 * b over the integers, with no domain imposed",
+  "observations": "b has no value; the relation is held by the solver (2 attributed variables, 1 residual goal).",
+  "rule": "SPECIFICATION Outcomes 1-2",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "2*B#=D.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10b.behaviour.20261128T050312Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10b.behaviour.20261128T050312Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 30",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 30.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10b.behaviour.20261128T050312Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 14",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Reposed: every stage replayed.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 14.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10b.behaviour.20261128T050841Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation held, 2*B #= D; input: 1 relation",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "Equivalent: the clpfd constraint 2*B #= D is the relation d = 2 * b over the integers, with no domain imposed",
+  "observations": "b has no value; the relation is held by the solver (2 attributed variables, 1 residual goal). Session: the answer was collected on a separate run of stage 1; the engine itself holds the asserted rule (the query, which applies it, runs only where answers are collected: QUESTIONS S4), observe 'true'.",
+  "rule": "SPECIFICATION Outcomes 1-2",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "2*B#=D.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10b.behaviour.20261128T050841Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Session: answers on a separate run; the engine holds the database state only.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10b.behaviour.20261128T050841Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 30",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). Session: answers on a separate run; the engine holds the database state only.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 30.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10b",
+  "program": "P10b.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10b.behaviour.20261128T050841Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 14",
+  "observations": "d recomputed from b's current value by the standing rule each time the query applies it: 1 dependent value recomputed per replacement (P10b observation). ",
+  "rule": "SPECIFICATION Outcomes 1-3; P10b",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 14.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10c.behaviour.20261128T050704Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10 (d without a value)",
+  "observations": "d has no value yet: D left unbound (not shown), as the valid outcome says.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10c.behaviour.20261128T050704Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10c.behaviour.20261128T050704Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10c.behaviour.20261128T050704Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10c.behaviour.20261128T051029Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10 (d without a value)",
+  "observations": "d has no value yet: D left unbound (not shown), as the valid outcome says.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10c.behaviour.20261128T051029Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10c.behaviour.20261128T051029Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10c.behaviour.20261128T051029Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10c.behaviour.20261128T050513Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10 (d without a value)",
+  "observations": "d has no value yet: D left unbound (not shown), as the valid outcome says.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10c.behaviour.20261128T050513Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10c.behaviour.20261128T050513Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10c.behaviour.20261128T050513Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10c.behaviour.20261128T050318Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10 (d without a value)",
+  "observations": "d has no value yet: D left unbound (not shown), as the valid outcome says.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10c.behaviour.20261128T050318Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10c.behaviour.20261128T050318Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10c.behaviour.20261128T050318Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 20.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10c.behaviour.20261128T050846Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10 (d without a value)",
+  "observations": "d has no value yet: D left unbound (not shown), as the valid outcome says. Session: answers on a separate run.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10c.behaviour.20261128T050846Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 10, D = 20",
+  "observations": "Session: answers on a separate run.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 10,\nD = 20.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10c.behaviour.20261128T050846Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 15, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot). Session: answers on a separate run.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 15,\nD = 20.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10c",
+  "program": "P10c.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10c.behaviour.20261128T050846Z.json",
+  "stage": 4,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: B = 7, D = 20",
+  "observations": "d computed once at stage 2 from b then, and not recomputed when b is replaced (snapshot).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "B = 7,\nD = 20.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10d.behaviour.20261128T050708Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "Three answers by backtracking; alternatives kept for backtracking (1 choicepoint at each of the first two answers, storage).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10d.behaviour.20261128T050708Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {2, 3}",
+  "observations": "x = 1, reported at stage 1, is withdrawn: shown only by its absence from the answers. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/plain/P10/raw/P10d.behaviour.20261128T050708Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "The withdrawal of x > 1 brought the alternative x = 1 back, without restating pick: the held relation was removed by retract/1 and pick re-solved over what is held. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10d.behaviour.20261128T051032Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "Three answers by backtracking; alternatives kept for backtracking (1 choicepoint at each of the first two answers, storage).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10d.behaviour.20261128T051032Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {2, 3}",
+  "observations": "x = 1, reported at stage 1, is withdrawn: shown only by its absence from the answers. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/tabling/P10/raw/P10d.behaviour.20261128T051032Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "The withdrawal of x > 1 brought the alternative x = 1 back, without restating pick: the held relation was removed by retract/1 and pick re-solved over what is held. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10d.behaviour.20261128T050517Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "Three answers by backtracking; alternatives kept for backtracking (1 choicepoint at each of the first two answers, storage).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10d.behaviour.20261128T050517Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {2, 3}",
+  "observations": "x = 1, reported at stage 1, is withdrawn: shown only by its absence from the answers. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/coroutines/P10/raw/P10d.behaviour.20261128T050517Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "The withdrawal of x > 1 brought the alternative x = 1 back, without restating pick: the held relation was removed by retract/1 and pick re-solved over what is held. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10d.behaviour.20261128T050323Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "Three answers by backtracking; alternatives kept for backtracking (1 choicepoint at each of the first two answers, storage).",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10d.behaviour.20261128T050323Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {2, 3}",
+  "observations": "x = 1, reported at stage 1, is withdrawn: shown only by its absence from the answers. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/constraints/P10/raw/P10d.behaviour.20261128T050323Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "The withdrawal of x > 1 brought the alternative x = 1 back, without restating pick: the held relation was removed by retract/1 and pick re-solved over what is held. Reposed: every stage replayed, the withdrawal included.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10d.behaviour.20261128T050850Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "Three answers by backtracking; alternatives kept for backtracking (1 choicepoint at each of the first two answers, storage). Session: answers on a separate run; the engine holds the database state.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10d.behaviour.20261128T050850Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {2, 3}",
+  "observations": "x = 1, reported at stage 1, is withdrawn: shown only by its absence from the answers. Session: answers on a separate run; the engine holds the database state.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P10d",
+  "program": "P10d.pl",
+  "record": "results/swi-prolog/session/P10/raw/P10d.behaviour.20261128T050850Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "valid: x in {1, 2, 3}",
+  "observations": "The withdrawal of x > 1 brought the alternative x = 1 back, without restating pick: the held relation was removed by retract/1 and pick re-solved over what is held. Session: stage 3 received into the engine; answers collected in it.",
+  "rule": "SPECIFICATION Outcomes 1-3; P10d",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 ",
+   "X = 2 ",
+   "X = 3.\n\n"
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11a",
+  "program": "P11a.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11a.behaviour.20261128T050712Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap with 1 choicepoint left (pick's remaining clause). Commitment is the end of the query (committed when reported). L = <2>: emitted after the test, on the outcome then reported.",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "exact",
+   "log": [
+    "2"
+   ],
+   "when": [
+    "2: in the derivation of the reported answer, after the test: at commitment"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11b",
+  "program": "P11b.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11b.behaviour.20261128T050714Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap, 1 choicepoint left. emit ran before the test, so x = 1 was emitted, then refuted by x >= 2, then x = 2 emitted and reported. No deferral of the effect.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11 P11b ('a log of <1, 2> is extra')",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "2"
+   ],
+   "when": [
+    "1: before commitment, on a provisional outcome later refuted",
+    "2: at commitment (the reported answer)"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11a",
+  "program": "P11a.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11a.behaviour.20261128T051036Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap with 1 choicepoint left (pick's remaining clause). Commitment is the end of the query (committed when reported). L = <2>: emitted after the test, on the outcome then reported.",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "exact",
+   "log": [
+    "2"
+   ],
+   "when": [
+    "2: in the derivation of the reported answer, after the test: at commitment"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11b",
+  "program": "P11b.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11b.behaviour.20261128T051038Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap, 1 choicepoint left. emit ran before the test, so x = 1 was emitted, then refuted by x >= 2, then x = 2 emitted and reported. No deferral of the effect.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11 P11b ('a log of <1, 2> is extra')",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "2"
+   ],
+   "when": [
+    "1: before commitment, on a provisional outcome later refuted",
+    "2: at commitment (the reported answer)"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11a",
+  "program": "P11a.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11a.behaviour.20261128T050522Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap with 1 choicepoint left (pick's remaining clause). Commitment is the end of the query (committed when reported). L = <2>: emitted after the test, on the outcome then reported.",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "exact",
+   "log": [
+    "2"
+   ],
+   "when": [
+    "2: in the derivation of the reported answer, after the test: at commitment"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11b",
+  "program": "P11b.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11b.behaviour.20261128T050524Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap, 1 choicepoint left. emit ran before the test, so x = 1 was emitted, then refuted by x >= 2, then x = 2 emitted and reported. No deferral of the effect.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11 P11b ('a log of <1, 2> is extra')",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "2"
+   ],
+   "when": [
+    "1: before commitment, on a provisional outcome later refuted",
+    "2: at commitment (the reported answer)"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11a",
+  "program": "P11a.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11a.behaviour.20261128T050329Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap with 1 choicepoint left (pick's remaining clause). Commitment is the end of the query (committed when reported). L = <2>: emitted after the test, on the outcome then reported.",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "exact",
+   "log": [
+    "2"
+   ],
+   "when": [
+    "2: in the derivation of the reported answer, after the test: at commitment"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11b",
+  "program": "P11b.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11b.behaviour.20261128T050332Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap, 1 choicepoint left. emit ran before the test, so x = 1 was emitted, then refuted by x >= 2, then x = 2 emitted and reported. No deferral of the effect.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11 P11b ('a log of <1, 2> is extra')",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "2"
+   ],
+   "when": [
+    "1: before commitment, on a provisional outcome later refuted",
+    "2: at commitment (the reported answer)"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "session",
+  "instance": "P11a",
+  "program": "P11a.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11a.behaviour.20261128T050855Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap with 1 choicepoint left (pick's remaining clause). Commitment is the end of the query (committed when reported). L = <2>: emitted after the test, on the outcome then reported.",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "exact",
+   "log": [
+    "2"
+   ],
+   "when": [
+    "2: in the derivation of the reported answer, after the test: at commitment"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "session",
+  "instance": "P11b",
+  "program": "P11b.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11b.behaviour.20261128T050857Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "an any-one query; x = 2 is one of the valid outcomes {2, 3}",
+  "observations": "answers(1) stopped at the cap, 1 choicepoint left. emit ran before the test, so x = 1 was emitted, then refuted by x >= 2, then x = 2 emitted and reported. No deferral of the effect.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11 P11b ('a log of <1, 2> is extra')",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "fresh/first-stage",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "2"
+   ],
+   "when": [
+    "1: before commitment, on a provisional outcome later refuted",
+    "2: at commitment (the reported answer)"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11c.behaviour.20261128T050716Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "Provisional outcome x = 1, emitted at once (seq 1). 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11c.behaviour.20261128T050716Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 2 is one of {2, 3}",
+  "observations": "Reposed: stage 1 replayed, x = 1 emitted again (seq 2, a reposing duplicate), refuted by x /= 1, then x = 2 emitted (seq 3) and reported. The answer x = 1 of stage 1 is withdrawn, shown only by the new answer.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11c.behaviour.20261128T050716Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: one answer, x = 2, valid ({2, 3})",
+  "observations": "Commit stage first posed: it adds nothing; the system selects v = 2 by its answer (commitment = the reported answer at stage 3). Reposed: stage 1 replayed again, emitting 1 and 2 (seq 4, 5, both reposing duplicates).",
+  "rule": "problems/11 Commitment and P11c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "2",
+    "1",
+    "2"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, provisional, later refuted",
+    "seq 2 '1': stage-2 run, replay of stage 1, before commitment, duplicate of seq 1 by reposing",
+    "seq 3 '2': stage-2 run, replay of stage 1, before commitment, on the outcome later committed",
+    "seq 4 '1': stage-3 run, replay of stage 1, before commitment, duplicate by reposing",
+    "seq 5 '2': stage-3 run, replay of stage 1, in the run that commits, duplicate of seq 3 by reposing"
+   ],
+   "reposing_duplicates": 3,
+   "note": "Without the reposing duplicates L would be <1, 2>, still extra: 1 was emitted for x = 1, refuted at stage 2"
+  }
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11c.behaviour.20261128T051040Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "Provisional outcome x = 1, emitted at once (seq 1). 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11c.behaviour.20261128T051040Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 2 is one of {2, 3}",
+  "observations": "Reposed: stage 1 replayed, x = 1 emitted again (seq 2, a reposing duplicate), refuted by x /= 1, then x = 2 emitted (seq 3) and reported. The answer x = 1 of stage 1 is withdrawn, shown only by the new answer.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11c.behaviour.20261128T051040Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: one answer, x = 2, valid ({2, 3})",
+  "observations": "Commit stage first posed: it adds nothing; the system selects v = 2 by its answer (commitment = the reported answer at stage 3). Reposed: stage 1 replayed again, emitting 1 and 2 (seq 4, 5, both reposing duplicates).",
+  "rule": "problems/11 Commitment and P11c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "2",
+    "1",
+    "2"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, provisional, later refuted",
+    "seq 2 '1': stage-2 run, replay of stage 1, before commitment, duplicate of seq 1 by reposing",
+    "seq 3 '2': stage-2 run, replay of stage 1, before commitment, on the outcome later committed",
+    "seq 4 '1': stage-3 run, replay of stage 1, before commitment, duplicate by reposing",
+    "seq 5 '2': stage-3 run, replay of stage 1, in the run that commits, duplicate of seq 3 by reposing"
+   ],
+   "reposing_duplicates": 3,
+   "note": "Without the reposing duplicates L would be <1, 2>, still extra: 1 was emitted for x = 1, refuted at stage 2"
+  }
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11c.behaviour.20261128T050526Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "Provisional outcome x = 1, emitted at once (seq 1). 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11c.behaviour.20261128T050526Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 2 is one of {2, 3}",
+  "observations": "Reposed: stage 1 replayed, x = 1 emitted again (seq 2, a reposing duplicate), refuted by x /= 1, then x = 2 emitted (seq 3) and reported. The answer x = 1 of stage 1 is withdrawn, shown only by the new answer.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11c.behaviour.20261128T050526Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: one answer, x = 2, valid ({2, 3})",
+  "observations": "Commit stage first posed: it adds nothing; the system selects v = 2 by its answer (commitment = the reported answer at stage 3). Reposed: stage 1 replayed again, emitting 1 and 2 (seq 4, 5, both reposing duplicates).",
+  "rule": "problems/11 Commitment and P11c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "2",
+    "1",
+    "2"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, provisional, later refuted",
+    "seq 2 '1': stage-2 run, replay of stage 1, before commitment, duplicate of seq 1 by reposing",
+    "seq 3 '2': stage-2 run, replay of stage 1, before commitment, on the outcome later committed",
+    "seq 4 '1': stage-3 run, replay of stage 1, before commitment, duplicate by reposing",
+    "seq 5 '2': stage-3 run, replay of stage 1, in the run that commits, duplicate of seq 3 by reposing"
+   ],
+   "reposing_duplicates": 3,
+   "note": "Without the reposing duplicates L would be <1, 2>, still extra: 1 was emitted for x = 1, refuted at stage 2"
+  }
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11c.behaviour.20261128T050334Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "Provisional outcome x = 1, emitted at once (seq 1). 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11c.behaviour.20261128T050334Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 2 is one of {2, 3}",
+  "observations": "Reposed: stage 1 replayed, x = 1 emitted again (seq 2, a reposing duplicate), refuted by x /= 1, then x = 2 emitted (seq 3) and reported. The answer x = 1 of stage 1 is withdrawn, shown only by the new answer.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11c.behaviour.20261128T050334Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: one answer, x = 2, valid ({2, 3})",
+  "observations": "Commit stage first posed: it adds nothing; the system selects v = 2 by its answer (commitment = the reported answer at stage 3). Reposed: stage 1 replayed again, emitting 1 and 2 (seq 4, 5, both reposing duplicates).",
+  "rule": "problems/11 Commitment and P11c",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "2",
+    "1",
+    "2"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, provisional, later refuted",
+    "seq 2 '1': stage-2 run, replay of stage 1, before commitment, duplicate of seq 1 by reposing",
+    "seq 3 '2': stage-2 run, replay of stage 1, before commitment, on the outcome later committed",
+    "seq 4 '1': stage-3 run, replay of stage 1, before commitment, duplicate by reposing",
+    "seq 5 '2': stage-3 run, replay of stage 1, in the run that commits, duplicate of seq 3 by reposing"
+   ],
+   "reposing_duplicates": 3,
+   "note": "Without the reposing duplicates L would be <1, 2>, still extra: 1 was emitted for x = 1, refuted at stage 2"
+  }
+ },
+ {
+  "configuration": "session",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11c.behaviour.20261128T050900Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "Incremental engine at x = 1, emitted (classification log seq 1); the answer was collected on a separate run, whose emit went to the observation log (not judged). Open choicepoints in the engine.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11c.behaviour.20261128T050900Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 2 is one of {2, 3}",
+  "observations": "Stage 2 received into the engine: dif(x, 1) failed, the engine backtracked into pick, emitted 2 (seq 2) and holds x = 2. Answer from a separate run (observation log entries, not judged). x = 1 withdrawn, shown by the new answer.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P11c",
+  "program": "P11c.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11c.behaviour.20261128T050900Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: x = 2, valid",
+  "observations": "Commit stage received into the engine, adding nothing; the engine's answer x = 2 is the committed outcome (collected in the engine, the last stage). No reposing, so no duplicates.",
+  "rule": "problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "incremental/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "2"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, provisional, later refuted",
+    "seq 2 '2': stage 2, before commitment, on the outcome later committed"
+   ],
+   "reposing_duplicates": 0
+  }
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11d.behaviour.20261128T050719Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "x = 1 emitted (seq 1), 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11d.behaviour.20261128T050719Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: x = 1 selected, valid; the valid outcome is now x = 1",
+  "observations": "Reposed: stage 1 replayed (seq 2, '1', a reposing duplicate); the commit stage, first posed, adds nothing, and the reported answer x = 1 is the commitment v = 1.",
+  "rule": "problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "plain",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/plain/P11/raw/P11d.behaviour.20261128T050719Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "v = 1, so x /= 1 contradicts it: the valid outcome is none, and the query failed ('false.'), reporting none",
+  "observations": "Reposed with the commitment replayed as x = 1 (replayed_commitments 'X = 1 '). In the replay, stage 1 emitted 1 (seq 3, duplicate), the replayed commit x = 1 and then x /= 1 failed, and backtracking into pick emitted 2 and 3 (seq 4, 5), each failing the replayed commit. Effects after commitment, for outcomes never committed. The system showed the contradiction as failure; it did not withdraw the earlier conclusion x = 1 in any other way.",
+  "rule": "problems/11 P11d (v = 1: valid outcome none)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "1",
+    "2",
+    "3"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, on the outcome later committed",
+    "seq 2 '1': stage-2 run (the commit run), replay of stage 1, duplicate by reposing",
+    "seq 3 '1': stage-3 run, replay of stage 1, after commitment, duplicate by reposing",
+    "seq 4 '2': stage-3 run, replay of stage 1, after commitment, for an outcome never committed",
+    "seq 5 '3': stage-3 run, replay of stage 1, after commitment, for an outcome never committed"
+   ],
+   "reposing_duplicates": 2,
+   "note": "problems/11 says L = <1> would be exact. Without the 2 duplicates L is <1, 2, 3>: the entries 2 and 3 come from re-exploring pick's alternatives in the replay, before the replayed commitment is reached, so extra"
+  }
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11d.behaviour.20261128T051043Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "x = 1 emitted (seq 1), 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11d.behaviour.20261128T051043Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: x = 1 selected, valid; the valid outcome is now x = 1",
+  "observations": "Reposed: stage 1 replayed (seq 2, '1', a reposing duplicate); the commit stage, first posed, adds nothing, and the reported answer x = 1 is the commitment v = 1.",
+  "rule": "problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "tabling",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/tabling/P11/raw/P11d.behaviour.20261128T051043Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "v = 1, so x /= 1 contradicts it: the valid outcome is none, and the query failed ('false.'), reporting none",
+  "observations": "Reposed with the commitment replayed as x = 1 (replayed_commitments 'X = 1 '). In the replay, stage 1 emitted 1 (seq 3, duplicate), the replayed commit x = 1 and then x /= 1 failed, and backtracking into pick emitted 2 and 3 (seq 4, 5), each failing the replayed commit. Effects after commitment, for outcomes never committed. The system showed the contradiction as failure; it did not withdraw the earlier conclusion x = 1 in any other way.",
+  "rule": "problems/11 P11d (v = 1: valid outcome none)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "1",
+    "2",
+    "3"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, on the outcome later committed",
+    "seq 2 '1': stage-2 run (the commit run), replay of stage 1, duplicate by reposing",
+    "seq 3 '1': stage-3 run, replay of stage 1, after commitment, duplicate by reposing",
+    "seq 4 '2': stage-3 run, replay of stage 1, after commitment, for an outcome never committed",
+    "seq 5 '3': stage-3 run, replay of stage 1, after commitment, for an outcome never committed"
+   ],
+   "reposing_duplicates": 2,
+   "note": "problems/11 says L = <1> would be exact. Without the 2 duplicates L is <1, 2, 3>: the entries 2 and 3 come from re-exploring pick's alternatives in the replay, before the replayed commitment is reached, so extra"
+  }
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11d.behaviour.20261128T050529Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "x = 1 emitted (seq 1), 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11d.behaviour.20261128T050529Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: x = 1 selected, valid; the valid outcome is now x = 1",
+  "observations": "Reposed: stage 1 replayed (seq 2, '1', a reposing duplicate); the commit stage, first posed, adds nothing, and the reported answer x = 1 is the commitment v = 1.",
+  "rule": "problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "coroutines",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/coroutines/P11/raw/P11d.behaviour.20261128T050529Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "v = 1, so x /= 1 contradicts it: the valid outcome is none, and the query failed ('false.'), reporting none",
+  "observations": "Reposed with the commitment replayed as x = 1 (replayed_commitments 'X = 1 '). In the replay, stage 1 emitted 1 (seq 3, duplicate), the replayed commit x = 1 and then x /= 1 failed, and backtracking into pick emitted 2 and 3 (seq 4, 5), each failing the replayed commit. Effects after commitment, for outcomes never committed. The system showed the contradiction as failure; it did not withdraw the earlier conclusion x = 1 in any other way.",
+  "rule": "problems/11 P11d (v = 1: valid outcome none)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "1",
+    "2",
+    "3"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, on the outcome later committed",
+    "seq 2 '1': stage-2 run (the commit run), replay of stage 1, duplicate by reposing",
+    "seq 3 '1': stage-3 run, replay of stage 1, after commitment, duplicate by reposing",
+    "seq 4 '2': stage-3 run, replay of stage 1, after commitment, for an outcome never committed",
+    "seq 5 '3': stage-3 run, replay of stage 1, after commitment, for an outcome never committed"
+   ],
+   "reposing_duplicates": 2,
+   "note": "problems/11 says L = <1> would be exact. Without the 2 duplicates L is <1, 2, 3>: the entries 2 and 3 come from re-exploring pick's alternatives in the replay, before the replayed commitment is reached, so extra"
+  }
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11d.behaviour.20261128T050339Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "x = 1 emitted (seq 1), 1 choicepoint left.",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11d.behaviour.20261128T050339Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: x = 1 selected, valid; the valid outcome is now x = 1",
+  "observations": "Reposed: stage 1 replayed (seq 2, '1', a reposing duplicate); the commit stage, first posed, adds nothing, and the reported answer x = 1 is the commitment v = 1.",
+  "rule": "problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "reposed/configuration"
+ },
+ {
+  "configuration": "constraints",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/constraints/P11/raw/P11d.behaviour.20261128T050339Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": "v = 1, so x /= 1 contradicts it: the valid outcome is none, and the query failed ('false.'), reporting none",
+  "observations": "Reposed with the commitment replayed as x = 1 (replayed_commitments 'X = 1 '). In the replay, stage 1 emitted 1 (seq 3, duplicate), the replayed commit x = 1 and then x /= 1 failed, and backtracking into pick emitted 2 and 3 (seq 4, 5), each failing the replayed commit. Effects after commitment, for outcomes never committed. The system showed the contradiction as failure; it did not withdraw the earlier conclusion x = 1 in any other way.",
+  "rule": "problems/11 P11d (v = 1: valid outcome none)",
+  "harness_fault": false,
+  "answers_verbatim": [],
+  "posed": "reposed/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "1",
+    "1",
+    "2",
+    "3"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, on the outcome later committed",
+    "seq 2 '1': stage-2 run (the commit run), replay of stage 1, duplicate by reposing",
+    "seq 3 '1': stage-3 run, replay of stage 1, after commitment, duplicate by reposing",
+    "seq 4 '2': stage-3 run, replay of stage 1, after commitment, for an outcome never committed",
+    "seq 5 '3': stage-3 run, replay of stage 1, after commitment, for an outcome never committed"
+   ],
+   "reposing_duplicates": 2,
+   "note": "problems/11 says L = <1> would be exact. Without the 2 duplicates L is <1, 2, 3>: the entries 2 and 3 come from re-exploring pick's alternatives in the replay, before the replayed commitment is reached, so extra"
+  }
+ },
+ {
+  "configuration": "session",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11d.behaviour.20261128T050903Z.json",
+  "stage": 1,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "any-one; x = 1 is one of {1, 2, 3}",
+  "observations": "Engine at x = 1, emitted (seq 1); answer on a separate run (observation log).",
+  "rule": "SPECIFICATION Outcomes 1; problems/11",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "fresh/first-stage"
+ },
+ {
+  "configuration": "session",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11d.behaviour.20261128T050903Z.json",
+  "stage": 2,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "commit: x = 1 selected (the separate run's answer), valid",
+  "observations": "The commit's answer was collected on a separate run of stages 1-2 (QUESTIONS S4), so the selection v = 1 was made there; in the engine the commit stage, first posed, added nothing (h_commitment/1 fails when not replaying), and the engine still holds pick's alternatives.",
+  "rule": "problems/11 Commitment",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 1 "
+  ],
+  "posed": "incremental/configuration"
+ },
+ {
+  "configuration": "session",
+  "instance": "P11d",
+  "program": "P11d.pl",
+  "record": "results/swi-prolog/session/P11/raw/P11d.behaviour.20261128T050903Z.json",
+  "stage": 3,
+  "computation": "main",
+  "reading": null,
+  "reached": true,
+  "semantic": "unsound",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": "v = 1 was committed at stage 2, so x /= 1 makes the valid outcome none; the system reported x = 2, which is not valid",
+  "observations": "Stage 3 received into the engine: dif(x, 1) failed, the engine backtracked past the commit stage into pick, emitted 2 (seq 2) and re-ran the commit stage (still adding nothing), and answered x = 2. The commitment was not held by the incremental computation: what the system did with information contradicting a committed effect was to undo the commitment by backtracking. The earlier conclusion x = 1 was withdrawn silently.",
+  "rule": "problems/11 P11d; SPECIFICATION Outcomes 1 (unsound: an outcome that is not valid)",
+  "harness_fault": false,
+  "answers_verbatim": [
+   "X = 2 "
+  ],
+  "posed": "incremental/configuration",
+  "effects": {
+   "class": "extra",
+   "log": [
+    "1",
+    "2"
+   ],
+   "when": [
+    "seq 1 '1': stage 1, before commitment, on the outcome later committed",
+    "seq 2 '2': stage 3, after commitment, for an outcome never committed"
+   ],
+   "reposing_duplicates": 0
+  }
+ }
+]

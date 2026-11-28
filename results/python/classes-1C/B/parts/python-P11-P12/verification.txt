@@ -1,0 +1,9 @@
+PASS: exact once-only coverage of 10096 frozen tokens in 16 texts; 1140 construct spans.
+PASS: 252 records match all scoped job-log entries; 96 behaviour stages and 192 measurement-stage comparisons.
+PASS: program hashes, P11 persistent effects logs, P12 valid answers, and 5 invalid observable-binding witnesses.
+Class totals: {'P': 3540, 'H': 3030, 'C': 850, 'R': 732, 'S': 1944}
+Budget counterexample: P12a.n16.all lrllrllrrrrlrrlr (unknown tail, if any, instantiated to empty)
+Budget counterexample: P12b.n16.all rlrlrrlrllrllll (unknown tail, if any, instantiated to empty)
+Budget counterexample: P12c.n16.all lrlrllllllrlrrr (unknown tail, if any, instantiated to empty)
+Budget counterexample: P12c.n16.any lrlrllllllrlrrr (unknown tail, if any, instantiated to empty)
+Budget counterexample: P12d.n16.all lrlrllllllrlrrlr (unknown tail, if any, instantiated to empty)

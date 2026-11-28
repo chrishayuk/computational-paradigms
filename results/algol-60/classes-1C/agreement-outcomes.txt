@@ -1,0 +1,32 @@
+stages: 156 (A 156, B 156)
+  reached: 156/156
+  semantic: 150/156
+  representation: 156/156
+  simplification: 156/156
+  identical_to_posed: 156/156
+  execution_state: 139/156
+
+differences (stage, axis, A, B):
+   | ('report', 'P09a.AB', 'P09a.AB.alg', 1) | semantic | ['none reported', 'not reached'] | [None, 'none reported']
+   | ('report', 'P09d', 'P09d.alg', 1) | semantic | ['P09d1: none reported', 'P09d2: none reported'] | ['finite: none reported', 'stream: none reported']
+   | ('report', 'P11c', 'P11c.alg', 1) | execution_state | ['alternatives pending'] | ['finished']
+   | ('report', 'P11c', 'P11c.alg', 2) | execution_state | ['alternatives pending'] | ['finished']
+   | ('report', 'P11c', 'P11c.alg', 3) | execution_state | ['alternatives pending'] | ['finished']
+   | ('report', 'P11d', 'P11d.alg', 1) | execution_state | ['alternatives pending'] | ['finished']
+   | ('report', 'P11d', 'P11d.alg', 2) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1', 'P09a.AB', 'P09a.AB.a60', 1) | semantic | ['none reported', 'not reached'] | [None, 'none reported']
+   | ('x1', 'P09d', 'P09d.a60', 1) | semantic | ['P09d1: none reported', 'P09d2: none reported'] | ['finite: none reported', 'stream: none reported']
+   | ('x1', 'P11c', 'P11c.a60', 1) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1', 'P11c', 'P11c.a60', 2) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1', 'P11c', 'P11c.a60', 3) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1', 'P11d', 'P11d.a60', 1) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1', 'P11d', 'P11d.a60', 2) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1sim', 'P09a.AB', 'P09a.AB.a60', 1) | semantic | ['none reported', 'not reached'] | [None, 'none reported']
+   | ('x1sim', 'P09a.AB', 'P09a.AB.a60', 1) | execution_state | ['error', 'timeout'] | ['error']
+   | ('x1sim', 'P09a.BA', 'P09a.BA.a60', 1) | execution_state | ['error', 'finished', 'timeout'] | ['error', 'finished']
+   | ('x1sim', 'P09d', 'P09d.a60', 1) | semantic | ['P09d1: none reported', 'P09d2: none reported'] | ['finite: none reported', 'stream: none reported']
+   | ('x1sim', 'P11c', 'P11c.a60', 1) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1sim', 'P11c', 'P11c.a60', 2) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1sim', 'P11c', 'P11c.a60', 3) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1sim', 'P11d', 'P11d.a60', 1) | execution_state | ['alternatives pending'] | ['finished']
+   | ('x1sim', 'P11d', 'P11d.a60', 2) | execution_state | ['alternatives pending'] | ['finished']

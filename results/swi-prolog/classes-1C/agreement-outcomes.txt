@@ -1,0 +1,22 @@
+stages: 260 (A 260, B 260)
+  reached: 260/260
+  semantic: 255/260
+  representation: 255/260
+  simplification: 257/260
+  identical_to_posed: 260/260
+  execution_state: 260/260
+
+differences (stage, axis, A, B):
+   | ('constraints', 'P09d', 'P09d.pl', 1) | semantic | ['P09d1: complete', 'P09d2: complete'] | ['finite: complete', 'stream: complete']
+   | ('constraints', 'P09d', 'P09d.pl', 1) | simplification | ['P09d1: inconsistency undetected', 'P09d2: reduced'] | ['finite: inconsistency undetected', 'stream: reduced']
+   | ('constraints', 'P10c', 'P10c.pl', 1) | representation | ['explicit'] | ['solved form']
+   | ('coroutines', 'P09d', 'P09d.pl', 1) | semantic | ['P09d1: complete', 'P09d2: complete'] | ['finite: complete', 'stream: complete']
+   | ('coroutines', 'P09d', 'P09d.pl', 1) | simplification | ['P09d1: inconsistency undetected', 'P09d2: reduced'] | ['finite: inconsistency undetected', 'stream: reduced']
+   | ('coroutines', 'P10c', 'P10c.pl', 1) | representation | ['explicit'] | ['solved form']
+   | ('plain', 'P09d', 'P09d.pl', 1) | semantic | ['P09d1: none reported', 'P09d2: none reported'] | ['finite: none reported', 'stream: none reported']
+   | ('plain', 'P10c', 'P10c.pl', 1) | representation | ['explicit'] | ['solved form']
+   | ('session', 'P09d', 'P09d.pl', 1) | semantic | ['P09d1: complete', 'P09d2: complete'] | ['finite: complete', 'stream: complete']
+   | ('session', 'P09d', 'P09d.pl', 1) | simplification | ['P09d1: inconsistency undetected', 'P09d2: reduced'] | ['finite: inconsistency undetected', 'stream: reduced']
+   | ('session', 'P10c', 'P10c.pl', 1) | representation | ['explicit'] | ['solved form']
+   | ('tabling', 'P09d', 'P09d.pl', 1) | semantic | ['P09d1: none reported', 'P09d2: none reported'] | ['finite: none reported', 'stream: none reported']
+   | ('tabling', 'P10c', 'P10c.pl', 1) | representation | ['explicit'] | ['solved form']

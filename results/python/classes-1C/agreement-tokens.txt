@@ -1,0 +1,1436 @@
+
+## core/P09a.py: 330 tokens, agreement 311/330 (94.2%)
+  class  A      B
+  P      181    166
+  C      0      8
+  R      0      0
+  S      0      0
+  H      149    156
+  tokens 112-112 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 46: def rev(a):
+  tokens 174-174 A=P B=H: <DEDENT>
+      A: computation A: the query loop(x) | B: layout closing line 56: def show(x):
+  tokens 210-216 A=P B=C: for x in answers : <NEWLINE> <INDENT>
+      A: each solution of loop(x) | B: line 69: for x in answers:
+  tokens 236-236 A=P B=C: <DEDENT>
+      A: computation B: the query rev(<seq>, b) | B: layout closing line 69: for x in answers:
+  tokens 285-285 A=H B=P: <DEDENT>
+      A: cp.computation | B: layout closing line 74: def B():
+  tokens 319-323 A=P B=H: <INDENT> C . update (
+      A: keeping stage 1's constants | B: layout entering line 85: while (s := cp.stage()) is not None:
+  tokens 327-329 A=P B=H: ) <NEWLINE> <DEDENT>
+      A: keeping stage 1's constants | B: line 86: C.update(s.constants)
+
+## core/P09b.py: 179 tokens, agreement 169/179 (94.4%)
+  class  A      B
+  P      89     83
+  C      0      0
+  R      0      0
+  S      0      0
+  H      90     96
+  tokens 73-73 A=H B=P: <INDENT>
+      A: print no solution | B: layout entering line 45: else:
+  tokens 134-134 A=H B=P: <DEDENT>
+      A: cp.computation | B: layout closing line 49: def B():
+  tokens 168-172 A=P B=H: <INDENT> C . update (
+      A: keeping stage 1's constants | B: layout entering line 60: while (s := cp.stage()) is not None:
+  tokens 176-178 A=P B=H: ) <NEWLINE> <DEDENT>
+      A: keeping stage 1's constants | B: line 61: C.update(s.constants)
+
+## core/P09c.py: 314 tokens, agreement 309/314 (98.4%)
+  class  A      B
+  P      165    166
+  C      0      0
+  R      0      0
+  S      0      0
+  H      149    148
+  tokens 119-120 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.relations | B: layout closing line 44: if len(s) >= 3:
+  tokens 203-203 A=P B=H: <INDENT>
+      A: gen's last element, as stage 1 gives it | B: layout entering line 60: if s.k == 1:
+  tokens 273-273 A=P B=H: <DEDENT>
+      A: else of the conjunction's test | B: layout closing line 67: if not s.replay:
+  tokens 311-311 A=H B=P: <DEDENT>
+      A: cp.answer | B: layout closing line 69: else:
+
+## core/P09d.py: 267 tokens, agreement 262/267 (98.1%)
+  class  A      B
+  P      124    125
+  C      0      0
+  R      0      0
+  S      0      0
+  H      143    142
+  tokens 84-85 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.relations | B: layout closing line 39: if len(s) >= 3:
+  tokens 168-168 A=P B=H: <INDENT>
+      A: genu(<k>, s) | B: layout entering line 55: if s.k == 1:
+  tokens 226-226 A=P B=H: <DEDENT>
+      A: else of the conjunction's test | B: layout closing line 61: if not s.replay:
+  tokens 264-264 A=H B=P: <DEDENT>
+      A: cp.answer | B: layout closing line 63: else:
+
+## core/P09e.py: 599 tokens, agreement 356/599 (59.4%)
+  class  A      B
+  P      167    122
+  C      18     0
+  R      112    345
+  S      165    0
+  H      137    132
+  tokens 16-20 A=P B=R: known = { } <NEWLINE>
+      A: bindings store | B: line 30: known = {}
+  tokens 21-25 A=S B=R: held = [ ] <NEWLINE>
+      A: held: the store of the relation-holding loop | B: line 31: held = []
+  tokens 26-30 A=P B=R: failed = [ ] <NEWLINE>
+      A: failed: relations found not to hold | B: line 32: failed = []
+  tokens 67-67 A=R B=P: <INDENT>
+      A: plus: known-places test / wait verdict | B: layout entering line 39: def plus(a, b, c):
+  tokens 87-87 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 44: if c is None:
+  tokens 97-97 A=P B=R: <DEDENT>
+      A: plus: compute or test | B: layout closing line 44: if c is None:
+  tokens 128-128 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 47: if a is not None and c is not None:
+  tokens 151-151 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 49: if b is not None and c is not None:
+  tokens 177-177 A=R B=P: <INDENT>
+      A: minus: known-places test / wait verdict | B: layout entering line 54: def minus(a, b, c):
+  tokens 197-197 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 57: if c is None:
+  tokens 207-207 A=P B=R: <DEDENT>
+      A: minus: compute or test | B: layout closing line 57: if c is None:
+  tokens 238-238 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 60: if a is not None and c is not None:
+  tokens 261-261 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 62: if b is not None and c is not None:
+  tokens 275-275 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 54: def minus(a, b, c):
+  tokens 301-460 A=S B=R: def place ( p ) : <NEWLINE> <INDENT> return known . get ( p ) if isinstance ( p 
+      A: place(): value of a place, None while unknown | B: line 72: def place(p):
+  tokens 461-466 A=H B=R: <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 94: if isinstance(p, str) and x is not None:
+  tokens 491-491 A=C B=H: <INDENT>
+      A: held.append: posting a relation | B: layout entering line 99: if s.k == 1:
+  tokens 492-495 A=C B=R: held . append (
+      A: held.append: posting a relation | B: line 100: held.append(("+", ("y", s.constants["X_ADDEND"], "x")))
+  tokens 496-500 A=P B=R: ( "+" , ( "y"
+      A: the relation y + <k> = x (x = y + <k>) | B: line 100: held.append(("+", ("y", s.constants["X_ADDEND"], "x")))
+  tokens 501-501 A=P B=H: ,
+      A: the relation y + <k> = x (x = y + <k>) | B: line 100: stage constants/parameters read
+  tokens 508-511 A=P B=R: , "x" ) )
+      A: the relation y + <k> = x (x = y + <k>) | B: line 100: held.append(("+", ("y", s.constants["X_ADDEND"], "x")))
+  tokens 512-517 A=C B=R: ) <NEWLINE> held . append (
+      A: held.append: posting a relation | B: line 100: held.append(("+", ("y", s.constants["X_ADDEND"], "x")))
+  tokens 518-522 A=P B=R: ( "-" , ( "x"
+      A: the relation x - <k> = y (and y = x - <k>) | B: line 101: held.append(("-", ("x", s.constants["Y_SUBTRAHEND"], "y")))
+  tokens 523-523 A=P B=H: ,
+      A: the relation x - <k> = y (and y = x - <k>) | B: line 101: stage constants/parameters read
+  tokens 530-533 A=P B=R: , "y" ) )
+      A: the relation x - <k> = y (and y = x - <k>) | B: line 101: held.append(("-", ("x", s.constants["Y_SUBTRAHEND"], "y")))
+  tokens 534-535 A=C B=R: ) <NEWLINE>
+      A: held.append: posting a relation | B: line 101: held.append(("-", ("x", s.constants["Y_SUBTRAHEND"], "y")))
+  tokens 536-536 A=C B=H: <DEDENT>
+      A: decide(): running the holding loop | B: layout closing line 99: if s.k == 1:
+  tokens 537-540 A=C B=R: decide ( ) <NEWLINE>
+      A: decide(): running the holding loop | B: line 102: decide()
+  tokens 548-548 A=P B=H: <INDENT>
+      A: if failed: no solution | B: layout entering line 103: if not s.replay:
+  tokens 549-552 A=P B=R: if failed : <NEWLINE>
+      A: if failed: no solution | B: line 104: if failed:
+  tokens 553-553 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 104: if failed:
+  tokens 561-565 A=P B=R: <DEDENT> elif known : <NEWLINE>
+      A: elif known: an answer only if some unknown has a value | B: layout closing line 104: if failed:
+  tokens 566-566 A=H B=R: <INDENT>
+      A: cp.answer, rendering the bindings | B: layout entering line 106: elif known:
+  tokens 596-596 A=H B=R: <DEDENT>
+      A: cp.answer, rendering the bindings | B: layout closing line 106: elif known:
+
+## core/P10a.py: 133 tokens, agreement 130/133 (97.7%)
+  class  A      B
+  P      43     40
+  C      0      0
+  R      0      0
+  S      0      0
+  H      90     93
+  tokens 48-48 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 35: if s.k == 1:
+  tokens 70-70 A=P B=H: <INDENT>
+      A: b becomes b + <k> | B: layout entering line 37: elif s.k == 2:
+  tokens 97-97 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 39: elif s.k == 3:
+
+## core/P10b.py: 278 tokens, agreement 256/278 (92.1%)
+  class  A      B
+  P      87     75
+  C      0      0
+  R      41     55
+  S      0      0
+  H      150    148
+  tokens 65-65 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 45: def times(a, b):
+  tokens 99-99 A=P B=R: <INDENT>
+      A: maintain(): target from source by the relation | B: layout entering line 57: if source in quantities:
+  tokens 115-117 A=H B=R: <DEDENT> <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 57: if source in quantities:
+  tokens 142-142 A=R B=H: <INDENT>
+      A: standing.append: holding the standing relation | B: layout entering line 62: if s.k == 1:
+  tokens 147-147 A=P B=R: (
+      A: the relation d = <k> * b | B: line 63: standing.append((s.constants["D_FACTOR"], "b", "d"))
+  tokens 154-158 A=P B=R: , "b" , "d" )
+      A: the relation d = <k> * b | B: line 63: standing.append((s.constants["D_FACTOR"], "b", "d"))
+  tokens 170-170 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 64: elif s.k == 2:
+  tokens 192-192 A=P B=H: <INDENT>
+      A: b becomes b + <k> | B: layout entering line 66: elif s.k == 3:
+  tokens 219-219 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 68: elif s.k == 4:
+  tokens 232-232 A=R B=H: <DEDENT>
+      A: maintain(): taking up the held relation after the stage | B: layout closing line 68: elif s.k == 4:
+  tokens 242-242 A=H B=R: and
+      A: if not s.replay | B: line 71: if not s.replay and quantities:
+  tokens 243-245 A=P B=R: quantities : <NEWLINE>
+      A: and quantities: an answer only if some quantity has a value | B: line 71: if not s.replay and quantities:
+  tokens 246-246 A=H B=R: <INDENT>
+      A: cp.answer, rendering | B: layout entering line 71: if not s.replay and quantities:
+  tokens 276-276 A=H B=R: <DEDENT>
+      A: cp.answer, rendering | B: layout closing line 71: if not s.replay and quantities:
+
+## core/P10c.py: 217 tokens, agreement 212/217 (97.7%)
+  class  A      B
+  P      77     74
+  C      0      0
+  R      0      0
+  S      0      0
+  H      140    143
+  tokens 51-51 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 38: def times(a, b):
+  tokens 85-85 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 46: if s.k == 1:
+  tokens 107-107 A=P B=H: <INDENT>
+      A: d becomes <k> * b, evaluated once | B: layout entering line 48: elif s.k == 2:
+  tokens 137-137 A=P B=H: <INDENT>
+      A: b becomes b + <k> | B: layout entering line 50: elif s.k == 3:
+  tokens 164-164 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 52: elif s.k == 4:
+
+## core/P10d.py: 547 tokens, agreement 447/547 (81.7%)
+  class  A      B
+  P      169    106
+  C      0      18
+  R      226    283
+  S      0      0
+  H      152    140
+  tokens 14-18 A=P B=R: values = [ ] <NEWLINE>
+      A: values: the values of x still held | B: line 36: values = []
+  tokens 104-104 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 54: def greater(v, k):
+  tokens 136-136 A=P B=R: <INDENT>
+      A: holds(): testing the relation on a known value | B: layout entering line 64: if name == "pick":
+  tokens 143-143 A=P B=R: <DEDENT>
+      A: holds(): testing the relation on a known value | B: layout closing line 64: if name == "pick":
+  tokens 169-175 A=P B=R: <INDENT> return tuple ( facts ) <NEWLINE>
+      A: source(): pick's facts as the values of x | B: layout entering line 71: if name == "pick":
+  tokens 228-235 A=P B=R: <DEDENT> values [ : ] = given <NEWLINE>
+      A: arrive(): x takes pick's values | B: layout closing line 80: if given is None:
+  tokens 260-275 A=P B=R: keep ( * rel ) <NEWLINE> <DEDENT> <DEDENT> keep ( name , k ) <NEWLINE> <DEDENT>
+      A: arrive(): deciding a released comparison | B: line 87: keep(*rel)
+  tokens 308-308 A=R B=P: <DEDENT>
+      A: tell(): recording the information by stage, and taking it up | B: layout closing line 91: def keep(name, k):
+  tokens 372-389 A=R B=C: values . clear ( ) <NEWLINE> x_has_values . clear ( ) <NEWLINE> held . clear ( )
+      A: withdraw(): restating from the information not withdrawn | B: line 107: values.clear()
+  tokens 408-415 A=H B=R: <DEDENT> <DEDENT> def report ( ) : <NEWLINE>
+      A: report() | B: layout closing line 110: for _, name, k in information:
+  tokens 416-423 A=P B=R: <INDENT> if x_has_values and not values : <NEWLINE>
+      A: report(): no solution when x has values and none survives | B: layout entering line 114: def report():
+  tokens 424-424 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 115: if x_has_values and not values:
+  tokens 430-430 A=H B=R: <DEDENT>
+      A: report(): each value held, as an answer | B: layout closing line 115: if x_has_values and not values:
+  tokens 448-448 A=H B=R: <DEDENT>
+      A: stage loop | B: layout closing line 114: def report():
+  tokens 473-473 A=P B=H: <INDENT>
+      A: pick's facts, as stage 1 gives them | B: layout entering line 122: if s.k == 1:
+  tokens 486-488 A=P B=R: tell ( 1
+      A: stage 1: pick(x) | B: line 124: tell(1, "pick")
+  tokens 491-492 A=P B=R: ) <NEWLINE>
+      A: stage 1: pick(x) | B: line 124: tell(1, "pick")
+  tokens 502-502 A=P B=H: <INDENT>
+      A: stage 2: x > <k> | B: layout entering line 125: elif s.k == 2:
+  tokens 503-505 A=P B=R: tell ( 2
+      A: stage 2: x > <k> | B: line 126: tell(2, ">", s.constants["GREATER_THAN"])
+  tokens 508-508 A=P B=H: ,
+      A: stage 2: x > <k> | B: line 126: stage constants/parameters read
+  tokens 515-516 A=P B=R: ) <NEWLINE>
+      A: stage 2: x > <k> | B: line 126: tell(2, ">", s.constants["GREATER_THAN"])
+  tokens 526-526 A=P B=H: <INDENT>
+      A: stage 3: withdraw the relation of stage 2 | B: layout entering line 127: elif s.k == 3:
+  tokens 527-531 A=P B=R: withdraw ( 2 ) <NEWLINE>
+      A: stage 3: withdraw the relation of stage 2 | B: line 128: withdraw(2)
+  tokens 541-544 A=H B=R: report ( ) <NEWLINE>
+      A: report() | B: line 130: report()
+
+## core/P11a.py: 254 tokens, agreement 178/254 (70.1%)
+  class  A      B
+  P      166    120
+  C      0      9
+  R      0      0
+  S      0      0
+  H      88     125
+  tokens 46-60 A=H B=P: if x is None or x == v : <NEWLINE> <INDENT> yield v <NEWLINE> <DEDENT>
+      A: report of the stage: 'no solution' or the answer; known['x'] for obser | B: pick: if x is None or x == v: [line 41]
+  tokens 191-199 A=P B=C: x = next ( answers , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: x = next(answers, None) [line 66]
+  tokens 200-251 A=P B=H: if x is None : <NEWLINE> <INDENT> if not s . replay : <NEWLINE> <INDENT> print (
+      A: the any-one query: one solution taken (next) | B: if x is None: [line 67]
+
+## core/P11b.py: 254 tokens, agreement 178/254 (70.1%)
+  class  A      B
+  P      166    120
+  C      0      9
+  R      0      0
+  S      0      0
+  H      88     125
+  tokens 46-60 A=H B=P: if x is None or x == v : <NEWLINE> <INDENT> yield v <NEWLINE> <DEDENT>
+      A: report of the stage: 'no solution' or the answer; known['x'] for obser | B: pick: if x is None or x == v: [line 43]
+  tokens 191-199 A=P B=C: x = next ( answers , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: x = next(answers, None) [line 68]
+  tokens 200-251 A=P B=H: if x is None : <NEWLINE> <INDENT> if not s . replay : <NEWLINE> <INDENT> print (
+      A: the any-one query: one solution taken (next) | B: if x is None: [line 69]
+
+## core/P11c.py: 575 tokens, agreement 487/575 (84.7%)
+  class  A      B
+  P      193    189
+  C      6      47
+  R      180    183
+  S      0      0
+  H      196    156
+  tokens 19-23 A=R B=C: solutions = [ ] <NEWLINE>
+      A: solutions: holder of stage 1's generator across stages | B: solutions = [] [line 43]
+  tokens 266-281 A=R B=C: v = next ( solutions [ 0 ] , None ) if solutions else None <NEWLINE>
+      A: advance(): keep the held solution, or retry stage 1's alternatives unt | B: advance: v = next(solutions[0], None) if solutions else None [line 98]
+  tokens 334-341 A=H B=P: if commitment is not None : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 113]
+  tokens 342-368 A=H B=R: chosen = [ v for v in facts if "x = %s" % v == commitment ] <NEWLINE> v = chosen
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: chosen = [v for v in facts if "x = %s" % v == commitment] [lin
+  tokens 369-373 A=H B=P: <DEDENT> else : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 113]
+  tokens 383-383 A=H B=P: <DEDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 113]
+  tokens 482-487 A=R B=C: solutions [ : ] = [
+      A: stage 1: the generator held across stages | B: solutions[:] = [conjunction()] [line 133]
+  tokens 491-492 A=R B=C: ] <NEWLINE>
+      A: stage 1: the generator held across stages | B: solutions[:] = [conjunction()] [line 133]
+  tokens 493-504 A=P B=C: v = next ( solutions [ 0 ] , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: v = next(solutions[0], None) [line 134]
+  tokens 531-533 A=P B=R: add ( "!="
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 138]
+  tokens 534-534 A=P B=H: ,
+      A: the stage's information x != k | B: fixed harness input: s.constants[DIFFERENT_FROM]
+  tokens 541-542 A=P B=R: ) <NEWLINE>
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 138]
+
+## core/P11d.py: 575 tokens, agreement 487/575 (84.7%)
+  class  A      B
+  P      193    189
+  C      6      47
+  R      180    183
+  S      0      0
+  H      196    156
+  tokens 19-23 A=R B=C: solutions = [ ] <NEWLINE>
+      A: solutions: holder of stage 1's generator across stages | B: solutions = [] [line 45]
+  tokens 266-281 A=R B=C: v = next ( solutions [ 0 ] , None ) if solutions else None <NEWLINE>
+      A: advance(): keep the held solution, or retry stage 1's alternatives unt | B: advance: v = next(solutions[0], None) if solutions else None [line 100
+  tokens 334-341 A=H B=P: if commitment is not None : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 115]
+  tokens 342-368 A=H B=R: chosen = [ v for v in facts if "x = %s" % v == commitment ] <NEWLINE> v = chosen
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: chosen = [v for v in facts if "x = %s" % v == commitment] [lin
+  tokens 369-373 A=H B=P: <DEDENT> else : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 115]
+  tokens 383-383 A=H B=P: <DEDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 115]
+  tokens 482-487 A=R B=C: solutions [ : ] = [
+      A: stage 1: the generator held across stages | B: solutions[:] = [conjunction()] [line 135]
+  tokens 491-492 A=R B=C: ] <NEWLINE>
+      A: stage 1: the generator held across stages | B: solutions[:] = [conjunction()] [line 135]
+  tokens 493-504 A=P B=C: v = next ( solutions [ 0 ] , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: v = next(solutions[0], None) [line 136]
+  tokens 548-550 A=P B=R: add ( "!="
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 142]
+  tokens 551-551 A=P B=H: ,
+      A: the stage's information x != k | B: fixed harness input: s.constants[DIFFERENT_FROM]
+  tokens 558-559 A=P B=R: ) <NEWLINE>
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 142]
+
+## core/P12a.py: 462 tokens, agreement 433/462 (93.7%)
+  class  A      B
+  P      245    228
+  C      0      29
+  R      0      0
+  S      0      0
+  H      217    205
+  tokens 354-354 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 89]
+  tokens 361-365 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 89]
+  tokens 366-374 A=P B=C: found = next ( answers , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: found = next(answers, None) [line 90]
+  tokens 401-405 A=H B=C: <DEDENT> else : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 89]
+  tokens 410-416 A=P B=C: for found in answers : <NEWLINE> <INDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 95]
+  tokens 438-438 A=P B=C: <DEDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 95]
+  tokens 439-439 A=H B=C: <DEDENT>
+      A: answer, rendered | B: if st.params["answers"] == "any-one": [line 89]
+
+## core/P12b.py: 387 tokens, agreement 358/387 (92.5%)
+  class  A      B
+  P      170    153
+  C      0      29
+  R      0      0
+  S      0      0
+  H      217    205
+  tokens 279-279 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 286-290 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 291-299 A=P B=C: found = next ( answers , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: found = next(answers, None) [line 91]
+  tokens 326-330 A=H B=C: <DEDENT> else : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 335-341 A=P B=C: for found in answers : <NEWLINE> <INDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 96]
+  tokens 363-363 A=P B=C: <DEDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 96]
+  tokens 364-364 A=H B=C: <DEDENT>
+      A: answer, rendered | B: if st.params["answers"] == "any-one": [line 90]
+
+## core/P12c.py: 450 tokens, agreement 421/450 (93.6%)
+  class  A      B
+  P      233    216
+  C      0      29
+  R      0      0
+  S      0      0
+  H      217    205
+  tokens 342-342 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 349-353 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 354-362 A=P B=C: found = next ( answers , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: found = next(answers, None) [line 91]
+  tokens 389-393 A=H B=C: <DEDENT> else : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 398-404 A=P B=C: for found in answers : <NEWLINE> <INDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 96]
+  tokens 426-426 A=P B=C: <DEDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 96]
+  tokens 427-427 A=H B=C: <DEDENT>
+      A: answer, rendered | B: if st.params["answers"] == "any-one": [line 90]
+
+## core/P12d.py: 450 tokens, agreement 421/450 (93.6%)
+  class  A      B
+  P      233    216
+  C      0      29
+  R      0      0
+  S      0      0
+  H      217    205
+  tokens 342-342 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 349-353 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 354-362 A=P B=C: found = next ( answers , None ) <NEWLINE>
+      A: the any-one query: one solution taken (next) | B: found = next(answers, None) [line 91]
+  tokens 389-393 A=H B=C: <DEDENT> else : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 90]
+  tokens 398-404 A=P B=C: for found in answers : <NEWLINE> <INDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 96]
+  tokens 426-426 A=P B=C: <DEDENT>
+      A: the all query: every solution taken in order | B: for found in answers:                   # all [line 96]
+  tokens 427-427 A=H B=C: <DEDENT>
+      A: answer, rendered | B: if st.params["answers"] == "any-one": [line 90]
+
+## extended/P09a.py: 911 tokens, agreement 853/911 (93.6%)
+  class  A      B
+  P      355    348
+  C      33     77
+  R      0      0
+  S      255    230
+  H      268    256
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: imports of S.search and S.suspend | B: line 38: from S.search import search, undo
+  tokens 35-40 A=S B=C: binder = Queue ( ) <NEWLINE>
+      A: binder: the Queue whose bind the unifier uses | B: line 47: binder = Queue()
+  tokens 280-280 A=P B=S: <DEDENT>
+      A: loop(x), case 1, as goals | B: layout closing line 80: def done(goals):
+  tokens 500-501 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.relations | B: layout closing line 106: if unify(a, (h, l)):
+  tokens 566-566 A=H B=P: <DEDENT>
+      A: show() | B: layout closing line 113: def cons(seq):
+  tokens 697-697 A=P B=H: <DEDENT>
+      A: computation A: loop(x) | B: layout closing line 121: def show(t):
+  tokens 723-727 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack, only for cp.pending | B: line 143: stack = []
+  tokens 759-760 A=H B=C: , stack
+      A: stack argument | B: line 145: for _ in search(((loop, (x,)),), children, done, trail, stac
+  tokens 764-764 A=H B=C: <INDENT>
+      A: cp.answer | B: layout entering line 145: for _ in search(((loop, (x,)),), children, d
+  tokens 777-777 A=P B=C: <DEDENT>
+      A: computation B: rev(<seq>, b) | B: layout closing line 145: for _ in search(((loop, (x,)),), children, do
+  tokens 804-808 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack, only for cp.pending | B: line 153: stack = []
+  tokens 847-848 A=H B=C: , stack
+      A: stack argument | B: line 155: for _ in search(((rev, (cons(C["REV_INPUT"]), b)),), childre
+  tokens 852-852 A=H B=C: <INDENT>
+      A: cp.answer | B: layout entering line 155: for _ in search(((rev, (cons(C["REV_INPUT"])
+  tokens 865-865 A=H B=C: <DEDENT>
+      A: cp.computation | B: layout closing line 155: for _ in search(((rev, (cons(C["REV_INPUT"]),
+  tokens 866-866 A=H B=P: <DEDENT>
+      A: cp.computation | B: layout closing line 149: def B():
+  tokens 900-904 A=P B=H: <INDENT> C . update (
+      A: keeping stage 1's constants | B: layout entering line 162: while (s := cp.stage()) is not None:
+  tokens 908-910 A=P B=H: ) <NEWLINE> <DEDENT>
+      A: keeping stage 1's constants | B: line 163: C.update(s.constants)
+
+## extended/P09b.py: 243 tokens, agreement 202/243 (83.1%)
+  class  A      B
+  P      107    100
+  C      15     36
+  R      0      0
+  S      18     0
+  H      103    107
+  tokens 0-17 A=S B=C: from S . search import undo <NEWLINE> from S . suspend import Var , Queue , dere
+      A: imports of S.search and S.suspend | B: line 27: from S.search import undo
+  tokens 82-83 A=C B=P: , trail
+      A: trail argument | B: line 46: if binder.bind(x, C["A_FIRST"], trail) and binder.bind(x, C["
+  tokens 96-97 A=C B=P: , trail
+      A: trail argument | B: line 46: if binder.bind(x, C["A_FIRST"], trail) and binder.bind(x, C["
+  tokens 101-101 A=H B=P: <INDENT>
+      A: cp.answer | B: layout entering line 46: if binder.bind(x, C["A_FIRST"], trail) and bi
+  tokens 119-125 A=P B=C: undo ( trail , 0 ) <NEWLINE>
+      A: undo: a failed conjunction leaves no binding | B: line 49: undo(trail, 0)
+  tokens 184-184 A=H B=P: <INDENT>
+      A: cp.answer | B: layout entering line 57: if binder.bind(y, C["B_VALUE"]):
+  tokens 197-198 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.computation | B: layout closing line 57: if binder.bind(y, C["B_VALUE"]):
+  tokens 232-236 A=P B=H: <INDENT> C . update (
+      A: keeping stage 1's constants | B: layout entering line 64: while (s := cp.stage()) is not None:
+  tokens 240-242 A=P B=H: ) <NEWLINE> <DEDENT>
+      A: keeping stage 1's constants | B: line 65: C.update(s.constants)
+
+## extended/P09c.py: 814 tokens, agreement 760/814 (93.4%)
+  class  A      B
+  P      264    243
+  C      31     50
+  R      67     93
+  S      103    95
+  H      349    333
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of S.suspend | B: line 31: from S.suspend import Var, Queue, deref
+  tokens 44-48 A=P B=R: failed = [ ] <NEWLINE>
+      A: failed: relations found not to hold | B: line 42: failed = []
+  tokens 339-340 A=P B=C: Goal (
+      A: gen, cases 1-2: head bound, body goal posted | B: line 89: q.wait(Goal("gen", gen, (n + 1, rest)))
+  tokens 352-352 A=P B=C: )
+      A: gen, cases 1-2: head bound, body goal posted | B: line 89: q.wait(Goal("gen", gen, (n + 1, rest)))
+  tokens 391-391 A=R B=P: <INDENT>
+      A: sum3: s not known so far: wait on its unbound tail | B: layout entering line 99: while len(firsts) < 3:
+  tokens 405-405 A=P B=R: <DEDENT>
+      A: sum3: the head fails, or p + q + r = total | B: layout closing line 100: if isinstance(t, Var):
+  tokens 476-476 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 93: def sum3(s, total):
+  tokens 582-583 A=H B=S: <DEDENT> <DEDENT>
+      A: Goal.__repr__ | B: layout closing line 124: elif isinstance(outcome, Var):
+  tokens 618-618 A=H B=S: <DEDENT>
+      A: report() | B: layout closing line 113: class Goal:
+  tokens 619-624 A=H B=R: def report ( ) : <NEWLINE>
+      A: report() | B: line 131: def report():
+  tokens 625-629 A=P B=R: <INDENT> if failed : <NEWLINE>
+      A: if failed: no solution | B: layout entering line 131: def report():
+  tokens 630-630 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 132: if failed:
+  tokens 638-639 A=P B=R: return <NEWLINE>
+      A: return: no answer | B: line 134: return
+  tokens 693-693 A=H B=R: <INDENT>
+      A: cp.answer | B: layout entering line 138: if t == NIL and not isinstance(deref(total),
+  tokens 713-714 A=H B=R: <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 138: if t == NIL and not isinstance(deref(total), 
+  tokens 739-739 A=P B=H: <INDENT>
+      A: gen's last element, as stage 1 gives it | B: layout entering line 143: if s.k == 1:
+  tokens 756-757 A=P B=C: Goal (
+      A: the goal gen(<k>, s) | B: line 145: q.wait(Goal("gen", gen, (s.constants["GEN_FROM"], seq)))
+  tokens 772-772 A=P B=C: )
+      A: the goal gen(<k>, s) | B: line 145: q.wait(Goal("gen", gen, (s.constants["GEN_FROM"], seq)))
+  tokens 779-780 A=P B=C: Goal (
+      A: the goal sum3(s, total) | B: line 146: q.wait(Goal("sum3", sum3, (seq, total)))
+  tokens 790-790 A=P B=C: )
+      A: the goal sum3(s, total) | B: line 146: q.wait(Goal("sum3", sum3, (seq, total)))
+  tokens 793-793 A=C B=H: <DEDENT>
+      A: q.run() | B: layout closing line 143: if s.k == 1:
+  tokens 808-811 A=H B=R: report ( ) <NEWLINE>
+      A: report() | B: line 149: report()
+
+## extended/P09d.py: 761 tokens, agreement 707/761 (92.9%)
+  class  A      B
+  P      216    196
+  C      32     50
+  R      67     93
+  S      103    95
+  H      343    327
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of S.suspend | B: line 33: from S.suspend import Var, Queue, deref
+  tokens 40-44 A=P B=R: failed = [ ] <NEWLINE>
+      A: failed: relations found not to hold | B: line 43: failed = []
+  tokens 299-300 A=P B=C: Goal (
+      A: genu, its one case: head bound, body goal posted | B: line 86: q.wait(Goal("genu", genu, (n + 1, rest)))
+  tokens 312-312 A=P B=C: )
+      A: genu, its one case: head bound, body goal posted | B: line 86: q.wait(Goal("genu", genu, (n + 1, rest)))
+  tokens 350-350 A=R B=P: <INDENT>
+      A: sum3: s not known so far: wait on its unbound tail | B: layout entering line 96: while len(firsts) < 3:
+  tokens 364-364 A=P B=R: <DEDENT>
+      A: sum3: the head fails, or p + q + r = total | B: layout closing line 97: if isinstance(t, Var):
+  tokens 435-435 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 90: def sum3(s, total):
+  tokens 541-542 A=H B=S: <DEDENT> <DEDENT>
+      A: Goal.__repr__ | B: layout closing line 121: elif isinstance(outcome, Var):
+  tokens 577-577 A=H B=S: <DEDENT>
+      A: report() | B: layout closing line 110: class Goal:
+  tokens 578-583 A=H B=R: def report ( ) : <NEWLINE>
+      A: report() | B: line 128: def report():
+  tokens 584-588 A=P B=R: <INDENT> if failed : <NEWLINE>
+      A: if failed: no solution | B: layout entering line 128: def report():
+  tokens 589-589 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 129: if failed:
+  tokens 597-598 A=P B=R: return <NEWLINE>
+      A: return: no answer | B: line 131: return
+  tokens 652-652 A=H B=R: <INDENT>
+      A: cp.answer | B: layout entering line 135: if t == NIL and not isinstance(deref(total),
+  tokens 672-673 A=H B=R: <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 135: if t == NIL and not isinstance(deref(total), 
+  tokens 698-698 A=C B=H: <INDENT>
+      A: q.wait: posting the conjunction's goals in order | B: layout entering line 140: if s.k == 1:
+  tokens 703-704 A=P B=C: Goal (
+      A: the goal genu(<k>, s) | B: line 141: q.wait(Goal("genu", genu, (s.constants["GENU_FROM"], seq)))
+  tokens 719-719 A=P B=C: )
+      A: the goal genu(<k>, s) | B: line 141: q.wait(Goal("genu", genu, (s.constants["GENU_FROM"], seq)))
+  tokens 726-727 A=P B=C: Goal (
+      A: the goal sum3(s, total) | B: line 142: q.wait(Goal("sum3", sum3, (seq, total)))
+  tokens 737-737 A=P B=C: )
+      A: the goal sum3(s, total) | B: line 142: q.wait(Goal("sum3", sum3, (seq, total)))
+  tokens 740-740 A=C B=H: <DEDENT>
+      A: q.run() | B: layout closing line 140: if s.k == 1:
+  tokens 755-758 A=H B=R: report ( ) <NEWLINE>
+      A: report() | B: line 145: report()
+
+## extended/P09e.py: 684 tokens, agreement 617/684 (90.2%)
+  class  A      B
+  P      185    171
+  C      26     41
+  R      100    117
+  S      185    179
+  H      188    176
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of S.suspend | B: line 24: from S.suspend import Var, Queue, deref
+  tokens 39-50 A=H B=P: unknowns = { "x" : x , "y" : y } <NEWLINE>
+      A: unknowns: names the Vars for cp.bindings and the answer | B: line 34: unknowns = {"x": x, "y": y}
+  tokens 51-55 A=P B=R: failed = [ ] <NEWLINE>
+      A: failed: relations found not to hold | B: line 35: failed = []
+  tokens 94-94 A=R B=P: <INDENT>
+      A: plus: known-places test / wait verdict | B: layout entering line 42: def plus(a, b, c):
+  tokens 114-114 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 47: if c is None:
+  tokens 124-124 A=P B=R: <DEDENT>
+      A: plus: compute or test | B: layout closing line 47: if c is None:
+  tokens 155-155 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 50: if a is not None and c is not None:
+  tokens 178-178 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 52: if b is not None and c is not None:
+  tokens 204-204 A=R B=P: <INDENT>
+      A: minus: known-places test / wait verdict | B: layout entering line 57: def minus(a, b, c):
+  tokens 224-224 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 60: if c is None:
+  tokens 234-234 A=P B=R: <DEDENT>
+      A: minus: compute or test | B: layout closing line 60: if c is None:
+  tokens 265-265 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 63: if a is not None and c is not None:
+  tokens 288-288 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 65: if b is not None and c is not None:
+  tokens 302-302 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 57: def minus(a, b, c):
+  tokens 490-493 A=H B=S: <DEDENT> <DEDENT> <DEDENT> <DEDENT>
+      A: Relation.__repr__ | B: layout closing line 89: if isinstance(p, Var) and v is not None:
+  tokens 519-519 A=H B=S: <DEDENT>
+      A: stage loop | B: layout closing line 73: class Relation:
+  tokens 544-544 A=C B=H: <INDENT>
+      A: q.wait: posting the two relations | B: layout entering line 97: if s.k == 1:
+  tokens 549-550 A=P B=C: Relation (
+      A: the relation y + <k> = x | B: line 98: q.wait(Relation("+", plus, (y, s.constants["X_ADDEND"], x)))
+  tokens 557-557 A=P B=H: ,
+      A: the relation y + <k> = x | B: line 98: stage constants/parameters read
+  tokens 567-567 A=P B=C: )
+      A: the relation y + <k> = x | B: line 98: q.wait(Relation("+", plus, (y, s.constants["X_ADDEND"], x)))
+  tokens 574-575 A=P B=C: Relation (
+      A: the relation x - <k> = y | B: line 99: q.wait(Relation("-", minus, (x, s.constants["Y_SUBTRAHEND"], 
+  tokens 582-582 A=P B=H: ,
+      A: the relation x - <k> = y | B: line 99: stage constants/parameters read
+  tokens 592-592 A=P B=C: )
+      A: the relation x - <k> = y | B: line 99: q.wait(Relation("-", minus, (x, s.constants["Y_SUBTRAHEND"], 
+  tokens 595-595 A=C B=H: <DEDENT>
+      A: q.run() | B: layout closing line 97: if s.k == 1:
+  tokens 609-609 A=P B=H: <INDENT>
+      A: if failed: no solution | B: layout entering line 101: if not s.replay:
+  tokens 610-613 A=P B=R: if failed : <NEWLINE>
+      A: if failed: no solution | B: line 102: if failed:
+  tokens 614-614 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 102: if failed:
+  tokens 622-622 A=P B=R: <DEDENT>
+      A: else | B: layout closing line 102: if failed:
+  tokens 626-626 A=H B=P: <INDENT>
+      A: told: rendering the bound unknowns | B: layout entering line 104: else:
+  tokens 663-666 A=P B=H: if told : <NEWLINE>
+      A: if told: an answer only if some unknown has a value | B: line 106: if told:
+  tokens 681-681 A=H B=P: <DEDENT>
+      A: cp.answer | B: layout closing line 104: else:
+
+## extended/P10d.py: 809 tokens, agreement 622/809 (76.9%)
+  class  A      B
+  P      186    86
+  C      12     113
+  R      397    404
+  S      14     0
+  H      200    206
+  tokens 0-13 A=S B=C: from S . propagate import Store <NEWLINE> from S . search import undo <NEWLINE>
+      A: imports of S.propagate and S.search | B: line 34: from S.propagate import Store
+  tokens 49-53 A=P B=R: values = [ ] <NEWLINE>
+      A: values: the values of x still held | B: line 48: values = []
+  tokens 59-63 A=P B=R: failed = [ ] <NEWLINE>
+      A: failed: constraints that emptied a domain | B: line 50: failed = []
+  tokens 161-161 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 67: def greater(v, k):
+  tokens 193-193 A=P B=R: <INDENT>
+      A: test(): the relation on a known value | B: layout entering line 77: if name == "pick":
+  tokens 200-200 A=P B=R: <DEDENT>
+      A: test(): the relation on a known value | B: layout closing line 77: if name == "pick":
+  tokens 239-256 A=R B=H: holds . __name__ = "pick" if name == "pick" else "x %s %r" % ( name , k ) <NEWLI
+      A: on_x(): a relation as a one-place predicate for the store, named | B: line 86: holds.__name__ = "pick" if name == "pick" else "x %s %r" % (n
+  tokens 261-269 A=R B=C: def post ( name , k ) : <NEWLINE>
+      A: post(): def | B: line 90: def post(name, k):
+  tokens 270-304 A=P B=C: <INDENT> if not store . relation ( [ X ] , on_x ( name , k ) ) : <NEWLINE> <INDE
+      A: post(): the relation posted on x | B: layout entering line 90: def post(name, k):
+  tokens 305-306 A=R B=C: <DEDENT> <DEDENT>
+      A: source(): can the relation give x values | B: layout closing line 92: if not store.relation([X], on_x(name, k)):
+  tokens 323-329 A=P B=R: <INDENT> return tuple ( facts ) <NEWLINE>
+      A: source(): pick's facts | B: layout entering line 98: if name == "pick":
+  tokens 386-386 A=P B=R: <DEDENT>
+      A: arrive(): x's domain is pick's facts | B: layout closing line 107: if given is None:
+  tokens 396-412 A=R B=C: for rel in list ( held ) : <NEWLINE> <INDENT> held . remove ( rel ) <NEWLINE>
+      A: arrive(): releasing held comparisons | B: line 111: for rel in list(held):
+  tokens 413-419 A=P B=C: post ( * rel ) <NEWLINE> <DEDENT>
+      A: arrive(): posting the relations | B: line 113: post(*rel)
+  tokens 420-420 A=P B=R: <DEDENT>
+      A: arrive(): posting the relations | B: layout closing line 105: if X not in store.dom:
+  tokens 421-427 A=P B=C: post ( name , k ) <NEWLINE>
+      A: arrive(): posting the relations | B: line 114: post(name, k)
+  tokens 602-611 A=R B=C: undo ( trail , marks [ stage ] ) <NEWLINE>
+      A: withdraw(): undoing the store to the stage's mark, posting later relat | B: line 137: undo(trail, marks[stage])
+  tokens 640-647 A=H B=R: <DEDENT> <DEDENT> def report ( ) : <NEWLINE>
+      A: report() | B: layout closing line 138: for later_stage, name, k in later:
+  tokens 648-659 A=P B=R: <INDENT> if X in store . dom and not values : <NEWLINE>
+      A: report(): no solution when x's domain is empty | B: layout entering line 143: def report():
+  tokens 660-660 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 144: if X in store.dom and not values:
+  tokens 668-668 A=H B=R: <DEDENT>
+      A: report(): each value as an answer | B: layout closing line 144: if X in store.dom and not values:
+  tokens 686-686 A=H B=R: <DEDENT>
+      A: stage loop | B: layout closing line 143: def report():
+  tokens 711-711 A=P B=H: <INDENT>
+      A: pick's facts, as stage 1 gives them | B: layout entering line 151: if s.k == 1:
+  tokens 724-726 A=P B=R: tell ( 1
+      A: stage 1: pick(x) | B: line 153: tell(1, "pick")
+  tokens 729-730 A=P B=R: ) <NEWLINE>
+      A: stage 1: pick(x) | B: line 153: tell(1, "pick")
+  tokens 740-740 A=P B=H: <INDENT>
+      A: stage 2: x > <k> | B: layout entering line 154: elif s.k == 2:
+  tokens 741-743 A=P B=R: tell ( 2
+      A: stage 2: x > <k> | B: line 155: tell(2, ">", s.constants["GREATER_THAN"])
+  tokens 746-746 A=P B=H: ,
+      A: stage 2: x > <k> | B: line 155: stage constants/parameters read
+  tokens 753-754 A=P B=R: ) <NEWLINE>
+      A: stage 2: x > <k> | B: line 155: tell(2, ">", s.constants["GREATER_THAN"])
+  tokens 764-764 A=P B=H: <INDENT>
+      A: stage 3: withdraw the relation of stage 2 | B: layout entering line 156: elif s.k == 3:
+  tokens 765-769 A=P B=R: withdraw ( 2 ) <NEWLINE>
+      A: stage 3: withdraw the relation of stage 2 | B: line 157: withdraw(2)
+  tokens 803-806 A=H B=R: report ( ) <NEWLINE>
+      A: report() | B: line 160: report()
+
+## extended/P11a.py: 550 tokens, agreement 499/550 (90.7%)
+  class  A      B
+  P      150    144
+  C      15     63
+  R      0      0
+  S      266    235
+  H      119    108
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 34-44 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 46]
+  tokens 45-49 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made only so that the search's choice points can be regi | B: stack = [] [line 48]
+  tokens 465-465 A=P B=H: ,
+      A: the query's goals: pick(x) and x >= k and emit(x), in the order writte | B: fixed harness input: s.constants[AT_LEAST]
+  tokens 489-489 A=C B=P: query
+      A: search(query, children, done, trail, stack): the search directive | B: problem conjunction passed as the search root
+  tokens 500-500 A=H B=C: if
+      A: report test | B: if next(solutions, None) is None:           # any one [line 118]
+  tokens 501-506 A=P B=C: next ( solutions , None )
+      A: the any-one query: one solution taken (next) | B: if next(solutions, None) is None:           # any one [line 118]
+  tokens 507-511 A=H B=C: is None : <NEWLINE> <INDENT>
+      A: report: 'no solution' or the answer | B: if next(solutions, None) is None:           # any one [line 118]
+  tokens 526-526 A=H B=C: <DEDENT>
+      A: report: 'no solution' or the answer | B: if next(solutions, None) is None:           # any one [line 118]
+
+## extended/P11b.py: 550 tokens, agreement 499/550 (90.7%)
+  class  A      B
+  P      150    144
+  C      15     63
+  R      0      0
+  S      266    235
+  H      119    108
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 34-44 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 47]
+  tokens 45-49 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made only so that the search's choice points can be regi | B: stack = [] [line 49]
+  tokens 474-474 A=P B=H: ,
+      A: the query's goals: pick(x) and emit(x) and x >= k, in the order writte | B: fixed harness input: s.constants[AT_LEAST]
+  tokens 489-489 A=C B=P: query
+      A: search(query, children, done, trail, stack): the search directive | B: problem conjunction passed as the search root
+  tokens 500-500 A=H B=C: if
+      A: report test | B: if next(solutions, None) is None:           # any one [line 119]
+  tokens 501-506 A=P B=C: next ( solutions , None )
+      A: the any-one query: one solution taken (next) | B: if next(solutions, None) is None:           # any one [line 119]
+  tokens 507-511 A=H B=C: is None : <NEWLINE> <INDENT>
+      A: report: 'no solution' or the answer | B: if next(solutions, None) is None:           # any one [line 119]
+  tokens 526-526 A=H B=C: <DEDENT>
+      A: report: 'no solution' or the answer | B: if next(solutions, None) is None:           # any one [line 119]
+
+## extended/P11c.py: 900 tokens, agreement 756/900 (84.0%)
+  class  A      B
+  P      204    212
+  C      23     114
+  R      206    183
+  S      266    235
+  H      201    156
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 34-44 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 54]
+  tokens 45-49 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made so that the search's choice points can be registere | B: stack = [] [line 56]
+  tokens 67-71 A=R B=C: solutions = [ ] <NEWLINE>
+      A: solutions: holder of stage 1's generator across stages | B: solutions = [] [line 61]
+  tokens 506-530 A=R B=C: def next_solution ( ) : <NEWLINE> <INDENT> if solutions and next ( solutions [ 0
+      A: next_solution(): the next solution of the held search, x's value in it | B: request next search outcome
+  tokens 531-536 A=R B=P: return deref ( x ) <NEWLINE>
+      A: next_solution(): the next solution of the held search, x's value in it | B: next_solution: return deref(x) [line 146]
+  tokens 537-541 A=R B=C: <DEDENT> return None <NEWLINE> <DEDENT>
+      A: next_solution(): the next solution of the held search, x's value in it | B: next_solution: if solutions and next(solutions[0], None) is not None: 
+  tokens 574-579 A=R B=C: v = next_solution ( ) <NEWLINE>
+      A: advance(): keep the held solution, or retry stage 1's alternatives unt | B: advance: v = next_solution() [line 156]
+  tokens 632-639 A=H B=P: if commitment is not None : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 171]
+  tokens 640-666 A=H B=R: chosen = [ v for v in facts if "x = %s" % v == commitment ] <NEWLINE> v = chosen
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: chosen = [v for v in facts if "x = %s" % v == commitment] [lin
+  tokens 667-671 A=H B=P: <DEDENT> else : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 171]
+  tokens 681-681 A=H B=P: <DEDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 171]
+  tokens 786-791 A=R B=C: solutions [ : ] = [
+      A: stage 1: the search held across stages | B: solutions[:] = [search(((pick, (x,)), (emit, (x,))), children, done, t
+  tokens 822-823 A=R B=C: ] <NEWLINE>
+      A: stage 1: the search held across stages | B: solutions[:] = [search(((pick, (x,)), (emit, (x,))), children, done, t
+  tokens 824-829 A=P B=C: v = next_solution ( ) <NEWLINE>
+      A: the any-one query: one solution taken | B: v = next_solution() [line 193]
+  tokens 856-858 A=P B=R: add ( "!="
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 197]
+  tokens 859-859 A=P B=H: ,
+      A: the stage's information x != k | B: fixed harness input: s.constants[DIFFERENT_FROM]
+  tokens 866-867 A=P B=R: ) <NEWLINE>
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 197]
+
+## extended/P11d.py: 900 tokens, agreement 756/900 (84.0%)
+  class  A      B
+  P      204    212
+  C      23     114
+  R      206    183
+  S      266    235
+  H      201    156
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 34-44 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 56]
+  tokens 45-49 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made so that the search's choice points can be registere | B: stack = [] [line 58]
+  tokens 67-71 A=R B=C: solutions = [ ] <NEWLINE>
+      A: solutions: holder of stage 1's generator across stages | B: solutions = [] [line 63]
+  tokens 506-530 A=R B=C: def next_solution ( ) : <NEWLINE> <INDENT> if solutions and next ( solutions [ 0
+      A: next_solution(): the next solution of the held search, x's value in it | B: request next search outcome
+  tokens 531-536 A=R B=P: return deref ( x ) <NEWLINE>
+      A: next_solution(): the next solution of the held search, x's value in it | B: next_solution: return deref(x) [line 148]
+  tokens 537-541 A=R B=C: <DEDENT> return None <NEWLINE> <DEDENT>
+      A: next_solution(): the next solution of the held search, x's value in it | B: next_solution: if solutions and next(solutions[0], None) is not None: 
+  tokens 574-579 A=R B=C: v = next_solution ( ) <NEWLINE>
+      A: advance(): keep the held solution, or retry stage 1's alternatives unt | B: advance: v = next_solution() [line 158]
+  tokens 632-639 A=H B=P: if commitment is not None : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 173]
+  tokens 640-666 A=H B=R: chosen = [ v for v in facts if "x = %s" % v == commitment ] <NEWLINE> v = chosen
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: chosen = [v for v in facts if "x = %s" % v == commitment] [lin
+  tokens 667-671 A=H B=P: <DEDENT> else : <NEWLINE> <INDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 173]
+  tokens 681-681 A=H B=P: <DEDENT>
+      A: commit: a replayed commit taken from s.commitment as x = v (decoding t | B: commit: if commitment is not None: [line 173]
+  tokens 786-791 A=R B=C: solutions [ : ] = [
+      A: stage 1: the search held across stages | B: solutions[:] = [search(((pick, (x,)), (emit, (x,))), children, done, t
+  tokens 822-823 A=R B=C: ] <NEWLINE>
+      A: stage 1: the search held across stages | B: solutions[:] = [search(((pick, (x,)), (emit, (x,))), children, done, t
+  tokens 824-829 A=P B=C: v = next_solution ( ) <NEWLINE>
+      A: the any-one query: one solution taken | B: v = next_solution() [line 195]
+  tokens 873-875 A=P B=R: add ( "!="
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 201]
+  tokens 876-876 A=P B=H: ,
+      A: the stage's information x != k | B: fixed harness input: s.constants[DIFFERENT_FROM]
+  tokens 883-884 A=P B=R: ) <NEWLINE>
+      A: the stage's information x != k | B: add("!=", s.constants["DIFFERENT_FROM"]) [line 201]
+
+## extended/P12a.py: 972 tokens, agreement 898/972 (92.4%)
+  class  A      B
+  P      405    374
+  C      14     67
+  R      0      0
+  S      261    251
+  H      292    280
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 130-140 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 55]
+  tokens 141-145 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made only so that the search's choice points can be regi | B: stack = [] [line 57]
+  tokens 421-441 A=P B=S: def either ( * alternatives ) : <NEWLINE> <INDENT> for goals in alternatives : <
+      A: either(...): the stated disjunction, its alternatives in the order wri | B: general goal-list resolution: either
+  tokens 902-908 A=P B=C: for _ in solutions : <NEWLINE> <INDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 169]
+  tokens 934-934 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 173]
+  tokens 941-945 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 173]
+  tokens 946-947 A=P B=C: break <NEWLINE>
+      A: the any-one query: no further solution asked for | B: break [line 174]
+  tokens 948-948 A=H B=C: <DEDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 173]
+  tokens 949-949 A=P B=C: <DEDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 169]
+
+## extended/P12b.py: 897 tokens, agreement 823/897 (91.8%)
+  class  A      B
+  P      330    299
+  C      14     67
+  R      0      0
+  S      261    251
+  H      292    280
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 55-65 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 56]
+  tokens 66-70 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made only so that the search's choice points can be regi | B: stack = [] [line 58]
+  tokens 346-366 A=P B=S: def either ( * alternatives ) : <NEWLINE> <INDENT> for goals in alternatives : <
+      A: either(...): the stated disjunction, its alternatives in the order wri | B: general goal-list resolution: either
+  tokens 827-833 A=P B=C: for _ in solutions : <NEWLINE> <INDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 170]
+  tokens 859-859 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 866-870 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 871-872 A=P B=C: break <NEWLINE>
+      A: the any-one query: no further solution asked for | B: break [line 175]
+  tokens 873-873 A=H B=C: <DEDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 874-874 A=P B=C: <DEDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 170]
+
+## extended/P12c.py: 960 tokens, agreement 886/960 (92.3%)
+  class  A      B
+  P      393    362
+  C      14     67
+  R      0      0
+  S      261    251
+  H      292    280
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 118-128 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 56]
+  tokens 129-133 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made only so that the search's choice points can be regi | B: stack = [] [line 58]
+  tokens 409-429 A=P B=S: def either ( * alternatives ) : <NEWLINE> <INDENT> for goals in alternatives : <
+      A: either(...): the stated disjunction, its alternatives in the order wri | B: general goal-list resolution: either
+  tokens 890-896 A=P B=C: for _ in solutions : <NEWLINE> <INDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 170]
+  tokens 922-922 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 929-933 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 934-935 A=P B=C: break <NEWLINE>
+      A: the any-one query: no further solution asked for | B: break [line 175]
+  tokens 936-936 A=H B=C: <DEDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 937-937 A=P B=C: <DEDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 170]
+
+## extended/P12d.py: 960 tokens, agreement 886/960 (92.3%)
+  class  A      B
+  P      393    362
+  C      14     67
+  R      0      0
+  S      261    251
+  H      292    280
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of the listed S mechanism backtracking search (search, undo) | B: select supplied S mechanism: from S.search import search, undo
+  tokens 118-128 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: binder: a suspension Queue used only for its bind (part of 'unify') | B: binder = Queue() [line 56]
+  tokens 129-133 A=H B=C: stack = [ ] <NEWLINE>
+      A: stack: a list made only so that the search's choice points can be regi | B: stack = [] [line 58]
+  tokens 409-429 A=P B=S: def either ( * alternatives ) : <NEWLINE> <INDENT> for goals in alternatives : <
+      A: either(...): the stated disjunction, its alternatives in the order wri | B: general goal-list resolution: either
+  tokens 890-896 A=P B=C: for _ in solutions : <NEWLINE> <INDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 170]
+  tokens 922-922 A=H B=C: if
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 929-933 A=H B=C: == "any-one" : <NEWLINE> <INDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 934-935 A=P B=C: break <NEWLINE>
+      A: the any-one query: no further solution asked for | B: break [line 175]
+  tokens 936-936 A=H B=C: <DEDENT>
+      A: dispatch on the instance's answer mode | B: if st.params["answers"] == "any-one": [line 174]
+  tokens 937-937 A=P B=C: <DEDENT>
+      A: the query: solutions taken one at a time, in order | B: for _ in solutions: [line 170]
+
+## stdlib-concurrency/P09c.py: 1097 tokens, agreement 991/1097 (90.3%)
+  class  A      B
+  P      384    352
+  C      13     15
+  R      104    182
+  S      349    331
+  H      247    217
+  tokens 0-2 A=S B=C: import threading <NEWLINE>
+      A: import threading, for the relation threads | B: line 32: import threading
+  tokens 40-40 A=H B=P: <DEDENT>
+      A: Unknown.__repr__ | B: layout closing line 46: def __init__(self, name):
+  tokens 54-54 A=P B=H: <DEDENT>
+      A: class Cell: <head> ++ tail | B: layout closing line 49: def __repr__(self):
+  tokens 85-85 A=H B=P: <DEDENT>
+      A: Cell.__repr__ | B: layout closing line 56: def __init__(self, head, tail):
+  tokens 107-107 A=P B=H: <DEDENT>
+      A: NIL: <> | B: layout closing line 59: def __repr__(self):
+  tokens 128-132 A=P B=S: known = { } <NEWLINE>
+      A: known: the bindings | B: line 66: known = {}
+  tokens 138-142 A=P B=S: failed = [ ] <NEWLINE>
+      A: failed: relations found not to hold | B: line 68: failed = []
+  tokens 189-215 A=S B=R: def place ( p ) : <NEWLINE> <INDENT> return known . get ( p . name ) if isinstan
+      A: place(): a place's value | B: line 77: def place(p):
+  tokens 216-216 A=P B=R: <DEDENT>
+      A: fresh(): a new unknown for rest (gen's case 2) | B: layout closing line 77: def place(p):
+  tokens 252-252 A=R B=P: <INDENT>
+      A: equal: known-places test / wait verdict | B: layout entering line 88: def equal(a, b):
+  tokens 279-279 A=P B=R: <INDENT>
+      A: equal: compute or test | B: layout entering line 93: if va is not None and vb is not None:
+  tokens 303-303 A=P B=R: <INDENT>
+      A: equal: compute or test | B: layout entering line 95: if va is not None:
+  tokens 324-336 A=P B=R: <INDENT> return [ ( a , vb ) ] , [ ] <NEWLINE>
+      A: equal: compute or test | B: layout entering line 97: if vb is not None:
+  tokens 351-351 A=R B=P: <INDENT>
+      A: gen: n not known: wait | B: layout entering line 102: def gen(n, s):
+  tokens 369-369 A=P B=R: <DEDENT>
+      A: gen, cases 1-2: head equation and body goal | B: layout closing line 106: if n is None:
+  tokens 483-483 A=R B=P: <INDENT>
+      A: sum3: s not known so far: wait | B: layout entering line 123: while len(firsts) < 3:
+  tokens 494-494 A=P B=R: <DEDENT>
+      A: sum3: the head fails, or p + q + r = total | B: layout closing line 124: if t is None:
+  tokens 549-549 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 118: def sum3(s, total):
+  tokens 873-874 A=H B=S: <DEDENT> <DEDENT>
+      A: elements(): a sequence known to its end, as a list | B: layout closing line 184: with changed:
+  tokens 934-939 A=H B=R: def report ( ) : <NEWLINE>
+      A: report() | B: line 199: def report():
+  tokens 940-944 A=P B=R: <INDENT> if failed : <NEWLINE>
+      A: if failed: no solution | B: layout entering line 199: def report():
+  tokens 945-945 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 200: if failed:
+  tokens 953-954 A=P B=R: return <NEWLINE>
+      A: return: no answer | B: line 202: return
+  tokens 955-969 A=H B=R: <DEDENT> seq , total = elements ( S ) , place ( TOTAL ) <NEWLINE>
+      A: reading s and total for the report | B: layout closing line 200: if failed:
+  tokens 982-982 A=H B=R: <INDENT>
+      A: cp.answer | B: layout entering line 204: if seq is not None and total is not None:
+  tokens 1008-1009 A=H B=R: <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 204: if seq is not None and total is not None:
+  tokens 1034-1034 A=P B=H: <INDENT>
+      A: gen's last element, as stage 1 gives it | B: layout entering line 209: if s.k == 1:
+  tokens 1078-1078 A=C B=H: <DEDENT>
+      A: settle() | B: layout closing line 209: if s.k == 1:
+  tokens 1091-1094 A=H B=R: report ( ) <NEWLINE>
+      A: report() | B: line 215: report()
+
+## stdlib-concurrency/P09d.py: 1046 tokens, agreement 940/1046 (89.9%)
+  class  A      B
+  P      338    307
+  C      14     15
+  R      104    182
+  S      349    331
+  H      241    211
+  tokens 0-2 A=S B=C: import threading <NEWLINE>
+      A: import threading, for the relation threads | B: line 33: import threading
+  tokens 36-36 A=H B=P: <DEDENT>
+      A: Unknown.__repr__ | B: layout closing line 46: def __init__(self, name):
+  tokens 50-50 A=P B=H: <DEDENT>
+      A: class Cell: <head> ++ tail | B: layout closing line 49: def __repr__(self):
+  tokens 81-81 A=H B=P: <DEDENT>
+      A: Cell.__repr__ | B: layout closing line 56: def __init__(self, head, tail):
+  tokens 103-103 A=P B=H: <DEDENT>
+      A: NIL: <> | B: layout closing line 59: def __repr__(self):
+  tokens 124-128 A=P B=S: known = { } <NEWLINE>
+      A: known: the bindings | B: line 66: known = {}
+  tokens 134-138 A=P B=S: failed = [ ] <NEWLINE>
+      A: failed: relations found not to hold | B: line 68: failed = []
+  tokens 180-206 A=S B=R: def place ( p ) : <NEWLINE> <INDENT> return known . get ( p . name ) if isinstan
+      A: place(): a place's value | B: line 76: def place(p):
+  tokens 207-207 A=P B=R: <DEDENT>
+      A: fresh(): a new unknown for rest (genu's case) | B: layout closing line 76: def place(p):
+  tokens 243-243 A=R B=P: <INDENT>
+      A: equal: known-places test / wait verdict | B: layout entering line 87: def equal(a, b):
+  tokens 270-270 A=P B=R: <INDENT>
+      A: equal: compute or test | B: layout entering line 92: if va is not None and vb is not None:
+  tokens 294-294 A=P B=R: <INDENT>
+      A: equal: compute or test | B: layout entering line 94: if va is not None:
+  tokens 315-327 A=P B=R: <INDENT> return [ ( a , vb ) ] , [ ] <NEWLINE>
+      A: equal: compute or test | B: layout entering line 96: if vb is not None:
+  tokens 342-342 A=R B=P: <INDENT>
+      A: genu: n not known: wait | B: layout entering line 101: def genu(n, s):
+  tokens 360-360 A=P B=R: <DEDENT>
+      A: genu, its one case: head equation and body goal | B: layout closing line 105: if n is None:
+  tokens 444-444 A=R B=P: <INDENT>
+      A: sum3: s not known so far: wait | B: layout entering line 119: while len(firsts) < 3:
+  tokens 455-455 A=P B=R: <DEDENT>
+      A: sum3: the head fails, or p + q + r = total | B: layout closing line 120: if t is None:
+  tokens 510-510 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 114: def sum3(s, total):
+  tokens 834-835 A=H B=S: <DEDENT> <DEDENT>
+      A: elements(): a sequence known to its end, as a list | B: layout closing line 180: with changed:
+  tokens 895-900 A=H B=R: def report ( ) : <NEWLINE>
+      A: report() | B: line 195: def report():
+  tokens 901-905 A=P B=R: <INDENT> if failed : <NEWLINE>
+      A: if failed: no solution | B: layout entering line 195: def report():
+  tokens 906-906 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 196: if failed:
+  tokens 914-915 A=P B=R: return <NEWLINE>
+      A: return: no answer | B: line 198: return
+  tokens 916-930 A=H B=R: <DEDENT> seq , total = elements ( S ) , place ( TOTAL ) <NEWLINE>
+      A: reading s and total for the report | B: layout closing line 196: if failed:
+  tokens 943-943 A=H B=R: <INDENT>
+      A: cp.answer | B: layout entering line 200: if seq is not None and total is not None:
+  tokens 969-970 A=H B=R: <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 200: if seq is not None and total is not None:
+  tokens 995-995 A=C B=H: <INDENT>
+      A: pose: each relation of the conjunction its own thread, in order | B: layout entering line 205: if s.k == 1:
+  tokens 1027-1027 A=C B=H: <DEDENT>
+      A: settle() | B: layout closing line 205: if s.k == 1:
+  tokens 1040-1043 A=H B=R: report ( ) <NEWLINE>
+      A: report() | B: line 210: report()
+
+## stdlib-concurrency/P09e.py: 773 tokens, agreement 391/773 (50.6%)
+  class  A      B
+  P      167    145
+  C      14     209
+  R      112    287
+  S      347    0
+  H      133    132
+  tokens 0-2 A=S B=C: import threading <NEWLINE>
+      A: import threading, for the relation threads | B: line 25: import threading
+  tokens 19-26 A=S B=C: changed = threading . Condition ( ) <NEWLINE>
+      A: changed | B: line 35: changed = threading.Condition()
+  tokens 32-36 A=S B=R: waiting = [ ] <NEWLINE>
+      A: waiting | B: line 37: waiting = []
+  tokens 37-41 A=P B=R: failed = [ ] <NEWLINE>
+      A: failed | B: line 38: failed = []
+  tokens 42-53 A=S B=C: count = { "busy" : 0 , "news" : 0 } <NEWLINE>
+      A: count | B: line 39: count = {"busy": 0, "news": 0}
+  tokens 90-90 A=R B=P: <INDENT>
+      A: plus: known-places test / wait verdict | B: layout entering line 46: def plus(a, b, c):
+  tokens 110-110 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 51: if c is None:
+  tokens 120-120 A=P B=R: <DEDENT>
+      A: plus: compute or test | B: layout closing line 51: if c is None:
+  tokens 151-151 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 54: if a is not None and c is not None:
+  tokens 174-174 A=P B=R: <INDENT>
+      A: plus: compute or test | B: layout entering line 56: if b is not None and c is not None:
+  tokens 200-200 A=R B=P: <INDENT>
+      A: minus: known-places test / wait verdict | B: layout entering line 61: def minus(a, b, c):
+  tokens 220-220 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 64: if c is None:
+  tokens 230-230 A=P B=R: <DEDENT>
+      A: minus: compute or test | B: layout closing line 64: if c is None:
+  tokens 261-261 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 67: if a is not None and c is not None:
+  tokens 284-284 A=P B=R: <INDENT>
+      A: minus: compute or test | B: layout entering line 69: if b is not None and c is not None:
+  tokens 298-298 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 61: def minus(a, b, c):
+  tokens 324-349 A=S B=R: def place ( p ) : <NEWLINE> <INDENT> return known . get ( p ) if isinstance ( p 
+      A: place / told / hold / pose / settle | B: line 79: def place(p):
+  tokens 350-386 A=S B=C: def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count [ "busy"
+      A: place / told / hold / pose / settle | B: line 84: def told():
+  tokens 387-400 A=S B=R: def hold ( rel ) : <NEWLINE> <INDENT> name , places = rel <NEWLINE>
+      A: place / told / hold / pose / settle | B: line 93: def hold(rel):
+  tokens 401-405 A=S B=C: with changed : <NEWLINE> <INDENT>
+      A: place / told / hold / pose / settle | B: line 96: with changed:
+  tokens 406-439 A=S B=R: while ( outcome := EVALUATOR [ name ] ( * [ place ( p ) for p in places ] ) ) is
+      A: place / told / hold / pose / settle | B: line 97: while (outcome := EVALUATOR[name](*[place(p) for p in places]
+  tokens 440-473 A=S B=C: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: place / told / hold / pose / settle | B: line 99: count["busy"] -= 1
+  tokens 474-544 A=S B=R: <DEDENT> if outcome is False : <NEWLINE> <INDENT> failed . append ( rel ) <NEWLI
+      A: place / told / hold / pose / settle | B: layout closing line 97: while (outcome := EVALUATOR[name](*[place(p) f
+  tokens 545-554 A=S B=C: if new : <NEWLINE> <INDENT> told ( ) <NEWLINE> <DEDENT>
+      A: place / told / hold / pose / settle | B: line 111: if new:
+  tokens 555-555 A=S B=R: <DEDENT>
+      A: place / told / hold / pose / settle | B: layout closing line 105: else:
+  tokens 556-569 A=S B=C: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> <DEDENT>
+      A: place / told / hold / pose / settle | B: line 113: count["busy"] -= 1
+  tokens 570-570 A=S B=R: <DEDENT>
+      A: place / told / hold / pose / settle | B: layout closing line 93: def hold(rel):
+  tokens 571-642 A=S B=C: def pose ( rel ) : <NEWLINE> <INDENT> with changed : <NEWLINE> <INDENT> count [ 
+      A: place / told / hold / pose / settle | B: line 117: def pose(rel):
+  tokens 643-644 A=H B=C: <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 126: with changed:
+  tokens 669-669 A=C B=H: <INDENT>
+      A: pose: each relation its own thread | B: layout entering line 131: if s.k == 1:
+  tokens 677-677 A=P B=H: ,
+      A: the relation y + <k> = x | B: line 132: stage constants/parameters read
+  tokens 697-697 A=P B=H: ,
+      A: the relation x - <k> = y | B: line 133: stage constants/parameters read
+  tokens 710-710 A=C B=H: <DEDENT>
+      A: settle() | B: layout closing line 131: if s.k == 1:
+  tokens 722-722 A=P B=H: <INDENT>
+      A: if failed: no solution | B: layout entering line 135: if not s.replay:
+  tokens 723-726 A=P B=R: if failed : <NEWLINE>
+      A: if failed: no solution | B: line 136: if failed:
+  tokens 727-727 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 136: if failed:
+  tokens 735-739 A=P B=R: <DEDENT> elif known : <NEWLINE>
+      A: elif known | B: layout closing line 136: if failed:
+  tokens 740-740 A=H B=R: <INDENT>
+      A: cp.answer, rendering | B: layout entering line 138: elif known:
+  tokens 770-770 A=H B=R: <DEDENT>
+      A: cp.answer, rendering | B: layout closing line 138: elif known:
+
+## stdlib-concurrency/P10b.py: 488 tokens, agreement 267/488 (54.7%)
+  class  A      B
+  P      105    97
+  C      10     198
+  R      29     43
+  S      195    0
+  H      149    150
+  tokens 0-2 A=S B=C: import threading <NEWLINE>
+      A: import threading, for the relation threads | B: line 29: import threading
+  tokens 27-34 A=S B=C: changed = threading . Condition ( ) <NEWLINE>
+      A: changed | B: line 44: changed = threading.Condition()
+  tokens 40-44 A=S B=R: waiting = [ ] <NEWLINE>
+      A: waiting | B: line 46: waiting = []
+  tokens 45-56 A=S B=C: count = { "busy" : 0 , "news" : 0 } <NEWLINE>
+      A: count | B: line 47: count = {"busy": 0, "news": 0}
+  tokens 88-88 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 53: def times(a, b):
+  tokens 98-133 A=S B=C: def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count [ "busy"
+      A: told() | B: line 61: def told():
+  tokens 134-134 A=R B=C: <DEDENT>
+      A: hold(): the thread of the standing relation | B: layout closing line 61: def told():
+  tokens 151-154 A=S B=C: with changed : <NEWLINE>
+      A: hold(): with changed | B: line 75: with changed:
+  tokens 155-160 A=R B=C: <INDENT> while True : <NEWLINE> <INDENT>
+      A: hold(): at all times, when the source is known | B: layout entering line 75: with changed:
+  tokens 167-167 A=P B=R: <INDENT>
+      A: hold(): target from source by the relation | B: layout entering line 77: if source in quantities:
+  tokens 183-190 A=S B=R: <DEDENT> waiting . append ( rel ) <NEWLINE>
+      A: hold(): waiting for the next change (the threads' protocol) | B: layout closing line 77: if source in quantities:
+  tokens 191-226 A=S B=C: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold(): waiting for the next change (the threads' protocol) | B: line 80: count["busy"] -= 1
+  tokens 227-227 A=S B=R: <DEDENT>
+      A: pose() | B: layout closing line 70: def hold(rel):
+  tokens 228-272 A=S B=C: def pose ( rel ) : <NEWLINE> <INDENT> with changed : <NEWLINE> <INDENT> count [ 
+      A: pose() | B: line 86: def pose(rel):
+  tokens 273-273 A=P B=C: <DEDENT>
+      A: become(): a replacing stage | B: layout closing line 86: def pose(rel):
+  tokens 283-283 A=S B=P: <INDENT>
+      A: become(): with changed | B: layout entering line 93: def become(name, value):
+  tokens 284-287 A=S B=C: with changed : <NEWLINE>
+      A: become(): with changed | B: line 96: with changed:
+  tokens 288-288 A=P B=C: <INDENT>
+      A: become(): the quantity takes its new value | B: layout entering line 96: with changed:
+  tokens 296-300 A=S B=C: told ( ) <NEWLINE> <DEDENT>
+      A: become(): telling the waiting threads | B: line 98: told()
+  tokens 301-301 A=S B=P: <DEDENT>
+      A: settle() | B: layout closing line 93: def become(name, value):
+  tokens 302-327 A=S B=C: def settle ( ) : <NEWLINE> <INDENT> with changed : <NEWLINE> <INDENT> changed . 
+      A: settle() | B: line 101: def settle():
+  tokens 328-329 A=H B=C: <DEDENT> <DEDENT>
+      A: stage loop | B: layout closing line 103: with changed:
+  tokens 354-354 A=C B=H: <INDENT>
+      A: pose: the standing relation its own thread | B: layout entering line 108: if s.k == 1:
+  tokens 380-380 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 110: elif s.k == 2:
+  tokens 384-384 A=P B=H: ,
+      A: b becomes <k> | B: line 111: stage constants/parameters read
+  tokens 402-402 A=P B=H: <INDENT>
+      A: b becomes b + <k> | B: layout entering line 112: elif s.k == 3:
+  tokens 429-429 A=P B=H: <INDENT>
+      A: b becomes <k> | B: layout entering line 114: elif s.k == 4:
+  tokens 433-433 A=P B=H: ,
+      A: b becomes <k> | B: line 115: stage constants/parameters read
+  tokens 442-442 A=C B=H: <DEDENT>
+      A: settle() | B: layout closing line 114: elif s.k == 4:
+  tokens 452-452 A=H B=R: and
+      A: if not s.replay | B: line 117: if not s.replay and quantities:
+  tokens 453-455 A=P B=R: quantities : <NEWLINE>
+      A: and quantities | B: line 117: if not s.replay and quantities:
+  tokens 456-456 A=H B=R: <INDENT>
+      A: cp.answer, rendering | B: layout entering line 117: if not s.replay and quantities:
+  tokens 486-486 A=H B=R: <DEDENT>
+      A: cp.answer, rendering | B: layout closing line 117: if not s.replay and quantities:
+
+## stdlib-concurrency/P10d.py: 739 tokens, agreement 407/739 (55.1%)
+  class  A      B
+  P      168    106
+  C      21     227
+  R      181    266
+  S      218    0
+  H      151    140
+  tokens 0-2 A=S B=C: import threading <NEWLINE>
+      A: import threading, for the relation threads | B: line 33: import threading
+  tokens 17-24 A=S B=C: changed = threading . Condition ( ) <NEWLINE>
+      A: changed | B: line 42: changed = threading.Condition()
+  tokens 25-29 A=P B=R: values = [ ] <NEWLINE>
+      A: values: the values of x still held | B: line 43: values = []
+  tokens 35-39 A=S B=R: waiting = [ ] <NEWLINE>
+      A: waiting | B: line 45: waiting = []
+  tokens 45-56 A=S B=C: count = { "busy" : 0 , "news" : 0 } <NEWLINE>
+      A: count | B: line 47: count = {"busy": 0, "news": 0}
+  tokens 127-127 A=H B=P: <DEDENT>
+      A: cp.relations | B: layout closing line 62: def greater(v, k):
+  tokens 159-159 A=P B=R: <INDENT>
+      A: holds(): the relation on a known value | B: layout entering line 72: if name == "pick":
+  tokens 166-166 A=P B=R: <DEDENT>
+      A: holds(): the relation on a known value | B: layout closing line 72: if name == "pick":
+  tokens 192-198 A=P B=R: <INDENT> return tuple ( facts ) <NEWLINE>
+      A: source(): pick's facts | B: layout entering line 79: if name == "pick":
+  tokens 203-203 A=S B=R: <DEDENT>
+      A: told() | B: layout closing line 77: def source(name, k):
+  tokens 204-239 A=S B=C: def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count [ "busy"
+      A: told() | B: line 84: def told():
+  tokens 240-240 A=R B=C: <DEDENT>
+      A: hold(): the thread of one relation on x | B: layout closing line 84: def told():
+  tokens 255-258 A=S B=C: with changed : <NEWLINE>
+      A: hold(): with changed | B: line 98: with changed:
+  tokens 259-259 A=R B=C: <INDENT>
+      A: hold(): wait while x has no values and the relation gives none | B: layout entering line 98: with changed:
+  tokens 274-281 A=S B=R: <INDENT> waiting . append ( rel ) <NEWLINE>
+      A: hold(): waiting (the threads' protocol) | B: layout entering line 99: while not x_has_values and source(name, k) is
+  tokens 282-315 A=S B=C: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold(): waiting (the threads' protocol) | B: line 101: count["busy"] -= 1
+  tokens 322-334 A=P B=R: <INDENT> values [ : ] = source ( name , k ) <NEWLINE>
+      A: hold(): x takes pick's values | B: layout entering line 105: if not x_has_values:
+  tokens 342-345 A=S B=C: told ( ) <NEWLINE>
+      A: hold(): telling the waiting threads | B: line 108: told()
+  tokens 346-353 A=P B=R: <DEDENT> keep ( name , k ) <NEWLINE>
+      A: hold(): deciding the relation on x's values | B: layout closing line 105: if not x_has_values:
+  tokens 354-367 A=S B=C: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> <DEDENT>
+      A: hold(): no longer busy (the threads' protocol) | B: line 110: count["busy"] -= 1
+  tokens 368-368 A=S B=R: <DEDENT>
+      A: arrive() (pose) / settle() | B: layout closing line 93: def hold(rel):
+  tokens 369-448 A=S B=C: def arrive ( name , k = None ) : <NEWLINE> <INDENT> with changed : <NEWLINE> <IN
+      A: arrive() (pose) / settle() | B: line 114: def arrive(name, k=None):
+  tokens 449-450 A=P B=C: <DEDENT> <DEDENT>
+      A: keep(): the values for which the relation holds | B: layout closing line 123: with changed:
+  tokens 483-483 A=R B=P: <DEDENT>
+      A: tell(): def | B: layout closing line 127: def keep(name, k):
+  tokens 498-501 A=S B=C: with changed : <NEWLINE>
+      A: tell(): with changed | B: line 134: with changed:
+  tokens 502-502 A=R B=C: <INDENT>
+      A: tell(): recording the information by stage | B: layout entering line 134: with changed:
+  tokens 517-523 A=C B=R: arrive ( name , k ) <NEWLINE>
+      A: tell(): giving the relation its thread | B: line 136: arrive(name, k)
+  tokens 533-536 A=S B=C: with changed : <NEWLINE>
+      A: withdraw(): with changed | B: line 144: with changed:
+  tokens 537-537 A=R B=C: <INDENT>
+      A: withdraw(): restating from the information not withdrawn | B: layout entering line 144: with changed:
+  tokens 558-569 A=R B=C: values . clear ( ) <NEWLINE> x_has_values . clear ( ) <NEWLINE>
+      A: withdraw(): restating from the information not withdrawn | B: line 146: values.clear()
+  tokens 577-577 A=R B=C: <DEDENT>
+      A: withdraw(): restating from the information not withdrawn | B: layout closing line 144: with changed:
+  tokens 588-595 A=C B=R: <INDENT> arrive ( name , k ) <NEWLINE>
+      A: withdraw(): giving each relation again its thread | B: layout entering line 149: for _, name, k in again:
+  tokens 596-603 A=H B=R: <DEDENT> <DEDENT> def report ( ) : <NEWLINE>
+      A: report() | B: layout closing line 149: for _, name, k in again:
+  tokens 604-611 A=P B=R: <INDENT> if x_has_values and not values : <NEWLINE>
+      A: report(): no solution when x has values and none survives | B: layout entering line 153: def report():
+  tokens 612-612 A=H B=R: <INDENT>
+      A: print no solution | B: layout entering line 154: if x_has_values and not values:
+  tokens 618-618 A=H B=R: <DEDENT>
+      A: report(): each value as an answer | B: layout closing line 154: if x_has_values and not values:
+  tokens 636-636 A=H B=R: <DEDENT>
+      A: stage loop | B: layout closing line 153: def report():
+  tokens 661-661 A=P B=H: <INDENT>
+      A: pick's facts, as stage 1 gives them | B: layout entering line 161: if s.k == 1:
+  tokens 674-676 A=P B=R: tell ( 1
+      A: stage 1: pick(x) | B: line 163: tell(1, "pick")
+  tokens 679-680 A=P B=R: ) <NEWLINE>
+      A: stage 1: pick(x) | B: line 163: tell(1, "pick")
+  tokens 690-690 A=P B=H: <INDENT>
+      A: stage 2: x > <k> | B: layout entering line 164: elif s.k == 2:
+  tokens 691-693 A=P B=R: tell ( 2
+      A: stage 2: x > <k> | B: line 165: tell(2, ">", s.constants["GREATER_THAN"])
+  tokens 696-696 A=P B=H: ,
+      A: stage 2: x > <k> | B: line 165: stage constants/parameters read
+  tokens 703-704 A=P B=R: ) <NEWLINE>
+      A: stage 2: x > <k> | B: line 165: tell(2, ">", s.constants["GREATER_THAN"])
+  tokens 714-714 A=P B=H: <INDENT>
+      A: stage 3: withdraw the relation of stage 2 | B: layout entering line 166: elif s.k == 3:
+  tokens 715-719 A=P B=R: withdraw ( 2 ) <NEWLINE>
+      A: stage 3: withdraw the relation of stage 2 | B: line 167: withdraw(2)
+  tokens 720-720 A=C B=H: <DEDENT>
+      A: settle() | B: layout closing line 166: elif s.k == 3:
+  tokens 733-736 A=H B=R: report ( ) <NEWLINE>
+      A: report() | B: line 170: report()
+
+## per system
+  core: 5415/6271 (86.3%)
+  extended: 9764/10911 (89.5%)
+  stdlib-concurrency: 2996/4143 (72.3%)
+
+## disagreements by (A, B) class
+  S→C: 922
+  S→R: 400
+  P→R: 362
+  P→C: 267
+  H→R: 261
+  R→C: 236
+  P→H: 194
+  H→C: 151
+  H→P: 135
+  P→S: 105
+  C→R: 31
+  R→P: 28
+  R→H: 20
+  C→H: 15
+  H→S: 15
+  C→P: 6
+  S→P: 2

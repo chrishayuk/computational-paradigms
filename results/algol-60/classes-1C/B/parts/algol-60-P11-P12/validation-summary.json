@@ -1,0 +1,96 @@
+{
+  "distinct_texts": 10,
+  "program_paths": 84,
+  "tokens": {
+    "P": 1247,
+    "C": 275,
+    "R": 530,
+    "S": 106,
+    "H": 5052
+  },
+  "per_text": {
+    "report/P11a.alg": {
+      "P": 71,
+      "C": 39,
+      "R": 0,
+      "S": 0,
+      "H": 451
+    },
+    "report/P11b.alg": {
+      "P": 70,
+      "C": 38,
+      "R": 0,
+      "S": 0,
+      "H": 451
+    },
+    "report/P11c.alg": {
+      "P": 74,
+      "C": 17,
+      "R": 127,
+      "S": 0,
+      "H": 653
+    },
+    "report/P11d.alg": {
+      "P": 74,
+      "C": 17,
+      "R": 127,
+      "S": 0,
+      "H": 653
+    },
+    "report/P12a.n12.all.alg": {
+      "P": 357,
+      "C": 27,
+      "R": 11,
+      "S": 53,
+      "H": 453
+    },
+    "x1/P11a.a60": {
+      "P": 62,
+      "C": 39,
+      "R": 0,
+      "S": 0,
+      "H": 405
+    },
+    "x1/P11b.a60": {
+      "P": 61,
+      "C": 38,
+      "R": 0,
+      "S": 0,
+      "H": 405
+    },
+    "x1/P11c.a60": {
+      "P": 65,
+      "C": 17,
+      "R": 127,
+      "S": 0,
+      "H": 583
+    },
+    "x1/P11d.a60": {
+      "P": 65,
+      "C": 17,
+      "R": 127,
+      "S": 0,
+      "H": 583
+    },
+    "x1/P12a.n12.all.a60": {
+      "P": 348,
+      "C": 26,
+      "R": 11,
+      "S": 53,
+      "H": 415
+    }
+  },
+  "behaviour_records": 84,
+  "behaviour_stages": 96,
+  "semantics": {
+    "complete": 72,
+    "none reported": 24
+  },
+  "execution": {
+    "finished": 72,
+    "error": 24
+  },
+  "measurement_records_compared": 112,
+  "mode_differences": 0,
+  "harness_fault_entries": 0
+}

@@ -1,0 +1,11 @@
+stages: 156 (A 156, B 156)
+  reached: 156/156
+  semantic: 156/156
+  representation: 154/156
+  simplification: 156/156
+  identical_to_posed: 156/156
+  execution_state: 156/156
+
+differences (stage, axis, A, B):
+   | ('extended', 'P09d', 'P09d.py', 1) | representation | [None, 'solved form'] | [None, 'explicit']
+   | ('stdlib-concurrency', 'P09d', 'P09d.py', 1) | representation | [None, 'solved form'] | [None, 'explicit']

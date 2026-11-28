@@ -54,7 +54,7 @@ def texts(system):
     """path of every program -> the path it is classed under."""
     m = {}
     lines = []
-    for name in ("TEXTS.tsv", "TEXTS-1B.tsv"):        # batch 1A's distinct texts, then batch 1B's
+    for name in ("TEXTS.tsv", "TEXTS-1B.tsv", "TEXTS-1C.tsv"):   # the distinct texts of batches 1A, 1B and 1C
         if os.path.exists(f"results/{system}/tokens/{name}"):
             lines += list(open(f"results/{system}/tokens/{name}"))[1:]
     for line in lines:

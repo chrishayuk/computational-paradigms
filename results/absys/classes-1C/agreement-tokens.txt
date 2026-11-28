@@ -1,0 +1,157 @@
+
+## absys/P09a.ab1: 113 tokens, agreement 113/113 (100.0%)
+  class  A      B
+  P      113    113
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P09b.ab1: 20 tokens, agreement 20/20 (100.0%)
+  class  A      B
+  P      20     20
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P09c.ab1: 162 tokens, agreement 150/162 (92.6%)
+  class  A      B
+  P      91     79
+  C      0      0
+  R      71     83
+  S      0      0
+  H      0      0
+  tokens 89-94 A=P B=R: gt ( g , gmax )
+      A: case 1 conjunct n > 5 written gt(g, gmax) | B: greater-than comparison replacement
+  tokens 103-108 A=P B=R: le ( g , gmax )
+      A: case 2 conjunct n <= 5 written le(g, gmax) | B: less-or-equal comparison replacement
+
+## absys/P09d.ab1: 69 tokens, agreement 69/69 (100.0%)
+  class  A      B
+  P      69     69
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P09e.ab1: 18 tokens, agreement 18/18 (100.0%)
+  class  A      B
+  P      18     18
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P10a.ab1: 47 tokens, agreement 47/47 (100.0%)
+  class  A      B
+  P      20     20
+  C      0      0
+  R      27     27
+  S      0      0
+  H      0      0
+
+## absys/P10b.ab1: 102 tokens, agreement 102/102 (100.0%)
+  class  A      B
+  P      28     28
+  C      2      2
+  R      72     72
+  S      0      0
+  H      0      0
+
+## absys/P10c.ab1: 64 tokens, agreement 64/64 (100.0%)
+  class  A      B
+  P      28     28
+  C      0      0
+  R      36     36
+  S      0      0
+  H      0      0
+
+## absys/P10d.ab1: 83 tokens, agreement 77/83 (92.8%)
+  class  A      B
+  P      41     35
+  C      0      0
+  R      42     48
+  S      0      0
+  H      0      0
+  tokens 73-78 A=P B=R: gt ( x , gtk )
+      A: stage 2: x > gtk written gt(x, gtk) | B: greater-than replacement call
+
+## absys/P11c.abs: 52 tokens, agreement 47/52 (90.4%)
+  class  A      B
+  P      52     47
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      5
+  tokens 38-41 A=P B=H: , tout ( "emit"
+      A: stage 1: , tout("emit", x), the emit stub on x | B: emit adapter opening, including preceding goal separator
+  tokens 44-44 A=P B=H: )
+      A: stage 1: , tout("emit", x), the emit stub on x | B: emit adapter closing
+
+## absys/P11d.abs: 52 tokens, agreement 47/52 (90.4%)
+  class  A      B
+  P      52     47
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      5
+  tokens 38-41 A=P B=H: , tout ( "emit"
+      A: stage 1: , tout("emit", x), the emit stub on x | B: emit adapter opening, including preceding goal separator
+  tokens 44-44 A=P B=H: )
+      A: stage 1: , tout("emit", x), the emit stub on x | B: emit adapter closing
+
+## absys/variants/P09a.AB.or.ab1: 116 tokens, agreement 116/116 (100.0%)
+  class  A      B
+  P      113    113
+  C      0      0
+  R      3      3
+  S      0      0
+  H      0      0
+
+## absys/variants/P09a.BA.or.ab1: 116 tokens, agreement 116/116 (100.0%)
+  class  A      B
+  P      113    113
+  C      0      0
+  R      3      3
+  S      0      0
+  H      0      0
+
+## absys/variants/P09b.or.ab1: 23 tokens, agreement 23/23 (100.0%)
+  class  A      B
+  P      20     20
+  C      0      0
+  R      3      3
+  S      0      0
+  H      0      0
+
+## absys/variants/P11a.ne.abs: 53 tokens, agreement 48/53 (90.6%)
+  class  A      B
+  P      43     38
+  C      0      0
+  R      10     10
+  S      0      0
+  H      0      5
+  tokens 45-48 A=P B=H: , tout ( "emit"
+      A: , tout("emit", x) | B: emit adapter opening, including preceding goal separator
+  tokens 51-51 A=P B=H: )
+      A: , tout("emit", x) | B: emit adapter closing
+
+## absys/variants/P11b.ne.abs: 53 tokens, agreement 48/53 (90.6%)
+  class  A      B
+  P      43     38
+  C      0      0
+  R      10     10
+  S      0      0
+  H      0      5
+  tokens 38-41 A=P B=H: , tout ( "emit"
+      A: , tout("emit", x) | B: emit adapter opening, including preceding goal separator
+  tokens 44-44 A=P B=H: )
+      A: , tout("emit", x) | B: emit adapter closing
+
+## per system
+  absys: 1105/1143 (96.7%)
+
+## disagreements by (A, B) class
+  P→H: 20
+  P→R: 18

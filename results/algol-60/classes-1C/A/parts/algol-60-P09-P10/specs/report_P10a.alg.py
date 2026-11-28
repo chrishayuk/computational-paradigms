@@ -1,0 +1,17 @@
+S = [
+(0,'P','program block begin','rule 10'),
+(1,'H','declarations of harness words n, cap, m, i, code, k','harness README 2.7.5'),
+(13,'P','declarations e (stage constant), b (the named quantity)','rule 1'),
+(17,'R','declaration Boolean bk: whether b has a value','rule 19 (record of which places are known); extra state the problem does not give'),
+(20,'H','instance line and code loop','harness README 2.7.1'),
+(57,'R','bk := false','as above'),
+(61,'H','message loop, message reads, dispatch if k = 1 then begin','harness README 2.7.2'),
+(90,'P','stage 1: ininteger(0, e); b := e','stage information; rule 1'),
+(100,'R','bk := true','as above'),
+(104,'H','end; dispatch else if k = 2 then begin','harness README 2.7.2'),
+(112,'P','stage 2: ininteger(0, e); b := b + e','rule 1'),
+(124,'H','end; dispatch else if k = 3 then begin','harness README 2.7.2'),
+(132,'P','stage 3: ininteger(0, e); b := e','rule 1'),
+(142,'H','end; answer print, observe block, end of loop','harness README 2.7.3; rule 13'),
+(231,'P','program end','rule 10'),
+]

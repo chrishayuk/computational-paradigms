@@ -1,0 +1,78 @@
+# Independent classifier B: ALGOL 60, batch 1C, P11–P12
+
+This classification was produced independently from the permitted problem statements, rules, programs, frozen token tables, job logs and raw records. I did not write the programs and did not consult the other classifier. No ALGOL program, system executable or repository checking tool was run. `classify.py` is my own record checker and classification generator; it runs only in this output directory. `validation-summary.json` records its coverage checks and totals.
+
+## Reading boundary and verification
+
+There was one out-of-list access at the beginning: I ran `git rev-parse --short HEAD` to check the stated commit. It returned `bd43b8d`. That command consulted Git metadata under the source repository's `.git`, which was not in the permitted reading list. The tool did not record the individual metadata filenames Git opened, so I cannot give an exact file-level inventory of that implicit access. I stopped using Git after this command; no metadata content other than the commit identifier was displayed. No prohibited classes, earlier results, calibration, reviews, variants, transcripts, author README/audits, other systems' files, private folders or web material were read. Apart from that metadata check, all task-data reads were within the permitted list or this output directory. No source-repository file was modified.
+
+The checker matches all 196 P11/P12 jobs in the six batch-1C logs to records: 84 behaviour records and 112 measurement records. It checks the recorded program and constants hashes against the permitted files, validates the constants against the problem's stated facts, and compares every cost/storage stage with its corresponding behaviour stage. There are 128 such stage comparisons. No `INVALID` records, harness-fault entries, measurement reruns or `raw-rerun-m2` records exist for these jobs; the permitted `rerun-m2-log.tsv` path is absent. There are no additional named program variants in these logs.
+
+The token manifest has ten distinct texts and 84 program paths. Every alias was checked against its representative, both as source bytes and as frozen token rows. Every representative's frozen indices are covered once, without gaps or overlap. No program was retokenized. There is no configuration-dependent token-class exception: x1sim shares x1's token classes even though its execution differs.
+
+## Difficult token boundaries
+
+**P12's procedural search versus its mathematical cases.** P12 explicitly says that a hand-written search is S. The `choice` procedure supplies a continuation-driven depth-first traversal in a configuration with no search mechanism. Its procedure/traversal scaffolding, callback invocation, recursive traversal calls and initial traversal invocation are S. Nested empty-sequence construction, the `n > 0` case test, head/tail construction and the `l`/`r` case values remain P under rules 2, 10 and 15. Measurement counters remain H. These choices do not use the author's description as a classification rule.
+
+The `found` argument is extra vocabulary, so its formal declaration and actual arguments are R under rules 3 and 5, even though it connects the S search machinery. In `report/P12a.n12.all.alg` those R tokens are 321–322, 332–334, 424–425, 457–458 and 746–747. The corresponding x1 ranges are 300–301, 311–313, 403–404, 436–437 and 697–698. Each text has 11 R tokens. The search has 53 S tokens per configuration. The exact possibly fragmented S ranges are listed in `s_mechanisms`, including separators assigned by rule 20.
+
+The escape from a deep recursion for an any-one query is C: report 658–664 and the target 749–751; x1 616–621 and 700–702. The query cap test and its declarations are C too. Releasing the last constructed cell by decrementing `top` is C under rule 16: report 466–471, x1 445–450. These boundaries include the preceding semicolon where rule 20 assigns it to the following construct. The prefix of the procedure declaration can consequently acquire a separator from the preceding definition.
+
+An alternative interpretation would class the entire recursive `choice` definition P under mode-faithful transcription, since it follows the two cases. I reject that interpretation because it would erase P12's explicit special rule about implementing search. Rule 10 permits separating the P case work from S traversal. The precise boundary between a recursive transcription and a supplied search is nevertheless the most classification-sensitive token judgement here. The frozen rules would be clearer with a worked imperative search example; I have not changed them.
+
+**Stated facts versus an invented generator.** P11's loops traverse exactly the supplied finite pick facts, and `accept` in P12 matches exactly the supplied accept facts. The fact contents, input and matching are P under rule 6; P11's first-success loop and cursor control are C. P11 does not provide a reusable continuation-based search mechanism. I do not treat every loop over stated facts as S. In P12, the separate recursive enumeration of unknown sequences is the search mechanism subject to its explicit S rule.
+
+**Holding staged information.** P11c/d's readiness flags, retained cursor and revalidation procedure are specific to these pick/commit/disequality relations, hence R under rule 19, rather than a general constraint mechanism S. Inside `holds`, the known comparisons are P: report and x1 P11c 72–74 (`x != c2`) and 83–85 (`x = cv`); P11d has equality at 72–74 and disequality at 83–85. The wrappers testing whether each relation has arrived are R. This is the rule-19 evaluator split, not a separately written direction function under rule 14.
+
+**Effects, commitment and printing.** The calls `emit(xv)` are P because P11 expressly makes emit a problem construct. The implementation of the fixed emit stub is H, as required by the harness contract. Decimal printing, sequence printing, answer/observe blocks and counters used only to report operations are H under rule 13. Large output adapters therefore account for much of H; their size is not evidence of computational support. Selecting and storing the committed value is P; readiness flags surrounding that operation are R. There is no program-arranged deferral of effects to commitment, and no control code that successfully prevents extra effects in P11b/c/d.
+
+**Separators and nested constructs.** All separators between differently assigned constructs inherit the following construct under rule 20. Nested constructs retain their own classes under rule 10. Some spans therefore consist of a separator alone, or of a surrounding construct split by its nested P or H operation. Mixed declarations are divided by declared variable role. End labels and block delimiters are included with their respective constructs. No omitted case, omitted conjunct, presentation-order move or relation-replacing built-in was found. Sequence construction and equality are encoding operations P under the systems file and rule 15.
+
+## Outcomes and observations that required judgement
+
+Every P11 stage is semantically complete for its any-one query. Reporting one valid provisional value is sufficient; it does not claim to enumerate all surviving values. The explicit value is more informative than the accompanying stored relations, so no P11 stage is classified as a residual. P11d stage 3 explicitly reports no solution, correctly: the committed value is 1 and the added disequality excludes 1. Its representation is the explicit empty solution set, not an undetected inconsistent residual. No residual or solved-form equivalence judgement is needed in this batch. The JSON nevertheless gives a direct equivalence explanation for each explicit report; residual-only fields are null.
+
+P11 execution state is finished at each stage. P11c/d keep untried facts: P11c has 2, 1 and 1 after stages 1, 2 and 3; P11d has 2, 2 and 0. The prose observe output reports these even though it does not print machine-readable `[alternatives ...]` tags. I record the counts and the backtracking arrangement explicitly rather than treating the parser's null alternative count as zero. The current stage's any-one query has already been answered, however, and no relation of that query is waiting on an unknown. The contract has no operation to request another answer from these programs (harness question A10). I therefore use neither suspended nor alternatives pending merely because data is retained for a later stage's revalidation. This is a real ambiguity in the phrase "holds work that later information may resume": reading any retained cursor as suspended would change nine stage-state entries. The rule's stage-specific wording for finished, and the distinction between retained alternatives and execution state, decide my reading.
+
+After commitment, untried facts remain stored but cannot satisfy the committed equality; they are not additional valid committed outcomes. In P11c stage 2, the reported 1 is replaced by 2, while its irreversible log entry survives. In P11d stage 3, the answer 1 is withdrawn and no solution is printed, but the committed value and its effect remain.
+
+P11's effects are a separate axis from semantics. All three configurations show:
+
+| Instance | Committed value | Final L | Effects | Timing |
+|---|---:|---|---|---|
+| P11a | 2 | 2 | exact | emitted before the answer report that commits it |
+| P11b | 2 | 1, 2 | extra | both entries precede commitment; 1 fails the following test |
+| P11c | 2 | 1, 2 | extra | 1 at stage 1 and 2 at stage 2, both before stage-3 commitment |
+| P11d | 1 | 1, 2, 3 | extra | 1 before stage-2 commitment; 2 and 3 after commitment, at stage 3 |
+
+P11d is not exact merely because the committed 1 remains valid as an effect despite contradiction. Its attempt to advance through alternatives performs two additional effects for outcomes that were never committed. The JSON gives the final effects class on each stage entry as `class_at_problem_end`, alongside the log prefix at that stage and every entry's timing; it does not claim that a precommit stage already had a final effects obligation.
+
+In report and x1, later P11 stages are marked incremental but run in recreated processes for the budget. Their notes say earlier output was checked identical and earlier emits were not logged again. P11d's commit stage is carried out again in the recreated prefix of stage 3. I retain those notes and judge the actual classification L, without inventing duplicate effects for the suppressed prefix runs. This is the declared A2 confound, not a claim that the processes were physically continuous. x1sim actually uses one live process. Input exhaustion after `[end]` in report/x1 is the harness's expected shutdown, not a stage error. Manual actions are empty throughout.
+
+All 48 P12 stages in report and x1 are complete and explicit. For all mode, P12a reports the all-l sequence then `(r)`; the other subproblems report their sole accepted sequence. For any-one mode, P12a/d find the all-l sequence after n+1 candidates, P12b finds `(r)` after 2^n+1, and P12c finds the all-r sequence after 2^(n+1)-1. All-mode finishes after 2^(n+1)-1 candidates (511, 8191, 131071). The checker compares the returned sequences with the problem's valid sets and verifies candidate totals; it does not execute a substitute search.
+
+P12's arrays and recursive calls encode sequences, with 0 for empty and 1/2 for l/r. The observation gives peak partial-sequence depth and right-branch count, both at most n in these runs. They are program counts, not measured runtime-store peaks. Any-one's `goto done` unwinds its search recursion: its remaining branches cannot be resumed by asking for another answer. Thus finished, rather than alternatives pending, applies even when there were untried branches at the first solution. No suspended work remains. The printed boundary problem-alternative count is zero. No finite domain smaller than the problem's sequence domain was imposed on the tested inputs; the fixed fact-store capacities accommodate the stated facts at each n. This does not certify unseen hidden variants.
+
+All 24 P12 stages in x1sim were reached and ended with `Error: Unknown descriptor of formal procedure: 40600011\n`. They report no answers and no observe block, hence none reported/error, with null representation and no equivalence claim. This is an error of the reached stage, not an unreached later stage or a proof that valid outcomes are empty. Neither final unknown state nor suspended/alternative counts is observable after this error. The shared source's encoding is identified as source evidence only. x1sim has no cost or storage mode; their absence is unavailable, never zero.
+
+No behaviour-versus-measurement classification changes were found, so `mode_differences` is empty. Cost and storage runs agree in answers, observation text, reached status, semantic/representation/state classes and P11 log values. Available step/store figures vary by mode as intended and are not themselves classification differences. Null measurements remain unavailable under amendment 3.1. The original records all stand; there is no measurement rerun in this scope.
+
+## Expressibility and support
+
+For each of report, x1 and x1sim: P11a/b are expressible by mode-faithful transcription of the finite facts and ordered conjuncts; P11c/d are expressible with reformulation, using their problem-specific holding code. Their extra effects remain outcomes, not a reason to silently change the source order.
+
+P12a–d are not expressible in the configurations as listed, because the program of record supplies unlisted S search. The phase-4 inventory provides no such mechanism and directs that such a program be reported as a named variant of the core. I preserve its actual configuration, path and logged primary designation in the JSON while identifying its supporting mechanism explicitly; I have not fabricated another program or run name. This judgement concerns the supplied programs under the study's expressibility rules; it is not an impossibility theorem about alternate algorithms. The same judgement applies to both answer modes and every n. The simulator's descriptor error is recorded separately, rather than used as the reason for the S classification.
+
+`s_mechanisms` covers all 84 program paths. P11 entries say none. Each P12 entry identifies the program-supplied continuation-based depth-first search, its representative token text, exact S ranges and 53 tokens. It was not listed at phase 4. That is one shared mechanism counted once per configuration: 53 report + 53 x1 + 53 x1sim = 159 configuration-specific S tokens, despite the repeated per-program references. The unique-text total below is 106 because x1sim's identical text is classed under x1 once. The report I/O procedures are the external mechanisms already listed in the systems file; x1/x1sim use their X1 I/O procedures. No additional library mechanism was found. P08 is outside this batch, so `late_definition` is empty.
+
+## Totals
+
+Across the ten distinct texts, 7,210 frozen tokens are covered exactly once:
+
+| Class | P | C | R | S | H | Total |
+|---|---:|---:|---:|---:|---:|---:|
+| Unique-text total | 1,247 | 275 | 530 | 106 | 5,052 | 7,210 |
+| report texts | 646 | 138 | 265 | 53 | 2,661 | 3,763 |
+| x1 texts, also used by x1sim | 601 | 137 | 265 | 53 | 2,391 | 3,447 |
+
+The 84 behaviour runs contain 96 stages: 72 complete/explicit/finished and 24 none-reported/error (all x1sim P12). The twelve P11 runs have three exact and nine extra final effect logs. The 112 cost/storage runs produce no differing stage classifications. No harness faults or not-reached stages occur in this batch.

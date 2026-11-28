@@ -44,6 +44,34 @@ code, so they belong in an extended configuration, not in *core* or
 | named-place relation store | core, stdlib-concurrency | P08 | 51–242 |
 | threaded relation and definition scheduler | stdlib-concurrency | P08 | 393–397 |
 
+## Batch 1C (P09–P12)
+
+Read from `results/python/classes-1C/{A,B}/python.json`, `s_mechanisms`.
+For the listed mechanisms, A counts the tokens of each program's import
+of the mechanism (7–11), and B the tokens of the mechanism's file
+(176, 537, 1,260); the use is the same.
+
+| mechanism | configuration | problems | listed at phase 4 | A: tokens per program | B: tokens per program |
+|---|---|---|---|---|---|
+| backtracking search | extended | P09a–b, P10d, P11, P12 | yes | 7–9 (import) | 176 (file) |
+| suspension queue | extended | P09, P11, P12 | yes | 11 (import) | 537 (file) |
+| constraint propagator | extended | P10d | yes | 7 (import) | 1,260 (file) |
+| unification of terms | extended | P09a, P11, P12 | no | 177–188 | 172–177 |
+| resolution over a goal list | extended | P09a, P11, P12 | no | 58 | 58–79 |
+| a relation application as a goal of the queue | extended | P09c–d | no | 92 | 95 |
+| an arithmetic relation as a goal of the queue | extended | P09e | no | 174 | 179 |
+| relation-holding loop (`decide`, `place`) | core | P09e | no | 165 | not S |
+| relation threads (A) / threaded relation dispatcher (B) | stdlib-concurrency | A: P09c–e, P10b, P10d; B: P09c–d | no | 195–349 | 331 |
+
+In batch 1C, unlike 1B, it is **classifier A** that classes code in *core*
+and *stdlib-concurrency* as program-supplied S (rule 19, "reusable from
+one problem to another"): core P09e, and five *stdlib-concurrency*
+programs. B classes core P09e's holding code R, and S only in
+*stdlib-concurrency* P09c–d. Under either reading, the programs with such
+S belong in an extended configuration, not in *core* or
+*stdlib-concurrency* as listed. This is **classification-sensitive**
+(`results/BATCH-1C.md`).
+
 ## Cumulative cost
 
 Python's listed mechanisms are 1,973 tokens, written once. By batch 1B,

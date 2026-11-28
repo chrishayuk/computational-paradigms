@@ -1,0 +1,688 @@
+
+## report/P09a.AB.alg: 973 tokens, agreement 968/973 (99.5%)
+  class  A      B
+  P      336    334
+  C      0      0
+  R      19     22
+  S      0      0
+  H      618    617
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 69-69 A=H B=R: ;
+      A: instance line reads and the code loop | B: Initialize explicit knownness of loop argument
+  tokens 774-775 A=H B=R: , answera
+      A: argument answera | B: Extra answer continuation in loop query
+  tokens 972-972 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 140
+
+## report/P09b.alg: 365 tokens, agreement 322/365 (88.2%)
+  class  A      B
+  P      80     48
+  C      0      7
+  R      49     76
+  S      0      0
+  H      236    234
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 34-37 A=P B=R: ; procedure equals (
+      A: procedure equals heading | B: Procedural equality wrapper with knownness and continuation
+  tokens 39-42 A=P B=R: , u , cv
+      A: parameters u, cv | B: Procedural equality wrapper with knownness and continuation
+  tokens 45-48 A=P B=R: ) ; value cv
+      A: end of parameter list; value cv | B: Procedural equality wrapper with knownness and continuation
+  tokens 52-56 A=P B=R: ; integer u , cv
+      A: specification integer u, cv | B: Procedural equality wrapper with knownness and continuation
+  tokens 70-70 A=R B=C: found
+      A: found (continue with the next conjunct or answer); end; else begin | B: Invoke the next conjunct or answer after equality succeeds
+  tokens 81-86 A=R B=C: ; found ; uk := false
+      A: uk := true; found; uk := false: recording known, continuing, undoing | B: Invoke the next conjunct or answer after binding
+  tokens 125-127 A=P B=R: ; equals (
+      A: conjunct x = c2: equals(.., xv, c2, ..) | B: seconda: continuation implementing the second conjunct
+  tokens 129-129 A=P B=R: ,
+      A: arguments xv, c2 | B: seconda: continuation implementing the second conjunct
+  tokens 133-134 A=H B=R: , answera
+      A: argument answera | B: seconda: continuation implementing the second conjunct
+  tokens 135-135 A=P B=R: )
+      A: end of call | B: seconda: continuation implementing the second conjunct
+  tokens 275-276 A=P B=R: equals (
+      A: computation A, first conjunct x = c1: equals(.., xv, c1, ..) | B: Equality invocation with explicit knownness and continuation
+  tokens 278-278 A=P B=R: ,
+      A: arguments xv, c1 | B: Equality invocation with explicit knownness and continuation
+  tokens 284-284 A=P B=R: )
+      A: end of call | B: Equality invocation with explicit knownness and continuation
+  tokens 319-320 A=P B=R: equals (
+      A: computation B: equals(.., yv, c3, ..) | B: Equality invocation with explicit knownness and continuation
+  tokens 322-322 A=P B=R: ,
+      A: arguments yv, c3 | B: Equality invocation with explicit knownness and continuation
+  tokens 326-327 A=H B=R: , answerb
+      A: argument answerb | B: Equality invocation with explicit knownness and continuation
+  tokens 328-328 A=P B=R: )
+      A: end of call | B: Equality invocation with explicit knownness and continuation
+  tokens 364-364 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 60
+
+## report/P09c.alg: 768 tokens, agreement 765/768 (99.6%)
+  class  A      B
+  P      256    253
+  C      0      0
+  R      0      0
+  S      0      0
+  H      512    515
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 575-575 A=P B=H: 0
+      A: 0; the query s0 := gen(g); ok := sum3(s0, total) | B: Harness message handling or output adapter at source line 80
+  tokens 767-767 A=P B=H: end
+      A: end of inner block; program end | B: Harness message handling or output adapter at source line 102
+
+## report/P09d.alg: 396 tokens, agreement 393/396 (99.2%)
+  class  A      B
+  P      221    218
+  C      0      0
+  R      0      0
+  S      0      0
+  H      175    178
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 285-285 A=P B=H: 0
+      A: 0; the query s0 := genu(g); ok := sum3(s0, total) | B: Harness message handling or output adapter at source line 46
+  tokens 395-395 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 61
+
+## report/P09e.alg: 836 tokens, agreement 789/836 (94.4%)
+  class  A      B
+  P      68     62
+  C      0      41
+  R      170    138
+  S      0      0
+  H      598    595
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 23-24 A=R B=C: , pass
+      A: declaration pass (loop variable of propagate) | B: Declaration of pass
+  tokens 38-39 A=R B=C: , changed
+      A: declarations xk, yk, r1, r2, changed: known-flags, held-flags, change  | B: Declaration of changed
+  tokens 40-41 A=P B=R: , inconsistent
+      A: declaration inconsistent: the relation failed | B: Declaration of inconsistent
+  tokens 92-95 A=R B=C: ; changed := true
+      A: yk := true; r1 := false; changed := true; end; else if yk then begin | B: Mark that another propagation pass may be needed
+  tokens 115-118 A=R B=C: ; changed := true
+      A: xk := true; r1 := false; changed := true; end examine1; procedure exam | B: Mark that another propagation pass may be needed
+  tokens 172-175 A=R B=C: ; changed := true
+      A: yk := true; r2 := false; changed := true; end; else if yk then begin | B: Mark that another propagation pass may be needed
+  tokens 195-198 A=R B=C: ; changed := true
+      A: rest of examine2; procedure propagate (re-examination to a fixed point | B: Mark that another propagation pass may be needed
+  tokens 207-221 A=R B=C: changed := true ; for pass := 1 while changed do begin changed := false
+      A: rest of examine2; procedure propagate (re-examination to a fixed point | B: Repeat propagation passes until no binding changes
+  tokens 232-232 A=R B=C: end
+      A: rest of examine2; procedure propagate (re-examination to a fixed point | B: End repeated propagation pass
+  tokens 555-556 A=P B=R: inconsistent :=
+      A: inconsistent := | B: Initialize explicit knownness and consistency state
+  tokens 572-576 A=H B=C: ; if ¬ inconsistent then
+      A: answer print and observe block | B: Suppress an answer if evaluation found inconsistency
+  tokens 835-835 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 115
+
+## report/P10a.alg: 232 tokens, agreement 219/232 (94.4%)
+  class  A      B
+  P      38     36
+  C      0      0
+  R      11     0
+  S      0      0
+  H      183    196
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 17-19 A=R B=H: ; Boolean bk
+      A: declaration Boolean bk: whether b has a value | B: Declaration of bk
+  tokens 57-60 A=R B=H: ; bk := false
+      A: bk := false | B: Harness message handling or output adapter at source line 14
+  tokens 100-103 A=R B=H: ; bk := true
+      A: bk := true | B: Output availability flag
+  tokens 231-231 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 41
+
+## report/P10b.alg: 492 tokens, agreement 490/492 (99.6%)
+  class  A      B
+  P      53     51
+  C      0      0
+  R      42     42
+  S      0      0
+  H      397    399
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 491-491 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 60
+
+## report/P10c.alg: 323 tokens, agreement 302/323 (93.5%)
+  class  A      B
+  P      54     52
+  C      0      0
+  R      19     0
+  S      0      0
+  H      250    271
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 21-25 A=R B=H: ; Boolean bk , dk
+      A: declarations bk, dk: whether a value is held | B: Declaration of bk
+  tokens 63-68 A=R B=H: ; bk := dk := false
+      A: bk := dk := false | B: Harness message handling or output adapter at source line 14
+  tokens 108-111 A=R B=H: ; bk := true
+      A: bk := true | B: Output availability flag
+  tokens 132-135 A=R B=H: ; dk := true
+      A: dk := true | B: Output availability flag
+  tokens 322-322 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 47
+
+## report/P10d.alg: 775 tokens, agreement 755/775 (97.4%)
+  class  A      B
+  P      98     78
+  C      0      0
+  R      40     57
+  S      0      0
+  H      637    640
+  tokens 0-0 A=P B=H: begin
+      A: program block begin | B: Harness message handling or output adapter at source line 1
+  tokens 46-54 A=P B=R: ; Boolean array xa [ 1 : 1000 ]
+      A: Boolean array xa: the alternatives of x that survive | B: Live-value flags for the problem-specific alternative store
+  tokens 72-78 A=P B=R: begin xa [ j ] := true
+      A: for each fact of pick: xa[j] := true | B: test: re-evaluate held alternatives against active comparison
+  tokens 108-108 A=P B=R: end
+      A: end of the loop over facts | B: test: re-evaluate held alternatives against active comparison
+  tokens 381-381 A=P B=H: end
+      A: end of the fact loop | B: Close input loop block
+  tokens 774-774 A=P B=H: end
+      A: program end | B: Harness message handling or output adapter at source line 101
+
+## report/P11a.alg: 561 tokens, agreement 536/561 (95.5%)
+  class  A      B
+  P      96     71
+  C      14     39
+  R      0      0
+  S      0      0
+  H      451    451
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of j
+  tokens 21-22 A=P B=C: , cur
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of cur
+  tokens 350-359 A=P B=C: ; cur := 0 ; for j := 0 while
+      A: cur := 0, and the loop over pick's facts in order (for j := 0 while .. | B: initialize traversal and success flag
+  tokens 363-372 A=P B=C: cur < nf do begin cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 (the next fact of pick) | B: try facts until first successful conjunction
+  tokens 408-408 A=P B=C: end
+      A: end of the if and of the loop | B: close fact traversal
+
+## report/P11b.alg: 559 tokens, agreement 534/559 (95.5%)
+  class  A      B
+  P      95     70
+  C      13     38
+  R      0      0
+  S      0      0
+  H      451    451
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of j
+  tokens 21-22 A=P B=C: , cur
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of cur
+  tokens 350-359 A=P B=C: ; cur := 0 ; for j := 0 while
+      A: cur := 0, and the loop over pick's facts in order (for j := 0 while .. | B: initialize traversal and success flag
+  tokens 363-372 A=P B=C: cur < nf do begin cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 (the next fact of pick) | B: try facts until first successful conjunction
+  tokens 406-406 A=P B=C: end
+      A: end of the loop | B: close fact traversal
+
+## report/P11c.alg: 871 tokens, agreement 817/871 (93.8%)
+  class  A      B
+  P      119    74
+  C      12     17
+  R      87     127
+  S      0      0
+  H      653    653
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of j
+  tokens 21-22 A=P B=R: , cur
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of cur
+  tokens 78-78 A=P B=R: ∧
+      A: and: the conjunction of the relations posed | B: holds: problem-specific relation holding and readiness
+  tokens 305-310 A=C B=R: Boolean ok ; ok := false
+      A: Boolean ok; ok := false: the stop-at-first flag | B: advance: problem-specific retained pick state
+  tokens 311-316 A=P B=C: ; for j := 0 while
+      A: for j := 0 while (loop over pick's facts, in order) | B: try remaining facts until one passes held relations
+  tokens 320-324 A=P B=C: cur < nf do begin
+      A: cur < nf do begin cur := cur + 1 | B: try remaining facts until one passes held relations
+  tokens 325-329 A=P B=R: cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 | B: advance retained fact cursor
+  tokens 354-356 A=C B=R: ; ok :=
+      A: ok := (the flag set from the test) | B: test candidate against problem-specific held relations
+  tokens 357-360 A=P B=R: holds ( xv )
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: test candidate against problem-specific held relations
+  tokens 361-361 A=P B=C: end
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: close remaining-facts traversal
+  tokens 456-459 A=P B=R: ; committed := true
+      A: committed := true: the replayed commitment added as the information x  | B: retain replayed commitment flag
+  tokens 506-511 A=P B=R: ; cur := 0 ; advance
+      A: cur := 0; advance: stage 1, pick(x) and emit(x), the first fact tried | B: retain pick readiness and initial cursor
+  tokens 541-541 A=P B=R: begin
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: test whether a commit candidate is held
+  tokens 545-548 A=P B=R: ; committed := true
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: retain commitment readiness
+  tokens 558-561 A=P B=R: holds ( xv )
+      A: holds(xv): the relations posed, applied to x | B: revalidate retained candidate and advance after refutation
+
+## report/P11d.alg: 871 tokens, agreement 817/871 (93.8%)
+  class  A      B
+  P      119    74
+  C      12     17
+  R      87     127
+  S      0      0
+  H      653    653
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of j
+  tokens 21-22 A=P B=R: , cur
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of cur
+  tokens 78-78 A=P B=R: ∧
+      A: and: the conjunction of the relations posed | B: holds: problem-specific relation holding and readiness
+  tokens 305-310 A=C B=R: Boolean ok ; ok := false
+      A: Boolean ok; ok := false: the stop-at-first flag | B: advance: problem-specific retained pick state
+  tokens 311-316 A=P B=C: ; for j := 0 while
+      A: for j := 0 while (loop over pick's facts, in order) | B: try remaining facts until one passes held relations
+  tokens 320-324 A=P B=C: cur < nf do begin
+      A: cur < nf do begin cur := cur + 1 | B: try remaining facts until one passes held relations
+  tokens 325-329 A=P B=R: cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 | B: advance retained fact cursor
+  tokens 354-356 A=C B=R: ; ok :=
+      A: ok := (the flag set from the test) | B: test candidate against problem-specific held relations
+  tokens 357-360 A=P B=R: holds ( xv )
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: test candidate against problem-specific held relations
+  tokens 361-361 A=P B=C: end
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: close remaining-facts traversal
+  tokens 456-459 A=P B=R: ; committed := true
+      A: committed := true: the replayed commitment added as the information x  | B: retain replayed commitment flag
+  tokens 506-511 A=P B=R: ; cur := 0 ; advance
+      A: cur := 0; advance: stage 1, pick(x) and emit(x), the first fact tried | B: retain pick readiness and initial cursor
+  tokens 523-523 A=P B=R: begin
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: test whether a commit candidate is held
+  tokens 527-530 A=P B=R: ; committed := true
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: retain commitment readiness
+  tokens 558-561 A=P B=R: holds ( xv )
+      A: holds(xv): the relations posed, applied to x | B: revalidate retained candidate and advance after refutation
+
+## report/P12a.n12.all.alg: 901 tokens, agreement 848/901 (94.1%)
+  class  A      B
+  P      408    357
+  C      27     27
+  R      13     11
+  S      0      53
+  H      453    453
+  tokens 314-320 A=P B=S: ; procedure choice ( n , s
+      A: procedure choice(n, s | B: continuation-based depth-first search procedure
+  tokens 323-331 A=P B=S: ) ; value n ; integer n , s
+      A: ); value n; integer n, s | B: continuation-based depth-first search procedure
+  tokens 335-336 A=P B=S: ; begin
+      A: begin integer c (body of choice) | B: continuation-based depth-first search procedure
+  tokens 349-350 A=R B=S: ; found
+      A: found: the solution passed on through the continuation | B: invoke continuation on each search candidate
+  tokens 413-423 A=P B=S: ; choice ( n - 1 , tl [ c ]
+      A: e = l: hd[c] := lcode; choice(n - 1, tl[c] | B: recursive traversal of left subtree with continuation
+  tokens 426-426 A=P B=S: )
+      A: ) | B: recursive traversal of left subtree with continuation
+  tokens 446-456 A=P B=S: ; choice ( n - 1 , tl [ c ]
+      A: e = r: hd[c] := rcode; choice(n - 1, tl[c] | B: recursive traversal of right subtree with continuation
+  tokens 459-459 A=P B=S: )
+      A: ) | B: recursive traversal of right subtree with continuation
+  tokens 473-474 A=P B=S: end choice
+      A: end of case 2 and of choice | B: close depth-first search procedure
+  tokens 740-745 A=P B=S: ; choice ( n , sv
+      A: the query: choice(n, s | B: invoke hand-written search for query
+  tokens 748-748 A=P B=S: )
+      A: ) | B: invoke hand-written search for query
+
+## x1/P09a.AB.a60: 910 tokens, agreement 905/910 (99.5%)
+  class  A      B
+  P      330    328
+  C      0      0
+  R      19     22
+  S      0      0
+  H      561    560
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 57-57 A=H B=R: ;
+      A: instance line reads and the code loop (as in report) | B: Initialize explicit knownness of loop argument
+  tokens 715-716 A=H B=R: , answera
+      A: argument answera (as in report) | B: Extra answer continuation in loop query
+  tokens 909-909 A=P B=H: end
+      A: end of inner block (as in report) | B: Harness message handling or output adapter at source line 140
+
+## x1/P09b.a60: 341 tokens, agreement 298/341 (87.4%)
+  class  A      B
+  P      71     39
+  C      0      7
+  R      49     76
+  S      0      0
+  H      221    219
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 34-37 A=P B=R: ; procedure equals (
+      A: procedure equals heading (as in report) | B: Procedural equality wrapper with knownness and continuation
+  tokens 39-42 A=P B=R: , u , cv
+      A: parameters u, cv (as in report) | B: Procedural equality wrapper with knownness and continuation
+  tokens 45-48 A=P B=R: ) ; value cv
+      A: end of parameter list; value cv (as in report) | B: Procedural equality wrapper with knownness and continuation
+  tokens 52-56 A=P B=R: ; integer u , cv
+      A: specification integer u, cv (as in report) | B: Procedural equality wrapper with knownness and continuation
+  tokens 70-70 A=R B=C: found
+      A: found (continue with the next conjunct or answer); end; else begin (as | B: Invoke the next conjunct or answer after equality succeeds
+  tokens 81-86 A=R B=C: ; found ; uk := false
+      A: uk := true; found; uk := false: recording known, continuing, undoing ( | B: Invoke the next conjunct or answer after binding
+  tokens 123-125 A=P B=R: ; equals (
+      A: conjunct x = c2: equals(.., xv, c2, ..) (as in report) | B: seconda: continuation implementing the second conjunct
+  tokens 127-127 A=P B=R: ,
+      A: arguments xv, c2 (as in report) | B: seconda: continuation implementing the second conjunct
+  tokens 131-132 A=H B=R: , answera
+      A: argument answera (as in report) | B: seconda: continuation implementing the second conjunct
+  tokens 133-133 A=P B=R: )
+      A: end of call (as in report) | B: seconda: continuation implementing the second conjunct
+  tokens 241-242 A=P B=R: equals (
+      A: computation A, first conjunct x = c1: equals(.., xv, c1, ..) (as in re | B: Equality invocation with explicit knownness and continuation
+  tokens 244-244 A=P B=R: ,
+      A: arguments xv, c1 (as in report) | B: Equality invocation with explicit knownness and continuation
+  tokens 250-250 A=P B=R: )
+      A: end of call (as in report) | B: Equality invocation with explicit knownness and continuation
+  tokens 291-292 A=P B=R: equals (
+      A: computation B: equals(.., yv, c3, ..) (as in report) | B: Equality invocation with explicit knownness and continuation
+  tokens 294-294 A=P B=R: ,
+      A: arguments yv, c3 (as in report) | B: Equality invocation with explicit knownness and continuation
+  tokens 298-299 A=H B=R: , answerb
+      A: argument answerb (as in report) | B: Equality invocation with explicit knownness and continuation
+  tokens 300-300 A=P B=R: )
+      A: end of call (as in report) | B: Equality invocation with explicit knownness and continuation
+  tokens 340-340 A=P B=H: end
+      A: program end (as in report) | B: Harness message handling or output adapter at source line 60
+
+## x1/P09c.a60: 720 tokens, agreement 717/720 (99.6%)
+  class  A      B
+  P      253    250
+  C      0      0
+  R      0      0
+  S      0      0
+  H      467    470
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 526-526 A=P B=H: 0
+      A: 0; the query s0 := gen(g); ok := sum3(s0, total) (as in report) | B: Harness message handling or output adapter at source line 80
+  tokens 719-719 A=P B=H: end
+      A: end of inner block; program end (as in report) | B: Harness message handling or output adapter at source line 102
+
+## x1/P09d.a60: 376 tokens, agreement 373/376 (99.2%)
+  class  A      B
+  P      218    215
+  C      0      0
+  R      0      0
+  S      0      0
+  H      158    161
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 264-264 A=P B=H: 0
+      A: 0; the query s0 := genu(g); ok := sum3(s0, total) (as in report) | B: Harness message handling or output adapter at source line 46
+  tokens 375-375 A=P B=H: end
+      A: program end (as in report) | B: Harness message handling or output adapter at source line 61
+
+## x1/P09e.a60: 768 tokens, agreement 721/768 (93.9%)
+  class  A      B
+  P      62     56
+  C      0      41
+  R      170    138
+  S      0      0
+  H      536    533
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 23-24 A=R B=C: , pass
+      A: declaration pass (loop variable of propagate) (as in report) | B: Declaration of pass
+  tokens 38-39 A=R B=C: , changed
+      A: declarations xk, yk, r1, r2, changed: known-flags, held-flags, change  | B: Declaration of changed
+  tokens 40-41 A=P B=R: , inconsistent
+      A: declaration inconsistent: the relation failed (as in report) | B: Declaration of inconsistent
+  tokens 92-95 A=R B=C: ; changed := true
+      A: yk := true; r1 := false; changed := true; end; else if yk then begin ( | B: Mark that another propagation pass may be needed
+  tokens 115-118 A=R B=C: ; changed := true
+      A: xk := true; r1 := false; changed := true; end examine1; procedure exam | B: Mark that another propagation pass may be needed
+  tokens 172-175 A=R B=C: ; changed := true
+      A: yk := true; r2 := false; changed := true; end; else if yk then begin ( | B: Mark that another propagation pass may be needed
+  tokens 195-198 A=R B=C: ; changed := true
+      A: rest of examine2; procedure propagate (re-examination to a fixed point | B: Mark that another propagation pass may be needed
+  tokens 207-221 A=R B=C: changed := true ; for pass := 1 while changed do begin changed := false
+      A: rest of examine2; procedure propagate (re-examination to a fixed point | B: Repeat propagation passes until no binding changes
+  tokens 232-232 A=R B=C: end
+      A: rest of examine2; procedure propagate (re-examination to a fixed point | B: End repeated propagation pass
+  tokens 503-504 A=P B=R: inconsistent :=
+      A: inconsistent := (as in report) | B: Initialize explicit knownness and consistency state
+  tokens 520-524 A=H B=C: ; if ¬ inconsistent then
+      A: answer print and observe block (as in report) | B: Suppress an answer if evaluation found inconsistency
+  tokens 767-767 A=P B=H: end
+      A: program end (as in report) | B: Harness message handling or output adapter at source line 115
+
+## x1/P10a.a60: 204 tokens, agreement 191/204 (93.6%)
+  class  A      B
+  P      29     27
+  C      0      0
+  R      11     0
+  S      0      0
+  H      164    177
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 17-19 A=R B=H: ; boolean bk
+      A: declaration Boolean bk: whether b has a value (as in report) | B: Declaration of bk
+  tokens 45-48 A=R B=H: ; bk := false
+      A: bk := false (as in report) | B: Harness message handling or output adapter at source line 14
+  tokens 79-82 A=R B=H: ; bk := true
+      A: bk := true (as in report) | B: Output availability flag
+  tokens 203-203 A=P B=H: end
+      A: program end (as in report) | B: Harness message handling or output adapter at source line 41
+
+## x1/P10b.a60: 422 tokens, agreement 420/422 (99.5%)
+  class  A      B
+  P      41     39
+  C      0      0
+  R      42     42
+  S      0      0
+  H      339    341
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 421-421 A=P B=H: end
+      A: program end (as in report) | B: Harness message handling or output adapter at source line 60
+
+## x1/P10c.a60: 282 tokens, agreement 261/282 (92.6%)
+  class  A      B
+  P      42     40
+  C      0      0
+  R      19     0
+  S      0      0
+  H      221    242
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 21-25 A=R B=H: ; boolean bk , dk
+      A: declarations bk, dk: whether a value is held (as in report) | B: Declaration of bk
+  tokens 51-56 A=R B=H: ; bk := dk := false
+      A: bk := dk := false (as in report) | B: Harness message handling or output adapter at source line 14
+  tokens 87-90 A=R B=H: ; bk := true
+      A: bk := true (as in report) | B: Output availability flag
+  tokens 108-111 A=R B=H: ; dk := true
+      A: dk := true (as in report) | B: Output availability flag
+  tokens 281-281 A=P B=H: end
+      A: program end (as in report) | B: Harness message handling or output adapter at source line 47
+
+## x1/P10d.a60: 688 tokens, agreement 668/688 (97.1%)
+  class  A      B
+  P      89     69
+  C      0      0
+  R      40     57
+  S      0      0
+  H      559    562
+  tokens 0-0 A=P B=H: begin
+      A: program block begin (as in report) | B: Harness message handling or output adapter at source line 1
+  tokens 46-54 A=P B=R: ; boolean array xa [ 1 : 1000 ]
+      A: Boolean array xa: the alternatives of x that survive (as in report) | B: Live-value flags for the problem-specific alternative store
+  tokens 72-78 A=P B=R: begin xa [ j ] := true
+      A: for each fact of pick: xa[j] := true (as in report) | B: test: re-evaluate held alternatives against active comparison
+  tokens 108-108 A=P B=R: end
+      A: end of the loop over facts (as in report) | B: test: re-evaluate held alternatives against active comparison
+  tokens 337-337 A=P B=H: end
+      A: end of the fact loop (as in report) | B: Close input loop block
+  tokens 687-687 A=P B=H: end
+      A: program end (as in report) | B: Harness message handling or output adapter at source line 101
+
+## x1/P11a.a60: 506 tokens, agreement 481/506 (95.1%)
+  class  A      B
+  P      87     62
+  C      14     39
+  R      0      0
+  S      0      0
+  H      405    405
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of j
+  tokens 21-22 A=P B=C: , cur
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of cur
+  tokens 301-310 A=P B=C: ; cur := 0 ; for j := 0 while
+      A: cur := 0, and the loop over pick's facts in order (for j := 0 while .. | B: initialize traversal and success flag
+  tokens 314-323 A=P B=C: cur < nf do begin cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 (the next fact of pick) | B: try facts until first successful conjunction
+  tokens 359-359 A=P B=C: end
+      A: end of the if and of the loop | B: close fact traversal
+
+## x1/P11b.a60: 504 tokens, agreement 479/504 (95.0%)
+  class  A      B
+  P      86     61
+  C      13     38
+  R      0      0
+  S      0      0
+  H      405    405
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of j
+  tokens 21-22 A=P B=C: , cur
+      A: declaration of j, nf, c, xv, cur (fact loop variable, the facts, the c | B: declaration of cur
+  tokens 301-310 A=P B=C: ; cur := 0 ; for j := 0 while
+      A: cur := 0, and the loop over pick's facts in order (for j := 0 while .. | B: initialize traversal and success flag
+  tokens 314-323 A=P B=C: cur < nf do begin cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 (the next fact of pick) | B: try facts until first successful conjunction
+  tokens 357-357 A=P B=C: end
+      A: end of the loop | B: close fact traversal
+
+## x1/P11c.a60: 792 tokens, agreement 738/792 (93.2%)
+  class  A      B
+  P      110    65
+  C      12     17
+  R      87     127
+  S      0      0
+  H      583    583
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of j
+  tokens 21-22 A=P B=R: , cur
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of cur
+  tokens 78-78 A=P B=R: ∧
+      A: and: the conjunction of the relations posed | B: holds: problem-specific relation holding and readiness
+  tokens 283-288 A=C B=R: boolean ok ; ok := false
+      A: Boolean ok; ok := false: the stop-at-first flag | B: advance: problem-specific retained pick state
+  tokens 289-294 A=P B=C: ; for j := 0 while
+      A: for j := 0 while (loop over pick's facts, in order) | B: try remaining facts until one passes held relations
+  tokens 298-302 A=P B=C: cur < nf do begin
+      A: cur < nf do begin cur := cur + 1 | B: try remaining facts until one passes held relations
+  tokens 303-307 A=P B=R: cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 | B: advance retained fact cursor
+  tokens 332-334 A=C B=R: ; ok :=
+      A: ok := (the flag set from the test) | B: test candidate against problem-specific held relations
+  tokens 335-338 A=P B=R: holds ( xv )
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: test candidate against problem-specific held relations
+  tokens 339-339 A=P B=C: end
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: close remaining-facts traversal
+  tokens 413-416 A=P B=R: ; committed := true
+      A: committed := true: the replayed commitment added as the information x  | B: retain replayed commitment flag
+  tokens 457-462 A=P B=R: ; cur := 0 ; advance
+      A: cur := 0; advance: stage 1, pick(x) and emit(x), the first fact tried | B: retain pick readiness and initial cursor
+  tokens 489-489 A=P B=R: begin
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: test whether a commit candidate is held
+  tokens 493-496 A=P B=R: ; committed := true
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: retain commitment readiness
+  tokens 506-509 A=P B=R: holds ( xv )
+      A: holds(xv): the relations posed, applied to x | B: revalidate retained candidate and advance after refutation
+
+## x1/P11d.a60: 792 tokens, agreement 738/792 (93.2%)
+  class  A      B
+  P      110    65
+  C      12     17
+  R      87     127
+  S      0      0
+  H      583    583
+  tokens 13-14 A=P B=C: , j
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of j
+  tokens 21-22 A=P B=R: , cur
+      A: declaration of j, nf, c, xv, cur, cv (fact loop variable, the facts, t | B: declaration of cur
+  tokens 78-78 A=P B=R: ∧
+      A: and: the conjunction of the relations posed | B: holds: problem-specific relation holding and readiness
+  tokens 283-288 A=C B=R: boolean ok ; ok := false
+      A: Boolean ok; ok := false: the stop-at-first flag | B: advance: problem-specific retained pick state
+  tokens 289-294 A=P B=C: ; for j := 0 while
+      A: for j := 0 while (loop over pick's facts, in order) | B: try remaining facts until one passes held relations
+  tokens 298-302 A=P B=C: cur < nf do begin
+      A: cur < nf do begin cur := cur + 1 | B: try remaining facts until one passes held relations
+  tokens 303-307 A=P B=R: cur := cur + 1
+      A: cur < nf do begin cur := cur + 1 | B: advance retained fact cursor
+  tokens 332-334 A=C B=R: ; ok :=
+      A: ok := (the flag set from the test) | B: test candidate against problem-specific held relations
+  tokens 335-338 A=P B=R: holds ( xv )
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: test candidate against problem-specific held relations
+  tokens 339-339 A=P B=C: end
+      A: holds(xv): the conjunction of the relations posed after pick, applied  | B: close remaining-facts traversal
+  tokens 413-416 A=P B=R: ; committed := true
+      A: committed := true: the replayed commitment added as the information x  | B: retain replayed commitment flag
+  tokens 457-462 A=P B=R: ; cur := 0 ; advance
+      A: cur := 0; advance: stage 1, pick(x) and emit(x), the first fact tried | B: retain pick readiness and initial cursor
+  tokens 474-474 A=P B=R: begin
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: test whether a commit candidate is held
+  tokens 478-481 A=P B=R: ; committed := true
+      A: begin cv := xv; committed := true end: commit selects the outcome held | B: retain commitment readiness
+  tokens 506-509 A=P B=R: holds ( xv )
+      A: holds(xv): the relations posed, applied to x | B: revalidate retained candidate and advance after refutation
+
+## x1/P12a.n12.all.a60: 853 tokens, agreement 800/853 (93.8%)
+  class  A      B
+  P      399    348
+  C      26     26
+  R      13     11
+  S      0      53
+  H      415    415
+  tokens 293-299 A=P B=S: ; procedure choice ( n , s
+      A: procedure choice(n, s | B: continuation-based depth-first search procedure
+  tokens 302-310 A=P B=S: ) ; value n ; integer n , s
+      A: ); value n; integer n, s | B: continuation-based depth-first search procedure
+  tokens 314-315 A=P B=S: ; begin
+      A: begin integer c (body of choice) | B: continuation-based depth-first search procedure
+  tokens 328-329 A=R B=S: ; found
+      A: found: the solution passed on through the continuation | B: invoke continuation on each search candidate
+  tokens 392-402 A=P B=S: ; choice ( n - 1 , tl [ c ]
+      A: e = l: hd[c] := lcode; choice(n - 1, tl[c] | B: recursive traversal of left subtree with continuation
+  tokens 405-405 A=P B=S: )
+      A: ) | B: recursive traversal of left subtree with continuation
+  tokens 425-435 A=P B=S: ; choice ( n - 1 , tl [ c ]
+      A: e = r: hd[c] := rcode; choice(n - 1, tl[c] | B: recursive traversal of right subtree with continuation
+  tokens 438-438 A=P B=S: )
+      A: ) | B: recursive traversal of right subtree with continuation
+  tokens 452-453 A=P B=S: end choice
+      A: end of case 2 and of choice | B: close depth-first search procedure
+  tokens 691-696 A=P B=S: ; choice ( n , sv
+      A: the query: choice(n, s | B: invoke hand-written search for query
+  tokens 699-699 A=P B=S: )
+      A: ) | B: invoke hand-written search for query
+
+## per system
+  report: 8555/8923 (95.9%)
+  x1: 7790/8158 (95.5%)
+
+## disagreements by (A, B) class
+  P→R: 226
+  P→C: 156
+  P→S: 102
+  R→C: 86
+  R→H: 60
+  P→H: 42
+  C→R: 36
+  H→R: 14
+  H→C: 10
+  R→S: 4

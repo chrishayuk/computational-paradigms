@@ -1,0 +1,126 @@
+{
+  "distinct_texts": 16,
+  "token_totals": {
+    "P": 3540,
+    "H": 3030,
+    "C": 850,
+    "R": 732,
+    "S": 1944
+  },
+  "per_text": {
+    "core/P11a.py": {
+      "P": 120,
+      "H": 125,
+      "C": 9
+    },
+    "core/P11b.py": {
+      "P": 120,
+      "H": 125,
+      "C": 9
+    },
+    "core/P11c.py": {
+      "P": 189,
+      "R": 183,
+      "C": 47,
+      "H": 156
+    },
+    "core/P11d.py": {
+      "P": 189,
+      "R": 183,
+      "C": 47,
+      "H": 156
+    },
+    "core/P12a.py": {
+      "P": 228,
+      "H": 205,
+      "C": 29
+    },
+    "core/P12b.py": {
+      "P": 153,
+      "H": 205,
+      "C": 29
+    },
+    "core/P12c.py": {
+      "P": 216,
+      "H": 205,
+      "C": 29
+    },
+    "core/P12d.py": {
+      "P": 216,
+      "H": 205,
+      "C": 29
+    },
+    "extended/P11a.py": {
+      "C": 63,
+      "P": 144,
+      "S": 235,
+      "H": 108
+    },
+    "extended/P11b.py": {
+      "C": 63,
+      "P": 144,
+      "S": 235,
+      "H": 108
+    },
+    "extended/P11c.py": {
+      "C": 114,
+      "P": 212,
+      "S": 235,
+      "R": 183,
+      "H": 156
+    },
+    "extended/P11d.py": {
+      "C": 114,
+      "P": 212,
+      "S": 235,
+      "R": 183,
+      "H": 156
+    },
+    "extended/P12a.py": {
+      "C": 67,
+      "P": 374,
+      "H": 280,
+      "S": 251
+    },
+    "extended/P12b.py": {
+      "C": 67,
+      "P": 299,
+      "H": 280,
+      "S": 251
+    },
+    "extended/P12c.py": {
+      "C": 67,
+      "P": 362,
+      "H": 280,
+      "S": 251
+    },
+    "extended/P12d.py": {
+      "C": 67,
+      "P": 362,
+      "H": 280,
+      "S": 251
+    }
+  },
+  "raw_records": 252,
+  "behaviour_records": 84,
+  "behaviour_stages": 96,
+  "measurement_stage_comparisons": 192,
+  "mode_differences": 0,
+  "semantic": {
+    "complete": 91,
+    "unsound": 5
+  },
+  "representation": {
+    "explicit": 94,
+    "solved form": 2
+  },
+  "execution": {
+    "alternatives pending": 50,
+    "finished": 41,
+    "budget": 5
+  },
+  "final_effects": {
+    "exact": 6,
+    "extra": 6
+  }
+}

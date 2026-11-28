@@ -1,0 +1,790 @@
+{
+  "distinct_texts": 16,
+  "shared_configuration_paths_verified": 32,
+  "tokens": 1143,
+  "token_totals": {
+    "P": 826,
+    "C": 2,
+    "R": 295,
+    "S": 0,
+    "H": 20
+  },
+  "per_text": {
+    "absys/P09a.ab1": {
+      "P": 113
+    },
+    "absys/P09b.ab1": {
+      "P": 20
+    },
+    "absys/P09c.ab1": {
+      "P": 79,
+      "R": 83
+    },
+    "absys/P09d.ab1": {
+      "P": 69
+    },
+    "absys/P09e.ab1": {
+      "P": 18
+    },
+    "absys/P10a.ab1": {
+      "P": 20,
+      "R": 27
+    },
+    "absys/P10b.ab1": {
+      "P": 28,
+      "R": 72,
+      "C": 2
+    },
+    "absys/P10c.ab1": {
+      "P": 28,
+      "R": 36
+    },
+    "absys/P10d.ab1": {
+      "P": 35,
+      "R": 48
+    },
+    "absys/P11c.abs": {
+      "P": 47,
+      "H": 5
+    },
+    "absys/P11d.abs": {
+      "P": 47,
+      "H": 5
+    },
+    "absys/variants/P09a.AB.or.ab1": {
+      "P": 113,
+      "R": 3
+    },
+    "absys/variants/P09a.BA.or.ab1": {
+      "P": 113,
+      "R": 3
+    },
+    "absys/variants/P09b.or.ab1": {
+      "P": 20,
+      "R": 3
+    },
+    "absys/variants/P11a.ne.abs": {
+      "P": 38,
+      "R": 10,
+      "H": 5
+    },
+    "absys/variants/P11b.ne.abs": {
+      "P": 38,
+      "R": 10,
+      "H": 5
+    }
+  },
+  "behaviour_records": 57,
+  "all_raw_records": 171,
+  "logged_jobs": 171,
+  "behaviour_entries_including_initial_attempts": 141,
+  "final_behaviour_entries": 126,
+  "final_semantics": {
+    "none reported": 23,
+    "unsound": 16,
+    "complete": 84,
+    "not reached": 3
+  },
+  "final_representations": {
+    "not applicable": 26,
+    "solved form": 34,
+    "explicit": 51,
+    "residual": 15
+  },
+  "final_execution_states": {
+    "budget": 41,
+    "finished": 63,
+    "suspended": 15,
+    "timeout": 4
+  },
+  "unreached_final_entries": 3,
+  "harness_fault_behaviour_entries": 15,
+  "measurement_comparisons": [
+    {
+      "record": "results/absys/absys/P09/raw/P09a.AB.cost.20261128T050240Z.json.gz",
+      "behaviour": "results/absys/absys/P09/raw/P09a.AB.behaviour.20261128T050239Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.AB.cost.20261128T050247Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.AB.behaviour.20261128T050246Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.AB.cost.20261128T050251Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.AB.behaviour.20261128T050250Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.AB.storage.20261128T050244Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.AB.behaviour.20261128T050239Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.AB.storage.20261128T050249Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.AB.behaviour.20261128T050246Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.AB.storage.20261128T050253Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.AB.behaviour.20261128T050250Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.BA.cost.20261128T050255Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.BA.behaviour.20261128T050254Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.BA.cost.20261128T050300Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.BA.behaviour.20261128T050259Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.BA.cost.20261128T050304Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.BA.behaviour.20261128T050303Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.BA.storage.20261128T050258Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.BA.behaviour.20261128T050254Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.BA.storage.20261128T050302Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.BA.behaviour.20261128T050259Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09a.BA.storage.20261128T050307Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09a.BA.behaviour.20261128T050303Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09b.cost.20261128T050308Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09b.behaviour.20261128T050308Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09b.cost.20261128T050310Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09b.behaviour.20261128T050310Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09b.storage.20261128T050309Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09b.behaviour.20261128T050308Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09b.storage.20261128T050310Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09b.behaviour.20261128T050310Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09c.cost.20261128T050945Z.json.gz",
+      "behaviour": "results/absys/absys/P09/raw/P09c.behaviour.20261128T050311Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09c.storage.20261128T051628Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09c.behaviour.20261128T050311Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09d.cost.20261128T052622Z.json.gz",
+      "behaviour": "results/absys/absys/P09/raw/P09d.behaviour.20261128T052315Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09d.storage.20261128T052708Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09d.behaviour.20261128T052315Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09e.cost.20261128T052756Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09e.behaviour.20261128T052756Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P09/raw/P09e.storage.20261128T052757Z.json",
+      "behaviour": "results/absys/absys/P09/raw/P09e.behaviour.20261128T052756Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10a.cost.20261128T050242Z.json",
+      "behaviour": "results/absys/absys/P10/raw/P10a.behaviour.20261128T050242Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10a.storage.20261128T050243Z.json",
+      "behaviour": "results/absys/absys/P10/raw/P10a.behaviour.20261128T050242Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10b.cost.20261128T050244Z.json",
+      "behaviour": "results/absys/absys/P10/raw/P10b.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10b.storage.20261128T050244Z.json",
+      "behaviour": "results/absys/absys/P10/raw/P10b.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10c.cost.20261128T050245Z.json",
+      "behaviour": "results/absys/absys/P10/raw/P10c.behaviour.20261128T050245Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10c.storage.20261128T050246Z.json",
+      "behaviour": "results/absys/absys/P10/raw/P10c.behaviour.20261128T050245Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10d.cost.20261128T055047Z.INVALID.json",
+      "behaviour": "results/absys/absys/P10/raw/P10d.behaviour.20261128T050247Z.INVALID.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P10/raw/P10d.storage.20261128T063624Z.INVALID.json",
+      "behaviour": "results/absys/absys/P10/raw/P10d.behaviour.20261128T050247Z.INVALID.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11a.cost.20261128T050246Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11a.behaviour.20261128T050246Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11a.storage.20261128T050247Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11a.behaviour.20261128T050246Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11b.cost.20261128T050248Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11b.behaviour.20261128T050247Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11b.storage.20261128T050248Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11b.behaviour.20261128T050247Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11c.cost.20261128T050249Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11c.behaviour.20261128T050249Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11c.storage.20261128T050250Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11c.behaviour.20261128T050249Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11d.cost.20261128T050251Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11d.behaviour.20261128T050250Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys/P11/raw/P11d.storage.20261128T050251Z.json",
+      "behaviour": "results/absys/absys/P11/raw/P11d.behaviour.20261128T050250Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.AB.cost.20261128T050238Z.json.gz",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.AB.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.AB.cost.20261128T050244Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.AB.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.AB.cost.20261128T050249Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.AB.behaviour.20261128T050248Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.AB.storage.20261128T050242Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.AB.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.AB.storage.20261128T050247Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.AB.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.AB.storage.20261128T050251Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.AB.behaviour.20261128T050248Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.BA.cost.20261128T050253Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.BA.behaviour.20261128T050252Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.BA.cost.20261128T050257Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.BA.behaviour.20261128T050256Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.BA.cost.20261128T050302Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.BA.behaviour.20261128T050301Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.BA.storage.20261128T050255Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.BA.behaviour.20261128T050252Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.BA.storage.20261128T050300Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.BA.behaviour.20261128T050256Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09a.BA.storage.20261128T050304Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09a.BA.behaviour.20261128T050301Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09b.cost.20261128T050306Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09b.behaviour.20261128T050305Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09b.cost.20261128T050307Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09b.behaviour.20261128T050307Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09b.storage.20261128T050307Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09b.behaviour.20261128T050305Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09b.storage.20261128T050308Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09b.behaviour.20261128T050307Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09c.cost.20261128T051409Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09c.behaviour.20261128T050308Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09c.storage.20261128T052510Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09c.behaviour.20261128T050308Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09d.cost.20261128T053909Z.json.gz",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09d.behaviour.20261128T053610Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09d.storage.20261128T053953Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09d.behaviour.20261128T053610Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09e.cost.20261128T054038Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09e.behaviour.20261128T054037Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P09/raw/P09e.storage.20261128T054038Z.json",
+      "behaviour": "results/absys/absys-depth-first/P09/raw/P09e.behaviour.20261128T054037Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10a.cost.20261128T050237Z.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10a.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10a.storage.20261128T050237Z.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10a.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10b.cost.20261128T050238Z.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10b.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10b.storage.20261128T050239Z.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10b.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10c.cost.20261128T050240Z.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10c.behaviour.20261128T050239Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10c.storage.20261128T050240Z.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10c.behaviour.20261128T050239Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10d.cost.20261128T062420Z.INVALID.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10d.behaviour.20261128T050241Z.INVALID.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P10/raw/P10d.storage.20261128T073208Z.INVALID.json",
+      "behaviour": "results/absys/absys-depth-first/P10/raw/P10d.behaviour.20261128T050241Z.INVALID.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11a.cost.20261128T050235Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11a.behaviour.20261128T050235Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11a.storage.20261128T050236Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11a.behaviour.20261128T050235Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11b.cost.20261128T050237Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11b.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11b.storage.20261128T050237Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11b.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11c.cost.20261128T050238Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11c.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11c.storage.20261128T050239Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11c.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11d.cost.20261128T050240Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11d.behaviour.20261128T050240Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-depth-first/P11/raw/P11d.storage.20261128T050241Z.json",
+      "behaviour": "results/absys/absys-depth-first/P11/raw/P11d.behaviour.20261128T050240Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.AB.cost.20261128T050237Z.json.gz",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.AB.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.AB.cost.20261128T050244Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.AB.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.AB.cost.20261128T050248Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.AB.behaviour.20261128T050247Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.AB.storage.20261128T050242Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.AB.behaviour.20261128T050236Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.AB.storage.20261128T050246Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.AB.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.AB.storage.20261128T050251Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.AB.behaviour.20261128T050247Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.BA.cost.20261128T050253Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.BA.behaviour.20261128T050252Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.BA.cost.20261128T050257Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.BA.behaviour.20261128T050256Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.BA.cost.20261128T050302Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.BA.behaviour.20261128T050301Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.BA.storage.20261128T050255Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.BA.behaviour.20261128T050252Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.BA.storage.20261128T050300Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.BA.behaviour.20261128T050256Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09a.BA.storage.20261128T050304Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09a.BA.behaviour.20261128T050301Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09b.cost.20261128T050306Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09b.behaviour.20261128T050305Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09b.cost.20261128T050307Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09b.behaviour.20261128T050307Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09b.storage.20261128T050306Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09b.behaviour.20261128T050305Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09b.storage.20261128T050308Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09b.behaviour.20261128T050307Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09c.cost.20261128T050952Z.json.gz",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09c.behaviour.20261128T050308Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09c.storage.20261128T051619Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09c.behaviour.20261128T050308Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09d.cost.20261128T052611Z.json.gz",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09d.behaviour.20261128T052303Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09d.storage.20261128T052657Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09d.behaviour.20261128T052303Z.json",
+      "final_classification_entries_compared": 2,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09e.cost.20261128T052746Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09e.behaviour.20261128T052745Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P09/raw/P09e.storage.20261128T052746Z.json",
+      "behaviour": "results/absys/absys-wake-back/P09/raw/P09e.behaviour.20261128T052745Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10a.cost.20261128T050237Z.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10a.behaviour.20261128T050237Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10a.storage.20261128T050238Z.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10a.behaviour.20261128T050237Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10b.cost.20261128T050239Z.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10b.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10b.storage.20261128T050239Z.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10b.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10c.cost.20261128T050240Z.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10c.behaviour.20261128T050240Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10c.storage.20261128T050241Z.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10c.behaviour.20261128T050240Z.json",
+      "final_classification_entries_compared": 4,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10d.cost.20261128T055044Z.INVALID.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10d.behaviour.20261128T050242Z.INVALID.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P10/raw/P10d.storage.20261128T063625Z.INVALID.json",
+      "behaviour": "results/absys/absys-wake-back/P10/raw/P10d.behaviour.20261128T050242Z.INVALID.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11a.cost.20261128T050239Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11a.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11a.storage.20261128T050239Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11a.behaviour.20261128T050238Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11b.cost.20261128T050240Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11b.behaviour.20261128T050240Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11b.storage.20261128T050241Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11b.behaviour.20261128T050240Z.json",
+      "final_classification_entries_compared": 1,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11c.cost.20261128T050242Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11c.behaviour.20261128T050241Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11c.storage.20261128T050242Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11c.behaviour.20261128T050241Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11d.cost.20261128T050243Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11d.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    },
+    {
+      "record": "results/absys/absys-wake-back/P11/raw/P11d.storage.20261128T050244Z.json",
+      "behaviour": "results/absys/absys-wake-back/P11/raw/P11d.behaviour.20261128T050243Z.json",
+      "final_classification_entries_compared": 3,
+      "differences": 0
+    }
+  ],
+  "measurement_reruns": 0,
+  "mode_differences": 0
+}

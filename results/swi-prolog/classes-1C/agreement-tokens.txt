@@ -1,0 +1,512 @@
+
+## constraints/P09a.pl: 161 tokens, agreement 161/161 (100.0%)
+  class  A      B
+  P      115    115
+  C      0      0
+  R      0      0
+  S      0      0
+  H      46     46
+
+## constraints/P09b.pl: 101 tokens, agreement 101/101 (100.0%)
+  class  A      B
+  P      55     55
+  C      0      0
+  R      0      0
+  S      0      0
+  H      46     46
+
+## constraints/P09c.pl: 146 tokens, agreement 135/146 (92.5%)
+  class  A      B
+  P      102    95
+  C      12     19
+  R      0      0
+  S      0      0
+  H      32     32
+  tokens 0-8 A=P B=C: :- use_module ( library ( clpfd ) ) .
+      A: :- use_module(library(clpfd)) | B: library configuration declaration
+  tokens 53-53 A=C B=P: ,
+      A: freeze(Rest, ...) around the recursive gen | B: problem goal: gen ( N1 , Rest )
+  tokens 123-123 A=C B=P: ,
+      A: freeze(S, ...) around gen(k, s) | B: problem goal: gen ( K , S )
+
+## constraints/P09d.pl: 128 tokens, agreement 117/128 (91.4%)
+  class  A      B
+  P      84     77
+  C      12     19
+  R      0      0
+  S      0      0
+  H      32     32
+  tokens 0-8 A=P B=C: :- use_module ( library ( clpfd ) ) .
+      A: :- use_module(library(clpfd)) | B: library configuration declaration
+  tokens 35-35 A=C B=P: ,
+      A: freeze(Rest, ...) around the recursive genu | B: problem goal: genu ( N1 , Rest )
+  tokens 105-105 A=C B=P: ,
+      A: freeze(S, ...) around genu(k, s) | B: problem goal: genu ( K , S )
+
+## constraints/P09e.pl: 84 tokens, agreement 75/84 (89.3%)
+  class  A      B
+  P      52     43
+  C      0      9
+  R      0      0
+  S      0      0
+  H      32     32
+  tokens 0-8 A=P B=C: :- use_module ( library ( clpfd ) ) .
+      A: :- use_module(library(clpfd)) | B: library configuration declaration
+
+## constraints/P10a.pl: 172 tokens, agreement 172/172 (100.0%)
+  class  A      B
+  P      117    117
+  C      6      6
+  R      0      0
+  S      0      0
+  H      49     49
+
+## constraints/P10b.pl: 251 tokens, agreement 233/251 (92.8%)
+  class  A      B
+  P      173    162
+  C      10     26
+  R      5      0
+  S      0      0
+  H      63     63
+  tokens 0-8 A=P B=C: :- use_module ( library ( clpfd ) ) .
+      A: :- use_module(library(clpfd)) | B: library configuration declaration
+  tokens 231-231 A=R B=C: (
+      A: ( ... -> ... ; true ): b may have no value | B: conditional dispatch opening
+  tokens 232-235 A=P B=C: b ( V )
+      A: b(V): b's current value | B: test whether the named quantity already has a stored value
+  tokens 236-236 A=R B=C: ->
+      A: -> | B: conditional branch connective
+  tokens 240-241 A=R B=P: ; true
+      A: ; true ) | B: problem goal: true
+  tokens 242-242 A=R B=C: )
+      A: ; true ) | B: conditional dispatch closing
+
+## constraints/P10c.pl: 248 tokens, agreement 238/248 (96.0%)
+  class  A      B
+  P      169    167
+  C      10     18
+  R      6      0
+  S      0      0
+  H      63     63
+  tokens 234-235 A=R B=C: , (
+      A: ( ... -> ... ; true ): d may have no value (with its separator) | B: conditional dispatch opening
+  tokens 236-239 A=P B=C: d ( V )
+      A: d(V): d's current value | B: test whether the named quantity already has a stored value
+  tokens 240-240 A=R B=C: ->
+      A: -> | B: conditional branch connective
+  tokens 244-245 A=R B=P: ; true
+      A: ; true ) | B: problem goal: true
+  tokens 246-246 A=R B=C: )
+      A: ; true ) | B: conditional dispatch closing
+
+## constraints/P10d.pl: 171 tokens, agreement 149/171 (87.1%)
+  class  A      B
+  P      87     67
+  C      10     19
+  R      25     36
+  S      0      0
+  H      49     49
+  tokens 0-8 A=P B=C: :- use_module ( library ( clpfd ) ) .
+      A: :- use_module(library(clpfd)) | B: library configuration declaration
+  tokens 96-98 A=P B=R: , assertz (
+      A: assertz( ... ) posing the relation | B: associate a retractable relation with its unknown
+  tokens 102-102 A=R B=P: ,
+      A: held(Y, ... ) wrapper | B: problem goal: Y # > K
+  tokens 108-108 A=P B=R: )
+      A: close of assertz/1 | B: held-relation encoding closing
+  tokens 128-130 A=P B=R: , retract (
+      A: retract( ... ): withdraw x > k | B: withdraw the encoded held comparison
+  tokens 135-138 A=P B=R: _ # > K
+      A: _ > k, the relation withdrawn | B: withdraw the encoded held comparison
+  tokens 140-140 A=P B=R: )
+      A: close of retract/1 | B: withdraw the encoded held comparison
+
+## constraints/P11a.pl: 86 tokens, agreement 77/86 (89.5%)
+  class  A      B
+  P      58     49
+  C      0      9
+  R      0      0
+  S      0      0
+  H      28     28
+  tokens 0-8 A=P B=C: :- use_module ( library ( clpfd ) ) .
+      A: :- use_module(library(clpfd)) | B: library configuration declaration
+
+## constraints/P11b.pl: 86 tokens, agreement 77/86 (89.5%)
+  class  A      B
+  P      58     49
+  C      0      9
+  R      0      0
+  S      0      0
+  H      28     28
+  tokens 0-8 A=P B=C: :- use_module ( library ( clpfd ) ) .
+      A: :- use_module(library(clpfd)) | B: library configuration declaration
+
+## constraints/P11c.pl: 152 tokens, agreement 106/152 (69.7%)
+  class  A      B
+  P      96     50
+  C      0      5
+  R      0      41
+  S      0      0
+  H      56     56
+  tokens 94-94 A=P B=C: (
+      A: ( ... -> ... ; true ): the commit stage | B: conditional dispatch opening
+  tokens 99-99 A=P B=C: ->
+      A: -> committed_value(V, X) ; true ) | B: conditional branch connective
+  tokens 100-105 A=P B=R: committed_value ( V , X )
+      A: -> committed_value(V, X) ; true ) | B: decode the replayed answer into the selected equality
+  tokens 106-108 A=P B=C: ; true )
+      A: -> committed_value(V, X) ; true ) | B: first-pose branch leaves selection to answers(1)
+  tokens 117-151 A=P B=R: committed_value ( V , X ) :- term_string ( T , V , [ variable_names ( Bs ) ] ) ,
+      A: committed_value/2: reads the harness's verbatim answer v back as the e | B: committed_value clause head
+
+## constraints/P11d.pl: 152 tokens, agreement 106/152 (69.7%)
+  class  A      B
+  P      96     50
+  C      0      5
+  R      0      41
+  S      0      0
+  H      56     56
+  tokens 66-66 A=P B=C: (
+      A: ( ... -> ... ; true ): the commit stage | B: conditional dispatch opening
+  tokens 71-71 A=P B=C: ->
+      A: -> committed_value(V, X) ; true ) | B: conditional branch connective
+  tokens 72-77 A=P B=R: committed_value ( V , X )
+      A: -> committed_value(V, X) ; true ) | B: decode the replayed answer into the selected equality
+  tokens 78-80 A=P B=C: ; true )
+      A: -> committed_value(V, X) ; true ) | B: first-pose branch leaves selection to answers(1)
+  tokens 117-151 A=P B=R: committed_value ( V , X ) :- term_string ( T , V , [ variable_names ( Bs ) ] ) ,
+      A: committed_value/2: reads the harness's verbatim answer v back as the e | B: committed_value clause head
+
+## constraints/P12a.pl: 221 tokens, agreement 221/221 (100.0%)
+  class  A      B
+  P      185    185
+  C      0      0
+  R      0      0
+  S      0      0
+  H      36     36
+
+## constraints/P12b.pl: 128 tokens, agreement 128/128 (100.0%)
+  class  A      B
+  P      92     92
+  C      0      0
+  R      0      0
+  S      0      0
+  H      36     36
+
+## constraints/P12c.pl: 194 tokens, agreement 194/194 (100.0%)
+  class  A      B
+  P      158    158
+  C      0      0
+  R      0      0
+  S      0      0
+  H      36     36
+
+## constraints/P12d.pl: 194 tokens, agreement 194/194 (100.0%)
+  class  A      B
+  P      158    158
+  C      0      0
+  R      0      0
+  S      0      0
+  H      36     36
+
+## coroutines/P09c.pl: 133 tokens, agreement 131/133 (98.5%)
+  class  A      B
+  P      89     91
+  C      12     10
+  R      0      0
+  S      0      0
+  H      32     32
+  tokens 41-41 A=C B=P: ,
+      A: freeze(Rest, ...) around the recursive gen | B: problem goal: gen ( N1 , Rest )
+  tokens 110-110 A=C B=P: ,
+      A: freeze(S, ...) around gen(k, s) | B: problem goal: gen ( K , S )
+
+## coroutines/P09d.pl: 117 tokens, agreement 115/117 (98.3%)
+  class  A      B
+  P      73     75
+  C      12     10
+  R      0      0
+  S      0      0
+  H      32     32
+  tokens 25-25 A=C B=P: ,
+      A: freeze(Rest, ...) around the recursive genu | B: problem goal: genu ( N1 , Rest )
+  tokens 94-94 A=C B=P: ,
+      A: freeze(S, ...) around genu(k, s) | B: problem goal: genu ( K , S )
+
+## coroutines/P09e.pl: 313 tokens, agreement 287/313 (91.7%)
+  class  A      B
+  P      81     81
+  C      76     102
+  R      124    98
+  S      0      0
+  H      32     32
+  tokens 72-80 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: nonvar(A), nonvar(B) | B: mode test / commitment in arithmetic dispatch
+  tokens 99-102 A=R B=C: nonvar ( A )
+      A: nonvar(A) | B: mode test / commitment in arithmetic dispatch
+  tokens 189-197 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: nonvar(A), nonvar(B) | B: mode test / commitment in arithmetic dispatch
+  tokens 216-219 A=R B=C: nonvar ( A )
+      A: nonvar(A) | B: mode test / commitment in arithmetic dispatch
+
+## coroutines/P10b.pl: 246 tokens, agreement 231/246 (93.9%)
+  class  A      B
+  P      163    156
+  C      15     21
+  R      5      6
+  S      0      0
+  H      63     63
+  tokens 83-83 A=C B=R: ,
+      A: freeze(B, ...) in the asserted rule | B: evaluate the standing arithmetic relation in one direction
+  tokens 84-88 A=P B=R: D is K * B
+      A: d is k * b (rule 8, the direction used) | B: evaluate the standing arithmetic relation in one direction
+  tokens 226-226 A=R B=C: (
+      A: ( ... -> ... ; true ): b may have no value | B: conditional dispatch opening
+  tokens 227-230 A=P B=C: b ( V )
+      A: b(V): b's current value | B: test whether the named quantity already has a stored value
+  tokens 231-231 A=R B=C: ->
+      A: -> | B: conditional branch connective
+  tokens 235-236 A=R B=P: ; true
+      A: ; true ) | B: problem goal: true
+  tokens 237-237 A=R B=C: )
+      A: ; true ) | B: conditional dispatch closing
+
+## coroutines/P10d.pl: 170 tokens, agreement 152/170 (89.4%)
+  class  A      B
+  P      76     66
+  C      20     15
+  R      25     40
+  S      0      0
+  H      49     49
+  tokens 87-89 A=P B=R: , assertz (
+      A: assertz( ... ) posing the relation | B: associate a retractable relation with its unknown
+  tokens 93-93 A=R B=C: ,
+      A: held(Y, ... ) wrapper | B: freeze condition and delay wrapper
+  tokens 97-97 A=C B=P: ,
+      A: freeze(Y, ...) | B: problem goal: Y > K
+  tokens 103-103 A=P B=R: )
+      A: close of assertz/1 | B: held-relation encoding closing
+  tokens 123-125 A=P B=R: , retract (
+      A: retract( ... ): withdraw x > k | B: withdraw the encoded held comparison
+  tokens 130-133 A=C B=R: freeze ( _ ,
+      A: freeze(_, ...) pattern of the held goal | B: withdraw the encoded held comparison
+  tokens 134-136 A=P B=R: _ > K
+      A: _ > k, the relation withdrawn | B: withdraw the encoded held comparison
+  tokens 137-137 A=C B=R: )
+      A: close of freeze pattern | B: withdraw the encoded held comparison
+  tokens 139-139 A=P B=R: )
+      A: close of retract/1 | B: withdraw the encoded held comparison
+
+## coroutines/P11a.pl: 81 tokens, agreement 80/81 (98.8%)
+  class  A      B
+  P      47     48
+  C      6      5
+  R      0      0
+  S      0      0
+  H      28     28
+  tokens 63-63 A=C B=P: ,
+      A: freeze(X, ...) | B: problem goal: X >= K
+
+## coroutines/P11b.pl: 81 tokens, agreement 80/81 (98.8%)
+  class  A      B
+  P      47     48
+  C      6      5
+  R      0      0
+  S      0      0
+  H      28     28
+  tokens 68-68 A=C B=P: ,
+      A: freeze(X, ...) | B: problem goal: X >= K
+
+## plain/P09c.pl: 123 tokens, agreement 123/123 (100.0%)
+  class  A      B
+  P      91     91
+  C      0      0
+  R      0      0
+  S      0      0
+  H      32     32
+
+## plain/P09d.pl: 107 tokens, agreement 107/107 (100.0%)
+  class  A      B
+  P      75     75
+  C      0      0
+  R      0      0
+  S      0      0
+  H      32     32
+
+## plain/P09e.pl: 207 tokens, agreement 181/207 (87.4%)
+  class  A      B
+  P      81     81
+  C      8      34
+  R      86     60
+  S      0      0
+  H      32     32
+  tokens 19-27 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: nonvar(A), nonvar(B) | B: mode test / commitment in arithmetic dispatch
+  tokens 46-49 A=R B=C: nonvar ( A )
+      A: nonvar(A) | B: mode test / commitment in arithmetic dispatch
+  tokens 83-91 A=R B=C: nonvar ( A ) , nonvar ( B )
+      A: nonvar(A), nonvar(B) | B: mode test / commitment in arithmetic dispatch
+  tokens 110-113 A=R B=C: nonvar ( A )
+      A: nonvar(A) | B: mode test / commitment in arithmetic dispatch
+
+## plain/P10b.pl: 241 tokens, agreement 227/241 (94.2%)
+  class  A      B
+  P      163    156
+  C      10     17
+  R      5      5
+  S      0      0
+  H      63     63
+  tokens 80-84 A=P B=R: D is K * B
+      A: stage 1: assert the standing relation as d_of(b, d) :- d is k * b | B: evaluate the standing arithmetic relation in one direction
+  tokens 221-221 A=R B=C: (
+      A: ( ... -> ... ; true ): b may have no value | B: conditional dispatch opening
+  tokens 222-225 A=P B=C: b ( V )
+      A: b(V): b's current value | B: test whether the named quantity already has a stored value
+  tokens 226-226 A=R B=C: ->
+      A: -> | B: conditional branch connective
+  tokens 230-231 A=R B=P: ; true
+      A: ; true ) | B: problem goal: true
+  tokens 232-232 A=R B=C: )
+      A: ; true ) | B: conditional dispatch closing
+
+## plain/P10d.pl: 160 tokens, agreement 148/160 (92.5%)
+  class  A      B
+  P      76     66
+  C      10     10
+  R      25     35
+  S      0      0
+  H      49     49
+  tokens 87-89 A=P B=R: , assertz (
+      A: assertz( ... ) posing the relation | B: associate a retractable relation with its unknown
+  tokens 93-93 A=R B=P: ,
+      A: held(Y, ... ) wrapper | B: problem goal: Y > K
+  tokens 98-98 A=P B=R: )
+      A: close of assertz/1 | B: held-relation encoding closing
+  tokens 118-120 A=P B=R: , retract (
+      A: retract( ... ): withdraw x > k | B: withdraw the encoded held comparison
+  tokens 125-127 A=P B=R: _ > K
+      A: _ > k, the relation withdrawn | B: withdraw the encoded held comparison
+  tokens 129-129 A=P B=R: )
+      A: close of retract/1 | B: withdraw the encoded held comparison
+
+## plain/P11a.pl: 76 tokens, agreement 76/76 (100.0%)
+  class  A      B
+  P      48     48
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## plain/P11b.pl: 76 tokens, agreement 76/76 (100.0%)
+  class  A      B
+  P      48     48
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## plain/P11c.pl: 150 tokens, agreement 104/150 (69.3%)
+  class  A      B
+  P      94     48
+  C      0      5
+  R      0      41
+  S      0      0
+  H      56     56
+  tokens 92-92 A=P B=C: (
+      A: ( ... -> ... ; true ): the commit stage | B: conditional dispatch opening
+  tokens 97-97 A=P B=C: ->
+      A: -> committed_value(V, X) ; true ) | B: conditional branch connective
+  tokens 98-103 A=P B=R: committed_value ( V , X )
+      A: -> committed_value(V, X) ; true ) | B: decode the replayed answer into the selected equality
+  tokens 104-106 A=P B=C: ; true )
+      A: -> committed_value(V, X) ; true ) | B: first-pose branch leaves selection to answers(1)
+  tokens 115-149 A=P B=R: committed_value ( V , X ) :- term_string ( T , V , [ variable_names ( Bs ) ] ) ,
+      A: committed_value/2: reads the harness's verbatim answer v back as the e | B: committed_value clause head
+
+## plain/P11d.pl: 150 tokens, agreement 104/150 (69.3%)
+  class  A      B
+  P      94     48
+  C      0      5
+  R      0      41
+  S      0      0
+  H      56     56
+  tokens 66-66 A=P B=C: (
+      A: ( ... -> ... ; true ): the commit stage | B: conditional dispatch opening
+  tokens 71-71 A=P B=C: ->
+      A: -> committed_value(V, X) ; true ) | B: conditional branch connective
+  tokens 72-77 A=P B=R: committed_value ( V , X )
+      A: -> committed_value(V, X) ; true ) | B: decode the replayed answer into the selected equality
+  tokens 78-80 A=P B=C: ; true )
+      A: -> committed_value(V, X) ; true ) | B: first-pose branch leaves selection to answers(1)
+  tokens 115-149 A=P B=R: committed_value ( V , X ) :- term_string ( T , V , [ variable_names ( Bs ) ] ) ,
+      A: committed_value/2: reads the harness's verbatim answer v back as the e | B: committed_value clause head
+
+## tabling/P09a.pl: 175 tokens, agreement 175/175 (100.0%)
+  class  A      B
+  P      115    115
+  C      14     14
+  R      0      0
+  S      0      0
+  H      46     46
+
+## tabling/P09c.pl: 133 tokens, agreement 133/133 (100.0%)
+  class  A      B
+  P      91     91
+  C      10     10
+  R      0      0
+  S      0      0
+  H      32     32
+
+## tabling/P09d.pl: 117 tokens, agreement 117/117 (100.0%)
+  class  A      B
+  P      75     75
+  C      10     10
+  R      0      0
+  S      0      0
+  H      32     32
+
+## tabling/P12a.pl: 227 tokens, agreement 227/227 (100.0%)
+  class  A      B
+  P      185    185
+  C      6      6
+  R      0      0
+  S      0      0
+  H      36     36
+
+## tabling/P12b.pl: 134 tokens, agreement 134/134 (100.0%)
+  class  A      B
+  P      92     92
+  C      6      6
+  R      0      0
+  S      0      0
+  H      36     36
+
+## tabling/P12c.pl: 200 tokens, agreement 200/200 (100.0%)
+  class  A      B
+  P      158    158
+  C      6      6
+  R      0      0
+  S      0      0
+  H      36     36
+
+## tabling/P12d.pl: 200 tokens, agreement 200/200 (100.0%)
+  class  A      B
+  P      158    158
+  C      6      6
+  R      0      0
+  S      0      0
+  H      36     36
+
+## per system
+  constraints: 2484/2675 (92.9%)
+  coroutines: 1076/1141 (94.3%)
+  plain: 1146/1290 (88.8%)
+  tabling: 1186/1186 (100.0%)
+
+## disagreements by (A, B) class
+  P→R: 208
+  P→C: 99
+  R→C: 66
+  C→P: 11
+  R→P: 10
+  C→R: 6

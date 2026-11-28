@@ -1,0 +1,2438 @@
+[
+ {
+  "configuration": "core",
+  "instance": "P11a",
+  "program": "P11a.py",
+  "record": "results/python/core/P11/raw/P11a.behaviour.20261128T051219Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P11a/P11b valid outcomes",
+  "valid_outcomes": "one answer, x = 2 or x = 3",
+  "effects": "exact",
+  "effects_log": "L = <2> (seq 1); 2 emitted after the test x >= 2, when the solution was produced and reported: at commitment (a one-stage problem commits when it reports)",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; no conclusion withdrawn. Commitment happens at the end of the stage, when the answer is reported; the generator (or search) with x = 3 untried is still held afterwards, so a request for more would perform emit(3)."
+ },
+ {
+  "configuration": "core",
+  "instance": "P11b",
+  "program": "P11b.py",
+  "record": "results/python/core/P11/raw/P11b.behaviour.20261128T051221Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P11a/P11b valid outcomes",
+  "valid_outcomes": "one answer, x = 2 or x = 3",
+  "effects": "extra",
+  "effects_log": "L = <1, 2>: 1 emitted before commitment, on a provisional outcome the later test x >= 2 refuted; 2 emitted at commitment (reported)",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; no conclusion withdrawn. Commitment happens at the end of the stage, when the answer is reported; the generator (or search) with x = 3 untried is still held afterwards, so a request for more would perform emit(3). The program uses no control to avoid extra: emit precedes the test, in the order written."
+ },
+ {
+  "configuration": "core",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/core/P11/raw/P11c.behaviour.20261128T051224Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x in {1, 2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 1",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; held relations: []; conclusion withdrawn: none.",
+  "effects_this_stage": "seq 1 entry 1 emitted at stage 1, before commitment (a provisional outcome, later refuted at stage 2)"
+ },
+ {
+  "configuration": "core",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/core/P11/raw/P11c.behaviour.20261128T051224Z.json",
+  "stage": 2,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "valid_outcomes": "x in {2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 2",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; held relations: [('!=', 1)]; conclusion withdrawn: x = 1 (stage 1) withdrawn by x != 1: shown by reporting x = 2 in its place (bindings x = 2); its effect 1 stays in L.",
+  "effects_this_stage": "seq 2 entry 2 emitted at stage 2, before commitment (a provisional outcome, later committed)"
+ },
+ {
+  "configuration": "core",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/core/P11/raw/P11c.behaviour.20261128T051224Z.json",
+  "stage": 3,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "valid_outcomes": "x = v, v = 2 the solution held at the commit",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 3",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('!=', 1), ('=', 2)]; conclusion withdrawn: none. Commitment: commit() selects the held x = 2, adds x = 2 as a relation and drops the generator (C tokens: solutions.clear()), so no alternative is tried after it; state finished.",
+  "effects_this_stage": "no entry",
+  "effects": "extra",
+  "effects_log": "L = <1, 2>; committed v = 2 at stage 3. Entry 1: before commitment, for x = 1, refuted at stage 2 and never committed (extra). Entry 2: before commitment (stage 2), on the outcome later committed; no entry at or after commitment. No entry duplicated by reposing (every stage incremental)."
+ },
+ {
+  "configuration": "core",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/core/P11/raw/P11d.behaviour.20261128T051226Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x in {1, 2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11d valid outcomes, stage 1",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; held relations: []; conclusion withdrawn: none.",
+  "effects_this_stage": "seq 1 entry 1 emitted at stage 1, before commitment (a provisional outcome, later committed)"
+ },
+ {
+  "configuration": "core",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/core/P11/raw/P11d.behaviour.20261128T051226Z.json",
+  "stage": 2,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x = v, v = 1 the solution held at the commit",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11d valid outcomes, stage 2",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('=', 1)]; conclusion withdrawn: none. Commitment: commit() selects the held x = 1, adds x = 1 as a relation and drops the generator (C tokens: solutions.clear()); state finished.",
+  "effects_this_stage": "no entry"
+ },
+ {
+  "configuration": "core",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/core/P11/raw/P11d.behaviour.20261128T051226Z.json",
+  "stage": 3,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [],
+  "valid_outcomes": "none (x = 1 committed, then x != 1)",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (empty valid outcome reported as none: complete; answer completeness: reported none = yes); P11d 'Valid' for v = 1",
+  "observations": "no answer through cp.answer (ended_by no-enumeration); the program printed 'no solution: no value of x satisfies the information so far' and its bindings are empty: the empty outcome reported as none (answer completeness: yes). Representation: no solution, given explicitly as none. unknown x: not bound (no solution held) in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('=', 1), ('!=', 1)]. Conclusion withdrawn: x = 1, reported and committed at stage 2, is withdrawn, shown by the 'no solution' line and x removed from the bindings; the committed effect 1 stays in L, and nothing is done about it (no compensating action, none being possible); no further effect, since the commit dropped the generator. What the program does with information that contradicts a committed effect: it holds x = 1 and x != 1 together (observe: held relations), reports no solution, and leaves L unchanged.",
+  "effects_this_stage": "no entry",
+  "effects": "exact",
+  "effects_log": "L = <1>; committed v = 1 at stage 2. Entry 1 emitted at stage 1, before commitment, on the outcome later committed: exact. Stage 3's contradiction performs no effect. No entry duplicated by reposing."
+ },
+ {
+  "configuration": "core",
+  "instance": "P12a.n12.all",
+  "program": "P12a.py",
+  "record": "results/python/core/P12/raw/P12a.n12.all.behaviour.20261128T051235Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1441, between answers [533581], to end 1069511; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1, 1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 22439; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12a.n12.any",
+  "program": "P12a.py",
+  "record": "results/python/core/P12/raw/P12a.n12.any.behaviour.20261128T051240Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 13; steps to first answer 1443, between answers [], to end 1450; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 14; peak traced bytes (storage run): 22439; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12a.n16.all",
+  "program": "P12a.py",
+  "record": "results/python/core/P12/raw/P12a.n16.all.behaviour.20261128T051242Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 2167, between answers [10910167], to end 21824039; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1, 1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 36544; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12a.n16.any",
+  "program": "P12a.py",
+  "record": "results/python/core/P12/raw/P12a.n16.any.behaviour.20261128T051338Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 17; steps to first answer 2169, between answers [], to end 2176; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 18; peak traced bytes (storage run): 23563; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12a.n8.all",
+  "program": "P12a.py",
+  "record": "results/python/core/P12/raw/P12a.n8.all.behaviour.20261128T051230Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 859, between answers [23731], to end 48743; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1, 1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 21315; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12a.n8.any",
+  "program": "P12a.py",
+  "record": "results/python/core/P12/raw/P12a.n8.any.behaviour.20261128T051232Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 9; steps to first answer 861, between answers [], to end 868; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 10; peak traced bytes (storage run): 21315; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12b.n12.all",
+  "program": "P12b.py",
+  "record": "results/python/core/P12/raw/P12b.n12.all.behaviour.20261128T051346Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 534691, between answers [], to end 1069180; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 22093; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12b.n12.any",
+  "program": "P12b.py",
+  "record": "results/python/core/P12/raw/P12b.n12.any.behaviour.20261128T051352Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 4097; steps to first answer 534693, between answers [], to end 534700; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 3; peak traced bytes (storage run): 20248; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12b.n16.all",
+  "program": "P12b.py",
+  "record": "results/python/core/P12/raw/P12b.n16.all.behaviour.20261128T051356Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 10911907, between answers [], to end 21823612; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 37837; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12b.n16.any",
+  "program": "P12b.py",
+  "record": "results/python/core/P12/raw/P12b.n16.any.behaviour.20261128T051457Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 65537; steps to first answer 10911909, between answers [], to end 10911916; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 3; peak traced bytes (storage run): 28889; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12b.n8.all",
+  "program": "P12b.py",
+  "record": "results/python/core/P12/raw/P12b.n8.all.behaviour.20261128T051341Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 24355, between answers [], to end 48508; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 20089; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12b.n8.any",
+  "program": "P12b.py",
+  "record": "results/python/core/P12/raw/P12b.n8.any.behaviour.20261128T051343Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 257; steps to first answer 24357, between answers [], to end 24364; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 3; peak traced bytes (storage run): 19510; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12c.n12.all",
+  "program": "P12c.py",
+  "record": "results/python/core/P12/raw/P12c.n12.all.behaviour.20261128T051536Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1069354, between answers [], to end 1069444; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 23843; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12c.n12.any",
+  "program": "P12c.py",
+  "record": "results/python/core/P12/raw/P12c.n12.any.behaviour.20261128T051542Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1069356, between answers [], to end 1069363; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 14; peak traced bytes (storage run): 23915; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12c.n16.all",
+  "program": "P12c.py",
+  "record": "results/python/core/P12/raw/P12c.n16.all.behaviour.20261128T051547Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 21823858, between answers [], to end 21823972; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 40783; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12c.n16.any",
+  "program": "P12c.py",
+  "record": "results/python/core/P12/raw/P12c.n16.any.behaviour.20261128T051654Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 21823860, between answers [], to end 21823867; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 18; peak traced bytes (storage run): 40447; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12c.n8.all",
+  "program": "P12c.py",
+  "record": "results/python/core/P12/raw/P12c.n8.all.behaviour.20261128T051530Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 48610, between answers [], to end 48676; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 21599; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12c.n8.any",
+  "program": "P12c.py",
+  "record": "results/python/core/P12/raw/P12c.n8.any.behaviour.20261128T051533Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 48612, between answers [], to end 48619; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 10; peak traced bytes (storage run): 21599; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12d.n12.all",
+  "program": "P12d.py",
+  "record": "results/python/core/P12/raw/P12d.n12.all.behaviour.20261128T051807Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1441, between answers [], to end 1069444; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 22407; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12d.n12.any",
+  "program": "P12d.py",
+  "record": "results/python/core/P12/raw/P12d.n12.any.behaviour.20261128T051812Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 13; steps to first answer 1443, between answers [], to end 1450; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 14; peak traced bytes (storage run): 22407; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12d.n16.all",
+  "program": "P12d.py",
+  "record": "results/python/core/P12/raw/P12d.n16.all.behaviour.20261128T051815Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 2167, between answers [], to end 21823972; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 38234; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12d.n16.any",
+  "program": "P12d.py",
+  "record": "results/python/core/P12/raw/P12d.n16.any.behaviour.20261128T051919Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 17; steps to first answer 2169, between answers [], to end 2176; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 18; peak traced bytes (storage run): 23531; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12d.n8.all",
+  "program": "P12d.py",
+  "record": "results/python/core/P12/raw/P12d.n8.all.behaviour.20261128T051801Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 859, between answers [], to end 48676; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 21283; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "core",
+  "instance": "P12d.n8.any",
+  "program": "P12d.py",
+  "record": "results/python/core/P12/raw/P12d.n8.any.behaviour.20261128T051804Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 9; steps to first answer 861, between answers [], to end 868; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 10; peak traced bytes (storage run): 21283; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11a",
+  "program": "P11a.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11a.behaviour.20261128T052813Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P11a/P11b valid outcomes",
+  "valid_outcomes": "one answer, x = 2 or x = 3",
+  "effects": "exact",
+  "effects_log": "L = <2> (seq 1); 2 emitted after the test x >= 2, when the solution was produced and reported: at commitment (a one-stage problem commits when it reports)",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; no conclusion withdrawn. Commitment happens at the end of the stage, when the answer is reported; the generator (or search) with x = 3 untried is still held afterwards, so a request for more would perform emit(3)."
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11b",
+  "program": "P11b.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11b.behaviour.20261128T052816Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P11a/P11b valid outcomes",
+  "valid_outcomes": "one answer, x = 2 or x = 3",
+  "effects": "extra",
+  "effects_log": "L = <1, 2>: 1 emitted before commitment, on a provisional outcome the later test x >= 2 refuted; 2 emitted at commitment (reported)",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; no conclusion withdrawn. Commitment happens at the end of the stage, when the answer is reported; the generator (or search) with x = 3 untried is still held afterwards, so a request for more would perform emit(3). The program uses no control to avoid extra: emit precedes the test, in the order written."
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11c.behaviour.20261128T052819Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x in {1, 2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 1",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; held relations: []; conclusion withdrawn: none.",
+  "effects_this_stage": "seq 1 entry 1 emitted at stage 1, before commitment (a provisional outcome, later refuted at stage 2)"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11c.behaviour.20261128T052819Z.json",
+  "stage": 2,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "valid_outcomes": "x in {2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 2",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; held relations: [('!=', 1)]; conclusion withdrawn: x = 1 (stage 1) withdrawn by x != 1: shown by reporting x = 2 in its place (bindings x = 2); its effect 1 stays in L.",
+  "effects_this_stage": "seq 2 entry 2 emitted at stage 2, before commitment (a provisional outcome, later committed)"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11c.behaviour.20261128T052819Z.json",
+  "stage": 3,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "valid_outcomes": "x = v, v = 2 the solution held at the commit",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 3",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('!=', 1), ('=', 2)]; conclusion withdrawn: none. Commitment: commit() selects the held x = 2, adds x = 2 as a relation and drops the generator (C tokens: solutions.clear()), so no alternative is tried after it; state finished.",
+  "effects_this_stage": "no entry",
+  "effects": "extra",
+  "effects_log": "L = <1, 2>; committed v = 2 at stage 3. Entry 1: before commitment, for x = 1, refuted at stage 2 and never committed (extra). Entry 2: before commitment (stage 2), on the outcome later committed; no entry at or after commitment. No entry duplicated by reposing (every stage incremental)."
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11d.behaviour.20261128T052823Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x in {1, 2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11d valid outcomes, stage 1",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: a suspended generator of the conjunction (1 entry; kept for backtracking: next() would resume it); suspended work: none (0 items registered); no manual action; held relations: []; conclusion withdrawn: none.",
+  "effects_this_stage": "seq 1 entry 1 emitted at stage 1, before commitment (a provisional outcome, later committed)"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11d.behaviour.20261128T052823Z.json",
+  "stage": 2,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x = v, v = 1 the solution held at the commit",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11d valid outcomes, stage 2",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('=', 1)]; conclusion withdrawn: none. Commitment: commit() selects the held x = 1, adds x = 1 as a relation and drops the generator (C tokens: solutions.clear()); state finished.",
+  "effects_this_stage": "no entry"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/stdlib-concurrency/P11/raw/P11d.behaviour.20261128T052823Z.json",
+  "stage": 3,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [],
+  "valid_outcomes": "none (x = 1 committed, then x != 1)",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (empty valid outcome reported as none: complete; answer completeness: reported none = yes); P11d 'Valid' for v = 1",
+  "observations": "no answer through cp.answer (ended_by no-enumeration); the program printed 'no solution: no value of x satisfies the information so far' and its bindings are empty: the empty outcome reported as none (answer completeness: yes). Representation: no solution, given explicitly as none. unknown x: not bound (no solution held) in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('=', 1), ('!=', 1)]. Conclusion withdrawn: x = 1, reported and committed at stage 2, is withdrawn, shown by the 'no solution' line and x removed from the bindings; the committed effect 1 stays in L, and nothing is done about it (no compensating action, none being possible); no further effect, since the commit dropped the generator. What the program does with information that contradicts a committed effect: it holds x = 1 and x != 1 together (observe: held relations), reports no solution, and leaves L unchanged.",
+  "effects_this_stage": "no entry",
+  "effects": "exact",
+  "effects_log": "L = <1>; committed v = 1 at stage 2. Entry 1 emitted at stage 1, before commitment, on the outcome later committed: exact. Stage 3's contradiction performs no effect. No entry duplicated by reposing."
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12a.n12.all",
+  "program": "P12a.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12a.n12.all.behaviour.20261128T052832Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1441, between answers [533581], to end 1069511; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1, 1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 22596; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12a.n12.any",
+  "program": "P12a.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12a.n12.any.behaviour.20261128T052838Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 13; steps to first answer 1443, between answers [], to end 1450; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 14; peak traced bytes (storage run): 22439; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12a.n16.all",
+  "program": "P12a.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12a.n16.all.behaviour.20261128T052841Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 2167, between answers [10910167], to end 21824039; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1, 1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 38416; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12a.n16.any",
+  "program": "P12a.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12a.n16.any.behaviour.20261128T052945Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 17; steps to first answer 2169, between answers [], to end 2176; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 18; peak traced bytes (storage run): 23563; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12a.n8.all",
+  "program": "P12a.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12a.n8.all.behaviour.20261128T052826Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 859, between answers [23731], to end 48743; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1, 1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 21315; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12a.n8.any",
+  "program": "P12a.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12a.n8.any.behaviour.20261128T052829Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 9; steps to first answer 861, between answers [], to end 868; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 10; peak traced bytes (storage run): 21315; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12b.n12.all",
+  "program": "P12b.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12b.n12.all.behaviour.20261128T052954Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 534691, between answers [], to end 1069180; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 22277; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12b.n12.any",
+  "program": "P12b.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12b.n12.any.behaviour.20261128T053000Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 4097; steps to first answer 534693, between answers [], to end 534700; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 3; peak traced bytes (storage run): 20248; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12b.n16.all",
+  "program": "P12b.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12b.n16.all.behaviour.20261128T053004Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 10911907, between answers [], to end 21823612; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 38317; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12b.n16.any",
+  "program": "P12b.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12b.n16.any.behaviour.20261128T053108Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 65537; steps to first answer 10911909, between answers [], to end 10911916; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 3; peak traced bytes (storage run): 28713; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12b.n8.all",
+  "program": "P12b.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12b.n8.all.behaviour.20261128T052948Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 24355, between answers [], to end 48508; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 19632; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12b.n8.any",
+  "program": "P12b.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12b.n8.any.behaviour.20261128T052951Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 257; steps to first answer 24357, between answers [], to end 24364; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 3; peak traced bytes (storage run): 19632; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12c.n12.all",
+  "program": "P12c.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12c.n12.all.behaviour.20261128T053147Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1069354, between answers [], to end 1069444; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 23843; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12c.n12.any",
+  "program": "P12c.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12c.n12.any.behaviour.20261128T053153Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1069356, between answers [], to end 1069363; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 14; peak traced bytes (storage run): 23963; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12c.n16.all",
+  "program": "P12c.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12c.n16.all.behaviour.20261128T053159Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 21823858, between answers [], to end 21823972; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 39919; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12c.n16.any",
+  "program": "P12c.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12c.n16.any.behaviour.20261128T053302Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 21823860, between answers [], to end 21823867; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 18; peak traced bytes (storage run): 39823; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12c.n8.all",
+  "program": "P12c.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12c.n8.all.behaviour.20261128T053141Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 48610, between answers [], to end 48676; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 21599; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12c.n8.any",
+  "program": "P12c.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12c.n8.any.behaviour.20261128T053144Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 48612, between answers [], to end 48619; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 10; peak traced bytes (storage run): 21599; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12d.n12.all",
+  "program": "P12d.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12d.n12.all.behaviour.20261128T053411Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 1441, between answers [], to end 1069444; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 22407; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12d.n12.any",
+  "program": "P12d.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12d.n12.any.behaviour.20261128T053417Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 13; steps to first answer 1443, between answers [], to end 1450; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 14; peak traced bytes (storage run): 22407; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12d.n16.all",
+  "program": "P12d.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12d.n16.all.behaviour.20261128T053420Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 131071; steps to first answer 2167, between answers [], to end 21823972; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 37802; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12d.n16.any",
+  "program": "P12d.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12d.n16.any.behaviour.20261128T053522Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 17; steps to first answer 2169, between answers [], to end 2176; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 18; peak traced bytes (storage run): 23531; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12d.n8.all",
+  "program": "P12d.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12d.n8.all.behaviour.20261128T053406Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 859, between answers [], to end 48676; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 21283; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P12d.n8.any",
+  "program": "P12d.py",
+  "record": "results/python/stdlib-concurrency/P12/raw/P12d.n8.any.behaviour.20261128T053409Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 9; steps to first answer 861, between answers [], to end 868; alternatives held at the boundary: 1 (one generator of the conjunction (nested choice generators inside it)), kept for backtracking; at each answer (storage run, registered entries): [1]; suspended generator frames at the boundary (storage run): 10; peak traced bytes (storage run): 21283; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s not registered (core); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11a",
+  "program": "P11a.py",
+  "record": "results/python/extended/P11/raw/P11a.behaviour.20261128T052023Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P11a/P11b valid outcomes",
+  "valid_outcomes": "one answer, x = 2 or x = 3",
+  "effects": "exact",
+  "effects_log": "L = <2> (seq 1); 2 emitted after the test x >= 2, when the solution was produced and reported: at commitment (a one-stage problem commits when it reports)",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: 4 choice points on the S search's stack (kept for backtracking); suspended work: none (0 items registered); no manual action; no conclusion withdrawn. Commitment happens at the end of the stage, when the answer is reported; the generator (or search) with x = 3 untried is still held afterwards, so a request for more would perform emit(3)."
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11b",
+  "program": "P11b.py",
+  "record": "results/python/extended/P11/raw/P11b.behaviour.20261128T052026Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P11a/P11b valid outcomes",
+  "valid_outcomes": "one answer, x = 2 or x = 3",
+  "effects": "extra",
+  "effects_log": "L = <1, 2>: 1 emitted before commitment, on a provisional outcome the later test x >= 2 refuted; 2 emitted at commitment (reported)",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: 4 choice points on the S search's stack (kept for backtracking); suspended work: none (0 items registered); no manual action; no conclusion withdrawn. Commitment happens at the end of the stage, when the answer is reported; the generator (or search) with x = 3 untried is still held afterwards, so a request for more would perform emit(3). The program uses no control to avoid extra: emit precedes the test, in the order written."
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/extended/P11/raw/P11c.behaviour.20261128T052028Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x in {1, 2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 1",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: 3 choice points on the S search's stack (kept for backtracking); suspended work: none (0 items registered); no manual action; held relations: []; conclusion withdrawn: none.",
+  "effects_this_stage": "seq 1 entry 1 emitted at stage 1, before commitment (a provisional outcome, later refuted at stage 2)"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/extended/P11/raw/P11c.behaviour.20261128T052028Z.json",
+  "stage": 2,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "valid_outcomes": "x in {2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 2",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: 3 choice points on the S search's stack (kept for backtracking); suspended work: none (0 items registered); no manual action; held relations: [('!=', 1)]; conclusion withdrawn: x = 1 (stage 1) withdrawn by x != 1: shown by reporting x = 2 in its place (bindings x = 2); its effect 1 stays in L.",
+  "effects_this_stage": "seq 2 entry 2 emitted at stage 2, before commitment (a provisional outcome, later committed)"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11c",
+  "program": "P11c.py",
+  "record": "results/python/extended/P11/raw/P11c.behaviour.20261128T052028Z.json",
+  "stage": 3,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 2"
+  ],
+  "valid_outcomes": "x = v, v = 2 the solution held at the commit",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11c valid outcomes, stage 3",
+  "observations": "answer ['x = 2'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 2 in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('!=', 1), ('=', 2)]; conclusion withdrawn: none. Commitment: commit() selects the held x = 2, adds x = 2 as a relation and drops the generator (C tokens: solutions.clear(), stack.clear()), so no alternative is tried after it; state finished.",
+  "effects_this_stage": "no entry",
+  "effects": "extra",
+  "effects_log": "L = <1, 2>; committed v = 2 at stage 3. Entry 1: before commitment, for x = 1, refuted at stage 2 and never committed (extra). Entry 2: before commitment (stage 2), on the outcome later committed; no entry at or after commitment. No entry duplicated by reposing (every stage incremental)."
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/extended/P11/raw/P11d.behaviour.20261128T052031Z.json",
+  "stage": 1,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x in {1, 2, 3}, any one",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11d valid outcomes, stage 1",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: 3 choice points on the S search's stack (kept for backtracking); suspended work: none (0 items registered); no manual action; held relations: []; conclusion withdrawn: none.",
+  "effects_this_stage": "seq 1 entry 1 emitted at stage 1, before commitment (a provisional outcome, later committed)"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/extended/P11/raw/P11d.behaviour.20261128T052031Z.json",
+  "stage": 2,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "x = 1"
+  ],
+  "valid_outcomes": "x = v, v = 1 the solution held at the commit",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query); P11d valid outcomes, stage 2",
+  "observations": "answer ['x = 1'] (1/1 of an any-one query, 0 invalid); unknown x: bound to 1 in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('=', 1)]; conclusion withdrawn: none. Commitment: commit() selects the held x = 1, adds x = 1 as a relation and drops the generator (C tokens: solutions.clear(), stack.clear()); state finished.",
+  "effects_this_stage": "no entry"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P11d",
+  "program": "P11d.py",
+  "record": "results/python/extended/P11/raw/P11d.behaviour.20261128T052031Z.json",
+  "stage": 3,
+  "reached": true,
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [],
+  "valid_outcomes": "none (x = 1 committed, then x != 1)",
+  "semantic": "complete",
+  "rule": "SPECIFICATION Outcomes 1 (empty valid outcome reported as none: complete; answer completeness: reported none = yes); P11d 'Valid' for v = 1",
+  "observations": "no answer through cp.answer (ended_by no-enumeration); the program printed 'no solution: no value of x satisfies the information so far' and its bindings are empty: the empty outcome reported as none (answer completeness: yes). Representation: no solution, given explicitly as none. unknown x: not bound (no solution held) in the registered bindings; alternatives held: none (0); suspended work: none (0 items registered); no manual action; held relations: [('=', 1), ('!=', 1)]. Conclusion withdrawn: x = 1, reported and committed at stage 2, is withdrawn, shown by the 'no solution' line and x removed from the bindings; the committed effect 1 stays in L, and nothing is done about it (no compensating action, none being possible); no further effect, since the commit dropped the generator. What the program does with information that contradicts a committed effect: it holds x = 1 and x != 1 together (observe: held relations), reports no solution, and leaves L unchanged.",
+  "effects_this_stage": "no entry",
+  "effects": "exact",
+  "effects_log": "L = <1>; committed v = 1 at stage 2. Entry 1 emitted at stage 1, before commitment, on the outcome later committed: exact. Stage 3's contradiction performs no effect. No entry duplicated by reposing."
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12a.n12.all",
+  "program": "P12a.py",
+  "record": "results/python/extended/P12/raw/P12a.n12.all.behaviour.20261128T052044Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 28819, between answers [9322421], to end 18694274; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [39, 6]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12a.n12.any",
+  "program": "P12a.py",
+  "record": "results/python/extended/P12/raw/P12a.n12.any.behaviour.20261128T052156Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 13; steps to first answer 28819, between answers [], to end 28836; alternatives held at the boundary: 39 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [39]; suspended generator frames at the boundary (storage run): 77; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12a.n16.all",
+  "program": "P12a.py",
+  "record": "results/python/extended/P12/raw/P12a.n16.all.behaviour.20261128T052159Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "binding at budget s = ⟨'l,'r,'l,'l,'r,'l,'l,'r,'r,'r,'r,'l,'r,'r,'l,'r⟩: not equivalent to the valid outcomes (s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩); it is one sequence, not accepted",
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "unsound",
+  "representation": "explicit",
+  "alternative_reading": {
+   "semantic": "partial",
+   "reason": "if the search's trial binding at the budget is not taken as reported (it is a candidate on the trail, which backtracking would undo, never accepted), the result is judged on the answers alone: partial"
+  },
+  "rule": "SPECIFICATION Outcomes 1, 'reported': a binding the system holds is reported if observe() can read it at the moment a budget runs out, whether or not the answers mechanism would deliver it. The registered bindings hold s = ⟨'l,'r,'l,'l,'r,'l,'l,'r,'r,'r,'r,'l,'r,'r,'l,'r⟩ at the budget, which is not a valid outcome; so the report denotes an invalid outcome: unsound (classification-sensitive: see alternative_reading)",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/2, invalid 0); candidates examined (cost run, accept applications): 37858; steps to first answer 39659, between answers [], to end 100000000; alternatives held at the boundary: 51 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [51]; suspended generator frames at the boundary (storage run): 101; peak traced bytes (storage run): 340967; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: no: budget at 100000000 steps; the strategy did not cover the space (37858 candidates examined of 131071); binding held at the budget (observe): s = ⟨'l,'r,'l,'l,'r,'l,'l,'r,'r,'r,'r,'l,'r,'r,'l,'r⟩; unknowns: s bound to a trial candidate at the budget; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12a.n16.any",
+  "program": "P12a.py",
+  "record": "results/python/extended/P12/raw/P12a.n16.any.behaviour.20261128T052853Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 17; steps to first answer 39659, between answers [], to end 39676; alternatives held at the boundary: 51 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [51]; suspended generator frames at the boundary (storage run): 101; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12a.n8.all",
+  "program": "P12a.py",
+  "record": "results/python/extended/P12/raw/P12a.n8.all.behaviour.20261128T052035Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\", \"s = ⟨'r⟩\"] (valid 2/2, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 19419, between answers [478281], to end 987614; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [27, 6]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "2/2 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12a.n8.any",
+  "program": "P12a.py",
+  "record": "results/python/extended/P12/raw/P12a.n8.any.behaviour.20261128T052041Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩, s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 9; steps to first answer 19419, between answers [], to end 19436; alternatives held at the boundary: 27 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [27]; suspended generator frames at the boundary (storage run): 53; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12b.n12.all",
+  "program": "P12b.py",
+  "record": "results/python/extended/P12/raw/P12b.n12.all.behaviour.20261128T052905Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 4625076, between answers [], to end 9243450; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [6]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12b.n12.any",
+  "program": "P12b.py",
+  "record": "results/python/extended/P12/raw/P12b.n12.any.behaviour.20261128T052945Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 4097; steps to first answer 4625076, between answers [], to end 4625093; alternatives held at the boundary: 6 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [6]; suspended generator frames at the boundary (storage run): 11; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12b.n16.all",
+  "program": "P12b.py",
+  "record": "results/python/extended/P12/raw/P12b.n16.all.behaviour.20261128T053005Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "binding at budget s = ⟨'r,'l,'r,'l,'r,'r,'l,'r,'l,'l,'r,'l,'l,'l,'l⟩: not equivalent to the valid outcomes (s = ⟨'r⟩); it is one sequence, not accepted",
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "unsound",
+  "representation": "explicit",
+  "alternative_reading": {
+   "semantic": "complete",
+   "reason": "if the search's trial binding at the budget is not taken as reported (it is a candidate on the trail, which backtracking would undo, never accepted), the result is judged on the answers alone: complete"
+  },
+  "rule": "SPECIFICATION Outcomes 1, 'reported': a binding the system holds is reported if observe() can read it at the moment a budget runs out, whether or not the answers mechanism would deliver it. The registered bindings hold s = ⟨'r,'l,'r,'l,'r,'r,'l,'r,'l,'l,'r,'l,'l,'l,'l⟩ at the budget, which is not a valid outcome; so the report denotes an invalid outcome: unsound (classification-sensitive: see alternative_reading)",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 88650; steps to first answer 73929396, between answers [], to end 100000000; alternatives held at the boundary: 48 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [6]; suspended generator frames at the boundary (storage run): 95; peak traced bytes (storage run): 325430; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: no: budget at 100000000 steps; the strategy did not cover the space (88650 candidates examined of 131071); binding held at the budget (observe): s = ⟨'r,'l,'r,'l,'r,'r,'l,'r,'l,'l,'r,'l,'l,'l,'l⟩; unknowns: s bound to a trial candidate at the budget; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12b.n16.any",
+  "program": "P12b.py",
+  "record": "results/python/extended/P12/raw/P12b.n16.any.behaviour.20261128T053650Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 65537; steps to first answer 73929396, between answers [], to end 73929413; alternatives held at the boundary: 6 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [6]; suspended generator frames at the boundary (storage run): 11; peak traced bytes (storage run): 322606; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12b.n8.all",
+  "program": "P12b.py",
+  "record": "results/python/extended/P12/raw/P12b.n8.all.behaviour.20261128T052856Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 293556, between answers [], to end 580410; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [6]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12b.n8.any",
+  "program": "P12b.py",
+  "record": "results/python/extended/P12/raw/P12b.n8.any.behaviour.20261128T052901Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 257; steps to first answer 293556, between answers [], to end 293573; alternatives held at the boundary: 6 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [6]; suspended generator frames at the boundary (storage run): 11; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12c.n12.all",
+  "program": "P12c.py",
+  "record": "results/python/extended/P12/raw/P12c.n12.all.behaviour.20261128T054145Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 17004593, between answers [], to end 17006695; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [39]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12c.n12.any",
+  "program": "P12c.py",
+  "record": "results/python/extended/P12/raw/P12c.n12.any.behaviour.20261128T054243Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 17004593, between answers [], to end 17004610; alternatives held at the boundary: 39 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [39]; suspended generator frames at the boundary (storage run): 77; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12c.n16.all",
+  "program": "P12c.py",
+  "record": "results/python/extended/P12/raw/P12c.n16.all.behaviour.20261128T054342Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "binding at budget s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'r⟩ ++ t (t unknown): not equivalent to the valid outcomes (s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩); it denotes sequences none of which is valid",
+  "harness_fault": false,
+  "answers": [],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "unsound",
+  "representation": "solved form",
+  "alternative_reading": {
+   "semantic": "none reported",
+   "reason": "if the search's trial binding at the budget is not taken as reported (it is a candidate on the trail, which backtracking would undo, never accepted), the result is judged on the answers alone: none reported"
+  },
+  "rule": "SPECIFICATION Outcomes 1, 'reported': a binding the system holds is reported if observe() can read it at the moment a budget runs out, whether or not the answers mechanism would deliver it. The registered bindings hold s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'r⟩ ++ t (t unknown) at the budget, which is not a valid outcome; so the report denotes an invalid outcome: unsound (classification-sensitive: see alternative_reading)",
+  "observations": "answers in order: [] (valid 0/1, invalid 0); candidates examined (cost run, accept applications): 41061; steps to first answer None, between answers [], to end 100000000; alternatives held at the boundary: 47 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): []; suspended generator frames at the boundary (storage run): 92; peak traced bytes (storage run): 323534; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: no: budget at 100000000 steps; the strategy did not cover the space (41061 candidates examined of 131071); binding held at the budget (observe): s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'r⟩ ++ t; unknowns: s bound to a trial candidate at the budget; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "0/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12c.n16.any",
+  "program": "P12c.py",
+  "record": "results/python/extended/P12/raw/P12c.n16.any.behaviour.20261128T054928Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "binding at budget s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'r⟩ ++ t (t unknown): not equivalent to the valid outcomes (s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩); it denotes sequences none of which is valid",
+  "harness_fault": false,
+  "answers": [],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "unsound",
+  "representation": "solved form",
+  "alternative_reading": {
+   "semantic": "none reported",
+   "reason": "if the search's trial binding at the budget is not taken as reported (it is a candidate on the trail, which backtracking would undo, never accepted), the result is judged on the answers alone: none reported"
+  },
+  "rule": "SPECIFICATION Outcomes 1, 'reported': a binding the system holds is reported if observe() can read it at the moment a budget runs out, whether or not the answers mechanism would deliver it. The registered bindings hold s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'r⟩ ++ t (t unknown) at the budget, which is not a valid outcome; so the report denotes an invalid outcome: unsound (classification-sensitive: see alternative_reading)",
+  "observations": "answers in order: [] (valid 0/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 41061; steps to first answer None, between answers [], to end 100000000; alternatives held at the boundary: 47 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): []; suspended generator frames at the boundary (storage run): 92; peak traced bytes (storage run): 323550; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); budget at 100000000 steps before any answer (41061 candidates examined; the solution is the 131071th, the last, depth-first); binding held at the budget (observe): s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'r⟩ ++ t; unknowns: s bound to a trial candidate at the budget; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "0/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12c.n8.all",
+  "program": "P12c.py",
+  "record": "results/python/extended/P12/raw/P12c.n8.all.behaviour.20261128T054133Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 880653, between answers [], to end 882115; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [27]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12c.n8.any",
+  "program": "P12c.py",
+  "record": "results/python/extended/P12/raw/P12c.n8.any.behaviour.20261128T054139Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'r,'r,'r,'r,'r,'r,'r,'r⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 880653, between answers [], to end 880670; alternatives held at the boundary: 27 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [27]; suspended generator frames at the boundary (storage run): 53; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12d.n12.all",
+  "program": "P12d.py",
+  "record": "results/python/extended/P12/raw/P12d.n12.all.behaviour.20261128T055523Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 8191; steps to first answer 26156, between answers [], to end 17006695; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [39]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12d.n12.any",
+  "program": "P12d.py",
+  "record": "results/python/extended/P12/raw/P12d.n12.any.behaviour.20261128T055622Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 13; steps to first answer 26156, between answers [], to end 26173; alternatives held at the boundary: 39 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [39]; suspended generator frames at the boundary (storage run): 77; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12d.n16.all",
+  "program": "P12d.py",
+  "record": "results/python/extended/P12/raw/P12d.n16.all.behaviour.20261128T055625Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": "binding at budget s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'l,'r⟩: not equivalent to the valid outcomes (s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩); it is one sequence, not accepted",
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "unsound",
+  "representation": "explicit",
+  "alternative_reading": {
+   "semantic": "complete",
+   "reason": "if the search's trial binding at the budget is not taken as reported (it is a candidate on the trail, which backtracking would undo, never accepted), the result is judged on the answers alone: complete"
+  },
+  "rule": "SPECIFICATION Outcomes 1, 'reported': a binding the system holds is reported if observe() can read it at the moment a budget runs out, whether or not the answers mechanism would deliver it. The registered bindings hold s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'l,'r⟩ at the budget, which is not a valid outcome; so the report denotes an invalid outcome: unsound (classification-sensitive: see alternative_reading)",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 41060; steps to first answer 36172, between answers [], to end 100000000; alternatives held at the boundary: 51 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [51]; suspended generator frames at the boundary (storage run): 100; peak traced bytes (storage run): 324873; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: no: budget at 100000000 steps; the strategy did not cover the space (41060 candidates examined of 131071); binding held at the budget (observe): s = ⟨'l,'r,'l,'r,'l,'l,'l,'l,'l,'l,'r,'l,'r,'r,'l,'r⟩; unknowns: s bound to a trial candidate at the budget; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12d.n16.any",
+  "program": "P12d.py",
+  "record": "results/python/extended/P12/raw/P12d.n16.any.behaviour.20261128T060211Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 17; steps to first answer 36172, between answers [], to end 36189; alternatives held at the boundary: 51 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [51]; suspended generator frames at the boundary (storage run): 101; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12d.n8.all",
+  "program": "P12d.py",
+  "record": "results/python/extended/P12/raw/P12d.n8.all.behaviour.20261128T055515Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "all: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (all solutions: the report denotes exactly the valid outcomes); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1, invalid 0); candidates examined (cost run, accept applications): 511; steps to first answer 17580, between answers [], to end 882115; alternatives held at the boundary: 0 (the search exhausted; nothing held); at each answer (storage run, registered entries): [27]; suspended generator frames at the boundary (storage run): 0; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); finishes after the last solution: yes (finished; the space was covered); unknowns: s unbound in the registered bindings at the end (the exhausted search restored it); search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ },
+ {
+  "configuration": "extended",
+  "instance": "P12d.n8.any",
+  "program": "P12d.py",
+  "record": "results/python/extended/P12/raw/P12d.n8.any.behaviour.20261128T055521Z.json",
+  "stage": 1,
+  "reached": true,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "alternatives pending"
+  ],
+  "residual_equivalence": null,
+  "harness_fault": false,
+  "answers": [
+   "s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩"
+  ],
+  "valid_outcomes": "any one of: s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩",
+  "semantic": "complete",
+  "representation": "explicit",
+  "rule": "SPECIFICATION Outcomes 1 (any-one query: one valid answer is complete); P12 queries",
+  "observations": "answers in order: [\"s = ⟨'l,'l,'l,'l,'l,'l,'l,'l⟩\"] (valid 1/1 of an any-one query, invalid 0); candidates examined (cost run, accept applications): 9; steps to first answer 17580, between answers [], to end 17597; alternatives held at the boundary: 27 (the S search's stack of choice points), kept for backtracking; at each answer (storage run, registered entries): [27]; suspended generator frames at the boundary (storage run): 53; peak traced bytes (storage run): 289178; problem-defined alternatives (partial sequences held): not registered by the program (unavailable); unknowns: s bound to the answer in the registered bindings; search avoided: no (the program enumerates choice and tests accept, depth first in the order written); no suspended work; no conclusion withdrawn; no manual action",
+  "answer_completeness": "1/1 valid, 0 invalid"
+ }
+]

@@ -1,0 +1,17 @@
+# derived from report by derive_x1.py, then checked by hand
+S = [(0, 'P', 'program block begin (as in report)', 'rule 10'),
+(1, 'H', 'declarations of harness words n, cap, m, i, code, k (as in report)', 'harness README 2.7.5'),
+(13, 'P', 'declarations e (stage constant), b (the named quantity) (as in report)', 'rule 1'),
+(17, 'R', 'declaration Boolean bk: whether b has a value (as in report)', 'rule 19 (record of which places are known); extra state the problem does not give'),
+(20, 'H', 'instance line and code loop (as in report)', 'harness README 2.7.1'),
+(45, 'R', 'bk := false (as in report)', 'as above'),
+(49, 'H', 'message loop, message reads, dispatch if k = 1 then begin (as in report)', 'harness README 2.7.2'),
+(72, 'P', 'stage 1: ininteger(0, e); b := e (as in report)', 'stage information; rule 1'),
+(79, 'R', 'bk := true (as in report)', 'as above'),
+(83, 'H', 'end; dispatch else if k = 2 then begin (as in report)', 'harness README 2.7.2'),
+(91, 'P', 'stage 2: ininteger(0, e); b := b + e (as in report)', 'rule 1'),
+(100, 'H', 'end; dispatch else if k = 3 then begin (as in report)', 'harness README 2.7.2'),
+(108, 'P', 'stage 3: ininteger(0, e); b := e (as in report)', 'rule 1'),
+(115, 'H', 'end; answer print, observe block, end of loop (as in report)', 'harness README 2.7.3; rule 13'),
+(202, 'H', 'end of the message loop', 'harness README 2.7.2'),
+(203, 'P', 'program end (as in report)', 'rule 10')]
