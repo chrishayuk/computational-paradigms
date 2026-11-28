@@ -1,0 +1,20 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NAMED VARIANT, not the primary (programs/absys/README.md, batch 1C, P09b).
+% NOTATION: 1969 (.ab1), as the primary.
+% IDIOM: alternatives as "parallel non-interacting programs": Foster and Elcock 1969 ("Unsatisfiable conjunctions disappear when unsatisfiability is detected"; tutorial ch. 5; examples/alternatives.ab1);
+% IDIOM: begin ... end for one conjunction: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% REFORMULATION (R): the two computations are written as the two alternatives of one or, in the order written, so that each is a
+% derivation of its own and A's failure is the failure of its own derivation only. The problem states two computations, not a
+% disjunction, and the or is given before the SPAWN subsections, which are left empty.
+% CONSTANTS BEGIN
+ak1 = 1   % stage 1, computation A: x = ak1
+ak2 = 2   % stage 1, computation A: x = ak2
+bk = 3   % stage 1, computation B: y = bk
+% CONSTANTS END
+% STAGE 1
+{begin x = ak1  x = ak2 end or y = bk}
+% SPAWN A
+% (given in the or above)
+% SPAWN B
+% (given in the or above)

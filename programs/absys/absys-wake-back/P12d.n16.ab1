@@ -1,0 +1,33 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NOTATION: 1969 (.ab1): choice's n > 0 needs a comparison, which no notation has; n - 1 needs arithmetic, which only the 1969 notation has (systems/absys/README.md, Notation; docs/decisions.md rule 23).
+% IDIOM: a relation as name'=lambda x begin {A or B} end, primes for new local names, lists [a;b] and [h&t], quoted atoms: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1; examples/alternatives.ab1);
+% IDIOM: a case's head as equations on the lambda's parameters: Elcock 1990 p. 8 (app, examples/append.abs);
+% IDIOM: a closed world of facts as a procedure whose alternatives are the facts, its completion: Elcock 1990 p. 15 (student, examples/students.abs);
+% IDIOM: arithmetic as an assertion usable in every direction: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets;
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% PARAMETERS n
+% P12d, the instances P12d.n16.all and P12d.n16.any (the harness's cap gives the answer mode). Unknown s.
+% One stage: choice(n, s) and accept(s), in that order, as one conjunction; n = 16 is the harness's parameter (README 3.4).
+% accept: L repeated n times only; the atoms L and R are written 'l' and 'r'. Its facts depend on n, so each n has its own file.
+% CONSTANTS BEGIN
+acc1 = ['l';'l';'l';'l';'l';'l';'l';'l';'l';'l';'l';'l';'l';'l';'l';'l']   % stage 1: accept's one fact, L repeated n times (n = 16), given with the prelude
+% CONSTANTS END
+% REFORMULATION (R): choice's n > 0 is a primitive comparison, which no Absys notation has (systems/absys/README.md, Notation).
+% gtz(q), q > 0, is written as the enumeration of the finitely many values of q that are > 0 among those choice is applied
+% to: n, n - 1, ..., 0, with n at most 16 (systems/absys/README.md, Notation: "replacing n > 0 by an enumeration of the
+% finitely many values used"). On every input the problem uses (q from 0 to 16) it is q > 0. The same text serves every n.
+gtz'=lambda q
+    begin {q = 1 or q = 2 or q = 3 or q = 4 or q = 5 or q = 6 or q = 7 or q = 8 or
+           q = 9 or q = 10 or q = 11 or q = 12 or q = 13 or q = 14 or q = 15 or q = 16} end
+% choice, P12 Vocabulary, cases 1 and 2 in that order. Case 1: choice(n, <>), its head as an equation.
+% Case 2: its head equation s = <e> ++ t, then n > 0, then (e = L or e = R, in that order), then choice(n - 1, t),
+% with n - 1 written as a fresh unknown (SPECIFICATION.md, Arithmetic).
+choice'=lambda m, w
+    begin {w = [] or
+           w = [e'&t'] gtz(m) {e = 'l' or e = 'r'} m1' = m - 1 choice(m1, t)} end
+% accept, P12d: given by facts, in a closed world.
+accept'=lambda u
+    begin u = acc1 end
+% STAGE 1
+begin choice(n, s) accept(s) end

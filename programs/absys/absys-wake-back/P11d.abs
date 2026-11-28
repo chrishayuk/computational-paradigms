@@ -1,0 +1,26 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NOTATION: 1990 (.abs), the earliest notation with every construct used: tout (emit) and not are in the 1990 notation only
+% (docs/decisions.md rule 1; tutorial ch. 7, ch. 10: in the 1969 notation tout(...) is an application of an undefined name).
+% IDIOM: a closed world of facts as a procedure whose alternatives are the facts, its completion: Elcock 1990 p. 15 (student, examples/students.abs);
+% IDIOM: tout(label, term), the output assertion, which waits until its term is complete: Elcock 1990 note 11 (tutorial ch. 9; docs/decisions.md rule 20); here the harness's emit (harnesses/absys/README.md, 3.10);
+% IDIOM: not(A), an independent computation with the criteria reversed: Elcock 1990 p. 14 (tutorial ch. 7: not(X = 1));
+% IDIOM: {A, B} for one conjunction, one assertion: Elcock 1990 p. 8 (examples/append.abs).
+% x != k is written not(x = k): negation and equality, the problem's connectives; x is a value of pick by then.
+% P11d. Unknown x. Stage 1 pick(x) and emit(x); stage 2 commit; stage 3 x != <k>.
+% CONSTANTS BEGIN
+pk1 = 1   % stage 1: the facts of pick (P05 Vocabulary), given with the prelude
+pk2 = 2   % stage 1: the facts of pick
+pk3 = 3   % stage 1: the facts of pick
+nek = 1   % stage 3: x != nek
+% CONSTANTS END
+% pick, P05 Vocabulary: a closed world of three facts, pick(<k1>), pick(<k2>), pick(<k3>), in this order.
+pick = lambda P
+    {P = pk1} or {P = pk2} or {P = pk3}
+% STAGE 1
+{pick(x), tout("emit", x)}
+% STAGE 2
+% commit. Absys has no construct that selects one derivation: every derivation stays live (harnesses/absys/QUESTIONS.md, A6).
+% The section is empty; the problem says how a system that cannot select is judged (problems/11-irreversible-effects.md, Commitment).
+% STAGE 3
+not(x = nek)

@@ -530,3 +530,371 @@ being opened: at the start of the session its environment supplied the
 index of an auto-memory file under `~/.claude/projects/…` (two lines:
 [redacted by tools/redact-transcripts.py: what the entries are about]). The files it
 points to were not opened. Nothing else outside the list was read.
+
+# Batch 1C: P09, P10, P11, P12
+
+*Phase 5, wave 1, against `spec-1.0.1` and the contract of
+`harnesses/absys/README.md`. No program here has been run. Only
+`harnesses/absys/check` was used, and it reports no errors for any of
+them, primary or variant, in each of the three configurations.*
+
+**Author of every program:** `implementation-absys`, an agent (Claude
+Opus 5.5, model id `claude-opus-5-5`), in a fresh context with no other
+knowledge of this study than the files listed at the end. It had not seen
+any earlier work on it, and in particular no result of batches 1A or 1B.
+
+**Precursor programs (E01-E09): not seen.** No text of them was read:
+`/opt/src/absys/research/`, `/opt/src/absys-measure/research/` and
+`/opt/src/absys/docs/research.md` were not opened. The allowed
+documentation runs `{loop(A)} or {A = 1}` (tutorial ch. 5) and FE69's
+`map` with `key` (`examples/map.ab1`); both are published texts, cited
+below as sources of idioms, not precursor programs. None of the problems
+P09-P12 appears in the documentation read.
+
+## Layout
+
+    programs/absys/<configuration>/P09a.ab1  P09b.ab1  P09c.ab1  P09d.ab1  P09e.ab1
+                                  P10a.ab1  P10b.ab1  P10c.ab1  P10d.ab1
+                                  P11c.abs  P11d.abs
+                                  P12a.n8.ab1  P12a.n12.ab1  P12a.n16.ab1   (and the same for P12b, P12c, P12d)
+    programs/absys/<configuration>/variants/P09a.AB.or.ab1  P09a.BA.or.ab1  P09b.or.ab1   named variants
+    programs/absys/<configuration>/variants/P11a.ne.abs  P11b.ne.abs                      named variants (no primary)
+
+for each of `absys`, `absys-depth-first`, `absys-wake-back`. **The three
+configurations share one text** for every sub-problem and variant, byte
+for byte, for the reason given for batch 1A: the flags change how the
+machine schedules derivations and returned relations, not the language,
+so the natural program is the same text in each.
+
+Which file serves which instance of `stages.json`:
+
+| instances | file |
+|---|---|
+| `P09a.AB`, `P09a.BA` | `P09a.ab1` (the harness gives the SPAWN subsections in the instance's `spawn_order`) |
+| `P09b`, `P09c`, `P09d`, `P09e`, `P10a`-`P10d`, `P11c`, `P11d` | the file of that name |
+| `P12x.nN.all`, `P12x.nN.any` | `P12x.nN.ab1` (accept's facts depend on n; the answer mode is the harness's cap) |
+| `P11a`, `P11b` | none: not expressible. The named variants `variants/P11a.ne.abs`, `variants/P11b.ne.abs` |
+
+## Notation
+
+By the rule of `systems/absys/README.md` (the earliest notation with every
+construct the problem needs):
+
+| sub-problem | notation | why |
+|---|---|---|
+| P09a | 1969 | loop, rev and conc, as in P04 and P03 |
+| P09b, P09e | 1969 | equations; P09e arithmetic |
+| P09c | 1969 | n > 5 and n ≤ 5 are comparisons, which no notation has; reformulated with arithmetic, 1969 only |
+| P09d | 1969 | lists and arithmetic (n + 1) |
+| P10a-c | 1969 | arithmetic; P10b also `key` (1969 only) |
+| P10d | 1969 | x > k reformulated with arithmetic, as P05 |
+| P11c, P11d | 1990 | emit is `tout`, and ≠ is written with `not`: both 1990 only (below) |
+| P11a, P11b | none | they need emit (1990 only) and x ≥ k, which can be reformulated only with arithmetic (1969 only): **not expressible** |
+| P12 | 1969 | n − 1 needs arithmetic; n > 0 reformulated |
+
+**`tout` is the 1990 notation's only.** `docs/decisions.md` rule 1 and
+the tutorial's grammar (ch. 10) list `tout` in the 1990 notation and not
+in the 1969 one. `check` confirms it without running anything: in a `.abs`
+file `tout(x)` is refused ("tout takes a label and a term"), while in a
+`.ab1` file `tout(x)`, `tout(x, y, z)` and `tout("emit", x)` are all
+accepted, as applications of an identifier `tout` that has no definition
+(`not(x = 1)` is likewise refused in `.ab1`). So in the 1969 notation
+`tout("emit", x)` would be an application waiting for a definition of
+`tout` (rule 6), never the output assertion, and emit cannot be written.
+(These probes were scratch files, checked and deleted; they are not
+programs.)
+
+## Per configuration and sub-problem
+
+The same entries hold for `absys`, `absys-depth-first` and
+`absys-wake-back`. "S used": none anywhere (`harnesses/absys/S-mechanisms.md`;
+no program contains code that supplies a mechanism the configuration
+lacks). C constructs: `key` in P10b only.
+
+| sub-problem | program | primary or variant | expressibility, as the author sees it |
+|---|---|---|---|
+| P09a | `P09a.ab1`: loop, conc, rev; SPAWN A `loop(x)`, SPAWN B `rev(ra, b)` | primary | expressible (ambiguity 1) |
+| P09a | `variants/P09a.AB.or.ab1`, `variants/P09a.BA.or.ab1`: `{loop(x) or rev(ra, b)}` in the spawn order | named variant | (see P09) |
+| P09b | `P09b.ab1`: SPAWN A `begin x = ak1  x = ak2 end`, SPAWN B `y = bk` | primary | expressible (ambiguity 1) |
+| P09b | `variants/P09b.or.ab1`: `{begin x = ak1  x = ak2 end or y = bk}` | named variant | (see P09) |
+| P09c | `P09c.ab1`: gt, le, pos, nonneg, gen, sum3; `begin gen(gk, s) sum3(s, total) end` | primary | **expressible with reformulation** (> and ≤) |
+| P09d | `P09d.ab1`: genu, sum3; `begin genu(gk, s) sum3(s, total) end` | primary | expressible |
+| P09e | `P09e.ab1`: `begin x = y + ek1  y = x - ek2 end` | primary | expressible |
+| P10a | `P10a.ab1`: b as the list of its values; each stage extends it | primary | **expressible with reformulation** (replacement) |
+| P10b | `P10b.ab1`: stage 1 `dbl` with `key` and `dbl(b, d)`; stages 2-4 as P10a | primary | **expressible with reformulation** (replacement; the standing relation over the lists) |
+| P10c | `P10c.ab1`: as P10a; stage 2 `d = [dv1&dt1]  dv1 = dk * bv1` | primary | **expressible with reformulation** (replacement) |
+| P10d | `P10d.ab1`: pick, gt, pos; `pick(x)`; `gt(x, gtk)`; withdrawal as `pick(x3)` | primary | **expressible with reformulation** (> ; withdrawal by restating) (ambiguity 4) |
+| P11a | none | - | **not expressible** (emit and ≥ in no one notation) |
+| P11a | `variants/P11a.ne.abs`: `{pick(x), not(x = gelo), tout("emit", x)}` | named variant | meaning changed: ≥ k written as ≠ the one value of pick below k |
+| P11b | none | - | **not expressible**, as P11a |
+| P11b | `variants/P11b.ne.abs`: `{pick(x), tout("emit", x), not(x = gelo)}` | named variant | meaning changed, as P11a's |
+| P11c | `P11c.abs`: pick; `{pick(x), tout("emit", x)}`; `not(x = nek)`; commit: empty | primary | expressible (ambiguity 5) |
+| P11d | `P11d.abs`: pick; `{pick(x), tout("emit", x)}`; commit: empty; `not(x = nek)` | primary | expressible (ambiguity 5) |
+| P12a-d | `P12x.nN.ab1`: gtz, choice, accept; `begin choice(n, s) accept(s) end` | primary | **expressible with reformulation** (n > 0) |
+
+Expressibility is the author's judgement, recorded before any run; it
+anticipates no outcome. Several of these texts may well run to the budget
+or never report (P09a in the order A then B, P09c, P09d, P10d, P12 at
+n = 16); that is a result, not a reason to reformulate.
+
+### P09
+
+- **P09a, P09b: spawned computations in a system with one computation.**
+  The primary programs give each computation's text, as the problem states
+  it, in its own SPAWN subsection, and the harness spawns them in the
+  instance's order (`side_by_side: false`, harness README 3.6). Absys has
+  one computation per session: B's text is accepted into the derivations
+  that hold A, so the two are conjoined (QUESTIONS, A5). Every relation is
+  transcribed and the computations are posed with the protocol's own
+  `spawn` for a configuration that cannot run them side by side; that B is
+  then conjoined with A is the configuration's behaviour, which the
+  problem's observations ask about ("whether A's failure affects B"). The
+  author therefore judges P09a and P09b *expressible*, with these as the
+  primaries. The other reading, that "not conjoined" cannot be met and the
+  sub-problems are *not expressible*, is ambiguity 1.
+- **Named variants:** FE69 describes the conjunctions an `or` makes as
+  "parallel non-interacting programs". `variants/P09a.AB.or.ab1` and
+  `P09a.BA.or.ab1` write the two computations as the two alternatives of
+  one `or`, in the instance's spawn order; `variants/P09b.or.ab1` likewise,
+  in the order written. Each computation is then a derivation of its own.
+  Not primary, chosen before any run: it states a disjunction the problem
+  does not, and does not pose the computations with `spawn` (the `or` is
+  given before the SPAWN subsections, which are left empty, so both
+  computations' answers are read from the one state). R: the `or` and its
+  braces.
+- **P09c.** gen's comparisons n > 5 and n ≤ 5 are reformulated, all R, as
+  P05's x > k was in batch 1B: `gt(a, b)` is `a = b + d'` and `pos(d)`;
+  `le(a, b)` is `b = a + d'` and `nonneg(d)`; `nonneg(q)` is
+  `{q = 0 or pos(q)}`; `pos` is batch 1B's text. Over the integers these
+  are exactly > and ≤, on every input, so the author judges P09c
+  *expressible with reformulation*. The limit recorded for P05 applies:
+  with a known argument that is not positive, `pos` has no failing
+  derivation (the recursion goes on down), so a case whose guard is false
+  does not fail; it keeps elaborating. The meaning is kept; the operational
+  behaviour is not a primitive comparison's. The bound 5 of gen's
+  definition is in the block as `gmax`, tagged as vocabulary, not a stage
+  constant, so that a verifier can change it too.
+- gen, genu and sum3: each case's head as equations on the lambda's
+  parameters (Elcock 1990's `app`), then the case's conjuncts in the order
+  written; n + 1 as a fresh unknown `g1' = g + 1` before the application
+  that uses it (`SPECIFICATION.md`, Arithmetic: compound or decomposed is a
+  transcription). sum3's head ⟨p, q, r⟩ ++ m is the list `[p';q';r'&m']`.
+  P09c and P09d are one conjunction each, `begin … end`, as P02c and P07
+  (one stage of several relations is one assertion, with one budget).
+- **P09d** needs no comparison and is a transcription. It is one text for
+  both readings, P09d1 and P09d2.
+- **P09e** is the two relations as one conjunction, the constants 1 and 1
+  in the block.
+
+### P10
+
+- **Replacement (P10a-c).** An Absys variable takes one value and keeps
+  it: an equation is an assertion, not an assignment (`docs/decisions.md`
+  rules 9, 17; `examples/assertions-not-assignments.abs`), and a second
+  value for b makes every derivation fail. So the replacement the problem
+  states cannot be transcribed. Reformulation, R: a named quantity is the
+  **list of the values it has taken, in order, with an open tail**, its
+  current value the last element. "b becomes e" equates the tail with
+  `[v&t]`, v a new name for the new value equated with e (a b inside e
+  being the name of the previous value), t the new tail:
+
+      stage 1  begin b = [bv1&bt1]  bv1 = c1 end
+      stage 2  begin bt1 = [bv2&bt2]  bv2 = bv1 + c2 end
+      stage 3  begin bt2 = [bv3&bt3]  bv3 = c3 end
+
+  This is indexing written for the purpose, which the problem names as
+  reformulation. It keeps the meaning: after each stage the last element
+  is the value the problem gives, on every input. Earlier values stay in
+  the list (the problem's observation on retrieval). The encoding is
+  chosen from the problem's vocabulary (b and d are named quantities that
+  replacing stages change), not from any later stage's content.
+- **P10b, the standing relation.** "d = 2 · b, at all times" is, in this
+  encoding, a relation between the two lists, item by item: `dbl(b, d)`,
+  written as FE69's `map`, with `key p` so that it waits for b's values
+  (`docs/decisions.md` rule 21: without the key, `map` on a list not yet
+  present makes lists of every length and never stops). Its recursion over
+  the lists, its null case and its head equations are R; `e = dk * r` is
+  the problem's relation; `key p` is C (`METRICS.md`, class C). dbl is
+  defined in stage 1, with the application, since it is stage 1's
+  information. Stages 2-4 are P10a's stages 1-3, the same text.
+- **P10c, the snapshot**: stage 2 is d's first value, computed once from
+  b's current value, `d = [dv1&dt1]  dv1 = dk * bv1`; no relation between
+  the lists is stated, so d keeps its value when b is replaced.
+- **P10d, retraction.** Stages 1 and 2 are P05a's `pick(x)` and
+  `gt(x, gtk)`, with batch 1B's pick, gt and pos. Absys cannot withdraw an
+  assertion: the derivations that x > k made fail are gone, and every
+  later assertion is added to those that remain. Stage 3 therefore
+  **restates the information not withdrawn**, `pick(x3)`, of a new unknown
+  x3 that stands for x from that stage on; the derivations that hold
+  x > k are left as they are, and x3 is not related to x. R: the whole of
+  stage 3's text, and the name x3. It keeps the meaning (x3 ranges over the
+  valid outcomes, on every input), so the author judges P10d *expressible
+  with reformulation*. That it needs restating is what the problem's
+  observation asks; ambiguity 4 gives the other reading.
+- Constants: `c1`, `c2`, `c3`, `dk`, tagged by stage; in P10b `dk` is used
+  inside dbl, given with stage 1. The value names `bv1`..., `bt1`...,
+  `dv1`, `dt1` are R, not constants.
+
+### P11
+
+- **P11a, P11b: not expressible.** Both need emit and x ≥ k. Emit is
+  `tout`, which only the 1990 notation has (Notation, above); x ≥ k is a
+  comparison, which no notation has, and the only reformulation that keeps
+  its meaning on every input is built from arithmetic, which only the 1969
+  notation has (`docs/decisions.md` rule 23; batch 1B's `pos`). No single
+  notation, and so no program, has both. Writing ≥ in the 1990 notation
+  without arithmetic is possible only for particular values, which changes
+  the meaning. So, by `SPECIFICATION.md`, expressibility, P11a and P11b are
+  *not expressible* in every configuration, and there is no primary.
+- **Named variants** `variants/P11a.ne.abs`, `variants/P11b.ne.abs`:
+  the 1990 notation, with x ≥ k replaced by `not(x = gelo)`, gelo being the
+  one value of pick's facts below k (1 for the problem's facts and k = 2).
+  On pick's facts as given that is x ≥ k; on other values it is not, and a
+  variant whose facts or k leave no value or two values below k needs
+  another text. The conjuncts are in the problem's order, one conjunction.
+  To be run and reported as named variants.
+- **P11c, P11d** (1990): pick as the completion of its facts; stage 1
+  `{pick(x), tout("emit", x)}`, the two in order, one conjunction; x ≠ k as
+  `not(x = nek)`, negation and equality being the problem's connectives
+  (x is bound by pick by then, so `not`, which is decided on the bindings
+  as they stand, decides x ≠ k). `tout("emit", T)` is the harness's emit
+  (harness README 3.10); its tokens `tout ( "emit" , )` are H, `x` is P.
+- **Commit** (P11c stage 3, P11d stage 2): Absys has no construct that
+  selects one derivation, and keeps every derivation live (QUESTIONS,
+  A6). The section is comments only. The problem provides for a system
+  that cannot select ("judged on every entry it emitted"), so the author
+  records the commit as having no construct, and P11c and P11d as
+  *expressible*; ambiguity 5.
+- No control is used to avoid *extra* (the problem's rule: any deferral the
+  program arranges is C); there is none to use.
+
+### P12
+
+- **n > 0.** choice's guard is a comparison. Here the systems file's own
+  example applies (`systems/absys/README.md`, Notation: "replacing n > 0 by
+  an enumeration of the finitely many values used"): choice is applied
+  only to n, n − 1, …, 0, and n is at most 16 (the sizes are structure,
+  not varied by the hidden variants). `gtz(q)` is `{q = 1 or … or q = 16}`,
+  which is q > 0 on every input the problem uses, and terminates. R: gtz.
+  It is preferred to batch 1B's `pos` here because `pos` on q = 0 never
+  fails, and would leave an endless derivation at every leaf of the tree,
+  so that *budget* would say nothing about the strategy. The same gtz text
+  (1..16) is in every file, so that its cost per application does not vary
+  with n. A classifier may count the enumeration as a generator of values
+  (C) rather than a definition (R); it is applied only to known values.
+- choice: case 1 `w = []`; case 2 its head equation `w = [e'&t']`, then
+  `gtz(m)`, then `{e = 'l' or e = 'r'}` in that order, then
+  `m1' = m - 1` and `choice(m1, t)`. The atoms ʟ and ʀ are `'l'` and `'r'`.
+- accept is the completion of its facts (two for P12a, one for the
+  others), each fact a constant in the block (`acc1`, `acc2`), given with
+  the prelude, tagged stage 1. "ʟ repeated n times" is written out for
+  each n, so each n has its own file; the facts are transcribed, with no
+  relation to build them from n.
+- n is the harness's parameter (`% PARAMETERS n`, README 3.4). The query
+  is one conjunction, choice then accept, in the order given (no move).
+  No search is written by hand: the strategy is the configuration's.
+
+### Idioms and their sources
+
+| idiom | source | used in |
+|---|---|---|
+| a relation as `name'=lambda x begin {A or B} end`, primes for new local names | Foster and Elcock 1969, `map`, `item` (`examples/map.ab1`, `examples/triples.ab1`) | P09, P10b, P10d, P12 |
+| a case's head as equations on the lambda's parameters | Elcock 1990 p. 8, `app` (`examples/append.abs`) | P09, P12 |
+| loop as a procedure whose body applies itself | the reconstruction's tutorial, ch. 5 | P09a |
+| rev and conc | batch 1A's texts (P03e) | P09a |
+| a closed world as the completion of its facts | Elcock 1990 p. 15 (`examples/students.abs`) | P10d, P11, P12 |
+| alternatives as "parallel non-interacting programs" | Foster and Elcock 1969 (tutorial ch. 5; `examples/alternatives.ab1`) | P09a, P09b variants |
+| arithmetic as an assertion usable in every direction | Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets | P09c-e, P10, P12 |
+| gt, pos (> from arithmetic) | batch 1B, P05 | P09c, P10d |
+| `begin … end` for one conjunction | Foster and Elcock 1969 (`docs/decisions.md`, Three notations) | P09-P12 |
+| a relation over each item of a list, with `key` so that it waits for the list | Foster and Elcock 1969, `map` (`examples/map.ab1`; `docs/decisions.md` rule 21) | P10b |
+| a list with an open tail, extended by equating the tail | Foster and Elcock 1969, `[h&t]` (tutorial ch. 8, ch. 10) | P10a-c |
+| `tout(label, term)`, output when the term is complete | Elcock 1990 note 11 (tutorial ch. 9; `docs/decisions.md` rule 20); the harness's emit | P11 |
+| `not(A)` | Elcock 1990 p. 14 (tutorial ch. 7) | P11 |
+| `{A, B}` for one conjunction (1990) | Elcock 1990 p. 8 | P11 |
+
+### Constants
+
+As in batches 1A and 1B: one block per program, one constant per line,
+each tagged with the stage that uses it, referred to by name only in that
+stage (or, for facts and the bound of a definition, in the prelude, given
+at stage 1). The names are used for nothing else. No program depends on
+the values within the problem's domain: P09's are any sequence (`ra`) and
+any integers; P10's any integers; P11c-d's any integers (pick's facts and
+k); P12's accept facts any sequences over 'l' and 'r'. The exceptions are
+said where they arise: the P11 variants (gelo), and P12's gtz, which
+covers n up to 16.
+
+## Ambiguities, and the readings taken
+
+1. **P09a and P09b, "separate computations" in one computation.** Absys
+   has no separate computations, and the harness accepts a spawned text
+   into the one session (QUESTIONS, A5). The reading taken: the protocol's
+   `spawn`, for a configuration that cannot run computations side by side,
+   is how the sub-problem is posed, and the program transcribes each
+   computation; that the second is conjoined with the first is a result.
+   So *expressible*, with the SPAWN programs as primaries. The other
+   reading, that "not conjoined" is part of the problem and cannot be met,
+   would make both *not expressible*, with the SPAWN programs and the `or`
+   programs as named variants. The classifiers may take it.
+2. **P09c's bound 5** is part of gen's definition, not a stage constant
+   (`stages.json` gives only gen(<k>, s)). It is in the block as `gmax`,
+   marked as vocabulary, so that a verifier can vary it if a variant does.
+3. **P10's quantities as lists.** The encoding chosen at stage 1 is
+   justified by the vocabulary (named quantities, replacing stages), not by
+   any later stage. `observe()` asks for `b` and `d`, which are the lists of
+   values; the current value is the last element, also printed under its
+   own name (`bv3`, …). Whether the classifiers read the list or the last
+   value as "b" is theirs to say; both are reported.
+4. **P10d, withdrawal by restating.** The program restates the
+   information that is not withdrawn, of a fresh unknown x3, at the
+   withdrawing stage. It is the program, not the harness, that works out
+   what remains (the contract forbids the harness to). The author judges
+   it a reformulation that keeps the meaning (*expressible with
+   reformulation*). The other reading, that a withdrawal Absys cannot
+   perform is not expressible and restating is a different program, would
+   make P10d *not expressible* with this program as a named variant. The
+   old x, with x > k, is still held, and `? x` reports it; the current
+   unknown is x3.
+5. **P11's commit in a system that never selects.** The commit stage has
+   no construct; its section is comments only (QUESTIONS, A6). Taken as
+   *expressible*, since the problem says how a system that cannot select
+   is judged. One could instead record commit as not expressible.
+6. **≠ as `not(x = k)` (P11c, P11d).** Taken as a transcription (negation
+   and equality, the problem's connectives), since x is bound when it is
+   decided. A classifier might class it R, as a replacement of the
+   primitive ≠.
+7. **P12's facts depend on n.** `stages.json` says the program holds them;
+   one file per sub-problem and n, each fact written out. The verifier
+   substitutes each file's block.
+8. **Several relations in one stage** (P09c, P09d, P09e, P10, P11, P12)
+   are one conjunction, as P02c (batch 1A, ambiguity 2).
+9. **Which unknowns are reported.** Named as `stages.json` names them
+   (`x`, `b`, `y`, `s`, `total`, `d`), except P10d's x3 (ambiguity 4).
+   Lambda-local names are primed (1969) or capitals (1990) and distinct
+   from them.
+
+## What was read, and anything outside the brief
+
+Read: the brief's list, that is `README.md`, `SPECIFICATION.md`,
+`METRICS.md`, `PROTOCOL.md`, `AMENDMENTS.md`, `problems/README.md`, the
+problem files of P09-P12 and of P03, P04 and P05, `systems/absys/README.md`,
+`harnesses/README.md`, `harnesses/stages.json`, `harnesses/absys/`
+(`README.md`, `QUESTIONS.md`, `S-mechanisms.md`, `check`, a search of
+`absys_harness.py` for its handling of spawn, notation and tout, the
+qualification's `README.md`, file list and programs `x17-spawn.abs`,
+`x18-emit.abs`, `x19-parts.abs`, `x20-arith.ab1`), batch 1A and 1B's
+programs (some read in full: P03e, P04a, P05a-c, P06a, P07b, P08c) and
+this README. In the image, with `container run … cat`/`ls`/`grep` (no
+Absys program, harness `run` or interpreter was run on anything):
+`docs/decisions.md`, tutorial chapters 04-10, every program text in
+`examples/` (not their `.out` files), and a search of `README.md`,
+`tutorial/` and `docs/decisions.md` for "tout" and "notation". Not read:
+tutorial chapters 01-03, the reconstruction's `src/`, `docs/research.md`,
+`research/`.
+
+Something outside the brief's list was in the author's context without
+being opened: at the start of the session its environment supplied the
+two-line index of an auto-memory file under `~/.claude/projects/…`. The
+files it points to were not opened. Nothing else outside the list was
+read.
