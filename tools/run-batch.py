@@ -89,6 +89,9 @@ def main():
         i = args.index("--log"); logpath = args[i + 1]; del args[i:i + 2]
     if "--configs" in args:                    # run only these configurations (comma-separated)
         i = args.index("--configs"); only = set(args[i + 1].split(",")); del args[i:i + 2]
+    subs = None
+    if "--subproblems" in args:                # run only these sub-problems (comma-separated): scheduling only
+        i = args.index("--subproblems"); subs = set(args[i + 1].split(",")); del args[i:i + 2]
     if "--skip-logged" in args:                # skip runs batch-log.tsv already records as finished
         args.remove("--skip-logged"); skip = set()
         lp = logpath or f"results/{args[0]}/batch-log.tsv"
@@ -113,6 +116,8 @@ def main():
             if p["problem"] not in problems:
                 continue
             for sp in p["subproblems"]:
+                if subs is not None and sp["id"] not in subs:
+                    continue
                 for inst in sp["instances"]:
                     progs = []
                     # the instance id, then each shorter dot-prefix of it (P12a.n8 for

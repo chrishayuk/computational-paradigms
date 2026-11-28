@@ -18,9 +18,9 @@ case $sys in
   swi-prolog) img=cp-agent-swi-prolog:spec-1.0; env=(-e HARNESS_IMAGE_DIGEST=sha256:b51af487f3306fe240eae8c13159c85b5526509952e1b949cc22f48a1f82a742) ;;
   python)     img=cp-agent-python:spec-1.0; env=(-e HARNESS_IMAGE_DIGEST=sha256:fe841081ec55481496a4ab25e538833741295d57d2abdec8d38d74d65fb4715b) ;;
 esac
-log=results/$sys/logs/$batch-$cfg-$p.tsv
+log=results/$sys/logs/$batch-$cfg-$p${LOGSUFFIX:-}.tsv
 mkdir -p "$co/results/$sys/logs"
 container run --rm --platform linux/amd64 --cpus 2 --memory $mem \
   --mount type=bind,source="$co",target=/work,readonly --volume "$co/results":/work/results \
   --workdir /work ${env[@]+"${env[@]}"} $img \
-  python3 tools/run-batch.py $sys $p --configs $cfg --skip-logged --log $log
+  python3 tools/run-batch.py $sys $p --configs $cfg ${SUBPROBLEMS:+--subproblems $SUBPROBLEMS} --skip-logged --log $log
