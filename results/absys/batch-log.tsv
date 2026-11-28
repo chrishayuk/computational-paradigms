@@ -169,21 +169,18 @@
 2026-11-27T23:14:04Z	absys	P04f	P04f.ab1	behaviour	exit 0	2.4s
 2026-11-27T23:25:05Z	absys	P04f	P04f.ab1	cost	exit 0	660.7s
 2026-11-27T23:36:05Z	absys	P04f	P04f.ab1	storage	exit 0	660.7s
-2026-11-28T01:16:20Z	absys-depth-first	P05a	P05a.ab1	behaviour	exit 3	5396.3s
-6-11-27T23:46:28Z	absys-depth-first	P04a	P04a.ab1	cost	exit 0	3.5s
-2026-11-27T23:46:29Z	absys-depth-first	P04a	P04a.ab1	storage	exit 0	1.3s
-2026-11-27T23:46:30Z	absys-depth-first	P04b	P04b.ab1	behaviour	exit 0	1.2s
-2026-11-27T23:46:34Z	absys-depth-first	P04b	P04b.ab1	cost	exit 0	3.6s
-2026-11-27T23:46:35Z	absys-depth-first	P04b	P04b.ab1	storage	exit 0	1.4s
-2026-11-27T23:46:36Z	absys-depth-first	P04c	P04c.ab1	behaviour	exit 0	0.6s
-2026-11-27T23:46:36Z	absys-depth-first	P04c	P04c.ab1	cost	exit 0	0.6s
-2026-11-27T23:46:37Z	absys-depth-first	P04c	P04c.ab1	storage	exit 0	0.6s
-2026-11-27T23:46:42Z	absys-depth-first	P04d	P04d.ab1	behaviour	exit 0	5.1s
-2026-11-27T23:57:43Z	absys-depth-first	P04d	P04d.ab1	cost	exit 0	661.4s
-2026-11-28T00:08:45Z	absys-depth-first	P04d	P04d.ab1	storage	exit 0	661.4s
-2026-11-28T00:08:46Z	absys-depth-first	P04e	P04e.ab1	behaviour	exit 0	0.9s
-2026-11-28T00:08:46Z	absys-depth-first	P04e	P04e.ab1	cost	exit 0	0.8s
-2026-11-28T00:08:47Z	absys-depth-first	P04e	P04e.ab1	storage	exit 0	0.8s
+2026-11-28T01:16:20Z	absys-depth-first	P05a	P05a.ab1	behaviour	exi	the record 	the record did not validate; kept as results/absys/absys-depth-first/P05/raw/P05a.behaviour.20261127T234624Z.INVALID.json
+2026-11-28T02:36:04Z	absys-depth-first	P05a	P05a.ab1	cost	exit 3	4784.2s
+	the record did not validate; kept as results/absys/absys-depth-first/P05/raw/P05a.cost.20261128T011620Z.INVALID.json
+2026-11-28T03:33:04Z	absys-depth-first	P05a	P05a.ab1	storage	exit 3	3420.1s
+	the record did not validate; kept as results/absys/absys-depth-first/P05/raw/P05a.storage.20261128T023604Z.INVALID.json
+2026-11-28T03:33:10Z	absys-depth-first	P05b	P05b.ab1	behaviour	exit 0	6.1s
+2026-11-28T03:55:15Z	absys-depth-first	P05b	P05b.ab1	cost	exit 0	1325.2s
+2026-11-28T04:17:21Z	absys-depth-first	P05b	P05b.ab1	storage	exit 0	1325.3s
+2026-11-28T04:17:21Z	absys-depth-first	P05c	P05c.ab1	behaviour	exit 0	0.4s
+2026-11-28T04:17:21Z	absys-depth-first	P05c	P05c.ab1	cost	exit 0	0.5s
+2026-11-28T04:17:22Z	absys-depth-first	P05c	P05c.ab1	storage	exit 0	0.5s
+T00:08:47Z	absys-depth-first	P04e	P04e.ab1	storage	exit 0	0.8s
 2026-11-28T00:08:52Z	absys-depth-first	P04f	P04f.ab1	behaviour	exit 0	5.2s
 2026-11-28T00:19:53Z	absys-depth-first	P04f	P04f.ab1	cost	exit 0	661.0s
 2026-11-28T00:30:54Z	absys-depth-first	P04f	P04f.ab1	storage	exit 0	661.0s
@@ -209,20 +206,18 @@ s
 2026-11-27T23:46:56Z	absys-wake-back	P04c	P04c.ab1	storage	exit 0	0.7s
 2026-11-27T23:47:02Z	absys-wake-back	P04d	P04d.ab1	behaviour	exit 0	6.2s
 2026-11-27T23:58:03Z	absys-wake-back	P04d	P04d.ab1	cost	exit 0	660.72026-11-28T00:43:10Z	absys-wake-back	P05a	P05a.ab1	behaviour	exit 3	3382.5s
-026-11-28T00:09:05Z	absys-wake-back	P04e	P04e.ab1	behaviour	exit 0	0.9s
-2026-11-28T00:09:06Z	absys-wake-back	P04e	P04e.ab1	cost	exit 0	0.8s
-2026-11-28T00:09:07Z	absys-wake-back	P04e	P04e.ab1	storage	exit 0	0.8s
-2026-11-28T00:09:13Z	absys-wake-back	P04f	P04f.ab1	behaviour	exit 0	6.0s
-2026-11-28T00:20:14Z	absys-wake-back	P04f	P04f.ab1	cost	exit 0	661.1s
-2026-11-28T00:31:15Z	absys-wake-back	P04f	P04f.ab1	storage	exit 0	661.0s
-6-11-27T23:46:52Z	absys-wake-back	P06b	P06b.abs	behaviour	exit 0	0.7s
-2026-11-27T23:46:53Z	absys-wake-back	P06b	P06b.abs	cost	exit 0	0.7s
-2026-11-27T23:46:54Z	absys-wake-back	P06b	P06b.abs	storage	exit 0	0.7s
-2026-11-27T23:46:55Z	absys-wake-back	P06c	P06c.abs	behaviour	exit 0	0.7s
-2026-11-27T23:46:55Z	absys-wake-back	P06c	P06c.abs	cost	exit 0	0.7s
-2026-11-27T23:46:56Z	absys-wake-back	P06c	P06c.abs	storage	exit 0	0.7s
-2026-11-27T23:46:57Z	absys-wake-back	P06d	P06d.abs	behaviour	exit 0	0.7s
-2026-11-27T23:46:52026-11-27T23:46:58Z	absys-wake-back	P07a	P07a.ab12026-11-27T23:46:58Z	ab2026-11-27T23:46:59Z	absys-wake-back	P07a	P07a.a2026-11-27T23:46:59Z2026-11-27T23:47:00Z	absys-wake-back	P07a	P07a.ab1	storage	exit 0	2026-2026-11-27T23:47:00Z	absys-wake-back	P07a.132	P07a.132.ab1	behaviour	exit 0	2026-2026-11-27T23:47:01Z	absys-wake-back	P07a.132	P07a.132.ab1	cost	exit 0	0.7s
+	the record did not validate; kept as results/absys/absys-wake-back/P05/raw/P05a.behaviour.20261127T234648Z.INVALID.json
+2026-11-28T01:25:03Z	absys-wake-back	P05a	P05a.ab1	cost	exit 3	2513.2s
+	the record did not validate; kept as results/absys/absys-wake-back/P05/raw/P05a.cost.20261128T004310Z.INVALID.json
+2026-11-28T02:09:36Z	absys-wake-back	P05a	P05a.ab1	storage	exit 3	2672.9s
+	the record did not validate; kept as results/absys/absys-wake-back/P05/raw/P05a.storage.20261128T012503Z.INVALID.json
+2026-11-28T02:13:40Z	absys-wake-back	P05b	P05b.ab1	behaviour	exit 0	243.6s
+2026-11-28T02:35:44Z	absys-wake-back	P05b	P05b.ab1	cost	exit 0	1324.8s
+2026-11-28T02:57:49Z	absys-wake-back	P05b	P05b.ab1	storage	exit 0	1324.7s
+2026-11-28T02:57:50Z	absys-wake-back	P05c	P05c.ab1	behaviour	exit 0	0.5s
+2026-11-28T02:57:50Z	absys-wake-back	P05c	P05c.ab1	cost	exit 0	0.5s
+2026-11-28T02:57:51Z	absys-wake-back	P05c	P05c.ab1	storage	exit 0	0.5s
+3:46:52026-11-27T23:46:58Z	absys-wake-back	P07a	P07a.ab12026-11-27T23:46:58Z	ab2026-11-27T23:46:59Z	absys-wake-back	P07a	P07a.a2026-11-27T23:46:59Z2026-11-27T23:47:00Z	absys-wake-back	P07a	P07a.ab1	storage	exit 0	2026-2026-11-27T23:47:00Z	absys-wake-back	P07a.132	P07a.132.ab1	behaviour	exit 0	2026-2026-11-27T23:47:01Z	absys-wake-back	P07a.132	P07a.132.ab1	cost	exit 0	0.7s
 2026-11-27T23:47:02Z	absys-wake-back	P07a.132	P07a.132.ab1	storage	exit 0	0.7s22026-11-27T23:47:03Z	absys-wake-back	P07a.213	P07a.213.ab1	behaviour	2026-11-27T22026-11-27T23:47:03Z	absys-wake-back	P07a.213	P07a.213.ab1	co2026-11-27T23:42026-11-27T23:47:04Z	absys-wake-back	P07a.213	P07a.213.ab1	s2026-11-27T23:47:042026-11-27T23:47:05Z	absys-wake-back	P07a.231	P07a.2026-11-27T23:47:05Z	absys-wak2026-11-27T23:47:06Z	absys-wake-back	P07a.22026-11-27T23:47:06Z	absys-wake-b2026-11-27T23:47:07Z	absys-wake-back	P07a.2026-11-27T23:47:07Z	absys-wake-back	2026-11-27T23:47:07Z	absys-wake-b2026-11-27T23:47:07Z	absys-wake-back	P06e3	P06e32026-11-27T23:47:08Z	absys-wake-back	P07a.312	P07a.312.ab1	cost	exit 0	0.8s
 2026-11-27T23:47:09Z	absys-wake-back	P08a	P08a.ab1	behaviour	exit 0	0.9s
 2026-11-27T23:47:10Z	absys-wake-back	P08a	P08a.ab1	cost	exit 0	1.0s
