@@ -21,6 +21,9 @@ enumerates them. One line per run goes to results/SYSTEM/batch-log.tsv.
     --skip-logged     skip every run batch-log.tsv records as exit 0 (a validated record);
                       a run that ended with any other exit is run again
                       (so an interrupted batch resumes without repeating a run)
+    --log PATH        write the log lines to PATH instead of results/SYSTEM/batch-log.tsv
+                      (one log per job when jobs run in parallel; from batch 1C);
+                      --skip-logged then reads PATH
 """
 import json, os, subprocess, sys, time
 
@@ -31,12 +34,16 @@ MODES = {"x1sim": ["behaviour"]}          # PROTOCOL / systems file: x1sim is be
 def main():
     args = sys.argv[1:]
     only = skip = None
+    logpath = None
+    if "--log" in args:                        # one log per job (batch 1C)
+        i = args.index("--log"); logpath = args[i + 1]; del args[i:i + 2]
     if "--configs" in args:                    # run only these configurations (comma-separated)
         i = args.index("--configs"); only = set(args[i + 1].split(",")); del args[i:i + 2]
     if "--skip-logged" in args:                # skip runs batch-log.tsv already records as finished
         args.remove("--skip-logged"); skip = set()
-        if os.path.exists(f"results/{args[0]}/batch-log.tsv"):
-            for l in open(f"results/{args[0]}/batch-log.tsv"):
+        lp = logpath or f"results/{args[0]}/batch-log.tsv"
+        if os.path.exists(lp):
+            for l in open(lp):
                 f = l.rstrip("\n").split("\t")
                 if len(f) >= 6 and f[5] == "exit 0":       # exit 0: the harness wrote a record that validated
                     skip.add((f[1], f[2], f[3], f[4]))
@@ -44,10 +51,10 @@ def main():
     stages = json.load(open("harnesses/stages.json"))["problems"]
     root = f"programs/{system}"
     configs = sorted(d for d in os.listdir(root) if os.path.isdir(f"{root}/{d}"))
-    log = open(f"results/{system}/batch-log.tsv", "a") if os.path.isdir(f"results/{system}") else None
-    if log is None:
-        os.makedirs(f"results/{system}", exist_ok=True)
-        log = open(f"results/{system}/batch-log.tsv", "a")
+    os.makedirs(f"results/{system}", exist_ok=True)
+    if logpath:
+        os.makedirs(os.path.dirname(logpath) or ".", exist_ok=True)
+    log = open(logpath or f"results/{system}/batch-log.tsv", "a")
     for cfg in configs:
         if only is not None and cfg not in only:
             continue
