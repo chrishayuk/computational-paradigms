@@ -1,0 +1,283 @@
+{
+ "record_format": "cp-raw-record/1",
+ "made_up": false,
+ "run": {
+  "run_id": "P06d.cost.20261127T234631Z",
+  "spec_tag": "spec-1.0",
+  "system": "absys",
+  "configuration": "absys",
+  "problem": "P06",
+  "subproblem": "P06d",
+  "instance": "P06d",
+  "parameters": {},
+  "mode": "cost",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/absys/absys/variants/P06d.set.abs",
+   "sha256": "e2f1b8ed8b30a32effb630909cf0666c9868734dc1f380b09b89a4bc92bb99ec",
+   "repo_commit": "b92cd18d9f45e0e8503f35f0537783fdf40a6cb9"
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": "545044976e1a5ee7fc5471a7cb02b972fd507984",
+   "image": null,
+   "binary": "/usr/local/bin/absys-measure",
+   "version_output": null,
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/absys/run",
+   "commit": "b92cd18d9f45e0e8503f35f0537783fdf40a6cb9",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/absys/run",
+   "absys",
+   "P06",
+   "P06d",
+   "cost",
+   "programs/absys/absys/variants/P06d.set.abs",
+   "results/absys/absys/P06/raw/"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "step",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T23:46:31.940Z",
+  "ended_utc": "2026-11-27T23:46:32.161Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "behaviour runs use the instrumented build absys-measure (branch measure, 5450449) with --full and without --measure, not the baseline absys (efd5203), so that every list and derivation is printed in full (systems/absys/README.md, Output); --full changes only the printer",
+   "in behaviour runs the harness writes each section of the program to `absys-measure repl` on standard input, line by line as the program file has it, and after each section a `.help` line, whose fixed reply marks where the system's output for the section ends; a section that ends inside an unfinished assertion makes the repl read `.help` as its continuation and report a syntax error",
+   "the state is read with the repl's own commands `?` and `? NAME` after a stage (and after each spawned computation's section); they read the state and change nothing",
+   "instance parameters that a program declares (% PARAMETERS) are given to the system as assertions `NAME = VALUE` written by the harness in the program's notation, before the prelude",
+   "a program written in PART sections has part order[k-1] fed at stage k, as the instance's order names it",
+   "spawn(): Absys has one computation per session; a spawned computation's section is accepted into it, after the previous one has run to its end or its budget (side_by_side false), and that computation's answers and state are read right after its section",
+   "the budget is the system's own, --steps, which counts per assertion: a stage of several assertions can take more than the problem's budget in all before the system reports budget",
+   "cost and storage runs read steps and store from --measure, which reports them only for a whole text: each stage k of such a run is a new process on the text of the prelude and stages 1 to k, so those records show reposed stages, with the steps of stages 1 to k-1 as restart cost; the incremental behaviour run does not pay it",
+   "the restart cost of a reposed stage in a behaviour run (after an error or a safety-limit stop) is measured on a separate run of the replayed text with `absys-measure json`, which reports the steps of each assertion without sampling the store",
+   "in P11 runs (and in cost runs with the default budget) the system's trace is switched on (`.trace`, --trace), to read when tout performs an output; printing the trace changes nothing the machine does",
+   "answers(cap) takes the first cap derivations of the system's printed state, in the system's order; every derivation is in observe.raw",
+   "the constants block is never given to the system: the harness replaces each constant's name, in the text of the section that uses it, by its value, when that section is given"
+  ],
+  "environment": {}
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "  derivation #0 (hibernating)\n    procedures  mem, setdiff\n    d = [1,3]\n",
+           "steps_at": 198
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "no derivation is still elaborating, none prints a suspended process, and no error was reported",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "step",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 198,
+        "restated": 198,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": 198,
+        "between_answers": [],
+        "to_end": 198,
+        "repeated_work": {
+         "reactivating_events": 0
+        }
+       },
+       "alternatives": {
+        "unit": "derivation",
+        "at_boundary": 1,
+        "at_budget": null,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "held_as": "all-live",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "suspended processes the system prints (waiting on an uninstantiated variable), summed over derivations",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {
+         "susp_equations": 0,
+         "susp_applications": 0,
+         "susp_relations": 0,
+         "susp_negations": 0
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "1 derivation:\n  derivation #0 (hibernating)\n    procedures  mem, setdiff\n    d = [1,3]\n",
+      "method": "the state absys FILE prints at the end of the text of stages 1 to 1 (--full)",
+      "taken_on": "this-run",
+      "bindings": null
+     },
+     "print": "1 derivation:\n  derivation #0 (hibernating)\n    procedures  mem, setdiff\n    d = [1,3]\n",
+     "store": {
+      "quantities": {
+       "derivations": {
+        "boundary": 1,
+        "peak": {
+         "value": 1,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "sub_derivations": {
+        "boundary": 0,
+        "peak": {
+         "value": 9,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "variables": {
+        "boundary": 3,
+        "peak": {
+         "value": 103,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "bindings": {
+        "boundary": 3,
+        "peak": {
+         "value": 82,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_equations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_applications": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_relations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "susp_negations": {
+        "boundary": 0,
+        "peak": {
+         "value": 0,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "pending": {
+        "boundary": 0,
+        "peak": {
+         "value": 11,
+         "kind": "exact"
+        },
+        "unit": "count"
+       },
+       "term_nodes": {
+        "boundary": 7,
+        "peak": {
+         "value": 188,
+         "kind": "exact"
+        },
+        "unit": "count"
+       }
+      },
+      "source": "--measure (absys-measure, branch measure): each quantity after the stage's last assertion, and the largest value it had after any step of the stage's assertions, or when each was added (exact at the granularity of steps)"
+     },
+     "wall_time_s": 0.041,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "» mem = lambda E, S\n      {S = [E|T]} or\n      {S = [H|T], mem(E, T)}\n  #0    equation  mem = lambda E, S: mem/lambda E, S\n  #0    hibernate nothing more can be done: the derivation hibernates\n» setdiff = lambda S1, S2, D\n      {set(X), {mem(X, S1), not(mem(X, S2))}, D}\n  #0    equation  setdiff = lambda S1, S2, D: setdiff/lambda S1, S2, D\n  #0    hibernate nothing more can be done: the derivation hibernates\n» setdiff([1, 2, 3, 4], [2, 4, 6], d)\n  #0    apply     setdiff([1,2,3,4], [2,4,6], d): applied\n  #0    set       {set(X₁), {mem(X₁, [1,2,3,4]), not(mem(X₁, [2,4,6]))}, d}: an independent computation begins (#1)\n    #1    apply     mem(X₁, [1,2,3,4]): applied\n    #1    or        or distributes: 2 alternatives, derivations #2, #3\n    #2    equation  [1,2,3,4] = [X₁|T₂]: X₁/1, T₂/[2,3,4]\n    #3    equation  [1,2,3,4] = [H₃|T₂]: H₃/1, T₂/[2,3,4]\n    #2    not       not(mem(1, [2,4,6])): an independent computation begins (#4), with the criteria reversed\n    #3    apply     mem(X₁, [2,3,4]): applied\n      #4    apply     mem(1, [2,4,6]): applied\n    #3    or        or distributes: 2 alternatives, derivations #5, #6\n      #4    or        or distributes: 2 alternatives, derivations #7, #8\n    #5    equation  [2,3,4] = [X₁|T₄]: X₁/2, T₄/[3,4]\n    #6    equation  [2,3,4] = [H₅|T₄]: H₅/2, T₄/[3,4]\n      #7    fail      [2,4,6] = [1|T₃]: 2 cannot equal 1\n    #5    not       not(mem(2, [2,4,6])): an independent computation begins (#9), with the criteria reversed\n    #6    apply     mem(X₁, [3,4]): applied\n      #8    equation  [2,4,6] = [H₄|T₃]: H₄/2, T₃/[4,6]\n      #9    apply     mem(2, [2,4,6]): applied\n    #6    or        or distributes: 2 alternatives, derivations #10, #11\n      #8    apply     mem(1, [4,6]): applied\n      #9    or        or distributes: 2 alternatives, derivations #12, #13\n    #10   equation  [3,4] = [X₁|T₆]: X₁/3, T₆/[4]\n    #11   equation  [3,4] = [H₇|T₆]: H₇/3, T₆/[4]\n      #8    or        or distributes: 2 alternatives, derivations #14, #15\n      #12   equation  [2,4,6] = [2|T₅]: T₅/[4,6]\n    #10   not       not(mem(3, [2,4,6])): an independent computation begins (#16), with the criteria reversed\n    #11   apply     mem(X₁, [4]): applied\n      #14   fail      [4,6] = [1|T₅]: 4 cannot equal 1\n      #13   equation  [2,4,6] = [H₆|T₅]: H₆/2, T₅/[4,6]\n      #16   apply     mem(3, [2,4,6]): applied\n    #11   or        or distributes: 2 alternatives, derivations #17, #18\n      #15   equation  [4,6] = [H₆|T₅]: H₆/4, T₅/[6]\n      #12   hibernate nothing more can be done: the derivation hibernates\n    #5    fail      not(mem(2, [2,4,6])): the negated assertions hold (derivation #12 found no contradiction)\n      #16   or        or distributes: 2 alternatives, derivations #19, #20\n    #17   equation  [4] = [X₁|T₈]: X₁/4, T₈/[]\n    #18   equation  [4] = [H₉|T₈]: H₉/4, T₈/[]\n      #15   apply     mem(1, [6]): applied\n      #19   fail      [2,4,6] = [3|T₇]: 2 cannot equal 3\n    #17   not       not(mem(4, [2,4,6])): an independent computation begins (#21), with the criteria reversed\n    #18   apply     mem(X₁, []): applied\n      #15   or        or distributes: 2 alternatives, derivations #22, #23\n      #20   equation  [2,4,6] = [H₈|T₇]: H₈/2, T₇/[4,6]\n      #21   apply     mem(4, [2,4,6]): applied\n    #18   or        or distributes: 2 alternatives, derivations #24, #25\n      #22   fail      [6] = [1|T₇]: 6 cannot equal 1\n      #20   apply     mem(3, [4,6]): applied\n      #21   or        or distributes: 2 alternatives, derivations #26, #27\n    #24   fail      [] = [X₁|T₁₀]: [] cannot equal [X₁|T₁₀]\n    #25   fail      [] = [H₁₁|T₁₀]: [] cannot equal [H₁₁|T₁₀]\n      #23   equation  [6] = [H₈|T₇]: H₈/6, T₇/[]\n      #20   or        or distributes: 2 alternatives, derivations #28, #29\n      #26   fail      [2,4,6] = [4|T₉]: 2 cannot equal 4\n      #23   apply     mem(1, []): applied\n      #28   fail      [4,6] = [3|T₉]: 4 cannot equal 3\n      #27   equation  [2,4,6] = [H₁₀|T₉]: H₁₀/2, T₉/[4,6]\n      #23   or        or distributes: 2 alternatives, derivations #30, #31\n      #29   equation  [4,6] = [H₁₀|T₉]: H₁₀/4, T₉/[6]\n      #27   apply     mem(4, [4,6]): applied\n      #30   fail      [] = [1|T₉]: [] cannot equal [1|T₉]\n      #29   apply     mem(3, [6]): applied\n      #27   or        or distributes: 2 alternatives, derivations #32, #33\n      #31   fail      [] = [H₁₀|T₉]: [] cannot equal [H₁₀|T₉]\n    #2    not       not(mem(1, [2,4,6])) holds: every derivation of it failed\n      #29   or        or distributes: 2 alternatives, derivations #34, #35\n      #32   equation  [4,6] = [4|T₁₁]: T₁₁/[6]\n    #2    hibernate nothing more can be done: the derivation hibernates\n      #34   fail      [6] = [3|T₁₁]: 6 cannot equal 3\n      #33   equation  [4,6] = [H₁₂|T₁₁]: H₁₂/4, T₁₁/[6]\n      #35   equation  [6] = [H₁₂|T₁₁]: H₁₂/6, T₁₁/[]\n      #32   hibernate nothing more can be done: the derivation hibernates\n    #17   fail      not(mem(4, [2,4,6])): the negated assertions hold (derivation #32 found no contradiction)\n      #35   apply     mem(3, []): applied\n      #35   or        or distributes: 2 alternatives, derivations #36, #37\n      #36   fail      [] = [3|T₁₃]: [] cannot equal [3|T₁₃]\n      #37   fail      [] = [H₁₄|T₁₃]: [] cannot equal [H₁₄|T₁₃]\n    #10   not       not(mem(3, [2,4,6])) holds: every derivation of it failed\n    #10   hibernate nothing more can be done: the derivation hibernates\n  #0    set       {set(X₁), {mem(X₁, [1,2,3,4]), not(mem(X₁, [2,4,6]))}, d}: complete, [1,3]\n  #0    equation  d = [1,3]: d/[1,3]\n  #0    hibernate nothing more can be done: the derivation hibernates\n1 derivation:\n  derivation #0 (hibernating)\n    procedures  mem, setdiff\n    d = [1,3]\n",
+     "stderr": "line\tassertion\tsteps\tquantity\tnow\tpeak\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tderivations\t1\t1\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tsub_derivations\t0\t0\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tvariables\t1\t1\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tbindings\t1\t1\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tsusp_equations\t0\t0\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tsusp_applications\t0\t0\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tsusp_relations\t0\t0\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tsusp_negations\t0\t0\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tpending\t0\t1\n11\tmem = lambda E, S {S = [E|T]} or {S = [H|T], mem(E, T)}\t2\tterm_nodes\t1\t1\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tderivations\t1\t1\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tsub_derivations\t0\t0\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tvariables\t2\t2\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tbindings\t2\t2\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tsusp_equations\t0\t0\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tsusp_applications\t0\t0\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tsusp_relations\t0\t0\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tsusp_negations\t0\t0\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tpending\t0\t1\n15\tsetdiff = lambda S1, S2, D {set(X), {mem(X, S1), not(mem(X, S2))}, D}\t2\tterm_nodes\t2\t2\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tderivations\t1\t1\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tsub_derivations\t0\t9\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tvariables\t3\t103\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tbindings\t3\t82\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tsusp_equations\t0\t0\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tsusp_applications\t0\t0\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tsusp_relations\t0\t0\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tsusp_negations\t0\t0\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tpending\t0\t11\n18\tsetdiff([1, 2, 3, 4], [2, 4, 6], d)\t194\tterm_nodes\t7\t188\n",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "measured run: absys-measure FILE --measure --full --notation 1990 --steps 1000000 --trace, FILE the text of the parameters, prelude and stages 1 to 1 (19 lines), the system's process started anew"
+     ]
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": [
+  "system: absys-measure 545044976e1a5ee7fc5471a7cb02b972fd507984 (branch measure, on the pinned main efd52032934d34359c8bb828d80819d18997be52); absys has no version option, so version_output is null and the commits are from /opt/src/COMMITS",
+  "notation: 1990 (from the program's file name, as the system decides it); flags of the configuration: none"
+ ]
+}

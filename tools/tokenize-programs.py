@@ -25,7 +25,11 @@ for cfg in sorted(os.listdir(f"programs/{system}")):
         continue
     out = f"results/{system}/tokens/{cfg}"
     os.makedirs(out, exist_ok=True)
-    for f in sorted(os.listdir(d)):
+    names = sorted(os.listdir(d))
+    if os.path.isdir(f"{d}/variants"):                 # named variants in a folder of their own (batch 1B)
+        os.makedirs(f"{out}/variants", exist_ok=True)
+        names += ["variants/" + f for f in sorted(os.listdir(f"{d}/variants"))]
+    for f in names:
         stem, ext = os.path.splitext(f)
         if ext not in EXT:
             continue

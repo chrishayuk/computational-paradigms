@@ -1,0 +1,224 @@
+{
+ "record_format": "cp-raw-record/1",
+ "run": {
+  "run_id": "P04e.storage.20261127T225515Z",
+  "spec_tag": "spec-1.0",
+  "system": "swi-prolog",
+  "configuration": "plain",
+  "problem": "P04",
+  "subproblem": "P04e",
+  "instance": "P04e",
+  "parameters": {},
+  "mode": "storage",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/swi-prolog/plain/P04e.pl",
+   "sha256": "d66201c107765a2e20ca8d8734849a3c16c9d71aff046d2c1181ca24b70807a1",
+   "repo_commit": "1c758fd9b331d1bb16afd28e348858edbe268ba3"
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": null,
+   "image": "sha256:b51af487f3306fe240eae8c13159c85b5526509952e1b949cc22f48a1f82a742",
+   "binary": "/usr/lib/swipl/bin/x86_64-linux/swipl",
+   "version_output": "SWI-Prolog version 11.0.1 for x86_64-linux\n",
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/swi-prolog/run",
+   "commit": "1c758fd9b331d1bb16afd28e348858edbe268ba3",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/swi-prolog/run",
+   "plain",
+   "P04",
+   "P04e",
+   "storage",
+   "programs/swi-prolog/plain/P04e.pl",
+   "results/swi-prolog/plain/P04/raw/"
+  ],
+  "posing": "reposed",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "inference",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-27T22:55:15.053Z",
+  "ended_utc": "2026-11-27T22:55:15.290Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "Stages are posed by calling the program's stage/2 for stages 1..k, and then query/2 for k, as one conjunction compiled into one clause; in session each stage is posted into one engine and called there. A stage mark (h_m/1) precedes each stage/2 call; its inferences are excluded from the steps and the budget.",
+   "Inferences spent in harness code inside the measured computation (stage marks, answer points, the H predicates the program calls, the storage sampler) are excluded from the steps and from the budget by moving the inference limit on by the amount they used (SWI-Prolog internals '$inference_limit'/2 and '$inference_limit_false'/1, the predicates call_with_inference_limit/3 is built from). The budget is enforced with these internals, not with call_with_inference_limit/3, because that predicate restarts its limit for each solution.",
+   "Answers are rendered with the toplevel's own code ('$toplevel':translate_bindings/4, name_vars/3, the query(yes/more) messages) under \\+ \\+, with answer_write_options max_depth(0) instead of the toplevel's default max_depth(10), so that no answer is elided.",
+   "After loading the program the harness calls autoload_all/0, so that no library is autoloaded while a stage is measured.",
+   "At the moment the budget runs out (or an error reaches the harness), prolog:prolog_exception_hook/5 reads the bindings held, the residual goals and (storage) the choicepoints and the store, before the stacks unwind. It does not change the exception.",
+   "observe() reads, at the end of the stage: the toplevel rendering of the bindings held, term_attvars/2 of the unknowns, the length of copy_term/3's residual goals; in storage mode also the retained choicepoints, and the store after garbage_collect/0. Each costs inferences that are excluded.",
+   "Storage mode only: a heartbeat sampler (flag heartbeat=1008) keeps running maxima of choicepoints, global/local/trail usage and table space with flag/3. Its inferences are excluded from steps and budget, but sampling moves garbage collection and memory layout.",
+   "Each stage of plain, tabling, coroutines and constraints runs in a fresh swipl process (a new computation); session runs one process per incremental computation, and a fresh process for each separate run.",
+   "session: answers of a stage that is not the instance's last are collected on a separate run of stages 1..k (a fresh process and engine), because collecting them by backtracking would consume the incremental computation; print() and observe() read the incremental computation's held state without consuming it.",
+   "Spawned computations (P09) are separate queries in the same process, sharing its database, run one after the other to their end or budget (side_by_side false).",
+   "The effects stub emit/1 writes each entry, flushed, to a spool file; the driver appends the spool to the effects log, with seq and run_id, when the stage's attempt ends."
+  ],
+  "environment": {
+   "LANG": "C.UTF-8"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "true.\n\n",
+           "steps_at": 8,
+           "alternatives_at": 0
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "at the last answer: the goal exited without choicepoints (no further answer is offered); 0 attributed variable(s) reachable from the unknowns (term_attvars/2)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "inference",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": 8,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": 8,
+        "between_answers": [],
+        "to_end": 8,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "retained choicepoints (SWI-Prolog choicepoint frames newer than the computation's mark)",
+        "at_boundary": 0,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "backtracking",
+        "by_type": {},
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "attributed variables reachable from the unknowns",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {
+         "attributed_variables": 0,
+         "residual_goals": 0
+        }
+       },
+       "problem_operations": null,
+       "candidates_examined": null
+      }
+     ],
+     "observe": {
+      "raw": "true ",
+      "method": "read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bindings/4, name_vars/3, query message), term_attvars/2 of the unknowns, copy_term/3 residual goals",
+      "taken_on": "this-run",
+      "bindings": {}
+     },
+     "print": "true.\n\n",
+     "store": {
+      "quantities": {
+       "global_live_bytes": {
+        "boundary": 1168,
+        "peak": null,
+        "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"
+       },
+       "local_bytes": {
+        "boundary": 4136,
+        "peak": null,
+        "unit": "bytes (statistics(localused))"
+       },
+       "trail_bytes": {
+        "boundary": 80,
+        "peak": null,
+        "unit": "bytes (statistics(trailused))"
+       },
+       "global_live_bytes_at_computation_start": {
+        "boundary": 504,
+        "peak": null,
+        "unit": "the same, before the computation started (harness baseline)"
+       },
+       "local_bytes_at_computation_start": {
+        "boundary": 2288,
+        "peak": null,
+        "unit": "the same, before the computation started (harness baseline)"
+       },
+       "trail_bytes_at_computation_start": {
+        "boundary": 16,
+        "peak": null,
+        "unit": "the same, before the computation started (harness baseline)"
+       }
+      },
+      "source": "statistics/2 at the stage boundary, after garbage_collect/0; sampled maxima from the heartbeat sampler"
+     },
+     "wall_time_s": 0.203,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "",
+     "stderr": "",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": [
+  "system_build.commit is null: the swipl:11.0.1 image has no /opt/src/COMMITS; the build is recorded as the pinned image's digest (PINS.md) in system_build.image"
+ ]
+}

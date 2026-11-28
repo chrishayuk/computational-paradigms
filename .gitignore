@@ -6,3 +6,5 @@ __pycache__/
 *.pyo
 *.so
 *.o
+# records over 50 MB are committed gzip-compressed (results/*/*/*/raw-rerun-m2/README.md)
+results/absys/*/P03/raw-rerun-m2/*.json

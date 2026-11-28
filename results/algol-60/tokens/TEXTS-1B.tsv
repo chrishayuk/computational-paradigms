@@ -1,0 +1,45 @@
+text	also the text of
+report/P04a.alg	
+report/P04b.alg	
+report/P04c.alg	
+report/P04d.alg	
+report/P04e.alg	
+report/P04f.alg	
+report/P05a.alg	
+report/P05b.alg	
+report/P05c.alg	
+report/P06a.alg	report/P06c.alg
+report/P06b.alg	
+report/P06d.alg	
+report/P06e1.alg	report/P06e2.alg
+report/P06e3.alg	
+report/P07a.alg	
+report/P07b.alg	
+report/P07c.alg	
+report/P07d.alg	report/P07e.alg
+report/P07f.alg	
+report/P07g.alg	
+report/P08a.alg	report/P08b.alg
+report/P08c.alg	
+x1/P04a.a60	x1sim/P04a.a60
+x1/P04b.a60	x1sim/P04b.a60
+x1/P04c.a60	x1sim/P04c.a60
+x1/P04d.a60	x1sim/P04d.a60
+x1/P04e.a60	x1sim/P04e.a60
+x1/P04f.a60	x1sim/P04f.a60
+x1/P05a.a60	x1sim/P05a.a60
+x1/P05b.a60	x1sim/P05b.a60
+x1/P05c.a60	x1sim/P05c.a60
+x1/P06a.a60	x1/P06c.a60 x1sim/P06a.a60 x1sim/P06c.a60
+x1/P06b.a60	x1sim/P06b.a60
+x1/P06d.a60	x1sim/P06d.a60
+x1/P06e1.a60	x1/P06e2.a60 x1sim/P06e1.a60 x1sim/P06e2.a60
+x1/P06e3.a60	x1sim/P06e3.a60
+x1/P07a.a60	x1sim/P07a.a60
+x1/P07b.a60	x1sim/P07b.a60
+x1/P07c.a60	x1sim/P07c.a60
+x1/P07d.a60	x1/P07e.a60 x1sim/P07d.a60 x1sim/P07e.a60
+x1/P07f.a60	x1sim/P07f.a60
+x1/P07g.a60	x1sim/P07g.a60
+x1/P08a.a60	x1/P08b.a60 x1sim/P08a.a60 x1sim/P08b.a60
+x1/P08c.a60	x1sim/P08c.a60
