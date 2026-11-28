@@ -1,0 +1,19 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used: lists, arithmetic (docs/decisions.md rule 23).
+% IDIOM: a relation as name'=lambda x begin ... end, primes for new local names, lists [h&t]: Foster and Elcock 1969 (map and item, examples/map.ab1, examples/triples.ab1);
+% IDIOM: a case's head as equations on the lambda's parameters: Elcock 1990 p. 8 (app, examples/append.abs);
+% IDIOM: arithmetic as an assertion usable in every direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets (docs/decisions.md rule 23);
+% IDIOM: begin ... end groups the stage's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% P09d. Unknowns s, total. One stage: genu(<k>, s) and sum3(s, total), in that order, as one conjunction. Run once, classified under P09d1 and P09d2.
+% CONSTANTS BEGIN
+gk = 1   % stage 1: genu(gk, s)
+% CONSTANTS END
+% genu, P09d Vocabulary, its one case: its head equation s = <n> ++ rest, then genu(n + 1, rest), with n + 1 written as a fresh unknown.
+genu'=lambda g, w
+    begin w = [g&rest'] g1' = g + 1 genu(g1, rest) end
+% sum3, P09c Vocabulary, its one case: its head equation, s = <p, q, r> ++ m, then p + q + r = total.
+sum3'=lambda u, t
+    begin u = [p';q';r'&m'] p + q + r = t end
+% STAGE 1
+begin genu(gk, s) sum3(s, total) end

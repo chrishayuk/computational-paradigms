@@ -1,0 +1,35 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic and key (systems/absys/README.md, Notation; docs/decisions.md rules 21, 23).
+% IDIOM: a relation that asserts something of each item of a list, with key so that it waits for the list: Foster and Elcock 1969, map (examples/map.ab1: map'=lambda p, f key p begin {null(p) or p = [r'&s'] f(r) map(s,f)} end; docs/decisions.md rule 21);
+% IDIOM: lists [a;b] and [h&t], a list with a tail still unknown: Foster and Elcock 1969 (tutorial ch. 8, ch. 10);
+% IDIOM: arithmetic as an assertion usable in every direction: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets;
+% IDIOM: begin ... end groups the stage's assertions into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% REFORMULATION (R): an Absys variable takes one value and keeps it; an equation is an assertion, not an assignment
+% (docs/decisions.md rules 9 and 17; examples/assertions-not-assignments.abs). So a named quantity (P10 Vocabulary) is
+% written as the list of the values it has taken, in order, with an open tail for the values still to come: its value
+% is the last element. "q becomes e" equates the tail with [v&t], v a new name for the new value, equated with e
+% (any q in e being the name of the value before the stage), and t the new tail. The names of the values and tails
+% (bv1, bt1, ...) are written for the purpose: indexing, R (problems/10-state-replacement.md, Observations).
+% Stage 1's standing relation d = k * b is then a relation between the two lists, item by item: dbl(b, d), FE69's map
+% with key. dbl's recursion over the lists, its null case and its head equations are R; e = dk * r is the problem's
+% relation. key p is C (METRICS.md, class C: key declarations): without it dbl would make lists of every length
+% (FE69; docs/decisions.md rule 21) instead of waiting for b's values.
+% P10b. Unknowns (quantities) b, d. Stage 1 d = <k> * b, at all times; stages 2-4 the stages of P10a, as in P10a.ab1.
+% CONSTANTS BEGIN
+dk = 2   % stage 1: d = dk * b
+c1 = 10   % stage 2 (P10a stage 1): b becomes c1
+c2 = 5   % stage 3 (P10a stage 2): b becomes b + c2
+c3 = 7   % stage 4 (P10a stage 3): b becomes c3
+% CONSTANTS END
+% STAGE 1
+% d = k * b at all times: dbl relates each value b takes to the value d has at the same time.
+dbl'=lambda p, q key p
+    begin {null(p) null(q) or p = [r'&s'] q = [e'&u'] e = dk * r dbl(s, u)} end
+dbl(b, d)
+% STAGE 2
+begin b = [bv1&bt1]  bv1 = c1 end
+% STAGE 3
+begin bt1 = [bv2&bt2]  bv2 = bv1 + c2 end
+% STAGE 4
+begin bt2 = [bv3&bt3]  bv3 = c3 end

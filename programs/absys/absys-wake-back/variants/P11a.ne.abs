@@ -1,0 +1,25 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NAMED VARIANT. P11a is judged NOT EXPRESSIBLE in every Absys configuration (programs/absys/README.md, batch 1C, P11a and P11b);
+% there is no primary. This variant changes the meaning of x >= k, and is to be run and reported as a named variant.
+% NOTATION: 1990 (.abs), the only notation with tout (emit): in the 1969 notation tout(...) is an application of an undefined name.
+% IDIOM: a closed world of facts as a procedure whose alternatives are the facts, its completion: Elcock 1990 p. 15 (student, examples/students.abs);
+% IDIOM: tout(label, term), the output assertion, which waits until its term is complete: Elcock 1990 note 11 (tutorial ch. 9; docs/decisions.md rule 20); here the harness's emit (harnesses/absys/README.md, 3.10);
+% IDIOM: not(A), an independent computation with the criteria reversed: Elcock 1990 p. 14 (tutorial ch. 7: not(X = 1));
+% IDIOM: {A, B} for one conjunction, one assertion: Elcock 1990 p. 8 (examples/append.abs).
+% MEANING CHANGED (R): x >= k needs a comparison, which no notation has, and the 1990 notation has no arithmetic to define one
+% (docs/decisions.md rule 23). It is replaced by not(x = gelo), gelo being the one value of pick's facts below k: the
+% same as x >= k on pick's three facts as the problem gives them, and not on other values. Not generic: a variant whose
+% facts or k leave no value, or two values, below k needs another text.
+% P11a. Unknown x. One stage: pick(x) and x >= <k> and emit(x), in that order, as one conjunction.
+% CONSTANTS BEGIN
+pk1 = 1   % stage 1: the facts of pick (P05 Vocabulary), given with the prelude
+pk2 = 2   % stage 1: the facts of pick
+pk3 = 3   % stage 1: the facts of pick
+gelo = 1   % stage 1: x >= k with k = 2, written as x != gelo, the value of pick below k (meaning changed: see above)
+% CONSTANTS END
+% pick, P05 Vocabulary: a closed world of three facts, pick(<k1>), pick(<k2>), pick(<k3>), in this order.
+pick = lambda P
+    {P = pk1} or {P = pk2} or {P = pk3}
+% STAGE 1
+{pick(x), not(x = gelo), tout("emit", x)}

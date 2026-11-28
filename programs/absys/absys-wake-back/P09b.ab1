@@ -1,0 +1,17 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with every construct used (systems/absys/README.md, Notation).
+% IDIOM: equations as assertions: Foster and Elcock 1969, "x=y y = 2" (examples/assertions.ab1);
+% IDIOM: begin ... end groups a computation's relations into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations; tutorial ch. 8).
+% P09b. Unknowns x, y. One stage, two computations spawned in the order written (harnesses/absys/README.md, 3.6): A x = <k> and x = <k>; B y = <k>.
+% Absys has one computation per session; the harness accepts B's text into the computation that holds A (QUESTIONS, A5).
+% CONSTANTS BEGIN
+ak1 = 1   % stage 1, computation A: x = ak1
+ak2 = 2   % stage 1, computation A: x = ak2
+bk = 3   % stage 1, computation B: y = bk
+% CONSTANTS END
+% STAGE 1
+% SPAWN A
+begin x = ak1  x = ak2 end
+% SPAWN B
+y = bk

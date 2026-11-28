@@ -1,0 +1,27 @@
+% AUTHOR: implementation-absys (an agent: Claude Opus 5.5, claude-opus-5-5). One text for absys, absys-depth-first and absys-wake-back.
+% PRECURSOR-SEEN: no. Not any E01-E09 program (see programs/absys/README.md, batch 1C, for what was read).
+% NOTATION: 1969 (.ab1), the earliest notation with arithmetic (systems/absys/README.md, Notation; docs/decisions.md rule 23).
+% IDIOM: lists [a;b] and [h&t], a list with a tail still unknown: Foster and Elcock 1969 (tutorial ch. 8, ch. 10);
+% IDIOM: arithmetic as an assertion usable in every direction, a = b + 1: Foster and Elcock 1969 (tutorial ch. 8); Foster 1968, pass sets;
+% IDIOM: begin ... end groups the stage's assertions into one conjunction, one assertion: Foster and Elcock 1969 (docs/decisions.md, Three notations).
+% REFORMULATION (R): an Absys variable takes one value and keeps it; an equation is an assertion, not an assignment
+% (docs/decisions.md rules 9 and 17; examples/assertions-not-assignments.abs). So a named quantity (P10 Vocabulary) is
+% written as the list of the values it has taken, in order, with an open tail for the values still to come: its value
+% is the last element. "q becomes e" equates the tail with [v&t], v a new name for the new value, equated with e
+% (any q in e being the name of the value before the stage), and t the new tail. The names of the values and tails
+% (bv1, bt1, ...) are written for the purpose: indexing, R (problems/10-state-replacement.md, Observations).
+% P10c. Unknowns (quantities) b, d. Stage 1 b becomes <k>; stage 2 d becomes <k> * b; stage 3 b becomes b + <k>; stage 4 b becomes <k>.
+% CONSTANTS BEGIN
+c1 = 10   % stage 1: b becomes c1
+dk = 2   % stage 2: d becomes dk * b
+c2 = 5   % stage 3: b becomes b + c2
+c3 = 7   % stage 4: b becomes c3
+% CONSTANTS END
+% STAGE 1
+begin b = [bv1&bt1]  bv1 = c1 end
+% STAGE 2
+begin d = [dv1&dt1]  dv1 = dk * bv1 end
+% STAGE 3
+begin bt1 = [bv2&bt2]  bv2 = bv1 + c2 end
+% STAGE 4
+begin bt2 = [bv3&bt3]  bv3 = c3 end
