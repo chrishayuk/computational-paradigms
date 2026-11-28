@@ -1,0 +1,122 @@
+L1 [0:0] begin
+L8 [1:35] integer n , cap , m , i , code , k , c1 , c2 , c3 , xv , yv , zv , held , pass , x1 , x2 , x3 ;
+L9 [36:52] Boolean xk , yk , zk , r1 , r2 , r3 , changed , inconsistent ;
+L10 [53:61] integer array ord [ 1 : 3 ] ;
+L12 [62:64] procedure examine1 ;
+L14 [65:65] begin
+L15 [66:71] x1 := x1 + 1 ;
+L16 [72:78] if xk ∧ yk ∧ zk then
+L17 [79:96] begin if xv + yv + zv ≠ c1 then inconsistent := true ; r1 := false end
+L18 [97:102] else if yk ∧ zk then
+L19 [103:123] begin xv := c1 - yv - zv ; xk := true ; r1 := false ; changed := true end
+L20 [124:129] else if xk ∧ zk then
+L21 [130:150] begin yv := c1 - xv - zv ; yk := true ; r1 := false ; changed := true end
+L22 [151:156] else if xk ∧ yk then
+L23 [157:177] begin zv := c1 - xv - yv ; zk := true ; r1 := false ; changed := true end
+L24 [178:180] end examine1 ;
+L26 [181:183] procedure examine2 ;
+L28 [184:184] begin
+L29 [185:190] x2 := x2 + 1 ;
+L30 [191:195] if yk ∧ zk then
+L31 [196:211] begin if yv + zv ≠ c2 then inconsistent := true ; r2 := false end
+L32 [212:215] else if yk then
+L33 [216:234] begin zv := c2 - yv ; zk := true ; r2 := false ; changed := true end
+L34 [235:238] else if zk then
+L35 [239:257] begin yv := c2 - zv ; yk := true ; r2 := false ; changed := true end
+L36 [258:260] end examine2 ;
+L38 [261:263] procedure examine3 ;
+L40 [264:264] begin
+L41 [265:270] x3 := x3 + 1 ;
+L42 [271:273] if zk then
+L43 [274:283] begin if zv ≠ c3 then inconsistent := true end
+L44 [284:284] else
+L45 [285:298] begin zv := c3 ; zk := true ; changed := true end ;
+L46 [299:301] r3 := false
+L47 [302:304] end examine3 ;
+L49 [305:307] procedure propagate ;
+L51 [308:308] begin
+L52 [309:311] integer j ;
+L53 [312:315] changed := true ;
+L54 [316:322] for pass := 1 while changed do
+L55 [323:323] begin
+L56 [324:327] changed := false ;
+L57 [328:336] for j := 1 step 1 until 3 do
+L58 [337:337] begin
+L59 [338:351] if ord [ j ] = 1 then begin if r1 then examine1 end
+L60 [352:366] else if ord [ j ] = 2 then begin if r2 then examine2 end
+L61 [367:381] else if ord [ j ] = 3 then begin if r3 then examine3 end
+L62 [382:382] end
+L63 [383:383] end
+L64 [384:386] end propagate ;
+L66 [387:392] procedure uname ( u ) ;
+L67 [393:398] value u ; integer u ;
+L69 [399:429] if u = 1 then outstring ( 1 , x ) else if u = 2 then outstring ( 1 , y ) else outstring ( 1 , z ) ;
+L71 [430:439] procedure place ( known , v , u ) ;
+L72 [440:454] value known , v , u ; Boolean known ; integer v , u ;
+L74 [455:469] if known then outinteger ( 1 , v ) else uname ( u ) ;
+L76 [470:481] procedure state ( known , v , inheld , u ) ;
+L77 [482:500] value known , v , inheld , u ; Boolean known , inheld ; integer v , u ;
+L79 [501:501] begin
+L80 [502:506] uname ( u ) ;
+L81 [507:524] if known then begin outstring ( 1 ,  =  ) ; outinteger ( 1 , v ) end
+L82 [525:534] else if inheld then outstring ( 1 ,  held )
+L83 [535:541] else outstring ( 1 ,  free )
+L84 [542:544] end state ;
+L86 [545:547] procedure relations ;
+L88 [548:548] begin
+L89 [549:551] integer j ;
+L90 [552:554] Boolean first ;
+L91 [555:558] first := true ;
+L92 [559:567] for j := 1 step 1 until 3 do
+L93 [568:568] begin
+L94 [569:578] if ord [ j ] = 1 ∧ r1 then
+L95 [579:579] begin
+L96 [580:590] if ¬ first then outstring ( 1 , ,  ) ;
+L97 [591:631] place ( xk , xv , 1 ) ; outstring ( 1 ,  +  ) ; place ( yk , yv , 2 ) ; outstring ( 1 ,  +  ) ; place ( zk , zv , 3 ) ;
+L98 [632:648] outstring ( 1 ,  =  ) ; outinteger ( 1 , c1 ) ; first := false
+L99 [649:649] end
+L100 [650:660] else if ord [ j ] = 2 ∧ r2 then
+L101 [661:661] begin
+L102 [662:672] if ¬ first then outstring ( 1 , ,  ) ;
+L103 [673:714] place ( yk , yv , 2 ) ; outstring ( 1 ,  +  ) ; place ( zk , zv , 3 ) ; outstring ( 1 ,  =  ) ; outinteger ( 1 , c2 ) ; first := false
+L104 [715:715] end
+L105 [716:726] else if ord [ j ] = 3 ∧ r3 then
+L106 [727:727] begin
+L107 [728:738] if ¬ first then outstring ( 1 , ,  ) ;
+L108 [739:764] place ( zk , zv , 3 ) ; outstring ( 1 ,  =  ) ; outinteger ( 1 , c3 ) ; first := false
+L109 [765:765] end
+L110 [766:766] end
+L111 [767:769] end relations ;
+L114 [770:790] ininteger ( 0 , n ) ; ininteger ( 0 , cap ) ; ininteger ( 0 , m ) ;
+L115 [791:809] for i := 1 step 1 until m do ininteger ( 0 , ord [ i ] ) ;
+L116 [810:823] ininteger ( 0 , code ) ; ininteger ( 0 , k ) ;
+L118 [824:844] ininteger ( 0 , c1 ) ; ininteger ( 0 , c2 ) ; ininteger ( 0 , c3 ) ;
+L119 [845:854] xk := yk := zk := inconsistent := false ;
+L120 [855:862] x1 := x2 := x3 := 0 ;
+L121 [863:870] r1 := r2 := r3 := true ;
+L123 [871:872] propagate ;
+L126 [873:876] if ¬ inconsistent then
+L127 [877:877] begin
+L128 [878:884] outstring ( 1 , [answer] ) ;
+L129 [885:902] state ( xk , xv , r1 , 1 ) ; outstring ( 1 , ,  ) ;
+L130 [903:922] state ( yk , yv , r1 ∨ r2 , 2 ) ; outstring ( 1 , ,  ) ;
+L131 [923:937] state ( zk , zv , r1 ∨ r2 ∨ r3 , 3 ) ;
+L132 [938:955] if r1 ∨ r2 ∨ r3 then begin outstring ( 1 , , where  ) ; relations end ;
+L133 [956:961] outstring ( 1 , [/answer]\\n )
+L134 [962:963] end ;
+L137 [964:992] held := ( if r1 then 1 else 0 ) + ( if r2 then 1 else 0 ) + ( if r3 then 1 else 0 ) ;
+L138 [993:999] outstring ( 1 , [observe] ) ;
+L139 [1000:1009] if inconsistent then outstring ( 1 , no solution\\n ) ;
+L140 [1010:1016] outstring ( 1 , held relations:  ) ;
+L141 [1017:1030] if held = 0 then outstring ( 1 , none ) else relations ;
+L142 [1031:1037] outstring ( 1 , \\n ) ;
+L143 [1038:1063] if xk then begin outstring ( 1 , [bind x] ) ; outinteger ( 1 , xv ) ; outstring ( 1 , [/bind]\\n ) end ;
+L144 [1064:1089] if yk then begin outstring ( 1 , [bind y] ) ; outinteger ( 1 , yv ) ; outstring ( 1 , [/bind]\\n ) end ;
+L145 [1090:1115] if zk then begin outstring ( 1 , [bind z] ) ; outinteger ( 1 , zv ) ; outstring ( 1 , [/bind]\\n ) end ;
+L146 [1116:1120] if held > 0 then
+L147 [1121:1143] begin outstring ( 1 , [suspended held-relations  ) ; outinteger ( 1 , held ) ; outstring ( 1 , ]\\n ) end ;
+L148 [1144:1164] outstring ( 1 , [operations R1-examined  ) ; outinteger ( 1 , x1 ) ; outstring ( 1 , ]\\n ) ;
+L149 [1165:1185] outstring ( 1 , [operations R2-examined  ) ; outinteger ( 1 , x2 ) ; outstring ( 1 , ]\\n ) ;
+L150 [1186:1206] outstring ( 1 , [operations R3-examined  ) ; outinteger ( 1 , x3 ) ; outstring ( 1 , ]\\n ) ;
+L151 [1207:1212] outstring ( 1 , [/observe]\\n[end] )
+L152 [1213:1213] end

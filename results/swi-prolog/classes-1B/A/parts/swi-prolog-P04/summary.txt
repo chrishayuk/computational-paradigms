@@ -1,0 +1,1074 @@
+===== plain/P04/raw/P04a.behaviour.20261127T225503Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04a.cost.20261127T225503Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04a.storage.20261127T225504Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820104.73064,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp_types":{"\': Expecting \':\' delimiter: line 1 column 214 (char 213)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "global_live_bytes_at_compu
+===== plain/P04/raw/P04b.behaviour.20261127T225505Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04b.cost.20261127T225505Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04b.storage.20261127T225506Z.json faults: ['unreadable harness event b\'{"ev":{"ev":"harness_fault","t":1795820106.90632,"text":"ERROR: [Thread main] Unknown message: inference_limit_exceeded\\\\n"}\': Expecting \',\' delimiter: line 1 column 124 (char 123)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=1 ended_by=error collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 97, "alternatives_at": 1}
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated 97 first 97 to_end 97 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "X = 1 "
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "global_live_bytes_at_compu
+===== plain/P04/raw/P04c.behaviour.20261127T225507Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04c.cost.20261127T225508Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04c.storage.20261127T225509Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820109.94886,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp{"ev":"har\': Expecting \':\' delimiter: line 1 column 193 (char 192)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "global_live_bytes_at_compu
+===== plain/P04/raw/P04d.behaviour.20261127T225510Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04d.cost.20261127T225511Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04d.storage.20261127T225512Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820113.1466,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp_types":{"t\': Expecting property name enclosed in double quotes: line 1 column 217 (char 216)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "global_live_bytes_at_compu
+===== plain/P04/raw/P04e.behaviour.20261127T225513Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04e.cost.20261127T225514Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04e.storage.20261127T225515Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": 0}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': 0, 'at_budget': None, 'peak': None, 'by_type': {}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {"global_live_bytes": {"boundary": 1168, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4136, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 80, "peak": null, "unit": "bytes (statistics(trailused))"}, "global_live_bytes_at_computa
+===== plain/P04/raw/P04f.behaviour.20261127T225515Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04f.cost.20261127T225516Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== plain/P04/raw/P04f.storage.20261127T225517Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": 1}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": 1}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": 1}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": 1}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": 1}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': 1, 'at_budget': None, 'peak': None, 'by_type': {'clause': 1}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {"global_live_bytes": {"boundary": 1680, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4360, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 240, "peak": null, "unit": "bytes (statistics(trailused))"}, "global_live_bytes_at_comput
+===== tabling/P04/raw/P04a.behaviour.20261127T225813Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "X = 1.\n\n", "steps_at": 39, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 39 first 39 to_end 39 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "X = 1 " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "X = 1.\n\n"
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04a.cost.20261127T225814Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "X = 1.\n\n", "steps_at": 39, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 39 first 39 to_end 39 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "X = 1 " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "X = 1.\n\n"
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04a.storage.20261127T225814Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "X = 1.\n\n", "steps_at": 39, "alternatives_at": 0}
+   state ['finished'] None
+   steps restated 39 first 39 to_end 39 between []
+   alts {'at_boundary': 0, 'at_budget': None, 'peak': None, 'by_type': {}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "X = 1 " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "X = 1.\n\n"
+   store {"quantities": {"global_live_bytes": {"boundary": 1224, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4136, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 88, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes": {"b
+===== tabling/P04/raw/P04b.behaviour.20261127T225815Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 40 first 5 to_end 40 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {}}
+   observe "" | the query failed back past its start, so nothing of it is held: raw is empty this-run
+   print "X = 1 ;\nfalse."
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04b.cost.20261127T225816Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 40 first 5 to_end 40 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {}}
+   observe "" | the query failed back past its start, so nothing of it is held: raw is empty this-run
+   print "X = 1 ;\nfalse."
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04b.storage.20261127T225816Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": 1}
+   state ['finished'] None
+   steps restated 40 first 5 to_end 40 between []
+   alts {'at_boundary': 0, 'at_budget': None, 'peak': None, 'by_type': {}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {}}
+   observe "" | the query failed back past its start, so nothing of it is held: raw is empty this-run
+   print "X = 1 ;\nfalse."
+   store {"quantities": {"global_live_bytes": {"boundary": 1120, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 2472, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 48, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes": {"b
+===== tabling/P04/raw/P04c.behaviour.20261127T225817Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 310050 first None to_end 310050 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 962186 first None to_end 962186 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04c.cost.20261127T230918Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 317396 first None to_end 317396 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 984326 first None to_end 984326 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04c.storage.20261127T232018Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 308896 first None to_end 308896 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": 1464, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 5608, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 128, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes": {"
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 939085 first None to_end 939085 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": 4509128, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 5912, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 144, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes":
+===== tabling/P04/raw/P04d.behaviour.20261127T233119Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 290356 first None to_end 290356 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 891860 first None to_end 891860 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04d.cost.20261127T234722Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 217710 first None to_end 217710 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 637266 first None to_end 637266 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04d.storage.20261127T235823Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 195716 first None to_end 195716 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": 1272, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4728, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 96, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes": {"b
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 646351 first None to_end 646351 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": 1272, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4728, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 96, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes": {"b
+===== tabling/P04/raw/P04e.behaviour.20261128T000925Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 62, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 62 first 62 to_end 62 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04e.cost.20261128T000926Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 62, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 62 first 62 to_end 62 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04e.storage.20261128T000928Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 62, "alternatives_at": 0}
+   state ['finished'] None
+   steps restated 62 first 62 to_end 62 between []
+   alts {'at_boundary': 0, 'at_budget': None, 'peak': None, 'by_type': {}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {"global_live_bytes": {"boundary": 1184, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4136, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 96, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes": {"b
+===== tabling/P04/raw/P04f.behaviour.20261128T000929Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 215885 first None to_end 215885 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 652229 first None to_end 652229 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04f.cost.20261128T002030Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 221179 first None to_end 221179 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 674545 first None to_end 674545 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== tabling/P04/raw/P04f.storage.20261128T003131Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': True, 'action': 'rerun', 'how_stopped': "after 60 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 249100 first None to_end 249100 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": 1272, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4728, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 96, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes": {"b
+ stage 1 attempt 2 limit 600 posed fresh safety-rerun safety {'hit': True, 'action': 'final-timeout', 'how_stopped': "after 600 s of wall time: SIGUSR1 from the driver; the harness's signal handler read the step count and the state held, then ended the process with SIGKILL"} exit {'status': None, 'signal': 'SIGKILL'}
+   answers n=0 ended_by=timeout collected_on=this-run
+   state ['timeout'] None
+   steps restated 750994 first None to_end 750994 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | nothing could be read: the process was killed at the safety limit this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": 3606128, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 5032, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 112, "peak": null, "unit": "bytes (statistics(trailused))"}, "table_space_used_bytes":
+===== coroutines/P04/raw/P04a.behaviour.20261127T225325Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04a.cost.20261127T225326Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04a.storage.20261127T225327Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820007.42865,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp_types":{"\': Expecting \':\' delimiter: line 1 column 214 (char 213)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== coroutines/P04/raw/P04b.behaviour.20261127T225327Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04b.cost.20261127T225328Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04b.storage.20261127T225329Z.json faults: ['unreadable harness event b\'{"ev":{"ev":"harness_fault","t":1795820009.78081,"text":"ERROR: [Thread main] Unknown message: inference_limit_exceeded\\\\n"}\': Expecting \',\' delimiter: line 1 column 124 (char 123)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=1 ended_by=error collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 97, "alternatives_at": 1}
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated 97 first 97 to_end 97 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "X = 1 "
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== coroutines/P04/raw/P04c.behaviour.20261127T225330Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04c.cost.20261127T225331Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04c.storage.20261127T225332Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820013.07767,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp{"ev":"har\': Expecting \':\' delimiter: line 1 column 193 (char 192)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== coroutines/P04/raw/P04d.behaviour.20261127T225333Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04d.cost.20261127T225334Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04d.storage.20261127T225335Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820016.47859,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp_types":{"\': Expecting property name enclosed in double quotes: line 1 column 218 (char 217)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== coroutines/P04/raw/P04e.behaviour.20261127T225336Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04e.cost.20261127T225337Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04e.storage.20261127T225338Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": 0}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': 0, 'at_budget': None, 'peak': None, 'by_type': {}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {"global_live_bytes": {"boundary": 1168, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4136, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 80, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"bou
+===== coroutines/P04/raw/P04f.behaviour.20261127T225339Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04f.cost.20261127T225339Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== coroutines/P04/raw/P04f.storage.20261127T225340Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": 1}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": 1}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": 1}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": 1}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": 1}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': 1, 'at_budget': None, 'peak': None, 'by_type': {'clause': 1}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {"global_live_bytes": {"boundary": 1680, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4360, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 240, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"bo
+===== constraints/P04/raw/P04a.behaviour.20261127T225146Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04a.cost.20261127T225146Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04a.storage.20261127T225147Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795819907.7007,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp_types":{"t\': Expecting \':\' delimiter: line 1 column 213 (char 212)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== constraints/P04/raw/P04b.behaviour.20261127T225148Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04b.cost.20261127T225148Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04b.storage.20261127T225149Z.json faults: ['unreadable harness event b\'{"ev":{"ev":"harness_fault","t":1795819909.7346,"text":"ERROR: [Thread main] Unknown message: inference_limit_exceeded\\\\n"}\': Expecting \',\' delimiter: line 1 column 123 (char 122)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=1 ended_by=error collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 97, "alternatives_at": 1}
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated 97 first 97 to_end 97 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "X = 1 "
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== constraints/P04/raw/P04c.behaviour.20261127T225150Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04c.cost.20261127T225151Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04c.storage.20261127T225151Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795819912.64608,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp{"ev":"har\': Expecting \':\' delimiter: line 1 column 193 (char 192)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== constraints/P04/raw/P04d.behaviour.20261127T225153Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04d.cost.20261127T225153Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04d.storage.20261127T225154Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795819915.60146,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp_types":{"\': Expecting property name enclosed in double quotes: line 1 column 218 (char 217)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 3, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== constraints/P04/raw/P04e.behaviour.20261127T225156Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04e.cost.20261127T225156Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04e.storage.20261127T225157Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": 0}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': 0, 'at_budget': None, 'peak': None, 'by_type': {}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {"global_live_bytes": {"boundary": 1168, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4136, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 80, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"bou
+===== constraints/P04/raw/P04f.behaviour.20261127T225158Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04f.cost.20261127T225158Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== constraints/P04/raw/P04f.storage.20261127T225159Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": 1}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": 1}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": 1}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": 1}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": 1}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': 1, 'at_budget': None, 'peak': None, 'by_type': {'clause': 1}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {"global_live_bytes": {"boundary": 1680, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 4360, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 240, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"bo
+===== session/P04/raw/P04a.behaviour.20261127T225633Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04a.cost.20261127T225634Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04a.storage.20261127T225635Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820195.33818,"comp":"main","why":"budget","steps":1000009,"p{"ev":"comp_end","t":1795820195.33907,"comp":"main","stage":1,"ended_by":"budget","steps":null,"error_text":nul\': Expecting \':\' delimiter: line 1 column 92 (char 91)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== session/P04/raw/P04b.behaviour.20261127T225635Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04b.cost.20261127T225636Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=budget collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": null}
+   state ['budget'] None
+   steps restated 1000009 first 5 to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print "X = 1 "
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04b.storage.20261127T225637Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820197.52358,"comp":"main","why":"budget","steps":1000009,"part":1,"where":"at-exception","text":"true ","bindings":{},"attvars":0,"residual_goals":0,"cps":1,"cp_types":{"\': Expecting \':\' delimiter: line 1 column 205 (char 204)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=error collected_on=this-run
+      {"index": 1, "verbatim": "X = 1 ", "steps_at": 5, "alternatives_at": 1}
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated 5 first 5 to_end 5 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "X = 1 "
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== session/P04/raw/P04c.behaviour.20261127T225638Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04c.cost.20261127T225638Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04c.storage.20261127T225639Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820200.62058,"comp":"main","why":"budget","s{"ev":"comp_end","t":1795820200.62783,"comp":"main","stage":1,"ended_by":"budget","steps":null,"error_text":null,"error_term":"\': Expecting \':\' delimiter: line 1 column 76 (char 75)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== session/P04/raw/P04d.behaviour.20261127T225641Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04d.cost.20261127T225642Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=budget collected_on=this-run
+   state ['budget'] None
+   steps restated 1000009 first None to_end 1000009 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read in prolog:prolog_exception_hook/5 when the exception was raised, before unwinding: the toplevel this-run
+   print ""
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04d.storage.20261127T225642Z.json faults: ['unreadable harness event b\'{"ev":"at_exception","t":1795820203.71347,"comp":"main","why":"bud{"ev":"comp_end","t":1795820203.72013,"comp":"main","stage":1,"ended_by":"budget","steps":null,"error_text":null,"error_term":"inferen\': Expecting \',\' delimiter: line 1 column 69 (char 68)'] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=0 ended_by=error collected_on=this-run
+   state ['error'] HARNESS FAULT: no end event for the computation
+   steps restated None first None to_end None between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': None, 'peak': None, 'items': None}
+   observe "" | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print ""
+   store {"quantities": {"global_live_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": null, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"b
+===== session/P04/raw/P04e.behaviour.20261127T225644Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04e.cost.20261127T225644Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": null}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04e.storage.20261127T225645Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=1 ended_by=exhausted collected_on=this-run
+      {"index": 1, "verbatim": "true.\n\n", "steps_at": 8, "alternatives_at": 0}
+   state ['finished'] None
+   steps restated 8 first 8 to_end 8 between []
+   alts {'at_boundary': 0, 'at_budget': None, 'peak': None, 'by_type': {}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "true " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "true.\n\n"
+   store {"quantities": {"global_live_bytes": {"boundary": 904, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 2584, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 104, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"bou
+===== session/P04/raw/P04f.behaviour.20261127T225646Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04f.cost.20261127T225647Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": null}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": null}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": null}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": null}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": null}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': None, 'at_budget': None, 'peak': None, 'by_type': None}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {}, "source": null}
+===== session/P04/raw/P04f.storage.20261127T225647Z.json faults: [] notes: []
+ stage 1 attempt 1 limit 60 posed fresh first-stage safety {'hit': False, 'action': 'none', 'how_stopped': None} exit {'status': 0, 'signal': None}
+   answers n=20 ended_by=cap collected_on=this-run
+      {"index": 1, "verbatim": "S = [] ", "steps_at": 3, "alternatives_at": 1}
+      {"index": 2, "verbatim": "S = [a] ", "steps_at": 5, "alternatives_at": 1}
+      {"index": 3, "verbatim": "S = [a, a] ", "steps_at": 7, "alternatives_at": 1}
+      {"index": 4, "verbatim": "S = [a, a, a] ", "steps_at": 9, "alternatives_at": 1}
+      ... last: {"index": 20, "verbatim": "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] ", "steps_at": 41, "alternatives_at": 1}
+   state ['alternatives pending'] None
+   steps restated 41 first 3 to_end 41 between [2, 2, 2, 2, 2]
+   alts {'at_boundary': 1, 'at_budget': None, 'peak': None, 'by_type': {'clause': 1}}
+   susp {'unit': 'attributed variables reachable from the unknowns', 'at_boundary': 0, 'peak': None, 'items': {'attributed_variables': 0, 'residual_goals': 0}}
+   observe "S = [a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a] " | read at the end of the stage (boundary): the toplevel's rendering of the bindings held (translate_bi this-run
+   print "S = [] ;\nS = [a] ;\nS = [a, a] ;\nS = [a, a, a] ;\nS = [a, a, a, a] ;\nS = [a, a, a, a, a] ;\nS = [a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a] ;\nS = [a, a, a, a, a, a, a, a, a, a, a] ;\nS =
+   store {"quantities": {"global_live_bytes": {"boundary": 1456, "peak": null, "unit": "bytes (statistics(globalused) after garbage_collect/0; the sampled maximum is of globalused, garbage included)"}, "local_bytes": {"boundary": 2760, "peak": null, "unit": "bytes (statistics(localused))"}, "trail_bytes": {"boundary": 264, "peak": null, "unit": "bytes (statistics(trailused))"}, "attributed_variables": {"bo

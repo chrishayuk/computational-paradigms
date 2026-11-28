@@ -1,0 +1,572 @@
+   1 P main       begin  | the program block (frame of the transcription)
+   8 H main       integer n  | declaration of n
+   8 H main       , cap  | declaration of cap
+   8 H main       , m  | declaration of m
+   8 H main       , i  | declaration of i
+   8 H main       , code  | declaration of code
+   8 H main       , k  | declaration of k
+   8 P main       , j  | declaration of j
+   8 P main       , top  | declaration of top
+   8 P main       , nel  | declaration of nel
+   8 P main       , av  | declaration of av
+   8 P main       , bv  | declaration of bv
+   8 P main       , cv  | declaration of cv
+   8 P main       , sv  | declaration of sv
+   8 H main       , held  | declaration of held
+   8 R main       , pass  | declaration of pass
+   8 H main       , rev1  | declaration of rev1
+   8 H main       , rev2  | declaration of rev2
+   8 H main       , conc1  | declaration of conc1
+   8 H main       , conc2  | declaration of conc2
+   8 R main       boolean ak  | declaration of ak
+   9 R main       , bk  | declaration of bk
+   9 R main       , ck  | declaration of ck
+   9 R main       , q1  | declaration of q1
+   9 R main       , q2  | declaration of q2
+   9 R main       , q3  | declaration of q3
+   9 R main       , q5  | declaration of q5
+   9 R main       , q6  | declaration of q6
+   9 R main       , defined  | declaration of defined
+   9 R main       , changed  | declaration of changed
+   9 P main       , inconsistent  | declaration of inconsistent
+   9 P main       integer array hd , tl , ev [ 1 : 1000 ]  | declaration of hd
+  10 R main       boolean array ek [ 1 : 1000 ]  | declaration of ek
+  11 P cons       integer procedure cons ( h , t ) ; value h , t ; integer h , t ;  | heading of cons (transcription / encoding operatio
+  16 P cons       begin  | begin of the construct introduced before it
+  16 P cons       top := top + 1  | body of cons
+  16 P cons       hd [ top ] := h  | body of cons
+  16 P cons       tl [ top ] := t  | body of cons
+  16 P cons       cons := top  | body of cons
+  16 P cons       end cons  | end of the compound
+  16 P sameel     boolean procedure sameel ( e , f ) ; value e , f ; integer e , f ;  | heading of sameel (transcription / encoding operat
+  21 P sameel     sameel := if e = f then true else if ek [ e ] ∧ ek [ f ] then ev [ e ] = ev [ f ] else fal  | body of sameel
+  21 P same       boolean procedure same ( p , q ) ; value p , q ; integer p , q ;  | heading of same (transcription / encoding operatio
+  26 P same       same := if p = 0 then q = 0 else if q = 0 then false else if sameel ( hd [ p ] , hd [ q ]   | body of same
+  26 P conc       integer procedure conc ( a , b ) ; value a , b ; integer a , b ;  | heading of conc (transcription / encoding operatio
+  31 P conc       if a = 0 then  | body of conc
+  32 P conc       begin  | begin of the construct introduced before it
+  32 H conc       conc1 := conc1 + 1  | counter
+  32 P conc       conc := b  | body of conc
+  32 P conc       end  | end of the compound
+  33 P conc       else  | else of the conditional
+  34 P conc       begin  | begin of the construct introduced before it
+  35 P conc       integer c  | declaration of c
+  35 H conc       conc2 := conc2 + 1  | counter
+  36 P conc       c := conc ( tl [ a ] , b )  | body of conc
+  37 P conc       conc := cons ( hd [ a ] , c )  | body of conc
+  39 P conc       end conc  | end of the compound
+  39 P rev        integer procedure rev ( a ) ; value a ; integer a ;  | heading of rev (transcription / encoding operation
+  44 P rev        if a = 0 then  | body of rev
+  45 P rev        begin  | begin of the construct introduced before it
+  45 H rev        rev1 := rev1 + 1  | counter
+  45 P rev        rev := 0  | body of rev
+  45 P rev        end  | end of the compound
+  46 P rev        else  | else of the conditional
+  47 P rev        begin  | begin of the construct introduced before it
+  48 P rev        integer q  | declaration of q
+  48 H rev        rev2 := rev2 + 1  | counter
+  49 P rev        q := rev ( tl [ a ] )  | body of rev
+  50 P rev        rev := conc ( q , cons ( hd [ a ] , 0 ) )  | body of rev
+  52 P rev        end rev  | end of the compound
+  52 R equal      procedure equal ( e , f ) ; value e , f ; integer e , f ;  | heading of the holding code equal
+  57 R equal      if ek [ e ] ∧ ek [ f ] then  | test of which places are known / verdict to wait
+  58 R equal      begin  | begin of the construct introduced before it
+  58 P equal      if ev [ e ] ≠ ev [ f ] then  | test of a fully known relation
+  58 P equal      inconsistent := true  | computes a place from the others / gives the verdi
+  58 R equal      end  | end of the compound
+  59 R equal      else if ek [ e ] then  | test of which places are known / verdict to wait
+  60 R equal      begin  | begin of the construct introduced before it
+  60 P equal      ev [ f ] := ev [ e ]  | computes a place from the others / gives the verdi
+  60 R equal      ek [ f ] := true  | records a place as known / relation as no longer h
+  60 R equal      changed := true  | records a place as known / relation as no longer h
+  60 R equal      end  | end of the compound
+  61 R equal      else if ek [ f ] then  | test of which places are known / verdict to wait
+  62 R equal      begin  | begin of the construct introduced before it
+  62 P equal      ev [ e ] := ev [ f ]  | computes a place from the others / gives the verdi
+  62 R equal      ek [ e ] := true  | records a place as known / relation as no longer h
+  62 R equal      changed := true  | records a place as known / relation as no longer h
+  62 R equal      end  | end of the compound
+  62 R examine1   procedure examine1 ;  | heading of the holding code examine1
+  66 R examine1   begin  | begin of the construct introduced before it
+  67 R examine1   if ak then  | test of which places are known / verdict to wait
+  68 R examine1   begin  | begin of the construct introduced before it
+  68 P examine1   if ¬ same ( av , cons ( 1 , cons ( 2 , cons ( 3 , 0 ) ) ) ) then  | test of a fully known relation
+  68 P examine1   inconsistent := true  | computes a place from the others / gives the verdi
+  68 R examine1   end  | end of the compound
+  69 R examine1   else  | else of the conditional
+  70 R examine1   begin  | begin of the construct introduced before it
+  70 P examine1   av := cons ( 1 , cons ( 2 , cons ( 3 , 0 ) ) )  | computes a place from the others / gives the verdi
+  70 R examine1   ak := true  | records a place as known / relation as no longer h
+  70 R examine1   changed := true  | records a place as known / relation as no longer h
+  70 R examine1   end  | end of the compound
+  70 R examine1   q1 := false  | records a place as known / relation as no longer h
+  72 R examine1   end examine1  | end of the compound
+  72 R examine2   procedure examine2 ;  | heading of the holding code examine2
+  76 R examine2   if defined ∧ ak then  | test of which places are known / verdict to wait
+  77 R examine2   begin  | begin of the construct introduced before it
+  78 P examine2   integer r  | rev's result
+  78 P examine2   r := rev ( av )  | computes a place from the others / gives the verdi
+  79 R examine2   if bk then  | test of which places are known / verdict to wait
+  81 R examine2   begin  | begin of the construct introduced before it
+  81 P examine2   if ¬ same ( bv , r ) then  | test of a fully known relation
+  81 P examine2   inconsistent := true  | computes a place from the others / gives the verdi
+  81 R examine2   end  | end of the compound
+  82 R examine2   else  | else of the conditional
+  83 R examine2   begin  | begin of the construct introduced before it
+  83 P examine2   bv := r  | computes a place from the others / gives the verdi
+  83 R examine2   bk := true  | records a place as known / relation as no longer h
+  83 R examine2   changed := true  | records a place as known / relation as no longer h
+  83 R examine2   end  | end of the compound
+  83 R examine2   q2 := false  | records a place as known / relation as no longer h
+  85 R examine2   end examine2  | end of the compound
+  85 R examine3   procedure examine3 ;  | heading of the holding code examine3
+  89 R examine3   if ek [ 1 ] ∨ ek [ 2 ] then  | test of which places are known / verdict to wait
+  89 R examine3   begin  | begin of the construct introduced before it
+  89 P examine3   equal ( 1 , 2 )  | the equation between two elements applied
+  89 R examine3   q3 := false  | records a place as known / relation as no longer h
+  89 R examine3   end examine3  | end of the compound
+  89 R examine5   procedure examine5 ;  | heading of the holding code examine5
+  93 R examine5   if ek [ 2 ] ∨ ek [ 3 ] then  | test of which places are known / verdict to wait
+  93 R examine5   begin  | begin of the construct introduced before it
+  93 P examine5   equal ( 2 , 3 )  | the equation between two elements applied
+  93 R examine5   q5 := false  | records a place as known / relation as no longer h
+  93 R examine5   end examine5  | end of the compound
+  93 R examine6   procedure examine6 ;  | heading of the holding code examine6
+  97 R examine6   if bk then  | test of which places are known / verdict to wait
+  98 R examine6   begin  | begin of the construct introduced before it
+  99 P examine6   integer p  | declaration of p
+  99 P examine6   , e  | declaration of e
+  99 P examine6   , w  | declaration of w
+  99 P examine6   p := bv  | computes a place from the others / gives the verdi
+ 100 P examine6   e := sv  | computes a place from the others / gives the verdi
+ 100 P examine6   for w := 0 while e ≠ 0 ∧ ¬ inconsistent do  | loop over the encoding (++ decomposition or constr
+ 102 P examine6   begin  | begin of the construct introduced before it
+ 103 P examine6   if p = 0 then  | b shorter than s: no solution (decomposition)
+ 103 P examine6   inconsistent := true  | computes a place from the others / gives the verdi
+ 104 P examine6   else  | else of the conditional
+ 104 P examine6   begin  | begin of the construct introduced before it
+ 104 P examine6   equal ( hd [ p ] , hd [ e ] )  | the equation between two elements applied
+ 104 P examine6   p := tl [ p ]  | computes a place from the others / gives the verdi
+ 104 P examine6   e := tl [ e ]  | computes a place from the others / gives the verdi
+ 104 P examine6   end  | end of the compound
+ 105 P examine6   end  | end of the compound
+ 105 P examine6   if ¬ inconsistent then  | c given or tested only if the elements agreed
+ 107 P examine6   begin  | begin of the construct introduced before it
+ 108 R examine6   if ck then  | test of which places are known / verdict to wait
+ 109 R examine6   begin  | begin of the construct introduced before it
+ 109 P examine6   if ¬ same ( cv , p ) then  | test of a fully known relation
+ 109 P examine6   inconsistent := true  | computes a place from the others / gives the verdi
+ 109 R examine6   end  | end of the compound
+ 110 R examine6   else  | else of the conditional
+ 111 R examine6   begin  | begin of the construct introduced before it
+ 111 P examine6   cv := p  | computes a place from the others / gives the verdi
+ 111 R examine6   ck := true  | records a place as known / relation as no longer h
+ 111 R examine6   changed := true  | records a place as known / relation as no longer h
+ 111 R examine6   end  | end of the compound
+ 112 P examine6   end  | end of the compound
+ 112 R examine6   q6 := false  | records a place as known / relation as no longer h
+ 114 R examine6   end  | end of the compound
+ 115 R examine6   else if ck then  | test of which places are known / verdict to wait
+ 116 R examine6   begin  | begin of the construct introduced before it
+ 117 P examine6   integer w  | declaration of w
+ 117 P examine6   , e  | declaration of e
+ 117 P examine6   , first  | declaration of first
+ 117 P examine6   , last  | declaration of last
+ 117 P examine6   , c  | declaration of c
+ 117 P examine6   first := last := 0  | computes a place from the others / gives the verdi
+ 118 P examine6   e := sv  | computes a place from the others / gives the verdi
+ 118 P examine6   for w := 0 while e ≠ 0 do  | loop over the encoding (++ decomposition or constr
+ 120 P examine6   begin  | begin of the construct introduced before it
+ 121 P examine6   c := cons ( hd [ e ] , 0 )  | computes a place from the others / gives the verdi
+ 121 P examine6   if last = 0 then  | construction of s ++ c
+ 122 P examine6   first := c  | computes a place from the others / gives the verdi
+ 122 P examine6   else  | else of the conditional
+ 122 P examine6   tl [ last ] := c  | computes a place from the others / gives the verdi
+ 122 P examine6   last := c  | computes a place from the others / gives the verdi
+ 123 P examine6   e := tl [ e ]  | computes a place from the others / gives the verdi
+ 124 P examine6   end  | end of the compound
+ 124 P examine6   if last = 0 then  | construction of s ++ c
+ 125 P examine6   bv := cv  | computes a place from the others / gives the verdi
+ 125 P examine6   else  | else of the conditional
+ 125 P examine6   begin  | begin of the construct introduced before it
+ 125 P examine6   tl [ last ] := cv  | computes a place from the others / gives the verdi
+ 125 P examine6   bv := first  | computes a place from the others / gives the verdi
+ 125 P examine6   end  | end of the compound
+ 125 R examine6   bk := true  | records a place as known / relation as no longer h
+ 126 R examine6   changed := true  | records a place as known / relation as no longer h
+ 126 R examine6   q6 := false  | records a place as known / relation as no longer h
+ 127 R examine6   end examine6  | end of the compound
+ 127 R propagate  procedure propagate ;  | heading of the holding code propagate
+ 131 R propagate  begin  | begin of the construct introduced before it
+ 132 R propagate  changed := true  | propagation loop of the holding code
+ 132 R propagate  for pass := 1 while changed do  | propagation loop of the holding code
+ 134 R propagate  begin  | begin of the construct introduced before it
+ 135 R propagate  changed := false  | propagation loop of the holding code
+ 135 R propagate  if q1 then  | propagation loop of the holding code
+ 136 R propagate  examine1  | propagation loop of the holding code
+ 136 R propagate  if q2 then  | propagation loop of the holding code
+ 137 R propagate  examine2  | propagation loop of the holding code
+ 137 R propagate  if q3 then  | propagation loop of the holding code
+ 138 R propagate  examine3  | propagation loop of the holding code
+ 138 R propagate  if q5 then  | propagation loop of the holding code
+ 139 R propagate  examine5  | propagation loop of the holding code
+ 139 R propagate  if q6 then  | propagation loop of the holding code
+ 140 R propagate  examine6  | propagation loop of the holding code
+ 141 R propagate  end  | end of the compound
+ 142 R propagate  end propagate  | end of the compound
+ 142 H digits     procedure digits ( v ) ; value v ; integer v ;  | output adapter procedure digits
+ 147 H digits     begin  | begin of the construct introduced before it
+ 148 H digits     integer d  | body of output adapter digits
+ 148 H digits     if v ≥ 10 then  | body of output adapter digits
+ 149 H digits     digits ( v ÷ 10 )  | body of output adapter digits
+ 149 H digits     d := v - v ÷ 10 × 10  | body of output adapter digits
+ 150 H digits     if d = 0 then  | body of output adapter digits
+ 151 H digits     PRINTTEXT ( `0' )  | body of output adapter digits
+ 151 H digits     else if d = 1 then  | body of output adapter digits
+ 151 H digits     PRINTTEXT ( `1' )  | body of output adapter digits
+ 151 H digits     else if d = 2 then  | body of output adapter digits
+ 151 H digits     PRINTTEXT ( `2' )  | body of output adapter digits
+ 152 H digits     else if d = 3 then  | body of output adapter digits
+ 152 H digits     PRINTTEXT ( `3' )  | body of output adapter digits
+ 152 H digits     else if d = 4 then  | body of output adapter digits
+ 152 H digits     PRINTTEXT ( `4' )  | body of output adapter digits
+ 152 H digits     else if d = 5 then  | body of output adapter digits
+ 152 H digits     PRINTTEXT ( `5' )  | body of output adapter digits
+ 153 H digits     else if d = 6 then  | body of output adapter digits
+ 153 H digits     PRINTTEXT ( `6' )  | body of output adapter digits
+ 153 H digits     else if d = 7 then  | body of output adapter digits
+ 153 H digits     PRINTTEXT ( `7' )  | body of output adapter digits
+ 153 H digits     else if d = 8 then  | body of output adapter digits
+ 153 H digits     PRINTTEXT ( `8' )  | body of output adapter digits
+ 154 H digits     else  | else of the conditional
+ 154 H digits     PRINTTEXT ( `9' )  | body of output adapter digits
+ 155 H digits     end digits  | end of the compound
+ 155 H printint   procedure printint ( v ) ; value v ; integer v ;  | output adapter procedure printint
+ 160 H printint   if v < 0 then  | body of output adapter printint
+ 160 H printint   begin  | begin of the construct introduced before it
+ 160 H printint   PRINTTEXT ( `-' )  | body of output adapter printint
+ 160 H printint   digits ( - v )  | body of output adapter printint
+ 160 H printint   end  | end of the compound
+ 160 H printint   else  | else of the conditional
+ 160 H printint   digits ( v )  | body of output adapter printint
+ 160 H printel    procedure printel ( e ) ; value e ; integer e ;  | output adapter procedure printel
+ 165 H printel    if ek [ e ] then  | body of output adapter printel
+ 165 H printel    printint ( ev [ e ] )  | body of output adapter printel
+ 165 H printel    else if e = 1 then  | body of output adapter printel
+ 165 H printel    PRINTTEXT ( `x' )  | body of output adapter printel
+ 165 H printel    else if e = 2 then  | body of output adapter printel
+ 165 H printel    PRINTTEXT ( `y' )  | body of output adapter printel
+ 165 H printel    else  | else of the conditional
+ 165 H printel    PRINTTEXT ( `z' )  | body of output adapter printel
+ 165 H printseq   procedure printseq ( p ) ; value p ; integer p ;  | output adapter procedure printseq
+ 170 H printseq   begin  | begin of the construct introduced before it
+ 171 H printseq   integer w  | body of output adapter printseq
+ 171 H printseq   PRINTTEXT ( `(' )  | body of output adapter printseq
+ 172 H printseq   for w := 0 while p ≠ 0 do  | body of output adapter printseq
+ 174 H printseq   begin  | begin of the construct introduced before it
+ 174 H printseq   printel ( hd [ p ] )  | body of output adapter printseq
+ 174 H printseq   p := tl [ p ]  | body of output adapter printseq
+ 174 H printseq   if p ≠ 0 then  | body of output adapter printseq
+ 174 H printseq   PRINTTEXT ( `, ' )  | body of output adapter printseq
+ 174 H printseq   end  | end of the compound
+ 174 H printseq   PRINTTEXT ( `)' )  | body of output adapter printseq
+ 176 H printseq   end printseq  | end of the compound
+ 176 H seqplace   procedure seqplace ( known , v , name ) ; value known , v , name ; boolean known ; integer  | output adapter procedure seqplace
+ 181 H seqplace   if known then  | body of output adapter seqplace
+ 181 H seqplace   printseq ( v )  | body of output adapter seqplace
+ 181 H seqplace   else if name = 1 then  | body of output adapter seqplace
+ 181 H seqplace   PRINTTEXT ( `a' )  | body of output adapter seqplace
+ 181 H seqplace   else if name = 2 then  | body of output adapter seqplace
+ 181 H seqplace   PRINTTEXT ( `b' )  | body of output adapter seqplace
+ 181 H seqplace   else  | else of the conditional
+ 181 H seqplace   PRINTTEXT ( `c' )  | body of output adapter seqplace
+ 181 H seqstate   procedure seqstate ( known , v , inheld , name ) ; value known , v , inheld , name ; boole  | output adapter procedure seqstate
+ 186 H seqstate   begin  | begin of the construct introduced before it
+ 187 H seqstate   if name = 1 then  | body of output adapter seqstate
+ 187 H seqstate   PRINTTEXT ( `a' )  | body of output adapter seqstate
+ 187 H seqstate   else if name = 2 then  | body of output adapter seqstate
+ 187 H seqstate   PRINTTEXT ( `b' )  | body of output adapter seqstate
+ 187 H seqstate   else  | else of the conditional
+ 187 H seqstate   PRINTTEXT ( `c' )  | body of output adapter seqstate
+ 187 H seqstate   if known then  | body of output adapter seqstate
+ 188 H seqstate   begin  | begin of the construct introduced before it
+ 188 H seqstate   PRINTTEXT ( ` = ' )  | body of output adapter seqstate
+ 188 H seqstate   printseq ( v )  | body of output adapter seqstate
+ 188 H seqstate   end  | end of the compound
+ 189 H seqstate   else if inheld then  | body of output adapter seqstate
+ 189 H seqstate   PRINTTEXT ( ` held' )  | body of output adapter seqstate
+ 189 H seqstate   else  | else of the conditional
+ 189 H seqstate   PRINTTEXT ( ` free' )  | body of output adapter seqstate
+ 190 H seqstate   end seqstate  | end of the compound
+ 190 H elstate    procedure elstate ( e , inheld ) ; value e , inheld ; integer e ; boolean inheld ;  | output adapter procedure elstate
+ 195 H elstate    begin  | begin of the construct introduced before it
+ 196 H elstate    if e = 1 then  | body of output adapter elstate
+ 196 H elstate    PRINTTEXT ( `x' )  | body of output adapter elstate
+ 196 H elstate    else if e = 2 then  | body of output adapter elstate
+ 196 H elstate    PRINTTEXT ( `y' )  | body of output adapter elstate
+ 196 H elstate    else  | else of the conditional
+ 196 H elstate    PRINTTEXT ( `z' )  | body of output adapter elstate
+ 196 H elstate    if ek [ e ] then  | body of output adapter elstate
+ 197 H elstate    begin  | begin of the construct introduced before it
+ 197 H elstate    PRINTTEXT ( ` = ' )  | body of output adapter elstate
+ 197 H elstate    printint ( ev [ e ] )  | body of output adapter elstate
+ 197 H elstate    end  | end of the compound
+ 198 H elstate    else if inheld then  | body of output adapter elstate
+ 198 H elstate    PRINTTEXT ( ` held' )  | body of output adapter elstate
+ 198 H elstate    else  | else of the conditional
+ 198 H elstate    PRINTTEXT ( ` free' )  | body of output adapter elstate
+ 199 H elstate    end elstate  | end of the compound
+ 199 H relations  procedure relations ;  | output adapter procedure relations
+ 203 H relations  begin  | begin of the construct introduced before it
+ 204 H relations  boolean first  | body of output adapter relations
+ 204 H relations  first := true  | body of output adapter relations
+ 205 H relations  if q1 then  | body of output adapter relations
+ 206 H relations  begin  | begin of the construct introduced before it
+ 206 H relations  seqplace ( ak , av , 1 )  | body of output adapter relations
+ 206 H relations  PRINTTEXT ( ` = (x, y, z)' )  | body of output adapter relations
+ 206 H relations  first := false  | body of output adapter relations
+ 206 H relations  end  | end of the compound
+ 206 H relations  if q2 then  | body of output adapter relations
+ 208 H relations  begin  | begin of the construct introduced before it
+ 209 H relations  if ¬ first then  | body of output adapter relations
+ 209 H relations  PRINTTEXT ( `, ' )  | body of output adapter relations
+ 209 H relations  PRINTTEXT ( `rev(' )  | body of output adapter relations
+ 210 H relations  seqplace ( ak , av , 1 )  | body of output adapter relations
+ 210 H relations  PRINTTEXT ( `, ' )  | body of output adapter relations
+ 210 H relations  seqplace ( bk , bv , 2 )  | body of output adapter relations
+ 210 H relations  PRINTTEXT ( `)' )  | body of output adapter relations
+ 210 H relations  if ¬ defined then  | body of output adapter relations
+ 211 H relations  PRINTTEXT ( ` awaiting its definition' )  | body of output adapter relations
+ 211 H relations  first := false  | body of output adapter relations
+ 213 H relations  end  | end of the compound
+ 213 H relations  if q3 then  | body of output adapter relations
+ 215 H relations  begin  | begin of the construct introduced before it
+ 215 H relations  if ¬ first then  | body of output adapter relations
+ 215 H relations  PRINTTEXT ( `, ' )  | body of output adapter relations
+ 215 H relations  printel ( 1 )  | body of output adapter relations
+ 215 H relations  PRINTTEXT ( ` = ' )  | body of output adapter relations
+ 215 H relations  printel ( 2 )  | body of output adapter relations
+ 215 H relations  first := false  | body of output adapter relations
+ 215 H relations  end  | end of the compound
+ 215 H relations  if q5 then  | body of output adapter relations
+ 217 H relations  begin  | begin of the construct introduced before it
+ 217 H relations  if ¬ first then  | body of output adapter relations
+ 217 H relations  PRINTTEXT ( `, ' )  | body of output adapter relations
+ 217 H relations  printel ( 2 )  | body of output adapter relations
+ 217 H relations  PRINTTEXT ( ` = ' )  | body of output adapter relations
+ 217 H relations  printel ( 3 )  | body of output adapter relations
+ 217 H relations  first := false  | body of output adapter relations
+ 217 H relations  end  | end of the compound
+ 217 H relations  if q6 then  | body of output adapter relations
+ 219 H relations  begin  | begin of the construct introduced before it
+ 220 H relations  if ¬ first then  | body of output adapter relations
+ 220 H relations  PRINTTEXT ( `, ' )  | body of output adapter relations
+ 220 H relations  seqplace ( bk , bv , 2 )  | body of output adapter relations
+ 221 H relations  PRINTTEXT ( ` = ' )  | body of output adapter relations
+ 221 H relations  printseq ( sv )  | body of output adapter relations
+ 221 H relations  PRINTTEXT ( ` ++ ' )  | body of output adapter relations
+ 221 H relations  seqplace ( ck , cv , 3 )  | body of output adapter relations
+ 222 H relations  end  | end of the compound
+ 223 H relations  end relations  | end of the compound
+ 223 H main       n := read  | reading a harness word
+ 226 H main       cap := read  | reading a harness word
+ 226 H main       m := read  | reading a harness word
+ 226 H main       for i := 1 step 1 until m do  | harness loop (codes / messages)
+ 227 H main       code := read  | reading a harness word
+ 227 R main       ak := bk := ck := q1 := q2 := q3 := q5 := q6 := defined := inconsistent := false  | initial holding state (known flags, held flags)
+ 228 P main       top := rev1 := rev2 := conc1 := conc2 := 0  | cell allocator and counters initialised (one state
+ 229 R main       for j := 1 step 1 until 3 do  | x, y, z marked unknown
+ 230 R main       ek [ j ] := false  | x, y, z marked unknown
+ 230 P main       nel := 3  | elements 1..3 are x, y, z (encoding)
+ 231 P main       sv := 0  | s empty until stage 6 (encoding)
+ 231 H main       for i := 1 while true do  | harness loop (codes / messages)
+ 234 H main       begin  | begin of the construct introduced before it
+ 236 H main       code := read  | reading a harness word
+ 236 H main       k := read  | reading a harness word
+ 236 H main       if k = 1 then  | message dispatch by stage
+ 237 R main       q1 := true  | initial holding state (known flags, held flags)
+ 238 H main       else if k = 2 then  | message dispatch by stage
+ 238 R main       q2 := true  | initial holding state (known flags, held flags)
+ 239 H main       else if k = 3 then  | message dispatch by stage
+ 239 R main       q3 := true  | initial holding state (known flags, held flags)
+ 240 H main       else if k = 4 then  | message dispatch by stage
+ 240 R main       defined := true  | the stage's relation (or definition) recorded as h
+ 241 H main       else if k = 5 then  | message dispatch by stage
+ 241 R main       q5 := true  | initial holding state (known flags, held flags)
+ 242 H main       else if k = 6 then  | message dispatch by stage
+ 243 H main       begin  | begin of the construct introduced before it
+ 245 P main       integer len  | declaration of len
+ 245 P main       , e  | declaration of e
+ 245 P main       , first  | declaration of first
+ 245 P main       , last  | declaration of last
+ 245 P main       , c  | declaration of c
+ 245 P main       len := read  | reading the stage's constants (stage information)
+ 246 P main       first := last := 0  | computes a place from the others / gives the verdi
+ 247 P main       for j := 1 step 1 until len do  | loop over the encoding (++ decomposition or constr
+ 249 P main       begin  | begin of the construct introduced before it
+ 250 P main       e := read  | reading the stage's constants (stage information)
+ 250 P main       nel := nel + 1  | computes a place from the others / gives the verdi
+ 250 P main       ev [ nel ] := e  | computes a place from the others / gives the verdi
+ 250 R main       ek [ nel ] := true  | element of s marked known (unknowns' representatio
+ 250 P main       c := cons ( nel , 0 )  | computes a place from the others / gives the verdi
+ 251 P main       if last = 0 then  | test of a fully known relation
+ 252 P main       first := c  | computes a place from the others / gives the verdi
+ 252 P main       else  | else of the conditional
+ 252 P main       tl [ last ] := c  | computes a place from the others / gives the verdi
+ 252 P main       last := c  | computes a place from the others / gives the verdi
+ 254 P main       end  | end of the compound
+ 254 P main       sv := first  | computes a place from the others / gives the verdi
+ 255 R main       q6 := true  | initial holding state (known flags, held flags)
+ 256 H main       end  | end of the compound
+ 256 R main       propagate  | call of the holding code
+ 258 H main       if ¬ inconsistent then  | guard of printing only
+ 262 H main       begin  | begin of the construct introduced before it
+ 263 H main       PRINTTEXT ( `[answer]' )  | printing a tag or the state held
+ 263 H main       seqstate ( ak , av , q1 ∨ q2 , 1 )  | printing a tag or the state held
+ 264 H main       PRINTTEXT ( `, ' )  | printing a tag or the state held
+ 264 H main       seqstate ( bk , bv , q2 ∨ q6 , 2 )  | printing a tag or the state held
+ 265 H main       PRINTTEXT ( `, ' )  | printing a tag or the state held
+ 265 H main       seqstate ( ck , cv , q6 , 3 )  | printing a tag or the state held
+ 266 H main       PRINTTEXT ( `, ' )  | printing a tag or the state held
+ 266 H main       elstate ( 1 , q3 )  | printing a tag or the state held
+ 267 H main       PRINTTEXT ( `, ' )  | printing a tag or the state held
+ 267 H main       elstate ( 2 , q3 ∨ q5 )  | printing a tag or the state held
+ 268 H main       PRINTTEXT ( `, ' )  | printing a tag or the state held
+ 268 H main       elstate ( 3 , q5 )  | printing a tag or the state held
+ 269 H main       if q1 ∨ q2 ∨ q3 ∨ q5 ∨ q6 then  | guard of printing only
+ 270 H main       begin  | begin of the construct introduced before it
+ 270 H main       PRINTTEXT ( `, where ' )  | printing a tag or the state held
+ 270 H main       relations  | printing a tag or the state held
+ 270 H main       end  | end of the compound
+ 270 H main       begin  | compound statement
+ 271 H main       PRINTTEXT ( `[/answer]' )  | printing a tag or the state held
+ 271 H main       NLCR  | printing a tag or the state held
+ 271 H main       end  | end of the compound
+ 272 H main       end  | end of the compound
+ 272 H main       held := ( if q1 then 1 else 0 ) + ( if q3 then 1 else 0 ) + ( if q5 then 1 else 0 ) + ( if  | count of held relations, for observe
+ 275 H main       PRINTTEXT ( `[observe]' )  | printing a tag or the state held
+ 276 H main       if inconsistent then  | guard of printing only
+ 277 H main       begin  | begin of the construct introduced before it
+ 277 H main       PRINTTEXT ( `no solution' )  | printing a tag or the state held
+ 277 H main       NLCR  | printing a tag or the state held
+ 277 H main       end  | end of the compound
+ 277 H main       PRINTTEXT ( `held relations: ' )  | printing a tag or the state held
+ 278 H main       if held = 0 ∧ ¬ q2 then  | guard of printing only
+ 279 H main       PRINTTEXT ( `none' )  | printing a tag or the state held
+ 279 H main       else  | else of the conditional
+ 279 H main       relations  | printing a tag or the state held
+ 279 H main       NLCR  | printing a tag or the state held
+ 280 H main       if defined then  | guard of printing only
+ 281 H main       begin  | begin of the construct introduced before it
+ 281 H main       PRINTTEXT ( `rev and conc: defined' )  | printing a tag or the state held
+ 281 H main       NLCR  | printing a tag or the state held
+ 281 H main       end  | end of the compound
+ 281 H main       else  | else of the conditional
+ 281 H main       begin  | begin of the construct introduced before it
+ 281 H main       PRINTTEXT ( `rev and conc: not yet defined' )  | printing a tag or the state held
+ 281 H main       NLCR  | printing a tag or the state held
+ 281 H main       end  | end of the compound
+ 281 H main       if q2 ∧ ¬ defined then  | guard of printing only
+ 282 H main       begin  | begin of the construct introduced before it
+ 282 H main       PRINTTEXT ( `rev(a, b): held as posed, awaiting the definition of rev, neither true nor fa  | printing a tag or the state held
+ 282 H main       NLCR  | printing a tag or the state held
+ 282 H main       end  | end of the compound
+ 282 H main       if ak then  | guard of printing only
+ 283 H main       begin  | begin of the construct introduced before it
+ 283 H main       PRINTTEXT ( `[bind a]' )  | printing a tag or the state held
+ 283 H main       printseq ( av )  | printing a tag or the state held
+ 283 H main       begin  | compound statement
+ 283 H main       PRINTTEXT ( `[/bind]' )  | printing a tag or the state held
+ 283 H main       NLCR  | printing a tag or the state held
+ 283 H main       end  | end of the compound
+ 283 H main       end  | end of the compound
+ 283 H main       if bk then  | guard of printing only
+ 284 H main       begin  | begin of the construct introduced before it
+ 284 H main       PRINTTEXT ( `[bind b]' )  | printing a tag or the state held
+ 284 H main       printseq ( bv )  | printing a tag or the state held
+ 284 H main       begin  | compound statement
+ 284 H main       PRINTTEXT ( `[/bind]' )  | printing a tag or the state held
+ 284 H main       NLCR  | printing a tag or the state held
+ 284 H main       end  | end of the compound
+ 284 H main       end  | end of the compound
+ 284 H main       if ck then  | guard of printing only
+ 285 H main       begin  | begin of the construct introduced before it
+ 285 H main       PRINTTEXT ( `[bind c]' )  | printing a tag or the state held
+ 285 H main       printseq ( cv )  | printing a tag or the state held
+ 285 H main       begin  | compound statement
+ 285 H main       PRINTTEXT ( `[/bind]' )  | printing a tag or the state held
+ 285 H main       NLCR  | printing a tag or the state held
+ 285 H main       end  | end of the compound
+ 285 H main       end  | end of the compound
+ 285 H main       if ek [ 1 ] then  | guard of printing only
+ 286 H main       begin  | begin of the construct introduced before it
+ 286 H main       PRINTTEXT ( `[bind x]' )  | printing a tag or the state held
+ 286 H main       print ( ev [ 1 ] )  | printing a tag or the state held
+ 286 H main       begin  | compound statement
+ 286 H main       PRINTTEXT ( `[/bind]' )  | printing a tag or the state held
+ 286 H main       NLCR  | printing a tag or the state held
+ 286 H main       end  | end of the compound
+ 286 H main       end  | end of the compound
+ 286 H main       if ek [ 2 ] then  | guard of printing only
+ 287 H main       begin  | begin of the construct introduced before it
+ 287 H main       PRINTTEXT ( `[bind y]' )  | printing a tag or the state held
+ 287 H main       print ( ev [ 2 ] )  | printing a tag or the state held
+ 287 H main       begin  | compound statement
+ 287 H main       PRINTTEXT ( `[/bind]' )  | printing a tag or the state held
+ 287 H main       NLCR  | printing a tag or the state held
+ 287 H main       end  | end of the compound
+ 287 H main       end  | end of the compound
+ 287 H main       if ek [ 3 ] then  | guard of printing only
+ 288 H main       begin  | begin of the construct introduced before it
+ 288 H main       PRINTTEXT ( `[bind z]' )  | printing a tag or the state held
+ 288 H main       print ( ev [ 3 ] )  | printing a tag or the state held
+ 288 H main       begin  | compound statement
+ 288 H main       PRINTTEXT ( `[/bind]' )  | printing a tag or the state held
+ 288 H main       NLCR  | printing a tag or the state held
+ 288 H main       end  | end of the compound
+ 288 H main       end  | end of the compound
+ 288 H main       if q2 then  | guard of printing only
+ 289 H main       begin  | begin of the construct introduced before it
+ 289 H main       PRINTTEXT ( `[suspended pending-applications 1]' )  | printing a tag or the state held
+ 289 H main       NLCR  | printing a tag or the state held
+ 289 H main       end  | end of the compound
+ 289 H main       if held > 0 then  | guard of printing only
+ 291 H main       begin  | begin of the construct introduced before it
+ 291 H main       PRINTTEXT ( `[suspended held-relations ' )  | printing a tag or the state held
+ 291 H main       print ( held )  | printing a tag or the state held
+ 291 H main       begin  | compound statement
+ 291 H main       PRINTTEXT ( `]' )  | printing a tag or the state held
+ 291 H main       NLCR  | printing a tag or the state held
+ 291 H main       end  | end of the compound
+ 291 H main       end  | end of the compound
+ 291 H main       PRINTTEXT ( `[operations rev/1 ' )  | printing a tag or the state held
+ 292 H main       print ( rev1 )  | printing a tag or the state held
+ 292 H main       begin  | compound statement
+ 292 H main       PRINTTEXT ( `]' )  | printing a tag or the state held
+ 292 H main       NLCR  | printing a tag or the state held
+ 292 H main       end  | end of the compound
+ 292 H main       PRINTTEXT ( `[operations rev/2 ' )  | printing a tag or the state held
+ 293 H main       print ( rev2 )  | printing a tag or the state held
+ 293 H main       begin  | compound statement
+ 293 H main       PRINTTEXT ( `]' )  | printing a tag or the state held
+ 293 H main       NLCR  | printing a tag or the state held
+ 293 H main       end  | end of the compound
+ 293 H main       PRINTTEXT ( `[operations conc/1 ' )  | printing a tag or the state held
+ 294 H main       print ( conc1 )  | printing a tag or the state held
+ 294 H main       begin  | compound statement
+ 294 H main       PRINTTEXT ( `]' )  | printing a tag or the state held
+ 294 H main       NLCR  | printing a tag or the state held
+ 294 H main       end  | end of the compound
+ 294 H main       PRINTTEXT ( `[operations conc/2 ' )  | printing a tag or the state held
+ 295 H main       print ( conc2 )  | printing a tag or the state held
+ 295 H main       begin  | compound statement
+ 295 H main       PRINTTEXT ( `]' )  | printing a tag or the state held
+ 295 H main       NLCR  | printing a tag or the state held
+ 295 H main       end  | end of the compound
+ 295 H main       begin  | compound statement
+ 296 H main       PRINTTEXT ( `[/observe]' )  | printing a tag or the state held
+ 296 H main       NLCR  | printing a tag or the state held
+ 296 H main       PRINTTEXT ( `[end]' )  | printing a tag or the state held
+ 296 H main       end  | end of the compound
+ 297 H main       end  | end of the compound
+ 298 P main       end  | end of the compound

@@ -1,0 +1,122 @@
+L1 [0:0] begin
+L8 [1:35] integer n , cap , m , i , code , k , c1 , c2 , c3 , xv , yv , zv , held , pass , x1 , x2 , x3 ;
+L9 [36:52] boolean xk , yk , zk , r1 , r2 , r3 , changed , inconsistent ;
+L10 [53:61] integer array ord [ 1 : 3 ] ;
+L12 [62:64] procedure examine1 ;
+L14 [65:65] begin
+L15 [66:71] x1 := x1 + 1 ;
+L16 [72:78] if xk ∧ yk ∧ zk then
+L17 [79:96] begin if xv + yv + zv ≠ c1 then inconsistent := true ; r1 := false end
+L18 [97:102] else if yk ∧ zk then
+L19 [103:123] begin xv := c1 - yv - zv ; xk := true ; r1 := false ; changed := true end
+L20 [124:129] else if xk ∧ zk then
+L21 [130:150] begin yv := c1 - xv - zv ; yk := true ; r1 := false ; changed := true end
+L22 [151:156] else if xk ∧ yk then
+L23 [157:177] begin zv := c1 - xv - yv ; zk := true ; r1 := false ; changed := true end
+L24 [178:180] end examine1 ;
+L26 [181:183] procedure examine2 ;
+L28 [184:184] begin
+L29 [185:190] x2 := x2 + 1 ;
+L30 [191:195] if yk ∧ zk then
+L31 [196:211] begin if yv + zv ≠ c2 then inconsistent := true ; r2 := false end
+L32 [212:215] else if yk then
+L33 [216:234] begin zv := c2 - yv ; zk := true ; r2 := false ; changed := true end
+L34 [235:238] else if zk then
+L35 [239:257] begin yv := c2 - zv ; yk := true ; r2 := false ; changed := true end
+L36 [258:260] end examine2 ;
+L38 [261:263] procedure examine3 ;
+L40 [264:264] begin
+L41 [265:270] x3 := x3 + 1 ;
+L42 [271:273] if zk then
+L43 [274:283] begin if zv ≠ c3 then inconsistent := true end
+L44 [284:284] else
+L45 [285:298] begin zv := c3 ; zk := true ; changed := true end ;
+L46 [299:301] r3 := false
+L47 [302:304] end examine3 ;
+L49 [305:307] procedure propagate ;
+L51 [308:308] begin
+L52 [309:311] integer j ;
+L53 [312:315] changed := true ;
+L54 [316:322] for pass := 1 while changed do
+L55 [323:323] begin
+L56 [324:327] changed := false ;
+L57 [328:336] for j := 1 step 1 until 3 do
+L58 [337:337] begin
+L59 [338:351] if ord [ j ] = 1 then begin if r1 then examine1 end
+L60 [352:366] else if ord [ j ] = 2 then begin if r2 then examine2 end
+L61 [367:381] else if ord [ j ] = 3 then begin if r3 then examine3 end
+L62 [382:382] end
+L63 [383:383] end
+L64 [384:386] end propagate ;
+L66 [387:392] procedure uname ( u ) ;
+L67 [393:398] value u ; integer u ;
+L69 [399:423] if u = 1 then PRINTTEXT ( `x' ) else if u = 2 then PRINTTEXT ( `y' ) else PRINTTEXT ( `z' ) ;
+L71 [424:433] procedure place ( known , v , u ) ;
+L72 [434:448] value known , v , u ; boolean known ; integer v , u ;
+L74 [449:461] if known then print ( v ) else uname ( u ) ;
+L76 [462:473] procedure state ( known , v , inheld , u ) ;
+L77 [474:492] value known , v , inheld , u ; boolean known , inheld ; integer v , u ;
+L79 [493:493] begin
+L80 [494:498] uname ( u ) ;
+L81 [499:512] if known then begin PRINTTEXT ( ` = ' ) ; print ( v ) end
+L82 [513:520] else if inheld then PRINTTEXT ( ` held' )
+L83 [521:525] else PRINTTEXT ( ` free' )
+L84 [526:528] end state ;
+L86 [529:531] procedure relations ;
+L88 [532:532] begin
+L89 [533:535] integer j ;
+L90 [536:538] boolean first ;
+L91 [539:542] first := true ;
+L92 [543:551] for j := 1 step 1 until 3 do
+L93 [552:552] begin
+L94 [553:562] if ord [ j ] = 1 ∧ r1 then
+L95 [563:563] begin
+L96 [564:572] if ¬ first then PRINTTEXT ( `, ' ) ;
+L97 [573:609] place ( xk , xv , 1 ) ; PRINTTEXT ( ` + ' ) ; place ( yk , yv , 2 ) ; PRINTTEXT ( ` + ' ) ; place ( zk , zv , 3 ) ;
+L98 [610:622] PRINTTEXT ( ` = ' ) ; print ( c1 ) ; first := false
+L99 [623:623] end
+L100 [624:634] else if ord [ j ] = 2 ∧ r2 then
+L101 [635:635] begin
+L102 [636:644] if ¬ first then PRINTTEXT ( `, ' ) ;
+L103 [645:680] place ( yk , yv , 2 ) ; PRINTTEXT ( ` + ' ) ; place ( zk , zv , 3 ) ; PRINTTEXT ( ` = ' ) ; print ( c2 ) ; first := false
+L104 [681:681] end
+L105 [682:692] else if ord [ j ] = 3 ∧ r3 then
+L106 [693:693] begin
+L107 [694:702] if ¬ first then PRINTTEXT ( `, ' ) ;
+L108 [703:724] place ( zk , zv , 3 ) ; PRINTTEXT ( ` = ' ) ; print ( c3 ) ; first := false
+L109 [725:725] end
+L110 [726:726] end
+L111 [727:729] end relations ;
+L114 [730:741] n := read ; cap := read ; m := read ;
+L115 [742:757] for i := 1 step 1 until m do ord [ i ] := read ;
+L116 [758:765] code := read ; k := read ;
+L118 [766:777] c1 := read ; c2 := read ; c3 := read ;
+L119 [778:787] xk := yk := zk := inconsistent := false ;
+L120 [788:795] x1 := x2 := x3 := 0 ;
+L121 [796:803] r1 := r2 := r3 := true ;
+L123 [804:805] propagate ;
+L126 [806:809] if ¬ inconsistent then
+L127 [810:810] begin
+L128 [811:815] PRINTTEXT ( `[answer]' ) ;
+L129 [816:831] state ( xk , xv , r1 , 1 ) ; PRINTTEXT ( `, ' ) ;
+L130 [832:849] state ( yk , yv , r1 ∨ r2 , 2 ) ; PRINTTEXT ( `, ' ) ;
+L131 [850:864] state ( zk , zv , r1 ∨ r2 ∨ r3 , 3 ) ;
+L132 [865:880] if r1 ∨ r2 ∨ r3 then begin PRINTTEXT ( `, where ' ) ; relations end ;
+L133 [881:888] begin PRINTTEXT ( `[/answer]' ) ; NLCR end
+L134 [889:890] end ;
+L137 [891:919] held := ( if r1 then 1 else 0 ) + ( if r2 then 1 else 0 ) + ( if r3 then 1 else 0 ) ;
+L138 [920:924] PRINTTEXT ( `[observe]' ) ;
+L139 [925:936] if inconsistent then begin PRINTTEXT ( `no solution' ) ; NLCR end ;
+L140 [937:941] PRINTTEXT ( `held relations: ' ) ;
+L141 [942:953] if held = 0 then PRINTTEXT ( `none' ) else relations ;
+L142 [954:955] NLCR ;
+L143 [956:979] if xk then begin PRINTTEXT ( `[bind x]' ) ; print ( xv ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L144 [980:1003] if yk then begin PRINTTEXT ( `[bind y]' ) ; print ( yv ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L145 [1004:1027] if zk then begin PRINTTEXT ( `[bind z]' ) ; print ( zv ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L146 [1028:1032] if held > 0 then
+L147 [1033:1053] begin PRINTTEXT ( `[suspended held-relations ' ) ; print ( held ) ; begin PRINTTEXT ( `]' ) ; NLCR end end ;
+L148 [1054:1072] PRINTTEXT ( `[operations R1-examined ' ) ; print ( x1 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L149 [1073:1091] PRINTTEXT ( `[operations R2-examined ' ) ; print ( x2 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L150 [1092:1110] PRINTTEXT ( `[operations R3-examined ' ) ; print ( x3 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L151 [1111:1123] begin PRINTTEXT ( `[/observe]' ) ; NLCR ; PRINTTEXT ( `[end]' ) end
+L152 [1124:1124] end

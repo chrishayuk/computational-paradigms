@@ -1,0 +1,2720 @@
+
+## core/P04a.py: 181 tokens, agreement 161/181 (89.0%)
+  class  A      B
+  P      80     92
+  C      0      8
+  R      0      0
+  S      0      0
+  H      101    81
+  tokens 4-8 A=H B=P: known = { } <NEWLINE>
+      A: bindings dict, only collected for observe | B: Assign at line 28: known = {}
+  tokens 146-152 A=H B=C: for x in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 56
+  tokens 153-159 A=H B=P: known [ "x" ] = x <NEWLINE>
+      A: collecting the answer for observe (bindings) | B: Assign at line 57: known["x"] = x
+  tokens 178-178 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 56
+
+## core/P04b.py: 181 tokens, agreement 161/181 (89.0%)
+  class  A      B
+  P      80     92
+  C      0      8
+  R      0      0
+  S      0      0
+  H      101    81
+  tokens 4-8 A=H B=P: known = { } <NEWLINE>
+      A: bindings dict, only collected for observe | B: Assign at line 28: known = {}
+  tokens 146-152 A=H B=C: for x in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 56
+  tokens 153-159 A=H B=P: known [ "x" ] = x <NEWLINE>
+      A: collecting the answer for observe (bindings) | B: Assign at line 57: known["x"] = x
+  tokens 178-178 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 56
+
+## core/P04c.py: 180 tokens, agreement 172/180 (95.6%)
+  class  A      B
+  P      80     80
+  C      0      8
+  R      0      0
+  S      0      0
+  H      100    92
+  tokens 133-139 A=H B=C: for _ in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 52
+  tokens 160-160 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 52
+
+## core/P04d.py: 227 tokens, agreement 207/227 (91.2%)
+  class  A      B
+  P      73     85
+  C      0      8
+  R      0      0
+  S      0      0
+  H      154    134
+  tokens 4-8 A=H B=P: known = { } <NEWLINE>
+      A: bindings dict, only collected for observe | B: Assign at line 29: known = {}
+  tokens 189-195 A=H B=C: for value in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 59
+  tokens 196-202 A=H B=P: known [ "s" ] = value <NEWLINE>
+      A: collecting the answer for observe (bindings) | B: Assign at line 60: known["s"] = value
+  tokens 224-224 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 59
+
+## core/P04e.py: 192 tokens, agreement 184/192 (95.8%)
+  class  A      B
+  P      92     92
+  C      0      8
+  R      0      0
+  S      0      0
+  H      100    92
+  tokens 145-151 A=H B=C: for _ in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 52
+  tokens 172-172 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 52
+
+## core/P04f.py: 239 tokens, agreement 219/239 (91.6%)
+  class  A      B
+  P      85     97
+  C      0      8
+  R      0      0
+  S      0      0
+  H      154    134
+  tokens 4-8 A=H B=P: known = { } <NEWLINE>
+      A: bindings dict, only collected for observe | B: Assign at line 29: known = {}
+  tokens 201-207 A=H B=C: for value in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 59
+  tokens 208-214 A=H B=P: known [ "s" ] = value <NEWLINE>
+      A: collecting the answer for observe (bindings) | B: Assign at line 60: known["s"] = value
+  tokens 236-236 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 59
+
+## core/P05a.py: 525 tokens, agreement 472/525 (89.9%)
+  class  A      B
+  P      188    135
+  C      0      0
+  R      170    222
+  S      0      0
+  H      167    168
+  tokens 344-350 A=P B=R: keep ( name , k ) <NEWLINE>
+      A: the arriving relation applied | B: Expr at line 100: keep(name, k)
+  tokens 352-384 A=P B=R: def keep ( name , k ) : <NEWLINE> <INDENT> values [ : ] = [ v for v in values if
+      A: keep(): the conjunction applied to the values held | B: P05 holding helper keep
+  tokens 460-460 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 461-462 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 464-465 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 476-477 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 486-487 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 498-499 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 508-509 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## core/P05b.py: 499 tokens, agreement 450/499 (90.2%)
+  class  A      B
+  P      179    130
+  C      0      0
+  R      170    218
+  S      0      0
+  H      150    151
+  tokens 340-346 A=P B=R: keep ( name , k ) <NEWLINE>
+      A: the arriving relation applied | B: Expr at line 97: keep(name, k)
+  tokens 348-380 A=P B=R: def keep ( name , k ) : <NEWLINE> <INDENT> values [ : ] = [ v for v in values if
+      A: keep(): the conjunction applied to the values held | B: P05 holding helper keep
+  tokens 445-446 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 455-456 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 478-478 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 479-480 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 482-483 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## core/P05c.py: 525 tokens, agreement 472/525 (89.9%)
+  class  A      B
+  P      188    135
+  C      0      0
+  R      170    222
+  S      0      0
+  H      167    168
+  tokens 344-350 A=P B=R: keep ( name , k ) <NEWLINE>
+      A: the arriving relation applied | B: Expr at line 100: keep(name, k)
+  tokens 352-384 A=P B=R: def keep ( name , k ) : <NEWLINE> <INDENT> values [ : ] = [ v for v in values if
+      A: keep(): the conjunction applied to the values held | B: P05 holding helper keep
+  tokens 460-460 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 461-462 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 464-465 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 476-477 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 486-487 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 498-499 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 508-509 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## core/P06a.py: 546 tokens, agreement 310/546 (56.8%)
+  class  A      B
+  P      91     91
+  C      0      16
+  R      288    52
+  S      0      220
+  H      167    167
+  tokens 15-36 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 51-51 A=R B=S: <DEDENT>
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 59-73 A=R B=S: known = { } <NEWLINE> held = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: bindings store used to decide held relations | B: reusable relation holder state known
+  tokens 226-407 A=R B=S: EVALUATOR = { "=" : equal , "not =" : not_equal } <NEWLINE> def place ( p ) : <N
+      A: evaluator table of held relations | B: reusable relation holder state EVALUATOR
+  tokens 433-436 A=R B=C: held . append (
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 451-452 A=R B=C: ) <NEWLINE>
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 463-466 A=R B=C: held . append (
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 481-482 A=R B=C: ) <NEWLINE>
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 484-487 A=R B=C: decide ( ) <NEWLINE>
+      A: decide(): taking up held relations until none is decided | B: invoke decide
+
+## core/P06b.py: 546 tokens, agreement 310/546 (56.8%)
+  class  A      B
+  P      91     91
+  C      0      16
+  R      288    52
+  S      0      220
+  H      167    167
+  tokens 15-36 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 51-51 A=R B=S: <DEDENT>
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 59-73 A=R B=S: known = { } <NEWLINE> held = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: bindings store used to decide held relations | B: reusable relation holder state known
+  tokens 226-407 A=R B=S: EVALUATOR = { "=" : equal , "not =" : not_equal } <NEWLINE> def place ( p ) : <N
+      A: evaluator table of held relations | B: reusable relation holder state EVALUATOR
+  tokens 433-436 A=R B=C: held . append (
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 451-452 A=R B=C: ) <NEWLINE>
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 463-466 A=R B=C: held . append (
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 481-482 A=R B=C: ) <NEWLINE>
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 484-487 A=R B=C: decide ( ) <NEWLINE>
+      A: decide(): taking up held relations until none is decided | B: invoke decide
+
+## core/P06c.py: 546 tokens, agreement 310/546 (56.8%)
+  class  A      B
+  P      91     91
+  C      0      16
+  R      288    52
+  S      0      220
+  H      167    167
+  tokens 15-36 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 51-51 A=R B=S: <DEDENT>
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 59-73 A=R B=S: known = { } <NEWLINE> held = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: bindings store used to decide held relations | B: reusable relation holder state known
+  tokens 226-407 A=R B=S: EVALUATOR = { "=" : equal , "not =" : not_equal } <NEWLINE> def place ( p ) : <N
+      A: evaluator table of held relations | B: reusable relation holder state EVALUATOR
+  tokens 433-436 A=R B=C: held . append (
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 451-452 A=R B=C: ) <NEWLINE>
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 463-466 A=R B=C: held . append (
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 481-482 A=R B=C: ) <NEWLINE>
+      A: holding the stage's relation | B: post to evaluator-driven relation store
+  tokens 484-487 A=R B=C: decide ( ) <NEWLINE>
+      A: decide(): taking up held relations until none is decided | B: invoke decide
+
+## core/P06d.py: 294 tokens, agreement 283/294 (96.3%)
+  class  A      B
+  P      154    165
+  C      0      0
+  R      0      0
+  S      0      0
+  H      140    129
+  tokens 22-26 A=H B=P: known = { } <NEWLINE>
+      A: bindings dict, only collected for observe | B: Assign at line 30: known = {}
+  tokens 246-250 A=H B=P: known [ "d" ] =
+      A: collecting the answer for observe | B: Assign at line 66: known["d"] = setdiff(s.constants["FIRST"], s.consta
+  tokens 267-267 A=H B=P: <NEWLINE>
+      A: collecting the answer for observe | B: Assign at line 66: known["d"] = setdiff(s.constants["FIRST"], s.consta
+
+## core/P06e1.py: 363 tokens, agreement 352/363 (97.0%)
+  class  A      B
+  P      224    221
+  C      0      8
+  R      0      0
+  S      0      0
+  H      139    134
+  tokens 266-266 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['STUDENT_FACTS']
+  tokens 278-278 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['MATHS_FACTS']
+  tokens 290-290 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['TAKES_FACTS']
+  tokens 316-322 A=H B=C: for _ in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 81
+  tokens 343-343 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 81
+
+## core/P06e2.py: 363 tokens, agreement 352/363 (97.0%)
+  class  A      B
+  P      224    221
+  C      0      8
+  R      0      0
+  S      0      0
+  H      139    134
+  tokens 266-266 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['STUDENT_FACTS']
+  tokens 278-278 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['MATHS_FACTS']
+  tokens 290-290 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['TAKES_FACTS']
+  tokens 316-322 A=H B=C: for _ in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 81
+  tokens 343-343 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 81
+
+## core/P06e3.py: 350 tokens, agreement 327/350 (93.4%)
+  class  A      B
+  P      221    230
+  C      0      8
+  R      0      0
+  S      0      0
+  H      129    112
+  tokens 38-42 A=H B=P: known = { } <NEWLINE>
+      A: bindings dict, only collected for observe | B: Assign at line 38: known = {}
+  tokens 274-274 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['STUDENT_FACTS']
+  tokens 286-286 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['MATHS_FACTS']
+  tokens 298-298 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['TAKES_FACTS']
+  tokens 315-321 A=H B=C: for p in answers : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 82
+  tokens 322-328 A=H B=P: known [ "p" ] = p <NEWLINE>
+      A: collecting the answer for observe (bindings) | B: Assign at line 83: known["p"] = p
+  tokens 347-347 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the query generator's answers | B: enumerate query solutions/search at line 82
+
+## core/P07a.py: 944 tokens, agreement 730/944 (77.3%)
+  class  A      B
+  P      170    347
+  C      0      31
+  R      589    378
+  S      0      0
+  H      185    188
+  tokens 241-252 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 273-281 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 283-299 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 314-322 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 337-345 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 350-362 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 383-391 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 393-409 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 424-465 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 480-521 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 526-526 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 601-623 A=R B=C: again = True <NEWLINE> while again : <NEWLINE> <INDENT> again = False <NEWLINE> 
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 657-658 A=R B=C: continue <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: continue
+  tokens 667-670 A=R B=C: again = True <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 731-732 A=R B=C: <DEDENT> <DEDENT>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: for rel in list(held):
+  tokens 849-849 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+  tokens 870-870 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+  tokens 889-889 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+
+## core/P07b.py: 881 tokens, agreement 691/881 (78.4%)
+  class  A      B
+  P      142    297
+  C      0      31
+  R      568    380
+  S      0      0
+  H      171    173
+  tokens 56-65 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 79-91 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 101-105 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 115-119 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 124-124 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 345-356 A=R B=P: def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 377-385 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 387-403 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 418-459 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 474-515 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 520-520 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 595-617 A=R B=C: again = True <NEWLINE> while again : <NEWLINE> <INDENT> again = False <NEWLINE> 
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 651-652 A=R B=C: continue <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: continue
+  tokens 661-664 A=R B=C: again = True <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 725-726 A=R B=C: <DEDENT> <DEDENT>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: for rel in list(held):
+  tokens 829-829 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 851-851 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## core/P07c.py: 855 tokens, agreement 609/855 (71.2%)
+  class  A      B
+  P      71     284
+  C      0      31
+  R      619    374
+  S      0      0
+  H      165    166
+  tokens 52-61 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 75-87 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 97-101 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 111-115 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 120-120 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 231-242 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 263-271 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 273-289 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 304-312 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 327-335 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 340-352 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 373-381 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 383-399 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 414-455 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 470-511 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 516-516 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 591-613 A=R B=C: again = True <NEWLINE> while again : <NEWLINE> <INDENT> again = False <NEWLINE> 
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 647-648 A=R B=C: continue <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: continue
+  tokens 657-660 A=R B=C: again = True <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 721-722 A=R B=C: <DEDENT> <DEDENT>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: for rel in list(held):
+  tokens 825-825 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## core/P07d.py: 896 tokens, agreement 749/896 (83.6%)
+  class  A      B
+  P      192    304
+  C      0      31
+  R      531    386
+  S      0      0
+  H      173    175
+  tokens 127-138 A=R B=P: def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 159-167 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 169-185 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 200-208 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 223-231 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 236-248 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 269-277 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 279-295 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 310-318 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 333-341 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 346-346 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 597-619 A=R B=C: again = True <NEWLINE> while again : <NEWLINE> <INDENT> again = False <NEWLINE> 
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 653-654 A=R B=C: continue <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: continue
+  tokens 663-666 A=R B=C: again = True <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 727-728 A=R B=C: <DEDENT> <DEDENT>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: for rel in list(held):
+  tokens 846-846 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 866-866 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## core/P07e.py: 896 tokens, agreement 749/896 (83.6%)
+  class  A      B
+  P      192    304
+  C      0      31
+  R      531    386
+  S      0      0
+  H      173    175
+  tokens 127-138 A=R B=P: def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 159-167 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 169-185 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 200-208 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 223-231 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 236-248 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 269-277 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 279-295 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 310-318 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 333-341 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 346-346 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 597-619 A=R B=C: again = True <NEWLINE> while again : <NEWLINE> <INDENT> again = False <NEWLINE> 
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 653-654 A=R B=C: continue <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: continue
+  tokens 663-666 A=R B=C: again = True <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 727-728 A=R B=C: <DEDENT> <DEDENT>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: for rel in list(held):
+  tokens 846-846 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 866-866 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## core/P07f.py: 881 tokens, agreement 634/881 (72.0%)
+  class  A      B
+  P      85     297
+  C      0      31
+  R      625    380
+  S      0      0
+  H      171    173
+  tokens 56-65 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 79-91 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 101-105 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 115-119 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 124-124 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 235-246 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 267-275 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 277-293 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 308-316 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 331-339 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 344-356 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 377-385 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 387-403 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 418-459 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 474-515 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 520-520 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 595-617 A=R B=C: again = True <NEWLINE> while again : <NEWLINE> <INDENT> again = False <NEWLINE> 
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 651-652 A=R B=C: continue <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: continue
+  tokens 661-664 A=R B=C: again = True <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 725-726 A=R B=C: <DEDENT> <DEDENT>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: for rel in list(held):
+  tokens 829-829 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 851-851 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## core/P07g.py: 854 tokens, agreement 674/854 (78.9%)
+  class  A      B
+  P      137    284
+  C      0      31
+  R      553    374
+  S      0      0
+  H      164    165
+  tokens 51-60 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 74-86 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 96-100 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 110-114 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 119-131 A=R B=P: <DEDENT> def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 152-160 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 162-178 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 193-201 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 216-224 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 229-241 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 262-270 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 272-288 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 303-311 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 326-334 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 339-339 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 590-612 A=R B=C: again = True <NEWLINE> while again : <NEWLINE> <INDENT> again = False <NEWLINE> 
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 646-647 A=R B=C: continue <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: continue
+  tokens 656-659 A=R B=C: again = True <NEWLINE>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: again = True
+  tokens 720-721 A=R B=C: <DEDENT> <DEDENT>
+      A: decide(): fixpoint pass over the held relations, written for this prog | B: rescan scheduling: for rel in list(held):
+  tokens 824-824 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## core/P08a.py: 1099 tokens, agreement 768/1099 (69.9%)
+  class  A      B
+  P      403    448
+  C      0      4
+  R      387    86
+  S      0      242
+  H      309    319
+  tokens 23-44 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 45-58 A=R B=H: def __repr__ ( self ) : <NEWLINE> <INDENT> return self . name <NEWLINE> <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: output adapter __repr__
+  tokens 59-59 A=R B=S: <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 60-74 A=R B=P: UNKNOWN = { n : Unknown ( n ) for n in UNKNOWNS } <NEWLINE>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: UNKNOWN = {n: Unknown(n) for n in UNKNOWNS}
+  tokens 98-112 A=R B=S: known = { } <NEWLINE> held = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: stores of the holding: known, held, failed | B: known = {}
+  tokens 147-147 A=R B=P: <INDENT>
+      A: equal: test that both places are known | B: def equal(a, b):
+  tokens 160-160 A=P B=R: <INDENT>
+      A: equal: sequences decided place by place / fully known test | B: known-place dispatch in equal
+  tokens 235-235 A=P B=R: <INDENT>
+      A: equal: b computed from a | B: known-place dispatch in equal
+  tokens 249-249 A=P B=R: <INDENT>
+      A: equal: a computed from b | B: known-place dispatch in equal
+  tokens 271-271 A=R B=P: <INDENT>
+      A: prefix: test that s and p are known | B: def prefix(s, p, t):
+  tokens 284-284 A=P B=R: <INDENT>
+      A: prefix: decomposition of s by p, t computed | B: known-place dispatch in prefix
+  tokens 360-360 A=P B=R: <INDENT>
+      A: prefix: s computed from p and t | B: known-place dispatch in prefix
+  tokens 386-386 A=R B=P: <INDENT>
+      A: reverse: test that a is known | B: def reverse(a, b):
+  tokens 394-394 A=P B=R: <INDENT>
+      A: reverse: b computed by rev forwards; no case applies -> does not hold | B: known-place dispatch in reverse
+  tokens 412-412 A=R B=P: <DEDENT>
+      A: reverse: test that b is unknown | B: if r is None:
+  tokens 419-419 A=P B=R: <INDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 425-425 A=P B=R: <DEDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 443-443 A=H B=P: <DEDENT>
+      A: cp.relations(equal, prefix) | B: def reverse(a, b):
+  tokens 457-654 A=R B=S: EVALUATOR = { "=" : equal , "++" : prefix , "rev" : reverse } <NEWLINE> def plac
+      A: EVALUATOR table, place(), decide(): the holding loop | B: EVALUATOR = {"=": equal, "++": prefix, "rev": reverse}
+  tokens 655-660 A=H B=S: <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT>
+      A: show() and report(): output adapters | B: supporting mechanism: decide
+  tokens 846-846 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 1: a = <x, y, z> | B: if s.k == 1:
+  tokens 847-850 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 1: a = <x, y, z> | B: held.append(("=", (a, (x, y, z))))
+  tokens 866-867 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("=", (a, (x, y, z))))
+  tokens 877-877 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 2: rev(a, b) | B: elif s.k == 2:
+  tokens 878-881 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 2: rev(a, b) | B: held.append(("rev", (a, b)))
+  tokens 891-892 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("rev", (a, b)))
+  tokens 902-902 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 3: x = y | B: elif s.k == 3:
+  tokens 903-906 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 3: x = y | B: held.append(("=", (x, y)))
+  tokens 916-917 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("=", (x, y)))
+  tokens 927-927 A=P B=H: <INDENT>
+      A: stage 4: conc, forwards, by its two cases | B: elif s.k == 4:
+  tokens 1009-1009 A=H B=P: <DEDENT>
+      A: cp.relations(conc, rev) | B: def rev(a):
+  tokens 1032-1032 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 5: y = z | B: elif s.k == 5:
+  tokens 1033-1036 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 5: y = z | B: held.append(("=", (y, z)))
+  tokens 1046-1047 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("=", (y, z)))
+  tokens 1057-1057 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 6: b = PREFIX ++ c | B: elif s.k == 6:
+  tokens 1058-1061 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 6: b = PREFIX ++ c | B: held.append(("++", (b, s.constants["PREFIX"], c)))
+  tokens 1067-1067 A=P B=H: ,
+      A: stage 6: b = PREFIX ++ c | B: stage constants read (preceding comma follows its argument, rule 20)
+  tokens 1078-1079 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("++", (b, s.constants["PREFIX"], c)))
+  tokens 1080-1080 A=R B=H: <DEDENT>
+      A: decide(): run the holding loop | B: elif s.k == 6:
+  tokens 1081-1084 A=R B=C: decide ( ) <NEWLINE>
+      A: decide(): run the holding loop | B: decide()
+  tokens 1093-1096 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## core/P08b.py: 926 tokens, agreement 529/926 (57.1%)
+  class  A      B
+  P      204    325
+  C      0      4
+  R      460    86
+  S      0      242
+  H      262    269
+  tokens 14-35 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 36-49 A=R B=H: def __repr__ ( self ) : <NEWLINE> <INDENT> return self . name <NEWLINE> <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: output adapter __repr__
+  tokens 50-50 A=R B=S: <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 51-65 A=R B=P: UNKNOWN = { n : Unknown ( n ) for n in UNKNOWNS } <NEWLINE>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: UNKNOWN = {n: Unknown(n) for n in UNKNOWNS}
+  tokens 87-101 A=R B=S: known = { } <NEWLINE> held = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: stores of the holding: known, held, failed | B: known = {}
+  tokens 136-136 A=R B=P: <INDENT>
+      A: equal: test that both places are known | B: def equal(a, b):
+  tokens 149-149 A=P B=R: <INDENT>
+      A: equal: sequences decided place by place / fully known test | B: known-place dispatch in equal
+  tokens 224-224 A=P B=R: <INDENT>
+      A: equal: b computed from a | B: known-place dispatch in equal
+  tokens 238-238 A=P B=R: <INDENT>
+      A: equal: a computed from b | B: known-place dispatch in equal
+  tokens 248-260 A=R B=P: <DEDENT> def prefix ( s , p , t ) : <NEWLINE> <INDENT>
+      A: prefix evaluator (s = p ++ t): a relation P08b does not have (dead cod | B: def equal(a, b):
+  tokens 274-335 A=R B=P: if not isinstance ( s , tuple ) or len ( s ) < len ( p ) : <NEWLINE> <INDENT> re
+      A: prefix evaluator (s = p ++ t): a relation P08b does not have (dead cod | B: if not isinstance(s, tuple) or len(s) < len(p):
+  tokens 350-360 A=R B=P: return ( p + t , p , t ) <NEWLINE>
+      A: prefix evaluator (s = p ++ t): a relation P08b does not have (dead cod | B: return (p + t, p, t)
+  tokens 375-375 A=R B=P: <INDENT>
+      A: reverse: test that a is known | B: def reverse(a, b):
+  tokens 383-383 A=P B=R: <INDENT>
+      A: reverse: b computed by rev forwards; no case applies -> does not hold | B: known-place dispatch in reverse
+  tokens 401-401 A=R B=P: <DEDENT>
+      A: reverse: test that b is unknown | B: if r is None:
+  tokens 408-408 A=P B=R: <INDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 414-414 A=P B=R: <DEDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 432-432 A=H B=P: <DEDENT>
+      A: cp.relations(equal, prefix) | B: def reverse(a, b):
+  tokens 446-643 A=R B=S: EVALUATOR = { "=" : equal , "++" : prefix , "rev" : reverse } <NEWLINE> def plac
+      A: EVALUATOR table, place(), decide(): the holding loop | B: EVALUATOR = {"=": equal, "++": prefix, "rev": reverse}
+  tokens 644-649 A=H B=S: <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT>
+      A: show() and report(): output adapters | B: supporting mechanism: decide
+  tokens 835-835 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 1: a = <x, y, z> | B: if s.k == 1:
+  tokens 836-839 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 1: a = <x, y, z> | B: held.append(("=", (a, (x, y, z))))
+  tokens 855-856 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("=", (a, (x, y, z))))
+  tokens 866-866 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 2: rev(a, b) | B: elif s.k == 2:
+  tokens 867-870 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 2: rev(a, b) | B: held.append(("rev", (a, b)))
+  tokens 880-881 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("rev", (a, b)))
+  tokens 891-891 A=R B=H: <INDENT>
+      A: held.append (the holding list): posting stage 3: x = y | B: elif s.k == 3:
+  tokens 892-895 A=R B=P: held . append (
+      A: held.append (the holding list): posting stage 3: x = y | B: held.append(("=", (x, y)))
+  tokens 905-906 A=R B=P: ) <NEWLINE>
+      A: held.append (the holding list) (close) | B: held.append(("=", (x, y)))
+  tokens 907-907 A=R B=H: <DEDENT>
+      A: decide(): run the holding loop | B: elif s.k == 3:
+  tokens 908-911 A=R B=C: decide ( ) <NEWLINE>
+      A: decide(): run the holding loop | B: decide()
+  tokens 920-923 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## core/P08c.py: 963 tokens, agreement 645/963 (67.0%)
+  class  A      B
+  P      303    345
+  C      0      4
+  R      342    55
+  S      0      238
+  H      318    321
+  tokens 25-46 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 47-60 A=R B=H: def __repr__ ( self ) : <NEWLINE> <INDENT> return self . name <NEWLINE> <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: output adapter __repr__
+  tokens 61-61 A=R B=S: <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 62-76 A=R B=P: UNKNOWN = { n : Unknown ( n ) for n in UNKNOWNS } <NEWLINE>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: UNKNOWN = {n: Unknown(n) for n in UNKNOWNS}
+  tokens 84-98 A=R B=S: known = { } <NEWLINE> held = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: stores of the holding: known, held, failed | B: known = {}
+  tokens 133-133 A=R B=P: <INDENT>
+      A: equal: test that both places are known | B: def equal(a, b):
+  tokens 146-146 A=P B=R: <INDENT>
+      A: equal: sequences decided place by place / fully known test | B: known-place dispatch in equal
+  tokens 221-221 A=P B=R: <INDENT>
+      A: equal: b computed from a | B: known-place dispatch in equal
+  tokens 235-235 A=P B=R: <INDENT>
+      A: equal: a computed from b | B: known-place dispatch in equal
+  tokens 255-255 A=R B=P: <INDENT>
+      A: reverse: test that a is known | B: def reverse(a, b):
+  tokens 263-263 A=P B=R: <INDENT>
+      A: reverse: b computed by rev forwards; no case applies -> does not hold | B: known-place dispatch in reverse
+  tokens 281-281 A=R B=P: <DEDENT>
+      A: reverse: test that b is unknown | B: if r is None:
+  tokens 288-288 A=P B=R: <INDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 294-294 A=P B=R: <DEDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 312-312 A=H B=P: <DEDENT>
+      A: cp.relations(equal) | B: def reverse(a, b):
+  tokens 322-333 A=R B=S: EVALUATOR = { "=" : equal , "rev" : reverse } <NEWLINE>
+      A: EVALUATOR table | B: EVALUATOR = {"=": equal, "rev": reverse}
+  tokens 339-520 A=R B=S: def place ( p ) : <NEWLINE> <INDENT> return known . get ( p . name ) if isinstan
+      A: place(), decide(): the holding loop | B: supporting mechanism: place
+  tokens 521-526 A=H B=S: <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT> <DEDENT>
+      A: show() and report(): output adapters | B: supporting mechanism: decide
+  tokens 712-712 A=P B=H: <INDENT>
+      A: stage 1: conc, forwards, by its two cases | B: if s.k == 1:
+  tokens 753-753 A=H B=P: <DEDENT>
+      A: cp.relations(conc) | B: def conc(a, b):
+  tokens 772-772 A=R B=H: <INDENT>
+      A: held.append: posting stage 2 | B: elif s.k == 2:
+  tokens 773-776 A=R B=P: held . append (
+      A: held.append: posting stage 2 | B: held.append(("rev", (s.constants["FORWARDS"], b)))
+  tokens 791-792 A=R B=P: ) <NEWLINE>
+      A: held.append (close) | B: held.append(("rev", (s.constants["FORWARDS"], b)))
+  tokens 802-802 A=P B=H: <INDENT>
+      A: stage 3: case-1 fact stored from the stage's constants | B: elif s.k == 3:
+  tokens 851-852 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.relations(rev) | B: if a == case1["first"]:
+  tokens 871-871 A=P B=H: <INDENT>
+      A: stage 4: rev redefined: header | B: elif s.k == 4:
+  tokens 879-895 A=R B=P: <INDENT> if a == case1 [ "first" ] : <NEWLINE> <INDENT> return case1 [ "second" 
+      A: stage 4: case 1 restated inside the new def (information of stage 3, w | B: def rev(a):
+  tokens 933-934 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.relations(rev) | B: if a:
+  tokens 944-944 A=R B=H: <DEDENT>
+      A: decide(): run the holding loop | B: elif s.k == 4:
+  tokens 945-948 A=R B=C: decide ( ) <NEWLINE>
+      A: decide(): run the holding loop | B: decide()
+  tokens 957-960 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## extended/P04a.py: 691 tokens, agreement 574/691 (83.1%)
+  class  A      B
+  P      114    146
+  C      12     55
+  R      53     0
+  S      261    251
+  H      251    239
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 24-34 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 35-39 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 40-44 A=R B=P: NIL = ( ) <NEWLINE>
+      A: NIL, defined and unused in this program | B: Assign at line 49: NIL = ()
+  tokens 332-352 A=P B=S: def either ( * alternatives ) : <NEWLINE> <INDENT> for goals in alternatives : <
+      A: either, by its cases (heads unified, bodies as goals) | B: goal-list resolution: either
+  tokens 370-417 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells, defined and unused | B: definition cons
+  tokens 649-651 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 141
+  tokens 664-666 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 141
+  tokens 688-688 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 141
+
+## extended/P04b.py: 691 tokens, agreement 574/691 (83.1%)
+  class  A      B
+  P      114    146
+  C      12     55
+  R      53     0
+  S      261    251
+  H      251    239
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 24-34 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 35-39 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 40-44 A=R B=P: NIL = ( ) <NEWLINE>
+      A: NIL, defined and unused in this program | B: Assign at line 49: NIL = ()
+  tokens 332-352 A=P B=S: def either ( * alternatives ) : <NEWLINE> <INDENT> for goals in alternatives : <
+      A: either, by its cases (heads unified, bodies as goals) | B: goal-list resolution: either
+  tokens 370-417 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells, defined and unused | B: definition cons
+  tokens 649-651 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 141
+  tokens 664-666 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 141
+  tokens 688-688 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 141
+
+## extended/P04c.py: 692 tokens, agreement 598/692 (86.4%)
+  class  A      B
+  P      113    164
+  C      12     55
+  R      51     0
+  S      261    230
+  H      255    243
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 28-38 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 39-43 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 388-435 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells | B: definition cons
+  tokens 615-616 A=R B=P: cons (
+      A: cons() conversion of a constant | B: Assign at line 137: query = ((alist, (cons(s.constants["SEQUENCE"]),))
+  tokens 623-623 A=R B=P: )
+      A: cons() conversion of a constant | B: Assign at line 137: query = ((alist, (cons(s.constants["SEQUENCE"]),))
+  tokens 634-636 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 139
+  tokens 649-651 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 139
+  tokens 672-672 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 139
+
+## extended/P04d.py: 674 tokens, agreement 583/674 (86.5%)
+  class  A      B
+  P      113    161
+  C      12     55
+  R      48     0
+  S      261    230
+  H      240    228
+  tokens 0-30 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 31-35 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 380-427 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells, defined and unused | B: definition cons
+  tokens 632-634 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 135
+  tokens 647-649 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 135
+  tokens 671-671 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 135
+
+## extended/P04e.py: 664 tokens, agreement 570/664 (85.8%)
+  class  A      B
+  P      89     140
+  C      12     55
+  R      51     0
+  S      261    230
+  H      251    239
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 28-38 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 39-43 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 360-407 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells | B: definition cons
+  tokens 587-588 A=R B=P: cons (
+      A: cons() conversion of a constant | B: Assign at line 132: query = ((alist, (cons(s.constants["SEQUENCE"]),))
+  tokens 595-595 A=R B=P: )
+      A: cons() conversion of a constant | B: Assign at line 132: query = ((alist, (cons(s.constants["SEQUENCE"]),))
+  tokens 606-608 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 134
+  tokens 621-623 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 134
+  tokens 644-644 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 134
+
+## extended/P04f.py: 646 tokens, agreement 555/646 (85.9%)
+  class  A      B
+  P      89     137
+  C      12     55
+  R      48     0
+  S      261    230
+  H      236    224
+  tokens 0-30 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 31-35 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 352-399 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells, defined and unused | B: definition cons
+  tokens 604-606 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 130
+  tokens 619-621 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 130
+  tokens 643-643 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 130
+
+## extended/P05a.py: 657 tokens, agreement 545/657 (83.0%)
+  class  A      B
+  P      194    145
+  C      0      34
+  R      183    240
+  S      13     0
+  H      267    238
+  tokens 0-6 A=S B=C: from S . propagate import Store <NEWLINE>
+      A: import of S constraint propagator | B: import mechanism interface: from S.propagate import Store
+  tokens 25-30 A=S B=C: store = Store ( ) <NEWLINE>
+      A: the propagator's store | B: initialise mechanism/control state store
+  tokens 36-39 A=P B=R: X = "x" <NEWLINE>
+      A: the unknown x (store variable) | B: P05 incremental holding state X
+  tokens 40-44 A=H B=R: values = [ ] <NEWLINE>
+      A: values read from the store, collected for the harness | B: P05 incremental holding state values
+  tokens 50-54 A=H B=R: failed = [ ] <NEWLINE>
+      A: constraints that emptied a domain, kept only for printing | B: P05 incremental holding state failed
+  tokens 272-281 A=R B=P: return test ( name , k , v ) <NEWLINE>
+      A: on_x(): the relation as a one-place predicate for the store | B: evaluate problem relation / its fact-derived values
+  tokens 305-314 A=P B=R: def post ( name , k ) : <NEWLINE> <INDENT>
+      A: post(): posting a relation on x | B: P05 holding helper post
+  tokens 315-316 A=H B=C: if not
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 317-331 A=P B=C: store . relation ( [ X ] , on_x ( name , k ) )
+      A: posting the relation on x to the store | B: post constraint through Store.relation
+  tokens 332-334 A=H B=C: : <NEWLINE> <INDENT>
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 335-348 A=H B=R: failed . append ( on_x ( name , k ) . __name__ ) <NEWLINE>
+      A: failure note for printing | B: Expr at line 100: failed.append(on_x(name, k).__name__)
+  tokens 349-349 A=H B=C: <DEDENT>
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 350-350 A=P B=R: <DEDENT>
+      A: post(): posting a relation on x | B: P05 holding helper post
+  tokens 445-453 A=P B=R: store . var ( X , given ) <NEWLINE>
+      A: x given its domain by the relation (pick's facts / x = k) | B: Expr at line 119: store.var(X, given)
+  tokens 479-485 A=P B=R: post ( name , k ) <NEWLINE>
+      A: the arriving relation applied | B: Expr at line 123: post(name, k)
+  tokens 568-568 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 569-570 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 572-573 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 584-585 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 594-595 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 606-607 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 616-617 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## extended/P05b.py: 631 tokens, agreement 523/631 (82.9%)
+  class  A      B
+  P      185    140
+  C      0      34
+  R      183    236
+  S      13     0
+  H      250    221
+  tokens 0-6 A=S B=C: from S . propagate import Store <NEWLINE>
+      A: import of S constraint propagator | B: import mechanism interface: from S.propagate import Store
+  tokens 21-26 A=S B=C: store = Store ( ) <NEWLINE>
+      A: the propagator's store | B: initialise mechanism/control state store
+  tokens 32-35 A=P B=R: X = "x" <NEWLINE>
+      A: the unknown x (store variable) | B: P05 incremental holding state X
+  tokens 36-40 A=H B=R: values = [ ] <NEWLINE>
+      A: values read from the store, collected for the harness | B: P05 incremental holding state values
+  tokens 46-50 A=H B=R: failed = [ ] <NEWLINE>
+      A: constraints that emptied a domain, kept only for printing | B: P05 incremental holding state failed
+  tokens 268-277 A=R B=P: return test ( name , k , v ) <NEWLINE>
+      A: on_x(): the relation as a one-place predicate for the store | B: evaluate problem relation / its fact-derived values
+  tokens 301-310 A=P B=R: def post ( name , k ) : <NEWLINE> <INDENT>
+      A: post(): posting a relation on x | B: P05 holding helper post
+  tokens 311-312 A=H B=C: if not
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 313-327 A=P B=C: store . relation ( [ X ] , on_x ( name , k ) )
+      A: posting the relation on x to the store | B: post constraint through Store.relation
+  tokens 328-330 A=H B=C: : <NEWLINE> <INDENT>
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 331-344 A=H B=R: failed . append ( on_x ( name , k ) . __name__ ) <NEWLINE>
+      A: failure note for printing | B: Expr at line 97: failed.append(on_x(name, k).__name__)
+  tokens 345-345 A=H B=C: <DEDENT>
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 346-346 A=P B=R: <DEDENT>
+      A: post(): posting a relation on x | B: P05 holding helper post
+  tokens 441-449 A=P B=R: store . var ( X , given ) <NEWLINE>
+      A: x given its domain by the relation (pick's facts / x = k) | B: Expr at line 116: store.var(X, given)
+  tokens 475-481 A=P B=R: post ( name , k ) <NEWLINE>
+      A: the arriving relation applied | B: Expr at line 120: post(name, k)
+  tokens 553-554 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 563-564 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 586-586 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 587-588 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 590-591 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## extended/P05c.py: 657 tokens, agreement 545/657 (83.0%)
+  class  A      B
+  P      194    145
+  C      0      34
+  R      183    240
+  S      13     0
+  H      267    238
+  tokens 0-6 A=S B=C: from S . propagate import Store <NEWLINE>
+      A: import of S constraint propagator | B: import mechanism interface: from S.propagate import Store
+  tokens 25-30 A=S B=C: store = Store ( ) <NEWLINE>
+      A: the propagator's store | B: initialise mechanism/control state store
+  tokens 36-39 A=P B=R: X = "x" <NEWLINE>
+      A: the unknown x (store variable) | B: P05 incremental holding state X
+  tokens 40-44 A=H B=R: values = [ ] <NEWLINE>
+      A: values read from the store, collected for the harness | B: P05 incremental holding state values
+  tokens 50-54 A=H B=R: failed = [ ] <NEWLINE>
+      A: constraints that emptied a domain, kept only for printing | B: P05 incremental holding state failed
+  tokens 272-281 A=R B=P: return test ( name , k , v ) <NEWLINE>
+      A: on_x(): the relation as a one-place predicate for the store | B: evaluate problem relation / its fact-derived values
+  tokens 305-314 A=P B=R: def post ( name , k ) : <NEWLINE> <INDENT>
+      A: post(): posting a relation on x | B: P05 holding helper post
+  tokens 315-316 A=H B=C: if not
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 317-331 A=P B=C: store . relation ( [ X ] , on_x ( name , k ) )
+      A: posting the relation on x to the store | B: post constraint through Store.relation
+  tokens 332-334 A=H B=C: : <NEWLINE> <INDENT>
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 335-348 A=H B=R: failed . append ( on_x ( name , k ) . __name__ ) <NEWLINE>
+      A: failure note for printing | B: Expr at line 100: failed.append(on_x(name, k).__name__)
+  tokens 349-349 A=H B=C: <DEDENT>
+      A: failure note for printing | B: post constraint through Store.relation
+  tokens 350-350 A=P B=R: <DEDENT>
+      A: post(): posting a relation on x | B: P05 holding helper post
+  tokens 445-453 A=P B=R: store . var ( X , given ) <NEWLINE>
+      A: x given its domain by the relation (pick's facts / x = k) | B: Expr at line 119: store.var(X, given)
+  tokens 479-485 A=P B=R: post ( name , k ) <NEWLINE>
+      A: the arriving relation applied | B: Expr at line 123: post(name, k)
+  tokens 568-568 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 569-570 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 572-573 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 584-585 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 594-595 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 606-607 A=P B=R: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 616-617 A=P B=R: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## extended/P06a.py: 585 tokens, agreement 358/585 (61.2%)
+  class  A      B
+  P      97     99
+  C      41     41
+  R      225    52
+  S      17     196
+  H      205    197
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of S suspension queue | B: import mechanism interface: from S.suspend import Var, Queue, deref
+  tokens 19-24 A=S B=C: q = Queue ( ) <NEWLINE>
+      A: the suspension queue | B: initialise mechanism/control state q
+  tokens 32-39 A=H B=P: unknowns = { "x" : x } <NEWLINE>
+      A: unknowns dict for registration and rendering | B: Assign at line 40: unknowns = {"x": x}
+  tokens 40-44 A=R B=S: failed = [ ] <NEWLINE>
+      A: held / failed / waiting relations | B: reusable relation holder state failed
+  tokens 199-291 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: class Relation
+  tokens 292-314 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: freeze call: the goal waits on its unbound unknowns | B: generic evaluator-to-queue adapter: method __call__
+  tokens 315-388 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: method __call__
+  tokens 414-414 A=R B=S: <DEDENT>
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: class Relation
+  tokens 444-445 A=P B=C: Relation (
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 460-460 A=P B=C: )
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 477-478 A=P B=C: Relation (
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 493-493 A=P B=C: )
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+
+## extended/P06b.py: 585 tokens, agreement 358/585 (61.2%)
+  class  A      B
+  P      97     99
+  C      41     41
+  R      225    52
+  S      17     196
+  H      205    197
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of S suspension queue | B: import mechanism interface: from S.suspend import Var, Queue, deref
+  tokens 19-24 A=S B=C: q = Queue ( ) <NEWLINE>
+      A: the suspension queue | B: initialise mechanism/control state q
+  tokens 32-39 A=H B=P: unknowns = { "x" : x } <NEWLINE>
+      A: unknowns dict for registration and rendering | B: Assign at line 40: unknowns = {"x": x}
+  tokens 40-44 A=R B=S: failed = [ ] <NEWLINE>
+      A: held / failed / waiting relations | B: reusable relation holder state failed
+  tokens 199-291 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: class Relation
+  tokens 292-314 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: freeze call: the goal waits on its unbound unknowns | B: generic evaluator-to-queue adapter: method __call__
+  tokens 315-388 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: method __call__
+  tokens 414-414 A=R B=S: <DEDENT>
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: class Relation
+  tokens 444-445 A=P B=C: Relation (
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 460-460 A=P B=C: )
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 477-478 A=P B=C: Relation (
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 493-493 A=P B=C: )
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+
+## extended/P06c.py: 585 tokens, agreement 358/585 (61.2%)
+  class  A      B
+  P      97     99
+  C      41     41
+  R      225    52
+  S      17     196
+  H      205    197
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of S suspension queue | B: import mechanism interface: from S.suspend import Var, Queue, deref
+  tokens 19-24 A=S B=C: q = Queue ( ) <NEWLINE>
+      A: the suspension queue | B: initialise mechanism/control state q
+  tokens 32-39 A=H B=P: unknowns = { "x" : x } <NEWLINE>
+      A: unknowns dict for registration and rendering | B: Assign at line 40: unknowns = {"x": x}
+  tokens 40-44 A=R B=S: failed = [ ] <NEWLINE>
+      A: held / failed / waiting relations | B: reusable relation holder state failed
+  tokens 199-291 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: class Relation
+  tokens 292-314 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: freeze call: the goal waits on its unbound unknowns | B: generic evaluator-to-queue adapter: method __call__
+  tokens 315-388 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: method __call__
+  tokens 414-414 A=R B=S: <DEDENT>
+      A: class Relation: a problem relation held as a goal (evaluate, wait verd | B: generic evaluator-to-queue adapter: class Relation
+  tokens 444-445 A=P B=C: Relation (
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 460-460 A=P B=C: )
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 477-478 A=P B=C: Relation (
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+  tokens 493-493 A=P B=C: )
+      A: the stage's relation as a goal | B: construct generic evaluator-to-queue adapter
+
+## extended/P06d.py: 932 tokens, agreement 834/932 (89.5%)
+  class  A      B
+  P      298    353
+  C      12     55
+  R      55     0
+  S      311    280
+  H      256    244
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 42-52 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 53-57 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 619-666 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells | B: definition cons
+  tokens 864-865 A=R B=P: cons (
+      A: cons() conversion of a constant | B: Assign at line 161: query = ((setdiff, (cons(s.constants["FIRST"]), co
+  tokens 872-875 A=R B=P: ) , cons (
+      A: cons() conversion of a constant | B: Assign at line 161: query = ((setdiff, (cons(s.constants["FIRST"]), co
+  tokens 882-882 A=R B=P: )
+      A: cons() conversion of a constant | B: Assign at line 161: query = ((setdiff, (cons(s.constants["FIRST"]), co
+  tokens 890-892 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 162
+  tokens 905-907 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 162
+  tokens 929-929 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 162
+
+## extended/P06e1.py: 927 tokens, agreement 828/927 (89.3%)
+  class  A      B
+  P      257    307
+  C      12     55
+  R      53     0
+  S      311    280
+  H      294    285
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 62-72 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 73-77 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 78-82 A=R B=P: NIL = ( ) <NEWLINE>
+      A: NIL, defined and unused in this program | B: Assign at line 57: NIL = ()
+  tokens 590-637 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells, defined and unused | B: definition cons
+  tokens 821-821 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['STUDENT_FACTS']
+  tokens 833-833 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['MATHS_FACTS']
+  tokens 845-845 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['TAKES_FACTS']
+  tokens 869-871 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 176
+  tokens 884-886 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 176
+  tokens 907-907 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 176
+
+## extended/P06e2.py: 927 tokens, agreement 828/927 (89.3%)
+  class  A      B
+  P      257    307
+  C      12     55
+  R      53     0
+  S      311    280
+  H      294    285
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 62-72 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 73-77 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 78-82 A=R B=P: NIL = ( ) <NEWLINE>
+      A: NIL, defined and unused in this program | B: Assign at line 57: NIL = ()
+  tokens 590-637 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells, defined and unused | B: definition cons
+  tokens 821-821 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['STUDENT_FACTS']
+  tokens 833-833 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['MATHS_FACTS']
+  tokens 845-845 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['TAKES_FACTS']
+  tokens 869-871 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 176
+  tokens 884-886 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 176
+  tokens 907-907 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 176
+
+## extended/P06e3.py: 916 tokens, agreement 817/916 (89.2%)
+  class  A      B
+  P      261    311
+  C      12     55
+  R      53     0
+  S      311    280
+  H      279    270
+  tokens 0-19 A=S B=C: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: import of S backtracking search | B: import mechanism interface: from S.search import search, undo
+  tokens 58-68 A=S B=C: binder = Queue ( ) <NEWLINE> trail = [ ] <NEWLINE>
+      A: program S "unify": its binder (Queue used for bind with trail) | B: initialise mechanism/control state binder
+  tokens 69-73 A=H B=C: stack = [ ] <NEWLINE>
+      A: search stack given only so it can be registered as pending | B: initialise mechanism/control state stack
+  tokens 74-78 A=R B=P: NIL = ( ) <NEWLINE>
+      A: NIL, defined and unused in this program | B: Assign at line 55: NIL = ()
+  tokens 586-633 A=R B=P: def cons ( seq ) : <NEWLINE> <INDENT> t = ( ) <NEWLINE> for e in reversed ( seq 
+      A: cons(): encoding of a tuple constant as cons cells, defined and unused | B: definition cons
+  tokens 817-817 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['STUDENT_FACTS']
+  tokens 829-829 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['MATHS_FACTS']
+  tokens 841-841 A=P B=H: <NEWLINE>
+      A: stage 1: facts of the closed world | B: read staged constant/parameter s.constants['TAKES_FACTS']
+  tokens 874-876 A=H B=C: for _ in
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 175
+  tokens 889-891 A=H B=C: : <NEWLINE> <INDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 175
+  tokens 913-913 A=H B=C: <DEDENT>
+      A: stand-in for answers(): drawing the search's answers | B: enumerate query solutions/search at line 175
+
+## extended/P07a.py: 1042 tokens, agreement 652/1042 (62.6%)
+  class  A      B
+  P      221    398
+  C      42     30
+  R      547    194
+  S      11     196
+  H      221    224
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of the listed S mechanism (suspension queue) | B: enable suspension-queue mechanism and its variables
+  tokens 73-77 A=R B=S: failed = [ ] <NEWLINE>
+      A: the list of relations found not to hold (holding code's verdicts) | B: generic Relation adapter failure store
+  tokens 284-295 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 316-324 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 326-342 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 357-365 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 380-388 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 393-405 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 426-434 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 436-452 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 467-508 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 523-564 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 569-569 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 591-683 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 684-706 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: Relation.__call__: freeze call, suspends the goal on its unbound Vars | B: generic Relation adapter: q.wait(self, *[v for v in values if isinstan
+  tokens 707-780 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: Relation.__call__: goal wrapper that holds a relation on the queue and | B: generic Relation adapter: if outcome is None:
+  tokens 806-806 A=R B=S: <DEDENT>
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 863-863 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+  tokens 887-887 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+  tokens 909-909 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+
+## extended/P07b.py: 949 tokens, agreement 583/949 (61.4%)
+  class  A      B
+  P      162    317
+  C      47     35
+  R      524    194
+  S      11     196
+  H      205    207
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of the listed S mechanism (suspension queue) | B: enable suspension-queue mechanism and its variables
+  tokens 51-55 A=R B=S: failed = [ ] <NEWLINE>
+      A: the list of relations found not to hold (holding code's verdicts) | B: generic Relation adapter failure store
+  tokens 83-92 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 106-118 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 128-132 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 142-146 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 151-151 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 372-383 A=R B=P: def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 404-412 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 414-430 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 445-486 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 501-542 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 547-547 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 569-661 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 662-684 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: Relation.__call__: freeze call, suspends the goal on its unbound Vars | B: generic Relation adapter: q.wait(self, *[v for v in values if isinstan
+  tokens 685-758 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: Relation.__call__: goal wrapper that holds a relation on the queue and | B: generic Relation adapter: if outcome is None:
+  tokens 784-784 A=R B=S: <DEDENT>
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 824-824 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 849-849 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## extended/P07c.py: 920 tokens, agreement 498/920 (54.1%)
+  class  A      B
+  P      88     301
+  C      41     29
+  R      581    194
+  S      11     196
+  H      199    200
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of the listed S mechanism (suspension queue) | B: enable suspension-queue mechanism and its variables
+  tokens 47-51 A=R B=S: failed = [ ] <NEWLINE>
+      A: the list of relations found not to hold (holding code's verdicts) | B: generic Relation adapter failure store
+  tokens 79-88 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 102-114 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 124-128 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 138-142 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 147-147 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 258-269 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 290-298 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 300-316 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 331-339 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 354-362 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 367-379 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 400-408 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 410-426 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 441-482 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 497-538 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 543-543 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 565-657 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 658-680 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: Relation.__call__: freeze call, suspends the goal on its unbound Vars | B: generic Relation adapter: q.wait(self, *[v for v in values if isinstan
+  tokens 681-754 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: Relation.__call__: goal wrapper that holds a relation on the queue and | B: generic Relation adapter: if outcome is None:
+  tokens 780-780 A=R B=S: <DEDENT>
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 820-820 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## extended/P07d.py: 976 tokens, agreement 653/976 (66.9%)
+  class  A      B
+  P      222    334
+  C      53     41
+  R      481    194
+  S      11     196
+  H      209    211
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of the listed S mechanism (suspension queue) | B: enable suspension-queue mechanism and its variables
+  tokens 62-66 A=R B=S: failed = [ ] <NEWLINE>
+      A: the list of relations found not to hold (holding code's verdicts) | B: generic Relation adapter failure store
+  tokens 163-174 A=R B=P: def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 195-203 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 205-221 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 236-244 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 259-267 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 272-284 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 305-313 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 315-331 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 346-354 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 369-377 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 382-382 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 580-672 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 673-695 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: Relation.__call__: freeze call, suspends the goal on its unbound Vars | B: generic Relation adapter: q.wait(self, *[v for v in values if isinstan
+  tokens 696-769 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: Relation.__call__: goal wrapper that holds a relation on the queue and | B: generic Relation adapter: if outcome is None:
+  tokens 795-795 A=R B=S: <DEDENT>
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 853-853 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 876-876 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## extended/P07e.py: 976 tokens, agreement 653/976 (66.9%)
+  class  A      B
+  P      222    334
+  C      53     41
+  R      481    194
+  S      11     196
+  H      209    211
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of the listed S mechanism (suspension queue) | B: enable suspension-queue mechanism and its variables
+  tokens 62-66 A=R B=S: failed = [ ] <NEWLINE>
+      A: the list of relations found not to hold (holding code's verdicts) | B: generic Relation adapter failure store
+  tokens 163-174 A=R B=P: def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 195-203 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 205-221 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 236-244 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 259-267 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 272-284 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 305-313 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 315-331 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 346-354 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 369-377 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 382-382 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 580-672 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 673-695 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: Relation.__call__: freeze call, suspends the goal on its unbound Vars | B: generic Relation adapter: q.wait(self, *[v for v in values if isinstan
+  tokens 696-769 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: Relation.__call__: goal wrapper that holds a relation on the queue and | B: generic Relation adapter: if outcome is None:
+  tokens 795-795 A=R B=S: <DEDENT>
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 853-853 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 876-876 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## extended/P07f.py: 949 tokens, agreement 526/949 (55.4%)
+  class  A      B
+  P      105    317
+  C      47     35
+  R      581    194
+  S      11     196
+  H      205    207
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of the listed S mechanism (suspension queue) | B: enable suspension-queue mechanism and its variables
+  tokens 51-55 A=R B=S: failed = [ ] <NEWLINE>
+      A: the list of relations found not to hold (holding code's verdicts) | B: generic Relation adapter failure store
+  tokens 83-92 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 106-118 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 128-132 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 142-146 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 151-151 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 262-273 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 294-302 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 304-320 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 335-343 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 358-366 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 371-383 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 404-412 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 414-430 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 445-486 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 501-542 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 547-547 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 569-661 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 662-684 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: Relation.__call__: freeze call, suspends the goal on its unbound Vars | B: generic Relation adapter: q.wait(self, *[v for v in values if isinstan
+  tokens 685-758 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: Relation.__call__: goal wrapper that holds a relation on the queue and | B: generic Relation adapter: if outcome is None:
+  tokens 784-784 A=R B=S: <DEDENT>
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 824-824 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 849-849 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## extended/P07g.py: 909 tokens, agreement 553/909 (60.8%)
+  class  A      B
+  P      147    294
+  C      41     29
+  R      515    194
+  S      11     196
+  H      195    196
+  tokens 0-10 A=S B=C: from S . suspend import Var , Queue , deref <NEWLINE>
+      A: import of the listed S mechanism (suspension queue) | B: enable suspension-queue mechanism and its variables
+  tokens 36-40 A=R B=S: failed = [ ] <NEWLINE>
+      A: the list of relations found not to hold (holding code's verdicts) | B: generic Relation adapter failure store
+  tokens 68-77 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 91-103 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 113-117 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 127-131 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 136-148 A=R B=P: <DEDENT> def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 169-177 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 179-195 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 210-218 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 233-241 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 246-258 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 279-287 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 289-305 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 320-328 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 343-351 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 356-356 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 554-646 A=R B=S: class Relation : <NEWLINE> <INDENT> def __init__ ( self , name , evaluate , plac
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 647-669 A=C B=S: q . wait ( self , * [ v for v in values if isinstance ( v , Var ) ] ) <NEWLINE>
+      A: Relation.__call__: freeze call, suspends the goal on its unbound Vars | B: generic Relation adapter: q.wait(self, *[v for v in values if isinstan
+  tokens 670-743 A=R B=S: <DEDENT> elif outcome is False : <NEWLINE> <INDENT> failed . append ( self ) <NE
+      A: Relation.__call__: goal wrapper that holds a relation on the queue and | B: generic Relation adapter: if outcome is None:
+  tokens 769-769 A=R B=S: <DEDENT>
+      A: Relation: goal wrapper that holds a relation on the queue and decides  | B: generic Relation adapter: class Relation:
+  tokens 809-809 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## extended/P08a.py: 1464 tokens, agreement 1317/1464 (90.0%)
+  class  A      B
+  P      567    480
+  C      83     42
+  R      5      0
+  S      382    515
+  H      427    427
+  tokens 0-19 A=C B=S: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: imports of S.search and S.suspend | B: import supporting mechanism: backtracking search
+  tokens 38-42 A=C B=S: stack = [ ] <NEWLINE>
+      A: stack: the search's pending choice points (set up for the search direc | B: stack = []
+  tokens 63-76 A=C B=S: cases = { "rev" : [ ] , "conc" : [ ] } <NEWLINE>
+      A: cases: rev and conc declared with no cases | B: cases = {"rev": [], "conc": []}
+  tokens 95-99 A=R B=S: failed = [ ] <NEWLINE>
+      A: failed: the store of relations found not to hold | B: failed = []
+  tokens 349-413 A=P B=S: <DEDENT> def rev ( a , b ) : <NEWLINE> <INDENT> for case in cases [ "rev" ] : <N
+      A: rev: the relation as its cases, tried in order | B: supporting mechanism: done
+  tokens 414-415 A=H B=S: <DEDENT> <DEDENT>
+      A: cp.relations(rev, conc) | B: dispatch through the arriving case table: conc
+  tokens 553-554 A=H B=S: <DEDENT> <DEDENT>
+      A: Application.__repr__: renders a held application for observe() | B: supporting mechanism: __call__
+  tokens 591-591 A=P B=H: <DEDENT>
+      A: equation(s, t): = as unification; a failure noted | B: output adapter __repr__
+  tokens 592-592 A=P B=S: <DEDENT>
+      A: equation(s, t): = as unification; a failure noted | B: supporting mechanism: Application
+  tokens 614-632 A=P B=S: failed . append ( "%s = %s" % ( show ( s ) , show ( t ) ) ) <NEWLINE>
+      A: equation(s, t): = as unification; a failure noted | B: supporting mechanism: equation
+  tokens 731-731 A=H B=P: <DEDENT>
+      A: show(): output adapter | B: def onto(seq, tail):
+  tokens 878-878 A=P B=H: <DEDENT>
+      A: the problem's unknowns as Vars | B: output adapter show
+  tokens 1054-1054 A=P B=H: <INDENT>
+      A: stage 1: a = <x, y, z> | B: if s.k == 1:
+  tokens 1080-1080 A=C B=H: <INDENT>
+      A: q.wait(...) | B: elif s.k == 2:
+  tokens 1106-1106 A=P B=H: <INDENT>
+      A: stage 3: x = y | B: elif s.k == 3:
+  tokens 1123-1123 A=P B=H: <INDENT>
+      A: stage 4: conc's two cases, rev's two cases, heads by unification, bodi | B: elif s.k == 4:
+  tokens 1408-1408 A=P B=H: <INDENT>
+      A: stage 5: y = z | B: elif s.k == 5:
+  tokens 1425-1425 A=P B=H: <INDENT>
+      A: stage 6: b = PREFIX ++ c | B: elif s.k == 6:
+  tokens 1443-1443 A=C B=H: <DEDENT>
+      A: q.run(): run the ready applications | B: elif s.k == 6:
+  tokens 1458-1461 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## extended/P08b.py: 1068 tokens, agreement 924/1068 (86.5%)
+  class  A      B
+  P      232    148
+  C      59     18
+  R      5      0
+  S      382    515
+  H      390    387
+  tokens 0-19 A=C B=S: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: imports of S.search and S.suspend | B: import supporting mechanism: backtracking search
+  tokens 31-35 A=C B=S: stack = [ ] <NEWLINE>
+      A: stack: the search's pending choice points (set up for the search direc | B: stack = []
+  tokens 56-69 A=C B=S: cases = { "rev" : [ ] , "conc" : [ ] } <NEWLINE>
+      A: cases: rev and conc declared with no cases | B: cases = {"rev": [], "conc": []}
+  tokens 88-92 A=R B=S: failed = [ ] <NEWLINE>
+      A: failed: the store of relations found not to hold | B: failed = []
+  tokens 342-406 A=P B=S: <DEDENT> def rev ( a , b ) : <NEWLINE> <INDENT> for case in cases [ "rev" ] : <N
+      A: rev: the relation as its cases, tried in order | B: supporting mechanism: done
+  tokens 407-408 A=H B=S: <DEDENT> <DEDENT>
+      A: cp.relations(rev, conc) | B: dispatch through the arriving case table: conc
+  tokens 546-547 A=H B=S: <DEDENT> <DEDENT>
+      A: Application.__repr__: renders a held application for observe() | B: supporting mechanism: __call__
+  tokens 584-584 A=P B=H: <DEDENT>
+      A: equation(s, t): = as unification; a failure noted | B: output adapter __repr__
+  tokens 585-585 A=P B=S: <DEDENT>
+      A: equation(s, t): = as unification; a failure noted | B: supporting mechanism: Application
+  tokens 607-625 A=P B=S: failed . append ( "%s = %s" % ( show ( s ) , show ( t ) ) ) <NEWLINE>
+      A: equation(s, t): = as unification; a failure noted | B: supporting mechanism: equation
+  tokens 675-675 A=H B=P: <DEDENT>
+      A: show(): output adapter | B: def cons(seq):
+  tokens 822-822 A=P B=H: <DEDENT>
+      A: the problem's unknowns as Vars | B: output adapter show
+  tokens 987-987 A=P B=H: <INDENT>
+      A: stage 1: a = <x, y, z> | B: if s.k == 1:
+  tokens 1013-1013 A=C B=H: <INDENT>
+      A: q.wait(...) | B: elif s.k == 2:
+  tokens 1039-1039 A=P B=H: <INDENT>
+      A: stage 3: x = y | B: elif s.k == 3:
+  tokens 1047-1047 A=C B=H: <DEDENT>
+      A: q.run(): run the ready applications | B: elif s.k == 3:
+  tokens 1062-1065 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## extended/P08c.py: 1350 tokens, agreement 1205/1350 (89.3%)
+  class  A      B
+  P      467    382
+  C      95     54
+  R      5      0
+  S      382    515
+  H      401    399
+  tokens 0-19 A=C B=S: from S . search import search , undo <NEWLINE> from S . suspend import Var , Que
+      A: imports of S.search and S.suspend | B: import supporting mechanism: backtracking search
+  tokens 49-53 A=C B=S: stack = [ ] <NEWLINE>
+      A: stack: the search's pending choice points (set up for the search direc | B: stack = []
+  tokens 74-87 A=C B=S: cases = { "rev" : [ ] , "conc" : [ ] } <NEWLINE>
+      A: cases: rev and conc declared with no cases | B: cases = {"rev": [], "conc": []}
+  tokens 106-110 A=R B=S: failed = [ ] <NEWLINE>
+      A: failed: the store of relations found not to hold | B: failed = []
+  tokens 360-424 A=P B=S: <DEDENT> def rev ( a , b ) : <NEWLINE> <INDENT> for case in cases [ "rev" ] : <N
+      A: rev: the relation as its cases, tried in order | B: supporting mechanism: done
+  tokens 425-426 A=H B=S: <DEDENT> <DEDENT>
+      A: cp.relations(rev, conc) | B: dispatch through the arriving case table: conc
+  tokens 564-565 A=H B=S: <DEDENT> <DEDENT>
+      A: Application.__repr__: renders a held application for observe() | B: supporting mechanism: __call__
+  tokens 602-602 A=P B=H: <DEDENT>
+      A: equation(s, t): = as unification; a failure noted | B: output adapter __repr__
+  tokens 603-603 A=P B=S: <DEDENT>
+      A: equation(s, t): = as unification; a failure noted | B: supporting mechanism: Application
+  tokens 625-643 A=P B=S: failed . append ( "%s = %s" % ( show ( s ) , show ( t ) ) ) <NEWLINE>
+      A: equation(s, t): = as unification; a failure noted | B: supporting mechanism: equation
+  tokens 693-693 A=H B=P: <DEDENT>
+      A: show(): output adapter | B: def cons(seq):
+  tokens 840-840 A=P B=H: <DEDENT>
+      A: the problem's unknown b as a Var | B: output adapter show
+  tokens 961-961 A=P B=H: <INDENT>
+      A: stage 1: conc's two cases | B: if s.k == 1:
+  tokens 1110-1110 A=C B=H: <INDENT>
+      A: q.wait(...) | B: elif s.k == 2:
+  tokens 1144-1144 A=P B=H: <INDENT>
+      A: stage 3: the case-1 fact from the stage's constants | B: elif s.k == 3:
+  tokens 1230-1230 A=P B=H: <INDENT>
+      A: stage 4: rev case 2, head and body in order | B: elif s.k == 4:
+  tokens 1329-1329 A=C B=H: <DEDENT>
+      A: q.run(): run the ready applications | B: elif s.k == 4:
+  tokens 1344-1347 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## stdlib-concurrency/P05a.py: 704 tokens, agreement 606/704 (86.1%)
+  class  A      B
+  P      188    135
+  C      212    225
+  R      137    176
+  S      0      0
+  H      167    168
+  tokens 317-324 A=C B=R: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: P05 holding helper hold
+  tokens 336-350 A=R B=C: while not x_has_values and source ( name , k ) is None : <NEWLINE> <INDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 113
+  tokens 392-398 A=R B=C: <DEDENT> if not x_has_values : <NEWLINE> <INDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 113
+  tokens 422-422 A=R B=C: <DEDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 119
+  tokens 423-429 A=P B=R: keep ( name , k ) <NEWLINE>
+      A: the relation applied once x has values | B: Expr at line 123: keep(name, k)
+  tokens 444-456 A=C B=R: <DEDENT> def arrive ( name , k = None ) : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: P05 holding helper hold
+  tokens 498-498 A=C B=R: <DEDENT>
+      A: arrive(): one thread per relation | B: P05 holding helper arrive
+  tokens 527-559 A=P B=R: def keep ( name , k ) : <NEWLINE> <INDENT> values [ : ] = [ v for v in values if
+      A: keep(): the conjunction applied to the values held | B: P05 holding helper keep
+  tokens 635-635 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 636-637 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 639-640 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 651-652 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 661-662 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 673-674 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 683-684 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## stdlib-concurrency/P05b.py: 678 tokens, agreement 584/678 (86.1%)
+  class  A      B
+  P      179    130
+  C      212    221
+  R      137    176
+  S      0      0
+  H      150    151
+  tokens 313-320 A=C B=R: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: P05 holding helper hold
+  tokens 332-346 A=R B=C: while not x_has_values and source ( name , k ) is None : <NEWLINE> <INDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 110
+  tokens 388-394 A=R B=C: <DEDENT> if not x_has_values : <NEWLINE> <INDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 110
+  tokens 418-418 A=R B=C: <DEDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 116
+  tokens 419-425 A=P B=R: keep ( name , k ) <NEWLINE>
+      A: the relation applied once x has values | B: Expr at line 120: keep(name, k)
+  tokens 440-452 A=C B=R: <DEDENT> def arrive ( name , k = None ) : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: P05 holding helper hold
+  tokens 494-494 A=C B=R: <DEDENT>
+      A: arrive(): one thread per relation | B: P05 holding helper arrive
+  tokens 523-555 A=P B=R: def keep ( name , k ) : <NEWLINE> <INDENT> values [ : ] = [ v for v in values if
+      A: keep(): the conjunction applied to the values held | B: P05 holding helper keep
+  tokens 620-621 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 630-631 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 653-653 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 654-655 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 657-658 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## stdlib-concurrency/P05c.py: 704 tokens, agreement 606/704 (86.1%)
+  class  A      B
+  P      188    135
+  C      212    225
+  R      137    176
+  S      0      0
+  H      167    168
+  tokens 317-324 A=C B=R: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: P05 holding helper hold
+  tokens 336-350 A=R B=C: while not x_has_values and source ( name , k ) is None : <NEWLINE> <INDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 113
+  tokens 392-398 A=R B=C: <DEDENT> if not x_has_values : <NEWLINE> <INDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 113
+  tokens 422-422 A=R B=C: <DEDENT>
+      A: hold(): wait verdict / record of waiting / x given values | B: thread coordination / waiting bookkeeping at line 119
+  tokens 423-429 A=P B=R: keep ( name , k ) <NEWLINE>
+      A: the relation applied once x has values | B: Expr at line 123: keep(name, k)
+  tokens 444-456 A=C B=R: <DEDENT> def arrive ( name , k = None ) : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: P05 holding helper hold
+  tokens 498-498 A=C B=R: <DEDENT>
+      A: arrive(): one thread per relation | B: P05 holding helper arrive
+  tokens 527-559 A=P B=R: def keep ( name , k ) : <NEWLINE> <INDENT> values [ : ] = [ v for v in values if
+      A: keep(): the conjunction applied to the values held | B: P05 holding helper keep
+  tokens 635-635 A=P B=H: <NEWLINE>
+      A: stage 1/2: pick's facts | B: read staged constant/parameter s.constants['PICK_FACTS']
+  tokens 636-637 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 639-640 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 651-652 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 661-662 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+  tokens 673-674 A=P B=C: arrive (
+      A: the stage's relation | B: invoke arrive
+  tokens 683-684 A=P B=C: ) <NEWLINE>
+      A: the stage's relation | B: invoke arrive
+
+## stdlib-concurrency/P06a.py: 722 tokens, agreement 345/722 (47.8%)
+  class  A      B
+  P      91     91
+  C      226    35
+  R      238    52
+  S      0      377
+  H      167    167
+  tokens 18-39 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 54-54 A=R B=S: <DEDENT>
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 70-84 A=R B=S: known = { } <NEWLINE> waiting = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: bindings store used to decide held relations | B: reusable relation holder state known
+  tokens 249-288 A=R B=S: EVALUATOR = { "=" : equal , "not =" : not_equal } <NEWLINE> def place ( p ) : <N
+      A: evaluator table of held relations | B: reusable relation holder state EVALUATOR
+  tokens 289-333 A=C B=S: def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count [ "busy"
+      A: thread synchronisation / one thread per relation | B: evaluator-driven relation holder: told
+  tokens 334-339 A=R B=S: name , places = rel <NEWLINE>
+      A: hold(): evaluate, wait verdict, record | B: Assign at line 109: name, places = rel
+  tokens 340-344 A=C B=S: with changed : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: With at line 110: with changed:
+  tokens 345-378 A=R B=S: while ( outcome := EVALUATOR [ name ] ( * [ place ( p ) for p in places ] ) ) is
+      A: hold(): evaluate, wait verdict, record | B: While at line 111: while (outcome := EVALUATOR[name](*[place(p) for p 
+  tokens 379-412 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold(): thread synchronisation | B: AugAssign at line 113: count["busy"] -= 1
+  tokens 413-432 A=R B=S: <DEDENT> if outcome is False : <NEWLINE> <INDENT> failed . append ( rel ) <NEWLI
+      A: hold(): evaluate, wait verdict, record | B: While at line 111: while (outcome := EVALUATOR[name](*[place(p) for p 
+  tokens 433-436 A=C B=S: new = False <NEWLINE>
+      A: hold(): thread synchronisation | B: Assign at line 120: new = False
+  tokens 437-481 A=R B=S: for p , v in zip ( places , outcome ) : <NEWLINE> <INDENT> if isinstance ( p , U
+      A: hold(): evaluate, wait verdict, record | B: For at line 121: for p, v in zip(places, outcome):
+  tokens 482-485 A=C B=S: new = True <NEWLINE>
+      A: hold(): thread synchronisation | B: Assign at line 124: new = True
+  tokens 486-487 A=R B=S: <DEDENT> <DEDENT>
+      A: hold(): evaluate, wait verdict, record | B: If at line 122: if isinstance(p, Unknown) and v is not None and p.name
+  tokens 488-497 A=C B=S: if new : <NEWLINE> <INDENT> told ( ) <NEWLINE> <DEDENT>
+      A: hold(): thread synchronisation | B: If at line 125: if new:
+  tokens 498-498 A=R B=S: <DEDENT>
+      A: hold(): evaluate, wait verdict, record | B: If at line 117: if outcome is False:
+  tokens 499-587 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> <DEDENT> <DED
+      A: hold(): thread synchronisation | B: AugAssign at line 127: count["busy"] -= 1
+
+## stdlib-concurrency/P06b.py: 722 tokens, agreement 345/722 (47.8%)
+  class  A      B
+  P      91     91
+  C      226    35
+  R      238    52
+  S      0      377
+  H      167    167
+  tokens 18-39 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 54-54 A=R B=S: <DEDENT>
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 70-84 A=R B=S: known = { } <NEWLINE> waiting = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: bindings store used to decide held relations | B: reusable relation holder state known
+  tokens 249-288 A=R B=S: EVALUATOR = { "=" : equal , "not =" : not_equal } <NEWLINE> def place ( p ) : <N
+      A: evaluator table of held relations | B: reusable relation holder state EVALUATOR
+  tokens 289-333 A=C B=S: def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count [ "busy"
+      A: thread synchronisation / one thread per relation | B: evaluator-driven relation holder: told
+  tokens 334-339 A=R B=S: name , places = rel <NEWLINE>
+      A: hold(): evaluate, wait verdict, record | B: Assign at line 109: name, places = rel
+  tokens 340-344 A=C B=S: with changed : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: With at line 110: with changed:
+  tokens 345-378 A=R B=S: while ( outcome := EVALUATOR [ name ] ( * [ place ( p ) for p in places ] ) ) is
+      A: hold(): evaluate, wait verdict, record | B: While at line 111: while (outcome := EVALUATOR[name](*[place(p) for p 
+  tokens 379-412 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold(): thread synchronisation | B: AugAssign at line 113: count["busy"] -= 1
+  tokens 413-432 A=R B=S: <DEDENT> if outcome is False : <NEWLINE> <INDENT> failed . append ( rel ) <NEWLI
+      A: hold(): evaluate, wait verdict, record | B: While at line 111: while (outcome := EVALUATOR[name](*[place(p) for p 
+  tokens 433-436 A=C B=S: new = False <NEWLINE>
+      A: hold(): thread synchronisation | B: Assign at line 120: new = False
+  tokens 437-481 A=R B=S: for p , v in zip ( places , outcome ) : <NEWLINE> <INDENT> if isinstance ( p , U
+      A: hold(): evaluate, wait verdict, record | B: For at line 121: for p, v in zip(places, outcome):
+  tokens 482-485 A=C B=S: new = True <NEWLINE>
+      A: hold(): thread synchronisation | B: Assign at line 124: new = True
+  tokens 486-487 A=R B=S: <DEDENT> <DEDENT>
+      A: hold(): evaluate, wait verdict, record | B: If at line 122: if isinstance(p, Unknown) and v is not None and p.name
+  tokens 488-497 A=C B=S: if new : <NEWLINE> <INDENT> told ( ) <NEWLINE> <DEDENT>
+      A: hold(): thread synchronisation | B: If at line 125: if new:
+  tokens 498-498 A=R B=S: <DEDENT>
+      A: hold(): evaluate, wait verdict, record | B: If at line 117: if outcome is False:
+  tokens 499-587 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> <DEDENT> <DED
+      A: hold(): thread synchronisation | B: AugAssign at line 127: count["busy"] -= 1
+
+## stdlib-concurrency/P06c.py: 722 tokens, agreement 345/722 (47.8%)
+  class  A      B
+  P      91     91
+  C      226    35
+  R      238    52
+  S      0      377
+  H      167    167
+  tokens 18-39 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 54-54 A=R B=S: <DEDENT>
+      A: class Unknown: an unknown as a place of a held relation | B: evaluator-driven relation holder: class Unknown
+  tokens 70-84 A=R B=S: known = { } <NEWLINE> waiting = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: bindings store used to decide held relations | B: reusable relation holder state known
+  tokens 249-288 A=R B=S: EVALUATOR = { "=" : equal , "not =" : not_equal } <NEWLINE> def place ( p ) : <N
+      A: evaluator table of held relations | B: reusable relation holder state EVALUATOR
+  tokens 289-333 A=C B=S: def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count [ "busy"
+      A: thread synchronisation / one thread per relation | B: evaluator-driven relation holder: told
+  tokens 334-339 A=R B=S: name , places = rel <NEWLINE>
+      A: hold(): evaluate, wait verdict, record | B: Assign at line 109: name, places = rel
+  tokens 340-344 A=C B=S: with changed : <NEWLINE> <INDENT>
+      A: hold(): thread synchronisation | B: With at line 110: with changed:
+  tokens 345-378 A=R B=S: while ( outcome := EVALUATOR [ name ] ( * [ place ( p ) for p in places ] ) ) is
+      A: hold(): evaluate, wait verdict, record | B: While at line 111: while (outcome := EVALUATOR[name](*[place(p) for p 
+  tokens 379-412 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold(): thread synchronisation | B: AugAssign at line 113: count["busy"] -= 1
+  tokens 413-432 A=R B=S: <DEDENT> if outcome is False : <NEWLINE> <INDENT> failed . append ( rel ) <NEWLI
+      A: hold(): evaluate, wait verdict, record | B: While at line 111: while (outcome := EVALUATOR[name](*[place(p) for p 
+  tokens 433-436 A=C B=S: new = False <NEWLINE>
+      A: hold(): thread synchronisation | B: Assign at line 120: new = False
+  tokens 437-481 A=R B=S: for p , v in zip ( places , outcome ) : <NEWLINE> <INDENT> if isinstance ( p , U
+      A: hold(): evaluate, wait verdict, record | B: For at line 121: for p, v in zip(places, outcome):
+  tokens 482-485 A=C B=S: new = True <NEWLINE>
+      A: hold(): thread synchronisation | B: Assign at line 124: new = True
+  tokens 486-487 A=R B=S: <DEDENT> <DEDENT>
+      A: hold(): evaluate, wait verdict, record | B: If at line 122: if isinstance(p, Unknown) and v is not None and p.name
+  tokens 488-497 A=C B=S: if new : <NEWLINE> <INDENT> told ( ) <NEWLINE> <DEDENT>
+      A: hold(): thread synchronisation | B: If at line 125: if new:
+  tokens 498-498 A=R B=S: <DEDENT>
+      A: hold(): evaluate, wait verdict, record | B: If at line 117: if outcome is False:
+  tokens 499-587 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> <DEDENT> <DED
+      A: hold(): thread synchronisation | B: AugAssign at line 127: count["busy"] -= 1
+
+## stdlib-concurrency/P07a.py: 1128 tokens, agreement 919/1128 (81.5%)
+  class  A      B
+  P      181    358
+  C      208    234
+  R      554    348
+  S      0      0
+  H      185    188
+  tokens 264-275 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 296-304 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 306-322 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 337-345 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 360-368 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 373-385 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 406-414 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 416-432 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 447-488 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 503-544 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 549-549 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 641-646 A=R B=C: waiting . clear ( ) <NEWLINE>
+      A: told(): clears the record of waiting relations | B: thread scheduling told: waiting.clear()
+  tokens 654-661 A=R B=C: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 673-676 A=R B=C: while ( outcome :=
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 694-699 A=R B=C: ) is None : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 741-741 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 837-837 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 1027-1027 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+  tokens 1048-1048 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+  tokens 1067-1067 A=P B=H: ,
+      A: the stage's relations, as written, by position | B: fixed harness read: s.constants[...]
+
+## stdlib-concurrency/P07b.py: 1055 tokens, agreement 870/1055 (82.5%)
+  class  A      B
+  P      142    297
+  C      211    237
+  R      531    348
+  S      0      0
+  H      171    173
+  tokens 79-88 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 102-114 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 124-128 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 138-142 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 147-147 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 368-379 A=R B=P: def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 400-408 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 410-426 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 441-482 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 497-538 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 543-543 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 635-640 A=R B=C: waiting . clear ( ) <NEWLINE>
+      A: told(): clears the record of waiting relations | B: thread scheduling told: waiting.clear()
+  tokens 648-655 A=R B=C: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 667-670 A=R B=C: while ( outcome :=
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 688-693 A=R B=C: ) is None : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 735-735 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 831-831 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 1005-1005 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 1025-1025 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## stdlib-concurrency/P07c.py: 1031 tokens, agreement 790/1031 (76.6%)
+  class  A      B
+  P      71     284
+  C      207    233
+  R      588    348
+  S      0      0
+  H      165    166
+  tokens 75-84 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 98-110 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 120-124 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 134-138 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 143-143 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 254-265 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 286-294 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 296-312 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 327-335 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 350-358 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 363-375 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 396-404 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 406-422 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 437-478 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 493-534 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 539-539 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 631-636 A=R B=C: waiting . clear ( ) <NEWLINE>
+      A: told(): clears the record of waiting relations | B: thread scheduling told: waiting.clear()
+  tokens 644-651 A=R B=C: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 663-666 A=R B=C: while ( outcome :=
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 684-689 A=R B=C: ) is None : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 731-731 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 827-827 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 1001-1001 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## stdlib-concurrency/P07d.py: 1068 tokens, agreement 926/1068 (86.7%)
+  class  A      B
+  P      192    304
+  C      215    241
+  R      488    348
+  S      0      0
+  H      173    175
+  tokens 150-161 A=R B=P: def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 182-190 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 192-208 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 223-231 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 246-254 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 259-271 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 292-300 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 302-318 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 333-341 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 356-364 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 369-369 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 637-642 A=R B=C: waiting . clear ( ) <NEWLINE>
+      A: told(): clears the record of waiting relations | B: thread scheduling told: waiting.clear()
+  tokens 650-657 A=R B=C: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 669-672 A=R B=C: while ( outcome :=
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 690-695 A=R B=C: ) is None : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 737-737 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 833-833 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 1020-1020 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 1038-1038 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## stdlib-concurrency/P07e.py: 1068 tokens, agreement 926/1068 (86.7%)
+  class  A      B
+  P      192    304
+  C      215    241
+  R      488    348
+  S      0      0
+  H      173    175
+  tokens 150-161 A=R B=P: def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 182-190 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 192-208 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 223-231 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 246-254 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 259-271 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 292-300 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 302-318 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 333-341 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 356-364 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 369-369 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 637-642 A=R B=C: waiting . clear ( ) <NEWLINE>
+      A: told(): clears the record of waiting relations | B: thread scheduling told: waiting.clear()
+  tokens 650-657 A=R B=C: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 669-672 A=R B=C: while ( outcome :=
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 690-695 A=R B=C: ) is None : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 737-737 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 833-833 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 1020-1020 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 1038-1038 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## stdlib-concurrency/P07f.py: 1055 tokens, agreement 813/1055 (77.1%)
+  class  A      B
+  P      85     297
+  C      211    237
+  R      588    348
+  S      0      0
+  H      171    173
+  tokens 79-88 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 102-114 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 124-128 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 138-142 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 147-147 A=R B=P: <DEDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 258-269 A=R B=P: def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 290-298 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 300-316 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 331-339 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 354-362 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 367-379 A=R B=P: <DEDENT> def times ( a , b , c ) : <NEWLINE> <INDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 400-408 A=R B=P: return a , b , a * b <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return a, b, a * b
+  tokens 410-426 A=R B=P: return ( a , b , c ) if a * b == c else False <NEWLINE>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: return (a, b, c) if a * b == c else Fals
+  tokens 441-482 A=R B=P: if a != 0 : <NEWLINE> <INDENT> return ( a , c // a , c ) if c % a == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if a != 0:
+  tokens 497-538 A=R B=P: if b != 0 : <NEWLINE> <INDENT> return ( c // b , b , c ) if c % b == 0 else Fals
+      A: times: evaluator of a relation this sub-problem does not use | B: times: integer relation case: if b != 0:
+  tokens 543-543 A=R B=P: <DEDENT>
+      A: times: evaluator of a relation this sub-problem does not use | B: times: arithmetic relation signature
+  tokens 635-640 A=R B=C: waiting . clear ( ) <NEWLINE>
+      A: told(): clears the record of waiting relations | B: thread scheduling told: waiting.clear()
+  tokens 648-655 A=R B=C: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 667-670 A=R B=C: while ( outcome :=
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 688-693 A=R B=C: ) is None : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 735-735 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 831-831 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 1005-1005 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+  tokens 1025-1025 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## stdlib-concurrency/P07g.py: 1030 tokens, agreement 855/1030 (83.0%)
+  class  A      B
+  P      137    284
+  C      207    233
+  R      522    348
+  S      0      0
+  H      164    165
+  tokens 74-83 A=R B=P: def equal ( a , b ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 97-109 A=R B=P: return ( a , b ) if a == b else False <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return (a, b) if a == b else False
+  tokens 119-123 A=R B=P: return a , a <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return a, a
+  tokens 133-137 A=R B=P: return b , b <NEWLINE>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: integer relation case: return b, b
+  tokens 142-154 A=R B=P: <DEDENT> def plus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: equal: evaluator of a relation this sub-problem does not use | B: equal: arithmetic relation signature
+  tokens 175-183 A=R B=P: return a , b , a + b <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, b, a + b
+  tokens 185-201 A=R B=P: return ( a , b , c ) if a + b == c else False <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return (a, b, c) if a + b == c else False
+  tokens 216-224 A=R B=P: return a , c - a , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return a, c - a, c
+  tokens 239-247 A=R B=P: return c - b , b , c <NEWLINE>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: integer relation case: return c - b, b, c
+  tokens 252-264 A=R B=P: <DEDENT> def minus ( a , b , c ) : <NEWLINE> <INDENT>
+      A: plus: evaluator of a relation this sub-problem does not use | B: plus: arithmetic relation signature
+  tokens 285-293 A=R B=P: return a , b , a - b <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, b, a - b
+  tokens 295-311 A=R B=P: return ( a , b , c ) if a - b == c else False <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return (a, b, c) if a - b == c else Fals
+  tokens 326-334 A=R B=P: return a , a - c , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return a, a - c, c
+  tokens 349-357 A=R B=P: return b + c , b , c <NEWLINE>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: integer relation case: return b + c, b, c
+  tokens 362-362 A=R B=P: <DEDENT>
+      A: minus: evaluator of a relation this sub-problem does not use | B: minus: arithmetic relation signature
+  tokens 630-635 A=R B=C: waiting . clear ( ) <NEWLINE>
+      A: told(): clears the record of waiting relations | B: thread scheduling told: waiting.clear()
+  tokens 643-650 A=R B=C: def hold ( rel ) : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 662-665 A=R B=C: while ( outcome :=
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 683-688 A=R B=C: ) is None : <NEWLINE> <INDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 730-730 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: while (outcome := EVALUATOR[name](*[place(
+  tokens 826-826 A=R B=C: <DEDENT>
+      A: hold(): holds one relation, decides it by its evaluator when it can, r | B: relation thread scheduling: def hold(rel):
+  tokens 1000-1000 A=P B=H: ,
+      A: a stage relation, as written | B: fixed harness read: s.constants[...]
+
+## stdlib-concurrency/P08a.py: 1324 tokens, agreement 816/1324 (61.6%)
+  class  A      B
+  P      403    418
+  C      282    46
+  R      325    84
+  S      0      448
+  H      314    328
+  tokens 34-55 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 56-69 A=R B=H: def __repr__ ( self ) : <NEWLINE> <INDENT> return self . name <NEWLINE> <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: output adapter __repr__
+  tokens 70-70 A=R B=S: <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 71-85 A=R B=P: UNKNOWN = { n : Unknown ( n ) for n in UNKNOWNS } <NEWLINE>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: UNKNOWN = {n: Unknown(n) for n in UNKNOWNS}
+  tokens 109-123 A=R B=S: known = { } <NEWLINE> waiting = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: stores of the holding: known, waiting, failed | B: known = {}
+  tokens 124-140 A=C B=S: count = { "busy" : 0 , "news" : 0 } <NEWLINE> defined = { } <NEWLINE>
+      A: count (busy threads, news) and defined (permission flags for definitio | B: count = {"busy": 0, "news": 0}
+  tokens 184-184 A=R B=P: <INDENT>
+      A: equal: test that both places are known | B: def equal(a, b):
+  tokens 197-197 A=P B=R: <INDENT>
+      A: equal: sequences decided place by place / fully known test | B: known-place dispatch in equal
+  tokens 272-272 A=P B=R: <INDENT>
+      A: equal: b computed from a | B: known-place dispatch in equal
+  tokens 286-286 A=P B=R: <INDENT>
+      A: equal: a computed from b | B: known-place dispatch in equal
+  tokens 308-308 A=R B=P: <INDENT>
+      A: prefix: test that s and p are known | B: def prefix(s, p, t):
+  tokens 321-321 A=P B=R: <INDENT>
+      A: prefix: decomposition of s by p, t computed | B: known-place dispatch in prefix
+  tokens 397-397 A=P B=R: <INDENT>
+      A: prefix: s computed from p and t | B: known-place dispatch in prefix
+  tokens 423-423 A=C B=P: <INDENT>
+      A: reverse: a known and rev's definition flagged as arrived | B: def reverse(a, b):
+  tokens 424-428 A=C B=R: if a is not None
+      A: reverse: a known and rev's definition flagged as arrived | B: known-place dispatch in reverse
+  tokens 435-435 A=P B=R: <INDENT>
+      A: reverse: b computed by rev forwards; no case applies -> does not hold | B: known-place dispatch in reverse
+  tokens 453-453 A=R B=P: <DEDENT>
+      A: reverse: test that b is unknown | B: if r is None:
+  tokens 460-460 A=P B=R: <INDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 466-466 A=P B=R: <DEDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 484-484 A=H B=P: <DEDENT>
+      A: cp.relations(equal, prefix) | B: def reverse(a, b):
+  tokens 498-540 A=R B=S: EVALUATOR = { "=" : equal , "++" : prefix , "rev" : reverse } <NEWLINE> def plac
+      A: EVALUATOR table and place() | B: EVALUATOR = {"=": equal, "++": prefix, "rev": reverse}
+  tokens 541-577 A=C B=S: <DEDENT> def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count
+      A: told(): count the news, wake every waiting relation thread | B: supporting mechanism: place
+  tokens 578-592 A=R B=S: <DEDENT> def hold ( rel ) : <NEWLINE> <INDENT> name , places = rel <NEWLINE>
+      A: hold(rel): the thread of one held relation: header, its places | B: supporting mechanism: told
+  tokens 593-596 A=C B=S: with changed : <NEWLINE>
+      A: with changed: (the relation thread takes the condition's lock) | B: supporting mechanism: hold
+  tokens 597-631 A=R B=S: <INDENT> while ( outcome := EVALUATOR [ name ] ( * [ place ( p ) for p in places
+      A: hold: evaluate; verdict to wait while the evaluator says None | B: supporting mechanism: hold
+  tokens 632-665 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold: busy count, notify, wait_for news | B: supporting mechanism: hold
+  tokens 666-697 A=R B=S: <DEDENT> if outcome is False : <NEWLINE> <INDENT> failed . append ( rel ) <NEWLI
+      A: hold: outcome False -> failed; list -> decided in its stead | B: supporting mechanism: hold
+  tokens 698-703 A=C B=S: <INDENT> pose ( decided_in_its_stead ) <NEWLINE>
+      A: hold: pose each equation decided in its stead (a new thread each) | B: supporting mechanism: hold
+  tokens 704-762 A=R B=S: <DEDENT> <DEDENT> else : <NEWLINE> <INDENT> new = False <NEWLINE> for p , v in z
+      A: hold: bind the places computed | B: supporting mechanism: hold
+  tokens 763-888 A=C B=S: <DEDENT> <DEDENT> if new : <NEWLINE> <INDENT> told ( ) <NEWLINE> <DEDENT> <DEDEN
+      A: hold: if new: told(); busy count; notify | B: supporting mechanism: hold
+  tokens 889-890 A=H B=S: <DEDENT> <DEDENT>
+      A: show() and report(): output adapters | B: supporting mechanism: settle
+  tokens 1076-1076 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: if s.k == 1:
+  tokens 1105-1105 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: elif s.k == 2:
+  tokens 1128-1128 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: elif s.k == 3:
+  tokens 1151-1151 A=P B=H: <INDENT>
+      A: stage 4: conc, forwards, by its two cases | B: elif s.k == 4:
+  tokens 1233-1233 A=H B=P: <DEDENT>
+      A: cp.relations(conc, rev) | B: def rev(a):
+  tokens 1261-1261 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: elif s.k == 5:
+  tokens 1284-1284 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: elif s.k == 6:
+  tokens 1292-1292 A=P B=H: ,
+      A: stage 6: b = PREFIX ++ c | B: stage constants read (preceding comma follows its argument, rule 20)
+  tokens 1305-1305 A=C B=H: <DEDENT>
+      A: settle(): wait for the relation threads | B: elif s.k == 6:
+  tokens 1318-1321 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## stdlib-concurrency/P08b.py: 1150 tokens, agreement 564/1150 (49.0%)
+  class  A      B
+  P      204    307
+  C      267    33
+  R      412    84
+  S      0      448
+  H      267    278
+  tokens 25-46 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 47-60 A=R B=H: def __repr__ ( self ) : <NEWLINE> <INDENT> return self . name <NEWLINE> <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: output adapter __repr__
+  tokens 61-61 A=R B=S: <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 62-76 A=R B=P: UNKNOWN = { n : Unknown ( n ) for n in UNKNOWNS } <NEWLINE>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: UNKNOWN = {n: Unknown(n) for n in UNKNOWNS}
+  tokens 98-112 A=R B=S: known = { } <NEWLINE> waiting = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: stores of the holding: known, waiting, failed | B: known = {}
+  tokens 113-129 A=C B=S: count = { "busy" : 0 , "news" : 0 } <NEWLINE> defined = { } <NEWLINE>
+      A: count (busy threads, news) and defined (permission flags for definitio | B: count = {"busy": 0, "news": 0}
+  tokens 173-173 A=R B=P: <INDENT>
+      A: equal: test that both places are known | B: def equal(a, b):
+  tokens 186-186 A=P B=R: <INDENT>
+      A: equal: sequences decided place by place / fully known test | B: known-place dispatch in equal
+  tokens 261-261 A=P B=R: <INDENT>
+      A: equal: b computed from a | B: known-place dispatch in equal
+  tokens 275-275 A=P B=R: <INDENT>
+      A: equal: a computed from b | B: known-place dispatch in equal
+  tokens 285-297 A=R B=P: <DEDENT> def prefix ( s , p , t ) : <NEWLINE> <INDENT>
+      A: prefix evaluator (s = p ++ t): a relation P08b does not have (dead cod | B: def equal(a, b):
+  tokens 311-372 A=R B=P: if not isinstance ( s , tuple ) or len ( s ) < len ( p ) : <NEWLINE> <INDENT> re
+      A: prefix evaluator (s = p ++ t): a relation P08b does not have (dead cod | B: if not isinstance(s, tuple) or len(s) < len(p):
+  tokens 387-397 A=R B=P: return ( p + t , p , t ) <NEWLINE>
+      A: prefix evaluator (s = p ++ t): a relation P08b does not have (dead cod | B: return (p + t, p, t)
+  tokens 412-412 A=C B=P: <INDENT>
+      A: reverse: a known and rev's definition flagged as arrived | B: def reverse(a, b):
+  tokens 413-417 A=C B=R: if a is not None
+      A: reverse: a known and rev's definition flagged as arrived | B: known-place dispatch in reverse
+  tokens 424-424 A=P B=R: <INDENT>
+      A: reverse: b computed by rev forwards; no case applies -> does not hold | B: known-place dispatch in reverse
+  tokens 442-442 A=R B=P: <DEDENT>
+      A: reverse: test that b is unknown | B: if r is None:
+  tokens 449-449 A=P B=R: <INDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 455-455 A=P B=R: <DEDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 473-473 A=H B=P: <DEDENT>
+      A: cp.relations(equal, prefix) | B: def reverse(a, b):
+  tokens 487-529 A=R B=S: EVALUATOR = { "=" : equal , "++" : prefix , "rev" : reverse } <NEWLINE> def plac
+      A: EVALUATOR table and place() | B: EVALUATOR = {"=": equal, "++": prefix, "rev": reverse}
+  tokens 530-566 A=C B=S: <DEDENT> def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count
+      A: told(): count the news, wake every waiting relation thread | B: supporting mechanism: place
+  tokens 567-581 A=R B=S: <DEDENT> def hold ( rel ) : <NEWLINE> <INDENT> name , places = rel <NEWLINE>
+      A: hold(rel): the thread of one held relation: header, its places | B: supporting mechanism: told
+  tokens 582-585 A=C B=S: with changed : <NEWLINE>
+      A: with changed: (the relation thread takes the condition's lock) | B: supporting mechanism: hold
+  tokens 586-620 A=R B=S: <INDENT> while ( outcome := EVALUATOR [ name ] ( * [ place ( p ) for p in places
+      A: hold: evaluate; verdict to wait while the evaluator says None | B: supporting mechanism: hold
+  tokens 621-654 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold: busy count, notify, wait_for news | B: supporting mechanism: hold
+  tokens 655-686 A=R B=S: <DEDENT> if outcome is False : <NEWLINE> <INDENT> failed . append ( rel ) <NEWLI
+      A: hold: outcome False -> failed; list -> decided in its stead | B: supporting mechanism: hold
+  tokens 687-692 A=C B=S: <INDENT> pose ( decided_in_its_stead ) <NEWLINE>
+      A: hold: pose each equation decided in its stead (a new thread each) | B: supporting mechanism: hold
+  tokens 693-751 A=R B=S: <DEDENT> <DEDENT> else : <NEWLINE> <INDENT> new = False <NEWLINE> for p , v in z
+      A: hold: bind the places computed | B: supporting mechanism: hold
+  tokens 752-877 A=C B=S: <DEDENT> <DEDENT> if new : <NEWLINE> <INDENT> told ( ) <NEWLINE> <DEDENT> <DEDEN
+      A: hold: if new: told(); busy count; notify | B: supporting mechanism: hold
+  tokens 878-879 A=H B=S: <DEDENT> <DEDENT>
+      A: show() and report(): output adapters | B: supporting mechanism: settle
+  tokens 1065-1065 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: if s.k == 1:
+  tokens 1094-1094 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: elif s.k == 2:
+  tokens 1117-1117 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: elif s.k == 3:
+  tokens 1131-1131 A=C B=H: <DEDENT>
+      A: settle(): wait for the relation threads | B: elif s.k == 3:
+  tokens 1144-1147 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## stdlib-concurrency/P08c.py: 1201 tokens, agreement 682/1201 (56.8%)
+  class  A      B
+  P      303    339
+  C      267    35
+  R      308    53
+  S      0      444
+  H      323    330
+  tokens 36-57 A=R B=S: class Unknown : <NEWLINE> <INDENT> def __init__ ( self , name ) : <NEWLINE> <IND
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 58-71 A=R B=H: def __repr__ ( self ) : <NEWLINE> <INDENT> return self . name <NEWLINE> <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: output adapter __repr__
+  tokens 72-72 A=R B=S: <DEDENT>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: supporting mechanism: Unknown
+  tokens 73-87 A=R B=P: UNKNOWN = { n : Unknown ( n ) for n in UNKNOWNS } <NEWLINE>
+      A: class Unknown and the UNKNOWN table: an unknown represented as a place | B: UNKNOWN = {n: Unknown(n) for n in UNKNOWNS}
+  tokens 95-109 A=R B=S: known = { } <NEWLINE> waiting = [ ] <NEWLINE> failed = [ ] <NEWLINE>
+      A: stores of the holding: known, waiting, failed | B: known = {}
+  tokens 110-126 A=C B=S: count = { "busy" : 0 , "news" : 0 } <NEWLINE> defined = { } <NEWLINE>
+      A: count (busy threads, news) and defined (permission flags for definitio | B: count = {"busy": 0, "news": 0}
+  tokens 170-170 A=R B=P: <INDENT>
+      A: equal: test that both places are known | B: def equal(a, b):
+  tokens 183-183 A=P B=R: <INDENT>
+      A: equal: sequences decided place by place / fully known test | B: known-place dispatch in equal
+  tokens 258-258 A=P B=R: <INDENT>
+      A: equal: b computed from a | B: known-place dispatch in equal
+  tokens 272-272 A=P B=R: <INDENT>
+      A: equal: a computed from b | B: known-place dispatch in equal
+  tokens 292-292 A=C B=P: <INDENT>
+      A: reverse: a known and rev's definition flagged as arrived | B: def reverse(a, b):
+  tokens 293-297 A=C B=R: if a is not None
+      A: reverse: a known and rev's definition flagged as arrived | B: known-place dispatch in reverse
+  tokens 304-304 A=P B=R: <INDENT>
+      A: reverse: b computed by rev forwards; no case applies -> does not hold | B: known-place dispatch in reverse
+  tokens 322-322 A=R B=P: <DEDENT>
+      A: reverse: test that b is unknown | B: if r is None:
+  tokens 329-329 A=P B=R: <INDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 335-335 A=P B=R: <DEDENT>
+      A: reverse: b given its value / equation b = r | B: known-place dispatch in reverse
+  tokens 353-353 A=H B=P: <DEDENT>
+      A: cp.relations(equal) | B: def reverse(a, b):
+  tokens 363-374 A=R B=S: EVALUATOR = { "=" : equal , "rev" : reverse } <NEWLINE>
+      A: EVALUATOR table | B: EVALUATOR = {"=": equal, "rev": reverse}
+  tokens 380-406 A=R B=S: def place ( p ) : <NEWLINE> <INDENT> return known . get ( p . name ) if isinstan
+      A: place() | B: supporting mechanism: place
+  tokens 407-443 A=C B=S: <DEDENT> def told ( ) : <NEWLINE> <INDENT> count [ "news" ] += 1 <NEWLINE> count
+      A: told(): count the news, wake every waiting relation thread | B: supporting mechanism: place
+  tokens 444-458 A=R B=S: <DEDENT> def hold ( rel ) : <NEWLINE> <INDENT> name , places = rel <NEWLINE>
+      A: hold(rel): the thread of one held relation: header, its places | B: supporting mechanism: told
+  tokens 459-462 A=C B=S: with changed : <NEWLINE>
+      A: with changed: (the relation thread takes the condition's lock) | B: supporting mechanism: hold
+  tokens 463-497 A=R B=S: <INDENT> while ( outcome := EVALUATOR [ name ] ( * [ place ( p ) for p in places
+      A: hold: evaluate; verdict to wait while the evaluator says None | B: supporting mechanism: hold
+  tokens 498-531 A=C B=S: count [ "busy" ] -= 1 <NEWLINE> changed . notify_all ( ) <NEWLINE> seen = count 
+      A: hold: busy count, notify, wait_for news | B: supporting mechanism: hold
+  tokens 532-563 A=R B=S: <DEDENT> if outcome is False : <NEWLINE> <INDENT> failed . append ( rel ) <NEWLI
+      A: hold: outcome False -> failed; list -> decided in its stead | B: supporting mechanism: hold
+  tokens 564-569 A=C B=S: <INDENT> pose ( decided_in_its_stead ) <NEWLINE>
+      A: hold: pose each equation decided in its stead (a new thread each) | B: supporting mechanism: hold
+  tokens 570-628 A=R B=S: <DEDENT> <DEDENT> else : <NEWLINE> <INDENT> new = False <NEWLINE> for p , v in z
+      A: hold: bind the places computed | B: supporting mechanism: hold
+  tokens 629-754 A=C B=S: <DEDENT> <DEDENT> if new : <NEWLINE> <INDENT> told ( ) <NEWLINE> <DEDENT> <DEDEN
+      A: hold: if new: told(); busy count; notify | B: supporting mechanism: hold
+  tokens 755-756 A=H B=S: <DEDENT> <DEDENT>
+      A: show() and report(): output adapters | B: supporting mechanism: settle
+  tokens 942-942 A=P B=H: <INDENT>
+      A: stage 1: conc, forwards, by its two cases | B: if s.k == 1:
+  tokens 983-983 A=H B=P: <DEDENT>
+      A: cp.relations(conc) | B: def conc(a, b):
+  tokens 1002-1002 A=C B=H: <INDENT>
+      A: pose(...): starts the relation's thread | B: elif s.k == 2:
+  tokens 1030-1030 A=P B=H: <INDENT>
+      A: stage 3: case-1 fact stored from the stage's constants | B: elif s.k == 3:
+  tokens 1079-1080 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.relations(rev) | B: if a == case1["first"]:
+  tokens 1104-1104 A=P B=H: <INDENT>
+      A: stage 4: rev redefined: header | B: elif s.k == 4:
+  tokens 1112-1128 A=R B=P: <INDENT> if a == case1 [ "first" ] : <NEWLINE> <INDENT> return case1 [ "second" 
+      A: stage 4: case 1 restated inside the new def | B: def rev(a):
+  tokens 1166-1167 A=H B=P: <DEDENT> <DEDENT>
+      A: cp.relations(rev) | B: if a:
+  tokens 1182-1182 A=C B=H: <DEDENT>
+      A: settle(): wait for the relation threads | B: elif s.k == 4:
+  tokens 1195-1198 A=H B=P: report ( ) <NEWLINE>
+      A: if not s.replay: report(); closing layout | B: report()
+
+## per system
+  core: 11520/14952 (77.0%)
+  extended: 17012/22063 (77.1%)
+  stdlib-concurrency: 10992/15362 (71.6%)
+
+## disagreements by (A, B) class
+  R→P: 4338
+  R→S: 4329
+  C→S: 1592
+  R→C: 528
+  S→C: 477
+  P→R: 437
+  P→S: 297
+  H→C: 210
+  H→P: 152
+  R→H: 96
+  P→C: 95
+  P→H: 92
+  C→R: 81
+  H→R: 72
+  H→S: 36
+  C→H: 18
+  C→P: 3

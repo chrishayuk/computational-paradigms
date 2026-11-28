@@ -1,0 +1,1370 @@
+[
+ {
+  "configuration": "core",
+  "instance": "P04a",
+  "program": "P04a.py",
+  "record": "results/python/core/P04/raw/P04a.behaviour.20261127T225146Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. error before any answer (RecursionError: maximum recursion depth exceeded); the left alternative/left-recursive case recursed until the recursion limit. x = 1 (the second alternative) is never reached: the endless alternative hides the finite one in depth-first order. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 8020. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P04b",
+  "program": "P04b.py",
+  "record": "results/python/core/P04/raw/P04b.behaviour.20261127T225149Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; answers reported before the error/budget are classed on the semantic axis",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. x = 1 reported first (['x = 1']); then the second alternative loop(x) recursed until RecursionError (RecursionError: maximum recursion depth exceeded): the computation did not finish. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 8055. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P04c",
+  "program": "P04c.py",
+  "record": "results/python/core/P04/raw/P04c.behaviour.20261127T225152Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. error before any answer (RecursionError: maximum recursion depth exceeded); the left alternative/left-recursive case recursed until the recursion limit. alist-left calls alist(m) with m unknown before testing s = <A> ++ m: no answer is found for the ground query. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 7013. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P04d",
+  "program": "P04d.py",
+  "record": "results/python/core/P04/raw/P04d.behaviour.20261127T225155Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. error before any answer (RecursionError: maximum recursion depth exceeded); the left alternative/left-recursive case recursed until the recursion limit. alist-left enumerates nothing: the first case recurses before any solution, so no solution would be reached given more steps (unfair, left recursion). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 7018. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P04e",
+  "program": "P04e.py",
+  "record": "results/python/core/P04/raw/P04e.behaviour.20261127T225159Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. reports \"true\" once and finishes; nothing pending at the end (the registered generator is exhausted). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 153. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P04f",
+  "program": "P04f.py",
+  "record": "results/python/core/P04/raw/P04f.behaviour.20261127T225201Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "partial",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (partial: nonempty proper subset); METRICS answer completeness (infinite)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. 20 answers collected (cap 20), in order of length: s = ⟨⟩ ... s = ⟨'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a⟩; more printed after the cap (224 more printed, not collected); budget ran out. No finite representation of the infinite set was given (answer completeness: no). Every solution would be reached given enough steps (alist-right enumerates <>, <A>, <A,A>, ... in order). 1 suspended generator (the query) pending at the budget. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 1. Steps (stage): 1000000. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/core/P05/raw/P05a.behaviour.20261127T225222Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 1', 'x = 2', 'x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 3}), not kept for backtracking; nothing suspended. Suspended at boundary: 0 {'comparisons waiting for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 261. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/core/P05/raw/P05a.behaviour.20261127T225222Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 2', 'x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 2}), not kept for backtracking; nothing suspended. x = 1, reported at stage 1, is withdrawn: it is dropped from the values held and not reported again; no explicit withdrawal is shown. Suspended at boundary: 0 {'comparisons waiting for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 164. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/core/P05/raw/P05a.behaviour.20261127T225222Z.json",
+  "stage": 3,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 1}), not kept for backtracking; nothing suspended. x = 2, reported at stages 1 and 2, is withdrawn the same way (not reported again, no explicit withdrawal). Suspended at boundary: 0 {'comparisons waiting for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 140. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05b",
+  "program": "P05b.py",
+  "record": "results/python/core/P05/raw/P05b.behaviour.20261127T225225Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation (x > 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held comparison ('>', 1) on x denotes every integer x > 1, which is the valid outcome (comparisons other than = hold only of integers); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. the comparison is held, not enumerated and not an error: main.suspended[comparisons waiting for x to have values] = [('>', 1)]; no values of x yet (problem-defined alternatives 0); nothing reported as an answer. held in the program's list `held` (1 item). Suspended at boundary: 1 {'comparisons waiting for x to have values': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 128. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05b",
+  "program": "P05b.py",
+  "record": "results/python/core/P05/raw/P05b.behaviour.20261127T225225Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. pick gives x its values and the held comparison is taken up: answers ['x = 2', 'x = 3']; values held all at once ({'values of x still held': 2}); nothing suspended. Same outcome as P05a stage 2. Suspended at boundary: 0 {'comparisons waiting for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 269. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/core/P05/raw/P05c.behaviour.20261127T225227Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 1', 'x = 2', 'x = 3']; values held all at once ({'values of x still held': 3}). Suspended at boundary: 0 {'comparisons waiting for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 261. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/core/P05/raw/P05c.behaviour.20261127T225227Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome: reported that there are none (answer completeness: yes)",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. no answers; printed 'no solution: no value of x satisfies the information so far': the empty outcome is reported as empty. values held: []. Stage 2 could be posed. x = 1, 2, 3, reported at stage 1, are withdrawn by the report of no solution. Suspended at boundary: 0 {'comparisons waiting for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 156. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/core/P05/raw/P05c.behaviour.20261127T225227Z.json",
+  "stage": 3,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome: reported that there are none (answer completeness: yes)",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. no answers; printed 'no solution: no value of x satisfies the information so far': the empty outcome is reported as empty. values held: []. Stage 3 could be posed. Suspended at boundary: 0 {'comparisons waiting for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 76. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06a",
+  "program": "P06a.py",
+  "record": "results/python/core/P06/raw/P06a.behaviour.20261127T225230Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation, not (x = 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held relation not (x = 1) denotes every value other than 1, the valid outcome; no domain is imposed (x ranges over all values); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. the negation is held as a condition until x has a value (delayed, not decided at once, not an error): main.suspended[relations waiting for values] = [('not =', (x, 1))]. Held in the list `held`. No answer reported. Suspended at boundary: 1 {'relations waiting for values': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 199. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06a",
+  "program": "P06a.py",
+  "record": "results/python/core/P06/raw/P06a.behaviour.20261127T225230Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. x = 2 binds x and the held negation is then decided (true) at stage 2; answer ['x = 2']; nothing held. Same outcome as P06b stage 2. Suspended at boundary: 0 {'relations waiting for values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 412. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06b",
+  "program": "P06b.py",
+  "record": "results/python/core/P06/raw/P06b.behaviour.20261127T225233Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. answer ['x = 2']; x = 2 binds x; nothing held. Suspended at boundary: 0 {'relations waiting for values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 295. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06b",
+  "program": "P06b.py",
+  "record": "results/python/core/P06/raw/P06b.behaviour.20261127T225233Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. answer ['x = 2']; the value comes first; the negation, arriving with x known, is decided at once; nothing held. Suspended at boundary: 0 {'relations waiting for values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 228. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06c",
+  "program": "P06c.py",
+  "record": "results/python/core/P06/raw/P06c.behaviour.20261127T225236Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation, not (x = 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held relation not (x = 1) denotes every value other than 1, the valid outcome; no domain is imposed (x ranges over all values); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. the negation is held as a condition until x has a value (delayed, not decided at once, not an error): main.suspended[relations waiting for values] = [('not =', (x, 1))]. Held in the list `held`. No answer reported. Suspended at boundary: 1 {'relations waiting for values': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 199. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06c",
+  "program": "P06c.py",
+  "record": "results/python/core/P06/raw/P06c.behaviour.20261127T225236Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome reported as none",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. x = 1 binds x and wakes the held negation, which is found not to hold; printed \"no solution: these relations do not hold: [('not =', (x, 1))]\"; no answer. observe also reads the binding x = 1 beside the relation recorded as failed; taken together they denote no solution, which the program reports. Suspended at boundary: 0 {'relations waiting for values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 356. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06d",
+  "program": "P06d.py",
+  "record": "results/python/core/P06/raw/P06d.behaviour.20261127T225238Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. answer ['d = ⟨1,3⟩']; finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 521. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06e1",
+  "program": "P06e1.py",
+  "record": "results/python/core/P06/raw/P06e1.behaviour.20261127T225241Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. reports ['true'] once (brown does not take c301); finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 198. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06e2",
+  "program": "P06e2.py",
+  "record": "results/python/core/P06/raw/P06e2.behaviour.20261127T225244Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome reported as none",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. no answer; printed 'false: nonmajor does not hold': false reported; finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 190. Manual actions: none. "
+ },
+ {
+  "configuration": "core",
+  "instance": "P06e3",
+  "program": "P06e3.py",
+  "record": "results/python/core/P06/raw/P06e3.behaviour.20261127T225246Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. answer [\"p = 'brown\"]; p and k are both known before not takes(p, k) is decided (student generates p, maths generates k, then the negation is tested on known values). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 258. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P04a",
+  "program": "P04a.py",
+  "record": "results/python/extended/P04/raw/P04a.behaviour.20261127T225337Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. budget (10^6 instructions) ran out before any answer; the S search is iterative, so the endless branch never errs: 12768 choice points held on the search stack at the budget, kept for backtracking. x = 1 (the second alternative) is never reached: the endless alternative hides the finite one in depth-first order. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 12768. Steps (stage): 1000000. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P04b",
+  "program": "P04b.py",
+  "record": "results/python/extended/P04/raw/P04b.behaviour.20261127T225359Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; answers reported before the error/budget are classed on the semantic axis",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. x = 1 reported first (['x = 1']); then the second alternative loop(x) ran to the budget: 12762 choice points on the search stack. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 12762. Steps (stage): 1000000. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P04c",
+  "program": "P04c.py",
+  "record": "results/python/extended/P04/raw/P04c.behaviour.20261127T225421Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. budget (10^6 instructions) ran out before any answer; the S search is iterative, so the endless branch never errs: 10267 choice points held on the search stack at the budget, kept for backtracking. alist-left calls alist(m) with m unknown before testing s = <A> ++ m: no answer is found for the ground query. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 10267. Steps (stage): 1000000. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P04d",
+  "program": "P04d.py",
+  "record": "results/python/extended/P04/raw/P04d.behaviour.20261127T225446Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. budget (10^6 instructions) ran out before any answer; the S search is iterative, so the endless branch never errs: 10267 choice points held on the search stack at the budget, kept for backtracking. alist-left enumerates nothing: the first case recurses before any solution, so no solution would be reached given more steps (unfair, left recursion). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 10267. Steps (stage): 1000000. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P04e",
+  "program": "P04e.py",
+  "record": "results/python/extended/P04/raw/P04e.behaviour.20261127T225511Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. reports \"true\" once and finishes; nothing pending at the end (search stack empty). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 5723. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P04f",
+  "program": "P04f.py",
+  "record": "results/python/extended/P04/raw/P04f.behaviour.20261127T225514Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "partial",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (partial: nonempty proper subset); METRICS answer completeness (infinite)",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. 20 answers collected (cap 20), in order of length: s = ⟨⟩ ... s = ⟨'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a⟩; more printed after the cap (132 more printed, not collected); budget ran out. No finite representation of the infinite set was given (answer completeness: no). Every solution would be reached given enough steps (alist-right enumerates <>, <A>, <A,A>, ... in order). 154 choice points on the search stack pending at the budget. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 154. Steps (stage): 1000000. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/extended/P05/raw/P05a.behaviour.20261127T225535Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. answers ['x = 1', 'x = 2', 'x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 3}), not kept for backtracking; nothing suspended. Suspended at boundary: 0 {'comparisons waiting for x to have a domain': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 4727. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/extended/P05/raw/P05a.behaviour.20261127T225535Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. answers ['x = 2', 'x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 2}), not kept for backtracking; nothing suspended. x = 1, reported at stage 1, is withdrawn: it is dropped from the values held and not reported again; no explicit withdrawal is shown. Suspended at boundary: 0 {'comparisons waiting for x to have a domain': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 958. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/extended/P05/raw/P05a.behaviour.20261127T225535Z.json",
+  "stage": 3,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. answers ['x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 1}), not kept for backtracking; nothing suspended. x = 2, reported at stages 1 and 2, is withdrawn the same way (not reported again, no explicit withdrawal). Suspended at boundary: 0 {'comparisons waiting for x to have a domain': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 990. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05b",
+  "program": "P05b.py",
+  "record": "results/python/extended/P05/raw/P05b.behaviour.20261127T225538Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation (x > 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held comparison ('>', 1) on x denotes every integer x > 1, which is the valid outcome (comparisons other than = hold only of integers); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. the comparison is held, not enumerated and not an error: main.suspended[comparisons waiting for x to have a domain] = [('>', 1)]; no values of x yet (problem-defined alternatives 0); nothing reported as an answer. held by the program's own list (rule 19, R) until pick gives x a finite domain; no finite domain is imposed (AMENDMENTS 3.4 respected). Suspended at boundary: 1 {'comparisons waiting for x to have a domain': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 4300. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05b",
+  "program": "P05b.py",
+  "record": "results/python/extended/P05/raw/P05b.behaviour.20261127T225538Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. pick gives x its values and the held comparison is taken up: answers ['x = 2', 'x = 3']; values held all at once ({'values of x still held': 2}); nothing suspended. Same outcome as P05a stage 2. Suspended at boundary: 0 {'comparisons waiting for x to have a domain': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 1084. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/extended/P05/raw/P05c.behaviour.20261127T225540Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. answers ['x = 1', 'x = 2', 'x = 3']; values held all at once ({'values of x still held': 3}). Suspended at boundary: 0 {'comparisons waiting for x to have a domain': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 4727. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/extended/P05/raw/P05c.behaviour.20261127T225540Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome: reported that there are none (answer completeness: yes)",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. no answers; printed \"no solution: the domain of x is empty; constraints that emptied it: ['x = 4']\": the empty outcome is reported as empty. The store holds x with an empty domain and the posted constraints. Stage 2 could be posed. x = 1, 2, 3, reported at stage 1, are withdrawn by the report of no solution. Suspended at boundary: 0 {'comparisons waiting for x to have a domain': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 491. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/extended/P05/raw/P05c.behaviour.20261127T225540Z.json",
+  "stage": 3,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome: reported that there are none (answer completeness: yes)",
+  "observations": "Unknowns: x is a variable name of the propagator store (\"x\"), with no domain until a relation gives it one. no answers; printed \"no solution: the domain of x is empty; constraints that emptied it: ['x = 4']\": the empty outcome is reported as empty. The store holds x with an empty domain and the posted constraints. Stage 3 could be posed. Suspended at boundary: 0 {'comparisons waiting for x to have a domain': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 295. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06a",
+  "program": "P06a.py",
+  "record": "results/python/extended/P06/raw/P06a.behaviour.20261127T225543Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation, not (x = 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held relation not (x = 1) denotes every value other than 1, the valid outcome; no domain is imposed (x ranges over all values); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. the negation is held as a condition until x has a value (delayed, not decided at once, not an error): main.suspended[goals waiting for a binding] = {1: not =(x, 1)}. Held as a goal of the S queue, waiting on x. No answer reported. Suspended at boundary: 1 {'goals waiting for a binding': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 2663. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06a",
+  "program": "P06a.py",
+  "record": "results/python/extended/P06/raw/P06a.behaviour.20261127T225543Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. x = 2 binds x and the held negation is then decided (true) at stage 2; answer ['x = 2']; nothing held. Same outcome as P06b stage 2. Suspended at boundary: 0 {'goals waiting for a binding': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 624. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06b",
+  "program": "P06b.py",
+  "record": "results/python/extended/P06/raw/P06b.behaviour.20261127T225546Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. answer ['x = 2']; x = 2 binds x; nothing held. Suspended at boundary: 0 {'goals waiting for a binding': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 2733. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06b",
+  "program": "P06b.py",
+  "record": "results/python/extended/P06/raw/P06b.behaviour.20261127T225546Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. answer ['x = 2']; the value comes first; the negation, arriving with x known, is decided at once; nothing held. Suspended at boundary: 0 {'goals waiting for a binding': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 353. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06c",
+  "program": "P06c.py",
+  "record": "results/python/extended/P06/raw/P06c.behaviour.20261127T225548Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation, not (x = 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held relation not (x = 1) denotes every value other than 1, the valid outcome; no domain is imposed (x ranges over all values); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. the negation is held as a condition until x has a value (delayed, not decided at once, not an error): main.suspended[goals waiting for a binding] = {1: not =(x, 1)}. Held as a goal of the S queue, waiting on x. No answer reported. Suspended at boundary: 1 {'goals waiting for a binding': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 2663. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06c",
+  "program": "P06c.py",
+  "record": "results/python/extended/P06/raw/P06c.behaviour.20261127T225548Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome reported as none",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. x = 1 binds x and wakes the held negation, which is found not to hold; printed 'no solution: these relations do not hold: [not =(1, 1)]'; no answer. observe also reads the binding x = 1 beside the relation recorded as failed; taken together they denote no solution, which the program reports. Suspended at boundary: 0 {'goals waiting for a binding': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 563. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06d",
+  "program": "P06d.py",
+  "record": "results/python/extended/P06/raw/P06d.behaviour.20261127T225551Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. answer ['d = ⟨1,3⟩']; finished. The search exhausts and undoes its bindings: observe shows d unbound after the stage, the answer having been reported while it was bound. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 35751. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06e1",
+  "program": "P06e1.py",
+  "record": "results/python/extended/P06/raw/P06e1.behaviour.20261127T225554Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. reports ['true'] once (brown does not take c301); finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 6693. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06e2",
+  "program": "P06e2.py",
+  "record": "results/python/extended/P06/raw/P06e2.behaviour.20261127T225556Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome reported as none",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. no answer; printed 'false: nonmajor does not hold': false reported; finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 6873. Manual actions: none. "
+ },
+ {
+  "configuration": "extended",
+  "instance": "P06e3",
+  "program": "P06e3.py",
+  "record": "results/python/extended/P06/raw/P06e3.behaviour.20261127T225559Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: unknowns are Vars of the S suspension queue (S/suspend.py), unbound until bound. answer [\"p = 'brown\"]; p and k are both known before not takes(p, k) is decided (student generates p, maths generates k, then the negation is tested on known values). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 9218. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P04a",
+  "program": "P04a.py",
+  "record": "results/python/stdlib-concurrency/P04/raw/P04a.behaviour.20261127T225641Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. error before any answer (RecursionError: maximum recursion depth exceeded); the left alternative/left-recursive case recursed until the recursion limit. x = 1 (the second alternative) is never reached: the endless alternative hides the finite one in depth-first order. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 8020. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P04b",
+  "program": "P04b.py",
+  "record": "results/python/stdlib-concurrency/P04/raw/P04b.behaviour.20261127T225644Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; answers reported before the error/budget are classed on the semantic axis",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. x = 1 reported first (['x = 1']); then the second alternative loop(x) recursed until RecursionError (RecursionError: maximum recursion depth exceeded): the computation did not finish. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 8055. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P04c",
+  "program": "P04c.py",
+  "record": "results/python/stdlib-concurrency/P04/raw/P04c.behaviour.20261127T225648Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. error before any answer (RecursionError: maximum recursion depth exceeded); the left alternative/left-recursive case recursed until the recursion limit. alist-left calls alist(m) with m unknown before testing s = <A> ++ m: no answer is found for the ground query. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 7013. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P04d",
+  "program": "P04d.py",
+  "record": "results/python/stdlib-concurrency/P04/raw/P04d.behaviour.20261127T225651Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "none reported",
+  "representation": null,
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "error"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (none reported), 3 (error verbatim / budget presumed nontermination)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. error before any answer (RecursionError: maximum recursion depth exceeded); the left alternative/left-recursive case recursed until the recursion limit. alist-left enumerates nothing: the first case recurses before any solution, so no solution would be reached given more steps (unfair, left recursion). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 7018. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P04e",
+  "program": "P04e.py",
+  "record": "results/python/stdlib-concurrency/P04/raw/P04e.behaviour.20261127T225655Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. reports \"true\" once and finishes; nothing pending at the end (the registered generator is exhausted). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 153. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P04f",
+  "program": "P04f.py",
+  "record": "results/python/stdlib-concurrency/P04/raw/P04f.behaviour.20261127T225657Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "partial",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "budget"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 1 (partial: nonempty proper subset); METRICS answer completeness (infinite)",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. 20 answers collected (cap 20), in order of length: s = ⟨⟩ ... s = ⟨'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a,'a⟩; more printed after the cap (224 more printed, not collected); budget ran out. No finite representation of the infinite set was given (answer completeness: no). Every solution would be reached given enough steps (alist-right enumerates <>, <A>, <A,A>, ... in order). 1 suspended generator (the query) pending at the budget. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 1. Steps (stage): 1000000. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05a.behaviour.20261127T225718Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 1', 'x = 2', 'x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 3}), not kept for backtracking; nothing suspended. Suspended at boundary: 0 {'comparisons waiting in their threads for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 1086. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05a.behaviour.20261127T225718Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 2', 'x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 2}), not kept for backtracking; nothing suspended. x = 1, reported at stage 1, is withdrawn: it is dropped from the values held and not reported again; no explicit withdrawal is shown. Suspended at boundary: 0 {'comparisons waiting in their threads for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 843. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05a",
+  "program": "P05a.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05a.behaviour.20261127T225718Z.json",
+  "stage": 3,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 3']; values of x held all at once (problem-defined alternatives: {'values of x still held': 1}), not kept for backtracking; nothing suspended. x = 2, reported at stages 1 and 2, is withdrawn the same way (not reported again, no explicit withdrawal). Suspended at boundary: 0 {'comparisons waiting in their threads for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 819. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05b",
+  "program": "P05b.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05b.behaviour.20261127T225720Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation (x > 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held comparison ('>', 1) on x denotes every integer x > 1, which is the valid outcome (comparisons other than = hold only of integers); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. the comparison is held, not enumerated and not an error: main.suspended[comparisons waiting in their threads for x to have values] = [('>', 1)]; no values of x yet (problem-defined alternatives 0); nothing reported as an answer. its thread waits on the condition `changed` (1 waiting thread). Suspended at boundary: 1 {'comparisons waiting in their threads for x to have values': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 895. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05b",
+  "program": "P05b.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05b.behaviour.20261127T225720Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. pick gives x its values and the held comparison is taken up: answers ['x = 2', 'x = 3']; values held all at once ({'values of x still held': 2}); nothing suspended. Same outcome as P05a stage 2. Suspended at boundary: 0 {'comparisons waiting in their threads for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 1268. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05c.behaviour.20261127T225723Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. answers ['x = 1', 'x = 2', 'x = 3']; values held all at once ({'values of x still held': 3}). Suspended at boundary: 0 {'comparisons waiting in their threads for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 1086. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05c.behaviour.20261127T225723Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome: reported that there are none (answer completeness: yes)",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. no answers; printed 'no solution: no value of x satisfies the information so far': the empty outcome is reported as empty. values held: []. Stage 2 could be posed. x = 1, 2, 3, reported at stage 1, are withdrawn by the report of no solution. Suspended at boundary: 0 {'comparisons waiting in their threads for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 835. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P05c",
+  "program": "P05c.py",
+  "record": "results/python/stdlib-concurrency/P05/raw/P05c.behaviour.20261127T225723Z.json",
+  "stage": 3,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome: reported that there are none (answer completeness: yes)",
+  "observations": "Unknowns: x is represented by the list of its values still held (values) and the flag x_has_values; no value list while no relation has given values. no answers; printed 'no solution: no value of x satisfies the information so far': the empty outcome is reported as empty. values held: []. Stage 3 could be posed. Suspended at boundary: 0 {'comparisons waiting in their threads for x to have values': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 755. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06a",
+  "program": "P06a.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06a.behaviour.20261127T225726Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation, not (x = 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held relation not (x = 1) denotes every value other than 1, the valid outcome; no domain is imposed (x ranges over all values); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. the negation is held as a condition until x has a value (delayed, not decided at once, not an error): main.suspended[relations waiting in their threads] = [('not =', (x, 1))]. Held by a thread waiting on the condition `changed`. No answer reported. Suspended at boundary: 1 {'relations waiting in their threads': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 948. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06a",
+  "program": "P06a.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06a.behaviour.20261127T225726Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. x = 2 binds x and the held negation is then decided (true) at stage 2; answer ['x = 2']; nothing held. Same outcome as P06b stage 2. Suspended at boundary: 0 {'relations waiting in their threads': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 1268. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06b",
+  "program": "P06b.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06b.behaviour.20261127T225729Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. answer ['x = 2']; x = 2 binds x; nothing held. Suspended at boundary: 0 {'relations waiting in their threads': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 1080. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06b",
+  "program": "P06b.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06b.behaviour.20261127T225729Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. answer ['x = 2']; the value comes first; the negation, arriving with x known, is decided at once; nothing held. Suspended at boundary: 0 {'relations waiting in their threads': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 863. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06c",
+  "program": "P06c.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06c.behaviour.20261127T225731Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "residual",
+  "simplification": "reduced",
+  "identical_to_posed": true,
+  "residual_size": "1 relation, not (x = 1), 1 occurrence of x; input: 1 relation, 1 occurrence",
+  "execution_state": [
+   "suspended"
+  ],
+  "residual_equivalence": "equivalent: the held relation not (x = 1) denotes every value other than 1, the valid outcome; no domain is imposed (x ranges over all values); checked by hand and on a sample by residuals.py",
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; SPEC Outcomes 2 (residual held and acted on at stage 2, read by observe)",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. the negation is held as a condition until x has a value (delayed, not decided at once, not an error): main.suspended[relations waiting in their threads] = [('not =', (x, 1))]. Held by a thread waiting on the condition `changed`. No answer reported. Suspended at boundary: 1 {'relations waiting in their threads': 1}; alternatives (cp.pending) at boundary: 0. Steps (stage): 948. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06c",
+  "program": "P06c.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06c.behaviour.20261127T225731Z.json",
+  "stage": 2,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome reported as none",
+  "observations": "Unknowns: x is an object of the program's class Unknown, a place of the held relations; its value, once known, is in the dict known. x = 1 binds x and wakes the held negation, which is found not to hold; printed \"no solution: these relations do not hold: [('not =', (x, 1))]\"; no answer. observe also reads the binding x = 1 beside the relation recorded as failed; taken together they denote no solution, which the program reports. Suspended at boundary: 0 {'relations waiting in their threads': 0}; alternatives (cp.pending) at boundary: 0. Steps (stage): 1210. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06d",
+  "program": "P06d.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06d.behaviour.20261127T225734Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. answer ['d = ⟨1,3⟩']; finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 521. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06e1",
+  "program": "P06e1.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06e1.behaviour.20261127T225737Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. reports ['true'] once (brown does not take c301); finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 198. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06e2",
+  "program": "P06e2.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06e2.behaviour.20261127T225739Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes; empty valid outcome reported as none",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. no answer; printed 'false: nonmajor does not hold': false reported; finished. Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 190. Manual actions: none. "
+ },
+ {
+  "configuration": "stdlib-concurrency",
+  "instance": "P06e3",
+  "program": "P06e3.py",
+  "record": "results/python/stdlib-concurrency/P06/raw/P06e3.behaviour.20261127T225742Z.json",
+  "stage": 1,
+  "reached": true,
+  "semantic": "complete",
+  "representation": "explicit",
+  "simplification": null,
+  "identical_to_posed": null,
+  "residual_size": null,
+  "execution_state": [
+   "finished"
+  ],
+  "residual_equivalence": null,
+  "rule": "SPECIFICATION.md Outcomes 1-3; problem file valid outcomes",
+  "observations": "Unknowns: an unknown is None as a generator argument; the generator yields its values. answer [\"p = 'brown\"]; p and k are both known before not takes(p, k) is decided (student generates p, maths generates k, then the negation is tested on known values). Suspended at boundary: 0 ; alternatives (cp.pending) at boundary: 0. Steps (stage): 258. Manual actions: none. "
+ }
+]

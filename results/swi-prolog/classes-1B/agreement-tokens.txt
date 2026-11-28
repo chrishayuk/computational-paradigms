@@ -1,0 +1,678 @@
+
+## constraints/P04a.pl: 63 tokens, agreement 63/63 (100.0%)
+  class  A      B
+  P      35     35
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## constraints/P04b.pl: 63 tokens, agreement 63/63 (100.0%)
+  class  A      B
+  P      35     35
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## constraints/P04c.pl: 73 tokens, agreement 73/73 (100.0%)
+  class  A      B
+  P      47     47
+  C      0      0
+  R      0      0
+  S      0      0
+  H      26     26
+
+## constraints/P04d.pl: 56 tokens, agreement 56/56 (100.0%)
+  class  A      B
+  P      28     28
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## constraints/P04e.pl: 69 tokens, agreement 69/69 (100.0%)
+  class  A      B
+  P      43     43
+  C      0      0
+  R      0      0
+  S      0      0
+  H      26     26
+
+## constraints/P04f.pl: 52 tokens, agreement 52/52 (100.0%)
+  class  A      B
+  P      24     24
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## constraints/P05a.pl: 125 tokens, agreement 125/125 (100.0%)
+  class  A      B
+  P      73     73
+  C      0      0
+  R      0      0
+  S      0      0
+  H      52     52
+
+## constraints/P05b.pl: 92 tokens, agreement 92/92 (100.0%)
+  class  A      B
+  P      52     52
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## constraints/P05c.pl: 112 tokens, agreement 112/112 (100.0%)
+  class  A      B
+  P      60     60
+  C      0      0
+  R      0      0
+  S      0      0
+  H      52     52
+
+## constraints/P06a.pl: 79 tokens, agreement 79/79 (100.0%)
+  class  A      B
+  P      39     39
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## constraints/P06b.pl: 79 tokens, agreement 79/79 (100.0%)
+  class  A      B
+  P      39     39
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## constraints/P06c.pl: 79 tokens, agreement 79/79 (100.0%)
+  class  A      B
+  P      39     39
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## constraints/P06d.pl: 183 tokens, agreement 183/183 (100.0%)
+  class  A      B
+  P      155    155
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## constraints/P06e1.pl: 138 tokens, agreement 138/138 (100.0%)
+  class  A      B
+  P      98     98
+  C      14     14
+  R      0      0
+  S      0      0
+  H      26     26
+
+## constraints/P06e2.pl: 138 tokens, agreement 138/138 (100.0%)
+  class  A      B
+  P      98     98
+  C      14     14
+  R      0      0
+  S      0      0
+  H      26     26
+
+## constraints/P06e3.pl: 125 tokens, agreement 125/125 (100.0%)
+  class  A      B
+  P      83     83
+  C      14     14
+  R      0      0
+  S      0      0
+  H      28     28
+
+## constraints/P07a.pl: 205 tokens, agreement 107/205 (52.2%)
+  class  A      B
+  P      169    71
+  C      0      50
+  R      0      48
+  S      0      0
+  H      36     36
+  tokens 24-38 A=P B=R: relation ( '1' , [ X , Y , Z ] , Cs ) :-
+      A: presentation-order dispatch, relation: relation ( '1' , [ X , Y , Z ]  | B: auxiliary numbered-conjunct dispatch head (extra arguments)
+  tokens 57-72 A=P B=R: . relation ( '2' , [ _ , Y , Z ] , Cs ) :-
+      A: presentation-order dispatch, relation: relation ( '1' , [ X , Y , Z ]  | B: enclosing relation clause terminator
+  tokens 89-104 A=P B=R: . relation ( '3' , [ _ , _ , Z ] , Cs ) :-
+      A: presentation-order dispatch, relation: relation ( '2' , [ _ , Y , Z ]  | B: enclosing relation clause terminator
+  tokens 118-118 A=P B=R: .
+      A: presentation-order dispatch, relation: relation ( '3' , [ _ , _ , Z ]  | B: enclosing relation clause terminator
+  tokens 119-159 A=P B=C: relations ( [ ] , _ , _ ) . relations ( [ N | Ns ] , Vs , Cs ) :- relation ( N ,
+      A: presentation-order dispatch, relations: relations ( [ ] , _ , _ ) . | B: ordered traversal of conjuncts supplied as instance parameter
+  tokens 188-196 A=P B=C: , relations ( Order , Vs , Cs )
+      A: the conjunction of the stage's relations in the instance's presentatio | B: traverse the problem-specified order of conjuncts
+
+## constraints/P07b.pl: 84 tokens, agreement 84/84 (100.0%)
+  class  A      B
+  P      52     52
+  C      0      0
+  R      0      0
+  S      0      0
+  H      32     32
+
+## constraints/P07c.pl: 62 tokens, agreement 62/62 (100.0%)
+  class  A      B
+  P      30     30
+  C      0      0
+  R      0      0
+  S      0      0
+  H      32     32
+
+## constraints/P07d.pl: 89 tokens, agreement 89/89 (100.0%)
+  class  A      B
+  P      53     53
+  C      0      0
+  R      0      0
+  S      0      0
+  H      36     36
+
+## constraints/P07e.pl: 89 tokens, agreement 89/89 (100.0%)
+  class  A      B
+  P      53     53
+  C      0      0
+  R      0      0
+  S      0      0
+  H      36     36
+
+## constraints/P07f.pl: 84 tokens, agreement 84/84 (100.0%)
+  class  A      B
+  P      52     52
+  C      0      0
+  R      0      0
+  S      0      0
+  H      32     32
+
+## constraints/P07g.pl: 58 tokens, agreement 58/58 (100.0%)
+  class  A      B
+  P      30     30
+  C      0      0
+  R      0      0
+  S      0      0
+  H      28     28
+
+## constraints/P08a-unknown-fail.pl: 289 tokens, agreement 289/289 (100.0%)
+  class  A      B
+  P      135    135
+  C      8      8
+  R      0      0
+  S      0      0
+  H      146    146
+
+## constraints/P08a.pl: 281 tokens, agreement 281/281 (100.0%)
+  class  A      B
+  P      135    135
+  C      0      0
+  R      0      0
+  S      0      0
+  H      146    146
+
+## constraints/P08b-unknown-fail.pl: 110 tokens, agreement 110/110 (100.0%)
+  class  A      B
+  P      18     18
+  C      8      8
+  R      0      0
+  S      0      0
+  H      84     84
+
+## constraints/P08b.pl: 102 tokens, agreement 102/102 (100.0%)
+  class  A      B
+  P      18     18
+  C      0      0
+  R      0      0
+  S      0      0
+  H      84     84
+
+## constraints/P08c-unknown-fail.pl: 197 tokens, agreement 197/197 (100.0%)
+  class  A      B
+  P      131    131
+  C      8      8
+  R      0      0
+  S      0      0
+  H      58     58
+
+## constraints/P08c.pl: 189 tokens, agreement 189/189 (100.0%)
+  class  A      B
+  P      131    131
+  C      0      0
+  R      0      0
+  S      0      0
+  H      58     58
+
+## coroutines/P05a.pl: 120 tokens, agreement 119/120 (99.2%)
+  class  A      B
+  P      63     62
+  C      5      6
+  R      0      0
+  S      0      0
+  H      52     52
+  tokens 79-79 A=P B=C: ,
+      A: the goal freeze/2 holds: X > K | B: freeze suspension and watched variable
+
+## coroutines/P05b.pl: 87 tokens, agreement 86/87 (98.9%)
+  class  A      B
+  P      42     41
+  C      5      6
+  R      0      0
+  S      0      0
+  H      40     40
+  tokens 53-53 A=P B=C: ,
+      A: the goal freeze/2 holds: X > K | B: freeze suspension and watched variable
+
+## coroutines/P07a.pl: 324 tokens, agreement 160/324 (49.4%)
+  class  A      B
+  P      237    73
+  C      38     89
+  R      13     126
+  S      0      0
+  H      36     36
+  tokens 15-23 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 57-57 A=P B=C: ,
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 58-65 A=P B=R: sum_known ( A , B , C )
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 67-76 A=P B=R: . sum_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 88-103 A=P B=R: , C is A + B . sum_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 110-146 A=P B=R: , B is C - A . sum_known ( A , B , C ) :- A is C - B . relation ( '1' , [ X , Y 
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 174-189 A=P B=R: . relation ( '2' , [ _ , Y , Z ] , Cs ) :-
+      A: presentation-order dispatch, relation: relation ( '1' , [ X , Y , Z ]  | B: enclosing relation clause terminator
+  tokens 208-223 A=P B=R: . relation ( '3' , [ _ , _ , Z ] , Cs ) :-
+      A: presentation-order dispatch, relation: relation ( '2' , [ _ , Y , Z ]  | B: enclosing relation clause terminator
+  tokens 237-237 A=P B=R: .
+      A: presentation-order dispatch, relation: relation ( '3' , [ _ , _ , Z ]  | B: enclosing relation clause terminator
+  tokens 238-278 A=P B=C: relations ( [ ] , _ , _ ) . relations ( [ N | Ns ] , Vs , Cs ) :- relation ( N ,
+      A: presentation-order dispatch, relations: relations ( [ ] , _ , _ ) . | B: ordered traversal of conjuncts supplied as instance parameter
+  tokens 307-315 A=P B=C: , relations ( Order , Vs , Cs )
+      A: the conjunction of the stage's relations in the instance's presentatio | B: traverse the problem-specified order of conjuncts
+
+## coroutines/P07b.pl: 313 tokens, agreement 181/313 (57.8%)
+  class  A      B
+  P      179    47
+  C      76     78
+  R      26     156
+  S      0      0
+  H      32     32
+  tokens 10-18 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 52-52 A=P B=C: ,
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 53-60 A=P B=R: sum_known ( A , B , C )
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 62-71 A=P B=R: . sum_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 83-98 A=P B=R: , C is A + B . sum_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 105-135 A=P B=R: , B is C - A . sum_known ( A , B , C ) :- A is C - B . diff ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 169-169 A=P B=C: ,
+      A: the goal when/2 holds: diff_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 170-177 A=P B=R: diff_known ( A , B , C )
+      A: the goal when/2 holds: diff_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 179-188 A=P B=R: . diff_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 200-215 A=P B=R: , C is A - B . diff_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 222-243 A=P B=R: , B is A - C . diff_known ( A , B , C ) :- A is B + C .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## coroutines/P07c.pl: 172 tokens, agreement 106/172 (61.6%)
+  class  A      B
+  P      89     23
+  C      38     39
+  R      13     78
+  S      0      0
+  H      32     32
+  tokens 5-13 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 47-47 A=P B=C: ,
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 48-55 A=P B=R: sum_known ( A , B , C )
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 57-66 A=P B=R: . sum_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 78-93 A=P B=R: , C is A + B . sum_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 100-121 A=P B=R: , B is C - A . sum_known ( A , B , C ) :- A is C - B .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## coroutines/P07d.pl: 241 tokens, agreement 134/241 (55.6%)
+  class  A      B
+  P      153    46
+  C      39     40
+  R      13     119
+  S      0      0
+  H      36     36
+  tokens 10-18 A=P B=R: product ( A , B , C ) :-
+      A: evaluator clause head product ( A , B , C ) (the primitive relation pr | B: extra arithmetic evaluator definition/case head
+  tokens 52-52 A=P B=C: ,
+      A: the goal when/2 holds: product_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 53-60 A=P B=R: product_known ( A , B , C )
+      A: the goal when/2 holds: product_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 62-71 A=P B=R: . product_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 83-98 A=P B=R: , C is A * B . product_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 105-141 A=P B=R: , factor ( C , A , B ) . product_known ( A , B , C ) :- factor ( C , B , A ) . f
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 143-168 A=P B=R: , C =:= 0 . factor ( C , D , Q ) :- C mod D =:= 0 , Q is C // D .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## coroutines/P07e.pl: 241 tokens, agreement 134/241 (55.6%)
+  class  A      B
+  P      153    46
+  C      39     40
+  R      13     119
+  S      0      0
+  H      36     36
+  tokens 10-18 A=P B=R: product ( A , B , C ) :-
+      A: evaluator clause head product ( A , B , C ) (the primitive relation pr | B: extra arithmetic evaluator definition/case head
+  tokens 52-52 A=P B=C: ,
+      A: the goal when/2 holds: product_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 53-60 A=P B=R: product_known ( A , B , C )
+      A: the goal when/2 holds: product_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 62-71 A=P B=R: . product_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 83-98 A=P B=R: , C is A * B . product_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 105-141 A=P B=R: , factor ( C , A , B ) . product_known ( A , B , C ) :- factor ( C , B , A ) . f
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 143-168 A=P B=R: , C =:= 0 . factor ( C , D , Q ) :- C mod D =:= 0 , Q is C // D .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## coroutines/P07f.pl: 196 tokens, agreement 130/196 (66.3%)
+  class  A      B
+  P      113    47
+  C      38     39
+  R      13     78
+  S      0      0
+  H      32     32
+  tokens 10-18 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 52-52 A=P B=C: ,
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 53-60 A=P B=R: sum_known ( A , B , C )
+      A: the goal when/2 holds: sum_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 62-71 A=P B=R: . sum_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 83-98 A=P B=R: , C is A + B . sum_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 105-126 A=P B=R: , B is C - A . sum_known ( A , B , C ) :- A is C - B .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## coroutines/P07g.pl: 210 tokens, agreement 103/210 (49.0%)
+  class  A      B
+  P      130    23
+  C      39     40
+  R      13     119
+  S      0      0
+  H      28     28
+  tokens 5-13 A=P B=R: product ( A , B , C ) :-
+      A: evaluator clause head product ( A , B , C ) (the primitive relation pr | B: extra arithmetic evaluator definition/case head
+  tokens 47-47 A=P B=C: ,
+      A: the goal when/2 holds: product_known ( A , B , C ) | B: when suspension condition (two known places)
+  tokens 48-55 A=P B=R: product_known ( A , B , C )
+      A: the goal when/2 holds: product_known ( A , B , C ) | B: call of supplied directional arithmetic evaluator
+  tokens 57-66 A=P B=R: . product_known ( A , B , C ) :-
+      A: end of evaluator clause | B: arithmetic evaluator clause terminator
+  tokens 78-93 A=P B=R: , C is A * B . product_known ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 100-136 A=P B=R: , factor ( C , A , B ) . product_known ( A , B , C ) :- factor ( C , B , A ) . f
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 138-163 A=P B=R: , C =:= 0 . factor ( C , D , Q ) :- C mod D =:= 0 , Q is C // D .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## plain/P05a.pl: 113 tokens, agreement 113/113 (100.0%)
+  class  A      B
+  P      61     61
+  C      0      0
+  R      0      0
+  S      0      0
+  H      52     52
+
+## plain/P05b.pl: 82 tokens, agreement 82/82 (100.0%)
+  class  A      B
+  P      42     42
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## plain/P06a.pl: 77 tokens, agreement 77/77 (100.0%)
+  class  A      B
+  P      37     37
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## plain/P06b.pl: 77 tokens, agreement 77/77 (100.0%)
+  class  A      B
+  P      37     37
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## plain/P06c.pl: 77 tokens, agreement 77/77 (100.0%)
+  class  A      B
+  P      37     37
+  C      0      0
+  R      0      0
+  S      0      0
+  H      40     40
+
+## plain/P07a.pl: 271 tokens, agreement 126/271 (46.5%)
+  class  A      B
+  P      218    73
+  C      4      54
+  R      13     108
+  S      0      0
+  H      36     36
+  tokens 15-23 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 35-50 A=P B=R: , C is A + B . sum ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 57-93 A=P B=R: , B is C - A . sum ( A , B , C ) :- A is C - B . relation ( '1' , [ X , Y , Z ] 
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 121-136 A=P B=R: . relation ( '2' , [ _ , Y , Z ] , Cs ) :-
+      A: presentation-order dispatch, relation: relation ( '1' , [ X , Y , Z ]  | B: enclosing relation clause terminator
+  tokens 155-170 A=P B=R: . relation ( '3' , [ _ , _ , Z ] , Cs ) :-
+      A: presentation-order dispatch, relation: relation ( '2' , [ _ , Y , Z ]  | B: enclosing relation clause terminator
+  tokens 184-184 A=P B=R: .
+      A: presentation-order dispatch, relation: relation ( '3' , [ _ , _ , Z ]  | B: enclosing relation clause terminator
+  tokens 185-225 A=P B=C: relations ( [ ] , _ , _ ) . relations ( [ N | Ns ] , Vs , Cs ) :- relation ( N ,
+      A: presentation-order dispatch, relations: relations ( [ ] , _ , _ ) . | B: ordered traversal of conjuncts supplied as instance parameter
+  tokens 254-262 A=P B=C: , relations ( Order , Vs , Cs )
+      A: the conjunction of the stage's relations in the instance's presentatio | B: traverse the problem-specified order of conjuncts
+
+## plain/P07b.pl: 207 tokens, agreement 113/207 (54.6%)
+  class  A      B
+  P      141    47
+  C      8      8
+  R      26     120
+  S      0      0
+  H      32     32
+  tokens 10-18 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 30-45 A=P B=R: , C is A + B . sum ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 52-82 A=P B=R: , B is C - A . sum ( A , B , C ) :- A is C - B . diff ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 94-109 A=P B=R: , C is A - B . diff ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 116-137 A=P B=R: , B is A - C . diff ( A , B , C ) :- A is B + C .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## plain/P07c.pl: 119 tokens, agreement 72/119 (60.5%)
+  class  A      B
+  P      70     23
+  C      4      4
+  R      13     60
+  S      0      0
+  H      32     32
+  tokens 5-13 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 25-40 A=P B=R: , C is A + B . sum ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 47-68 A=P B=R: , B is C - A . sum ( A , B , C ) :- A is C - B .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## plain/P07d.pl: 188 tokens, agreement 100/188 (53.2%)
+  class  A      B
+  P      134    46
+  C      5      5
+  R      13     101
+  S      0      0
+  H      36     36
+  tokens 10-18 A=P B=R: product ( A , B , C ) :-
+      A: evaluator clause head product ( A , B , C ) (the primitive relation pr | B: extra arithmetic evaluator definition/case head
+  tokens 30-45 A=P B=R: , C is A * B . product ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 52-88 A=P B=R: , factor ( C , A , B ) . product ( A , B , C ) :- factor ( C , B , A ) . factor 
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 90-115 A=P B=R: , C =:= 0 . factor ( C , D , Q ) :- C mod D =:= 0 , Q is C // D .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## plain/P07e.pl: 188 tokens, agreement 100/188 (53.2%)
+  class  A      B
+  P      134    46
+  C      5      5
+  R      13     101
+  S      0      0
+  H      36     36
+  tokens 10-18 A=P B=R: product ( A , B , C ) :-
+      A: evaluator clause head product ( A , B , C ) (the primitive relation pr | B: extra arithmetic evaluator definition/case head
+  tokens 30-45 A=P B=R: , C is A * B . product ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 52-88 A=P B=R: , factor ( C , A , B ) . product ( A , B , C ) :- factor ( C , B , A ) . factor 
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 90-115 A=P B=R: , C =:= 0 . factor ( C , D , Q ) :- C mod D =:= 0 , Q is C // D .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## plain/P07f.pl: 143 tokens, agreement 96/143 (67.1%)
+  class  A      B
+  P      94     47
+  C      4      4
+  R      13     60
+  S      0      0
+  H      32     32
+  tokens 10-18 A=P B=R: sum ( A , B , C ) :-
+      A: evaluator clause head sum ( A , B , C ) (the primitive relation sum, w | B: extra arithmetic evaluator definition/case head
+  tokens 30-45 A=P B=R: , C is A + B . sum ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 52-73 A=P B=R: , B is C - A . sum ( A , B , C ) :- A is C - B .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## plain/P07g.pl: 157 tokens, agreement 69/157 (43.9%)
+  class  A      B
+  P      111    23
+  C      5      5
+  R      13     101
+  S      0      0
+  H      28     28
+  tokens 5-13 A=P B=R: product ( A , B , C ) :-
+      A: evaluator clause head product ( A , B , C ) (the primitive relation pr | B: extra arithmetic evaluator definition/case head
+  tokens 25-40 A=P B=R: , C is A * B . product ( A , B , C ) :-
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 47-83 A=P B=R: , factor ( C , A , B ) . product ( A , B , C ) :- factor ( C , B , A ) . factor 
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+  tokens 85-110 A=P B=R: , C =:= 0 . factor ( C , D , Q ) :- C mod D =:= 0 , Q is C // D .
+      A: evaluator: computing one place from the others, or testing a known rel | B: directional arithmetic branch / known-place test
+
+## tabling/P04a.pl: 69 tokens, agreement 69/69 (100.0%)
+  class  A      B
+  P      35     35
+  C      6      6
+  R      0      0
+  S      0      0
+  H      28     28
+
+## tabling/P04b.pl: 69 tokens, agreement 69/69 (100.0%)
+  class  A      B
+  P      35     35
+  C      6      6
+  R      0      0
+  S      0      0
+  H      28     28
+
+## tabling/P04c.pl: 79 tokens, agreement 79/79 (100.0%)
+  class  A      B
+  P      47     47
+  C      6      6
+  R      0      0
+  S      0      0
+  H      26     26
+
+## tabling/P04d.pl: 62 tokens, agreement 62/62 (100.0%)
+  class  A      B
+  P      28     28
+  C      6      6
+  R      0      0
+  S      0      0
+  H      28     28
+
+## tabling/P04e.pl: 75 tokens, agreement 75/75 (100.0%)
+  class  A      B
+  P      43     43
+  C      6      6
+  R      0      0
+  S      0      0
+  H      26     26
+
+## tabling/P04f.pl: 58 tokens, agreement 58/58 (100.0%)
+  class  A      B
+  P      24     24
+  C      6      6
+  R      0      0
+  S      0      0
+  H      28     28
+
+## tabling/P06d.pl: 193 tokens, agreement 193/193 (100.0%)
+  class  A      B
+  P      155    155
+  C      10     10
+  R      0      0
+  S      0      0
+  H      28     28
+
+## tabling/P06e1.pl: 144 tokens, agreement 144/144 (100.0%)
+  class  A      B
+  P      98     98
+  C      20     20
+  R      0      0
+  S      0      0
+  H      26     26
+
+## tabling/P06e2.pl: 144 tokens, agreement 144/144 (100.0%)
+  class  A      B
+  P      98     98
+  C      20     20
+  R      0      0
+  S      0      0
+  H      26     26
+
+## tabling/P06e3.pl: 131 tokens, agreement 131/131 (100.0%)
+  class  A      B
+  P      83     83
+  C      20     20
+  R      0      0
+  S      0      0
+  H      28     28
+
+## per system
+  constraints: 3267/3365 (97.1%)
+  coroutines: 1153/1904 (60.6%)
+  plain: 1102/1699 (64.9%)
+  tabling: 1024/1024 (100.0%)
+
+## disagreements by (A, B) class
+  P→R: 1286
+  P→C: 160

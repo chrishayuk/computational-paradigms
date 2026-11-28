@@ -709,8 +709,8 @@
 2026-11-28T00:09:29Z	tabling	P04e	P04e.pl	storage	exit 0	1.5s
 2026-11-28T00:20:30Z	tabling	P04f	P04f.pl	behaviour	exit 0	661.0s
 2026-11-28T00:31:30Z	tabling	P04f	P04f.pl	cost	exit 0	660.8s
-6-11-27T23:47:43Z	tabling	P05c	P05c.pl	cost	exit 0	2.2s
-2026-11-27T23:47:45Z	tabling	P05c	P05c.pl	storage	exit 0	2.1s
+2026-11-28T00:42:31Z	tabling	P04f	P04f.pl	storage	exit 0	660.7s
+27T23:47:45Z	tabling	P05c	P05c.pl	storage	exit 0	2.1s
 2026-11-27T23:47:47Z	tabling	P06a	P06a.pl	behaviour	exit 0	1.8s
 2026-11-27T23:47:49Z	tabling	P06a	P06a.pl	cost	exit 0	1.7s
 2026-11-27T23:47:51Z	tabling	P06a	P06a.pl	storage	exit 0	2.0s

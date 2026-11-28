@@ -1,0 +1,189 @@
+{
+  "distinct_texts": 28,
+  "program_paths": 48,
+  "token_totals": {
+    "P": 5049,
+    "C": 160,
+    "R": 2136,
+    "S": 0,
+    "H": 9138
+  },
+  "token_total": 16483,
+  "per_text": {
+    "report/P04a.alg": {
+      "P": 72,
+      "H": 155,
+      "R": 51,
+      "C": 4
+    },
+    "report/P04b.alg": {
+      "P": 72,
+      "H": 155,
+      "R": 51,
+      "C": 4
+    },
+    "report/P04c.alg": {
+      "P": 345,
+      "H": 154,
+      "R": 101,
+      "C": 18
+    },
+    "report/P04d.alg": {
+      "P": 243,
+      "H": 256,
+      "R": 101,
+      "C": 18
+    },
+    "report/P04e.alg": {
+      "P": 359,
+      "H": 158,
+      "R": 122,
+      "C": 18
+    },
+    "report/P04f.alg": {
+      "P": 257,
+      "H": 260,
+      "R": 122,
+      "C": 18
+    },
+    "report/P05a.alg": {
+      "R": 102,
+      "H": 671,
+      "P": 79
+    },
+    "report/P05b.alg": {
+      "R": 88,
+      "H": 602,
+      "P": 54
+    },
+    "report/P05c.alg": {
+      "R": 102,
+      "H": 664,
+      "P": 79
+    },
+    "report/P06a.alg": {
+      "R": 114,
+      "H": 413,
+      "P": 48
+    },
+    "report/P06b.alg": {
+      "R": 114,
+      "H": 413,
+      "P": 48
+    },
+    "report/P06d.alg": {
+      "P": 362,
+      "H": 320
+    },
+    "report/P06e1.alg": {
+      "P": 293,
+      "H": 265
+    },
+    "report/P06e3.alg": {
+      "P": 272,
+      "H": 345
+    },
+    "x1/P04a.a60": {
+      "P": 69,
+      "H": 134,
+      "R": 51,
+      "C": 4
+    },
+    "x1/P04b.a60": {
+      "P": 69,
+      "H": 134,
+      "R": 51,
+      "C": 4
+    },
+    "x1/P04c.a60": {
+      "P": 339,
+      "H": 139,
+      "R": 101,
+      "C": 18
+    },
+    "x1/P04d.a60": {
+      "P": 243,
+      "H": 229,
+      "R": 101,
+      "C": 18
+    },
+    "x1/P04e.a60": {
+      "P": 353,
+      "H": 143,
+      "R": 122,
+      "C": 18
+    },
+    "x1/P04f.a60": {
+      "P": 257,
+      "H": 233,
+      "R": 122,
+      "C": 18
+    },
+    "x1/P05a.a60": {
+      "R": 102,
+      "H": 594,
+      "P": 67
+    },
+    "x1/P05b.a60": {
+      "R": 88,
+      "H": 533,
+      "P": 45
+    },
+    "x1/P05c.a60": {
+      "R": 102,
+      "H": 589,
+      "P": 67
+    },
+    "x1/P06a.a60": {
+      "R": 114,
+      "H": 363,
+      "P": 42
+    },
+    "x1/P06b.a60": {
+      "R": 114,
+      "H": 363,
+      "P": 42
+    },
+    "x1/P06d.a60": {
+      "P": 353,
+      "H": 289
+    },
+    "x1/P06e1.a60": {
+      "P": 269,
+      "H": 248
+    },
+    "x1/P06e3.a60": {
+      "P": 251,
+      "H": 316
+    }
+  },
+  "behaviour_runs": 48,
+  "behaviour_stages": 72,
+  "measurement_records": 64,
+  "measurement_stage_comparisons": 96,
+  "mode_differences": 0,
+  "semantic_totals": {
+    "none reported": 10,
+    "complete": 56,
+    "partial": 3,
+    "unsound": 3
+  },
+  "representation_totals": {
+    "None": 10,
+    "explicit": 53,
+    "residual": 9
+  },
+  "execution_totals": {
+    "budget": 10,
+    "finished": 47,
+    "suspended": 9,
+    "error": 6
+  },
+  "expressibility_totals": {
+    "expressible": 24,
+    "expressible with reformulation": 24
+  },
+  "measurement_reruns": 0,
+  "invalid_records": 0,
+  "checks": "Every frozen index is covered exactly once; all manifest aliases verified against frozen tokens; all batch-log P04-P06 runs matched; every behaviour stage classified; both measured modes compared stage by stage."
+}

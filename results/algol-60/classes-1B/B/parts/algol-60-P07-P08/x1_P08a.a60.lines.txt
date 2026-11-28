@@ -1,0 +1,242 @@
+L1 [0:0] begin
+L8 [1:39] integer n , cap , m , i , code , k , j , top , nel , av , bv , cv , sv , held , pass , rev1 , rev2 , conc1 , conc2 ;
+L9 [40:62] boolean ak , bk , ck , q1 , q2 , q3 , q5 , q6 , defined , changed , inconsistent ;
+L10 [63:75] integer array hd , tl , ev [ 1 : 1000 ] ;
+L11 [76:84] boolean array ek [ 1 : 1000 ] ;
+L13 [85:93] integer procedure cons ( h , t ) ;
+L14 [94:103] value h , t ; integer h , t ;
+L16 [104:130] begin top := top + 1 ; hd [ top ] := h ; tl [ top ] := t ; cons := top end cons ;
+L18 [131:139] boolean procedure sameel ( e , f ) ;
+L19 [140:149] value e , f ; integer e , f ;
+L21 [150:181] sameel := if e = f then true else if ek [ e ] ∧ ek [ f ] then ev [ e ] = ev [ f ] else false ;
+L23 [182:190] boolean procedure same ( p , q ) ;
+L24 [191:200] value p , q ; integer p , q ;
+L26 [201:247] same := if p = 0 then q = 0 else if q = 0 then false else if sameel ( hd [ p ] , hd [ q ] ) then same ( tl [ p ] , tl [ q ] ) else false ;
+L28 [248:256] integer procedure conc ( a , b ) ;
+L29 [257:266] value a , b ; integer a , b ;
+L31 [267:271] if a = 0 then
+L32 [272:282] begin conc1 := conc1 + 1 ; conc := b end
+L33 [283:283] else
+L34 [284:284] begin
+L35 [285:287] integer c ;
+L36 [288:293] conc2 := conc2 + 1 ;
+L37 [294:305] c := conc ( tl [ a ] , b ) ;
+L38 [306:316] conc := cons ( hd [ a ] , c )
+L39 [317:319] end conc ;
+L41 [320:326] integer procedure rev ( a ) ;
+L42 [327:332] value a ; integer a ;
+L44 [333:337] if a = 0 then
+L45 [338:348] begin rev1 := rev1 + 1 ; rev := 0 end
+L46 [349:349] else
+L47 [350:350] begin
+L48 [351:353] integer q ;
+L49 [354:359] rev2 := rev2 + 1 ;
+L50 [360:369] q := rev ( tl [ a ] ) ;
+L51 [370:385] rev := conc ( q , cons ( hd [ a ] , 0 ) )
+L52 [386:388] end rev ;
+L54 [389:396] procedure equal ( e , f ) ;
+L55 [397:406] value e , f ; integer e , f ;
+L57 [407:417] if ek [ e ] ∧ ek [ f ] then
+L58 [418:433] begin if ev [ e ] ≠ ev [ f ] then inconsistent := true end
+L59 [434:440] else if ek [ e ] then
+L60 [441:462] begin ev [ f ] := ev [ e ] ; ek [ f ] := true ; changed := true end
+L61 [463:469] else if ek [ f ] then
+L62 [470:492] begin ev [ e ] := ev [ f ] ; ek [ e ] := true ; changed := true end ;
+L64 [493:495] procedure examine1 ;
+L66 [496:496] begin
+L67 [497:499] if ak then
+L68 [500:528] begin if ¬ same ( av , cons ( 1 , cons ( 2 , cons ( 3 , 0 ) ) ) ) then inconsistent := true end
+L69 [529:529] else
+L70 [530:558] begin av := cons ( 1 , cons ( 2 , cons ( 3 , 0 ) ) ) ; ak := true ; changed := true end ;
+L71 [559:561] q1 := false
+L72 [562:564] end examine1 ;
+L74 [565:567] procedure examine2 ;
+L76 [568:572] if defined ∧ ak then
+L77 [573:573] begin
+L78 [574:576] integer r ;
+L79 [577:583] r := rev ( av ) ;
+L80 [584:586] if bk then
+L81 [587:600] begin if ¬ same ( bv , r ) then inconsistent := true end
+L82 [601:601] else
+L83 [602:615] begin bv := r ; bk := true ; changed := true end ;
+L84 [616:618] q2 := false
+L85 [619:621] end examine2 ;
+L87 [622:624] procedure examine3 ;
+L89 [625:649] if ek [ 1 ] ∨ ek [ 2 ] then begin equal ( 1 , 2 ) ; q3 := false end examine3 ;
+L91 [650:652] procedure examine5 ;
+L93 [653:677] if ek [ 2 ] ∨ ek [ 3 ] then begin equal ( 2 , 3 ) ; q5 := false end examine5 ;
+L95 [678:680] procedure examine6 ;
+L97 [681:683] if bk then
+L98 [684:684] begin
+L99 [685:691] integer p , e , w ;
+L100 [692:699] p := bv ; e := sv ;
+L101 [700:711] for w := 0 while e ≠ 0 ∧ ¬ inconsistent do
+L102 [712:712] begin
+L103 [713:720] if p = 0 then inconsistent := true
+L104 [721:749] else begin equal ( hd [ p ] , hd [ e ] ) ; p := tl [ p ] ; e := tl [ e ] end
+L105 [750:751] end ;
+L106 [752:755] if ¬ inconsistent then
+L107 [756:756] begin
+L108 [757:759] if ck then
+L109 [760:773] begin if ¬ same ( cv , p ) then inconsistent := true end
+L110 [774:774] else
+L111 [775:787] begin cv := p ; ck := true ; changed := true end
+L112 [788:789] end ;
+L113 [790:792] q6 := false
+L114 [793:793] end
+L115 [794:797] else if ck then
+L116 [798:798] begin
+L117 [799:809] integer w , e , first , last , c ;
+L118 [810:819] first := last := 0 ; e := sv ;
+L119 [820:828] for w := 0 while e ≠ 0 do
+L120 [829:829] begin
+L121 [830:841] c := cons ( hd [ e ] , 0 ) ;
+L122 [842:857] if last = 0 then first := c else tl [ last ] := c ;
+L123 [858:867] last := c ; e := tl [ e ]
+L124 [868:869] end ;
+L125 [870:891] if last = 0 then bv := cv else begin tl [ last ] := cv ; bv := first end ;
+L126 [892:902] bk := true ; changed := true ; q6 := false
+L127 [903:905] end examine6 ;
+L129 [906:908] procedure propagate ;
+L131 [909:909] begin
+L132 [910:913] changed := true ;
+L133 [914:920] for pass := 1 while changed do
+L134 [921:921] begin
+L135 [922:925] changed := false ;
+L136 [926:930] if q1 then examine1 ;
+L137 [931:935] if q2 then examine2 ;
+L138 [936:940] if q3 then examine3 ;
+L139 [941:945] if q5 then examine5 ;
+L140 [946:949] if q6 then examine6
+L141 [950:950] end
+L142 [951:953] end propagate ;
+L144 [954:959] procedure digits ( v ) ;
+L145 [960:965] value v ; integer v ;
+L147 [966:966] begin
+L148 [967:969] integer d ;
+L149 [970:981] if v ≥ 10 then digits ( v ÷ 10 ) ;
+L150 [982:991] d := v - v ÷ 10 × 10 ;
+L151 [992:1020] if d = 0 then PRINTTEXT ( `0' ) else if d = 1 then PRINTTEXT ( `1' ) else if d = 2 then PRINTTEXT ( `2' )
+L152 [1021:1050] else if d = 3 then PRINTTEXT ( `3' ) else if d = 4 then PRINTTEXT ( `4' ) else if d = 5 then PRINTTEXT ( `5' )
+L153 [1051:1080] else if d = 6 then PRINTTEXT ( `6' ) else if d = 7 then PRINTTEXT ( `7' ) else if d = 8 then PRINTTEXT ( `8' )
+L154 [1081:1085] else PRINTTEXT ( `9' )
+L155 [1086:1088] end digits ;
+L157 [1089:1094] procedure printint ( v ) ;
+L158 [1095:1100] value v ; integer v ;
+L160 [1101:1123] if v < 0 then begin PRINTTEXT ( `-' ) ; digits ( - v ) end else digits ( v ) ;
+L162 [1124:1129] procedure printel ( e ) ;
+L163 [1130:1135] value e ; integer e ;
+L165 [1136:1174] if ek [ e ] then printint ( ev [ e ] ) else if e = 1 then PRINTTEXT ( `x' ) else if e = 2 then PRINTTEXT ( `y' ) else PRINTTEXT ( `z' ) ;
+L167 [1175:1180] procedure printseq ( p ) ;
+L168 [1181:1186] value p ; integer p ;
+L170 [1187:1187] begin
+L171 [1188:1190] integer w ;
+L172 [1191:1195] PRINTTEXT ( `(' ) ;
+L173 [1196:1204] for w := 0 while p ≠ 0 do
+L174 [1205:1231] begin printel ( hd [ p ] ) ; p := tl [ p ] ; if p ≠ 0 then PRINTTEXT ( `, ' ) end ;
+L175 [1232:1235] PRINTTEXT ( `)' )
+L176 [1236:1238] end printseq ;
+L178 [1239:1248] procedure seqplace ( known , v , name ) ;
+L179 [1249:1263] value known , v , name ; boolean known ; integer v , name ;
+L181 [1264:1296] if known then printseq ( v ) else if name = 1 then PRINTTEXT ( `a' ) else if name = 2 then PRINTTEXT ( `b' ) else PRINTTEXT ( `c' ) ;
+L183 [1297:1308] procedure seqstate ( known , v , inheld , name ) ;
+L184 [1309:1327] value known , v , inheld , name ; boolean known , inheld ; integer v , name ;
+L186 [1328:1328] begin
+L187 [1329:1353] if name = 1 then PRINTTEXT ( `a' ) else if name = 2 then PRINTTEXT ( `b' ) else PRINTTEXT ( `c' ) ;
+L188 [1354:1367] if known then begin PRINTTEXT ( ` = ' ) ; printseq ( v ) end
+L189 [1368:1380] else if inheld then PRINTTEXT ( ` held' ) else PRINTTEXT ( ` free' )
+L190 [1381:1383] end seqstate ;
+L192 [1384:1391] procedure elstate ( e , inheld ) ;
+L193 [1392:1402] value e , inheld ; integer e ; boolean inheld ;
+L195 [1403:1403] begin
+L196 [1404:1428] if e = 1 then PRINTTEXT ( `x' ) else if e = 2 then PRINTTEXT ( `y' ) else PRINTTEXT ( `z' ) ;
+L197 [1429:1448] if ek [ e ] then begin PRINTTEXT ( ` = ' ) ; printint ( ev [ e ] ) end
+L198 [1449:1461] else if inheld then PRINTTEXT ( ` held' ) else PRINTTEXT ( ` free' )
+L199 [1462:1464] end elstate ;
+L201 [1465:1467] procedure relations ;
+L203 [1468:1468] begin
+L204 [1469:1471] boolean first ;
+L205 [1472:1475] first := true ;
+L206 [1476:1498] if q1 then begin seqplace ( ak , av , 1 ) ; PRINTTEXT ( ` = (x, y, z)' ) ; first := false end ;
+L207 [1499:1501] if q2 then
+L208 [1502:1502] begin
+L209 [1503:1511] if ¬ first then PRINTTEXT ( `, ' ) ;
+L210 [1512:1544] PRINTTEXT ( `rev(' ) ; seqplace ( ak , av , 1 ) ; PRINTTEXT ( `, ' ) ; seqplace ( bk , bv , 2 ) ; PRINTTEXT ( `)' ) ;
+L211 [1545:1553] if ¬ defined then PRINTTEXT ( ` awaiting its definition' ) ;
+L212 [1554:1556] first := false
+L213 [1557:1558] end ;
+L214 [1559:1561] if q3 then
+L215 [1562:1591] begin if ¬ first then PRINTTEXT ( `, ' ) ; printel ( 1 ) ; PRINTTEXT ( ` = ' ) ; printel ( 2 ) ; first := false end ;
+L216 [1592:1594] if q5 then
+L217 [1595:1624] begin if ¬ first then PRINTTEXT ( `, ' ) ; printel ( 2 ) ; PRINTTEXT ( ` = ' ) ; printel ( 3 ) ; first := false end ;
+L218 [1625:1627] if q6 then
+L219 [1628:1628] begin
+L220 [1629:1637] if ¬ first then PRINTTEXT ( `, ' ) ;
+L221 [1638:1669] seqplace ( bk , bv , 2 ) ; PRINTTEXT ( ` = ' ) ; printseq ( sv ) ; PRINTTEXT ( ` ++ ' ) ; seqplace ( ck , cv , 3 )
+L222 [1670:1670] end
+L223 [1671:1673] end relations ;
+L226 [1674:1685] n := read ; cap := read ; m := read ;
+L227 [1686:1698] for i := 1 step 1 until m do code := read ;
+L228 [1699:1720] ak := bk := ck := q1 := q2 := q3 := q5 := q6 := defined := inconsistent := false ;
+L229 [1721:1732] top := rev1 := rev2 := conc1 := conc2 := 0 ;
+L230 [1733:1748] for j := 1 step 1 until 3 do ek [ j ] := false ;
+L231 [1749:1756] nel := 3 ; sv := 0 ;
+L233 [1757:1763] for i := 1 while true do
+L234 [1764:1764] begin
+L236 [1765:1772] code := read ; k := read ;
+L237 [1773:1780] if k = 1 then q1 := true
+L238 [1781:1789] else if k = 2 then q2 := true
+L239 [1790:1798] else if k = 3 then q3 := true
+L240 [1799:1807] else if k = 4 then defined := true
+L241 [1808:1816] else if k = 5 then q5 := true
+L242 [1817:1822] else if k = 6 then
+L243 [1823:1823] begin
+L245 [1824:1834] integer len , e , first , last , c ;
+L246 [1835:1838] len := read ;
+L247 [1839:1844] first := last := 0 ;
+L248 [1845:1853] for j := 1 step 1 until len do
+L249 [1854:1854] begin
+L250 [1855:1878] e := read ; nel := nel + 1 ; ev [ nel ] := e ; ek [ nel ] := true ;
+L251 [1879:1887] c := cons ( nel , 0 ) ;
+L252 [1888:1903] if last = 0 then first := c else tl [ last ] := c ;
+L253 [1904:1906] last := c
+L254 [1907:1908] end ;
+L255 [1909:1915] sv := first ; q6 := true
+L256 [1916:1917] end ;
+L258 [1918:1919] propagate ;
+L261 [1920:1923] if ¬ inconsistent then
+L262 [1924:1924] begin
+L263 [1925:1929] PRINTTEXT ( `[answer]' ) ;
+L264 [1930:1947] seqstate ( ak , av , q1 ∨ q2 , 1 ) ; PRINTTEXT ( `, ' ) ;
+L265 [1948:1965] seqstate ( bk , bv , q2 ∨ q6 , 2 ) ; PRINTTEXT ( `, ' ) ;
+L266 [1966:1981] seqstate ( ck , cv , q6 , 3 ) ; PRINTTEXT ( `, ' ) ;
+L267 [1982:1993] elstate ( 1 , q3 ) ; PRINTTEXT ( `, ' ) ;
+L268 [1994:2007] elstate ( 2 , q3 ∨ q5 ) ; PRINTTEXT ( `, ' ) ;
+L269 [2008:2014] elstate ( 3 , q5 ) ;
+L270 [2015:2034] if q1 ∨ q2 ∨ q3 ∨ q5 ∨ q6 then begin PRINTTEXT ( `, where ' ) ; relations end ;
+L271 [2035:2042] begin PRINTTEXT ( `[/answer]' ) ; NLCR end
+L272 [2043:2044] end ;
+L275 [2045:2082] held := ( if q1 then 1 else 0 ) + ( if q3 then 1 else 0 ) + ( if q5 then 1 else 0 ) + ( if q6 then 1 else 0 ) ;
+L276 [2083:2087] PRINTTEXT ( `[observe]' ) ;
+L277 [2088:2099] if inconsistent then begin PRINTTEXT ( `no solution' ) ; NLCR end ;
+L278 [2100:2104] PRINTTEXT ( `held relations: ' ) ;
+L279 [2105:2119] if held = 0 ∧ ¬ q2 then PRINTTEXT ( `none' ) else relations ;
+L280 [2120:2121] NLCR ;
+L281 [2122:2142] if defined then begin PRINTTEXT ( `rev and conc: defined' ) ; NLCR end else begin PRINTTEXT ( `rev and conc: not yet defined' ) ; NLCR end ;
+L282 [2143:2157] if q2 ∧ ¬ defined then begin PRINTTEXT ( `rev(a, b): held as posed, awaiting the definition of rev, neither true nor false' ) ; NLCR end ;
+L283 [2158:2181] if ak then begin PRINTTEXT ( `[bind a]' ) ; printseq ( av ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L284 [2182:2205] if bk then begin PRINTTEXT ( `[bind b]' ) ; printseq ( bv ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L285 [2206:2229] if ck then begin PRINTTEXT ( `[bind c]' ) ; printseq ( cv ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L286 [2230:2259] if ek [ 1 ] then begin PRINTTEXT ( `[bind x]' ) ; print ( ev [ 1 ] ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L287 [2260:2289] if ek [ 2 ] then begin PRINTTEXT ( `[bind y]' ) ; print ( ev [ 2 ] ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L288 [2290:2319] if ek [ 3 ] then begin PRINTTEXT ( `[bind z]' ) ; print ( ev [ 3 ] ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L289 [2320:2331] if q2 then begin PRINTTEXT ( `[suspended pending-applications 1]' ) ; NLCR end ;
+L290 [2332:2336] if held > 0 then
+L291 [2337:2357] begin PRINTTEXT ( `[suspended held-relations ' ) ; print ( held ) ; begin PRINTTEXT ( `]' ) ; NLCR end end ;
+L292 [2358:2376] PRINTTEXT ( `[operations rev/1 ' ) ; print ( rev1 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L293 [2377:2395] PRINTTEXT ( `[operations rev/2 ' ) ; print ( rev2 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L294 [2396:2414] PRINTTEXT ( `[operations conc/1 ' ) ; print ( conc1 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L295 [2415:2433] PRINTTEXT ( `[operations conc/2 ' ) ; print ( conc2 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L296 [2434:2446] begin PRINTTEXT ( `[/observe]' ) ; NLCR ; PRINTTEXT ( `[end]' ) end
+L297 [2447:2447] end
+L298 [2448:2448] end

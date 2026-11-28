@@ -1,0 +1,158 @@
+L1 [0:0] begin
+L8 [1:37] integer n , cap , m , i , code , k , j , top , sv , pv , rv , bv , held , pass , rev1 , rev2 , conc1 , conc2 ;
+L9 [38:52] boolean bk , q2 , concdef , rev1def , rev2def , changed , inconsistent ;
+L10 [53:63] integer array hd , tl [ 1 : 10000 ] ;
+L12 [64:72] integer procedure cons ( h , t ) ;
+L13 [73:82] value h , t ; integer h , t ;
+L15 [83:109] begin top := top + 1 ; hd [ top ] := h ; tl [ top ] := t ; cons := top end cons ;
+L17 [110:116] integer procedure readseq ( len ) ;
+L18 [117:122] value len ; integer len ;
+L20 [123:123] begin
+L21 [124:134] integer w , e , first , last , c ;
+L22 [135:140] first := last := 0 ;
+L23 [141:149] for w := 1 step 1 until len do
+L24 [150:150] begin
+L25 [151:163] e := read ; c := cons ( e , 0 ) ;
+L26 [164:179] if last = 0 then first := c else tl [ last ] := c ;
+L27 [180:182] last := c
+L28 [183:184] end ;
+L29 [185:187] readseq := first
+L30 [188:190] end readseq ;
+L32 [191:199] boolean procedure same ( p , q ) ;
+L33 [200:209] value p , q ; integer p , q ;
+L35 [210:253] same := if p = 0 then q = 0 else if q = 0 then false else if hd [ p ] = hd [ q ] then same ( tl [ p ] , tl [ q ] ) else false ;
+L37 [254:264] integer procedure conc ( a , b , c ) ;
+L38 [265:276] value a , b ; integer a , b , c ;
+L40 [277:283] if ¬ concdef then conc := 2
+L41 [284:289] else if a = 0 then
+L42 [290:304] begin conc1 := conc1 + 1 ; c := b ; conc := 1 end
+L43 [305:305] else
+L44 [306:306] begin
+L45 [307:311] integer t , d ;
+L46 [312:317] conc2 := conc2 + 1 ;
+L47 [318:331] t := conc ( tl [ a ] , b , d ) ;
+L48 [332:348] if t = 1 then c := cons ( hd [ a ] , d ) ;
+L49 [349:351] conc := t
+L50 [352:354] end conc ;
+L52 [355:363] integer procedure rev ( a , r ) ;
+L53 [364:371] value a ; integer a , r ;
+L55 [372:372] begin
+L56 [373:379] integer st , t , q ;
+L57 [380:383] st := 3 ;
+L58 [384:386] if rev1def then
+L59 [387:412] begin if same ( a , pv ) then begin rev1 := rev1 + 1 ; r := rv ; st := 1 end end ;
+L60 [413:419] if st ≠ 1 ∧ rev2def then
+L61 [420:420] begin
+L62 [421:425] if a ≠ 0 then
+L63 [426:426] begin
+L64 [427:432] rev2 := rev2 + 1 ;
+L65 [433:444] t := rev ( tl [ a ] , q ) ;
+L66 [445:468] if t = 1 then t := conc ( q , cons ( hd [ a ] , 0 ) , r ) ;
+L67 [469:476] if t ≠ 0 then st := t
+L68 [477:477] end
+L69 [478:479] end ;
+L70 [480:495] if st = 3 then st := if rev1def ∧ rev2def then 0 else 2 ;
+L71 [496:498] rev := st
+L72 [499:501] end rev ;
+L74 [502:504] procedure examine2 ;
+L76 [505:505] begin
+L77 [506:510] integer t , r ;
+L78 [511:519] t := rev ( sv , r ) ;
+L79 [520:524] if t = 1 then
+L80 [525:525] begin
+L81 [526:542] if bk then begin if ¬ same ( bv , r ) then inconsistent := true end
+L82 [543:556] else begin bv := r ; bk := true ; changed := true end
+L83 [557:557] end
+L84 [558:567] else if t = 0 then inconsistent := true ;
+L85 [568:577] if concdef ∧ rev1def ∧ rev2def then q2 := false
+L86 [578:580] end examine2 ;
+L88 [581:583] procedure propagate ;
+L90 [584:584] begin
+L91 [585:588] changed := true ;
+L92 [589:595] for pass := 1 while changed do
+L93 [596:596] begin
+L94 [597:600] changed := false ;
+L95 [601:604] if q2 then examine2
+L96 [605:605] end
+L97 [606:608] end propagate ;
+L99 [609:614] procedure digits ( v ) ;
+L100 [615:620] value v ; integer v ;
+L102 [621:621] begin
+L103 [622:624] integer d ;
+L104 [625:636] if v ≥ 10 then digits ( v ÷ 10 ) ;
+L105 [637:646] d := v - v ÷ 10 × 10 ;
+L106 [647:675] if d = 0 then PRINTTEXT ( `0' ) else if d = 1 then PRINTTEXT ( `1' ) else if d = 2 then PRINTTEXT ( `2' )
+L107 [676:705] else if d = 3 then PRINTTEXT ( `3' ) else if d = 4 then PRINTTEXT ( `4' ) else if d = 5 then PRINTTEXT ( `5' )
+L108 [706:735] else if d = 6 then PRINTTEXT ( `6' ) else if d = 7 then PRINTTEXT ( `7' ) else if d = 8 then PRINTTEXT ( `8' )
+L109 [736:740] else PRINTTEXT ( `9' )
+L110 [741:743] end digits ;
+L112 [744:749] procedure printint ( v ) ;
+L113 [750:755] value v ; integer v ;
+L115 [756:778] if v < 0 then begin PRINTTEXT ( `-' ) ; digits ( - v ) end else digits ( v ) ;
+L117 [779:784] procedure printseq ( p ) ;
+L118 [785:790] value p ; integer p ;
+L120 [791:791] begin
+L121 [792:794] integer w ;
+L122 [795:799] PRINTTEXT ( `(' ) ;
+L123 [800:808] for w := 0 while p ≠ 0 do
+L124 [809:835] begin printint ( hd [ p ] ) ; p := tl [ p ] ; if p ≠ 0 then PRINTTEXT ( `, ' ) end ;
+L125 [836:839] PRINTTEXT ( `)' )
+L126 [840:842] end printseq ;
+L128 [843:845] procedure relations ;
+L130 [846:848] if q2 then
+L131 [849:849] begin
+L132 [850:864] PRINTTEXT ( `rev(' ) ; printseq ( sv ) ; PRINTTEXT ( `, ' ) ;
+L133 [865:877] if bk then printseq ( bv ) else PRINTTEXT ( `b' ) ;
+L134 [878:882] PRINTTEXT ( `)' ) ;
+L135 [883:894] if ¬ ( rev1def ∨ rev2def ) then PRINTTEXT ( ` awaiting the definition of rev' )
+L136 [895:900] else PRINTTEXT ( ` awaiting the rest of the definition of rev' ) ;
+L137 [901:908] if ¬ concdef then PRINTTEXT ( ` and conc' )
+L138 [909:911] end relations ;
+L141 [912:923] n := read ; cap := read ; m := read ;
+L142 [924:936] for i := 1 step 1 until m do code := read ;
+L143 [937:950] bk := q2 := concdef := rev1def := rev2def := inconsistent := false ;
+L144 [951:962] top := rev1 := rev2 := conc1 := conc2 := 0 ;
+L145 [963:970] sv := pv := rv := 0 ;
+L147 [971:977] for i := 1 while true do
+L148 [978:978] begin
+L150 [979:986] code := read ; k := read ;
+L151 [987:994] if k = 1 then concdef := true
+L152 [995:1000] else if k = 2 then
+L153 [1001:1001] begin
+L154 [1002:1015] j := read ; sv := readseq ( j ) ; q2 := true
+L155 [1016:1016] end
+L156 [1017:1022] else if k = 3 then
+L157 [1023:1023] begin
+L158 [1024:1028] integer l1 , l2 ;
+L159 [1029:1036] l1 := read ; l2 := read ;
+L160 [1037:1053] pv := readseq ( l1 ) ; rv := readseq ( l2 ) ; rev1def := true
+L161 [1054:1054] end
+L162 [1055:1064] else if k = 4 then rev2def := true ;
+L164 [1065:1066] propagate ;
+L167 [1067:1070] if ¬ inconsistent then
+L168 [1071:1071] begin
+L169 [1072:1076] PRINTTEXT ( `[answer]b' ) ;
+L170 [1077:1090] if bk then begin PRINTTEXT ( ` = ' ) ; printseq ( bv ) end
+L171 [1091:1104] else if q2 then PRINTTEXT ( ` held' ) else PRINTTEXT ( ` free' ) ;
+L172 [1105:1116] if q2 then begin PRINTTEXT ( `, where ' ) ; relations end ;
+L173 [1117:1124] begin PRINTTEXT ( `[/answer]' ) ; NLCR end
+L174 [1125:1126] end ;
+L177 [1127:1135] held := if q2 then 1 else 0 ;
+L178 [1136:1140] PRINTTEXT ( `[observe]' ) ;
+L179 [1141:1152] if inconsistent then begin PRINTTEXT ( `no solution' ) ; NLCR end ;
+L180 [1153:1157] PRINTTEXT ( `held relations: ' ) ;
+L181 [1158:1169] if held = 0 then PRINTTEXT ( `none' ) else relations ;
+L182 [1170:1171] NLCR ;
+L183 [1172:1184] if concdef then PRINTTEXT ( `conc: defined' ) else PRINTTEXT ( `conc: not yet defined' ) ;
+L184 [1185:1197] if rev1def then PRINTTEXT ( `, rev case 1: defined' ) else PRINTTEXT ( `, rev case 1: not yet defined' ) ;
+L185 [1198:1218] if rev2def then begin PRINTTEXT ( `, rev case 2: defined' ) ; NLCR end else begin PRINTTEXT ( `, rev case 2: not yet defined' ) ; NLCR end ;
+L186 [1219:1230] if q2 then begin PRINTTEXT ( `rev(s, b): held as posed, neither true nor false, examined again at each stage' ) ; NLCR end ;
+L187 [1231:1254] if bk then begin PRINTTEXT ( `[bind b]' ) ; printseq ( bv ) ; begin PRINTTEXT ( `[/bind]' ) ; NLCR end end ;
+L188 [1255:1266] if q2 then begin PRINTTEXT ( `[suspended pending-applications 1]' ) ; NLCR end ;
+L189 [1267:1285] PRINTTEXT ( `[operations rev/1 ' ) ; print ( rev1 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L190 [1286:1304] PRINTTEXT ( `[operations rev/2 ' ) ; print ( rev2 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L191 [1305:1323] PRINTTEXT ( `[operations conc/1 ' ) ; print ( conc1 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L192 [1324:1342] PRINTTEXT ( `[operations conc/2 ' ) ; print ( conc2 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L193 [1343:1355] begin PRINTTEXT ( `[/observe]' ) ; NLCR ; PRINTTEXT ( `[end]' ) end
+L194 [1356:1356] end
+L195 [1357:1357] end

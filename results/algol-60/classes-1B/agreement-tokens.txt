@@ -1,0 +1,1603 @@
+
+## report/P04a.alg: 282 tokens, agreement 252/282 (89.4%)
+  class  A      B
+  P      92     72
+  C      4      4
+  R      31     51
+  S      0      0
+  H      155    155
+  tokens 19-21 A=P B=R: ; Boolean xk
+      A: declaration of x has a value | B: knownness flag declaration: ; Boolean xk
+  tokens 26-26 A=P B=R: xk
+      A: loop: procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 32-34 A=P B=R: ; Boolean xk
+      A: loop: procedure heading | B: knownness flag declaration: ; Boolean xk
+  tokens 51-51 A=P B=R: xk
+      A: loop case 1: loop(x) if loop(x) | B: extra knownness or success-continuation argument: xk
+  tokens 63-63 A=P B=R: xk
+      A: equals (x = c): procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 74-76 A=P B=R: ; Boolean xk
+      A: equals (x = c): procedure heading | B: knownness flag declaration: ; Boolean xk
+  tokens 90-94 A=R B=P: if x = c then
+      A: equals: test whether x is known, and the branch for x known (never use | B: fully known equality test: if x = c then
+  tokens 98-98 A=P B=R: begin
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: begin
+  tokens 102-105 A=P B=R: ; xk := true
+      A: equals with x unknown: x := c | B: record problem-specific knownness: ; xk := true
+  tokens 112-113 A=P B=R: end equals
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: end equals
+  tokens 218-221 A=P B=R: ; xk := false
+      A: x initially unknown | B: record problem-specific knownness: ; xk := false
+  tokens 229-229 A=P B=R: xk
+      A: query: first alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+  tokens 238-238 A=P B=R: xk
+      A: query: second alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+
+## report/P04b.alg: 282 tokens, agreement 252/282 (89.4%)
+  class  A      B
+  P      92     72
+  C      4      4
+  R      31     51
+  S      0      0
+  H      155    155
+  tokens 19-21 A=P B=R: ; Boolean xk
+      A: declaration of x has a value | B: knownness flag declaration: ; Boolean xk
+  tokens 26-26 A=P B=R: xk
+      A: loop: procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 32-34 A=P B=R: ; Boolean xk
+      A: loop: procedure heading | B: knownness flag declaration: ; Boolean xk
+  tokens 51-51 A=P B=R: xk
+      A: loop case 1: loop(x) if loop(x) | B: extra knownness or success-continuation argument: xk
+  tokens 63-63 A=P B=R: xk
+      A: equals (x = c): procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 74-76 A=P B=R: ; Boolean xk
+      A: equals (x = c): procedure heading | B: knownness flag declaration: ; Boolean xk
+  tokens 90-94 A=R B=P: if x = c then
+      A: equals: test whether x is known, and the branch for x known (never use | B: fully known equality test: if x = c then
+  tokens 98-98 A=P B=R: begin
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: begin
+  tokens 102-105 A=P B=R: ; xk := true
+      A: equals with x unknown: x := c | B: record problem-specific knownness: ; xk := true
+  tokens 112-113 A=P B=R: end equals
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: end equals
+  tokens 218-221 A=P B=R: ; xk := false
+      A: x initially unknown | B: record problem-specific knownness: ; xk := false
+  tokens 229-229 A=P B=R: xk
+      A: query: first alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+  tokens 240-240 A=P B=R: xk
+      A: query: second alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+
+## report/P04c.alg: 618 tokens, agreement 559/618 (90.5%)
+  class  A      B
+  P      388    345
+  C      14     18
+  R      63     101
+  S      0      0
+  H      153    154
+  tokens 85-87 A=P B=R: ; Boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; Boolean sk
+  tokens 298-298 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 301-302 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 308-312 A=P B=R: ; Boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; Boolean sk , mk
+  tokens 344-344 A=P B=R: begin
+      A: conseq, s and m known: test tl[s] = m | B: test which places are known: begin
+  tokens 357-357 A=P B=R: end
+      A: conseq, s and m known: test tl[s] = m | B: test which places are known: end
+  tokens 360-365 A=R B=P: m := tl [ s ]
+      A: conseq, s known, m unknown: a direction the query does not use | B: fully known relation test or computation of a place: m := tl [ s ]
+  tokens 372-375 A=R B=C: ; mk := false
+      A: conseq, s known, m unknown: a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; mk := fals
+  tokens 384-384 A=P B=R: begin
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: begin
+  tokens 393-396 A=P B=R: ; sk := true
+      A: conseq, s unknown, m known: s := cons(a, m) | B: record problem-specific knownness: ; sk := true
+  tokens 409-410 A=P B=R: end conseq
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: end conseq
+  tokens 415-415 A=P B=R: sk
+      A: alist (alist-left): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 421-423 A=P B=R: ; Boolean sk
+      A: alist (alist-left): procedure heading | B: knownness flag declaration: ; Boolean sk
+  tokens 435-437 A=P B=R: ; Boolean mk
+      A: alist case 1: block with its unknown m | B: knownness flag declaration: ; Boolean mk
+  tokens 444-444 A=P B=R: sk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: sk
+  tokens 447-448 A=P B=R: , mk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: , mk
+  tokens 460-463 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 467-467 A=P B=R: mk
+      A: alist case 1, first conjunct: alist(m), in the order written | B: extra knownness or success-continuation argument: mk
+  tokens 478-478 A=P B=R: begin
+      A: alist case 2, s known: test s = <> | B: test which places are known: begin
+  tokens 493-493 A=P B=R: end
+      A: alist case 2, s known: test s = <> | B: test which places are known: end
+  tokens 495-495 A=P B=R: begin
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: begin
+  tokens 505-508 A=P B=R: ; sk := true
+      A: alist case 2, s unknown: s := <> | B: record problem-specific knownness: ; sk := true
+  tokens 515-515 A=P B=R: end
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: end
+  tokens 535-535 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 547-550 A=P B=R: ; sk := true
+      A: s := the stage's sequence; s known | B: record problem-specific knownness: ; sk := true
+  tokens 554-554 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## report/P04d.alg: 618 tokens, agreement 460/618 (74.4%)
+  class  A      B
+  P      184    243
+  C      14     18
+  R      170    101
+  S      0      0
+  H      250    256
+  tokens 76-78 A=P B=R: ; Boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; Boolean sk
+  tokens 136-198 A=R B=P: ; Boolean procedure same ( p , q ) ; value p , q ; integer p , q ; same := if p 
+      A: same: equality of two sequences, used only in a direction the query do | B: sequence encoding operation: same: ; Boolean procedure same ( p , q )
+  tokens 203-203 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 206-207 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 213-217 A=P B=R: ; Boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; Boolean sk , mk
+  tokens 231-245 A=R B=P: if s ≠ 0 then begin if hd [ s ] = acode then begin
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if s ≠ 0 then
+  tokens 250-260 A=R B=P: if same ( tl [ s ] , m ) then
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if same ( tl [ s 
+  tokens 265-270 A=R B=P: m := tl [ s ]
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: m := tl [ s ]
+  tokens 277-280 A=R B=C: ; mk := false
+      A: conseq, s known (both branches): a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; mk := fals
+  tokens 282-283 A=R B=P: end end
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: end
+  tokens 289-289 A=P B=R: begin
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: begin
+  tokens 298-301 A=P B=R: ; sk := true
+      A: conseq, s unknown, m known: s := cons(a, m) | B: record problem-specific knownness: ; sk := true
+  tokens 314-315 A=P B=R: end conseq
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: end conseq
+  tokens 320-320 A=P B=R: sk
+      A: alist (alist-left): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 326-328 A=P B=R: ; Boolean sk
+      A: alist (alist-left): procedure heading | B: knownness flag declaration: ; Boolean sk
+  tokens 340-342 A=P B=R: ; Boolean mk
+      A: alist case 1: block with its unknown m | B: knownness flag declaration: ; Boolean mk
+  tokens 349-349 A=P B=R: sk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: sk
+  tokens 352-353 A=P B=R: , mk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: , mk
+  tokens 365-368 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 372-372 A=P B=R: mk
+      A: alist case 1, first conjunct: alist(m), in the order written | B: extra knownness or success-continuation argument: mk
+  tokens 384-389 A=R B=P: if s = 0 then begin
+      A: alist case 2, s known: a direction the query does not use | B: alist definition by its stated cases: if s = 0 then
+  tokens 390-394 A=R B=H: al2 := al2 + 1
+      A: alist case 2, s known: a direction the query does not use | B: harness counter assignment: al2 := al2 + 1
+  tokens 397-397 A=R B=P: end
+      A: alist case 2, s known: a direction the query does not use | B: alist definition by its stated cases: end
+  tokens 400-400 A=P B=R: begin
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: begin
+  tokens 410-413 A=P B=R: ; sk := true
+      A: alist case 2, s unknown: s := <> | B: record problem-specific knownness: ; sk := true
+  tokens 420-420 A=P B=R: end
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: end
+  tokens 542-542 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 547-550 A=P B=R: ; sk := false
+      A: s initially unknown | B: record problem-specific knownness: ; sk := false
+  tokens 554-554 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## report/P04e.alg: 657 tokens, agreement 493/657 (75.0%)
+  class  A      B
+  P      299    359
+  C      4      18
+  R      207    122
+  S      0      0
+  H      147    158
+  tokens 85-87 A=P B=R: ; Boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; Boolean sk
+  tokens 231-293 A=R B=P: ; Boolean procedure same ( p , q ) ; value p , q ; integer p , q ; same := if p 
+      A: same: equality of two sequences, used only in a direction the query do | B: sequence encoding operation: same: ; Boolean procedure same ( p , q )
+  tokens 298-298 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 301-302 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 308-312 A=P B=R: ; Boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; Boolean sk , mk
+  tokens 345-355 A=R B=P: if same ( tl [ s ] , m ) then
+      A: conseq, s and m known: a direction the query does not use | B: fully known relation test or computation of a place: if same ( tl [ s 
+  tokens 359-359 A=P B=R: begin
+      A: conseq, s known, m unknown: m := tl[s] | B: problem-specific equation evaluator and its knownness bookkeeping: beg
+  tokens 366-369 A=P B=R: ; mk := true
+      A: conseq, s known, m unknown: m := tl[s] | B: record problem-specific knownness: ; mk := true
+  tokens 376-376 A=P B=R: end
+      A: conseq, s known, m unknown: m := tl[s] | B: problem-specific equation evaluator and its knownness bookkeeping: end
+  tokens 385-392 A=R B=P: s := cons ( acode , m )
+      A: conseq, s unknown, m known: a direction the query does not use | B: fully known relation test or computation of a place: s := cons ( acode
+  tokens 399-408 A=R B=C: ; sk := false ; top := top - 1
+      A: conseq, s unknown, m known: a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; sk := fals
+  tokens 415-415 A=P B=R: sk
+      A: alist (alist-right): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 421-423 A=P B=R: ; Boolean sk
+      A: alist (alist-right): procedure heading | B: knownness flag declaration: ; Boolean sk
+  tokens 435-435 A=P B=R: begin
+      A: alist case 1, s known: test s = <> | B: test which places are known: begin
+  tokens 450-450 A=P B=R: end
+      A: alist case 1, s known: test s = <> | B: test which places are known: end
+  tokens 453-457 A=R B=H: al1 := al1 + 1
+      A: alist case 1, s unknown: a direction the query does not use | B: harness counter assignment: al1 := al1 + 1
+  tokens 458-461 A=R B=P: ; s := 0
+      A: alist case 1, s unknown: a direction the query does not use | B: alist definition by its stated cases: ; s := 0
+  tokens 468-471 A=R B=C: ; sk := false
+      A: alist case 1, s unknown: a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; sk := fals
+  tokens 477-479 A=P B=R: ; Boolean mk
+      A: alist case 2: block with its unknown m | B: knownness flag declaration: ; Boolean mk
+  tokens 493-493 A=P B=R: mk
+      A: alist case 2 body: alist(m) | B: extra knownness or success-continuation argument: mk
+  tokens 504-506 A=R B=P: ; conseq (
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: relation application or definition shell: ; conseq (
+  tokens 508-509 A=R B=P: , s
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: relation value argument: , s
+  tokens 512-513 A=R B=P: , m
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: relation value argument: , m
+  tokens 516-516 A=R B=P: )
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: close relation application or formal parameter list: )
+  tokens 517-520 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 527-527 A=P B=R: sk
+      A: alist case 2, s known: its head s = <a> ++ m, then the body, in the or | B: extra knownness or success-continuation argument: sk
+  tokens 530-531 A=P B=R: , mk
+      A: alist case 2, s known: its head s = <a> ++ m, then the body, in the or | B: extra knownness or success-continuation argument: , mk
+  tokens 539-543 A=R B=H: al2 := al2 + 1
+      A: alist case 2, s unknown: a direction the query does not use | B: harness counter assignment: al2 := al2 + 1
+  tokens 544-546 A=R B=P: ; alist (
+      A: alist case 2, s unknown: a direction the query does not use | B: relation application or definition shell: ; alist (
+  tokens 548-549 A=R B=P: , m
+      A: alist case 2, s unknown: a direction the query does not use | B: relation value argument: , m
+  tokens 552-552 A=R B=P: )
+      A: alist case 2, s unknown: a direction the query does not use | B: close relation application or formal parameter list: )
+  tokens 574-574 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 586-589 A=P B=R: ; sk := true
+      A: s := the stage's sequence; s known | B: record problem-specific knownness: ; sk := true
+  tokens 593-593 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## report/P04f.alg: 657 tokens, agreement 481/657 (73.2%)
+  class  A      B
+  P      185    257
+  C      14     18
+  R      209    122
+  S      0      0
+  H      249    260
+  tokens 76-78 A=P B=R: ; Boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; Boolean sk
+  tokens 136-198 A=R B=P: ; Boolean procedure same ( p , q ) ; value p , q ; integer p , q ; same := if p 
+      A: same: equality of two sequences, used only in a direction the query do | B: sequence encoding operation: same: ; Boolean procedure same ( p , q )
+  tokens 203-203 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 206-207 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 213-217 A=P B=R: ; Boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; Boolean sk , mk
+  tokens 231-245 A=R B=P: if s ≠ 0 then begin if hd [ s ] = acode then begin
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if s ≠ 0 then
+  tokens 250-260 A=R B=P: if same ( tl [ s ] , m ) then
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if same ( tl [ s 
+  tokens 265-270 A=R B=P: m := tl [ s ]
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: m := tl [ s ]
+  tokens 277-280 A=R B=C: ; mk := false
+      A: conseq, s known (both branches): a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; mk := fals
+  tokens 282-283 A=R B=P: end end
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: end
+  tokens 289-289 A=P B=R: begin
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: begin
+  tokens 298-301 A=P B=R: ; sk := true
+      A: conseq, s unknown, m known: s := cons(a, m) | B: record problem-specific knownness: ; sk := true
+  tokens 314-315 A=P B=R: end conseq
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: end conseq
+  tokens 320-320 A=P B=R: sk
+      A: alist (alist-right): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 326-328 A=P B=R: ; Boolean sk
+      A: alist (alist-right): procedure heading | B: knownness flag declaration: ; Boolean sk
+  tokens 341-346 A=R B=P: if s = 0 then begin
+      A: alist case 1, s known: a direction the query does not use | B: alist definition by its stated cases: if s = 0 then
+  tokens 347-351 A=R B=H: al1 := al1 + 1
+      A: alist case 1, s known: a direction the query does not use | B: harness counter assignment: al1 := al1 + 1
+  tokens 354-354 A=R B=P: end
+      A: alist case 1, s known: a direction the query does not use | B: alist definition by its stated cases: end
+  tokens 357-357 A=P B=R: begin
+      A: alist case 1, s unknown: s := <> | B: knownness dispatch alternative: begin
+  tokens 367-370 A=P B=R: ; sk := true
+      A: alist case 1, s unknown: s := <> | B: record problem-specific knownness: ; sk := true
+  tokens 377-377 A=P B=R: end
+      A: alist case 1, s unknown: s := <> | B: knownness dispatch alternative: end
+  tokens 382-384 A=P B=R: ; Boolean mk
+      A: alist case 2: block with its unknown m | B: knownness flag declaration: ; Boolean mk
+  tokens 390-394 A=R B=H: al2 := al2 + 1
+      A: procedure body: used only with s known, a direction the query does not | B: harness counter assignment: al2 := al2 + 1
+  tokens 395-397 A=R B=P: ; alist (
+      A: procedure body: used only with s known, a direction the query does not | B: relation application or definition shell: ; alist (
+  tokens 399-400 A=R B=P: , m
+      A: procedure body: used only with s known, a direction the query does not | B: relation value argument: , m
+  tokens 403-403 A=R B=P: )
+      A: procedure body: used only with s known, a direction the query does not | B: close relation application or formal parameter list: )
+  tokens 412-412 A=P B=R: sk
+      A: alist case 2 head: s = <a> ++ m, decided after the body | B: extra knownness or success-continuation argument: sk
+  tokens 415-416 A=P B=R: , mk
+      A: alist case 2 head: s = <a> ++ m, decided after the body | B: extra knownness or success-continuation argument: , mk
+  tokens 422-425 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 430-431 A=R B=P: conseq (
+      A: alist case 2, s known: a direction the query does not use | B: relation application or definition shell: conseq (
+  tokens 433-434 A=R B=P: , s
+      A: alist case 2, s known: a direction the query does not use | B: relation value argument: , s
+  tokens 437-438 A=R B=P: , m
+      A: alist case 2, s known: a direction the query does not use | B: relation value argument: , m
+  tokens 441-441 A=R B=P: )
+      A: alist case 2, s known: a direction the query does not use | B: close relation application or formal parameter list: )
+  tokens 452-452 A=P B=R: mk
+      A: alist case 2 body alist(m), called before the head is decided | B: extra knownness or success-continuation argument: mk
+  tokens 581-581 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 586-589 A=P B=R: ; sk := false
+      A: s initially unknown | B: record problem-specific knownness: ; sk := false
+  tokens 593-593 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## report/P05a.alg: 852 tokens, agreement 817/852 (95.9%)
+  class  A      B
+  P      114    79
+  C      0      0
+  R      73     102
+  S      0      0
+  H      665    671
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific retained alternatives and relation holding: begin
+  tokens 13-14 A=P B=R: , j
+      A: declarations of the fact index, the number of pick's facts and the sta | B: problem-specific retained alternatives and relation holding: , j
+  tokens 32-40 A=P B=R: ; integer array xv [ 1 : 1000 ]
+      A: array of the values of x given by the facts of pick | B: problem-specific retained alternatives and relation holding: ; integer
+  tokens 48-56 A=P B=R: ; Boolean array xa [ 1 : 1000 ]
+      A: array: whether each value of x is still a solution | B: problem-specific retained alternatives and relation holding: ; Boolean
+  tokens 436-436 A=P B=H: begin
+      A: stage 1, pick(x) | B: fixed stage-number dispatch: begin
+  tokens 463-469 A=P B=R: ; xa [ j ] := true
+      A: stage 1: each fact of pick, in order, gives x one value | B: mark the arrived pick value as live: ; xa [ j ] := true
+  tokens 482-482 A=P B=H: end
+      A: stage 1: end | B: fixed stage-number dispatch: end
+  tokens 489-489 A=P B=H: begin
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 500-500 A=P B=H: end
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 507-507 A=P B=H: begin
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 518-518 A=P B=H: end
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 851-851 A=P B=R: end
+      A: program block | B: problem-specific retained alternatives and relation holding: end
+
+## report/P05b.alg: 744 tokens, agreement 711/744 (95.6%)
+  class  A      B
+  P      87     54
+  C      0      0
+  R      59     88
+  S      0      0
+  H      598    602
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific retained alternatives and relation holding: begin
+  tokens 13-14 A=P B=R: , j
+      A: declarations of the fact index, the number of pick's facts and the sta | B: problem-specific retained alternatives and relation holding: , j
+  tokens 28-36 A=P B=R: ; integer array xv [ 1 : 1000 ]
+      A: array of the values of x given by the facts of pick | B: problem-specific retained alternatives and relation holding: ; integer
+  tokens 44-52 A=P B=R: ; Boolean array xa [ 1 : 1000 ]
+      A: array: whether each value of x is still a solution | B: problem-specific retained alternatives and relation holding: ; Boolean
+  tokens 357-357 A=P B=H: begin
+      A: stage 1: the constant of x > c1 | B: fixed stage-number dispatch: begin
+  tokens 368-368 A=P B=H: end
+      A: stage 1: the constant of x > c1 | B: fixed stage-number dispatch: end
+  tokens 375-375 A=P B=H: begin
+      A: stage 2, pick(x) | B: fixed stage-number dispatch: begin
+  tokens 402-408 A=P B=R: ; xa [ j ] := true
+      A: stage 2: each fact of pick, in order, gives x one value | B: mark the arrived pick value as live: ; xa [ j ] := true
+  tokens 421-421 A=P B=H: end
+      A: stage 2: end | B: fixed stage-number dispatch: end
+  tokens 743-743 A=P B=R: end
+      A: program block | B: problem-specific retained alternatives and relation holding: end
+
+## report/P05c.alg: 845 tokens, agreement 810/845 (95.9%)
+  class  A      B
+  P      114    79
+  C      0      0
+  R      73     102
+  S      0      0
+  H      658    664
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific retained alternatives and relation holding: begin
+  tokens 13-14 A=P B=R: , j
+      A: declarations of the fact index, the number of pick's facts and the sta | B: problem-specific retained alternatives and relation holding: , j
+  tokens 32-40 A=P B=R: ; integer array xv [ 1 : 1000 ]
+      A: array of the values of x given by the facts of pick | B: problem-specific retained alternatives and relation holding: ; integer
+  tokens 48-56 A=P B=R: ; Boolean array xa [ 1 : 1000 ]
+      A: array: whether each value of x is still a solution | B: problem-specific retained alternatives and relation holding: ; Boolean
+  tokens 429-429 A=P B=H: begin
+      A: stage 1, pick(x) | B: fixed stage-number dispatch: begin
+  tokens 456-462 A=P B=R: ; xa [ j ] := true
+      A: stage 1: each fact of pick, in order, gives x one value | B: mark the arrived pick value as live: ; xa [ j ] := true
+  tokens 475-475 A=P B=H: end
+      A: stage 1: end | B: fixed stage-number dispatch: end
+  tokens 482-482 A=P B=H: begin
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 493-493 A=P B=H: end
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 500-500 A=P B=H: begin
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 511-511 A=P B=H: end
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 844-844 A=P B=R: end
+      A: program block | B: problem-specific retained alternatives and relation holding: end
+
+## report/P06a.alg: 575 tokens, agreement 550/575 (95.7%)
+  class  A      B
+  P      73     48
+  C      0      0
+  R      93     114
+  S      0      0
+  H      409    413
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 27-29 A=P B=R: ; Boolean xk
+      A: declarations: x has a value; the stages are inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; B
+  tokens 52-52 A=P B=R: begin
+      A: evaluator: not (x = c1) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 74-74 A=P B=R: end
+      A: evaluator: not (x = c1) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 91-91 A=P B=R: begin
+      A: evaluator: x = c2 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 103-103 A=P B=R: end
+      A: evaluator: x = c2 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 105-105 A=P B=R: begin
+      A: evaluator: x computed from x = c2, x now known | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 109-112 A=P B=R: ; xk := true
+      A: evaluator: x computed from x = c2, x now known | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 117-117 A=P B=R: end
+      A: evaluator: x computed from x = c2, x now known | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 255-257 A=P B=R: ; xk :=
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 262-264 A=P B=R: inconsistent := false
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 299-299 A=P B=H: begin
+      A: stage 1: its constant | B: stage 1 dispatch header and block: begin
+  tokens 310-310 A=P B=H: end
+      A: stage 1: its constant | B: stage 1 dispatch header and block: end
+  tokens 317-317 A=P B=H: begin
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: begin
+  tokens 328-328 A=P B=H: end
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: end
+  tokens 574-574 A=P B=R: end
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: end
+
+## report/P06b.alg: 575 tokens, agreement 550/575 (95.7%)
+  class  A      B
+  P      73     48
+  C      0      0
+  R      93     114
+  S      0      0
+  H      409    413
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 27-29 A=P B=R: ; Boolean xk
+      A: declarations: x has a value; the stages are inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; B
+  tokens 52-52 A=P B=R: begin
+      A: evaluator: x = c1 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 64-64 A=P B=R: end
+      A: evaluator: x = c1 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 66-66 A=P B=R: begin
+      A: evaluator: x computed from x = c1, x now known | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 70-73 A=P B=R: ; xk := true
+      A: evaluator: x computed from x = c1, x now known | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 78-78 A=P B=R: end
+      A: evaluator: x computed from x = c1, x now known | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 99-99 A=P B=R: begin
+      A: evaluator: not (x = c2) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 121-121 A=P B=R: end
+      A: evaluator: not (x = c2) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 255-257 A=P B=R: ; xk :=
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 262-264 A=P B=R: inconsistent := false
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 299-299 A=P B=H: begin
+      A: stage 1: its constant | B: stage 1 dispatch header and block: begin
+  tokens 310-310 A=P B=H: end
+      A: stage 1: its constant | B: stage 1 dispatch header and block: end
+  tokens 317-317 A=P B=H: begin
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: begin
+  tokens 328-328 A=P B=H: end
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: end
+  tokens 574-574 A=P B=R: end
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: end
+
+## report/P06d.alg: 682 tokens, agreement 681/682 (99.9%)
+  class  A      B
+  P      363    362
+  C      0      0
+  R      0      0
+  S      0      0
+  H      319    320
+  tokens 518-518 A=P B=H: 0
+      A: encoding initialised | B: harness counter assignment: mem1 := mem2 := sd1 := sd2 := sd3 := 0
+
+## report/P06e1.alg: 558 tokens, agreement 558/558 (100.0%)
+  class  A      B
+  P      293    293
+  C      0      0
+  R      0      0
+  S      0      0
+  H      265    265
+
+## report/P06e3.alg: 617 tokens, agreement 617/617 (100.0%)
+  class  A      B
+  P      272    272
+  C      0      0
+  R      0      0
+  S      0      0
+  H      345    345
+
+## report/P07a.alg: 1214 tokens, agreement 1147/1214 (94.5%)
+  class  A      B
+  P      101    97
+  C      0      63
+  R      292    231
+  S      0      0
+  H      821    823
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 50-51 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 52-60 A=R B=C: ; integer array ord [ 1 : 3 ]
+      A: declaration of ord [main: integer array ord [ 1 : 3 ]] | B: declaration of ord
+  tokens 315-323 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 327-346 A=R B=C: ; for j := 1 step 1 until 3 do begin if ord [ j ] = 1 then begin
+      A: propagation loop of the holding code [propagate: for j := 1 step 1 unt | B: propagate loop header: for j := 1 step 1 until 3 do
+  tokens 351-361 A=R B=C: end else if ord [ j ] = 2 then begin
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 366-376 A=R B=C: end else if ord [ j ] = 3 then begin
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 381-383 A=R B=C: end end end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 1213-1213 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## report/P07b.alg: 836 tokens, agreement 822/836 (98.3%)
+  class  A      B
+  P      66     62
+  C      0      10
+  R      172    164
+  S      0      0
+  H      598    600
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 40-41 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 210-218 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 232-232 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 835-835 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## report/P07c.alg: 640 tokens, agreement 626/640 (97.8%)
+  class  A      B
+  P      37     33
+  C      0      10
+  R      108    100
+  S      0      0
+  H      495    497
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 34-35 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 124-132 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 141-141 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 639-639 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## report/P07d.alg: 1085 tokens, agreement 1071/1085 (98.7%)
+  class  A      B
+  P      137    133
+  C      0      10
+  R      212    204
+  S      0      0
+  H      736    738
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 48-49 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 319-327 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 346-346 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 1084-1084 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## report/P07f.alg: 836 tokens, agreement 822/836 (98.3%)
+  class  A      B
+  P      66     62
+  C      0      10
+  R      172    164
+  S      0      0
+  H      598    600
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 40-41 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 210-218 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 232-232 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 835-835 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## report/P07g.alg: 427 tokens, agreement 310/427 (72.6%)
+  class  A      B
+  P      155    46
+  C      0      0
+  R      45     152
+  S      0      0
+  H      227    229
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 15-18 A=P B=R: , r , nx
+      A: declaration of r [main: , r] | B: declaration of r
+  tokens 26-36 A=P B=R: , inconsistent ; integer array xs [ 1 : 2 ]
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 42-45 A=P B=R: integer j , kept
+      A: local of the test of x's values [examine1: integer j] | B: declaration: integer j , kept
+  tokens 59-72 A=P B=R: kept := 0 ; for j := 1 step 1 until nx do begin
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: kept := 0
+  tokens 87-101 A=P B=R: kept := kept + 1 ; xs [ kept ] := xs [ j ]
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: kept := kept + 1
+  tokens 103-103 A=P B=R: end
+      A: end of the compound [examine1: end] | B: examine1 block closer
+  tokens 108-113 A=P B=R: ; if nx = 0 then
+      A: test of a fully known relation [examine1: if nx = 0 then] | B: examine1 conditional header: if nx = 0 then
+  tokens 118-123 A=P B=R: else if c1 < 0 then
+      A: x times x = c with c negative: no integer square [examine1: else if c1 | B: examine1 else connective
+  tokens 127-139 A=P B=R: else begin r := entier ( sqrt ( c1 ) + 0.5 )
+      A: else of the conditional [examine1: else] | B: examine1 else connective
+  tokens 152-157 A=P B=R: if r = 0 then begin
+      A: test of a fully known relation [examine1: else if r = 0 then] | B: examine1 conditional header: if r = 0 then
+  tokens 161-170 A=P B=R: ; xs [ 1 ] := 0 end else begin
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: xs [ 1 ] := 0
+  tokens 174-190 A=P B=R: ; xs [ 1 ] := r ; xs [ 2 ] := - r end end
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: xs [ 1 ] := r
+  tokens 255-258 A=P B=R: ; inconsistent := false
+      A: initially no contradiction [main: inconsistent := false] | B: initialize held state
+  tokens 259-262 A=R B=P: ; nx := 0
+      A: x has no value yet (holding state) [main: nx := 0] | B: stage information / encoded value: nx := 0
+  tokens 426-426 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## report/P08a.alg: 2585 tokens, agreement 2484/2585 (96.1%)
+  class  A      B
+  P      713    658
+  C      0      48
+  R      370    366
+  S      0      0
+  H      1502   1513
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 13-14 A=P B=R: , j
+      A: declaration of j [main: , j] | B: declaration of j
+  tokens 56-57 A=R B=C: , defined
+      A: declaration of defined [main: , defined] | B: declaration of defined
+  tokens 60-61 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 567-573 A=R B=C: ; if defined ∧ ak then begin
+      A: heading of the holding code examine2 [examine2: procedure examine2 ;] | B: examine2 conditional header: if defined ∧ ak then
+  tokens 574-575 A=P B=R: integer r
+      A: rev's result [examine2: integer r] | B: declaration: integer r
+  tokens 619-620 A=R B=C: end examine2
+      A: end of the compound [examine2: end examine2] | B: examine2 block closer
+  tokens 685-690 A=P B=R: integer p , e , w
+      A: declaration of p [examine6: integer p] | B: declaration: integer p , e , w
+  tokens 699-712 A=P B=C: ; for w := 0 while e ≠ 0 ∧ ¬ inconsistent do begin
+      A: loop over the encoding (++ decomposition or construction, or x's value | B: examine6 loop header: for w := 0 while e ≠ 0 ∧ ¬ inconsistent do
+  tokens 750-756 A=P B=C: end ; if ¬ inconsistent then begin
+      A: end of the compound [examine6: end] | B: examine6 block closer
+  tokens 788-788 A=P B=C: end
+      A: end of the compound [examine6: end] | B: examine6 block closer
+  tokens 799-808 A=P B=R: integer w , e , first , last , c
+      A: declaration of w [examine6: integer w] | B: declaration: integer w , e , first , last , c
+  tokens 913-921 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 950-950 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 1817-1818 A=R B=C: defined :=
+      A: initial holding state (known flags, held flags) [main: ak := bk := ck  | B: permission flag initialization target
+  tokens 1825-1833 A=P B=H: rev1 := rev2 := conc1 := conc2 := 0
+      A: cell allocator and counters initialised (one statement; top is the enc | B: initialize operation counters in shared zero assignment
+  tokens 1834-1843 A=R B=P: ; for j := 1 step 1 until 3 do
+      A: x, y, z marked unknown [main: for j := 1 step 1 until 3 do] | B: main loop header: for j := 1 step 1 until 3 do
+  tokens 1913-1915 A=R B=C: defined := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: d | B: set permission flag defined
+  tokens 1932-1941 A=P B=R: integer len , e , first , last , c
+      A: declaration of len [main: integer len] | B: declaration of len
+  tokens 2584-2584 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## report/P08c.alg: 1448 tokens, agreement 1356/1448 (93.6%)
+  class  A      B
+  P      455    417
+  C      0      56
+  R      209    180
+  S      0      0
+  H      784    795
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 13-14 A=P B=R: , j
+      A: declaration of j [main: , j] | B: declaration of j
+  tokens 42-47 A=R B=C: , concdef , rev1def , rev2def
+      A: declaration of concdef [main: , concdef] | B: declaration of concdef
+  tokens 50-51 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 256-258 A=P B=R: ; integer procedure
+      A: heading of conc (transcription / encoding operation) [conc: integer pr | B: added integer status result in procedure signature
+  tokens 279-279 A=P B=C: ;
+      A: heading of conc (transcription / encoding operation) [conc: integer pr | B: conc conditional header: if ¬ concdef then
+  tokens 280-283 A=R B=C: if ¬ concdef then
+      A: verdict to wait: conc's definition not arrived [conc: if ¬ concdef the | B: conc conditional header: if ¬ concdef then
+  tokens 287-287 A=P B=C: else
+      A: body of conc [conc: else if a = 0 then] | B: conc else connective
+  tokens 320-322 A=P B=R: ; t :=
+      A: body of conc [conc: t := conc ( tl [ a ] , b , d )] | B: added status-return assignment target
+  tokens 357-359 A=P B=R: ; integer procedure
+      A: heading of rev (transcription / encoding operation) [rev: integer proc | B: added integer status result in procedure signature
+  tokens 386-390 A=R B=C: ; if rev1def then begin
+      A: case 1 arrived? (verdict to wait) [rev: if rev1def then] | B: rev conditional header: if rev1def then
+  tokens 414-423 A=R B=C: end ; if st ≠ 1 ∧ rev2def then begin
+      A: end of the compound [rev: end] | B: rev block closer
+  tokens 435-437 A=P B=R: ; t :=
+      A: conjunct rev(l, q) [rev: t := rev ( tl [ a ] , q )] | B: added status-return assignment target
+  tokens 453-454 A=P B=R: t :=
+      A: conjunct conc(q, <h>, r) [rev: t := conc ( q , cons ( hd [ a ] , 0 ) , | B: added status-return assignment target
+  tokens 481-481 A=R B=C: end
+      A: end of the compound [rev: end] | B: rev block closer
+  tokens 513-515 A=P B=R: ; t :=
+      A: the application rev(s, b) [examine2: t := rev ( sv , r )] | B: added status-return assignment target
+  tokens 570-577 A=R B=C: ; if concdef ∧ rev1def ∧ rev2def then
+      A: held until every part of the definition has arrived [examine2: if conc | B: examine2 conditional header: if concdef ∧ rev1def ∧ rev2def then
+  tokens 591-599 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 608-608 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 1010-1018 A=P B=H: rev1 := rev2 := conc1 := conc2 := 0
+      A: cell allocator and counters initialised (one statement; top is the enc | B: initialize operation counters in shared zero assignment
+  tokens 1055-1057 A=R B=C: concdef := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: c | B: set permission flag concdef
+  tokens 1090-1093 A=P B=R: integer l1 , l2
+      A: declaration of l1 [main: integer l1] | B: declaration of l1
+  tokens 1122-1125 A=R B=C: ; rev1def := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: r | B: set permission flag rev1def
+  tokens 1133-1135 A=R B=C: rev2def := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: r | B: set permission flag rev2def
+  tokens 1447-1447 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P04a.a60: 258 tokens, agreement 228/258 (88.4%)
+  class  A      B
+  P      89     69
+  C      4      4
+  R      31     51
+  S      0      0
+  H      134    134
+  tokens 19-21 A=P B=R: ; boolean xk
+      A: declaration of x has a value | B: knownness flag declaration: ; boolean xk
+  tokens 26-26 A=P B=R: xk
+      A: loop: procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 32-34 A=P B=R: ; boolean xk
+      A: loop: procedure heading | B: knownness flag declaration: ; boolean xk
+  tokens 51-51 A=P B=R: xk
+      A: loop case 1: loop(x) if loop(x) | B: extra knownness or success-continuation argument: xk
+  tokens 63-63 A=P B=R: xk
+      A: equals (x = c): procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 74-76 A=P B=R: ; boolean xk
+      A: equals (x = c): procedure heading | B: knownness flag declaration: ; boolean xk
+  tokens 90-94 A=R B=P: if x = c then
+      A: equals: test whether x is known, and the branch for x known (never use | B: fully known equality test: if x = c then
+  tokens 98-98 A=P B=R: begin
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: begin
+  tokens 102-105 A=P B=R: ; xk := true
+      A: equals with x unknown: x := c | B: record problem-specific knownness: ; xk := true
+  tokens 112-113 A=P B=R: end equals
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: end equals
+  tokens 191-194 A=P B=R: ; xk := false
+      A: x initially unknown | B: record problem-specific knownness: ; xk := false
+  tokens 202-202 A=P B=R: xk
+      A: query: first alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+  tokens 211-211 A=P B=R: xk
+      A: query: second alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+
+## x1/P04b.a60: 258 tokens, agreement 228/258 (88.4%)
+  class  A      B
+  P      89     69
+  C      4      4
+  R      31     51
+  S      0      0
+  H      134    134
+  tokens 19-21 A=P B=R: ; boolean xk
+      A: declaration of x has a value | B: knownness flag declaration: ; boolean xk
+  tokens 26-26 A=P B=R: xk
+      A: loop: procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 32-34 A=P B=R: ; boolean xk
+      A: loop: procedure heading | B: knownness flag declaration: ; boolean xk
+  tokens 51-51 A=P B=R: xk
+      A: loop case 1: loop(x) if loop(x) | B: extra knownness or success-continuation argument: xk
+  tokens 63-63 A=P B=R: xk
+      A: equals (x = c): procedure heading | B: extra knownness or success-continuation argument: xk
+  tokens 74-76 A=P B=R: ; boolean xk
+      A: equals (x = c): procedure heading | B: knownness flag declaration: ; boolean xk
+  tokens 90-94 A=R B=P: if x = c then
+      A: equals: test whether x is known, and the branch for x known (never use | B: fully known equality test: if x = c then
+  tokens 98-98 A=P B=R: begin
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: begin
+  tokens 102-105 A=P B=R: ; xk := true
+      A: equals with x unknown: x := c | B: record problem-specific knownness: ; xk := true
+  tokens 112-113 A=P B=R: end equals
+      A: equals with x unknown: x := c | B: problem-specific representation and holding machinery: end equals
+  tokens 191-194 A=P B=R: ; xk := false
+      A: x initially unknown | B: record problem-specific knownness: ; xk := false
+  tokens 202-202 A=P B=R: xk
+      A: query: first alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+  tokens 213-213 A=P B=R: xk
+      A: query: second alternative of the disjunction, in the order written | B: extra knownness or success-continuation argument: xk
+
+## x1/P04c.a60: 597 tokens, agreement 538/597 (90.1%)
+  class  A      B
+  P      382    339
+  C      14     18
+  R      63     101
+  S      0      0
+  H      138    139
+  tokens 64-66 A=P B=R: ; boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; boolean sk
+  tokens 274-274 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 277-278 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 284-288 A=P B=R: ; boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; boolean sk , mk
+  tokens 320-320 A=P B=R: begin
+      A: conseq, s and m known: test tl[s] = m | B: test which places are known: begin
+  tokens 333-333 A=P B=R: end
+      A: conseq, s and m known: test tl[s] = m | B: test which places are known: end
+  tokens 336-341 A=R B=P: m := tl [ s ]
+      A: conseq, s known, m unknown: a direction the query does not use | B: fully known relation test or computation of a place: m := tl [ s ]
+  tokens 348-351 A=R B=C: ; mk := false
+      A: conseq, s known, m unknown: a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; mk := fals
+  tokens 360-360 A=P B=R: begin
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: begin
+  tokens 369-372 A=P B=R: ; sk := true
+      A: conseq, s unknown, m known: s := cons(a, m) | B: record problem-specific knownness: ; sk := true
+  tokens 385-386 A=P B=R: end conseq
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: end conseq
+  tokens 391-391 A=P B=R: sk
+      A: alist (alist-left): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 397-399 A=P B=R: ; boolean sk
+      A: alist (alist-left): procedure heading | B: knownness flag declaration: ; boolean sk
+  tokens 411-413 A=P B=R: ; boolean mk
+      A: alist case 1: block with its unknown m | B: knownness flag declaration: ; boolean mk
+  tokens 420-420 A=P B=R: sk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: sk
+  tokens 423-424 A=P B=R: , mk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: , mk
+  tokens 436-439 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 443-443 A=P B=R: mk
+      A: alist case 1, first conjunct: alist(m), in the order written | B: extra knownness or success-continuation argument: mk
+  tokens 454-454 A=P B=R: begin
+      A: alist case 2, s known: test s = <> | B: test which places are known: begin
+  tokens 469-469 A=P B=R: end
+      A: alist case 2, s known: test s = <> | B: test which places are known: end
+  tokens 471-471 A=P B=R: begin
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: begin
+  tokens 481-484 A=P B=R: ; sk := true
+      A: alist case 2, s unknown: s := <> | B: record problem-specific knownness: ; sk := true
+  tokens 491-491 A=P B=R: end
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: end
+  tokens 513-513 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 525-528 A=P B=R: ; sk := true
+      A: s := the stage's sequence; s known | B: record problem-specific knownness: ; sk := true
+  tokens 532-532 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## x1/P04d.a60: 591 tokens, agreement 433/591 (73.3%)
+  class  A      B
+  P      184    243
+  C      14     18
+  R      170    101
+  S      0      0
+  H      223    229
+  tokens 58-60 A=P B=R: ; boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; boolean sk
+  tokens 118-180 A=R B=P: ; boolean procedure same ( p , q ) ; value p , q ; integer p , q ; same := if p 
+      A: same: equality of two sequences, used only in a direction the query do | B: sequence encoding operation: same: ; boolean procedure same ( p , q )
+  tokens 185-185 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 188-189 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 195-199 A=P B=R: ; boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; boolean sk , mk
+  tokens 213-227 A=R B=P: if s ≠ 0 then begin if hd [ s ] = acode then begin
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if s ≠ 0 then
+  tokens 232-242 A=R B=P: if same ( tl [ s ] , m ) then
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if same ( tl [ s 
+  tokens 247-252 A=R B=P: m := tl [ s ]
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: m := tl [ s ]
+  tokens 259-262 A=R B=C: ; mk := false
+      A: conseq, s known (both branches): a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; mk := fals
+  tokens 264-265 A=R B=P: end end
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: end
+  tokens 271-271 A=P B=R: begin
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: begin
+  tokens 280-283 A=P B=R: ; sk := true
+      A: conseq, s unknown, m known: s := cons(a, m) | B: record problem-specific knownness: ; sk := true
+  tokens 296-297 A=P B=R: end conseq
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: end conseq
+  tokens 302-302 A=P B=R: sk
+      A: alist (alist-left): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 308-310 A=P B=R: ; boolean sk
+      A: alist (alist-left): procedure heading | B: knownness flag declaration: ; boolean sk
+  tokens 322-324 A=P B=R: ; boolean mk
+      A: alist case 1: block with its unknown m | B: knownness flag declaration: ; boolean mk
+  tokens 331-331 A=P B=R: sk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: sk
+  tokens 334-335 A=P B=R: , mk
+      A: alist case 1, second conjunct: s = <a> ++ m | B: extra knownness or success-continuation argument: , mk
+  tokens 347-350 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 354-354 A=P B=R: mk
+      A: alist case 1, first conjunct: alist(m), in the order written | B: extra knownness or success-continuation argument: mk
+  tokens 366-371 A=R B=P: if s = 0 then begin
+      A: alist case 2, s known: a direction the query does not use | B: alist definition by its stated cases: if s = 0 then
+  tokens 372-376 A=R B=H: al2 := al2 + 1
+      A: alist case 2, s known: a direction the query does not use | B: harness counter assignment: al2 := al2 + 1
+  tokens 379-379 A=R B=P: end
+      A: alist case 2, s known: a direction the query does not use | B: alist definition by its stated cases: end
+  tokens 382-382 A=P B=R: begin
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: begin
+  tokens 392-395 A=P B=R: ; sk := true
+      A: alist case 2, s unknown: s := <> | B: record problem-specific knownness: ; sk := true
+  tokens 402-402 A=P B=R: end
+      A: alist case 2, s unknown: s := <> | B: knownness dispatch alternative: end
+  tokens 514-514 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 519-522 A=P B=R: ; sk := false
+      A: s initially unknown | B: record problem-specific knownness: ; sk := false
+  tokens 526-526 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## x1/P04e.a60: 636 tokens, agreement 472/636 (74.2%)
+  class  A      B
+  P      293    353
+  C      4      18
+  R      207    122
+  S      0      0
+  H      132    143
+  tokens 64-66 A=P B=R: ; boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; boolean sk
+  tokens 207-269 A=R B=P: ; boolean procedure same ( p , q ) ; value p , q ; integer p , q ; same := if p 
+      A: same: equality of two sequences, used only in a direction the query do | B: sequence encoding operation: same: ; boolean procedure same ( p , q )
+  tokens 274-274 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 277-278 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 284-288 A=P B=R: ; boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; boolean sk , mk
+  tokens 321-331 A=R B=P: if same ( tl [ s ] , m ) then
+      A: conseq, s and m known: a direction the query does not use | B: fully known relation test or computation of a place: if same ( tl [ s 
+  tokens 335-335 A=P B=R: begin
+      A: conseq, s known, m unknown: m := tl[s] | B: problem-specific equation evaluator and its knownness bookkeeping: beg
+  tokens 342-345 A=P B=R: ; mk := true
+      A: conseq, s known, m unknown: m := tl[s] | B: record problem-specific knownness: ; mk := true
+  tokens 352-352 A=P B=R: end
+      A: conseq, s known, m unknown: m := tl[s] | B: problem-specific equation evaluator and its knownness bookkeeping: end
+  tokens 361-368 A=R B=P: s := cons ( acode , m )
+      A: conseq, s unknown, m known: a direction the query does not use | B: fully known relation test or computation of a place: s := cons ( acode
+  tokens 375-384 A=R B=C: ; sk := false ; top := top - 1
+      A: conseq, s unknown, m known: a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; sk := fals
+  tokens 391-391 A=P B=R: sk
+      A: alist (alist-right): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 397-399 A=P B=R: ; boolean sk
+      A: alist (alist-right): procedure heading | B: knownness flag declaration: ; boolean sk
+  tokens 411-411 A=P B=R: begin
+      A: alist case 1, s known: test s = <> | B: test which places are known: begin
+  tokens 426-426 A=P B=R: end
+      A: alist case 1, s known: test s = <> | B: test which places are known: end
+  tokens 429-433 A=R B=H: al1 := al1 + 1
+      A: alist case 1, s unknown: a direction the query does not use | B: harness counter assignment: al1 := al1 + 1
+  tokens 434-437 A=R B=P: ; s := 0
+      A: alist case 1, s unknown: a direction the query does not use | B: alist definition by its stated cases: ; s := 0
+  tokens 444-447 A=R B=C: ; sk := false
+      A: alist case 1, s unknown: a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; sk := fals
+  tokens 453-455 A=P B=R: ; boolean mk
+      A: alist case 2: block with its unknown m | B: knownness flag declaration: ; boolean mk
+  tokens 469-469 A=P B=R: mk
+      A: alist case 2 body: alist(m) | B: extra knownness or success-continuation argument: mk
+  tokens 480-482 A=R B=P: ; conseq (
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: relation application or definition shell: ; conseq (
+  tokens 484-485 A=R B=P: , s
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: relation value argument: , s
+  tokens 488-489 A=R B=P: , m
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: relation value argument: , m
+  tokens 492-492 A=R B=P: )
+      A: procedure head and its call of conseq: used only with s unknown, a dir | B: close relation application or formal parameter list: )
+  tokens 493-496 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 503-503 A=P B=R: sk
+      A: alist case 2, s known: its head s = <a> ++ m, then the body, in the or | B: extra knownness or success-continuation argument: sk
+  tokens 506-507 A=P B=R: , mk
+      A: alist case 2, s known: its head s = <a> ++ m, then the body, in the or | B: extra knownness or success-continuation argument: , mk
+  tokens 515-519 A=R B=H: al2 := al2 + 1
+      A: alist case 2, s unknown: a direction the query does not use | B: harness counter assignment: al2 := al2 + 1
+  tokens 520-522 A=R B=P: ; alist (
+      A: alist case 2, s unknown: a direction the query does not use | B: relation application or definition shell: ; alist (
+  tokens 524-525 A=R B=P: , m
+      A: alist case 2, s unknown: a direction the query does not use | B: relation value argument: , m
+  tokens 528-528 A=R B=P: )
+      A: alist case 2, s unknown: a direction the query does not use | B: close relation application or formal parameter list: )
+  tokens 552-552 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 564-567 A=P B=R: ; sk := true
+      A: s := the stage's sequence; s known | B: record problem-specific knownness: ; sk := true
+  tokens 571-571 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## x1/P04f.a60: 630 tokens, agreement 454/630 (72.1%)
+  class  A      B
+  P      185    257
+  C      14     18
+  R      209    122
+  S      0      0
+  H      222    233
+  tokens 58-60 A=P B=R: ; boolean sk
+      A: declaration of s has a value | B: knownness flag declaration: ; boolean sk
+  tokens 118-180 A=R B=P: ; boolean procedure same ( p , q ) ; value p , q ; integer p , q ; same := if p 
+      A: same: equality of two sequences, used only in a direction the query do | B: sequence encoding operation: same: ; boolean procedure same ( p , q )
+  tokens 185-185 A=P B=R: sk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 188-189 A=P B=R: , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: extra knownness or success-continuation argument: , mk
+  tokens 195-199 A=P B=R: ; boolean sk , mk
+      A: conseq (s = <a> ++ m): procedure heading | B: knownness flag declaration: ; boolean sk , mk
+  tokens 213-227 A=R B=P: if s ≠ 0 then begin if hd [ s ] = acode then begin
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if s ≠ 0 then
+  tokens 232-242 A=R B=P: if same ( tl [ s ] , m ) then
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: if same ( tl [ s 
+  tokens 247-252 A=R B=P: m := tl [ s ]
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: m := tl [ s ]
+  tokens 259-262 A=R B=C: ; mk := false
+      A: conseq, s known (both branches): a direction the query does not use | B: undo temporary knownness after passing a solution onward: ; mk := fals
+  tokens 264-265 A=R B=P: end end
+      A: conseq, s known (both branches): a direction the query does not use | B: fully known relation test or computation of a place: end
+  tokens 271-271 A=P B=R: begin
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: begin
+  tokens 280-283 A=P B=R: ; sk := true
+      A: conseq, s unknown, m known: s := cons(a, m) | B: record problem-specific knownness: ; sk := true
+  tokens 296-297 A=P B=R: end conseq
+      A: conseq, s unknown, m known: s := cons(a, m) | B: test which places are known: end conseq
+  tokens 302-302 A=P B=R: sk
+      A: alist (alist-right): procedure heading | B: extra knownness or success-continuation argument: sk
+  tokens 308-310 A=P B=R: ; boolean sk
+      A: alist (alist-right): procedure heading | B: knownness flag declaration: ; boolean sk
+  tokens 323-328 A=R B=P: if s = 0 then begin
+      A: alist case 1, s known: a direction the query does not use | B: alist definition by its stated cases: if s = 0 then
+  tokens 329-333 A=R B=H: al1 := al1 + 1
+      A: alist case 1, s known: a direction the query does not use | B: harness counter assignment: al1 := al1 + 1
+  tokens 336-336 A=R B=P: end
+      A: alist case 1, s known: a direction the query does not use | B: alist definition by its stated cases: end
+  tokens 339-339 A=P B=R: begin
+      A: alist case 1, s unknown: s := <> | B: knownness dispatch alternative: begin
+  tokens 349-352 A=P B=R: ; sk := true
+      A: alist case 1, s unknown: s := <> | B: record problem-specific knownness: ; sk := true
+  tokens 359-359 A=P B=R: end
+      A: alist case 1, s unknown: s := <> | B: knownness dispatch alternative: end
+  tokens 364-366 A=P B=R: ; boolean mk
+      A: alist case 2: block with its unknown m | B: knownness flag declaration: ; boolean mk
+  tokens 372-376 A=R B=H: al2 := al2 + 1
+      A: procedure body: used only with s known, a direction the query does not | B: harness counter assignment: al2 := al2 + 1
+  tokens 377-379 A=R B=P: ; alist (
+      A: procedure body: used only with s known, a direction the query does not | B: relation application or definition shell: ; alist (
+  tokens 381-382 A=R B=P: , m
+      A: procedure body: used only with s known, a direction the query does not | B: relation value argument: , m
+  tokens 385-385 A=R B=P: )
+      A: procedure body: used only with s known, a direction the query does not | B: close relation application or formal parameter list: )
+  tokens 394-394 A=P B=R: sk
+      A: alist case 2 head: s = <a> ++ m, decided after the body | B: extra knownness or success-continuation argument: sk
+  tokens 397-398 A=P B=R: , mk
+      A: alist case 2 head: s = <a> ++ m, decided after the body | B: extra knownness or success-continuation argument: , mk
+  tokens 404-407 A=P B=R: ; mk := false
+      A: m initially unknown | B: record problem-specific knownness: ; mk := false
+  tokens 412-413 A=R B=P: conseq (
+      A: alist case 2, s known: a direction the query does not use | B: relation application or definition shell: conseq (
+  tokens 415-416 A=R B=P: , s
+      A: alist case 2, s known: a direction the query does not use | B: relation value argument: , s
+  tokens 419-420 A=R B=P: , m
+      A: alist case 2, s known: a direction the query does not use | B: relation value argument: , m
+  tokens 423-423 A=R B=P: )
+      A: alist case 2, s known: a direction the query does not use | B: close relation application or formal parameter list: )
+  tokens 434-434 A=P B=R: mk
+      A: alist case 2 body alist(m), called before the head is decided | B: extra knownness or success-continuation argument: mk
+  tokens 553-553 A=P B=H: 0
+      A: encoding initialised: no cells yet | B: harness counter assignment: al1 := al2 := 0
+  tokens 558-561 A=P B=R: ; sk := false
+      A: s initially unknown | B: record problem-specific knownness: ; sk := false
+  tokens 565-565 A=P B=R: sk
+      A: query alist(s) | B: extra knownness or success-continuation argument: sk
+
+## x1/P05a.a60: 763 tokens, agreement 728/763 (95.4%)
+  class  A      B
+  P      102    67
+  C      0      0
+  R      73     102
+  S      0      0
+  H      588    594
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific retained alternatives and relation holding: begin
+  tokens 13-14 A=P B=R: , j
+      A: declarations of the fact index, the number of pick's facts and the sta | B: problem-specific retained alternatives and relation holding: , j
+  tokens 32-40 A=P B=R: ; integer array xv [ 1 : 1000 ]
+      A: array of the values of x given by the facts of pick | B: problem-specific retained alternatives and relation holding: ; integer
+  tokens 48-56 A=P B=R: ; boolean array xa [ 1 : 1000 ]
+      A: array: whether each value of x is still a solution | B: problem-specific retained alternatives and relation holding: ; boolean
+  tokens 386-386 A=P B=H: begin
+      A: stage 1, pick(x) | B: fixed stage-number dispatch: begin
+  tokens 407-413 A=P B=R: ; xa [ j ] := true
+      A: stage 1: each fact of pick, in order, gives x one value | B: mark the arrived pick value as live: ; xa [ j ] := true
+  tokens 426-426 A=P B=H: end
+      A: stage 1: end | B: fixed stage-number dispatch: end
+  tokens 433-433 A=P B=H: begin
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 441-441 A=P B=H: end
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 448-448 A=P B=H: begin
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 456-456 A=P B=H: end
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 762-762 A=P B=R: end
+      A: program block | B: problem-specific retained alternatives and relation holding: end
+
+## x1/P05b.a60: 666 tokens, agreement 633/666 (95.0%)
+  class  A      B
+  P      78     45
+  C      0      0
+  R      59     88
+  S      0      0
+  H      529    533
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific retained alternatives and relation holding: begin
+  tokens 13-14 A=P B=R: , j
+      A: declarations of the fact index, the number of pick's facts and the sta | B: problem-specific retained alternatives and relation holding: , j
+  tokens 28-36 A=P B=R: ; integer array xv [ 1 : 1000 ]
+      A: array of the values of x given by the facts of pick | B: problem-specific retained alternatives and relation holding: ; integer
+  tokens 44-52 A=P B=R: ; boolean array xa [ 1 : 1000 ]
+      A: array: whether each value of x is still a solution | B: problem-specific retained alternatives and relation holding: ; boolean
+  tokens 315-315 A=P B=H: begin
+      A: stage 1: the constant of x > c1 | B: fixed stage-number dispatch: begin
+  tokens 323-323 A=P B=H: end
+      A: stage 1: the constant of x > c1 | B: fixed stage-number dispatch: end
+  tokens 330-330 A=P B=H: begin
+      A: stage 2, pick(x) | B: fixed stage-number dispatch: begin
+  tokens 351-357 A=P B=R: ; xa [ j ] := true
+      A: stage 2: each fact of pick, in order, gives x one value | B: mark the arrived pick value as live: ; xa [ j ] := true
+  tokens 370-370 A=P B=H: end
+      A: stage 2: end | B: fixed stage-number dispatch: end
+  tokens 665-665 A=P B=R: end
+      A: program block | B: problem-specific retained alternatives and relation holding: end
+
+## x1/P05c.a60: 758 tokens, agreement 723/758 (95.4%)
+  class  A      B
+  P      102    67
+  C      0      0
+  R      73     102
+  S      0      0
+  H      583    589
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific retained alternatives and relation holding: begin
+  tokens 13-14 A=P B=R: , j
+      A: declarations of the fact index, the number of pick's facts and the sta | B: problem-specific retained alternatives and relation holding: , j
+  tokens 32-40 A=P B=R: ; integer array xv [ 1 : 1000 ]
+      A: array of the values of x given by the facts of pick | B: problem-specific retained alternatives and relation holding: ; integer
+  tokens 48-56 A=P B=R: ; boolean array xa [ 1 : 1000 ]
+      A: array: whether each value of x is still a solution | B: problem-specific retained alternatives and relation holding: ; boolean
+  tokens 381-381 A=P B=H: begin
+      A: stage 1, pick(x) | B: fixed stage-number dispatch: begin
+  tokens 402-408 A=P B=R: ; xa [ j ] := true
+      A: stage 1: each fact of pick, in order, gives x one value | B: mark the arrived pick value as live: ; xa [ j ] := true
+  tokens 421-421 A=P B=H: end
+      A: stage 1: end | B: fixed stage-number dispatch: end
+  tokens 428-428 A=P B=H: begin
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 436-436 A=P B=H: end
+      A: stage 2: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 443-443 A=P B=H: begin
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: begin
+  tokens 451-451 A=P B=H: end
+      A: stage 3: the constant of the relation | B: fixed stage-number dispatch: end
+  tokens 757-757 A=P B=R: end
+      A: program block | B: problem-specific retained alternatives and relation holding: end
+
+## x1/P06a.a60: 519 tokens, agreement 494/519 (95.2%)
+  class  A      B
+  P      67     42
+  C      0      0
+  R      93     114
+  S      0      0
+  H      359    363
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 27-29 A=P B=R: ; boolean xk
+      A: declarations: x has a value; the stages are inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; b
+  tokens 52-52 A=P B=R: begin
+      A: evaluator: not (x = c1) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 74-74 A=P B=R: end
+      A: evaluator: not (x = c1) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 91-91 A=P B=R: begin
+      A: evaluator: x = c2 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 103-103 A=P B=R: end
+      A: evaluator: x = c2 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 105-105 A=P B=R: begin
+      A: evaluator: x computed from x = c2, x now known | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 109-112 A=P B=R: ; xk := true
+      A: evaluator: x computed from x = c2, x now known | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 117-117 A=P B=R: end
+      A: evaluator: x computed from x = c2, x now known | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 231-233 A=P B=R: ; xk :=
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 238-240 A=P B=R: inconsistent := false
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 269-269 A=P B=H: begin
+      A: stage 1: its constant | B: stage 1 dispatch header and block: begin
+  tokens 277-277 A=P B=H: end
+      A: stage 1: its constant | B: stage 1 dispatch header and block: end
+  tokens 284-284 A=P B=H: begin
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: begin
+  tokens 292-292 A=P B=H: end
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: end
+  tokens 518-518 A=P B=R: end
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: end
+
+## x1/P06b.a60: 519 tokens, agreement 494/519 (95.2%)
+  class  A      B
+  P      67     42
+  C      0      0
+  R      93     114
+  S      0      0
+  H      359    363
+  tokens 0-0 A=P B=R: begin
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 27-29 A=P B=R: ; boolean xk
+      A: declarations: x has a value; the stages are inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; b
+  tokens 52-52 A=P B=R: begin
+      A: evaluator: x = c1 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 64-64 A=P B=R: end
+      A: evaluator: x = c1 tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 66-66 A=P B=R: begin
+      A: evaluator: x computed from x = c1, x now known | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 70-73 A=P B=R: ; xk := true
+      A: evaluator: x computed from x = c1, x now known | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 78-78 A=P B=R: end
+      A: evaluator: x computed from x = c1, x now known | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 99-99 A=P B=R: begin
+      A: evaluator: not (x = c2) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: beg
+  tokens 121-121 A=P B=R: end
+      A: evaluator: not (x = c2) tested with x known; inconsistent if it fails | B: problem-specific negation/equality evaluator and relation holding: end
+  tokens 231-233 A=P B=R: ; xk :=
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 238-240 A=P B=R: inconsistent := false
+      A: x initially unknown; not inconsistent | B: problem-specific negation/equality evaluator and relation holding: ; x
+  tokens 269-269 A=P B=H: begin
+      A: stage 1: its constant | B: stage 1 dispatch header and block: begin
+  tokens 277-277 A=P B=H: end
+      A: stage 1: its constant | B: stage 1 dispatch header and block: end
+  tokens 284-284 A=P B=H: begin
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: begin
+  tokens 292-292 A=P B=H: end
+      A: stage 2: its constant | B: stage 2 dispatch connective, header and block: end
+  tokens 518-518 A=P B=R: end
+      A: program block | B: problem-specific negation/equality evaluator and relation holding: end
+
+## x1/P06d.a60: 642 tokens, agreement 641/642 (99.8%)
+  class  A      B
+  P      354    353
+  C      0      0
+  R      0      0
+  S      0      0
+  H      288    289
+  tokens 483-483 A=P B=H: 0
+      A: encoding initialised | B: harness counter assignment: mem1 := mem2 := sd1 := sd2 := sd3 := 0
+
+## x1/P06e1.a60: 517 tokens, agreement 517/517 (100.0%)
+  class  A      B
+  P      269    269
+  C      0      0
+  R      0      0
+  S      0      0
+  H      248    248
+
+## x1/P06e3.a60: 567 tokens, agreement 567/567 (100.0%)
+  class  A      B
+  P      251    251
+  C      0      0
+  R      0      0
+  S      0      0
+  H      316    316
+
+## x1/P07a.a60: 1125 tokens, agreement 1052/1125 (93.5%)
+  class  A      B
+  P      92     94
+  C      0      63
+  R      292    231
+  S      0      0
+  H      741    737
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 50-51 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 52-60 A=R B=C: ; integer array ord [ 1 : 3 ]
+      A: declaration of ord [main: integer array ord [ 1 : 3 ]] | B: declaration of ord
+  tokens 315-323 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 327-346 A=R B=C: ; for j := 1 step 1 until 3 do begin if ord [ j ] = 1 then begin
+      A: propagation loop of the holding code [propagate: for j := 1 step 1 unt | B: propagate loop header: for j := 1 step 1 until 3 do
+  tokens 351-361 A=R B=C: end else if ord [ j ] = 2 then begin
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 366-376 A=R B=C: end else if ord [ j ] = 3 then begin
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 381-383 A=R B=C: end end end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 751-756 A=H B=P: ord [ i ] := read
+      A: reading a harness word [main: ord [ i ] := read] | B: stage information / encoded value: ord [ i ] := read
+  tokens 1124-1124 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P07b.a60: 768 tokens, agreement 754/768 (98.2%)
+  class  A      B
+  P      60     56
+  C      0      10
+  R      172    164
+  S      0      0
+  H      536    538
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 40-41 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 210-218 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 232-232 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 767-767 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P07c.a60: 585 tokens, agreement 571/585 (97.6%)
+  class  A      B
+  P      34     30
+  C      0      10
+  R      108    100
+  S      0      0
+  H      443    445
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 34-35 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 124-132 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 141-141 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 584-584 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P07d.a60: 1007 tokens, agreement 993/1007 (98.6%)
+  class  A      B
+  P      131    127
+  C      0      10
+  R      212    204
+  S      0      0
+  H      664    666
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 48-49 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 319-327 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 346-346 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 1006-1006 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P07f.a60: 768 tokens, agreement 754/768 (98.2%)
+  class  A      B
+  P      60     56
+  C      0      10
+  R      172    164
+  S      0      0
+  H      536    538
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 40-41 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 210-218 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 232-232 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 767-767 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P07g.a60: 400 tokens, agreement 283/400 (70.8%)
+  class  A      B
+  P      152    43
+  C      0      0
+  R      45     152
+  S      0      0
+  H      203    205
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 15-18 A=P B=R: , r , nx
+      A: declaration of r [main: , r] | B: declaration of r
+  tokens 26-36 A=P B=R: , inconsistent ; integer array xs [ 1 : 2 ]
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 42-45 A=P B=R: integer j , kept
+      A: local of the test of x's values [examine1: integer j] | B: declaration: integer j , kept
+  tokens 59-72 A=P B=R: kept := 0 ; for j := 1 step 1 until nx do begin
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: kept := 0
+  tokens 87-101 A=P B=R: kept := kept + 1 ; xs [ kept ] := xs [ j ]
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: kept := kept + 1
+  tokens 103-103 A=P B=R: end
+      A: end of the compound [examine1: end] | B: examine1 block closer
+  tokens 108-113 A=P B=R: ; if nx = 0 then
+      A: test of a fully known relation [examine1: if nx = 0 then] | B: examine1 conditional header: if nx = 0 then
+  tokens 118-123 A=P B=R: else if c1 < 0 then
+      A: x times x = c with c negative: no integer square [examine1: else if c1 | B: examine1 else connective
+  tokens 127-139 A=P B=R: else begin r := entier ( sqrt ( c1 ) + 0.5 )
+      A: else of the conditional [examine1: else] | B: examine1 else connective
+  tokens 152-157 A=P B=R: if r = 0 then begin
+      A: test of a fully known relation [examine1: else if r = 0 then] | B: examine1 conditional header: if r = 0 then
+  tokens 161-170 A=P B=R: ; xs [ 1 ] := 0 end else begin
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: xs [ 1 ] := 0
+  tokens 174-190 A=P B=R: ; xs [ 1 ] := r ; xs [ 2 ] := - r end end
+      A: computes a place from the others / gives the verdict of a test [examin | B: square-root solution algorithm: xs [ 1 ] := r
+  tokens 234-237 A=P B=R: ; inconsistent := false
+      A: initially no contradiction [main: inconsistent := false] | B: initialize held state
+  tokens 238-241 A=R B=P: ; nx := 0
+      A: x has no value yet (holding state) [main: nx := 0] | B: stage information / encoded value: nx := 0
+  tokens 399-399 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P08a.a60: 2449 tokens, agreement 2348/2449 (95.9%)
+  class  A      B
+  P      707    652
+  C      0      48
+  R      370    366
+  S      0      0
+  H      1372   1383
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 13-14 A=P B=R: , j
+      A: declaration of j [main: , j] | B: declaration of j
+  tokens 56-57 A=R B=C: , defined
+      A: declaration of defined [main: , defined] | B: declaration of defined
+  tokens 60-61 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 567-573 A=R B=C: ; if defined ∧ ak then begin
+      A: heading of the holding code examine2 [examine2: procedure examine2 ;] | B: examine2 conditional header: if defined ∧ ak then
+  tokens 574-575 A=P B=R: integer r
+      A: rev's result [examine2: integer r] | B: declaration: integer r
+  tokens 619-620 A=R B=C: end examine2
+      A: end of the compound [examine2: end examine2] | B: examine2 block closer
+  tokens 685-690 A=P B=R: integer p , e , w
+      A: declaration of p [examine6: integer p] | B: declaration: integer p , e , w
+  tokens 699-712 A=P B=C: ; for w := 0 while e ≠ 0 ∧ ¬ inconsistent do begin
+      A: loop over the encoding (++ decomposition or construction, or x's value | B: examine6 loop header: for w := 0 while e ≠ 0 ∧ ¬ inconsistent do
+  tokens 750-756 A=P B=C: end ; if ¬ inconsistent then begin
+      A: end of the compound [examine6: end] | B: examine6 block closer
+  tokens 788-788 A=P B=C: end
+      A: end of the compound [examine6: end] | B: examine6 block closer
+  tokens 799-808 A=P B=R: integer w , e , first , last , c
+      A: declaration of w [examine6: integer w] | B: declaration: integer w , e , first , last , c
+  tokens 913-921 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 950-950 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 1715-1716 A=R B=C: defined :=
+      A: initial holding state (known flags, held flags) [main: ak := bk := ck  | B: permission flag initialization target
+  tokens 1723-1731 A=P B=H: rev1 := rev2 := conc1 := conc2 := 0
+      A: cell allocator and counters initialised (one statement; top is the enc | B: initialize operation counters in shared zero assignment
+  tokens 1732-1741 A=R B=P: ; for j := 1 step 1 until 3 do
+      A: x, y, z marked unknown [main: for j := 1 step 1 until 3 do] | B: main loop header: for j := 1 step 1 until 3 do
+  tokens 1805-1807 A=R B=C: defined := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: d | B: set permission flag defined
+  tokens 1824-1833 A=P B=R: integer len , e , first , last , c
+      A: declaration of len [main: integer len] | B: declaration of len
+  tokens 2448-2448 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## x1/P08c.a60: 1358 tokens, agreement 1266/1358 (93.2%)
+  class  A      B
+  P      443    405
+  C      0      56
+  R      209    180
+  S      0      0
+  H      706    717
+  tokens 0-0 A=P B=H: begin
+      A: the program block (frame of the transcription) [main: begin] | B: outer program block opener
+  tokens 13-14 A=P B=R: , j
+      A: declaration of j [main: , j] | B: declaration of j
+  tokens 42-47 A=R B=C: , concdef , rev1def , rev2def
+      A: declaration of concdef [main: , concdef] | B: declaration of concdef
+  tokens 50-51 A=P B=R: , inconsistent
+      A: declaration of inconsistent [main: , inconsistent] | B: declaration of inconsistent
+  tokens 253-255 A=P B=R: ; integer procedure
+      A: heading of conc (transcription / encoding operation) [conc: integer pr | B: added integer status result in procedure signature
+  tokens 276-276 A=P B=C: ;
+      A: heading of conc (transcription / encoding operation) [conc: integer pr | B: conc conditional header: if ¬ concdef then
+  tokens 277-280 A=R B=C: if ¬ concdef then
+      A: verdict to wait: conc's definition not arrived [conc: if ¬ concdef the | B: conc conditional header: if ¬ concdef then
+  tokens 284-284 A=P B=C: else
+      A: body of conc [conc: else if a = 0 then] | B: conc else connective
+  tokens 317-319 A=P B=R: ; t :=
+      A: body of conc [conc: t := conc ( tl [ a ] , b , d )] | B: added status-return assignment target
+  tokens 354-356 A=P B=R: ; integer procedure
+      A: heading of rev (transcription / encoding operation) [rev: integer proc | B: added integer status result in procedure signature
+  tokens 383-387 A=R B=C: ; if rev1def then begin
+      A: case 1 arrived? (verdict to wait) [rev: if rev1def then] | B: rev conditional header: if rev1def then
+  tokens 411-420 A=R B=C: end ; if st ≠ 1 ∧ rev2def then begin
+      A: end of the compound [rev: end] | B: rev block closer
+  tokens 432-434 A=P B=R: ; t :=
+      A: conjunct rev(l, q) [rev: t := rev ( tl [ a ] , q )] | B: added status-return assignment target
+  tokens 450-451 A=P B=R: t :=
+      A: conjunct conc(q, <h>, r) [rev: t := conc ( q , cons ( hd [ a ] , 0 ) , | B: added status-return assignment target
+  tokens 478-478 A=R B=C: end
+      A: end of the compound [rev: end] | B: rev block closer
+  tokens 510-512 A=P B=R: ; t :=
+      A: the application rev(s, b) [examine2: t := rev ( sv , r )] | B: added status-return assignment target
+  tokens 567-574 A=R B=C: ; if concdef ∧ rev1def ∧ rev2def then
+      A: held until every part of the definition has arrived [examine2: if conc | B: examine2 conditional header: if concdef ∧ rev1def ∧ rev2def then
+  tokens 588-596 A=R B=C: ; for pass := 1 while changed do begin
+      A: propagation loop of the holding code [propagate: for pass := 1 while c | B: propagate loop header: for pass := 1 while changed do
+  tokens 605-605 A=R B=C: end
+      A: end of the compound [propagate: end] | B: propagate block closer
+  tokens 953-961 A=P B=H: rev1 := rev2 := conc1 := conc2 := 0
+      A: cell allocator and counters initialised (one statement; top is the enc | B: initialize operation counters in shared zero assignment
+  tokens 992-994 A=R B=C: concdef := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: c | B: set permission flag concdef
+  tokens 1024-1027 A=P B=R: integer l1 , l2
+      A: declaration of l1 [main: integer l1] | B: declaration of l1
+  tokens 1050-1053 A=R B=C: ; rev1def := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: r | B: set permission flag rev1def
+  tokens 1061-1063 A=R B=C: rev2def := true
+      A: the stage's relation (or definition) recorded as held/arrived [main: r | B: set permission flag rev2def
+  tokens 1357-1357 A=P B=H: end
+      A: end of the compound [main: end] | B: outer program block closer
+
+## per system
+  report: 16429/17633 (93.2%)
+  x1: 15171/16381 (92.6%)
+
+## disagreements by (A, B) class
+  P→R: 1064
+  R→P: 702
+  R→C: 418
+  P→H: 126
+  R→H: 50
+  P→C: 48
+  H→P: 6

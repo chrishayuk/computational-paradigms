@@ -1,0 +1,362 @@
+[
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.132.cost.20261127T225256Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.132.behaviour.20261127T225255Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.132.storage.20261127T225257Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.132.behaviour.20261127T225255Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.213.cost.20261127T225259Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.213.behaviour.20261127T225259Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.213.storage.20261127T225301Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.213.behaviour.20261127T225259Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.231.cost.20261127T225302Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.231.behaviour.20261127T225302Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.231.storage.20261127T225304Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.231.behaviour.20261127T225302Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.312.cost.20261127T225306Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.312.behaviour.20261127T225305Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.312.storage.20261127T225307Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.312.behaviour.20261127T225305Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.321.cost.20261127T225309Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.321.behaviour.20261127T225309Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.321.storage.20261127T225311Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.321.behaviour.20261127T225309Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.cost.20261127T225252Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.behaviour.20261127T225252Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07a.storage.20261127T225254Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07a.behaviour.20261127T225252Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07b.cost.20261127T225313Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07b.behaviour.20261127T225312Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07b.storage.20261127T225314Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07b.behaviour.20261127T225312Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07c.cost.20261127T225316Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07c.behaviour.20261127T225316Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07c.storage.20261127T225318Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07c.behaviour.20261127T225316Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07d.cost.20261127T225320Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07d.behaviour.20261127T225319Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07d.storage.20261127T225321Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07d.behaviour.20261127T225319Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07e.cost.20261127T225323Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07e.behaviour.20261127T225322Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07e.storage.20261127T225324Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07e.behaviour.20261127T225322Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07f.cost.20261127T225326Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07f.behaviour.20261127T225325Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07f.storage.20261127T225327Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07f.behaviour.20261127T225325Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07g.cost.20261127T225329Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07g.behaviour.20261127T225329Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P07/raw/P07g.storage.20261127T225331Z.json",
+    "behaviour_record": "results/algol-60/report/P07/raw/P07g.behaviour.20261127T225329Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P08/raw/P08a.cost.20261127T225337Z.json",
+    "behaviour_record": "results/algol-60/report/P08/raw/P08a.behaviour.20261127T225332Z.json",
+    "stages_compared": 6,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P08/raw/P08a.storage.20261127T225345Z.json",
+    "behaviour_record": "results/algol-60/report/P08/raw/P08a.behaviour.20261127T225332Z.json",
+    "stages_compared": 6,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P08/raw/P08b.cost.20261127T225353Z.json",
+    "behaviour_record": "results/algol-60/report/P08/raw/P08b.behaviour.20261127T225350Z.json",
+    "stages_compared": 3,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P08/raw/P08b.storage.20261127T225357Z.json",
+    "behaviour_record": "results/algol-60/report/P08/raw/P08b.behaviour.20261127T225350Z.json",
+    "stages_compared": 3,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P08/raw/P08c.cost.20261127T225402Z.json",
+    "behaviour_record": "results/algol-60/report/P08/raw/P08c.behaviour.20261127T225400Z.json",
+    "stages_compared": 4,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/report/P08/raw/P08c.storage.20261127T225408Z.json",
+    "behaviour_record": "results/algol-60/report/P08/raw/P08c.behaviour.20261127T225400Z.json",
+    "stages_compared": 4,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.132.cost.20261127T225524Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.132.behaviour.20261127T225524Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.132.storage.20261127T225526Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.132.behaviour.20261127T225524Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.213.cost.20261127T225528Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.213.behaviour.20261127T225527Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.213.storage.20261127T225529Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.213.behaviour.20261127T225527Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.231.cost.20261127T225531Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.231.behaviour.20261127T225531Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.231.storage.20261127T225533Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.231.behaviour.20261127T225531Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.312.cost.20261127T225534Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.312.behaviour.20261127T225534Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.312.storage.20261127T225536Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.312.behaviour.20261127T225534Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.321.cost.20261127T225538Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.321.behaviour.20261127T225537Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.321.storage.20261127T225539Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.321.behaviour.20261127T225537Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.cost.20261127T225521Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.behaviour.20261127T225521Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07a.storage.20261127T225523Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07a.behaviour.20261127T225521Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07b.cost.20261127T225541Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07b.behaviour.20261127T225540Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07b.storage.20261127T225542Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07b.behaviour.20261127T225540Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07c.cost.20261127T225544Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07c.behaviour.20261127T225544Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07c.storage.20261127T225546Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07c.behaviour.20261127T225544Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07d.cost.20261127T225547Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07d.behaviour.20261127T225547Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07d.storage.20261127T225549Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07d.behaviour.20261127T225547Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07e.cost.20261127T225551Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07e.behaviour.20261127T225550Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07e.storage.20261127T225552Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07e.behaviour.20261127T225550Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07f.cost.20261127T225554Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07f.behaviour.20261127T225553Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07f.storage.20261127T225555Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07f.behaviour.20261127T225553Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07g.cost.20261127T225557Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07g.behaviour.20261127T225556Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P07/raw/P07g.storage.20261127T225559Z.json",
+    "behaviour_record": "results/algol-60/x1/P07/raw/P07g.behaviour.20261127T225556Z.json",
+    "stages_compared": 1,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P08/raw/P08a.cost.20261127T225604Z.json",
+    "behaviour_record": "results/algol-60/x1/P08/raw/P08a.behaviour.20261127T225600Z.json",
+    "stages_compared": 6,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P08/raw/P08a.storage.20261127T225612Z.json",
+    "behaviour_record": "results/algol-60/x1/P08/raw/P08a.behaviour.20261127T225600Z.json",
+    "stages_compared": 6,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P08/raw/P08b.cost.20261127T225619Z.json",
+    "behaviour_record": "results/algol-60/x1/P08/raw/P08b.behaviour.20261127T225617Z.json",
+    "stages_compared": 3,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P08/raw/P08b.storage.20261127T225623Z.json",
+    "behaviour_record": "results/algol-60/x1/P08/raw/P08b.behaviour.20261127T225617Z.json",
+    "stages_compared": 3,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P08/raw/P08c.cost.20261127T225629Z.json",
+    "behaviour_record": "results/algol-60/x1/P08/raw/P08c.behaviour.20261127T225626Z.json",
+    "stages_compared": 4,
+    "classification_differences": 0
+  },
+  {
+    "record": "results/algol-60/x1/P08/raw/P08c.storage.20261127T225634Z.json",
+    "behaviour_record": "results/algol-60/x1/P08/raw/P08c.behaviour.20261127T225626Z.json",
+    "stages_compared": 4,
+    "classification_differences": 0
+  }
+]

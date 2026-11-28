@@ -1,0 +1,245 @@
+
+## absys/P04a.ab1: 23 tokens, agreement 23/23 (100.0%)
+  class  A      B
+  P      23     23
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P04b.ab1: 23 tokens, agreement 23/23 (100.0%)
+  class  A      B
+  P      23     23
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P04c.ab1: 35 tokens, agreement 35/35 (100.0%)
+  class  A      B
+  P      35     35
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P04d.ab1: 28 tokens, agreement 28/28 (100.0%)
+  class  A      B
+  P      28     28
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P04e.ab1: 35 tokens, agreement 35/35 (100.0%)
+  class  A      B
+  P      35     35
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P04f.ab1: 28 tokens, agreement 28/28 (100.0%)
+  class  A      B
+  P      28     28
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P06a.abs: 15 tokens, agreement 15/15 (100.0%)
+  class  A      B
+  P      15     15
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P06b.abs: 15 tokens, agreement 15/15 (100.0%)
+  class  A      B
+  P      15     15
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P06c.abs: 15 tokens, agreement 15/15 (100.0%)
+  class  A      B
+  P      15     15
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P06d.abs: 142 tokens, agreement 142/142 (100.0%)
+  class  A      B
+  P      142    142
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P06e1.abs: 127 tokens, agreement 127/127 (100.0%)
+  class  A      B
+  P      127    127
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P06e2.abs: 127 tokens, agreement 127/127 (100.0%)
+  class  A      B
+  P      127    127
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P06e3.abs: 124 tokens, agreement 124/124 (100.0%)
+  class  A      B
+  P      124    124
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07a.132.ab1: 26 tokens, agreement 26/26 (100.0%)
+  class  A      B
+  P      26     26
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07a.213.ab1: 26 tokens, agreement 26/26 (100.0%)
+  class  A      B
+  P      26     26
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07a.231.ab1: 26 tokens, agreement 26/26 (100.0%)
+  class  A      B
+  P      26     26
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07a.312.ab1: 26 tokens, agreement 26/26 (100.0%)
+  class  A      B
+  P      26     26
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07a.321.ab1: 26 tokens, agreement 26/26 (100.0%)
+  class  A      B
+  P      26     26
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07a.ab1: 26 tokens, agreement 26/26 (100.0%)
+  class  A      B
+  P      26     26
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07b.ab1: 18 tokens, agreement 18/18 (100.0%)
+  class  A      B
+  P      18     18
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07c.ab1: 8 tokens, agreement 8/8 (100.0%)
+  class  A      B
+  P      8      8
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07d.ab1: 19 tokens, agreement 19/19 (100.0%)
+  class  A      B
+  P      19     19
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07e.ab1: 19 tokens, agreement 19/19 (100.0%)
+  class  A      B
+  P      19     19
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07f.ab1: 18 tokens, agreement 18/18 (100.0%)
+  class  A      B
+  P      18     18
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P07g.ab1: 8 tokens, agreement 8/8 (100.0%)
+  class  A      B
+  P      8      8
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P08a.ab1: 115 tokens, agreement 115/115 (100.0%)
+  class  A      B
+  P      115    115
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P08b.ab1: 18 tokens, agreement 18/18 (100.0%)
+  class  A      B
+  P      18     18
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/P08c.ab1: 117 tokens, agreement 117/117 (100.0%)
+  class  A      B
+  P      102    102
+  C      0      0
+  R      15     15
+  S      0      0
+  H      0      0
+
+## absys/variants/P06d.set.abs: 95 tokens, agreement 95/95 (100.0%)
+  class  A      B
+  P      95     95
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## absys/variants/P08c.redefine.ab1: 108 tokens, agreement 108/108 (100.0%)
+  class  A      B
+  P      108    108
+  C      0      0
+  R      0      0
+  S      0      0
+  H      0      0
+
+## per system
+  absys: 1436/1436 (100.0%)
+
+## disagreements by (A, B) class

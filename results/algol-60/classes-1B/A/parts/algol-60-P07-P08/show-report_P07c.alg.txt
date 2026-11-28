@@ -1,0 +1,142 @@
+   1 P main       begin  | the program block (frame of the transcription)
+   8 H main       integer n  | declaration of n
+   8 H main       , cap  | declaration of cap
+   8 H main       , m  | declaration of m
+   8 H main       , i  | declaration of i
+   8 H main       , code  | declaration of code
+   8 H main       , k  | declaration of k
+   8 P main       , c1  | declaration of c1
+   8 P main       , xv  | declaration of xv
+   8 P main       , yv  | declaration of yv
+   8 H main       , held  | declaration of held
+   8 R main       , pass  | declaration of pass
+   8 H main       , x1  | declaration of x1
+   8 R main       Boolean xk  | declaration of xk
+   9 R main       , yk  | declaration of yk
+   9 R main       , r1  | declaration of r1
+   9 R main       , changed  | declaration of changed
+   9 P main       , inconsistent  | declaration of inconsistent
+   9 R examine1   procedure examine1 ;  | heading of the holding code examine1
+  13 R examine1   begin  | begin of the construct introduced before it
+  14 H examine1   x1 := x1 + 1  | counter
+  14 R examine1   if xk ∧ yk then  | test of which places are known / verdict to wait
+  16 R examine1   begin  | begin of the construct introduced before it
+  16 P examine1   if xv + yv ≠ c1 then  | test of a fully known relation
+  16 P examine1   inconsistent := true  | computes a place from the others / gives the verdi
+  16 R examine1   r1 := false  | records a place as known / relation as no longer h
+  16 R examine1   end  | end of the compound
+  17 R examine1   else if xk then  | test of which places are known / verdict to wait
+  18 R examine1   begin  | begin of the construct introduced before it
+  18 P examine1   yv := c1 - xv  | computes a place from the others / gives the verdi
+  18 R examine1   yk := true  | records a place as known / relation as no longer h
+  18 R examine1   r1 := false  | records a place as known / relation as no longer h
+  18 R examine1   changed := true  | records a place as known / relation as no longer h
+  18 R examine1   end  | end of the compound
+  19 R examine1   else if yk then  | test of which places are known / verdict to wait
+  20 R examine1   begin  | begin of the construct introduced before it
+  20 P examine1   xv := c1 - yv  | computes a place from the others / gives the verdi
+  20 R examine1   xk := true  | records a place as known / relation as no longer h
+  20 R examine1   r1 := false  | records a place as known / relation as no longer h
+  20 R examine1   changed := true  | records a place as known / relation as no longer h
+  20 R examine1   end  | end of the compound
+  21 R examine1   end examine1  | end of the compound
+  21 R propagate  procedure propagate ;  | heading of the holding code propagate
+  25 R propagate  begin  | begin of the construct introduced before it
+  26 R propagate  changed := true  | propagation loop of the holding code
+  26 R propagate  for pass := 1 while changed do  | propagation loop of the holding code
+  28 R propagate  begin  | begin of the construct introduced before it
+  29 R propagate  changed := false  | propagation loop of the holding code
+  29 R propagate  if r1 then  | propagation loop of the holding code
+  30 R propagate  examine1  | propagation loop of the holding code
+  31 R propagate  end  | end of the compound
+  32 R propagate  end propagate  | end of the compound
+  32 H uname      procedure uname ( u ) ; value u ; integer u ;  | output adapter procedure uname
+  37 H uname      if u = 1 then  | body of output adapter uname
+  37 H uname      outstring ( 1 , "x" )  | body of output adapter uname
+  37 H uname      else  | else of the conditional
+  37 H uname      outstring ( 1 , "y" )  | body of output adapter uname
+  37 H place      procedure place ( known , v , u ) ; value known , v , u ; Boolean known ; integer v , u ;  | output adapter procedure place
+  42 H place      if known then  | body of output adapter place
+  42 H place      outinteger ( 1 , v )  | body of output adapter place
+  42 H place      else  | else of the conditional
+  42 H place      uname ( u )  | body of output adapter place
+  42 H state      procedure state ( known , v , inheld , u ) ; value known , v , inheld , u ; Boolean known   | output adapter procedure state
+  47 H state      begin  | begin of the construct introduced before it
+  48 H state      uname ( u )  | body of output adapter state
+  48 H state      if known then  | body of output adapter state
+  49 H state      begin  | begin of the construct introduced before it
+  49 H state      outstring ( 1 , " = " )  | body of output adapter state
+  49 H state      outinteger ( 1 , v )  | body of output adapter state
+  49 H state      end  | end of the compound
+  50 H state      else if inheld then  | body of output adapter state
+  50 H state      outstring ( 1 , " held" )  | body of output adapter state
+  51 H state      else  | else of the conditional
+  51 H state      outstring ( 1 , " free" )  | body of output adapter state
+  52 H state      end state  | end of the compound
+  52 H relations  procedure relations ;  | output adapter procedure relations
+  56 H relations  if r1 then  | body of output adapter relations
+  57 H relations  begin  | begin of the construct introduced before it
+  57 H relations  place ( xk , xv , 1 )  | body of output adapter relations
+  57 H relations  outstring ( 1 , " + " )  | body of output adapter relations
+  57 H relations  place ( yk , yv , 2 )  | body of output adapter relations
+  57 H relations  outstring ( 1 , " = " )  | body of output adapter relations
+  57 H relations  outinteger ( 1 , c1 )  | body of output adapter relations
+  57 H relations  end relations  | end of the compound
+  57 H main       ininteger ( 0 , n )  | reading a harness word
+  60 H main       ininteger ( 0 , cap )  | reading a harness word
+  60 H main       ininteger ( 0 , m )  | reading a harness word
+  60 H main       for i := 1 step 1 until m do  | harness loop (codes / messages)
+  61 H main       ininteger ( 0 , code )  | reading a harness word
+  61 H main       ininteger ( 0 , code )  | reading a harness word
+  62 H main       ininteger ( 0 , k )  | reading a harness word
+  62 P main       ininteger ( 0 , c1 )  | reading the stage's constants (stage information)
+  64 R main       xk := yk := inconsistent := false  | initial holding state (known flags, held flags)
+  65 H main       x1 := 0  | counters initialised
+  66 R main       r1 := true  | initial holding state (known flags, held flags)
+  67 R main       propagate  | call of the holding code
+  69 H main       if ¬ inconsistent then  | guard of printing only
+  73 H main       begin  | begin of the construct introduced before it
+  74 H main       outstring ( 1 , "[answer]" )  | printing a tag or the state held
+  74 H main       state ( xk , xv , r1 , 1 )  | printing a tag or the state held
+  75 H main       outstring ( 1 , ", " )  | printing a tag or the state held
+  75 H main       state ( yk , yv , r1 , 2 )  | printing a tag or the state held
+  76 H main       if r1 then  | guard of printing only
+  77 H main       begin  | begin of the construct introduced before it
+  77 H main       outstring ( 1 , ", where " )  | printing a tag or the state held
+  77 H main       relations  | printing a tag or the state held
+  77 H main       end  | end of the compound
+  77 H main       outstring ( 1 , "[/answer]\\n" )  | printing a tag or the state held
+  79 H main       end  | end of the compound
+  79 H main       held := if r1 then 1 else 0  | count of held relations, for observe
+  82 H main       outstring ( 1 , "[observe]" )  | printing a tag or the state held
+  83 H main       if inconsistent then  | guard of printing only
+  84 H main       outstring ( 1 , "no solution\\n" )  | printing a tag or the state held
+  84 H main       outstring ( 1 , "held relations: " )  | printing a tag or the state held
+  85 H main       if held = 0 then  | guard of printing only
+  86 H main       outstring ( 1 , "none" )  | printing a tag or the state held
+  86 H main       else  | else of the conditional
+  86 H main       relations  | printing a tag or the state held
+  86 H main       outstring ( 1 , "\\n" )  | printing a tag or the state held
+  87 H main       if xk then  | guard of printing only
+  88 H main       begin  | begin of the construct introduced before it
+  88 H main       outstring ( 1 , "[bind x]" )  | printing a tag or the state held
+  88 H main       outinteger ( 1 , xv )  | printing a tag or the state held
+  88 H main       outstring ( 1 , "[/bind]\\n" )  | printing a tag or the state held
+  88 H main       end  | end of the compound
+  88 H main       if yk then  | guard of printing only
+  89 H main       begin  | begin of the construct introduced before it
+  89 H main       outstring ( 1 , "[bind y]" )  | printing a tag or the state held
+  89 H main       outinteger ( 1 , yv )  | printing a tag or the state held
+  89 H main       outstring ( 1 , "[/bind]\\n" )  | printing a tag or the state held
+  89 H main       end  | end of the compound
+  89 H main       if held > 0 then  | guard of printing only
+  91 H main       begin  | begin of the construct introduced before it
+  91 H main       outstring ( 1 , "[suspended held-relations " )  | printing a tag or the state held
+  91 H main       outinteger ( 1 , held )  | printing a tag or the state held
+  91 H main       outstring ( 1 , "]\\n" )  | printing a tag or the state held
+  91 H main       end  | end of the compound
+  91 H main       outstring ( 1 , "[operations R1-examined " )  | printing a tag or the state held
+  92 H main       outinteger ( 1 , x1 )  | printing a tag or the state held
+  92 H main       outstring ( 1 , "]\\n" )  | printing a tag or the state held
+  92 H main       outstring ( 1 , "[/observe]\\n[end]" )  | printing a tag or the state held
+  94 P main       end  | end of the compound

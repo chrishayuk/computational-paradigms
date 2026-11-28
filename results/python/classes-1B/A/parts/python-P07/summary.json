@@ -1,0 +1,4007 @@
+[
+ {
+  "rec": "results/python/core/P07/raw/P07a.132.behaviour.20261127T225251Z.json",
+  "cfg": "core",
+  "inst": "P07a.132",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1104,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.132.cost.20261127T225252Z.json",
+  "cfg": "core",
+  "inst": "P07a.132",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1104,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 6,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.132.storage.20261127T225253Z.json",
+  "cfg": "core",
+  "inst": "P07a.132",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1104,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.213.behaviour.20261127T225254Z.json",
+  "cfg": "core",
+  "inst": "P07a.213",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1186,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.213.cost.20261127T225255Z.json",
+  "cfg": "core",
+  "inst": "P07a.213",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1186,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 7,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.213.storage.20261127T225256Z.json",
+  "cfg": "core",
+  "inst": "P07a.213",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1186,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.231.behaviour.20261127T225257Z.json",
+  "cfg": "core",
+  "inst": "P07a.231",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1006,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.231.cost.20261127T225258Z.json",
+  "cfg": "core",
+  "inst": "P07a.231",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1006,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 5,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.231.storage.20261127T225259Z.json",
+  "cfg": "core",
+  "inst": "P07a.231",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1006,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.312.behaviour.20261127T225300Z.json",
+  "cfg": "core",
+  "inst": "P07a.312",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 924,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.312.cost.20261127T225301Z.json",
+  "cfg": "core",
+  "inst": "P07a.312",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 924,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "equal": 1,
+   "plus": 4
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.312.storage.20261127T225302Z.json",
+  "cfg": "core",
+  "inst": "P07a.312",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 924,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.321.behaviour.20261127T225303Z.json",
+  "cfg": "core",
+  "inst": "P07a.321",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 926,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.321.cost.20261127T225304Z.json",
+  "cfg": "core",
+  "inst": "P07a.321",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 926,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "equal": 1,
+   "plus": 4
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.321.storage.20261127T225304Z.json",
+  "cfg": "core",
+  "inst": "P07a.321",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 926,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.behaviour.20261127T225249Z.json",
+  "cfg": "core",
+  "inst": "P07a",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1184,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.cost.20261127T225250Z.json",
+  "cfg": "core",
+  "inst": "P07a",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1184,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 7,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07a.storage.20261127T225251Z.json",
+  "cfg": "core",
+  "inst": "P07a",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 1184,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07b.behaviour.20261127T225305Z.json",
+  "cfg": "core",
+  "inst": "P07b",
+  "mode": "behaviour",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 325,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10)), ('-', ('x', 'y', 4))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07b.cost.20261127T225306Z.json",
+  "cfg": "core",
+  "inst": "P07b",
+  "mode": "cost",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 325,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10)), ('-', ('x', 'y', 4))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 1,
+   "minus": 1
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07b.storage.20261127T225307Z.json",
+  "cfg": "core",
+  "inst": "P07b",
+  "mode": "storage",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 325,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10)), ('-', ('x', 'y', 4))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07c.behaviour.20261127T225308Z.json",
+  "cfg": "core",
+  "inst": "P07c",
+  "mode": "behaviour",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 230,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07c.cost.20261127T225309Z.json",
+  "cfg": "core",
+  "inst": "P07c",
+  "mode": "cost",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 230,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 1
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07c.storage.20261127T225310Z.json",
+  "cfg": "core",
+  "inst": "P07c",
+  "mode": "storage",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 230,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07d.behaviour.20261127T225311Z.json",
+  "cfg": "core",
+  "inst": "P07d",
+  "mode": "behaviour",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 706,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 14, 'w': 7}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07d.cost.20261127T225312Z.json",
+  "cfg": "core",
+  "inst": "P07d",
+  "mode": "cost",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 706,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 14, 'w': 7}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 2,
+   "equal": 2
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07d.storage.20261127T225313Z.json",
+  "cfg": "core",
+  "inst": "P07d",
+  "mode": "storage",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 706,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 14, 'w': 7}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07e.behaviour.20261127T225314Z.json",
+  "cfg": "core",
+  "inst": "P07e",
+  "mode": "behaviour",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 580,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 15}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = [('*', ('w', 'u', 'v'))]\n",
+  "stdout": "no solution: these relations do not hold: [('*', ('w', 'u', 'v'))]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07e.cost.20261127T225315Z.json",
+  "cfg": "core",
+  "inst": "P07e",
+  "mode": "cost",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 580,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 15}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = [('*', ('w', 'u', 'v'))]\n",
+  "stdout": "no solution: these relations do not hold: [('*', ('w', 'u', 'v'))]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 2,
+   "equal": 2
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07e.storage.20261127T225316Z.json",
+  "cfg": "core",
+  "inst": "P07e",
+  "mode": "storage",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 580,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 15}\nmain.suspended[relations waiting for values] = []\nmain.held[relations found not to hold] = [('*', ('w', 'u', 'v'))]\n",
+  "stdout": "no solution: these relations do not hold: [('*', ('w', 'u', 'v'))]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07f.behaviour.20261127T225317Z.json",
+  "cfg": "core",
+  "inst": "P07f",
+  "mode": "behaviour",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 325,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10)), ('+', ('x', 'y', 11))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07f.cost.20261127T225318Z.json",
+  "cfg": "core",
+  "inst": "P07f",
+  "mode": "cost",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 325,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10)), ('+', ('x', 'y', 11))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 2
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07f.storage.20261127T225319Z.json",
+  "cfg": "core",
+  "inst": "P07f",
+  "mode": "storage",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 325,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('x', 'y', 10)), ('+', ('x', 'y', 11))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07g.behaviour.20261127T225320Z.json",
+  "cfg": "core",
+  "inst": "P07g",
+  "mode": "behaviour",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 223,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('*', ('x', 'x', 9))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07g.cost.20261127T225320Z.json",
+  "cfg": "core",
+  "inst": "P07g",
+  "mode": "cost",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 223,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('*', ('x', 'x', 9))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 1
+  }
+ },
+ {
+  "rec": "results/python/core/P07/raw/P07g.storage.20261127T225321Z.json",
+  "cfg": "core",
+  "inst": "P07g",
+  "mode": "storage",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 223,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('*', ('x', 'x', 9))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.132.behaviour.20261127T225604Z.json",
+  "cfg": "extended",
+  "inst": "P07a.132",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4778,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.132.cost.20261127T225605Z.json",
+  "cfg": "extended",
+  "inst": "P07a.132",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4778,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 5,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.132.storage.20261127T225606Z.json",
+  "cfg": "extended",
+  "inst": "P07a.132",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4778,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.213.behaviour.20261127T225607Z.json",
+  "cfg": "extended",
+  "inst": "P07a.213",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5123,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.213.cost.20261127T225608Z.json",
+  "cfg": "extended",
+  "inst": "P07a.213",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5123,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 6,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.213.storage.20261127T225608Z.json",
+  "cfg": "extended",
+  "inst": "P07a.213",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5123,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.231.behaviour.20261127T225609Z.json",
+  "cfg": "extended",
+  "inst": "P07a.231",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4778,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.231.cost.20261127T225610Z.json",
+  "cfg": "extended",
+  "inst": "P07a.231",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4778,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 5,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.231.storage.20261127T225611Z.json",
+  "cfg": "extended",
+  "inst": "P07a.231",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4778,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.312.behaviour.20261127T225612Z.json",
+  "cfg": "extended",
+  "inst": "P07a.312",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4433,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.312.cost.20261127T225613Z.json",
+  "cfg": "extended",
+  "inst": "P07a.312",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4433,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "equal": 1,
+   "plus": 4
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.312.storage.20261127T225614Z.json",
+  "cfg": "extended",
+  "inst": "P07a.312",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4433,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.321.behaviour.20261127T225615Z.json",
+  "cfg": "extended",
+  "inst": "P07a.321",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4395,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.321.cost.20261127T225615Z.json",
+  "cfg": "extended",
+  "inst": "P07a.321",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4395,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "equal": 1,
+   "plus": 4
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.321.storage.20261127T225616Z.json",
+  "cfg": "extended",
+  "inst": "P07a.321",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4395,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.behaviour.20261127T225602Z.json",
+  "cfg": "extended",
+  "inst": "P07a",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5123,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.cost.20261127T225602Z.json",
+  "cfg": "extended",
+  "inst": "P07a",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5123,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 6,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07a.storage.20261127T225603Z.json",
+  "cfg": "extended",
+  "inst": "P07a",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5123,
+  "budget": false,
+  "raw": "main.bindings = {'x': 5, 'y': 4, 'z': 3}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07b.behaviour.20261127T225617Z.json",
+  "cfg": "extended",
+  "inst": "P07b",
+  "mode": "behaviour",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 3161,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10), 2: -(x, y, 4)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07b.cost.20261127T225618Z.json",
+  "cfg": "extended",
+  "inst": "P07b",
+  "mode": "cost",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 3161,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10), 2: -(x, y, 4)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 1,
+   "minus": 1
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07b.storage.20261127T225619Z.json",
+  "cfg": "extended",
+  "inst": "P07b",
+  "mode": "storage",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 3161,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10), 2: -(x, y, 4)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07c.behaviour.20261127T225620Z.json",
+  "cfg": "extended",
+  "inst": "P07c",
+  "mode": "behaviour",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 2797,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07c.cost.20261127T225621Z.json",
+  "cfg": "extended",
+  "inst": "P07c",
+  "mode": "cost",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 2797,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 1
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07c.storage.20261127T225621Z.json",
+  "cfg": "extended",
+  "inst": "P07c",
+  "mode": "storage",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 2797,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07d.behaviour.20261127T225622Z.json",
+  "cfg": "extended",
+  "inst": "P07d",
+  "mode": "behaviour",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3972,
+  "budget": false,
+  "raw": "main.bindings = {'w': 7, 'u': 2, 'v': 14}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07d.cost.20261127T225623Z.json",
+  "cfg": "extended",
+  "inst": "P07d",
+  "mode": "cost",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3972,
+  "budget": false,
+  "raw": "main.bindings = {'w': 7, 'u': 2, 'v': 14}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 2,
+   "equal": 2
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07d.storage.20261127T225624Z.json",
+  "cfg": "extended",
+  "inst": "P07d",
+  "mode": "storage",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3972,
+  "budget": false,
+  "raw": "main.bindings = {'w': 7, 'u': 2, 'v': 14}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07e.behaviour.20261127T225625Z.json",
+  "cfg": "extended",
+  "inst": "P07e",
+  "mode": "behaviour",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3709,
+  "budget": false,
+  "raw": "main.bindings = {'w': w, 'u': 2, 'v': 15}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = [*(w, 2, 15)]\n",
+  "stdout": "no solution: these relations do not hold: [*(w, 2, 15)]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07e.cost.20261127T225626Z.json",
+  "cfg": "extended",
+  "inst": "P07e",
+  "mode": "cost",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3709,
+  "budget": false,
+  "raw": "main.bindings = {'w': w, 'u': 2, 'v': 15}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = [*(w, 2, 15)]\n",
+  "stdout": "no solution: these relations do not hold: [*(w, 2, 15)]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 2,
+   "equal": 2
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07e.storage.20261127T225627Z.json",
+  "cfg": "extended",
+  "inst": "P07e",
+  "mode": "storage",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3709,
+  "budget": false,
+  "raw": "main.bindings = {'w': w, 'u': 2, 'v': 15}\nmain.suspended[goals waiting for a binding] = {}\nmain.held[relations found not to hold] = [*(w, 2, 15)]\n",
+  "stdout": "no solution: these relations do not hold: [*(w, 2, 15)]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07f.behaviour.20261127T225627Z.json",
+  "cfg": "extended",
+  "inst": "P07f",
+  "mode": "behaviour",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 3161,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10), 2: +(x, y, 11)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07f.cost.20261127T225628Z.json",
+  "cfg": "extended",
+  "inst": "P07f",
+  "mode": "cost",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 3161,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10), 2: +(x, y, 11)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 2
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07f.storage.20261127T225629Z.json",
+  "cfg": "extended",
+  "inst": "P07f",
+  "mode": "storage",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 3161,
+  "budget": false,
+  "raw": "main.bindings = {'x': x, 'y': y}\nmain.suspended[goals waiting for a binding] = {1: +(x, y, 10), 2: +(x, y, 11)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07g.behaviour.20261127T225630Z.json",
+  "cfg": "extended",
+  "inst": "P07g",
+  "mode": "behaviour",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 2756,
+  "budget": false,
+  "raw": "main.bindings = {'x': x}\nmain.suspended[goals waiting for a binding] = {1: *(x, x, 9)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07g.cost.20261127T225631Z.json",
+  "cfg": "extended",
+  "inst": "P07g",
+  "mode": "cost",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 2756,
+  "budget": false,
+  "raw": "main.bindings = {'x': x}\nmain.suspended[goals waiting for a binding] = {1: *(x, x, 9)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 1
+  }
+ },
+ {
+  "rec": "results/python/extended/P07/raw/P07g.storage.20261127T225632Z.json",
+  "cfg": "extended",
+  "inst": "P07g",
+  "mode": "storage",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 2756,
+  "budget": false,
+  "raw": "main.bindings = {'x': x}\nmain.suspended[goals waiting for a binding] = {1: *(x, x, 9)}\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.132.behaviour.20261127T225747Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.132",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4572,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.132.cost.20261127T225748Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.132",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4572,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 6,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.132.storage.20261127T225749Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.132",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4572,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.213.behaviour.20261127T225750Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.213",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5085,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.213.cost.20261127T225751Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.213",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5085,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 7,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.213.storage.20261127T225752Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.213",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 5085,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.231.behaviour.20261127T225753Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.231",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4240,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.231.cost.20261127T225753Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.231",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4240,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 5,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.231.storage.20261127T225754Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.231",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4240,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.312.behaviour.20261127T225755Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.312",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4242,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.312.cost.20261127T225756Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.312",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4242,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "equal": 1,
+   "plus": 5
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.312.storage.20261127T225757Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.312",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4242,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 't': 9, 'y': 4, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.321.behaviour.20261127T225758Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.321",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4002,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.321.cost.20261127T225759Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.321",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4002,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "equal": 1,
+   "plus": 4
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.321.storage.20261127T225759Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a.321",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4002,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.behaviour.20261127T225744Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a",
+  "mode": "behaviour",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4752,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.cost.20261127T225745Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a",
+  "mode": "cost",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4752,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 6,
+   "equal": 1
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07a.storage.20261127T225746Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07a",
+  "mode": "storage",
+  "prog": "P07a.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "x = 5, y = 4, z = 3"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 4752,
+  "budget": false,
+  "raw": "main.bindings = {'z': 3, 'y': 4, 't': 9, 'x': 5}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "x = 5, y = 4, z = 3\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM_XYZ, SUM_YZ, Z_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07b.behaviour.20261127T225800Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07b",
+  "mode": "behaviour",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 1731,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10)), ('-', ('x', 'y', 4))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07b.cost.20261127T225801Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07b",
+  "mode": "cost",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 1731,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10)), ('-', ('x', 'y', 4))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 1,
+   "minus": 1
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07b.storage.20261127T225802Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07b",
+  "mode": "storage",
+  "prog": "P07b.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 1731,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10)), ('-', ('x', 'y', 4))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: DIFFERENCE, SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07c.behaviour.20261127T225803Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07c",
+  "mode": "behaviour",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 979,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07c.cost.20261127T225804Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07c",
+  "mode": "cost",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 979,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 1
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07c.storage.20261127T225805Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07c",
+  "mode": "storage",
+  "prog": "P07c.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 979,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07d.behaviour.20261127T225806Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07d",
+  "mode": "behaviour",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3324,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 14, 'w': 7}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07d.cost.20261127T225806Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07d",
+  "mode": "cost",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3324,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 14, 'w': 7}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 3,
+   "equal": 2
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07d.storage.20261127T225807Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07d",
+  "mode": "storage",
+  "prog": "P07d.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [
+   "w = 7, u = 2, v = 14"
+  ],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3324,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 14, 'w': 7}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = []\n",
+  "stdout": "w = 7, u = 2, v = 14\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07e.behaviour.20261127T225808Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07e",
+  "mode": "behaviour",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3136,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 15}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = [('*', ('w', 'u', 'v'))]\n",
+  "stdout": "no solution: these relations do not hold: [('*', ('w', 'u', 'v'))]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07e.cost.20261127T225809Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07e",
+  "mode": "cost",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3136,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 15}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = [('*', ('w', 'u', 'v'))]\n",
+  "stdout": "no solution: these relations do not hold: [('*', ('w', 'u', 'v'))]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 3,
+   "equal": 2
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07e.storage.20261127T225810Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07e",
+  "mode": "storage",
+  "prog": "P07e.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "finished"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 0,
+  "alt": 0,
+  "steps": 3136,
+  "budget": false,
+  "raw": "main.bindings = {'u': 2, 'v': 15}\nmain.suspended[relations waiting in their threads] = []\nmain.held[relations found not to hold] = [('*', ('w', 'u', 'v'))]\n",
+  "stdout": "no solution: these relations do not hold: [('*', ('w', 'u', 'v'))]\n",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: U_VALUE, V_VALUE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07f.behaviour.20261127T225811Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07f",
+  "mode": "behaviour",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 1731,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10)), ('+', ('x', 'y', 11))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07f.cost.20261127T225812Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07f",
+  "mode": "cost",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 1731,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10)), ('+', ('x', 'y', 11))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": {
+   "plus": 2
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07f.storage.20261127T225812Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07f",
+  "mode": "storage",
+  "prog": "P07f.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 2,
+  "alt": 0,
+  "steps": 1731,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('+', ('x', 'y', 10)), ('+', ('x', 'y', 11))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: FIRST_SUM, SECOND_SUM"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07g.behaviour.20261127T225813Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07g",
+  "mode": "behaviour",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 972,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('*', ('x', 'x', 9))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": null
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07g.cost.20261127T225814Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07g",
+  "mode": "cost",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 972,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('*', ('x', 'x', 9))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": {
+   "times": 1
+  }
+ },
+ {
+  "rec": "results/python/stdlib-concurrency/P07/raw/P07g.storage.20261127T225815Z.json",
+  "cfg": "stdlib-concurrency",
+  "inst": "P07g",
+  "mode": "storage",
+  "prog": "P07g.py",
+  "stage": 1,
+  "attempt": 1,
+  "ans": [],
+  "ended": [
+   "no-enumeration"
+  ],
+  "states": [
+   "suspended"
+  ],
+  "det": true,
+  "err": null,
+  "susp": 1,
+  "alt": 0,
+  "steps": 972,
+  "budget": false,
+  "raw": "main.bindings = {}\nmain.suspended[relations waiting in their threads] = [('*', ('x', 'x', 9))]\nmain.held[relations found not to hold] = []\n",
+  "stdout": "",
+  "stderr": "",
+  "manual": [],
+  "posed": "fresh",
+  "faults": [],
+  "complete": true,
+  "notes": [],
+  "anotes": [
+   "stage 1's constants were delivered with it: SQUARE"
+  ],
+  "safety": false,
+  "popsn": null
+ }
+]

@@ -1,0 +1,852 @@
+{
+ "constraints/P04a.pl": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "CONSTANTS entry alternative_value(1).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 5,
+   "to": 14,
+   "class": "P",
+   "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 15,
+   "to": 23,
+   "class": "H",
+   "construct": "unknowns(main, ['X']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 24,
+   "to": 34,
+   "class": "H",
+   "construct": "stage(1, [X], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 35,
+   "to": 43,
+   "class": "P",
+   "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 44,
+   "to": 45,
+   "class": "P",
+   "construct": "separator ',' and opening '(' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+  },
+  {
+   "from": 46,
+   "to": 49,
+   "class": "P",
+   "construct": "disjunct loop(X)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 50,
+   "to": 50,
+   "class": "P",
+   "construct": "disjunction connective ;",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 51,
+   "to": 53,
+   "class": "P",
+   "construct": "disjunct X = K (equality as unification)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 54,
+   "to": 54,
+   "class": "P",
+   "construct": "closing ')' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 55,
+   "to": 55,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 56,
+   "to": 62,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "constraints/P04b.pl": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "CONSTANTS entry alternative_value(1).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 5,
+   "to": 14,
+   "class": "P",
+   "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 15,
+   "to": 23,
+   "class": "H",
+   "construct": "unknowns(main, ['X']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 24,
+   "to": 34,
+   "class": "H",
+   "construct": "stage(1, [X], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 35,
+   "to": 43,
+   "class": "P",
+   "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 44,
+   "to": 45,
+   "class": "P",
+   "construct": "separator ',' and opening '(' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+  },
+  {
+   "from": 46,
+   "to": 48,
+   "class": "P",
+   "construct": "disjunct X = K (equality as unification)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 49,
+   "to": 49,
+   "class": "P",
+   "construct": "disjunction connective ;",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 50,
+   "to": 53,
+   "class": "P",
+   "construct": "disjunct loop(X)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 54,
+   "to": 54,
+   "class": "P",
+   "construct": "closing ')' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 55,
+   "to": 55,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 56,
+   "to": 62,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "constraints/P04c.pl": [
+  {
+   "from": 0,
+   "to": 8,
+   "class": "P",
+   "construct": "CONSTANTS entry alist_argument([a, a]).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 9,
+   "to": 26,
+   "class": "P",
+   "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M]. (conjuncts in the order written)",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 27,
+   "to": 32,
+   "class": "P",
+   "construct": "alist-left case 2: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 33,
+   "to": 40,
+   "class": "H",
+   "construct": "unknowns(main, []).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 41,
+   "to": 50,
+   "class": "H",
+   "construct": "stage(1, [], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 51,
+   "to": 59,
+   "class": "P",
+   "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 60,
+   "to": 64,
+   "class": "P",
+   "construct": "separator and goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 65,
+   "to": 65,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 66,
+   "to": 72,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "constraints/P04e.pl": [
+  {
+   "from": 0,
+   "to": 8,
+   "class": "P",
+   "construct": "CONSTANTS entry alist_argument([a, a]).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 9,
+   "to": 14,
+   "class": "P",
+   "construct": "alist-right case 1: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 15,
+   "to": 28,
+   "class": "P",
+   "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists; the head pattern [a|M] transcribes <a> ++ m"
+  },
+  {
+   "from": 29,
+   "to": 36,
+   "class": "H",
+   "construct": "unknowns(main, []).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 37,
+   "to": 46,
+   "class": "H",
+   "construct": "stage(1, [], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 47,
+   "to": 55,
+   "class": "P",
+   "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 56,
+   "to": 60,
+   "class": "P",
+   "construct": "separator and goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 61,
+   "to": 61,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 62,
+   "to": 68,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "constraints/P04d.pl": [
+  {
+   "from": 0,
+   "to": 17,
+   "class": "P",
+   "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M].",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 18,
+   "to": 23,
+   "class": "P",
+   "construct": "alist-left case 2: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 24,
+   "to": 32,
+   "class": "H",
+   "construct": "unknowns(main, ['S']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 33,
+   "to": 43,
+   "class": "H",
+   "construct": "stage(1, [S], _) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 44,
+   "to": 47,
+   "class": "P",
+   "construct": "goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 48,
+   "to": 48,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 49,
+   "to": 55,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "constraints/P04f.pl": [
+  {
+   "from": 0,
+   "to": 5,
+   "class": "P",
+   "construct": "alist-right case 1: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 6,
+   "to": 19,
+   "class": "P",
+   "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 20,
+   "to": 28,
+   "class": "H",
+   "construct": "unknowns(main, ['S']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 29,
+   "to": 39,
+   "class": "H",
+   "construct": "stage(1, [S], _) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 40,
+   "to": 43,
+   "class": "P",
+   "construct": "goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 44,
+   "to": 44,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 45,
+   "to": 51,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "tabling/P04a.pl": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "CONSTANTS entry alternative_value(1).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 5,
+   "to": 10,
+   "class": "C",
+   "construct": ":- table loop/1.",
+   "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+  },
+  {
+   "from": 11,
+   "to": 20,
+   "class": "P",
+   "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 21,
+   "to": 29,
+   "class": "H",
+   "construct": "unknowns(main, ['X']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 30,
+   "to": 40,
+   "class": "H",
+   "construct": "stage(1, [X], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 41,
+   "to": 49,
+   "class": "P",
+   "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 50,
+   "to": 51,
+   "class": "P",
+   "construct": "separator ',' and opening '(' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+  },
+  {
+   "from": 52,
+   "to": 55,
+   "class": "P",
+   "construct": "disjunct loop(X)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 56,
+   "to": 56,
+   "class": "P",
+   "construct": "disjunction connective ;",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 57,
+   "to": 59,
+   "class": "P",
+   "construct": "disjunct X = K (equality as unification)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 60,
+   "to": 60,
+   "class": "P",
+   "construct": "closing ')' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 61,
+   "to": 61,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 62,
+   "to": 68,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "tabling/P04b.pl": [
+  {
+   "from": 0,
+   "to": 4,
+   "class": "P",
+   "construct": "CONSTANTS entry alternative_value(1).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 5,
+   "to": 10,
+   "class": "C",
+   "construct": ":- table loop/1.",
+   "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+  },
+  {
+   "from": 11,
+   "to": 20,
+   "class": "P",
+   "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 21,
+   "to": 29,
+   "class": "H",
+   "construct": "unknowns(main, ['X']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 30,
+   "to": 40,
+   "class": "H",
+   "construct": "stage(1, [X], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 41,
+   "to": 49,
+   "class": "P",
+   "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 50,
+   "to": 51,
+   "class": "P",
+   "construct": "separator ',' and opening '(' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+  },
+  {
+   "from": 52,
+   "to": 54,
+   "class": "P",
+   "construct": "disjunct X = K (equality as unification)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 55,
+   "to": 55,
+   "class": "P",
+   "construct": "disjunction connective ;",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 56,
+   "to": 59,
+   "class": "P",
+   "construct": "disjunct loop(X)",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 60,
+   "to": 60,
+   "class": "P",
+   "construct": "closing ')' of the disjunction",
+   "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+  },
+  {
+   "from": 61,
+   "to": 61,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 62,
+   "to": 68,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "tabling/P04c.pl": [
+  {
+   "from": 0,
+   "to": 8,
+   "class": "P",
+   "construct": "CONSTANTS entry alist_argument([a, a]).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 9,
+   "to": 14,
+   "class": "C",
+   "construct": ":- table alist/1.",
+   "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+  },
+  {
+   "from": 15,
+   "to": 32,
+   "class": "P",
+   "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M]. (conjuncts in the order written)",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 33,
+   "to": 38,
+   "class": "P",
+   "construct": "alist-left case 2: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 39,
+   "to": 46,
+   "class": "H",
+   "construct": "unknowns(main, []).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 47,
+   "to": 56,
+   "class": "H",
+   "construct": "stage(1, [], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 57,
+   "to": 65,
+   "class": "P",
+   "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 66,
+   "to": 70,
+   "class": "P",
+   "construct": "separator and goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 71,
+   "to": 71,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 72,
+   "to": 78,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "tabling/P04e.pl": [
+  {
+   "from": 0,
+   "to": 8,
+   "class": "P",
+   "construct": "CONSTANTS entry alist_argument([a, a]).",
+   "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+  },
+  {
+   "from": 9,
+   "to": 14,
+   "class": "C",
+   "construct": ":- table alist/1.",
+   "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+  },
+  {
+   "from": 15,
+   "to": 20,
+   "class": "P",
+   "construct": "alist-right case 1: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 21,
+   "to": 34,
+   "class": "P",
+   "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists; the head pattern [a|M] transcribes <a> ++ m"
+  },
+  {
+   "from": 35,
+   "to": 42,
+   "class": "H",
+   "construct": "unknowns(main, []).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 43,
+   "to": 52,
+   "class": "H",
+   "construct": "stage(1, [], Cs) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 53,
+   "to": 61,
+   "class": "P",
+   "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+   "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+  },
+  {
+   "from": 62,
+   "to": 66,
+   "class": "P",
+   "construct": "separator and goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 67,
+   "to": 67,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 68,
+   "to": 74,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "tabling/P04d.pl": [
+  {
+   "from": 0,
+   "to": 5,
+   "class": "C",
+   "construct": ":- table alist/1.",
+   "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+  },
+  {
+   "from": 6,
+   "to": 23,
+   "class": "P",
+   "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M].",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 24,
+   "to": 29,
+   "class": "P",
+   "construct": "alist-left case 2: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 30,
+   "to": 38,
+   "class": "H",
+   "construct": "unknowns(main, ['S']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 39,
+   "to": 49,
+   "class": "H",
+   "construct": "stage(1, [S], _) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 50,
+   "to": 53,
+   "class": "P",
+   "construct": "goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 54,
+   "to": 54,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 55,
+   "to": 61,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ],
+ "tabling/P04f.pl": [
+  {
+   "from": 0,
+   "to": 5,
+   "class": "C",
+   "construct": ":- table alist/1.",
+   "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+  },
+  {
+   "from": 6,
+   "to": 11,
+   "class": "P",
+   "construct": "alist-right case 1: alist([]).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 12,
+   "to": 25,
+   "class": "P",
+   "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+   "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+  },
+  {
+   "from": 26,
+   "to": 34,
+   "class": "H",
+   "construct": "unknowns(main, ['S']).",
+   "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+  },
+  {
+   "from": 35,
+   "to": 45,
+   "class": "H",
+   "construct": "stage(1, [S], _) :- (head)",
+   "rule": "harness README 12: heads of stage/3 (with :-) are H"
+  },
+  {
+   "from": 46,
+   "to": 49,
+   "class": "P",
+   "construct": "goal alist(S): the query",
+   "rule": "P: the query's goal (rule 1); separator by rule 20"
+  },
+  {
+   "from": 50,
+   "to": 50,
+   "class": "H",
+   "construct": "'.' ending the stage/3 clause",
+   "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+  },
+  {
+   "from": 51,
+   "to": 57,
+   "class": "H",
+   "construct": "query(_, _).",
+   "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+  }
+ ]
+}

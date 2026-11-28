@@ -1,0 +1,2431 @@
+{
+ "tokens": {
+  "constraints/P04a.pl": [
+   {
+    "from": 0,
+    "to": 4,
+    "class": "P",
+    "construct": "CONSTANTS entry alternative_value(1).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 5,
+    "to": 14,
+    "class": "P",
+    "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 15,
+    "to": 23,
+    "class": "H",
+    "construct": "unknowns(main, ['X']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 24,
+    "to": 34,
+    "class": "H",
+    "construct": "stage(1, [X], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 35,
+    "to": 43,
+    "class": "P",
+    "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 44,
+    "to": 45,
+    "class": "P",
+    "construct": "separator ',' and opening '(' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+   },
+   {
+    "from": 46,
+    "to": 49,
+    "class": "P",
+    "construct": "disjunct loop(X)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 50,
+    "to": 50,
+    "class": "P",
+    "construct": "disjunction connective ;",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 51,
+    "to": 53,
+    "class": "P",
+    "construct": "disjunct X = K (equality as unification)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 54,
+    "to": 54,
+    "class": "P",
+    "construct": "closing ')' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 55,
+    "to": 55,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 56,
+    "to": 62,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "constraints/P04b.pl": [
+   {
+    "from": 0,
+    "to": 4,
+    "class": "P",
+    "construct": "CONSTANTS entry alternative_value(1).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 5,
+    "to": 14,
+    "class": "P",
+    "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 15,
+    "to": 23,
+    "class": "H",
+    "construct": "unknowns(main, ['X']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 24,
+    "to": 34,
+    "class": "H",
+    "construct": "stage(1, [X], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 35,
+    "to": 43,
+    "class": "P",
+    "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 44,
+    "to": 45,
+    "class": "P",
+    "construct": "separator ',' and opening '(' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+   },
+   {
+    "from": 46,
+    "to": 48,
+    "class": "P",
+    "construct": "disjunct X = K (equality as unification)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 49,
+    "to": 49,
+    "class": "P",
+    "construct": "disjunction connective ;",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 50,
+    "to": 53,
+    "class": "P",
+    "construct": "disjunct loop(X)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 54,
+    "to": 54,
+    "class": "P",
+    "construct": "closing ')' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 55,
+    "to": 55,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 56,
+    "to": 62,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "constraints/P04c.pl": [
+   {
+    "from": 0,
+    "to": 8,
+    "class": "P",
+    "construct": "CONSTANTS entry alist_argument([a, a]).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 9,
+    "to": 26,
+    "class": "P",
+    "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M]. (conjuncts in the order written)",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 27,
+    "to": 32,
+    "class": "P",
+    "construct": "alist-left case 2: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 33,
+    "to": 40,
+    "class": "H",
+    "construct": "unknowns(main, []).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 41,
+    "to": 50,
+    "class": "H",
+    "construct": "stage(1, [], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 51,
+    "to": 59,
+    "class": "P",
+    "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 60,
+    "to": 64,
+    "class": "P",
+    "construct": "separator and goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 65,
+    "to": 65,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 66,
+    "to": 72,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "constraints/P04e.pl": [
+   {
+    "from": 0,
+    "to": 8,
+    "class": "P",
+    "construct": "CONSTANTS entry alist_argument([a, a]).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 9,
+    "to": 14,
+    "class": "P",
+    "construct": "alist-right case 1: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 15,
+    "to": 28,
+    "class": "P",
+    "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists; the head pattern [a|M] transcribes <a> ++ m"
+   },
+   {
+    "from": 29,
+    "to": 36,
+    "class": "H",
+    "construct": "unknowns(main, []).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 37,
+    "to": 46,
+    "class": "H",
+    "construct": "stage(1, [], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 47,
+    "to": 55,
+    "class": "P",
+    "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 56,
+    "to": 60,
+    "class": "P",
+    "construct": "separator and goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 61,
+    "to": 61,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 62,
+    "to": 68,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "constraints/P04d.pl": [
+   {
+    "from": 0,
+    "to": 17,
+    "class": "P",
+    "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M].",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 18,
+    "to": 23,
+    "class": "P",
+    "construct": "alist-left case 2: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 24,
+    "to": 32,
+    "class": "H",
+    "construct": "unknowns(main, ['S']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 33,
+    "to": 43,
+    "class": "H",
+    "construct": "stage(1, [S], _) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 44,
+    "to": 47,
+    "class": "P",
+    "construct": "goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 48,
+    "to": 48,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 49,
+    "to": 55,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "constraints/P04f.pl": [
+   {
+    "from": 0,
+    "to": 5,
+    "class": "P",
+    "construct": "alist-right case 1: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 6,
+    "to": 19,
+    "class": "P",
+    "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 20,
+    "to": 28,
+    "class": "H",
+    "construct": "unknowns(main, ['S']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 29,
+    "to": 39,
+    "class": "H",
+    "construct": "stage(1, [S], _) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 40,
+    "to": 43,
+    "class": "P",
+    "construct": "goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 44,
+    "to": 44,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 45,
+    "to": 51,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "tabling/P04a.pl": [
+   {
+    "from": 0,
+    "to": 4,
+    "class": "P",
+    "construct": "CONSTANTS entry alternative_value(1).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 5,
+    "to": 10,
+    "class": "C",
+    "construct": ":- table loop/1.",
+    "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+   },
+   {
+    "from": 11,
+    "to": 20,
+    "class": "P",
+    "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 21,
+    "to": 29,
+    "class": "H",
+    "construct": "unknowns(main, ['X']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 30,
+    "to": 40,
+    "class": "H",
+    "construct": "stage(1, [X], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 41,
+    "to": 49,
+    "class": "P",
+    "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 50,
+    "to": 51,
+    "class": "P",
+    "construct": "separator ',' and opening '(' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+   },
+   {
+    "from": 52,
+    "to": 55,
+    "class": "P",
+    "construct": "disjunct loop(X)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 56,
+    "to": 56,
+    "class": "P",
+    "construct": "disjunction connective ;",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 57,
+    "to": 59,
+    "class": "P",
+    "construct": "disjunct X = K (equality as unification)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 60,
+    "to": 60,
+    "class": "P",
+    "construct": "closing ')' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 61,
+    "to": 61,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 62,
+    "to": 68,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "tabling/P04b.pl": [
+   {
+    "from": 0,
+    "to": 4,
+    "class": "P",
+    "construct": "CONSTANTS entry alternative_value(1).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 5,
+    "to": 10,
+    "class": "C",
+    "construct": ":- table loop/1.",
+    "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+   },
+   {
+    "from": 11,
+    "to": 20,
+    "class": "P",
+    "construct": "definition case loop(x) if loop(x): loop(X) :- loop(X).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 21,
+    "to": 29,
+    "class": "H",
+    "construct": "unknowns(main, ['X']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 30,
+    "to": 40,
+    "class": "H",
+    "construct": "stage(1, [X], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 41,
+    "to": 49,
+    "class": "P",
+    "construct": "goal memberchk(alternative_value(K), Cs): the stage's constant k",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 50,
+    "to": 51,
+    "class": "P",
+    "construct": "separator ',' and opening '(' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order; rule 20 for the separator; rule 10"
+   },
+   {
+    "from": 52,
+    "to": 54,
+    "class": "P",
+    "construct": "disjunct X = K (equality as unification)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 55,
+    "to": 55,
+    "class": "P",
+    "construct": "disjunction connective ;",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 56,
+    "to": 59,
+    "class": "P",
+    "construct": "disjunct loop(X)",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 60,
+    "to": 60,
+    "class": "P",
+    "construct": "closing ')' of the disjunction",
+    "rule": "rule 6: a disjunction the problem states is P; alternatives in presentation order"
+   },
+   {
+    "from": 61,
+    "to": 61,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 62,
+    "to": 68,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "tabling/P04c.pl": [
+   {
+    "from": 0,
+    "to": 8,
+    "class": "P",
+    "construct": "CONSTANTS entry alist_argument([a, a]).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 9,
+    "to": 14,
+    "class": "C",
+    "construct": ":- table alist/1.",
+    "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+   },
+   {
+    "from": 15,
+    "to": 32,
+    "class": "P",
+    "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M]. (conjuncts in the order written)",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 33,
+    "to": 38,
+    "class": "P",
+    "construct": "alist-left case 2: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 39,
+    "to": 46,
+    "class": "H",
+    "construct": "unknowns(main, []).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 47,
+    "to": 56,
+    "class": "H",
+    "construct": "stage(1, [], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 57,
+    "to": 65,
+    "class": "P",
+    "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 66,
+    "to": 70,
+    "class": "P",
+    "construct": "separator and goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 71,
+    "to": 71,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 72,
+    "to": 78,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "tabling/P04e.pl": [
+   {
+    "from": 0,
+    "to": 8,
+    "class": "P",
+    "construct": "CONSTANTS entry alist_argument([a, a]).",
+    "rule": "rule 1 (stage information: the constant of the stage; removing it changes the solutions); CONSTANTS block entry, markers are comments (harness README 12)"
+   },
+   {
+    "from": 9,
+    "to": 14,
+    "class": "C",
+    "construct": ":- table alist/1.",
+    "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+   },
+   {
+    "from": 15,
+    "to": 20,
+    "class": "P",
+    "construct": "alist-right case 1: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 21,
+    "to": 34,
+    "class": "P",
+    "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists; the head pattern [a|M] transcribes <a> ++ m"
+   },
+   {
+    "from": 35,
+    "to": 42,
+    "class": "H",
+    "construct": "unknowns(main, []).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 43,
+    "to": 52,
+    "class": "H",
+    "construct": "stage(1, [], Cs) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 53,
+    "to": 61,
+    "class": "P",
+    "construct": "goal memberchk(alist_argument(S), Cs): the stage's constant sequence",
+    "rule": "rule 1: reads the stage's constant into the query (removing it changes the solutions); memberchk/2 of library(lists) is outside plain's core, listed under external mechanisms (rule 12)"
+   },
+   {
+    "from": 62,
+    "to": 66,
+    "class": "P",
+    "construct": "separator and goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 67,
+    "to": 67,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 68,
+    "to": 74,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "tabling/P04d.pl": [
+   {
+    "from": 0,
+    "to": 5,
+    "class": "C",
+    "construct": ":- table alist/1.",
+    "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+   },
+   {
+    "from": 6,
+    "to": 23,
+    "class": "P",
+    "construct": "alist-left case 1: alist(S) :- alist(M), S = [a|M].",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 24,
+    "to": 29,
+    "class": "P",
+    "construct": "alist-left case 2: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 30,
+    "to": 38,
+    "class": "H",
+    "construct": "unknowns(main, ['S']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 39,
+    "to": 49,
+    "class": "H",
+    "construct": "stage(1, [S], _) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 50,
+    "to": 53,
+    "class": "P",
+    "construct": "goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 54,
+    "to": 54,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 55,
+    "to": 61,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ],
+  "tabling/P04f.pl": [
+   {
+    "from": 0,
+    "to": 5,
+    "class": "C",
+    "construct": ":- table alist/1.",
+    "rule": "METRICS class C: tabling declarations; rule 1 (changes termination only, not the least-relation solutions)"
+   },
+   {
+    "from": 6,
+    "to": 11,
+    "class": "P",
+    "construct": "alist-right case 1: alist([]).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 12,
+    "to": 25,
+    "class": "P",
+    "construct": "alist-right case 2: alist([a|M]) :- alist(M).",
+    "rule": "P: transcription of the problem's definition case, in presentation order (rules 1, 3); sequences as Prolog lists"
+   },
+   {
+    "from": 26,
+    "to": 34,
+    "class": "H",
+    "construct": "unknowns(main, ['S']).",
+    "rule": "harness README 12: the whole of each unknowns/2 fact is H"
+   },
+   {
+    "from": 35,
+    "to": 45,
+    "class": "H",
+    "construct": "stage(1, [S], _) :- (head)",
+    "rule": "harness README 12: heads of stage/3 (with :-) are H"
+   },
+   {
+    "from": 46,
+    "to": 49,
+    "class": "P",
+    "construct": "goal alist(S): the query",
+    "rule": "P: the query's goal (rule 1); separator by rule 20"
+   },
+   {
+    "from": 50,
+    "to": 50,
+    "class": "H",
+    "construct": "'.' ending the stage/3 clause",
+    "rule": "the clause terminator of the harness-contract stage/3 clause, taken with its H frame (head); cf. rule 20"
+   },
+   {
+    "from": 51,
+    "to": 57,
+    "class": "H",
+    "construct": "query(_, _).",
+    "rule": "harness README 12: query/2 clause head is H; this clause is a bodiless fact"
+   }
+  ]
+ },
+ "outcomes": [
+  {
+   "configuration": "plain",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "record": "results/swi-prolog/plain/P04/raw/P04a.behaviour.20261127T225503Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported, so no residual or solved form to compare. The valid outcome x = 1 is never reached: loop(X), the first disjunct in presentation order, recurses without end (SLD, depth-first, textual order) and the second disjunct X = K is never tried",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X stays unbound (observe at the budget exception: 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); the untried disjunct X = K is held for backtracking only; suspended work 0; steps 1000009 (9 past the 10^6 budget, the overrun the harness records); answer completeness 0/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "record": "results/swi-prolog/plain/P04/raw/P04b.behaviour.20261127T225505Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "explicit answer 'X = 1' is exactly the valid outcome {x = 1}; no invalid answer (check_answers.py)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X = 1 reported at 5 steps; the answer left a choicepoint (the second disjunct loop(X)), the harness asked for another, and loop(X) ran to the budget (steps 1000009, 9 past budget); at the budget X is unbound again (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1 (complete: answers reported before the budget are classified), 2 (explicit), 3 (budget)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "record": "results/swi-prolog/plain/P04/raw/P04c.behaviour.20261127T225507Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist([a, a]) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; answer completeness 0/1",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "record": "results/swi-prolog/plain/P04/raw/P04d.behaviour.20261127T225510Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist(S) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; infinite valid outcomes: no finite representation given; answers obtained: none; whether every solution would be reached given enough steps: no, none is ever reached (the recursion never tries case 2)",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "finite representation: no; answers obtained: none"
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04e",
+   "program": "P04e.pl",
+   "record": "results/swi-prolog/plain/P04/raw/P04e.behaviour.20261127T225513Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "'true.' with no unknowns: exactly the valid outcome (true, one solution); no choicepoint left",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); one answer 'true.' at 8 steps, no choicepoint (the clause heads [] and [a|M] are told apart by first-argument indexing), so finished; suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1, 2, 3 (finished)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04f",
+   "program": "P04f.pl",
+   "record": "results/swi-prolog/plain/P04/raw/P04f.behaviour.20261127T225515Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "partial",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "alternatives pending"
+   ],
+   "residual_equivalence": "20 explicit answers S = [], [a], ..., [a x 19], each valid, all distinct, 0 invalid (check_answers.py): a nonempty proper subset of the infinite valid outcomes; not a finite representation of them",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); answers in increasing length 0..19, 2 steps apart (first at 3, last at 41); collection stopped at the cap with a choicepoint held (storage: 1 retained choicepoint of type clause at every answer and at the boundary; behaviour: not measured); every solution would be reached given enough steps (the sequence of length n is answer n+1); S bound to the 19-element list at the boundary; suspended 0",
+   "rule": "SPECIFICATION Outcomes 1 (partial: nonempty proper subset), 2 (explicit), 3 (alternatives pending); METRICS answer completeness (infinite)",
+   "answer_completeness": "finite representation: no; answers obtained: the 20 listed, lengths 0-19 in order"
+  },
+  {
+   "configuration": "tabling",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "record": "results/swi-prolog/tabling/P04/raw/P04a.behaviour.20261127T225813Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit answer 'X = 1.' (no choicepoint) is exactly the valid outcome {x = 1}; checked by check_answers.py",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); tabled loop/1 completes with no answers (storage: 1 table, 0 table answers at the boundary), so the disjunction falls through to X = 1; the answer has no choicepoint, so the harness asked for no more; steps 39; suspended 0; no unknown left unknown; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1 (complete), 2 (explicit), 3 (finished)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "tabling",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "record": "results/swi-prolog/tabling/P04/raw/P04b.behaviour.20261127T225815Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "explicit answer 'X = 1' then 'false.': exactly {x = 1}",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X = 1 at 5 steps with a choicepoint; the request for more ran the tabled loop(X), which completed with no answers, and the query failed ('false.'), steps 40; nothing held at the boundary (observe empty; storage: 0 choicepoints, 1 table, 0 answers); suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1, 2, 3 (finished: the last request failed)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "tabling",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "record": "results/swi-prolog/tabling/P04/raw/P04c.behaviour.20261127T225817Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "timeout"
+   ],
+   "residual_equivalence": "nothing reported. Under tabling the inner call alist(M), M fresh, is a tabled call whose table has infinitely many answers; SLG evaluation keeps adding answers to it and never completes it, so alist([a, a]) returns nothing",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); safety limit hit at 60 s (steps 310050), rerun once at 600 s, final timeout (steps 962186, under the 10^6 budget: SLG table work is largely not counted as inferences); nothing could be read at the kill (observe 'true '); the table grew without end (storage run: table answers at attempt 1 / attempt 2 in the notes); suspended 0; answer completeness 0/1; storage run table_answers at the kill: 61770 (60 s) and 187807 (600 s)",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (timeout, final after the one rerun; PROTOCOL Running, safety limit)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "tabling",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "record": "results/swi-prolog/tabling/P04/raw/P04d.behaviour.20261127T233119Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "timeout"
+   ],
+   "residual_equivalence": "nothing reported. Under tabling the inner call alist(M), M fresh, is a tabled call whose table has infinitely many answers; SLG evaluation keeps adding answers to it and never completes it, so alist(S) returns nothing",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); safety limit hit at 60 s (steps 290356), rerun once at 600 s, final timeout (steps 891860, under the 10^6 budget: SLG table work is largely not counted as inferences); nothing could be read at the kill (observe 'true '); the table grew without end (storage run: table answers at attempt 1 / attempt 2 in the notes); suspended 0; infinite valid outcomes: no finite representation; answers obtained: none; every solution reached given enough steps: no (no answer is returned to the query before the table completes, which it never does); storage run table_answers at the kill: 39137 (60 s) and 129264 (600 s)",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (timeout, final after the one rerun; PROTOCOL Running, safety limit)",
+   "answer_completeness": "finite representation: no; answers obtained: none"
+  },
+  {
+   "configuration": "tabling",
+   "instance": "P04e",
+   "program": "P04e.pl",
+   "record": "results/swi-prolog/tabling/P04/raw/P04e.behaviour.20261128T000925Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "'true.' with no unknowns: exactly the valid outcome (true, one solution); no choicepoint left",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); one answer 'true.' at 62 steps, no choicepoint (the clause heads [] and [a|M] are told apart by first-argument indexing), so finished; tabled: 3 tables, 3 answers at the boundary (storage); suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1, 2, 3 (finished)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "tabling",
+   "instance": "P04f",
+   "program": "P04f.pl",
+   "record": "results/swi-prolog/tabling/P04/raw/P04f.behaviour.20261128T000929Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "timeout"
+   ],
+   "residual_equivalence": "nothing reported. The tabled call alist(S), S fresh, has infinitely many answers; SWI-Prolog's tabling returns a completed table's answers to the query, and this table never completes, so no answer reaches the harness",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); safety limit at 60 s (steps 215885), rerun at 600 s, final timeout (steps 652229); nothing read at the kill (observe 'true '); table grew without end (storage); suspended 0; every solution reached given enough steps: no answer is delivered at all; contrast the untabled text, which enumerates fairly; storage run table_answers at the kill: 49814 (60 s) and 150192 (600 s)",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (timeout, final)",
+   "answer_completeness": "finite representation: no; answers obtained: none"
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04a.behaviour.20261127T225325Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported, so no residual or solved form to compare. The valid outcome x = 1 is never reached: loop(X), the first disjunct in presentation order, recurses without end (SLD, depth-first, textual order) and the second disjunct X = K is never tried",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X stays unbound (observe at the budget exception: 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); the untried disjunct X = K is held for backtracking only; suspended work 0; steps 1000009 (9 past the 10^6 budget, the overrun the harness records); answer completeness 0/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04b.behaviour.20261127T225327Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "explicit answer 'X = 1' is exactly the valid outcome {x = 1}; no invalid answer (check_answers.py)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X = 1 reported at 5 steps; the answer left a choicepoint (the second disjunct loop(X)), the harness asked for another, and loop(X) ran to the budget (steps 1000009, 9 past budget); at the budget X is unbound again (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1 (complete: answers reported before the budget are classified), 2 (explicit), 3 (budget)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04c.behaviour.20261127T225330Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist([a, a]) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; answer completeness 0/1",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04d.behaviour.20261127T225333Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist(S) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; infinite valid outcomes: no finite representation given; answers obtained: none; whether every solution would be reached given enough steps: no, none is ever reached (the recursion never tries case 2)",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "finite representation: no; answers obtained: none"
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04e",
+   "program": "P04e.pl",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04e.behaviour.20261127T225336Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "'true.' with no unknowns: exactly the valid outcome (true, one solution); no choicepoint left",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); one answer 'true.' at 8 steps, no choicepoint (the clause heads [] and [a|M] are told apart by first-argument indexing), so finished; suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1, 2, 3 (finished)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04f",
+   "program": "P04f.pl",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04f.behaviour.20261127T225339Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "partial",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "alternatives pending"
+   ],
+   "residual_equivalence": "20 explicit answers S = [], [a], ..., [a x 19], each valid, all distinct, 0 invalid (check_answers.py): a nonempty proper subset of the infinite valid outcomes; not a finite representation of them",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); answers in increasing length 0..19, 2 steps apart (first at 3, last at 41); collection stopped at the cap with a choicepoint held (storage: 1 retained choicepoint of type clause at every answer and at the boundary; behaviour: not measured); every solution would be reached given enough steps (the sequence of length n is answer n+1); S bound to the 19-element list at the boundary; suspended 0",
+   "rule": "SPECIFICATION Outcomes 1 (partial: nonempty proper subset), 2 (explicit), 3 (alternatives pending); METRICS answer completeness (infinite)",
+   "answer_completeness": "finite representation: no; answers obtained: the 20 listed, lengths 0-19 in order"
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "record": "results/swi-prolog/constraints/P04/raw/P04a.behaviour.20261127T225146Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported, so no residual or solved form to compare. The valid outcome x = 1 is never reached: loop(X), the first disjunct in presentation order, recurses without end (SLD, depth-first, textual order) and the second disjunct X = K is never tried",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X stays unbound (observe at the budget exception: 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); the untried disjunct X = K is held for backtracking only; suspended work 0; steps 1000009 (9 past the 10^6 budget, the overrun the harness records); answer completeness 0/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "record": "results/swi-prolog/constraints/P04/raw/P04b.behaviour.20261127T225148Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "explicit answer 'X = 1' is exactly the valid outcome {x = 1}; no invalid answer (check_answers.py)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X = 1 reported at 5 steps; the answer left a choicepoint (the second disjunct loop(X)), the harness asked for another, and loop(X) ran to the budget (steps 1000009, 9 past budget); at the budget X is unbound again (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1 (complete: answers reported before the budget are classified), 2 (explicit), 3 (budget)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "record": "results/swi-prolog/constraints/P04/raw/P04c.behaviour.20261127T225150Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist([a, a]) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; answer completeness 0/1",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "record": "results/swi-prolog/constraints/P04/raw/P04d.behaviour.20261127T225153Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist(S) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; infinite valid outcomes: no finite representation given; answers obtained: none; whether every solution would be reached given enough steps: no, none is ever reached (the recursion never tries case 2)",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "finite representation: no; answers obtained: none"
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04e",
+   "program": "P04e.pl",
+   "record": "results/swi-prolog/constraints/P04/raw/P04e.behaviour.20261127T225156Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "'true.' with no unknowns: exactly the valid outcome (true, one solution); no choicepoint left",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); one answer 'true.' at 8 steps, no choicepoint (the clause heads [] and [a|M] are told apart by first-argument indexing), so finished; suspended 0; answer completeness 1/1, 0 invalid",
+   "rule": "SPECIFICATION Outcomes 1, 2, 3 (finished)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04f",
+   "program": "P04f.pl",
+   "record": "results/swi-prolog/constraints/P04/raw/P04f.behaviour.20261127T225158Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "partial",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "alternatives pending"
+   ],
+   "residual_equivalence": "20 explicit answers S = [], [a], ..., [a x 19], each valid, all distinct, 0 invalid (check_answers.py): a nonempty proper subset of the infinite valid outcomes; not a finite representation of them",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); answers in increasing length 0..19, 2 steps apart (first at 3, last at 41); collection stopped at the cap with a choicepoint held (storage: 1 retained choicepoint of type clause at every answer and at the boundary; behaviour: not measured); every solution would be reached given enough steps (the sequence of length n is answer n+1); S bound to the 19-element list at the boundary; suspended 0",
+   "rule": "SPECIFICATION Outcomes 1 (partial: nonempty proper subset), 2 (explicit), 3 (alternatives pending); METRICS answer completeness (infinite)",
+   "answer_completeness": "finite representation: no; answers obtained: the 20 listed, lengths 0-19 in order"
+  },
+  {
+   "configuration": "session",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "record": "results/swi-prolog/session/P04/raw/P04a.behaviour.20261127T225633Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported, so no residual or solved form to compare. The valid outcome x = 1 is never reached: loop(X), the first disjunct in presentation order, recurses without end (SLD, depth-first, textual order) and the second disjunct X = K is never tried",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X stays unbound (observe at the budget exception: 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); the untried disjunct X = K is held for backtracking only; suspended work 0; steps 1000009 (9 past the 10^6 budget, the overrun the harness records); answer completeness 0/1, 0 invalid; session: one engine, the single stage posted fresh; S/session-wait.pl loaded but never fired (every procedure called is defined), no h_wait",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "session",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "record": "results/swi-prolog/session/P04/raw/P04b.behaviour.20261127T225635Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "explicit answer 'X = 1' is exactly the valid outcome {x = 1}; no invalid answer (check_answers.py)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); X = 1 reported at 5 steps; the answer left a choicepoint (the second disjunct loop(X)), the harness asked for another, and loop(X) ran to the budget (steps 1000009, 9 past budget); at the budget X is unbound again (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; answer completeness 1/1, 0 invalid; session: one engine, the single stage posted fresh; S/session-wait.pl loaded but never fired (every procedure called is defined), no h_wait",
+   "rule": "SPECIFICATION Outcomes 1 (complete: answers reported before the budget are classified), 2 (explicit), 3 (budget)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "session",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "record": "results/swi-prolog/session/P04/raw/P04c.behaviour.20261127T225638Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist([a, a]) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; answer completeness 0/1; session: one engine, the single stage posted fresh; S/session-wait.pl loaded but never fired (every procedure called is defined), no h_wait",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "0/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "session",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "record": "results/swi-prolog/session/P04/raw/P04d.behaviour.20261127T225641Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "none reported",
+   "representation": null,
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "budget"
+   ],
+   "residual_equivalence": "nothing reported. alist-left's first case calls alist(M) with M fresh before the conjunct S = [a|M]; alist(S) therefore recurses on a fresh unknown without end and never reaches case 2 (left recursion under SLD in textual order)",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); no binding at the budget (observe 'true '); alternatives (retained choicepoints) are not measured in behaviour mode (null = unavailable, AMENDMENTS 3.1); suspended 0; steps 1000009; infinite valid outcomes: no finite representation given; answers obtained: none; whether every solution would be reached given enough steps: no, none is ever reached (the recursion never tries case 2); session: one engine, the single stage posted fresh; S/session-wait.pl loaded but never fired (every procedure called is defined), no h_wait",
+   "rule": "SPECIFICATION Outcomes 1 (none reported), 3 (budget)",
+   "answer_completeness": "finite representation: no; answers obtained: none"
+  },
+  {
+   "configuration": "session",
+   "instance": "P04e",
+   "program": "P04e.pl",
+   "record": "results/swi-prolog/session/P04/raw/P04e.behaviour.20261127T225644Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "complete",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "finished"
+   ],
+   "residual_equivalence": "'true.' with no unknowns: exactly the valid outcome (true, one solution); no choicepoint left",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); one answer 'true.' at 8 steps, no choicepoint (the clause heads [] and [a|M] are told apart by first-argument indexing), so finished; suspended 0; answer completeness 1/1, 0 invalid; session: one engine, the single stage posted fresh; S/session-wait.pl loaded but never fired (every procedure called is defined), no h_wait",
+   "rule": "SPECIFICATION Outcomes 1, 2, 3 (finished)",
+   "answer_completeness": "1/1 valid, 0 invalid"
+  },
+  {
+   "configuration": "session",
+   "instance": "P04f",
+   "program": "P04f.pl",
+   "record": "results/swi-prolog/session/P04/raw/P04f.behaviour.20261127T225646Z.json",
+   "stage": 1,
+   "harness_fault": false,
+   "reached": true,
+   "semantic": "partial",
+   "representation": "explicit",
+   "simplification": null,
+   "identical_to_posed": null,
+   "residual_size": null,
+   "execution_state": [
+    "alternatives pending"
+   ],
+   "residual_equivalence": "20 explicit answers S = [], [a], ..., [a x 19], each valid, all distinct, 0 invalid (check_answers.py): a nonempty proper subset of the infinite valid outcomes; not a finite representation of them",
+   "observations": "one stage, so no conclusion withdrawn; no manual actions (record manual_actions empty); answers in increasing length 0..19, 2 steps apart (first at 3, last at 41); collection stopped at the cap with a choicepoint held (storage: 1 retained choicepoint of type clause at every answer and at the boundary; behaviour: not measured); every solution would be reached given enough steps (the sequence of length n is answer n+1); S bound to the 19-element list at the boundary; suspended 0; session: one engine, the single stage posted fresh; S/session-wait.pl loaded but never fired (every procedure called is defined), no h_wait",
+   "rule": "SPECIFICATION Outcomes 1 (partial: nonempty proper subset), 2 (explicit), 3 (alternatives pending); METRICS answer completeness (infinite)",
+   "answer_completeness": "finite representation: no; answers obtained: the 20 listed, lengths 0-19 in order"
+  }
+ ],
+ "mode_differences": [
+  {
+   "configuration": "plain",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/plain/P04/raw/P04a.storage.20261127T225504Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820104.73064,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/plain/P04/raw/P04b.storage.20261127T225506Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [
+     "X = 1 "
+    ],
+    "steps_at_first_answer": 97,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":{\"ev\":\"harness_fault\",\"t\":1795820106.90632,\"text\":\"ERROR: [Thread main] Unknown message: inference_limit_exceeded\\\\\\\\n\"}\\': Expect'), so I class the stage budget, as in behaviour; semantic result unchanged (the same answer X = 1). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1). Also: the answer's steps_at is 97 here against 5 in behaviour, which the harness says should be equal across modes (harness README 6): an instrumentation discrepancy."
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/plain/P04/raw/P04c.storage.20261127T225509Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820109.94886,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "plain",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/plain/P04/raw/P04d.storage.20261127T225512Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820113.1466,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \",'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04a.storage.20261127T225327Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820007.42865,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04b.storage.20261127T225329Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [
+     "X = 1 "
+    ],
+    "steps_at_first_answer": 97,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":{\"ev\":\"harness_fault\",\"t\":1795820009.78081,\"text\":\"ERROR: [Thread main] Unknown message: inference_limit_exceeded\\\\\\\\n\"}\\': Expect'), so I class the stage budget, as in behaviour; semantic result unchanged (the same answer X = 1). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1). Also: the answer's steps_at is 97 here against 5 in behaviour, which the harness says should be equal across modes (harness README 6): an instrumentation discrepancy."
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04c.storage.20261127T225332Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820013.07767,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "coroutines",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/coroutines/P04/raw/P04d.storage.20261127T225335Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820016.47859,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/constraints/P04/raw/P04a.storage.20261127T225147Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795819907.7007,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \",'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/constraints/P04/raw/P04b.storage.20261127T225149Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [
+     "X = 1 "
+    ],
+    "steps_at_first_answer": 97,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":{\"ev\":\"harness_fault\",\"t\":1795819909.7346,\"text\":\"ERROR: [Thread main] Unknown message: inference_limit_exceeded\\\\\\\\n\"}\\': Expecti'), so I class the stage budget, as in behaviour; semantic result unchanged (the same answer X = 1). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1). Also: the answer's steps_at is 97 here against 5 in behaviour, which the harness says should be equal across modes (harness README 6): an instrumentation discrepancy."
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/constraints/P04/raw/P04c.storage.20261127T225151Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795819912.64608,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "constraints",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/constraints/P04/raw/P04d.storage.20261127T225154Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795819915.60146,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "session",
+   "instance": "P04a",
+   "program": "P04a.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/session/P04/raw/P04a.storage.20261127T225635Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820195.33818,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"p{\"ev\":\"comp_end\",\"t\":1795820195.33907,\"comp\"'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "session",
+   "instance": "P04b",
+   "program": "P04b.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/session/P04/raw/P04b.storage.20261127T225637Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "complete",
+    "representation": "explicit",
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [
+     "X = 1 "
+    ],
+    "steps_at_first_answer": 5,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820197.52358,\"comp\":\"main\",\"why\":\"budget\",\"steps\":1000009,\"part\":1,\"where\":\"at-exception\",\"text\":\"true \"'), so I class the stage budget, as in behaviour; semantic result unchanged (the same answer X = 1). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "session",
+   "instance": "P04c",
+   "program": "P04c.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/session/P04/raw/P04c.storage.20261127T225639Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820200.62058,\"comp\":\"main\",\"why\":\"budget\",\"s{\"ev\":\"comp_end\",\"t\":1795820200.62783,\"comp\":\"main\",\"stage\":'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  },
+  {
+   "configuration": "session",
+   "instance": "P04d",
+   "program": "P04d.pl",
+   "mode": "storage",
+   "record": "results/swi-prolog/session/P04/raw/P04d.storage.20261127T225642Z.json",
+   "stage": 1,
+   "harness_fault": true,
+   "behaviour": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state": [
+     "budget"
+    ]
+   },
+   "this_mode": {
+    "semantic": "none reported",
+    "representation": null,
+    "execution_state_recorded": [
+     "error"
+    ],
+    "execution_state_as_classed": [
+     "budget"
+    ],
+    "answers": [],
+    "steps_at_first_answer": null,
+    "suspended": null
+   },
+   "note": "Harness fault, not the system's: the record's state 'error' (determined false) is the harness's failure to read its own event stream (harness_faults: an unreadable, interleaved event). The fragment that survives shows the budget exception ('unreadable harness event b\\'{\"ev\":\"at_exception\",\"t\":1795820203.71347,\"comp\":\"main\",\"why\":\"bud{\"ev\":\"comp_end\",\"t\":1795820203.72013,\"comp\":\"main\",\"stage\":1,\"ende'), so I class the stage budget, as in behaviour; semantic result unchanged (none reported). Observations that depend on the end event (suspended, steps, store) are unavailable, not 0 (AMENDMENTS 3.1)."
+  }
+ ],
+ "expressibility": [
+  {
+   "configuration": "plain",
+   "subproblem": "P04a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "plain",
+   "subproblem": "P04b",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "plain",
+   "subproblem": "P04c",
+   "direction": "alist-left, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "plain",
+   "subproblem": "P04d",
+   "direction": "alist-left, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "plain",
+   "subproblem": "P04e",
+   "direction": "alist-right, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "plain",
+   "subproblem": "P04f",
+   "direction": "alist-right, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "tabling",
+   "subproblem": "P04a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens; the only addition is the table/1 directive, class C. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "tabling",
+   "subproblem": "P04b",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens; the only addition is the table/1 directive, class C. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "tabling",
+   "subproblem": "P04c",
+   "direction": "alist-left, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens; the only addition is the table/1 directive, class C. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "tabling",
+   "subproblem": "P04d",
+   "direction": "alist-left, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens; the only addition is the table/1 directive, class C. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "tabling",
+   "subproblem": "P04e",
+   "direction": "alist-right, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens; the only addition is the table/1 directive, class C. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "tabling",
+   "subproblem": "P04f",
+   "direction": "alist-right, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens; the only addition is the table/1 directive, class C. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "coroutines",
+   "subproblem": "P04a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "coroutines",
+   "subproblem": "P04b",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "coroutines",
+   "subproblem": "P04c",
+   "direction": "alist-left, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "coroutines",
+   "subproblem": "P04d",
+   "direction": "alist-left, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "coroutines",
+   "subproblem": "P04e",
+   "direction": "alist-right, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "coroutines",
+   "subproblem": "P04f",
+   "direction": "alist-right, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "constraints",
+   "subproblem": "P04a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "constraints",
+   "subproblem": "P04b",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "constraints",
+   "subproblem": "P04c",
+   "direction": "alist-left, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "constraints",
+   "subproblem": "P04d",
+   "direction": "alist-left, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "constraints",
+   "subproblem": "P04e",
+   "direction": "alist-right, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "constraints",
+   "subproblem": "P04f",
+   "direction": "alist-right, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "session",
+   "subproblem": "P04a",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "session",
+   "subproblem": "P04b",
+   "direction": null,
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "session",
+   "subproblem": "P04c",
+   "direction": "alist-left, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "session",
+   "subproblem": "P04d",
+   "direction": "alist-left, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "session",
+   "subproblem": "P04e",
+   "direction": "alist-right, ground argument (test)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  },
+  {
+   "configuration": "session",
+   "subproblem": "P04f",
+   "direction": "alist-right, open argument (generate)",
+   "expressibility": "expressible",
+   "reason": "the definitions and the query are transcribed as written, in presentation order (cases and conjuncts in the problem's order, the disjunction's alternatives in its order); no R tokens. Expressibility is independent of whether the run terminates: the transcription's nontermination is the behaviour P04 probes, recorded on the outcome axes"
+  }
+ ],
+ "late_definition": [],
+ "s_mechanisms": [
+  {
+   "configuration": "plain",
+   "program": "P04a.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "plain",
+   "program": "P04b.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "plain",
+   "program": "P04c.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "plain",
+   "program": "P04d.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program)"
+  },
+  {
+   "configuration": "plain",
+   "program": "P04e.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "plain",
+   "program": "P04f.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program)"
+  },
+  {
+   "configuration": "tabling",
+   "program": "P04a.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program; tabling's table/1 directive"
+  },
+  {
+   "configuration": "tabling",
+   "program": "P04b.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program; tabling's table/1 directive"
+  },
+  {
+   "configuration": "tabling",
+   "program": "P04c.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program; tabling's table/1 directive"
+  },
+  {
+   "configuration": "tabling",
+   "program": "P04d.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program); tabling's table/1 directive"
+  },
+  {
+   "configuration": "tabling",
+   "program": "P04e.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program; tabling's table/1 directive"
+  },
+  {
+   "configuration": "tabling",
+   "program": "P04f.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program); tabling's table/1 directive"
+  },
+  {
+   "configuration": "coroutines",
+   "program": "P04a.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "coroutines",
+   "program": "P04b.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "coroutines",
+   "program": "P04c.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "coroutines",
+   "program": "P04d.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program)"
+  },
+  {
+   "configuration": "coroutines",
+   "program": "P04e.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "coroutines",
+   "program": "P04f.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program)"
+  },
+  {
+   "configuration": "constraints",
+   "program": "P04a.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "constraints",
+   "program": "P04b.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "constraints",
+   "program": "P04c.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "constraints",
+   "program": "P04d.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program)"
+  },
+  {
+   "configuration": "constraints",
+   "program": "P04e.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) in this program"
+  },
+  {
+   "configuration": "constraints",
+   "program": "P04f.pl",
+   "mechanism": null,
+   "listed_at_phase_4": null,
+   "tokens": 0,
+   "note": "none: the configuration lists no S mechanism (S-mechanisms.md) and the program supplies none (0 S tokens). External mechanism, not S: memberchk/2 of library(lists) (not used by this program)"
+  },
+  {
+   "configuration": "session",
+   "program": "P04a.pl",
+   "mechanism": "wait for an undefined procedure (harnesses/swi-prolog/S/session-wait.pl, a user:exception/3 hook)",
+   "listed_at_phase_4": true,
+   "tokens": 0,
+   "note": "loaded by the harness before every session program, so part of the configuration; it is not in the program text (0 S tokens in the program; S-mechanisms.md gives the file as 158 tokens by its own count, not classed here). In P04 it never fires: loop/1, alist/1 and memberchk/2 are all defined. The program supplies no S of its own."
+  },
+  {
+   "configuration": "session",
+   "program": "P04b.pl",
+   "mechanism": "wait for an undefined procedure (harnesses/swi-prolog/S/session-wait.pl, a user:exception/3 hook)",
+   "listed_at_phase_4": true,
+   "tokens": 0,
+   "note": "loaded by the harness before every session program, so part of the configuration; it is not in the program text (0 S tokens in the program; S-mechanisms.md gives the file as 158 tokens by its own count, not classed here). In P04 it never fires: loop/1, alist/1 and memberchk/2 are all defined. The program supplies no S of its own."
+  },
+  {
+   "configuration": "session",
+   "program": "P04c.pl",
+   "mechanism": "wait for an undefined procedure (harnesses/swi-prolog/S/session-wait.pl, a user:exception/3 hook)",
+   "listed_at_phase_4": true,
+   "tokens": 0,
+   "note": "loaded by the harness before every session program, so part of the configuration; it is not in the program text (0 S tokens in the program; S-mechanisms.md gives the file as 158 tokens by its own count, not classed here). In P04 it never fires: loop/1, alist/1 and memberchk/2 are all defined. The program supplies no S of its own."
+  },
+  {
+   "configuration": "session",
+   "program": "P04d.pl",
+   "mechanism": "wait for an undefined procedure (harnesses/swi-prolog/S/session-wait.pl, a user:exception/3 hook)",
+   "listed_at_phase_4": true,
+   "tokens": 0,
+   "note": "loaded by the harness before every session program, so part of the configuration; it is not in the program text (0 S tokens in the program; S-mechanisms.md gives the file as 158 tokens by its own count, not classed here). In P04 it never fires: loop/1, alist/1 and memberchk/2 are all defined. The program supplies no S of its own."
+  },
+  {
+   "configuration": "session",
+   "program": "P04e.pl",
+   "mechanism": "wait for an undefined procedure (harnesses/swi-prolog/S/session-wait.pl, a user:exception/3 hook)",
+   "listed_at_phase_4": true,
+   "tokens": 0,
+   "note": "loaded by the harness before every session program, so part of the configuration; it is not in the program text (0 S tokens in the program; S-mechanisms.md gives the file as 158 tokens by its own count, not classed here). In P04 it never fires: loop/1, alist/1 and memberchk/2 are all defined. The program supplies no S of its own."
+  },
+  {
+   "configuration": "session",
+   "program": "P04f.pl",
+   "mechanism": "wait for an undefined procedure (harnesses/swi-prolog/S/session-wait.pl, a user:exception/3 hook)",
+   "listed_at_phase_4": true,
+   "tokens": 0,
+   "note": "loaded by the harness before every session program, so part of the configuration; it is not in the program text (0 S tokens in the program; S-mechanisms.md gives the file as 158 tokens by its own count, not classed here). In P04 it never fires: loop/1, alist/1 and memberchk/2 are all defined. The program supplies no S of its own."
+  }
+ ]
+}

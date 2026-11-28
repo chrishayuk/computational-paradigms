@@ -1,0 +1,6 @@
+PASS: 48 texts / 7204 tokens, exact once-only spans; aliases match.
+PASS: 280 behaviour stages from 140 records; 280 measurement records compared.
+PASS: one differing answer set, 30 late-definition judgements, 23 session S listings.
+Token totals: {'P': 3006, 'C': 648, 'R': 1494, 'S': 0, 'H': 2056}
+P08 reading totals: {'open': {'complete': 48, None: 63, 'unsound': 15, 'none reported': 4}, 'closed': {'complete': 55, 'unsound': 8, None: 63, 'none reported': 4}}
+Log behaviour rows matched: 137 / 140 (the log has a damaged tabling segment; every raw record is covered).

@@ -1,0 +1,115 @@
+   1 P main       begin  | the program block (frame of the transcription)
+   8 H main       integer n  | declaration of n
+   8 H main       , cap  | declaration of cap
+   8 H main       , m  | declaration of m
+   8 H main       , i  | declaration of i
+   8 H main       , code  | declaration of code
+   8 H main       , k  | declaration of k
+   8 P main       , c1  | declaration of c1
+   8 P main       , r  | declaration of r
+   8 P main       , nx  | declaration of nx
+   8 H main       , held  | declaration of held
+   8 H main       , x1  | declaration of x1
+   8 R main       boolean r1  | declaration of r1
+   9 P main       , inconsistent  | declaration of inconsistent
+   9 P main       integer array xs [ 1 : 2 ]  | declaration of xs
+  10 R examine1   procedure examine1 ;  | heading of the holding code examine1
+  14 R examine1   begin  | begin of the construct introduced before it
+  15 P examine1   integer j  | local of the test of x's values
+  15 P examine1   , kept  | local of the test of x's values
+  15 H examine1   x1 := x1 + 1  | counter
+  16 R examine1   if nx > 0 then  | test of whether x is known (has values)
+  18 R examine1   begin  | begin of the construct introduced before it
+  19 P examine1   kept := 0  | computes a place from the others / gives the verdi
+  19 P examine1   for j := 1 step 1 until nx do  | loop over the encoding (++ decomposition or constr
+  21 P examine1   begin  | begin of the construct introduced before it
+  21 P examine1   if xs [ j ] × xs [ j ] = c1 then  | test of a fully known relation
+  21 P examine1   begin  | begin of the construct introduced before it
+  21 P examine1   kept := kept + 1  | computes a place from the others / gives the verdi
+  21 P examine1   xs [ kept ] := xs [ j ]  | computes a place from the others / gives the verdi
+  21 P examine1   end  | end of the compound
+  21 P examine1   end  | end of the compound
+  21 R examine1   nx := kept  | records a place as known / relation as no longer h
+  22 P examine1   if nx = 0 then  | test of a fully known relation
+  23 P examine1   inconsistent := true  | computes a place from the others / gives the verdi
+  24 R examine1   end  | end of the compound
+  25 P examine1   else if c1 < 0 then  | x times x = c with c negative: no integer square
+  25 P examine1   inconsistent := true  | computes a place from the others / gives the verdi
+  26 P examine1   else  | else of the conditional
+  27 P examine1   begin  | begin of the construct introduced before it
+  28 P examine1   r := entier ( sqrt ( c1 ) + 0.5 )  | computes a place from the others / gives the verdi
+  28 P examine1   if r × r ≠ c1 then  | test of a fully known relation
+  29 P examine1   inconsistent := true  | computes a place from the others / gives the verdi
+  30 P examine1   else if r = 0 then  | test of a fully known relation
+  30 P examine1   begin  | begin of the construct introduced before it
+  30 R examine1   nx := 1  | records a place as known / relation as no longer h
+  30 P examine1   xs [ 1 ] := 0  | computes a place from the others / gives the verdi
+  30 P examine1   end  | end of the compound
+  31 P examine1   else  | else of the conditional
+  31 P examine1   begin  | begin of the construct introduced before it
+  31 R examine1   nx := 2  | records a place as known / relation as no longer h
+  31 P examine1   xs [ 1 ] := r  | computes a place from the others / gives the verdi
+  31 P examine1   xs [ 2 ] := - r  | computes a place from the others / gives the verdi
+  31 P examine1   end  | end of the compound
+  32 P examine1   end  | end of the compound
+  32 R examine1   r1 := false  | records a place as known / relation as no longer h
+  34 R examine1   end examine1  | end of the compound
+  34 H main       n := read  | reading a harness word
+  37 H main       cap := read  | reading a harness word
+  37 H main       m := read  | reading a harness word
+  37 H main       for i := 1 step 1 until m do  | harness loop (codes / messages)
+  38 H main       code := read  | reading a harness word
+  38 H main       code := read  | reading a harness word
+  39 H main       k := read  | reading a harness word
+  39 P main       c1 := read  | reading the stage's constants (stage information)
+  41 P main       inconsistent := false  | initially no contradiction
+  42 R main       nx := 0  | x has no value yet (holding state)
+  42 H main       x1 := 0  | counters initialised
+  42 R main       r1 := true  | initial holding state (known flags, held flags)
+  43 R main       if r1 then  | the relation is examined while held
+  45 R main       examine1  | call of the evaluator
+  45 H main       if ¬ inconsistent then  | guard of printing only
+  49 H main       begin  | begin of the construct introduced before it
+  50 H main       for i := 1 step 1 until nx do  | guard of printing only
+  51 H main       begin  | begin of the construct introduced before it
+  51 H main       PRINTTEXT ( `[answer]x = ' )  | printing a tag or the state held
+  51 H main       print ( xs [ i ] )  | printing a tag or the state held
+  51 H main       begin  | compound statement
+  51 H main       PRINTTEXT ( `[/answer]' )  | printing a tag or the state held
+  51 H main       NLCR  | printing a tag or the state held
+  51 H main       end  | end of the compound
+  51 H main       end  | end of the compound
+  52 H main       end  | end of the compound
+  52 H main       held := if r1 then 1 else 0  | count of held relations, for observe
+  55 H main       PRINTTEXT ( `[observe]' )  | printing a tag or the state held
+  56 H main       if inconsistent then  | guard of printing only
+  57 H main       begin  | begin of the construct introduced before it
+  57 H main       PRINTTEXT ( `no solution' )  | printing a tag or the state held
+  57 H main       NLCR  | printing a tag or the state held
+  57 H main       end  | end of the compound
+  57 H main       begin  | compound statement
+  58 H main       PRINTTEXT ( `held relations: none' )  | printing a tag or the state held
+  58 H main       NLCR  | printing a tag or the state held
+  58 H main       end  | end of the compound
+  58 H main       if ¬ inconsistent then  | guard of printing only
+  60 H main       begin  | begin of the construct introduced before it
+  61 H main       PRINTTEXT ( `values of x held, all at once:' )  | printing a tag or the state held
+  61 H main       for i := 1 step 1 until nx do  | guard of printing only
+  62 H main       begin  | begin of the construct introduced before it
+  62 H main       PRINTTEXT ( ` ' )  | printing a tag or the state held
+  62 H main       print ( xs [ i ] )  | printing a tag or the state held
+  62 H main       end  | end of the compound
+  62 H main       NLCR  | printing a tag or the state held
+  64 H main       end  | end of the compound
+  64 H main       PRINTTEXT ( `[operations R1-examined ' )  | printing a tag or the state held
+  65 H main       print ( x1 )  | printing a tag or the state held
+  65 H main       begin  | compound statement
+  65 H main       PRINTTEXT ( `]' )  | printing a tag or the state held
+  65 H main       NLCR  | printing a tag or the state held
+  65 H main       end  | end of the compound
+  65 H main       begin  | compound statement
+  66 H main       PRINTTEXT ( `[/observe]' )  | printing a tag or the state held
+  66 H main       NLCR  | printing a tag or the state held
+  66 H main       PRINTTEXT ( `[end]' )  | printing a tag or the state held
+  66 H main       end  | end of the compound
+  67 P main       end  | end of the compound

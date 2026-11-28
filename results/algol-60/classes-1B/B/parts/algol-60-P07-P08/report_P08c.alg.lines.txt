@@ -1,0 +1,158 @@
+L1 [0:0] begin
+L8 [1:37] integer n , cap , m , i , code , k , j , top , sv , pv , rv , bv , held , pass , rev1 , rev2 , conc1 , conc2 ;
+L9 [38:52] Boolean bk , q2 , concdef , rev1def , rev2def , changed , inconsistent ;
+L10 [53:63] integer array hd , tl [ 1 : 10000 ] ;
+L12 [64:72] integer procedure cons ( h , t ) ;
+L13 [73:82] value h , t ; integer h , t ;
+L15 [83:109] begin top := top + 1 ; hd [ top ] := h ; tl [ top ] := t ; cons := top end cons ;
+L17 [110:116] integer procedure readseq ( len ) ;
+L18 [117:122] value len ; integer len ;
+L20 [123:123] begin
+L21 [124:134] integer w , e , first , last , c ;
+L22 [135:140] first := last := 0 ;
+L23 [141:149] for w := 1 step 1 until len do
+L24 [150:150] begin
+L25 [151:166] ininteger ( 0 , e ) ; c := cons ( e , 0 ) ;
+L26 [167:182] if last = 0 then first := c else tl [ last ] := c ;
+L27 [183:185] last := c
+L28 [186:187] end ;
+L29 [188:190] readseq := first
+L30 [191:193] end readseq ;
+L32 [194:202] Boolean procedure same ( p , q ) ;
+L33 [203:212] value p , q ; integer p , q ;
+L35 [213:256] same := if p = 0 then q = 0 else if q = 0 then false else if hd [ p ] = hd [ q ] then same ( tl [ p ] , tl [ q ] ) else false ;
+L37 [257:267] integer procedure conc ( a , b , c ) ;
+L38 [268:279] value a , b ; integer a , b , c ;
+L40 [280:286] if ¬ concdef then conc := 2
+L41 [287:292] else if a = 0 then
+L42 [293:307] begin conc1 := conc1 + 1 ; c := b ; conc := 1 end
+L43 [308:308] else
+L44 [309:309] begin
+L45 [310:314] integer t , d ;
+L46 [315:320] conc2 := conc2 + 1 ;
+L47 [321:334] t := conc ( tl [ a ] , b , d ) ;
+L48 [335:351] if t = 1 then c := cons ( hd [ a ] , d ) ;
+L49 [352:354] conc := t
+L50 [355:357] end conc ;
+L52 [358:366] integer procedure rev ( a , r ) ;
+L53 [367:374] value a ; integer a , r ;
+L55 [375:375] begin
+L56 [376:382] integer st , t , q ;
+L57 [383:386] st := 3 ;
+L58 [387:389] if rev1def then
+L59 [390:415] begin if same ( a , pv ) then begin rev1 := rev1 + 1 ; r := rv ; st := 1 end end ;
+L60 [416:422] if st ≠ 1 ∧ rev2def then
+L61 [423:423] begin
+L62 [424:428] if a ≠ 0 then
+L63 [429:429] begin
+L64 [430:435] rev2 := rev2 + 1 ;
+L65 [436:447] t := rev ( tl [ a ] , q ) ;
+L66 [448:471] if t = 1 then t := conc ( q , cons ( hd [ a ] , 0 ) , r ) ;
+L67 [472:479] if t ≠ 0 then st := t
+L68 [480:480] end
+L69 [481:482] end ;
+L70 [483:498] if st = 3 then st := if rev1def ∧ rev2def then 0 else 2 ;
+L71 [499:501] rev := st
+L72 [502:504] end rev ;
+L74 [505:507] procedure examine2 ;
+L76 [508:508] begin
+L77 [509:513] integer t , r ;
+L78 [514:522] t := rev ( sv , r ) ;
+L79 [523:527] if t = 1 then
+L80 [528:528] begin
+L81 [529:545] if bk then begin if ¬ same ( bv , r ) then inconsistent := true end
+L82 [546:559] else begin bv := r ; bk := true ; changed := true end
+L83 [560:560] end
+L84 [561:570] else if t = 0 then inconsistent := true ;
+L85 [571:580] if concdef ∧ rev1def ∧ rev2def then q2 := false
+L86 [581:583] end examine2 ;
+L88 [584:586] procedure propagate ;
+L90 [587:587] begin
+L91 [588:591] changed := true ;
+L92 [592:598] for pass := 1 while changed do
+L93 [599:599] begin
+L94 [600:603] changed := false ;
+L95 [604:607] if q2 then examine2
+L96 [608:608] end
+L97 [609:611] end propagate ;
+L99 [612:617] procedure digits ( v ) ;
+L100 [618:623] value v ; integer v ;
+L102 [624:624] begin
+L103 [625:627] integer d ;
+L104 [628:639] if v ≥ 10 then digits ( v ÷ 10 ) ;
+L105 [640:649] d := v - v ÷ 10 × 10 ;
+L106 [650:684] if d = 0 then outstring ( 1 , 0 ) else if d = 1 then outstring ( 1 , 1 ) else if d = 2 then outstring ( 1 , 2 )
+L107 [685:720] else if d = 3 then outstring ( 1 , 3 ) else if d = 4 then outstring ( 1 , 4 ) else if d = 5 then outstring ( 1 , 5 )
+L108 [721:756] else if d = 6 then outstring ( 1 , 6 ) else if d = 7 then outstring ( 1 , 7 ) else if d = 8 then outstring ( 1 , 8 )
+L109 [757:763] else outstring ( 1 , 9 )
+L110 [764:766] end digits ;
+L112 [767:772] procedure printint ( v ) ;
+L113 [773:778] value v ; integer v ;
+L115 [779:803] if v < 0 then begin outstring ( 1 , - ) ; digits ( - v ) end else digits ( v ) ;
+L117 [804:809] procedure printseq ( p ) ;
+L118 [810:815] value p ; integer p ;
+L120 [816:816] begin
+L121 [817:819] integer w ;
+L122 [820:826] outstring ( 1 , ( ) ;
+L123 [827:835] for w := 0 while p ≠ 0 do
+L124 [836:864] begin printint ( hd [ p ] ) ; p := tl [ p ] ; if p ≠ 0 then outstring ( 1 , ,  ) end ;
+L125 [865:870] outstring ( 1 , ) )
+L126 [871:873] end printseq ;
+L128 [874:876] procedure relations ;
+L130 [877:879] if q2 then
+L131 [880:880] begin
+L132 [881:899] outstring ( 1 , rev( ) ; printseq ( sv ) ; outstring ( 1 , ,  ) ;
+L133 [900:914] if bk then printseq ( bv ) else outstring ( 1 , b ) ;
+L134 [915:921] outstring ( 1 , ) ) ;
+L135 [922:935] if ¬ ( rev1def ∨ rev2def ) then outstring ( 1 ,  awaiting the definition of rev )
+L136 [936:943] else outstring ( 1 ,  awaiting the rest of the definition of rev ) ;
+L137 [944:953] if ¬ concdef then outstring ( 1 ,  and conc )
+L138 [954:956] end relations ;
+L141 [957:977] ininteger ( 0 , n ) ; ininteger ( 0 , cap ) ; ininteger ( 0 , m ) ;
+L142 [978:993] for i := 1 step 1 until m do ininteger ( 0 , code ) ;
+L143 [994:1007] bk := q2 := concdef := rev1def := rev2def := inconsistent := false ;
+L144 [1008:1019] top := rev1 := rev2 := conc1 := conc2 := 0 ;
+L145 [1020:1027] sv := pv := rv := 0 ;
+L147 [1028:1034] for i := 1 while true do
+L148 [1035:1035] begin
+L150 [1036:1049] ininteger ( 0 , code ) ; ininteger ( 0 , k ) ;
+L151 [1050:1057] if k = 1 then concdef := true
+L152 [1058:1063] else if k = 2 then
+L153 [1064:1064] begin
+L154 [1065:1081] ininteger ( 0 , j ) ; sv := readseq ( j ) ; q2 := true
+L155 [1082:1082] end
+L156 [1083:1088] else if k = 3 then
+L157 [1089:1089] begin
+L158 [1090:1094] integer l1 , l2 ;
+L159 [1095:1108] ininteger ( 0 , l1 ) ; ininteger ( 0 , l2 ) ;
+L160 [1109:1125] pv := readseq ( l1 ) ; rv := readseq ( l2 ) ; rev1def := true
+L161 [1126:1126] end
+L162 [1127:1136] else if k = 4 then rev2def := true ;
+L164 [1137:1138] propagate ;
+L167 [1139:1142] if ¬ inconsistent then
+L168 [1143:1143] begin
+L169 [1144:1150] outstring ( 1 , [answer]b ) ;
+L170 [1151:1166] if bk then begin outstring ( 1 ,  =  ) ; printseq ( bv ) end
+L171 [1167:1184] else if q2 then outstring ( 1 ,  held ) else outstring ( 1 ,  free ) ;
+L172 [1185:1198] if q2 then begin outstring ( 1 , , where  ) ; relations end ;
+L173 [1199:1204] outstring ( 1 , [/answer]\\n )
+L174 [1205:1206] end ;
+L177 [1207:1215] held := if q2 then 1 else 0 ;
+L178 [1216:1222] outstring ( 1 , [observe] ) ;
+L179 [1223:1232] if inconsistent then outstring ( 1 , no solution\\n ) ;
+L180 [1233:1239] outstring ( 1 , held relations:  ) ;
+L181 [1240:1253] if held = 0 then outstring ( 1 , none ) else relations ;
+L182 [1254:1260] outstring ( 1 , \\n ) ;
+L183 [1261:1277] if concdef then outstring ( 1 , conc: defined ) else outstring ( 1 , conc: not yet defined ) ;
+L184 [1278:1294] if rev1def then outstring ( 1 , , rev case 1: defined ) else outstring ( 1 , , rev case 1: not yet defined ) ;
+L185 [1295:1311] if rev2def then outstring ( 1 , , rev case 2: defined\\n ) else outstring ( 1 , , rev case 2: not yet defined\\n ) ;
+L186 [1312:1321] if q2 then outstring ( 1 , rev(s, b): held as posed, neither true nor false, examined again at each stage\\n ) ;
+L187 [1322:1345] if bk then begin outstring ( 1 , [bind b] ) ; printseq ( bv ) ; outstring ( 1 , [/bind]\\n ) end ;
+L188 [1346:1355] if q2 then outstring ( 1 , [suspended pending-applications 1]\\n ) ;
+L189 [1356:1376] outstring ( 1 , [operations rev/1  ) ; outinteger ( 1 , rev1 ) ; outstring ( 1 , ]\\n ) ;
+L190 [1377:1397] outstring ( 1 , [operations rev/2  ) ; outinteger ( 1 , rev2 ) ; outstring ( 1 , ]\\n ) ;
+L191 [1398:1418] outstring ( 1 , [operations conc/1  ) ; outinteger ( 1 , conc1 ) ; outstring ( 1 , ]\\n ) ;
+L192 [1419:1439] outstring ( 1 , [operations conc/2  ) ; outinteger ( 1 , conc2 ) ; outstring ( 1 , ]\\n ) ;
+L193 [1440:1445] outstring ( 1 , [/observe]\\n[end] )
+L194 [1446:1446] end
+L195 [1447:1447] end

@@ -1,0 +1,51 @@
+L1 [0:0] begin
+L8 [1:23] integer n , cap , m , i , code , k , c1 , r , nx , held , x1 ;
+L9 [24:28] Boolean r1 , inconsistent ;
+L10 [29:37] integer array xs [ 1 : 2 ] ;
+L12 [38:40] procedure examine1 ;
+L14 [41:41] begin
+L15 [42:46] integer j , kept ;
+L16 [47:52] x1 := x1 + 1 ;
+L17 [53:57] if nx > 0 then
+L18 [58:58] begin
+L19 [59:62] kept := 0 ;
+L20 [63:71] for j := 1 step 1 until nx do
+L21 [72:104] begin if xs [ j ] × xs [ j ] = c1 then begin kept := kept + 1 ; xs [ kept ] := xs [ j ] end end ;
+L22 [105:108] nx := kept ;
+L23 [109:116] if nx = 0 then inconsistent := true
+L24 [117:117] end
+L25 [118:126] else if c1 < 0 then inconsistent := true
+L26 [127:127] else
+L27 [128:128] begin
+L28 [129:140] r := entier ( sqrt ( c1 ) + 0.5 ) ;
+L29 [141:150] if r × r ≠ c1 then inconsistent := true
+L30 [151:168] else if r = 0 then begin nx := 1 ; xs [ 1 ] := 0 end
+L31 [169:189] else begin nx := 2 ; xs [ 1 ] := r ; xs [ 2 ] := - r end
+L32 [190:191] end ;
+L33 [192:194] r1 := false
+L34 [195:197] end examine1 ;
+L37 [198:218] ininteger ( 0 , n ) ; ininteger ( 0 , cap ) ; ininteger ( 0 , m ) ;
+L38 [219:234] for i := 1 step 1 until m do ininteger ( 0 , code ) ;
+L39 [235:248] ininteger ( 0 , code ) ; ininteger ( 0 , k ) ;
+L41 [249:255] ininteger ( 0 , c1 ) ;
+L42 [256:267] inconsistent := false ; nx := 0 ; x1 := 0 ;
+L43 [268:271] r1 := true ;
+L45 [272:276] if r1 then examine1 ;
+L48 [277:280] if ¬ inconsistent then
+L49 [281:281] begin
+L50 [282:290] for i := 1 step 1 until nx do
+L51 [291:315] begin outstring ( 1 , [answer]x =  ) ; outinteger ( 1 , xs [ i ] ) ; outstring ( 1 , [/answer]\\n ) end
+L52 [316:317] end ;
+L55 [318:326] held := if r1 then 1 else 0 ;
+L56 [327:333] outstring ( 1 , [observe] ) ;
+L57 [334:343] if inconsistent then outstring ( 1 , no solution\\n ) ;
+L58 [344:350] outstring ( 1 , held relations: none\\n ) ;
+L59 [351:354] if ¬ inconsistent then
+L60 [355:355] begin
+L61 [356:362] outstring ( 1 , values of x held, all at once: ) ;
+L62 [363:390] for i := 1 step 1 until nx do begin outstring ( 1 ,   ) ; outinteger ( 1 , xs [ i ] ) end ;
+L63 [391:396] outstring ( 1 , \\n )
+L64 [397:398] end ;
+L65 [399:419] outstring ( 1 , [operations R1-examined  ) ; outinteger ( 1 , x1 ) ; outstring ( 1 , ]\\n ) ;
+L66 [420:425] outstring ( 1 , [/observe]\\n[end] )
+L67 [426:426] end

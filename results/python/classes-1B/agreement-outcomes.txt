@@ -1,0 +1,12 @@
+stages: 147 (A 147, B 147)
+  reached: 147/147
+  semantic: 145/147
+  representation: 146/147
+  simplification: 147/147
+  identical_to_posed: 147/147
+  execution_state: 147/147
+
+differences (stage, axis, A, B):
+   | ('core', 'P08c', 'P08c.py', 2) | semantic | ['closed: unsound', 'open: complete'] | ['closed: none reported', 'open: none reported']
+   | ('core', 'P08c', 'P08c.py', 2) | representation | ['solved form'] | [None]
+   | ('extended', 'P08a', 'P08a.py', 4) | semantic | ['closed: partial', 'open: partial'] | ['closed: complete', 'open: complete']

@@ -1,0 +1,42 @@
+stages: 147 (A 147, B 147)
+  reached: 147/147
+  semantic: 144/147
+  representation: 147/147
+  simplification: 129/147
+  identical_to_posed: 135/147
+  execution_state: 147/147
+
+differences (stage, axis, A, B):
+   | ('report', 'P06c', 'P06c.alg', 2) | semantic | ['complete'] | ['unsound']
+   | ('report', 'P08a', 'P08a.alg', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('report', 'P08a', 'P08a.alg', 2) | identical_to_posed | ['true'] | ['false']
+   | ('report', 'P08a', 'P08a.alg', 3) | simplification | ['reducible'] | ['inconsistency undetected', 'reducible']
+   | ('report', 'P08a', 'P08a.alg', 3) | identical_to_posed | ['true'] | ['false']
+   | ('report', 'P08b', 'P08b.alg', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('report', 'P08b', 'P08b.alg', 2) | identical_to_posed | ['true'] | ['false']
+   | ('report', 'P08b', 'P08b.alg', 3) | simplification | ['reducible'] | ['inconsistency undetected', 'reducible']
+   | ('report', 'P08b', 'P08b.alg', 3) | identical_to_posed | ['true'] | ['false']
+   | ('report', 'P08c', 'P08c.alg', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('report', 'P08c', 'P08c.alg', 3) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1', 'P06c', 'P06c.a60', 2) | semantic | ['complete'] | ['unsound']
+   | ('x1', 'P08a', 'P08a.a60', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1', 'P08a', 'P08a.a60', 2) | identical_to_posed | ['true'] | ['false']
+   | ('x1', 'P08a', 'P08a.a60', 3) | simplification | ['reducible'] | ['inconsistency undetected', 'reducible']
+   | ('x1', 'P08a', 'P08a.a60', 3) | identical_to_posed | ['true'] | ['false']
+   | ('x1', 'P08b', 'P08b.a60', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1', 'P08b', 'P08b.a60', 2) | identical_to_posed | ['true'] | ['false']
+   | ('x1', 'P08b', 'P08b.a60', 3) | simplification | ['reducible'] | ['inconsistency undetected', 'reducible']
+   | ('x1', 'P08b', 'P08b.a60', 3) | identical_to_posed | ['true'] | ['false']
+   | ('x1', 'P08c', 'P08c.a60', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1', 'P08c', 'P08c.a60', 3) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1sim', 'P06c', 'P06c.a60', 2) | semantic | ['complete'] | ['unsound']
+   | ('x1sim', 'P08a', 'P08a.a60', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1sim', 'P08a', 'P08a.a60', 2) | identical_to_posed | ['true'] | ['false']
+   | ('x1sim', 'P08a', 'P08a.a60', 3) | simplification | ['reducible'] | ['inconsistency undetected', 'reducible']
+   | ('x1sim', 'P08a', 'P08a.a60', 3) | identical_to_posed | ['true'] | ['false']
+   | ('x1sim', 'P08b', 'P08b.a60', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1sim', 'P08b', 'P08b.a60', 2) | identical_to_posed | ['true'] | ['false']
+   | ('x1sim', 'P08b', 'P08b.a60', 3) | simplification | ['reducible'] | ['inconsistency undetected', 'reducible']
+   | ('x1sim', 'P08b', 'P08b.a60', 3) | identical_to_posed | ['true'] | ['false']
+   | ('x1sim', 'P08c', 'P08c.a60', 2) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']
+   | ('x1sim', 'P08c', 'P08c.a60', 3) | simplification | ['reduced'] | ['inconsistency undetected', 'reducible']

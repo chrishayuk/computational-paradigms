@@ -1,0 +1,36 @@
+{
+  "distinct_texts": 48,
+  "token_totals": {
+    "P": 3006,
+    "C": 648,
+    "R": 1494,
+    "S": 0,
+    "H": 2056
+  },
+  "behaviour_records": 140,
+  "behaviour_stages": 280,
+  "not_reached": 74,
+  "semantic_open_or_only": {
+    "complete": 157,
+    "null": 74,
+    "unsound": 29,
+    "none reported": 20
+  },
+  "representations": {
+    "explicit": 121,
+    "residual": 27,
+    "null": 94,
+    "solved form": 38
+  },
+  "states": {
+    "finished": 140,
+    "suspended": 27,
+    "not reached": 74,
+    "error": 36,
+    "alternatives pending": 3
+  },
+  "mode_differences": 1,
+  "records_compared": 280,
+  "invalid_records": 16,
+  "faulted_behaviour_stages": 16
+}

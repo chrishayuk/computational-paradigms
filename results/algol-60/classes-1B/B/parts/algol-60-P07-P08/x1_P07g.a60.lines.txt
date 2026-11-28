@@ -1,0 +1,51 @@
+L1 [0:0] begin
+L8 [1:23] integer n , cap , m , i , code , k , c1 , r , nx , held , x1 ;
+L9 [24:28] boolean r1 , inconsistent ;
+L10 [29:37] integer array xs [ 1 : 2 ] ;
+L12 [38:40] procedure examine1 ;
+L14 [41:41] begin
+L15 [42:46] integer j , kept ;
+L16 [47:52] x1 := x1 + 1 ;
+L17 [53:57] if nx > 0 then
+L18 [58:58] begin
+L19 [59:62] kept := 0 ;
+L20 [63:71] for j := 1 step 1 until nx do
+L21 [72:104] begin if xs [ j ] × xs [ j ] = c1 then begin kept := kept + 1 ; xs [ kept ] := xs [ j ] end end ;
+L22 [105:108] nx := kept ;
+L23 [109:116] if nx = 0 then inconsistent := true
+L24 [117:117] end
+L25 [118:126] else if c1 < 0 then inconsistent := true
+L26 [127:127] else
+L27 [128:128] begin
+L28 [129:140] r := entier ( sqrt ( c1 ) + 0.5 ) ;
+L29 [141:150] if r × r ≠ c1 then inconsistent := true
+L30 [151:168] else if r = 0 then begin nx := 1 ; xs [ 1 ] := 0 end
+L31 [169:189] else begin nx := 2 ; xs [ 1 ] := r ; xs [ 2 ] := - r end
+L32 [190:191] end ;
+L33 [192:194] r1 := false
+L34 [195:197] end examine1 ;
+L37 [198:209] n := read ; cap := read ; m := read ;
+L38 [210:222] for i := 1 step 1 until m do code := read ;
+L39 [223:230] code := read ; k := read ;
+L41 [231:234] c1 := read ;
+L42 [235:246] inconsistent := false ; nx := 0 ; x1 := 0 ;
+L43 [247:250] r1 := true ;
+L45 [251:255] if r1 then examine1 ;
+L48 [256:259] if ¬ inconsistent then
+L49 [260:260] begin
+L50 [261:269] for i := 1 step 1 until nx do
+L51 [270:292] begin PRINTTEXT ( `[answer]x = ' ) ; print ( xs [ i ] ) ; begin PRINTTEXT ( `[/answer]' ) ; NLCR end end
+L52 [293:294] end ;
+L55 [295:303] held := if r1 then 1 else 0 ;
+L56 [304:308] PRINTTEXT ( `[observe]' ) ;
+L57 [309:320] if inconsistent then begin PRINTTEXT ( `no solution' ) ; NLCR end ;
+L58 [321:329] begin PRINTTEXT ( `held relations: none' ) ; NLCR end ;
+L59 [330:333] if ¬ inconsistent then
+L60 [334:334] begin
+L61 [335:339] PRINTTEXT ( `values of x held, all at once:' ) ;
+L62 [340:363] for i := 1 step 1 until nx do begin PRINTTEXT ( ` ' ) ; print ( xs [ i ] ) end ;
+L63 [364:364] NLCR
+L64 [365:366] end ;
+L65 [367:385] PRINTTEXT ( `[operations R1-examined ' ) ; print ( x1 ) ; begin PRINTTEXT ( `]' ) ; NLCR end ;
+L66 [386:398] begin PRINTTEXT ( `[/observe]' ) ; NLCR ; PRINTTEXT ( `[end]' ) end
+L67 [399:399] end

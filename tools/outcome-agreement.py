@@ -55,31 +55,49 @@ def per_reading(e, ax):
 def flat(v):
     return v if isinstance(v, tuple) else (v,)
 
-A, B = load(sys.argv[1]), load(sys.argv[2])
-keys = sorted(set(A) | set(B), key=str)
-agree = collections.Counter(); diffs = []
-for k in keys:
-    a, b = A.get(k, []), B.get(k, [])
-    if not a or not b:
-        diffs.append((k, "missing in " + ("A" if not a else "B"), None, None)); continue
+def compare(a, b):
+    """The axes on which two classifiers' entries for one stage differ, as
+    [(axis, A's values, B's values)]; [] if they agree."""
+    out = []
     unreached = all(norm(e.get("reached")) == "false" for e in a + b)
     residual = any(norm(e.get("representation")) == "residual" for e in a + b)
     for ax in AXES:
         if ax in ("simplification", "identical_to_posed") and not residual:
-            agree[ax] += 1; continue                # applies to a residual only (SPECIFICATION, Outcomes 2)
+            continue                                # applies to a residual only (SPECIFICATION, Outcomes 2)
         if ax != "reached" and unreached:
-            agree[ax] += 1; continue                # both: not reached (AMENDMENTS 3.2); nothing to class
+            continue                                # both: not reached (AMENDMENTS 3.2); nothing to class
         sa = sorted({x for e in a for x in per_reading(e, ax)}, key=str)
         sb = sorted({x for e in b for x in per_reading(e, ax)}, key=str)
         labelled = lambda s: s and all(isinstance(x, str) and ": " in x for x in s)
         if labelled(sa) != labelled(sb):        # one value given without readings: the same under every reading
             strip = lambda s: sorted({x.split(": ", 1)[1] if isinstance(x, str) and ": " in x else x for x in s}, key=str)
             sa, sb = strip(sa), strip(sb)
-        if sa == sb: agree[ax] += 1
-        else: diffs.append((k, ax, sa, sb))
-print(f"stages: {len(keys)} (A {len(A)}, B {len(B)})")
-for ax in AXES:
-    print(f"  {ax}: {agree[ax]}/{len(keys)}")
-print("\ndifferences (stage, axis, A, B):")
-for d in diffs:
-    print("  ", *d, sep=" | ")
+        if sa != sb:
+            out.append((ax, sa, sb))
+    return out
+
+
+def main(a_path, b_path):
+    A, B = load(a_path), load(b_path)
+    keys = sorted(set(A) | set(B), key=str)
+    agree = collections.Counter(); diffs = []
+    for k in keys:
+        a, b = A.get(k, []), B.get(k, [])
+        if not a or not b:
+            diffs.append((k, "missing in " + ("A" if not a else "B"), None, None)); continue
+        d = compare(a, b)
+        bad = {x[0] for x in d}
+        for ax in AXES:
+            if ax not in bad:
+                agree[ax] += 1
+        diffs += [(k,) + x for x in d]
+    print(f"stages: {len(keys)} (A {len(A)}, B {len(B)})")
+    for ax in AXES:
+        print(f"  {ax}: {agree[ax]}/{len(keys)}")
+    print("\ndifferences (stage, axis, A, B):")
+    for d in diffs:
+        print("  ", *d, sep=" | ")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1], sys.argv[2])

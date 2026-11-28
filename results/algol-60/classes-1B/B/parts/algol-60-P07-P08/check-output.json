@@ -1,0 +1,139 @@
+{
+  "distinct_texts": 16,
+  "program_paths": 30,
+  "tokens_distinct_texts": 17531,
+  "tokens_by_class_distinct": {
+    "H": 11024,
+    "P": 2971,
+    "R": 3122,
+    "C": 414
+  },
+  "tokens_by_class_expanded": {
+    "H": 22602,
+    "P": 6783,
+    "R": 6393,
+    "C": 795
+  },
+  "per_text": {
+    "report/P07a.alg": {
+      "H": 823,
+      "P": 97,
+      "R": 231,
+      "C": 63
+    },
+    "report/P07b.alg": {
+      "H": 600,
+      "P": 62,
+      "R": 164,
+      "C": 10
+    },
+    "report/P07c.alg": {
+      "H": 497,
+      "P": 33,
+      "R": 100,
+      "C": 10
+    },
+    "report/P07d.alg": {
+      "H": 738,
+      "P": 133,
+      "R": 204,
+      "C": 10
+    },
+    "report/P07f.alg": {
+      "H": 600,
+      "P": 62,
+      "R": 164,
+      "C": 10
+    },
+    "report/P07g.alg": {
+      "H": 229,
+      "P": 46,
+      "R": 152
+    },
+    "report/P08a.alg": {
+      "H": 1513,
+      "R": 366,
+      "P": 658,
+      "C": 48
+    },
+    "report/P08c.alg": {
+      "H": 795,
+      "R": 180,
+      "P": 417,
+      "C": 56
+    },
+    "x1/P07a.a60": {
+      "H": 737,
+      "P": 94,
+      "R": 231,
+      "C": 63
+    },
+    "x1/P07b.a60": {
+      "H": 538,
+      "P": 56,
+      "R": 164,
+      "C": 10
+    },
+    "x1/P07c.a60": {
+      "H": 445,
+      "P": 30,
+      "R": 100,
+      "C": 10
+    },
+    "x1/P07d.a60": {
+      "H": 666,
+      "P": 127,
+      "R": 204,
+      "C": 10
+    },
+    "x1/P07f.a60": {
+      "H": 538,
+      "P": 56,
+      "R": 164,
+      "C": 10
+    },
+    "x1/P07g.a60": {
+      "H": 205,
+      "P": 43,
+      "R": 152
+    },
+    "x1/P08a.a60": {
+      "H": 1383,
+      "R": 366,
+      "P": 652,
+      "C": 48
+    },
+    "x1/P08c.a60": {
+      "H": 717,
+      "R": 180,
+      "P": 405,
+      "C": 56
+    }
+  },
+  "behaviour_runs": 45,
+  "behaviour_stages": 75,
+  "outcome_entries_with_dual_P08_readings": 114,
+  "semantic_counts": {
+    "complete": 114
+  },
+  "representation_counts": {
+    "explicit": 39,
+    "residual": 57,
+    "solved form": 18
+  },
+  "simplification_counts": {
+    "reducible": 33,
+    "reduced": 3,
+    "inconsistency undetected": 21
+  },
+  "execution_state_counts": {
+    "finished": 57,
+    "suspended": 57
+  },
+  "measurement_records_compared": 60,
+  "measurement_stages_compared": 100,
+  "mode_differences": 0,
+  "invalid_records": 0,
+  "unreached_stages": 0,
+  "measurement_reruns": 0
+}

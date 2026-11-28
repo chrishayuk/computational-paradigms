@@ -1,0 +1,130 @@
+== constraints/P04a.pl (63 tokens)
+    0-  4 P  alternative_value ( 1 ) .
+    5- 14 P  loop ( X ) :- loop ( X ) .
+   15- 23 H  unknowns ( main , [ 'X' ] ) .
+   24- 34 H  stage ( 1 , [ X ] , Cs ) :-
+   35- 43 P  memberchk ( alternative_value ( K ) , Cs )
+   44- 45 P  , (
+   46- 49 P  loop ( X )
+   50- 50 P  ;
+   51- 53 P  X = K
+   54- 54 P  )
+   55- 55 H  .
+   56- 62 H  query ( _ , _ ) .
+== constraints/P04b.pl (63 tokens)
+    0-  4 P  alternative_value ( 1 ) .
+    5- 14 P  loop ( X ) :- loop ( X ) .
+   15- 23 H  unknowns ( main , [ 'X' ] ) .
+   24- 34 H  stage ( 1 , [ X ] , Cs ) :-
+   35- 43 P  memberchk ( alternative_value ( K ) , Cs )
+   44- 45 P  , (
+   46- 48 P  X = K
+   49- 49 P  ;
+   50- 53 P  loop ( X )
+   54- 54 P  )
+   55- 55 H  .
+   56- 62 H  query ( _ , _ ) .
+== constraints/P04c.pl (73 tokens)
+    0-  8 P  alist_argument ( [ a , a ] ) .
+    9- 26 P  alist ( S ) :- alist ( M ) , S = [ a | M ] .
+   27- 32 P  alist ( [ ] ) .
+   33- 40 H  unknowns ( main , [ ] ) .
+   41- 50 H  stage ( 1 , [ ] , Cs ) :-
+   51- 59 P  memberchk ( alist_argument ( S ) , Cs )
+   60- 64 P  , alist ( S )
+   65- 65 H  .
+   66- 72 H  query ( _ , _ ) .
+== constraints/P04e.pl (69 tokens)
+    0-  8 P  alist_argument ( [ a , a ] ) .
+    9- 14 P  alist ( [ ] ) .
+   15- 28 P  alist ( [ a | M ] ) :- alist ( M ) .
+   29- 36 H  unknowns ( main , [ ] ) .
+   37- 46 H  stage ( 1 , [ ] , Cs ) :-
+   47- 55 P  memberchk ( alist_argument ( S ) , Cs )
+   56- 60 P  , alist ( S )
+   61- 61 H  .
+   62- 68 H  query ( _ , _ ) .
+== constraints/P04d.pl (56 tokens)
+    0- 17 P  alist ( S ) :- alist ( M ) , S = [ a | M ] .
+   18- 23 P  alist ( [ ] ) .
+   24- 32 H  unknowns ( main , [ 'S' ] ) .
+   33- 43 H  stage ( 1 , [ S ] , _ ) :-
+   44- 47 P  alist ( S )
+   48- 48 H  .
+   49- 55 H  query ( _ , _ ) .
+== constraints/P04f.pl (52 tokens)
+    0-  5 P  alist ( [ ] ) .
+    6- 19 P  alist ( [ a | M ] ) :- alist ( M ) .
+   20- 28 H  unknowns ( main , [ 'S' ] ) .
+   29- 39 H  stage ( 1 , [ S ] , _ ) :-
+   40- 43 P  alist ( S )
+   44- 44 H  .
+   45- 51 H  query ( _ , _ ) .
+== tabling/P04a.pl (69 tokens)
+    0-  4 P  alternative_value ( 1 ) .
+    5- 10 C  :- table loop / 1 .
+   11- 20 P  loop ( X ) :- loop ( X ) .
+   21- 29 H  unknowns ( main , [ 'X' ] ) .
+   30- 40 H  stage ( 1 , [ X ] , Cs ) :-
+   41- 49 P  memberchk ( alternative_value ( K ) , Cs )
+   50- 51 P  , (
+   52- 55 P  loop ( X )
+   56- 56 P  ;
+   57- 59 P  X = K
+   60- 60 P  )
+   61- 61 H  .
+   62- 68 H  query ( _ , _ ) .
+== tabling/P04b.pl (69 tokens)
+    0-  4 P  alternative_value ( 1 ) .
+    5- 10 C  :- table loop / 1 .
+   11- 20 P  loop ( X ) :- loop ( X ) .
+   21- 29 H  unknowns ( main , [ 'X' ] ) .
+   30- 40 H  stage ( 1 , [ X ] , Cs ) :-
+   41- 49 P  memberchk ( alternative_value ( K ) , Cs )
+   50- 51 P  , (
+   52- 54 P  X = K
+   55- 55 P  ;
+   56- 59 P  loop ( X )
+   60- 60 P  )
+   61- 61 H  .
+   62- 68 H  query ( _ , _ ) .
+== tabling/P04c.pl (79 tokens)
+    0-  8 P  alist_argument ( [ a , a ] ) .
+    9- 14 C  :- table alist / 1 .
+   15- 32 P  alist ( S ) :- alist ( M ) , S = [ a | M ] .
+   33- 38 P  alist ( [ ] ) .
+   39- 46 H  unknowns ( main , [ ] ) .
+   47- 56 H  stage ( 1 , [ ] , Cs ) :-
+   57- 65 P  memberchk ( alist_argument ( S ) , Cs )
+   66- 70 P  , alist ( S )
+   71- 71 H  .
+   72- 78 H  query ( _ , _ ) .
+== tabling/P04e.pl (75 tokens)
+    0-  8 P  alist_argument ( [ a , a ] ) .
+    9- 14 C  :- table alist / 1 .
+   15- 20 P  alist ( [ ] ) .
+   21- 34 P  alist ( [ a | M ] ) :- alist ( M ) .
+   35- 42 H  unknowns ( main , [ ] ) .
+   43- 52 H  stage ( 1 , [ ] , Cs ) :-
+   53- 61 P  memberchk ( alist_argument ( S ) , Cs )
+   62- 66 P  , alist ( S )
+   67- 67 H  .
+   68- 74 H  query ( _ , _ ) .
+== tabling/P04d.pl (62 tokens)
+    0-  5 C  :- table alist / 1 .
+    6- 23 P  alist ( S ) :- alist ( M ) , S = [ a | M ] .
+   24- 29 P  alist ( [ ] ) .
+   30- 38 H  unknowns ( main , [ 'S' ] ) .
+   39- 49 H  stage ( 1 , [ S ] , _ ) :-
+   50- 53 P  alist ( S )
+   54- 54 H  .
+   55- 61 H  query ( _ , _ ) .
+== tabling/P04f.pl (58 tokens)
+    0-  5 C  :- table alist / 1 .
+    6- 11 P  alist ( [ ] ) .
+   12- 25 P  alist ( [ a | M ] ) :- alist ( M ) .
+   26- 34 H  unknowns ( main , [ 'S' ] ) .
+   35- 45 H  stage ( 1 , [ S ] , _ ) :-
+   46- 49 P  alist ( S )
+   50- 50 H  .
+   51- 57 H  query ( _ , _ ) .

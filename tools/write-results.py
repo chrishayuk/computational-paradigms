@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Write results/<system>/<configuration>/<problem>.md for a batch.
 
-    tools/write-results.py SYSTEM PROBLEM...
+    tools/write-results.py SYSTEM PROBLEM... [--classes classes-1B]
 
 Assembles, as PROTOCOL.md "Recording a result" lists, from what is already
 committed: the raw records (results/SYSTEM/CONFIG/PROBLEM/raw/), both
@@ -11,7 +11,10 @@ figure a record's, and a figure a record does not have is shown as
 unavailable (AMENDMENTS.md 3.1). Where the classifiers differ, both are
 shown and the stage is marked disputed.
 """
-import collections, glob, json, os, subprocess, sys
+import collections, glob, importlib.util, json, os, subprocess, sys
+
+_spec = importlib.util.spec_from_file_location("outcome_agreement", os.path.join(os.path.dirname(os.path.abspath(__file__)), "outcome-agreement.py"))
+OA = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(OA)   # one comparison for the result files and the agreement output
 
 EVIDENCE = {
     ("absys", "absys"): "reconstructed", ("absys", "absys-depth-first"): "reconstructed",
@@ -50,7 +53,11 @@ def j(v):
 def texts(system):
     """path of every program -> the path it is classed under."""
     m = {}
-    for line in list(open(f"results/{system}/tokens/TEXTS.tsv"))[1:]:
+    lines = []
+    for name in ("TEXTS.tsv", "TEXTS-1B.tsv"):        # batch 1A's distinct texts, then batch 1B's
+        if os.path.exists(f"results/{system}/tokens/{name}"):
+            lines += list(open(f"results/{system}/tokens/{name}"))[1:]
+    for line in lines:
         first, rest = (line.rstrip("\n").split("\t") + [""])[:2]
         m[first] = first
         for p in rest.split():
@@ -71,11 +78,14 @@ def classes_of(spans, n):
     return c
 
 
-def records(system, cfg, prob, mode):
+def records(system, cfg, prob, mode, folder="raw"):
+    """(instance, program path within the configuration) -> (file, record). The
+    program path keeps a variants/ folder, as the classifiers name it."""
     out = {}
-    for f in sorted(glob.glob(f"results/{system}/{cfg}/{prob}/raw/*.{mode}.*.json")):
+    for f in sorted(glob.glob(f"results/{system}/{cfg}/{prob}/{folder}/*.{mode}.*.json")):
         d = json.load(open(f))
-        out[(d["run"]["instance"], os.path.basename(d["run"]["program"]["path"]))] = (f, d)
+        prog = d["run"]["program"]["path"].split(f"programs/{system}/{cfg}/", 1)[-1]
+        out[(d["run"]["instance"], prog)] = (f, d)
     return out
 
 
@@ -96,15 +106,17 @@ def stage_metrics(rec, stage):
             "safety": a.get("safety_limit", {}), "faults": d.get("harness_faults")}
 
 
-def main(system, problems):
+def main(system, problems, classes="classes"):
     head = git("rev-parse", "--short", "HEAD")
     tmap = texts(system)
-    cls = {w: json.load(open(f"results/{system}/classes/{w}/{system}.json")) for w in "AB"}
+    cls = {w: json.load(open(f"results/{system}/{classes}/{w}/{system}.json")) for w in "AB"}
     for cfg in sorted(os.listdir(f"programs/{system}")):
         if not os.path.isdir(f"programs/{system}/{cfg}"):
             continue
-        prog_commit = git("log", "-1", "--format=%h", "--", f"programs/{system}/{cfg}")
+
         for prob in problems:
+            prog_commit = git("log", "-1", "--format=%h", "--", f"programs/{system}/{cfg}/{prob}*",
+                              f"programs/{system}/{cfg}/variants/{prob}*")   # this problem's programs
             beh = records(system, cfg, prob, "behaviour")
             if not beh:
                 continue
@@ -125,7 +137,10 @@ def main(system, problems):
             w(f"| precursor seen | no (the author's statement, `programs/{system}/README.md`; audit `programs/AUDIT-1A.md`) |")
             w(f"| S mechanisms listed at phase 4 | {S_LISTED.get((system, cfg), 'none')} |")
             w(f"| hidden variants | not yet run: wave-1b is opened and run by the verifier after every primary result of wave 1 is committed (`AMENDMENTS.md` 1) |")
-            w(f"| classifiers | A: Claude agent; B: Codex (codex-cli 0.166.0); brief `sandbox/briefs/classifier.md`; files `results/{system}/classes/` |")
+            w(f"| classifiers | A: Claude agent; B: Codex (codex-cli 0.166.0); brief `sandbox/briefs/classifier.md`; files `results/{system}/{classes}/` |")
+            inval = sorted(os.path.basename(f) for f, _ in beh.values() if f.endswith(".INVALID.json"))
+            if inval:
+                w(f"| harness faults | behaviour records the harness kept as invalid (step accounting): {', '.join('`' + x + '`' for x in inval)}; classified from them, flagged |")
             w("")
 
             # ---- outcomes
@@ -139,7 +154,8 @@ def main(system, problems):
             for wch in "AB":
                 for e in cls[wch]["outcomes"]:
                     if e["configuration"] == cfg and e.get("final_attempt") is not False:
-                        outc[wch][(e["instance"], e["program"], e["stage"])].append(e)
+                        prog = e["program"][len(cfg) + 1:] if e["program"].startswith(cfg + "/") else e["program"]
+                        outc[wch][(e["instance"], prog, e["stage"])].append(e)
             keys = sorted({k for wch in "AB" for k in outc[wch] if (k[0], k[1]) in beh}, key=lambda k: (k[0], k[1], k[2]))
             obs = []
             for k in keys:
@@ -159,7 +175,8 @@ def main(system, problems):
                 ea, eb = expand(outc["A"].get(k, [])), expand(outc["B"].get(k, []))
                 show = lambda es: "; ".join((f"{rd}: " if rd else "") + b for rd, b in es)
                 a, b = show(ea), show(eb)
-                ag = "yes" if ea == eb else "**disputed**"
+                ag = "yes" if not OA.compare(outc["A"].get(k, []), outc["B"].get(k, [])) else \
+                    "**disputed** (" + ", ".join(x[0] for x in OA.compare(outc["A"].get(k, []), outc["B"].get(k, []))) + ")"
                 m = stage_metrics(cost.get((k[0], k[1])), k[2])
                 st = m.get("steps", {})
                 mv = lambda d, x: U if not d or d.get(x) is None else d.get(x)
@@ -239,6 +256,44 @@ def main(system, problems):
                 w("None, by either classifier.")
             w("")
 
+            # ---- measurement reruns
+            rr = {**records(system, cfg, prob, "cost", "raw-rerun-m2"), **{k + ("storage",): v for k, v in records(system, cfg, prob, "storage", "raw-rerun-m2").items()}}
+            if rr:
+                w("## Labelled measurement reruns (`raw-rerun-m2/`)\n")
+                w("Reruns of cost or storage runs that reached the safety limit, with the fixed measurement build (`results/absys/RERUN-M2.md`). The original records stand.\n")
+                w("| instance | program | mode | stage | attempts | state | steps: stage | derivations: boundary / peak |\n|---|---|---|---|---|---|---|---|")
+                for key, (f, d) in sorted(rr.items(), key=str):
+                    for s_ in d["stages"]:
+                        a = s_["attempts"][-1]; c = (a.get("computations") or [{}])[0]
+                        stp = j(c.get("steps")) or {}; es = j(c.get("execution_state")) or {}
+                        der = ((a.get("store") or {}).get("quantities") or {}).get("derivations") or {}
+                        pk = der.get("peak") or {}
+                        w(f"| {key[0]} | `{key[1]}` | {d['run']['mode']} | {s_['stage']} | {len(s_['attempts'])} | {fmt(es.get('states'))} | {fmt(stp.get('stage')) if stp.get('stage') is not None else U} | {der.get('boundary', U) if der.get('boundary') is not None else U} / {pk.get('value', U) if pk else U}{' (' + pk['kind'] + ')' if pk.get('kind') else ''} |")
+                w("")
+
+            # ---- late definition
+            ld = [(wch, e) for wch in "AB" for e in cls[wch].get("late_definition", []) if e.get("configuration") == cfg
+                  and os.path.basename(e.get("program", "")).startswith(prob)]
+            if ld:
+                w("## Late definition: what an application waits for before its definition arrives\n")
+                w("| program | A | B |\n|---|---|---|")
+                byp = collections.defaultdict(dict)
+                for wch, e in ld:
+                    byp[e["program"].split(cfg + "/", 1)[-1]][wch] = e
+                for prog, v in sorted(byp.items()):
+                    w(f"| `{prog}` | **{v.get('A', {}).get('kind', U)}**: {v.get('A', {}).get('evidence', '')} | **{v.get('B', {}).get('kind', U)}**: {v.get('B', {}).get('evidence', '')} |")
+                w("")
+
+            # ---- supporting mechanisms
+            sm = [(wch, e) for wch in "AB" for e in cls[wch].get("s_mechanisms", []) if e.get("configuration") == cfg
+                  and os.path.basename(e.get("program", "")).startswith(prob) and e.get("mechanism")]
+            if sm:
+                w("## Supporting mechanisms used, per classifier\n")
+                w("| program | classifier | mechanism | listed at phase 4 | tokens |\n|---|---|---|---|---|")
+                for wch, e in sorted(sm, key=lambda x: (x[1].get("program", ""), x[0], str(x[1].get("mechanism")))):
+                    w(f"| `{e['program'].split(cfg + '/', 1)[-1]}` | {wch} | {e.get('mechanism')} | {fmt(e.get('listed_at_phase_4'))} | {fmt(e.get('tokens'))} |")
+                w("")
+
             # ---- observations
             w("## Observations and residual equivalence, per classifier\n")
             for k, wch, o, r, rule in obs:
@@ -251,4 +306,8 @@ def main(system, problems):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2:])
+    a = sys.argv[1:]
+    classes = "classes"
+    if "--classes" in a:
+        i = a.index("--classes"); classes = a[i + 1]; del a[i:i + 2]
+    main(a[0], a[1:], classes)

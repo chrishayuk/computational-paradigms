@@ -1,0 +1,116 @@
+{
+  "token_totals": {
+    "P": 3192,
+    "S": 3607,
+    "H": 3058,
+    "R": 448,
+    "C": 240
+  },
+  "texts": 9,
+  "behaviour_runs": 9,
+  "behaviour_stages": 39,
+  "classified_reading_stages": 78,
+  "mode_comparisons": [
+    {
+      "record": "results/python/core/P08/raw/P08a.cost.20261127T225324Z.json",
+      "behaviour": "results/python/core/P08/raw/P08a.behaviour.20261127T225322Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/core/P08/raw/P08a.storage.20261127T225326Z.json",
+      "behaviour": "results/python/core/P08/raw/P08a.behaviour.20261127T225322Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/core/P08/raw/P08b.cost.20261127T225330Z.json",
+      "behaviour": "results/python/core/P08/raw/P08b.behaviour.20261127T225329Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/core/P08/raw/P08b.storage.20261127T225331Z.json",
+      "behaviour": "results/python/core/P08/raw/P08b.behaviour.20261127T225329Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/core/P08/raw/P08c.cost.20261127T225334Z.json",
+      "behaviour": "results/python/core/P08/raw/P08c.behaviour.20261127T225332Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/core/P08/raw/P08c.storage.20261127T225336Z.json",
+      "behaviour": "results/python/core/P08/raw/P08c.behaviour.20261127T225332Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/extended/P08/raw/P08a.cost.20261127T225634Z.json",
+      "behaviour": "results/python/extended/P08/raw/P08a.behaviour.20261127T225633Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/extended/P08/raw/P08a.storage.20261127T225634Z.json",
+      "behaviour": "results/python/extended/P08/raw/P08a.behaviour.20261127T225633Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/extended/P08/raw/P08b.cost.20261127T225636Z.json",
+      "behaviour": "results/python/extended/P08/raw/P08b.behaviour.20261127T225636Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/extended/P08/raw/P08b.storage.20261127T225637Z.json",
+      "behaviour": "results/python/extended/P08/raw/P08b.behaviour.20261127T225636Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/extended/P08/raw/P08c.cost.20261127T225639Z.json",
+      "behaviour": "results/python/extended/P08/raw/P08c.behaviour.20261127T225638Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/extended/P08/raw/P08c.storage.20261127T225640Z.json",
+      "behaviour": "results/python/extended/P08/raw/P08c.behaviour.20261127T225638Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/stdlib-concurrency/P08/raw/P08a.cost.20261127T225817Z.json",
+      "behaviour": "results/python/stdlib-concurrency/P08/raw/P08a.behaviour.20261127T225816Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/stdlib-concurrency/P08/raw/P08a.storage.20261127T225818Z.json",
+      "behaviour": "results/python/stdlib-concurrency/P08/raw/P08a.behaviour.20261127T225816Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/stdlib-concurrency/P08/raw/P08b.cost.20261127T225820Z.json",
+      "behaviour": "results/python/stdlib-concurrency/P08/raw/P08b.behaviour.20261127T225819Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/stdlib-concurrency/P08/raw/P08b.storage.20261127T225821Z.json",
+      "behaviour": "results/python/stdlib-concurrency/P08/raw/P08b.behaviour.20261127T225819Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/stdlib-concurrency/P08/raw/P08c.cost.20261127T225822Z.json",
+      "behaviour": "results/python/stdlib-concurrency/P08/raw/P08c.behaviour.20261127T225822Z.json",
+      "same": true
+    },
+    {
+      "record": "results/python/stdlib-concurrency/P08/raw/P08c.storage.20261127T225823Z.json",
+      "behaviour": "results/python/stdlib-concurrency/P08/raw/P08c.behaviour.20261127T225822Z.json",
+      "same": true
+    }
+  ],
+  "semantic_totals": {
+    "complete": 52,
+    "unsound": 10,
+    "none reported": 16
+  },
+  "representation_totals": {
+    "solved form": 28,
+    "None": 16,
+    "residual": 24,
+    "explicit": 10
+  }
+}

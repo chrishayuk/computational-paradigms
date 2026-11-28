@@ -1,0 +1,43 @@
+{
+  "texts": 21,
+  "tokens": {
+    "P": 6540,
+    "H": 3886,
+    "R": 6452,
+    "C": 2113,
+    "S": 1372
+  },
+  "by_configuration": {
+    "core": {
+      "P": 2117,
+      "H": 1215,
+      "R": 2658,
+      "C": 217
+    },
+    "extended": {
+      "C": 240,
+      "P": 2295,
+      "H": 1456,
+      "S": 1372,
+      "R": 1358
+    },
+    "stdlib-concurrency": {
+      "C": 1656,
+      "P": 2128,
+      "H": 1215,
+      "R": 2436
+    }
+  },
+  "behaviour_stages": 36,
+  "mode_comparisons": 72,
+  "mode_differences": 0,
+  "local_S_per_program": {
+    "P07a.py": 196,
+    "P07b.py": 196,
+    "P07c.py": 196,
+    "P07d.py": 196,
+    "P07e.py": 196,
+    "P07f.py": 196,
+    "P07g.py": 196
+  }
+}

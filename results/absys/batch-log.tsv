@@ -169,8 +169,8 @@
 2026-11-27T23:14:04Z	absys	P04f	P04f.ab1	behaviour	exit 0	2.4s
 2026-11-27T23:25:05Z	absys	P04f	P04f.ab1	cost	exit 0	660.7s
 2026-11-27T23:36:05Z	absys	P04f	P04f.ab1	storage	exit 0	660.7s
-2026-11-28T00:41:29Z	absys	P05a	P05a.ab1	behaviour	exit 3	3306.3s
-6-11-27T22026-11-27T23:46:28Z	absys-depth-first	P04a	P04a.ab1	cost	exit 0	3.5s
+2026-11-28T01:16:20Z	absys-depth-first	P05a	P05a.ab1	behaviour	exit 3	5396.3s
+6-11-27T23:46:28Z	absys-depth-first	P04a	P04a.ab1	cost	exit 0	3.5s
 2026-11-27T23:46:29Z	absys-depth-first	P04a	P04a.ab1	storage	exit 0	1.3s
 2026-11-27T23:46:30Z	absys-depth-first	P04b	P04b.ab1	behaviour	exit 0	1.2s
 2026-11-27T23:46:34Z	absys-depth-first	P04b	P04b.ab1	cost	exit 0	3.6s
@@ -208,9 +208,8 @@ s
 2026-11-27T23:46:55Z	absys-wake-back	P04c	P04c.ab1	cost	exit 0	0.7s
 2026-11-27T23:46:56Z	absys-wake-back	P04c	P04c.ab1	storage	exit 0	0.7s
 2026-11-27T23:47:02Z	absys-wake-back	P04d	P04d.ab1	behaviour	exit 0	6.2s
-2026-11-27T23:58:03Z	absys-wake-back	P04d	P04d.ab1	cost	exit 0	660.7s
-2026-11-28T00:09:04Z	absys-wake-back	P04d	P04d.ab1	storage	exit 0	661.2s
-2026-11-28T00:09:05Z	absys-wake-back	P04e	P04e.ab1	behaviour	exit 0	0.9s
+2026-11-27T23:58:03Z	absys-wake-back	P04d	P04d.ab1	cost	exit 0	660.72026-11-28T00:43:10Z	absys-wake-back	P05a	P05a.ab1	behaviour	exit 3	3382.5s
+026-11-28T00:09:05Z	absys-wake-back	P04e	P04e.ab1	behaviour	exit 0	0.9s
 2026-11-28T00:09:06Z	absys-wake-back	P04e	P04e.ab1	cost	exit 0	0.8s
 2026-11-28T00:09:07Z	absys-wake-back	P04e	P04e.ab1	storage	exit 0	0.8s
 2026-11-28T00:09:13Z	absys-wake-back	P04f	P04f.ab1	behaviour	exit 0	6.0s
