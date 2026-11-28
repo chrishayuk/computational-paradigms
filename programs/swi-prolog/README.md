@@ -1,8 +1,8 @@
-# SWI-Prolog programs, wave 1, batches 1A (P01–P03), 1B (P04–P08) and 1C (P09–P12)
+# SWI-Prolog programs, wave 1, batches 1A (P01–P03), 1B (P04–P08), 1C (P09–P12) and 1D (P13–P16)
 
 The sections up to "Batch 1B" are batch 1A's, unchanged. Batch 1B's are
-in "Batch 1B (P04–P08)" below, and batch 1C's in "Batch 1C (P09–P12)"
-after them.
+in "Batch 1B (P04–P08)" below, batch 1C's in "Batch 1C (P09–P12)"
+after them, and batch 1D's in "Batch 1D (P13–P16)" at the end.
 
 *Phase 5 (`PROTOCOL.md`, "Implementation"), against `spec-1.0.1` and the
 program contract in `harnesses/swi-prolog/README.md`. Every program here was
@@ -865,3 +865,335 @@ directives.
   reflow their comments (scripts kept outside the repository). It read
   and wrote files, and executed nothing of the study. One reflow script
   looped and was stopped before it wrote anything.
+
+---
+
+# Batch 1D (P13–P16)
+
+*Phase 5, against `spec-1.0.1` (repository at `1cf7c13`). Every program of
+this batch was fixed before any was run. None has been run: the only
+command run on them is the harness's `check`, which executes nothing.
+All 107 files pass it with no errors and no warnings.*
+
+## Author and provenance (1D)
+
+- **Author of every program:** `implementation-swi-prolog`, an agent (Claude
+  Opus 5.5, model id `claude-opus-5-5`), working from the public repository
+  only, with no context from earlier work.
+- **Precursor seen:** no. I had not seen the absys E01–E09 programs, the
+  `research/e07/` programs, the calibration programs, or any other program
+  for P13–P16. The only programs I read were this system's own earlier
+  programs (`plain/P03e.pl`, `tabling/P03e.pl`, `plain/P07f.pl`,
+  `coroutines/P07f.pl`, `constraints/P07f.pl`, `constraints/P07a.pl`,
+  `coroutines/P05b.pl`, `plain/P09c.pl`, `tabling/P09c.pl`,
+  `coroutines/P09d.pl`, `constraints/P09d.pl`, `coroutines/P09e.pl`,
+  `plain/P10a.pl`, `coroutines/P11c.pl`, `plain/P12a.pl`).
+- **Read:** `README.md`, `SPECIFICATION.md`, `METRICS.md`, `PROTOCOL.md`,
+  `AMENDMENTS.md`, `problems/README.md`, the problem files of P13–P16 and
+  of P07, P09 and P10 (which they refer to), `systems/swi-prolog/README.md`
+  (and the headings of `measurement.md`), `harnesses/README.md`,
+  `harnesses/stages.json` (P13–P16), and from `harnesses/swi-prolog/`:
+  `README.md`, `QUESTIONS.md`, `S-mechanisms.md`, `S/session-wait.pl` and
+  `check`. P13 says "rev is as in P03"; P03's problem file was not in my
+  brief, so rev and conc are taken from this system's own P03 program
+  (`plain/P03e.pl`), which transcribes them. I opened no SWI-Prolog
+  documentation in the image; it is cited from memory, by section name.
+- **S mechanisms used:** none. *session* loads its wait-for-definition code
+  in every run; no program of this batch calls an undefined procedure or
+  `h_wait/0`, so it is loaded and not used.
+
+## Layout (1D)
+
+One file per configuration and sub-problem, at
+`programs/swi-prolog/<configuration>/<id>.pl`, with the contract of 1A.
+One file serves every instance of a sub-problem: n (and P16a's arrival
+order) are read with `h_param/2`, as the contract says sizes and orders
+are not constants. So `P13a.pl` serves `P13a.n100` … `P13a.n100000`, and
+`P16a.pl` the nine instances of P16a. P16d2 has no constants and no
+`CONSTANTS` block (`constants.how = none`). P16b's stage 1 is the harness's
+fallback, the four contributions as one conjunction in `main` (contract
+2.2), so it defines `stage/3` and no `spawned/4`.
+
+Named variants: `P15c-once.pl` in every configuration folder, and
+`P14a-engine.pl` and `P14c-engine.pl` in `session/` only.
+
+## Shared texts (1D)
+
+Copies are byte for byte. **Bold** marks where a text is defined.
+
+| sub-problems | plain | tabling | coroutines | constraints | session |
+|---|---|---|---|---|---|
+| P13a–P13d | **X** | **X + table** | X | X | X |
+| P13e, P13f | **Y** | Y | Y | Y | Y |
+| P14a, P14c | **Z** | Z | Z | Z | Z (variant: **Z-engine**) |
+| P14b | **AA** | **AA + table** | AA | AA | AA |
+| P15a1, P15a2 | **AB** | **AB + table** | **AB + dif** | AB + dif | AB + dif |
+| P15b, P15b2 | **AC** | **AC + table** | **AC + freeze, dif** | AC + freeze, dif | AC + freeze, dif |
+| P15c (+ variant once) | **AD** | **AD + table** | AD | AD | AD |
+| P15d | **AE** | AE | AE | AE | AE |
+| P16a–P16d2 | **C16** | C16 | **C16 + when** | **D16** | D16 |
+
+- **X**: range, sum, rev and conc (from P03), revacc and racc transcribed
+  as their cases, in the order written; arithmetic by `is/2` and
+  comparison; each application of a case counted with `h_count/1`.
+  **X + table**: X with the file's relations tabled (`:- table range/3.`;
+  `range/3, sum/2`; `range/3, conc/3, rev/2`; `range/3, revacc/2, racc/3`).
+- **Y**: native, `numlist/3` then `sum_list/2` (P13e) or `reverse/2`
+  (P13f), of library(lists).
+- **Z**: the count as a named quantity in the database, `count/1`, 0 at
+  first; `receive(inc)` replaces it by c + 1, `receive(read(R))` makes r
+  equal to it. **Z-engine**: the counter as an engine of its own,
+  `counter(C)` looping on `engine_fetch/1` and `engine_yield/1`, posted to
+  with `engine_post/3`.
+- **AA**: run/2 transcribed as its three cases, posed as `run(m, 0)`.
+  **AA + table**: `:- table run/2.`
+- **AB**: merge's four cases, ≠ by `\=/2`. **AB + table**:
+  `:- table merge/3.` **AB + dif**: ≠ by `dif/2`.
+- **AC**: zeros, merge and position transcribed, ≠ by `\=/2`, the
+  conjunction in the order written. **AC + table**:
+  `:- table zeros/1, merge/3, position/3.` **AC + freeze, dif**: each
+  application of zeros waits for demand by `freeze/2` (as P09d's producer
+  in 1C); ≠ by `dif/2`; merge and position not delayed.
+- **AD**: grant's two cases as facts. **AD + table**: `:- table grant/3.`
+  The variant adds `once/1` around the application of grant.
+- **AE**: holder and queue as named quantities in the database, starting
+  as none and ⟨⟩; request and release as the problem's cases, each "if …
+  otherwise" an if-then-else; ++ by `append/3`.
+- **C16**: succ(a, b) as `successor/2`, integer arithmetic that computes
+  either place from the other (P07's plain relations, text C), each
+  decision counted with `h_count/1`; P16b's sum as P07's `sum/3`.
+  **C16 + when**: the same, each relation waiting by `when/2` until one
+  place (sum: two places) is known. **D16**: `B #= A + 1` and one `#=/2`
+  for P16b's total (clpfd, no domain, no labeling); nothing counted.
+
+## Per configuration and sub-problem (1D)
+
+Every file is the **primary** for its configuration and sub-problem,
+except `P15c-once.pl` (every configuration) and `P14a-engine.pl`,
+`P14c-engine.pl` (session), which are **named variants**. I judged no
+sub-problem *not expressible* in any configuration.
+
+### P13 (deterministic scale)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| plain, coroutines, constraints, session | P13a–P13d | text X | expressible: a transcription; sequences as lists, so ⟨h⟩ ++ t decomposes in constant time | memberchk/2; h_param/2, h_count/1 (H) |
+| tabling | P13a–P13d | X + table | expressible | `:- table`; as X |
+| all five | P13e | text Y | native (not R, METRICS.md rule 18). Algorithm: count up to build the list, then a linear sum | numlist/3, sum_list/2 (library(lists)); memberchk/2; h_param/2 |
+| all five | P13f | text Y | native. Algorithm: count up to build the list, then reverse with an accumulator (linear) | numlist/3, reverse/2 (library(lists)); memberchk/2; h_param/2 |
+
+Representation: Prolog lists, cons cells of a head and a tail. Idioms:
+clauses in the order written (ISO 7.5; Clocksin and Mellish, ch. 1); lists
+for sequences and append/3 for conc, naive reverse for rev (Clocksin and
+Mellish, ch. 3; Sterling and Shapiro, ch. 3; Warren's naive-reverse
+benchmark); reverse with an accumulator (Sterling and Shapiro, ch. 3;
+O'Keefe, *The Craft of Prolog*, 1990, ch. 3); the sum of a list by
+recursion, then `is/2` (Sterling and Shapiro, ch. 8); `:- table`
+(SWI-Prolog manual, "Tabled execution (SLG resolution)"); `numlist/3`,
+`sum_list/2`, `reverse/2` (SWI-Prolog manual, "library(lists)"). No flag is
+changed: SWI-Prolog's default stack limit (1 GB) is left as it is.
+
+### P14 (a process over a message stream)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| all five | P14a, P14c | text Z, primary | expressible: the counter's count as a quantity that is replaced, which the problem allows ("a process holding its count"; P10's named quantities). The read stages bind r₁, r₂, r₃ when their message is received. In the reposed configurations each stage replays every earlier message from 0; in session the count stays in the one process | `:- dynamic` (C by rule 11, listed), retractall/1, memberchk/2 |
+| session | P14a, P14c | `P14a-engine.pl`, `P14c-engine.pl`, **named variant** | expressible: the counter is a process, an engine holding its count between messages | engines (`engine_create/3`, `engine_fetch/1`, `engine_yield/1`, `engine_post/3`: C); `:- dynamic`, memberchk/2 |
+| plain, coroutines, constraints, session | P14b | text AA | expressible: run/2 transcribed | memberchk/2 |
+| tabling | P14b | AA + table | expressible | `:- table`; memberchk/2 |
+
+Idioms: assertz/retract for replacing state between stages (the systems
+file; ISO 8.9; this system's P10 programs; the harness's `x11-replace.pl`
+pattern, as cited in 1C); a message dispatched by the clause whose head
+matches it (Clocksin and Mellish, ch. 1); an engine as a process with
+state, after the running-sum engine of the SWI-Prolog manual
+("Coroutining using Prolog engines", "State accumulation using engines").
+
+### P15 (merge and committed choice)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| plain | P15a1, P15a2 | text AB | expressible: merge's four cases in the order written; ≠ by `\=/2`, which is sound here, both places being known | memberchk/2 |
+| tabling | P15a1, P15a2 | AB + table | expressible | `:- table`; memberchk/2 |
+| coroutines, constraints, session | P15a1, P15a2 | AB + dif | expressible | dif/2; memberchk/2 |
+| plain | P15b, P15b2 | text AC | expressible: the definitions and the conjunction transcribed in the order written. plain has no way to hold an unbounded sequence until it is demanded: zeros runs first. Fairness is not added (see choice 4) | memberchk/2 |
+| tabling | P15b, P15b2 | AC + table | expressible; zeros, merge and position evaluated by SLG resolution | `:- table`; memberchk/2 |
+| coroutines, constraints, session | P15b, P15b2 | AC + freeze, dif | expressible: zeros waits for demand, as P09d's producer; the definitions' cases and the conjunction's order unchanged | freeze/2, dif/2; memberchk/2 |
+| plain, coroutines, constraints, session | P15c | text AD, primary | expressible: grant's two cases as facts. The choice is SLD resolution's first clause, collected by answers(1); nothing commits it | memberchk/2 |
+| tabling | P15c | AD + table | expressible | `:- table`; memberchk/2 |
+| all five | P15c | `P15c-once.pl`, **named variant** | expressible: the same, with commitment to the first solution by once/1 (C) | once/1; as the primary |
+| all five | P15d | text AE | expressible: replacing stages as the problem defines them by cases (P) | `:- dynamic` (C by rule 11, listed), retractall/1, append/3, memberchk/2 |
+
+Idioms: clauses in the order written, alternatives by backtracking (ISO
+7.5, 7.7; Clocksin and Mellish, ch. 1 and 4); `\=/2` (ISO 8.2.3); dif/2
+(SWI-Prolog manual, "Coroutining"; Colmerauer 1982); a demand-driven
+producer by `freeze/2` on the sequence it produces (as in 1C: SWI-Prolog
+manual, "Coroutining"; Prolog II; IC-Prolog, Clark, McCabe and Gregory
+1982); `once/1` (ISO 8.15.2); if-then-else for a case "if …, otherwise …"
+(ISO 7.8.8); `append/3`; named quantities as in P10.
+
+### P16 (shared information at scale)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| plain, tabling | P16a, P16b, P16c, P16d, P16d2 | text C16 | expressible, under 1A's reading of rule 19 (computing a place is P; the `nonvar/1` tests are R). With both places of a relation unknown, as every relation is when stage 1 poses it, `is/2` raises an instantiation error: plain cannot hold the relations | length/2, nth1/3, last/2, reverse/2, append/3, memberchk/2; h_param/2, h_count/1 (H) |
+| coroutines | the same | C16 + when | expressible (the same reading). Each relation waits until one place is known; a value wakes the relations it reaches, along its chain only | when/2; as C16 |
+| constraints, session | the same | D16 | expressible: a direct transcription as clpfd constraints | library(clpfd); as C16, without h_count/1 |
+
+P16b in every configuration: the four contributions are posed as one
+conjunction in `main` (the harness's `spawn_fallback`: no SWI-Prolog
+configuration lets separate computations share unknowns, harness README
+2.2, QUESTIONS S5). That is recorded here, as P16b asks.
+
+Idioms: P07's relations (plus/3-style, `when/2` delaying arithmetic after
+Naish 1986, clpfd `#=/2` after Triska 2012); a chain's unknowns as a list
+of fresh variables by `length/2`, its elements by `nth1/3`, `last/2` and
+`[X|_]`; a walk over consecutive pairs carrying the previous element, so
+that first-argument indexing keeps it deterministic (O'Keefe 1990, ch. 3);
+if-then-else to count a segment down (ISO 7.8.8).
+
+## Choices made before any run (rule 4), and alternatives not written (1D)
+
+1. **Tabling tables the relations the problem defines** (as in 1A–1C):
+   range, sum, conc, rev, revacc, racc (P13a–d), run (P14b), merge (P15a),
+   zeros, merge and position (P15b), grant (P15c). The P13 tables hold
+   every answer of every call, so their store grows with the lengths of
+   the sequences; that is the configuration's cost, and was not avoided.
+   Not tabled: P13e and P13f (library predicates, no relation of the
+   problem), P14a and P14c (the counter's state, not a relation), P15d
+   (replacing stages), and P16's succ, which is arithmetic, as P07's
+   relations were not tabled.
+2. **P13, P14 and P15 in coroutines, constraints and session use the plain
+   text** (with dif/2 for ≠, and freeze/2 for the unbounded producer,
+   where coroutines exist). Every arithmetic relation there is evaluated
+   on known integers, in the one direction the query uses, so there is
+   nothing to delay or constrain, as in P04 and P12. clpfd's `#=/2` in
+   place of `is/2` in P13's range and sum (as P09c's constraints text did)
+   was not written. clpfd is used where relations have unknown places:
+   P16.
+3. **P14a and P14c hold the count in the database**, in every
+   configuration. The other way the problem names, the count held by a
+   process over a stream not yet bound (a `freeze/2`-suspended run/2 on an
+   open list), needs the stream's tail to pass from one stage to the next.
+   A stage's goal shares only the unknowns with the others (contract 2.1),
+   so that would need an unknown the problem does not have, or a global
+   variable (outside the core). It was not written. In session, the
+   counter as an engine is written as a named variant, not the primary:
+   the database text is the same in every configuration, and an engine
+   inside the harness's engine is a mechanism I could not check without
+   running it.
+4. **P15b and P15b2: no fairness is added.** merge is the definition's,
+   tried in its clauses' order, and the configurations give no fair
+   evaluation of it. A fair merge (one that alternates its two inputs)
+   would be a different definition, which on P15a's inputs gives one
+   interleaving instead of six, so it is not a reformulation that keeps
+   merge's meaning; it was not written. In coroutines, constraints and
+   session only zeros waits for demand, as P09d's producer did in 1C;
+   merge and position are not delayed. Delaying merge until its output is
+   demanded (`freeze(M, merge(A, B, M))`) would change no choice of
+   clause, and would leave P15a's answers as residual goals, so it was
+   not written. Reading zeros as the greatest relation with
+   library(coinduction), which is in no configuration, was not written.
+5. **P15c's primary does not commit.** The definition's two cases are
+   transcribed; commitment is the observation, and Prolog's only means of
+   it is the cut. The variant `P15c-once.pl` commits with once/1 (C).
+6. **P16 in plain and tabling is P07's text C**, as P02, P07 and P09e were:
+   it computes a relation only when a place is known, and raises an error
+   otherwise. A program that holds the relations as data and propagates
+   them when a value arrives (rule 19: R, written for the problem's own
+   relation) was not written. **P16 in constraints and session uses
+   clpfd**, not clpq: clpq would solve over the rationals (the systems
+   file). A clpq variant for P16d2, where elimination over the rationals
+   could combine the chain, was not written.
+7. **Problem operations are counted in P13 and P16** with `h_count/1`
+   (H), unlike 1A–1C, because these two problems make them a measure
+   ("Steps, problem operations …"; "how many times each succ relation is
+   examined"). In P13 each case of each relation is counted where it
+   applies, after its condition (range's m > n, m ≤ n): an entered clause
+   whose condition fails is not counted. In P16 (texts C16 and C16 + when)
+   each decision of a succ relation is counted, once per evaluation of its
+   body. In D16 the solver's examinations are internal, and nothing is
+   counted: problem operations are unavailable there. P15a's interleavings
+   held (`h_held/2`) are not counted, as in 1B and 1C.
+8. **P16a's arrival orders** are made by the program from the instance's
+   order: the pairs x_i-x_{i+1} ascending, reversed (descending), or odd i
+   then even i, each ascending (interleaved), then posted in that order.
+   P16b, c and d post ascending only, as `stages.json` says, and do not
+   read the order.
+
+## Ambiguities, and the readings taken (1D)
+
+1. **P13e and P13f's constant.** `stages.json` writes P13a–d's start as
+   `<k>` and gives P13e and P13f no placeholder. I kept the start of
+   ⟨1, …, n⟩ in a block in all six, as `range_start(1)`, so that the
+   native programs vary with the prescribed ones. If the verifier holds
+   no constant for P13e and P13f, the block is left as it is.
+2. **"The sequence must be built and held until the answer is given"**
+   (P13e, P13f). The list is built in full by `numlist/3` before it is
+   summed or reversed. It is not an unknown of P13e (`stages.json`: k
+   only), so it is not in the answer; after the answer it is garbage.
+3. **P13's problem operations' names**: `range/1`, `range/2`, `sum/1`,
+   `sum/2`, `conc/1`, `conc/2`, `rev/1`, `rev/2`, and for revacc the
+   problem's own numbering of its three cases, `revacc/1`, `racc/2`,
+   `racc/3`. The facts of range's, sum's, conc's, rev's and racc's base
+   cases are written as rules whose body is the `h_count/1` call.
+4. **P14's constants.** `stages.json` writes ɪɴᴄ as `<atom>` and READ(r)
+   as no placeholder. So stages 1, 2, 4 (and 6) have the constant
+   `message(K, inc)`, tagged in the entry with its stage, since the
+   stage's list holds every earlier stage's entries; READ is in the code.
+   P14b has no placeholder: its atoms are entries by their position in the
+   sequence (1, 2, 4), as P14a's are by stage. A message that is not ɪɴᴄ
+   matches no case and the stage fails. The initial count 0 is part of the
+   vocabulary, not a constant.
+5. **P14, "a process holding its count".** Text Z holds the count as a
+   replaced value (the observation's "a value replaced"). I read the
+   problem's "either is a transcription (P)" as covering it, as P15d says
+   of its named quantities. If the classifiers read only a process as the
+   alternative, the database count is a reformulation.
+6. **P15b's unknowns** are i, m and z (`stages.json`), so z and m are
+   rendered in the answer, and at the budget, however long they have
+   grown.
+7. **P15d.** "none" is the atom `none`. A release applies "where holder =
+   p": `release(P)` begins with `holder(P)`, so a release by another than
+   the holder fails, as the definition has no case for it. The
+   if-then-else of each case is its condition (rule 2's guard); "q becomes
+   e" is `retractall/1` then `assertz/1`, as P10.
+8. **P16's succ** is `successor/2`: SWI-Prolog's `succ/2` is a system
+   predicate, which cannot be redefined, and holds only of natural numbers,
+   while P16's unknowns range over all integers (x_i = i − j is negative).
+9. **P16's unknowns** are named `Xs` and `Ys` (and `Total`): each holds a
+   chain's n unknowns as a list (contract 2.1, "names that hold several of
+   them"). P16b's list has n + 1.
+10. **P16b.** m = n // 4 (each n is divisible by 4). Stage 2's compound sum
+   is, in C16 and C16 + when, (((x_1 + x_{m+1}) + x_{2m+1}) + x_{3m+1}) +
+   x_{4m+1}, four primitive relations with fresh unknowns, in the order
+   written; in D16 one constraint.
+11. **P16a's j = ⌈n/2⌉** is `(N + 1) // 2`, computed from n; the value
+   given to x_j is the constant.
+12. **P16d2's stages** are numbered 1 and 2, as `stages.json` numbers them
+   (the problem file's 1 and 3).
+13. **The structure code of P16** (pairs, arrival, odd_even, post,
+   succ_chain, contribution) is code the problem does not give. I expect
+   it to be classed R (or C, for the arrival order, as P07a's order
+   dispatch in 1B). Each succ relation and each equality is P.
+
+## check (1D)
+
+All 107 files of this batch (20 primaries per configuration, P15c-once in
+each, and the two session engine variants) were checked in their own
+configuration's folder, in the pinned image, with
+`harnesses/swi-prolog/check <configuration> <file>`. Every one reports
+`check: no errors`, with no warnings; the only other lines are notes of
+`dynamic` and `table` directives and of `use_module(library(clpfd))`.
+
+## Commands run (1D)
+
+- `harnesses/swi-prolog/check`, in the pinned image: once each on
+  `plain/P13b.pl` and `tabling/P13c.pl`, then once on every file of this
+  batch. Nothing else in the image.
+- No program, interpreter or Prolog system was run on any program or
+  fragment. No `python3` was run.
+- File work used the shell, git, and bash and perl scripts (kept in the
+  session's scratchpad, outside the repository) that wrote these files'
+  text, derived the tabling texts, copied the shared texts and reflowed
+  their comments.
