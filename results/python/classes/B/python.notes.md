@@ -1,6 +1,6 @@
 # Python batch 1A — independent classifier B
 
-Classifier: Codex, independently of the implementation author and classifier A. I did not write, import, or execute any program of the study, run its system, consult another classifier's classes, or use the web. The repository was read only. All created files are in `/Users/christopherhay/cp-roles/classes-B/python`.
+Classifier: Codex, independently of the implementation author and classifier A. I did not write, import, or execute any program of the study, run its system, consult another classifier's classes, or use the web. The repository was read only. All created files are in `~/cp-roles/classes-B/python`.
 
 `python.json` contains the classifications. `classify.py` is the reproducible construction and checking script; it parses source to locate constructs but takes every token, index, and line from the frozen TSVs. It never calls a tokenizer. `validation.json` records the coverage totals and the mathematical check of P02's ten triples. Running `python3 classify.py` regenerates these artifacts without executing study programs.
 

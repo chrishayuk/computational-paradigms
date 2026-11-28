@@ -7,7 +7,7 @@ the selection; '$' means the last. After assignment, every ';' and ',' takes the
 class of the construct that follows it (METRICS.md rule 20), or of the one before it
 where the next token is 'end' or 'else'."""
 import csv, sys
-TOK = '/Users/christopherhay/cp-roles/classifier-1B-A/results/algol-60/tokens/'
+TOK = './results/algol-60/tokens/'
 
 def load(path):
     rows = []

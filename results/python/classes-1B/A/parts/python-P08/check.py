@@ -1,5 +1,5 @@
 import json,os
-base='/Users/christopherhay/cp-roles/classifier-1B-A/results/python/tokens/'
+base='./results/python/tokens/'
 d=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'python.json')))
 for p,sp in d['tokens'].items():
     n=sum(1 for _ in open(base+p+'.tokens.tsv'))-1

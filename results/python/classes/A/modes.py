@@ -1,6 +1,6 @@
 # Compare cost and storage records with the behaviour record of the same configuration and instance.
 import json, glob, os, re
-ROOT = "/Users/christopherhay/cp-roles/classifier-A/results/python"
+ROOT = "./results/python"
 def key(path):
     b = os.path.basename(path).split(".")
     return b[:-3] if False else ".".join(b[:-3])  # instance id

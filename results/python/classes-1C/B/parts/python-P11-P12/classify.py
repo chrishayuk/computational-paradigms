@@ -12,7 +12,7 @@ import hashlib
 import json
 import re
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1C-B')
+ROOT = Path('.')
 OUT = Path(__file__).resolve().parent
 CONFIGS = ('core', 'stdlib-concurrency', 'extended')
 PROBLEMS = ('P11', 'P12')

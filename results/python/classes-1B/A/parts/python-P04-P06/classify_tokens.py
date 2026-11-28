@@ -4,7 +4,7 @@ table of (group, context, source line) rules, with sub-expression overrides;
 INDENT/DEDENT take the class of the compound statement they open/close.
 Checks that every token index is covered exactly once. Writes tokens.json."""
 import re,json,sys
-sys.path.insert(0,'/Users/christopherhay/cp-roles/classes-1B-A/python-P04-P06')
+sys.path.insert(0,'results/python/classes-1B/A/parts/python-P04-P06')
 from lines import texts,load
 
 R19='rule 19 (holding code for the problem\'s own relations: known-tests, wait verdict, records)'
@@ -242,5 +242,5 @@ if __name__=='__main__':
         for c in cls: cnt[c[0]]=cnt.get(c[0],0)+1
         tot[t]=cnt
         print(t,len(toks),cnt)
-    json.dump(out,open('/Users/christopherhay/cp-roles/classes-1B-A/python-P04-P06/tokens.json','w'),ensure_ascii=False,indent=0)
-    json.dump(tot,open('/Users/christopherhay/cp-roles/classes-1B-A/python-P04-P06/totals.json','w'),indent=1)
+    json.dump(out,open('results/python/classes-1B/A/parts/python-P04-P06/tokens.json','w'),ensure_ascii=False,indent=0)
+    json.dump(tot,open('results/python/classes-1B/A/parts/python-P04-P06/totals.json','w'),indent=1)

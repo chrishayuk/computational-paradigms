@@ -1,6 +1,6 @@
 import json, csv
-d=json.load(open("/Users/christopherhay/cp-roles/classes-1B-A/algol-60-P07-P08/algol-60.json"))
-T="/Users/christopherhay/cp-roles/classifier-1B-A/results/algol-60/tokens/"
+d=json.load(open("results/algol-60/classes-1B/A/parts/algol-60-P07-P08/algol-60.json"))
+T="./results/algol-60/tokens/"
 texts=[l.split("\t")[0] for l in open(T+"TEXTS-1B-P07-P08.tsv").read().splitlines()[1:]]
 assert sorted(texts)==sorted(d["tokens"]), (set(texts)^set(d["tokens"]))
 tot={}

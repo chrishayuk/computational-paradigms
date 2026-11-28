@@ -1,7 +1,7 @@
 import json,gzip,re,gc
 from pathlib import Path
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-1B-B3')
-OUT=Path('/Users/christopherhay/cp-roles/classes-1B-B/absys-P05')
+ROOT=Path('.')
+OUT=Path('results/absys/classes-1B/B/parts/absys-P05')
 
 def state_summary(raw):
  blocks=re.split(r'(?=^  derivation #)',raw,flags=re.M)[1:]

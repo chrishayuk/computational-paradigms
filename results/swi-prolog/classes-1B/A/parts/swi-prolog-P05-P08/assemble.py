@@ -1,7 +1,7 @@
 """Assemble swi-prolog.json from tokens.json, outcomes.json and the judgements below."""
 import json, os, glob, re, csv
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = "/Users/christopherhay/cp-roles/classifier-1B-A"
+REPO = "."
 tokens = json.load(open(os.path.join(HERE, "tokens.json")))
 outcomes = json.load(open(os.path.join(HERE, "outcomes.json")))
 CONFS = ["plain", "tabling", "coroutines", "constraints", "session"]

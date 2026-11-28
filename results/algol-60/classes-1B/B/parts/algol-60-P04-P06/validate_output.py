@@ -1,8 +1,8 @@
 """Read-only final validation of the saved classifications against the allowed inputs."""
 from pathlib import Path
 import csv,json,collections
-BASE=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
-DEST=Path('/Users/christopherhay/cp-roles/classes-1B-B/algol-60-P04-P06')
+BASE=Path('.')
+DEST=Path('results/algol-60/classes-1B/B/parts/algol-60-P04-P06')
 r=json.loads((DEST/'algol-60.json').read_text(),parse_constant=lambda s:(_ for _ in ()).throw(ValueError(s)))
 assert set(r)=={'tokens','outcomes','mode_differences','expressibility','late_definition','s_mechanisms'}
 manifest=list(csv.DictReader((BASE/'results/algol-60/tokens/TEXTS-1B-P04-P06.tsv').read_text().splitlines(),delimiter='\t'))

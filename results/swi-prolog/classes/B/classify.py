@@ -5,8 +5,8 @@ No Prolog execution, imports of repository code, or tokenization.
 from pathlib import Path
 import csv, json, re, collections, hashlib
 
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-B')
-OUT=Path('/Users/christopherhay/cp-roles/classes-B/swi-prolog')
+ROOT=Path('.')
+OUT=Path('results/swi-prolog/classes/B')
 TOK=ROOT/'results/swi-prolog/tokens'
 CONFIGS=['constraints','coroutines','plain','session','tabling']
 TEXTS=list(csv.reader((TOK/'TEXTS.tsv').open(),delimiter='\t'))[1:]

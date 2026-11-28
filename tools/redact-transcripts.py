@@ -35,11 +35,11 @@ transcripts/README.md):
 After writing, the output is screened for what the rules are meant to
 remove, and the script fails if any of it is left.
 """
-import json, re, sys
+import json, os, re, sys
 
-HOME = "/Users/christopherhay"
-HOME_DASH = "-Users-christopherhay-"
-USER = "christopherhay"
+HOME = os.path.expanduser("~")                    # the owner's home directory and account name,
+USER = os.path.basename(HOME)                      # read from the environment of whoever runs this
+HOME_DASH = HOME.replace("/", "-") + "-"
 EMAIL = re.compile(r"[\w.+-]+@googlemail\.com")
 KEEP = ("Today's date", "You are powered by", "Note: ", "Your final report is delivered",
         "Attribution for git commits", "While auto mode", "<artifact-content-authored-by-others/>",
@@ -55,7 +55,7 @@ KINDS = [("MEMORY.md", "the owner's Claude memory index"),
 SCREEN = re.compile(r"googlemail|@gmail|absys-sources-access|Absys sources access|no-commit-trailers|No commit trailers|"
                     r"source papers and commit trailers|Absys(?:\s|\\n)+sources|commit(?:\s|\\n)+trailers|mcp__|"
                     r"claude_ai_|creator-os|chuk-experiments|chuk-train|Google_Drive|Gmail|Canva|"
-                    r"userEmail|christopherhay|gh[pousr]_[A-Za-z0-9]{30}|sk-ant-|AGE-SECRET-KEY-1[0-9A-Z]{50}")
+                    r"userEmail|" + re.escape(USER) + r"|gh[pousr]_[A-Za-z0-9]{30}|sk-ant-|AGE-SECRET-KEY-1[0-9A-Z]{50}")
 REM = re.compile(r"<system-reminder>(.*?)</system-reminder>", re.S)
 counts = {}
 

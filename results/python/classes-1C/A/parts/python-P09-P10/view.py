@@ -1,6 +1,6 @@
 # Print a program's source lines with the token index range of each line.
 import sys, csv
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 cfgfile = sys.argv[1]  # e.g. core/P10a.py
 toks = {}
 with open(f"{REPO}/results/python/tokens/{cfgfile}.tokens.tsv") as f:

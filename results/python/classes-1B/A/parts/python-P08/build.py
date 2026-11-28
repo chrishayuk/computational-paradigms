@@ -18,7 +18,7 @@ for path,spec in SPECS.items():
     t['all']=len(rows); totals[path]=t
 
 def rec(cfg,inst):
-    f=glob.glob(f'/Users/christopherhay/cp-roles/classifier-1B-A/{RES}/{cfg}/P08/raw/{inst}.behaviour.*.json')
+    f=glob.glob(f'./{RES}/{cfg}/P08/raw/{inst}.behaviour.*.json')
     assert len(f)==1; return f[0].split('classifier-1B-A/')[1]
 
 O=[]
@@ -138,7 +138,7 @@ add('stdlib-concurrency','P08c',4,semantic=both("unsound"),representation="expli
     observations="The second arrived('rev') wakes nothing: the relation's thread has ended, and the failed relation is not posed again. Stage 4 cannot reach the application. The closed reading's stage-3 none is withdrawn by the valid outcomes, but the program does not withdraw it. No manual action",rule=SPECR)
 
 # mode comparisons
-compared=sorted(os.path.relpath(f,'/Users/christopherhay/cp-roles/classifier-1B-A') for f in glob.glob('/Users/christopherhay/cp-roles/classifier-1B-A/results/python/*/P08/raw/*.json') if '.behaviour.' not in f)
+compared=sorted(os.path.relpath(f,'.') for f in glob.glob('./results/python/*/P08/raw/*.json') if '.behaviour.' not in f)
 
 EXPR=[]
 def ex(cfg,sub,e,reason): EXPR.append(dict(configuration=cfg,subproblem=sub,direction="rev forwards (first place known), conc forwards inside rev; = and ++ in the directions the stages leave open",expressibility=e,reason=reason))

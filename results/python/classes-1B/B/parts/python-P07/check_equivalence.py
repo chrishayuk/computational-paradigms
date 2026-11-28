@@ -16,7 +16,7 @@ import csv
 import json
 import re
 
-SRC=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
+SRC=Path('.')
 OUT=Path(__file__).resolve().parent
 j=json.loads((OUT/'python.json').read_text())
 expected_residual={

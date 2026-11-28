@@ -1,6 +1,6 @@
 import csv,sys,collections
 from pathlib import Path
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
+ROOT=Path('.')
 for name in sys.argv[1:]:
  p=ROOT/'results/algol-60/tokens'/name
  rows=list(csv.DictReader(p.read_text().splitlines(),delimiter='\t'))

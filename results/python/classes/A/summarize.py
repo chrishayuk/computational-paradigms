@@ -1,6 +1,6 @@
 # Summarize raw run records: per stage, answers, states, observe.raw, print, errors.
 import json, sys, glob, os
-ROOT = "/Users/christopherhay/cp-roles/classifier-A/results/python"
+ROOT = "./results/python"
 def trunc(x, n=600):
     s = x if isinstance(x, str) else json.dumps(x)
     return s if len(s) <= n else s[:n] + "...[%d chars]" % len(s)

@@ -9,7 +9,7 @@ import json
 import pathlib
 import re
 
-SOURCE = pathlib.Path('/Users/christopherhay/cp-roles/classifier-1B-B2')
+SOURCE = pathlib.Path('.')
 OUT = pathlib.Path(__file__).resolve().parent
 CONFIGS = ['constraints', 'coroutines', 'plain', 'session', 'tabling']
 CLASSES = 'PCRSH'

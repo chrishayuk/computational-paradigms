@@ -4,7 +4,7 @@
 # with its record.
 import json, glob, os
 
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 RES = REPO + "/results/swi-prolog"
 CONFIGS = ["plain", "tabling", "coroutines", "constraints", "session"]
 

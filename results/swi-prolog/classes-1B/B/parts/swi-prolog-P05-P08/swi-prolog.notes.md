@@ -1,6 +1,6 @@
 # Independent classifier B: SWI-Prolog P05–P08
 
-Classification by Codex, independently of the program author and the other classifier. Source: the permitted public clone `/Users/christopherhay/cp-roles/classifier-1B-B`, identified in the brief as commit b73d59a. I did not inspect the other classifier's work, invoke SWI-Prolog, execute any problem program, or change the source clone. The two checking scripts here only read the frozen tokens and JSON records and write this directory.
+Classification by Codex, independently of the program author and the other classifier. Source: the permitted public clone `~/cp-roles/classifier-1B-B`, identified in the brief as commit b73d59a. I did not inspect the other classifier's work, invoke SWI-Prolog, execute any problem program, or change the source clone. The two checking scripts here only read the frozen tokens and JSON records and write this directory.
 
 `classify.py` produces the JSON; `verify.py` checks coverage independently. Record paths in the JSON are relative to the source clone. Span endpoints are inclusive. The JSON's six requested top-level collections are present. Extra per-entry fields preserve the evidence behind difficult judgements.
 

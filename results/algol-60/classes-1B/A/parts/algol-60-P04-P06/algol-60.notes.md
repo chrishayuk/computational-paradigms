@@ -1,6 +1,6 @@
 # Classifier A (Claude): algol-60, batch 1B, P04-P06
 
-Working copy: `/Users/christopherhay/cp-roles/classifier-1B-A` at 3c7c778, read only.
+Working copy: `~/cp-roles/classifier-1B-A` at 3c7c778, read only.
 Output: `algol-60.json`, made by `build.py` from `specs.py`, `engine.py` and `run.py`.
 `compact.py` and `summarize.py` extract records, and `residual_check.py` checks the residuals.
 
@@ -127,7 +127,7 @@ an S mechanism (`S-mechanisms.md` lists none). Each program has one `s_mechanism
 
 ## Files read outside the list
 
-- The brief itself, at `/Users/christopherhay/cp-roles/briefs/`.
+- The brief itself, at `~/cp-roles/briefs/`.
 - My own tool-output overflow files, under the session's `tool-results` folder. These hold
   only output from my own commands on allowed files.
 - No forbidden file was opened. I listed `results/algol-60/` to find the records, which

@@ -5,7 +5,7 @@ import pathlib
 import collections
 import re
 
-SOURCE = pathlib.Path('/Users/christopherhay/cp-roles/classifier-B')
+SOURCE = pathlib.Path('.')
 DEST = pathlib.Path(__file__).parent
 
 def read_tokens(path):

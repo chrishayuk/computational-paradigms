@@ -1,7 +1,7 @@
 """Class the frozen tokens of the batch-1B P05-P08 SWI-Prolog texts by construct.
 Read-only on the repository; writes tokens.json beside this script."""
 import csv, json, os, re, sys
-REPO = "/Users/christopherhay/cp-roles/classifier-1B-A"
+REPO = "."
 TOK = REPO + "/results/swi-prolog/tokens"
 PROG = REPO + "/programs/swi-prolog"
 OUT = os.path.dirname(os.path.abspath(__file__))

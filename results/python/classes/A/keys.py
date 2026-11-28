@@ -1,6 +1,6 @@
 # List distinct (scope, stripped source line) keys of the token-bearing lines of every text.
 import csv, os, collections
-REPO = "/Users/christopherhay/cp-roles/classifier-A"
+REPO = "."
 TOK = REPO + "/results/python/tokens"
 def texts():
     rows = list(csv.reader(open(TOK + "/TEXTS.tsv"), delimiter="\t"))[1:]

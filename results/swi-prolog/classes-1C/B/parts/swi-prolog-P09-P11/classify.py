@@ -11,8 +11,8 @@ import hashlib
 import json
 import re
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1C-B')
-OUT = Path('/Users/christopherhay/cp-roles/classes-1C-B/swi-prolog-P09-P11')
+ROOT = Path('.')
+OUT = Path('results/swi-prolog/classes-1C/B/parts/swi-prolog-P09-P11')
 CONFIGS = ['plain', 'tabling', 'coroutines', 'constraints', 'session']
 PROBLEMS = ['P09', 'P10', 'P11']
 TEXT_INDEX = ROOT / 'results/swi-prolog/tokens/TEXTS-1C-P09-P11.tsv'

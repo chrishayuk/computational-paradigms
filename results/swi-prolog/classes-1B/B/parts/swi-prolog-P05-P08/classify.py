@@ -1,7 +1,7 @@
 from pathlib import Path
 import json, collections, re
-BASE=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
-OUT=Path('/Users/christopherhay/cp-roles/classes-1B-B/swi-prolog-P05-P08')
+BASE=Path('.')
+OUT=Path('results/swi-prolog/classes-1B/B/parts/swi-prolog-P05-P08')
 TP=BASE/'results/swi-prolog/tokens'
 manifest=[r.split('\t') for r in (TP/'TEXTS-1B-P05-P08.tsv').read_text().splitlines()[1:]]
 aliases={r[0]:r[1].split() if len(r)>1 else [] for r in manifest}

@@ -1,9 +1,9 @@
 # Builds absys.json: token classes, outcomes, mode differences, expressibility.
 # Classifier A. Reads only the permitted files; runs nothing of the system.
 import json, glob, os, re, collections
-REPO = '/Users/christopherhay/cp-roles/classifier-A'
+REPO = '.'
 RES = f'{REPO}/results/absys'
-OUT = '/Users/christopherhay/cp-roles/classes-A/absys/absys.json'
+OUT = 'results/absys/classes/A/absys.json'
 CONFIGS = ['absys', 'absys-depth-first', 'absys-wake-back']
 
 # ---------------------------------------------------------------- tokens

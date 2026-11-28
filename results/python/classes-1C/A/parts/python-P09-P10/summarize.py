@@ -1,6 +1,6 @@
 # Summarize raw run records (read-only).
 import json, sys, glob, os, gzip
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 def load(p):
     return json.load(gzip.open(p) if p.endswith(".gz") else open(p))
 def short(s, n=300):

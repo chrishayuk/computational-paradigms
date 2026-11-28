@@ -10,7 +10,7 @@ import gzip
 import hashlib
 import json
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1C-B')
+ROOT = Path('.')
 OUT = Path(__file__).resolve().parent
 result = json.loads((OUT / 'python.json').read_text())
 assert set(result) == {'tokens', 'outcomes', 'mode_differences', 'expressibility', 'late_definition', 's_mechanisms'}

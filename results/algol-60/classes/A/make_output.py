@@ -1,7 +1,7 @@
 # Writes algol-60.json: the token spans (from build.py's tokens.json), the outcome of every stage of every behaviour
 # record, the mode differences (cost and storage against behaviour), and expressibility.
 import json, re, csv
-D = "/Users/christopherhay/cp-roles/classes-A/algol-60/"
+D = "results/algol-60/classes/A/"
 tokens = json.load(open(D + "tokens.json"))
 recs = [json.loads(l) for l in open(D + "summary.jsonl")]
 cost = {(r["configuration"], r["instance"]): r for r in recs if r["mode"] == "cost"}

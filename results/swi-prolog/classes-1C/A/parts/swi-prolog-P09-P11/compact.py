@@ -1,6 +1,6 @@
 # One line per stage/attempt/computation of each record (read-only).
 import json, glob, sys
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A/results/swi-prolog"
+REPO = "./results/swi-prolog"
 def tr(s, n=160):
     s = "" if s is None else str(s)
     return s if len(s) <= n else s[:n] + f"..[{len(s)}]"

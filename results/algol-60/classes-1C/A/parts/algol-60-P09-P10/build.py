@@ -1,5 +1,5 @@
 import os,sys,json,glob,importlib.util
-BASE='/Users/christopherhay/cp-roles/classifier-1C-A/results/algol-60/tokens'
+BASE='./results/algol-60/tokens'
 def ntok(path):
     return sum(1 for _ in open(os.path.join(BASE,path+'.tokens.tsv')))-1
 def load(fn):

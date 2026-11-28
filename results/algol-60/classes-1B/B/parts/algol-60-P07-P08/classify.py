@@ -5,8 +5,8 @@ Never invokes an ALGOL program. Paths read are explicitly restricted below.
 from pathlib import Path
 from collections import Counter,defaultdict
 import csv,json,re
-BASE=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
-OUT=Path('/Users/christopherhay/cp-roles/classes-1B-B/algol-60-P07-P08')
+BASE=Path('.')
+OUT=Path('results/algol-60/classes-1B/B/parts/algol-60-P07-P08')
 TEXTS=list(csv.reader((BASE/'results/algol-60/tokens/TEXTS-1B-P07-P08.tsv').open(),delimiter='\t'))[1:]
 RULES={'H':'METRICS 13; ALGOL harness 2.7; nested constructs 10; separators 20',
  'P':'METRICS 2, 3, 8, 15, 19 (relation evaluator); nested constructs 10; separators 20',

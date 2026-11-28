@@ -1,7 +1,7 @@
 from pathlib import Path
 import json, gzip, hashlib
 
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-1C-B')
+ROOT=Path('.')
 OUT=Path(__file__).parent
 CONFIGS=['absys','absys-depth-first','absys-wake-back']
 def compact(v, n=2200):

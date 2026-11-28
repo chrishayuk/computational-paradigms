@@ -1,6 +1,6 @@
 # Build the token spans of python.json from specs.py, and check coverage.
 import csv, json, sys, importlib
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 LAYOUT = {"<NEWLINE>", "<INDENT>", "<DEDENT>"}
 def tokens(text):
     out = []

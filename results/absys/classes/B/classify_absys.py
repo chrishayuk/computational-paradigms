@@ -11,8 +11,8 @@ import json
 import pathlib
 import re
 
-SOURCE = pathlib.Path('/Users/christopherhay/cp-roles/classifier-B')
-DEST = pathlib.Path('/Users/christopherhay/cp-roles/classes-B/absys')
+SOURCE = pathlib.Path('.')
+DEST = pathlib.Path('results/absys/classes/B')
 CONFIGS = ['absys', 'absys-depth-first', 'absys-wake-back']
 
 

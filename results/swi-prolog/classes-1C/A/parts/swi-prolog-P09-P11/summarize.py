@@ -1,6 +1,6 @@
 # Summarise the raw records of P09-P11 (read-only), one block per stage.
 import json, glob, sys, os
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A/results/swi-prolog"
+REPO = "./results/swi-prolog"
 T = 400
 
 def tr(s, n=T):

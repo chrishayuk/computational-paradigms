@@ -1,6 +1,6 @@
 # Print each source line with its tokens and their indices (read-only).
 import sys, csv
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 cfgfile = sys.argv[1]
 lines = {}
 with open(f"{REPO}/results/python/tokens/{cfgfile}.tokens.tsv") as f:

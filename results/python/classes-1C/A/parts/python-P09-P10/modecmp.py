@@ -1,6 +1,6 @@
 # Compare cost and storage records with the behaviour record (read-only).
 import json, glob, re, os
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 def key(r):
     out = []
     for st in r["stages"]:

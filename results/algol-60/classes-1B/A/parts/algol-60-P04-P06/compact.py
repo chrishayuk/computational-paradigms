@@ -1,9 +1,9 @@
 import json, sys, glob, os
-root = '/Users/christopherhay/cp-roles/classifier-1B-A/results/algol-60'
+root = './results/algol-60'
 out = []
 for path in sorted(glob.glob(root + '/*/P0[456]/raw*/*.json')):
     r = json.load(open(path))
-    rel = os.path.relpath(path, '/Users/christopherhay/cp-roles/classifier-1B-A')
+    rel = os.path.relpath(path, '.')
     for st in r['stages']:
         for at in st['attempts']:
             for c in at['computations']:

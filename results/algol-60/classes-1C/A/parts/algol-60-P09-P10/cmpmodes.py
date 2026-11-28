@@ -1,5 +1,5 @@
 import json,glob,os
-R='/Users/christopherhay/cp-roles/classifier-1C-A/results/algol-60'
+R='./results/algol-60'
 def key(r):
     out={}
     for st in r['stages']:

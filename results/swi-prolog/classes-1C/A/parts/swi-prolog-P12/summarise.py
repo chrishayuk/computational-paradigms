@@ -1,5 +1,5 @@
 import json, glob, os, sys, hashlib
-R='/Users/christopherhay/cp-roles/classifier-1C-A'
+R='.'
 rows=[]
 for f in sorted(glob.glob(R+'/results/swi-prolog/*/P12/raw*/*.json*')):
     d=json.load(open(f))

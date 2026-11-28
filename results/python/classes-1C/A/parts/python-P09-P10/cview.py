@@ -1,6 +1,6 @@
 # Show each line with the class of each token, from spans.json (read-only check).
 import json, sys, csv
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 text = sys.argv[1]
 spans = json.load(open("spans.json"))[text]
 cls = {}

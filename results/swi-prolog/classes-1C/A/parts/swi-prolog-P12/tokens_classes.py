@@ -1,6 +1,6 @@
 # Classes the tokens of the P12 texts by construct, from the frozen token files.
 import csv, json, sys
-R='/Users/christopherhay/cp-roles/classifier-1C-A/results/swi-prolog/tokens/'
+R='./results/swi-prolog/tokens/'
 TEXTS=['constraints/P12a.pl','constraints/P12b.pl','constraints/P12c.pl','constraints/P12d.pl',
        'tabling/P12a.pl','tabling/P12b.pl','tabling/P12c.pl','tabling/P12d.pl']
 def load(t):

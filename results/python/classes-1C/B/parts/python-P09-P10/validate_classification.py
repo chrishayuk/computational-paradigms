@@ -1,7 +1,7 @@
 """Read-only validation of classifier output against frozen tokens and raw records."""
 import json, collections, gzip
 from pathlib import Path
-BASE=Path('/Users/christopherhay/cp-roles/classifier-1C-B')
+BASE=Path('.')
 HERE=Path(__file__).resolve().parent
 r=json.loads((HERE/'python.json').read_text())
 assert set(r)=={'tokens','outcomes','mode_differences','expressibility','late_definition','s_mechanisms'}

@@ -1,7 +1,7 @@
 # Independent check of swi-prolog.json: valid JSON, every token of every text covered once.
 import json, csv
-TOK = '/Users/christopherhay/cp-roles/classifier-A/results/swi-prolog/tokens'
-d = json.load(open('/Users/christopherhay/cp-roles/classes-A/swi-prolog/swi-prolog.json'))
+TOK = './results/swi-prolog/tokens'
+d = json.load(open('results/swi-prolog/classes/A/swi-prolog.json'))
 texts = list(csv.reader(open(TOK + '/TEXTS.tsv'), delimiter='\t'))[1:]
 assert set(d['tokens']) == {r[0] for r in texts}
 per_cfg = {}

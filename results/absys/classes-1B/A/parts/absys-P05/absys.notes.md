@@ -1,6 +1,6 @@
 # Classifier A: absys, batch 1B, P05: notes
 
-Clone `/Users/christopherhay/cp-roles/classifier-1B-A3` (commit 1f291be), read only. The output is `absys.json` here. My checking scripts are here too:
+Clone `~/cp-roles/classifier-1B-A3` (commit 1f291be), read only. The output is `absys.json` here. My checking scripts are here too:
 
 - `p05b_denote.py` checks residual equivalence for P05b. Its output is in `p05b_denote.out` and `p05b_denote_m2.out`.
 - `check.py` checks that every token is covered exactly once.
@@ -55,7 +55,7 @@ Clone `/Users/christopherhay/cp-roles/classifier-1B-A3` (commit 1f291be), read o
 ## Files read outside the brief's list
 
 - `results/absys/RERUN-M2.md`: its first 5 lines, read by accident while listing the m2 log. I stopped there. It is not on the allowed list, and nothing in my classes depends on it.
-- A directory listing of `/Users/christopherhay/cp-roles/classes-1B-A/`, taken when I checked that my output folder existed. It showed only the names of other batches' folders. I opened none of them and saw no classes.
+- A directory listing of `~/cp-roles/classes-1B-A/`, taken when I checked that my output folder existed. It showed only the names of other batches' folders. I opened none of them and saw no classes.
 - Nothing else. No `calibration/`, `reviews/`, `variants/` (top level), `transcripts/`, earlier classes, author's notes, web or other systems.
 
 ## Summary

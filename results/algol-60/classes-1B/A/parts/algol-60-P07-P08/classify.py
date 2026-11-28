@@ -10,7 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from atoms import load, atoms  # noqa: E402
 
-REPO = "/Users/christopherhay/cp-roles/classifier-1B-A"
+REPO = "."
 TOK = REPO + "/results/algol-60/tokens/"
 
 OUTPUT = {"outstring", "outinteger", "PRINTTEXT", "print", "NLCR", "SPACE"}

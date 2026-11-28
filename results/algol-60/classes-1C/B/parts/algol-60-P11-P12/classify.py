@@ -5,8 +5,8 @@ from pathlib import Path
 from collections import defaultdict, Counter
 import csv, json, re, gzip, hashlib
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1C-B')
-OUT = Path('/Users/christopherhay/cp-roles/classes-1C-B/algol-60-P11-P12')
+ROOT = Path('.')
+OUT = Path('results/algol-60/classes-1C/B/parts/algol-60-P11-P12')
 RULE = {
  'P':'METRICS rules 1, 3, 6, 15; systems/algol-60 Values',
  'C':'METRICS rules 1, 2, 10 (explicit traversal/termination control)',

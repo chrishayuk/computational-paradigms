@@ -1,5 +1,5 @@
 import json,glob,re,os
-base='/Users/christopherhay/cp-roles/classifier-1B-A/results/python'
+base='./results/python'
 def key(r):
     out=[]
     for st in r['stages']:

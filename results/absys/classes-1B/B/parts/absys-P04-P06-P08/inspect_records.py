@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1B-B')
+ROOT = Path('.')
 CONFIGS = ['absys', 'absys-depth-first', 'absys-wake-back']
 PROBLEMS = ['P04', 'P06', 'P07', 'P08']
 

@@ -1,5 +1,5 @@
 import sys,csv
-R='/Users/christopherhay/cp-roles/classifier-1B-A/results/python/tokens/'
+R='./results/python/tokens/'
 def load(t):
     rows=[]
     with open(R+t+'.tokens.tsv') as f:

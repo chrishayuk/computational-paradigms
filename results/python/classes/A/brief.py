@@ -1,5 +1,5 @@
 import json, sys, glob, os
-ROOT = "/Users/christopherhay/cp-roles/classifier-A/results/python"
+ROOT = "./results/python"
 mode = sys.argv[1]; pat = sys.argv[2] if len(sys.argv) > 2 else "*"
 def t(s, n): s = s if isinstance(s, str) else json.dumps(s, ensure_ascii=False); return s if len(s) <= n else s[:n] + "..[%d]" % len(s)
 for path in sorted(glob.glob(ROOT + "/%s/P0?/raw/*.%s.*.json" % (pat, mode))):

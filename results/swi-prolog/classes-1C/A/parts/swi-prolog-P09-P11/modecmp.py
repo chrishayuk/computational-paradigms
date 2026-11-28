@@ -1,6 +1,6 @@
 # Compare cost/storage records with the behaviour record of the same configuration/instance (read-only).
 import json, glob, collections
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A/results/swi-prolog"
+REPO = "./results/swi-prolog"
 def key(p):
     d = json.load(open(p)); r = d["run"]
     out = []

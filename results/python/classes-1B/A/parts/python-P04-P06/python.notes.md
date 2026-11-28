@@ -86,7 +86,7 @@ Classifier A is a Claude agent (Opus 5.5). The repository clone was at commit 3c
 
 ## Files read outside the list
 
-- My brief, `/Users/christopherhay/cp-roles/briefs/classifier-1B-A-python-P04-P06.md`, which I was given.
+- My brief, `~/cp-roles/briefs/classifier-1B-A-python-P04-P06.md`, which I was given.
 - One file in the tool's own output store under `~/.claude/projects/.../tool-results/`. It held this session's own printout of `harnesses/python/README.md`, saved there by the tool because it was long. I read it as that README and nothing else.
 
 I read no other file outside the permitted list. In particular, I did not read `calibration/`, `reviews/`, `variants/`, `transcripts/`, `results/python/classes/`, the author's notes, or the other classifier's work.

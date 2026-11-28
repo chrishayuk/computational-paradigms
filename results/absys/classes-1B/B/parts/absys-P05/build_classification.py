@@ -1,7 +1,7 @@
 import json,re,collections
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-1B-B3')
+ROOT=Path('.')
 D=json.loads((HERE/'record_summaries.json').read_text())
 configs=['absys','absys-depth-first','absys-wake-back']
 

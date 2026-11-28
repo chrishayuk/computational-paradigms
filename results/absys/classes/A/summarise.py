@@ -1,6 +1,6 @@
 # Summarise raw records: per stage the facts needed for classing outcomes.
 import json, sys, glob, os
-ROOT = '/Users/christopherhay/cp-roles/classifier-A/results/absys'
+ROOT = './results/absys'
 def summ(path, maxprint=1200):
     d = json.load(open(path))
     r = d['run']

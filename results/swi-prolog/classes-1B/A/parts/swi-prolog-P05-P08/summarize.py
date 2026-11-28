@@ -1,6 +1,6 @@
 # Summarise run records (read-only) for classification.
 import json, sys, glob, os
-ROOT = "/Users/christopherhay/cp-roles/classifier-1B-A/results/swi-prolog"
+ROOT = "./results/swi-prolog"
 def trunc(s, n=400):
     if s is None: return None
     s = str(s)

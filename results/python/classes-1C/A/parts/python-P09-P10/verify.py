@@ -1,6 +1,6 @@
 # Verify python.json: valid JSON; every token of every text of TEXTS-1C-P09-P10.tsv covered exactly once.
 import json, csv
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 d = json.load(open("python.json"))
 texts = [r[0] for r in csv.reader(open(f"{REPO}/results/python/tokens/TEXTS-1C-P09-P10.tsv"), delimiter="\t")][1:]
 assert sorted(texts) == sorted(d["tokens"]), set(texts) ^ set(d["tokens"])

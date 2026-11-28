@@ -4,7 +4,7 @@ Uses the frozen TSV tokens, with AST positions solely to locate constructs (no t
 import ast, csv, json, re
 from pathlib import Path
 from collections import Counter, defaultdict
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1B-B')
+ROOT = Path('.')
 OUT = Path(__file__).resolve().parent
 TEXTS = list(csv.reader((ROOT/'results/python/tokens/TEXTS-1B-P04-P06.tsv').open(), delimiter='\t'))[1:]
 RULES = {

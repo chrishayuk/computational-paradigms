@@ -1,7 +1,7 @@
 # Checks python.json: valid JSON, every token of every text covered exactly once; prints totals.
 import json, csv, collections
-REPO = "/Users/christopherhay/cp-roles/classifier-A"
-d = json.load(open("/Users/christopherhay/cp-roles/classes-A/python/python.json"))
+REPO = "."
+d = json.load(open("results/python/classes/A/python.json"))
 texts = [r[0] for r in list(csv.reader(open(REPO + "/results/python/tokens/TEXTS.tsv"), delimiter="\t"))[1:]]
 assert sorted(texts) == sorted(d["tokens"]), "texts differ"
 grand = collections.Counter(); byconf = collections.defaultdict(collections.Counter)

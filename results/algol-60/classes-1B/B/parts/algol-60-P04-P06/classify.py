@@ -1,8 +1,8 @@
 """Independent classifier B; reads only the specified public inputs; executes no ALGOL."""
 from pathlib import Path
 import csv, json, collections, difflib, re
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
-OUT=Path('/Users/christopherhay/cp-roles/classes-1B-B/algol-60-P04-P06')
+ROOT=Path('.')
+OUT=Path('results/algol-60/classes-1B/B/parts/algol-60-P04-P06')
 TR=ROOT/'results/algol-60/tokens'
 RULES={
  'p':('P','problem transcription / encoded value operation','METRICS 1, 2, 3, 6, 10, 15'),

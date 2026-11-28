@@ -2,7 +2,7 @@
 import json, glob, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-R = "/Users/christopherhay/cp-roles/classifier-1B-A/"
+R = "./"
 tokens = json.load(open(os.path.join(HERE, "tokens.json")))
 
 UNK_P07 = ("each unknown is a Boolean 'known' flag and an integer value; an unknown without a value is "

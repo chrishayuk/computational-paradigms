@@ -1,5 +1,5 @@
 import csv,re,sys,collections
-REPO='/Users/christopherhay/cp-roles/classifier-1B-A'
+REPO='.'
 def texts():
     rows=list(csv.reader(open(REPO+'/results/python/tokens/TEXTS-1B-P04-P06.tsv'),delimiter='\t'))[1:]
     return [r[0] for r in rows]

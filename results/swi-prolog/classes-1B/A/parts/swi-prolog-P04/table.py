@@ -1,5 +1,5 @@
 import json, glob, os
-root = "/Users/christopherhay/cp-roles/classifier-1B-A2/results/swi-prolog"
+root = "./results/swi-prolog"
 for c in ["plain","tabling","coroutines","constraints","session"]:
     for f in sorted(glob.glob(f"{root}/{c}/P04/raw*/*.json")):
         r = json.load(open(f))

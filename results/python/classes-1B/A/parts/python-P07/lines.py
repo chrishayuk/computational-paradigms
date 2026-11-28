@@ -1,6 +1,6 @@
 import sys,os
 from show import load
-R='/Users/christopherhay/cp-roles/classifier-1B-A/results/python/tokens/'
+R='./results/python/tokens/'
 files=[f"{c}/P07{x}.py" for c in ['core','extended','stdlib-concurrency'] for x in 'abcdefg']
 seen={}
 for f in files:

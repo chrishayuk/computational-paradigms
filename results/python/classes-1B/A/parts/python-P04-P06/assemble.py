@@ -1,5 +1,5 @@
 import json,collections
-OUT='/Users/christopherhay/cp-roles/classes-1B-A/python-P04-P06'
+OUT='results/python/classes-1B/A/parts/python-P04-P06'
 tokens=json.load(open(OUT+'/tokens.json')); outcomes=json.load(open(OUT+'/outcomes.json'))
 # shared texts: core path stands for stdlib-concurrency too
 SHARED={'P04a','P04b','P04c','P04d','P04e','P04f','P06d','P06e1','P06e2','P06e3'}

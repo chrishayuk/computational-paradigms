@@ -1,6 +1,6 @@
 # Independent classification: absys, batch 1B, P05
 
-Classifier: Codex, independent classifier B. The source repository is the clone named in the brief, `/Users/christopherhay/cp-roles/classifier-1B-B3`, at the user-stated commit `1f291be`. I did not write the programs, inspect another classifier's work, run a program, run the system, or modify the source clone. All generated files are in the authorized output directory.
+Classifier: Codex, independent classifier B. The source repository is the clone named in the brief, `~/cp-roles/classifier-1B-B3`, at the user-stated commit `1f291be`. I did not write the programs, inspect another classifier's work, run a program, run the system, or modify the source clone. All generated files are in the authorized output directory.
 
 ## Scope and evidence
 

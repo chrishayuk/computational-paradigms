@@ -1,9 +1,9 @@
 # Resolve the specs for every distinct text and write the per-line class views for review.
 import sys, csv, json
-sys.path.insert(0, "/Users/christopherhay/cp-roles/classes-A/algol-60")
+sys.path.insert(0, "results/algol-60/classes/A")
 from spans import build, show
 from spec import SPEC, X1_MARKERS
-TEXTS = [r[0] for r in csv.reader(open("/Users/christopherhay/cp-roles/classifier-A/results/algol-60/tokens/TEXTS.tsv"), delimiter="\t")][1:]
+TEXTS = [r[0] for r in csv.reader(open("./results/algol-60/tokens/TEXTS.tsv"), delimiter="\t")][1:]
 def family(text):
     b = text.split("/")[1].rsplit(".", 1)[0]
     return "P02b" if b.startswith("P02b") else b
@@ -20,7 +20,7 @@ for t in TEXTS:
     except Exception as e:
         errs.append(f"{t}: {e}"); continue
     out[t] = spans
-    with open(f"/Users/christopherhay/cp-roles/classes-A/algol-60/view/{t.replace('/', '__')}.txt", "w") as fh:
+    with open(f"results/algol-60/classes/A/view/{t.replace('/', '__')}.txt", "w") as fh:
         show(t, spans, toks, fh)
 print("\n".join(errs) or "all resolved")
-json.dump(out, open("/Users/christopherhay/cp-roles/classes-A/algol-60/tokens.json", "w"), indent=0)
+json.dump(out, open("results/algol-60/classes/A/tokens.json", "w"), indent=0)

@@ -2,7 +2,7 @@
 # lists below; check token coverage again.
 import json, glob, os, csv
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 RES = REPO + "/results/swi-prolog"
 
 tokens = json.load(open(HERE + "/tokens.json"))

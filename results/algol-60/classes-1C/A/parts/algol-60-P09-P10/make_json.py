@@ -1,6 +1,6 @@
 import json,glob,os
 from build import load,spans
-REPO='/Users/christopherhay/cp-roles/classifier-1C-A'
+REPO='.'
 def rec(cfg,inst,mode='behaviour'):
     fs=glob.glob(f'{REPO}/results/algol-60/{cfg}/P*/raw/{inst}.{mode}.*.json'); assert len(fs)==1,(cfg,inst,fs)
     return os.path.relpath(fs[0],REPO)

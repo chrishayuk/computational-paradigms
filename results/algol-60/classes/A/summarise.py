@@ -1,6 +1,6 @@
 # Summarise every raw record of algol-60 batch 1A: per stage, the facts needed for classification.
 import json, sys, glob, os
-ROOT = "/Users/christopherhay/cp-roles/classifier-A"
+ROOT = "."
 def summ(path):
     r = json.load(open(path))
     run = r["run"]

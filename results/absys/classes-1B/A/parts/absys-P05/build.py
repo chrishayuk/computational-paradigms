@@ -1,5 +1,5 @@
 import json
-O = '/Users/christopherhay/cp-roles/classes-1B-A/absys-P05/absys.json'
+O = 'results/absys/classes-1B/A/parts/absys-P05/absys.json'
 CF = ['absys', 'absys-depth-first', 'absys-wake-back']
 def sp(a, b, c, con, rule): return {"from": a, "to": b, "class": c, "construct": con, "rule": rule}
 PICK = [sp(0, 3, "P", "pick definition: head pick'=lambda p", "P: the vocabulary's relation pick (rule 1); every token of the construct takes its class"),

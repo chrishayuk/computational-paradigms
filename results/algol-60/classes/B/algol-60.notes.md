@@ -1,6 +1,6 @@
 # Independent classifier B: ALGOL 60, batch 1A
 
-Classifier: Codex (OpenAI). I did not write these programs and did not inspect another classifier's work. The source repository was the specified `/Users/christopherhay/cp-roles/classifier-B`; all writes were confined to `/Users/christopherhay/cp-roles/classes-B/algol-60`. No subject program, interpreter, harness, compiler or simulator was executed. No web access was used. The supplied commit designation, `628a324`, was taken from the brief; I did not inspect Git metadata outside the read whitelist.
+Classifier: Codex (OpenAI). I did not write these programs and did not inspect another classifier's work. The source repository was the specified `~/cp-roles/classifier-B`; all writes were confined to `~/cp-roles/classes-B/algol-60`. No subject program, interpreter, harness, compiler or simulator was executed. No web access was used. The supplied commit designation, `628a324`, was taken from the brief; I did not inspect Git metadata outside the read whitelist.
 
 `algol-60.json` is the classification. `classify.py` reproduces it from the frozen token tables and raw records and checks coverage, shared-text identity, correspondence with the batch log, stage completeness, displayed answers and mode agreement. It parses the supplied tokens into constructs; it does not tokenize source. The checking script itself is not part of the subjects' token counts.
 

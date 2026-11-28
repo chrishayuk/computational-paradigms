@@ -10,7 +10,7 @@ import json
 import hashlib
 import re
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1C-B')
+ROOT = Path('.')
 OUT = Path(__file__).resolve().parent
 TEXTS = []
 ALIASES = {}

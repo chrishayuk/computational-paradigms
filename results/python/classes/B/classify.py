@@ -10,8 +10,8 @@ import json
 import re
 from collections import Counter, defaultdict
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-B')
-OUT = Path('/Users/christopherhay/cp-roles/classes-B/python')
+ROOT = Path('.')
+OUT = Path('results/python/classes/B')
 TEXTS = list(csv.reader((ROOT/'results/python/tokens/TEXTS.tsv').open(), delimiter='\t'))[1:]
 
 def tokens_for(path):

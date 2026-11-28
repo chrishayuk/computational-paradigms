@@ -1,6 +1,6 @@
 # Checks each reported answer of every P04 record against the valid outcomes of problems/04.
 import json, glob, os, re
-RS = "/Users/christopherhay/cp-roles/classifier-1B-A2/results/swi-prolog"
+RS = "./results/swi-prolog"
 def valid(inst, v):
     v = v.strip().rstrip(".").strip()
     if inst in ("P04a","P04b"): return v == "X = 1"

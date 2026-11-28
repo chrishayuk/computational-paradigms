@@ -1,7 +1,7 @@
 # Assemble python.json: tokens (from spans.json, built by build.py from specs.py),
 # outcomes, mode differences, expressibility, late definition and S mechanisms.
 import json, glob, os
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 spans = json.load(open("spans.json"))
 
 def rec(cfg, prob, inst, mode="behaviour"):

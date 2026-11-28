@@ -1,5 +1,5 @@
 import json, glob, sys, os
-R="/Users/christopherhay/cp-roles/classifier-1B-A/"
+R="./"
 def summ(path, full=True):
     d=json.load(open(path))
     run=d["run"]

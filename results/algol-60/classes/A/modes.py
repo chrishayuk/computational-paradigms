@@ -1,6 +1,6 @@
 # Compare each cost and storage record with the behaviour record of the same configuration and instance, stage by stage.
 import json
-recs = [json.loads(l) for l in open("/Users/christopherhay/cp-roles/classes-A/algol-60/summary.jsonl")]
+recs = [json.loads(l) for l in open("results/algol-60/classes/A/summary.jsonl")]
 beh = {(r["configuration"], r["instance"]): r for r in recs if r["mode"] == "behaviour"}
 def key(st):
     a = st["attempts"][-1]

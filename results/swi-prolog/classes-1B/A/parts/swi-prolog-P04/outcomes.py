@@ -1,6 +1,6 @@
 import json, glob, os
-REPO = "/Users/christopherhay/cp-roles/classifier-1B-A2"
-OUT = "/Users/christopherhay/cp-roles/classes-1B-A/swi-prolog-P04"
+REPO = "."
+OUT = "results/swi-prolog/classes-1B/A/parts/swi-prolog-P04"
 RS = REPO + "/results/swi-prolog"
 CONFIGS = ["plain", "tabling", "coroutines", "constraints", "session"]
 spans = json.load(open(f"{OUT}/spans.json"))

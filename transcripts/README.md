@@ -166,3 +166,13 @@ script now lists every wording found and screens for the subject words
 themselves, and each of these files has been redacted with the same
 marker. Nothing else in them was changed. The earlier versions remain in
 the repository's history.
+
+## Home paths in the classifiers' files
+
+The classifiers' published scripts and notes (`results/<system>/classes*/`)
+named the owner's home directory in absolute paths, from batch 1A. On the
+owner's decision they now use repository-relative paths in scripts (the
+clone as `.`, each output folder as the folder where it is published) and
+`~` in prose and data. Nothing else in them was changed; the earlier
+versions remain in the repository's history. `tools/redact-transcripts.py`
+now reads the home directory and account name from the environment.

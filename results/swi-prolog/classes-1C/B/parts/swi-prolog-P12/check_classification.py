@@ -10,8 +10,8 @@ import hashlib
 import json
 import re
 
-SOURCE = Path('/Users/christopherhay/cp-roles/classifier-1C-B')
-OUTPUT = Path('/Users/christopherhay/cp-roles/classes-1C-B/swi-prolog-P12')
+SOURCE = Path('.')
+OUTPUT = Path('results/swi-prolog/classes-1C/B/parts/swi-prolog-P12')
 CONFIGURATIONS = ['constraints', 'coroutines', 'plain', 'session', 'tabling']
 
 

@@ -4,7 +4,7 @@ import csv, json, re, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from spec import SPEC
 
-REPO = "/Users/christopherhay/cp-roles/classifier-1C-A"
+REPO = "."
 TOK = REPO + "/results/swi-prolog/tokens"
 
 def load(path):

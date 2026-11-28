@@ -1,6 +1,6 @@
 # Builds swi-prolog.json from rows.json (summarise.py) and tokens.json (tokens_classes.py).
 import json, re
-D='/Users/christopherhay/cp-roles/classes-1C-A/swi-prolog-P12/'
+D='results/swi-prolog/classes-1C/A/parts/swi-prolog-P12/'
 rows=json.load(open(D+'rows.json')); toks=json.load(open(D+'tokens.json'))
 CONFS=['plain','tabling','coroutines','constraints','session']
 def valid(sub,n):

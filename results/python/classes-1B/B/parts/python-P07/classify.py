@@ -6,8 +6,8 @@ import collections
 import csv
 import json
 
-SRC = Path('/Users/christopherhay/cp-roles/classifier-1B-B')
-OUT = Path('/Users/christopherhay/cp-roles/classes-1B-B/python-P07')
+SRC = Path('.')
+OUT = Path('results/python/classes-1B/B/parts/python-P07')
 CONFIGS = ('core', 'extended', 'stdlib-concurrency')
 
 def meta(cls, construct, rule):

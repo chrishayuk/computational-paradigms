@@ -2,8 +2,8 @@
 records and the judgements below (one per instance and stage, with the
 configuration-specific facts read from each record)."""
 import json,glob,os,re
-REPO='/Users/christopherhay/cp-roles/classifier-1B-A'
-OUT='/Users/christopherhay/cp-roles/classes-1B-A/python-P04-P06'
+REPO='.'
+OUT='results/python/classes-1B/A/parts/python-P04-P06'
 RULE='SPECIFICATION.md Outcomes 1-3; problem file valid outcomes'
 
 def facts(conf,inst,st,c,at):

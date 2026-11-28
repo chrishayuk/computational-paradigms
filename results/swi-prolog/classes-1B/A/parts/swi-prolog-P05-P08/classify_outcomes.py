@@ -1,7 +1,7 @@
 """Classify every stage of every behaviour record of P05-P08 (SWI-Prolog), and the
 cost/storage differences. Read-only on the repository; writes outcomes.json."""
 import json, glob, os, re, sys
-ROOT = "/Users/christopherhay/cp-roles/classifier-1B-A/results/swi-prolog"
+ROOT = "./results/swi-prolog"
 OUT = os.path.dirname(os.path.abspath(__file__))
 
 def load(path):

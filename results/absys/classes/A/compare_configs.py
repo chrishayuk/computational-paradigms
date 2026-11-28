@@ -1,6 +1,6 @@
 # Compare behaviour records across the three configurations: print, states, ended_by, answer count per stage.
 import json, glob, os, re
-ROOT='/Users/christopherhay/cp-roles/classifier-A/results/absys'
+ROOT='./results/absys'
 def key(d):
     out=[]
     for s in d['stages']:

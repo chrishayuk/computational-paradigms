@@ -10,8 +10,8 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path('/Users/christopherhay/cp-roles/classifier-1B-B')
-OUT = Path('/Users/christopherhay/cp-roles/classes-1B-B/python-P08')
+ROOT = Path('.')
+OUT = Path('results/python/classes-1B/B/parts/python-P08')
 CONFIGS = ['core', 'extended', 'stdlib-concurrency']
 PROGRAMS = ['P08a.py', 'P08b.py', 'P08c.py']
 RULES = {

@@ -1,7 +1,7 @@
 # Builds absys.json from the classifier's judgements, and checks token coverage against the token files.
 import json, glob, os, csv
-REPO='/Users/christopherhay/cp-roles/classifier-1C-A'
-OUT='/Users/christopherhay/cp-roles/classes-1C-A/absys-P09-P11'
+REPO='.'
+OUT='results/absys/classes-1C/A/parts/absys-P09-P11'
 CONFS=['absys','absys-depth-first','absys-wake-back']
 
 def S(a,b,c,con,rule=None): return {"from":a,"to":b,"class":c,"construct":con,"rule":rule}

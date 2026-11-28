@@ -1,5 +1,5 @@
 import json, sys, glob, os, re, collections
-ROOT = "/Users/christopherhay/cp-roles/classifier-1B-A/results/swi-prolog"
+ROOT = "./results/swi-prolog"
 def norm(s): return re.sub(r"_[0-9]+|_G[0-9]+", "_N", s or "")
 def stageinfo(path):
     r = json.load(open(path)); out = {}

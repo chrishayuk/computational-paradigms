@@ -1,5 +1,5 @@
 import json,glob,os
-B='/Users/christopherhay/cp-roles/classifier-1B-A/'
+B='./'
 out=[]
 for f in sorted(glob.glob(B+'results/python/*/P07/raw/*.json')):
     d=json.load(open(f))

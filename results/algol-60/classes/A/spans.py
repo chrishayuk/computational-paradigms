@@ -3,7 +3,7 @@
 # token before the next marker. Then METRICS.md rule 20 is applied mechanically: a separator (';' or ',') that ends a
 # span is moved to the span that follows it, since it separates the construct that follows.
 import csv, sys
-ROOT = "/Users/christopherhay/cp-roles/classifier-A/results/algol-60/tokens/"
+ROOT = "./results/algol-60/tokens/"
 def load(text):
     rows = list(csv.DictReader(open(ROOT + text + ".tokens.tsv"), delimiter="\t", quoting=csv.QUOTE_NONE))
     toks = [(int(r["index"]), int(r["line"]), r["token"]) for r in rows]

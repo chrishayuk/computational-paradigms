@@ -1,8 +1,8 @@
 """Independent classifier B. Reads frozen tokens and raw records; executes no study code."""
 from pathlib import Path
 import json, re, gzip, collections, hashlib
-BASE=Path('/Users/christopherhay/cp-roles/classifier-1C-B')
-OUT=Path('/Users/christopherhay/cp-roles/classes-1C-B/python-P09-P10')
+BASE=Path('.')
+OUT=Path('results/python/classes-1C/B/parts/python-P09-P10')
 RULES={'P':'METRICS rules 1–3, 6–9 and 15: problem vocabulary, case, equation, query or encoding operation', 'C':'METRICS rules 1–2, 6, 10, 12 and 16: explicit scheduling, waiting, search or store reuse', 'R':'METRICS rules 3–5, 10 and 19: problem-specific holding, knownness, dependency or retraction machinery', 'S':'METRICS rules 12, 15 and 19: general reusable mechanism supplied by this program', 'H':'METRICS rule 13; harnesses/python/README.md §7: fixed harness operation or output adapter'}
 manifest=[]
 for row in (BASE/'results/python/tokens/TEXTS-1C-P09-P10.tsv').read_text().splitlines()[1:]:

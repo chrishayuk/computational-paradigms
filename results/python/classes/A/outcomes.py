@@ -5,7 +5,7 @@
 # are the ones the records hold.
 import json, glob, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = "/Users/christopherhay/cp-roles/classifier-A"
+REPO = "."
 RES = REPO + "/results/python"
 
 def rec(conf, inst, mode):

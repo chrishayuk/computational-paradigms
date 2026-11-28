@@ -2,7 +2,7 @@
 import csv, hashlib, json
 from pathlib import Path
 from collections import Counter
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
+ROOT=Path('.')
 OUT=Path(__file__).resolve().parent
 r=json.loads((OUT/'python.json').read_text())
 rows=list(csv.reader((ROOT/'results/python/tokens/TEXTS-1B-P04-P06.tsv').open(),delimiter='\t'))[1:]

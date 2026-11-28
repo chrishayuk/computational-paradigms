@@ -1,6 +1,6 @@
 import json, glob, os, csv
-REPO = "/Users/christopherhay/cp-roles/classifier-1B-A2"
-OUT = "/Users/christopherhay/cp-roles/classes-1B-A/swi-prolog-P04"
+REPO = "."
+OUT = "results/swi-prolog/classes-1B/A/parts/swi-prolog-P04"
 TOK = REPO + "/results/swi-prolog/tokens"
 RS = REPO + "/results/swi-prolog"
 

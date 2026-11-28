@@ -1,7 +1,7 @@
 # Compare cost/storage records with the behaviour record of the same configuration, instance and program
 # (classifier's own read-only checking script).
 import json,gzip,glob,os,re,sys,hashlib
-ROOT='/Users/christopherhay/cp-roles/classifier-1C-A/results/absys'
+ROOT='./results/absys'
 def load(p):
     if p.endswith('.gz'):
         with gzip.open(p,'rt') as f: return json.load(f)

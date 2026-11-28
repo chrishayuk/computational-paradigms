@@ -1,5 +1,5 @@
 import json, glob
-R="/Users/christopherhay/cp-roles/classifier-1B-A/"
+R="./"
 def key(p):
     d=json.load(open(p)); out=[]
     for s in d["stages"]:

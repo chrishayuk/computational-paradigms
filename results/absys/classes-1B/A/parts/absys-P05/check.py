@@ -1,6 +1,6 @@
 import json, collections
-R = '/Users/christopherhay/cp-roles/classifier-1B-A3/results/absys/tokens/'
-d = json.load(open('/Users/christopherhay/cp-roles/classes-1B-A/absys-P05/absys.json'))
+R = './results/absys/tokens/'
+d = json.load(open('results/absys/classes-1B/A/parts/absys-P05/absys.json'))
 ok = True
 for t, spans in d['tokens'].items():
     n = sum(1 for l in open(R + t + '.tokens.tsv')) - 1

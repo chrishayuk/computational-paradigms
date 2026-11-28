@@ -9,7 +9,7 @@ from pathlib import Path
 from collections import Counter
 import csv, json, gzip, hashlib, re
 
-ROOT=Path('/Users/christopherhay/cp-roles/classifier-1C-B')
+ROOT=Path('.')
 OUT=Path(__file__).parent
 CONFIGS=['absys','absys-depth-first','absys-wake-back']
 manifest=list(csv.reader((ROOT/'results/absys/tokens/TEXTS-1C-P09-P11.tsv').open(),delimiter='\t'))[1:]

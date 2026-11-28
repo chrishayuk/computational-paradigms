@@ -2,7 +2,7 @@
 # configuration and instance: per stage, final attempt's execution states,
 # ended_by, answer count and printed state (derivation numbers kept).
 import json, glob, os, re
-ROOT='/Users/christopherhay/cp-roles/classifier-A/results/absys'
+ROOT='./results/absys'
 def stage_facts(d):
     out={}
     for s in d['stages']:

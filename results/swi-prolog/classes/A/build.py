@@ -2,8 +2,8 @@
 # Reads only the token files and the raw records. Run with python3 -I.
 import csv, json, glob, os, re
 
-REPO = '/Users/christopherhay/cp-roles/classifier-A'
-OUT = '/Users/christopherhay/cp-roles/classes-A/swi-prolog'
+REPO = '.'
+OUT = 'results/swi-prolog/classes/A'
 TOK = REPO + '/results/swi-prolog/tokens'
 
 # ---------------------------------------------------------------- tokens

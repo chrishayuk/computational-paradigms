@@ -1,7 +1,7 @@
 from pathlib import Path
 from collections import Counter
 import json,re
-base=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
+base=Path('.')
 out=Path(__file__).resolve().parent
 x=json.loads((out/'swi-prolog.json').read_text())
 manifest=[r.split('\t') for r in (base/'results/swi-prolog/tokens/TEXTS-1B-P05-P08.tsv').read_text().splitlines()[1:]]

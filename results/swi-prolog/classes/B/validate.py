@@ -4,8 +4,8 @@ This script reads data only and never executes Prolog or repository code.
 """
 import collections,csv,hashlib,json,re
 from pathlib import Path
-R=Path('/Users/christopherhay/cp-roles/classifier-B')
-O=Path('/Users/christopherhay/cp-roles/classes-B/swi-prolog')
+R=Path('.')
+O=Path('results/swi-prolog/classes/B')
 x=json.loads((O/'swi-prolog.json').read_text())
 assert set(x)=={'tokens','outcomes','mode_differences','expressibility'}
 manifest=list(csv.reader((R/'results/swi-prolog/tokens/TEXTS.tsv').open(),delimiter='\t'))[1:]

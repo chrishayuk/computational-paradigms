@@ -1,5 +1,5 @@
 import json, glob, os
-R="/Users/christopherhay/cp-roles/classifier-1B-A/"
+R="./"
 rows={}
 for conf in ("report","x1","x1sim"):
     for p in sorted(glob.glob(R+f"results/algol-60/{conf}/P0[78]/raw/*.behaviour.*.json")):

@@ -1,4 +1,4 @@
-Independent classifier B, batch 1A, P01–P03. Produced by Codex on 27 November 2026. I did not write these programs and did not consult the other classifier's work. The source repository was used read-only. Every created file is in `/Users/christopherhay/cp-roles/classes-B/absys`.
+Independent classifier B, batch 1A, P01–P03. Produced by Codex on 27 November 2026. I did not write these programs and did not consult the other classifier's work. The source repository was used read-only. Every created file is in `~/cp-roles/classes-B/absys`.
 
 The JSON has 12 token entries, 105 outcome rows, six mode differences and 36 expressibility judgements. There are 51 behaviour records covering 102 physical stages; P01c contributes two readings of each of its three configuration stages, adding three classification rows. The log contains no additional named program variants. Every logged cost/storage record was compared, including stages without a classification difference. The selected stage outcome is the last attempt; earlier safety-limit attempts are preserved in `observations.attempt_history`.
 

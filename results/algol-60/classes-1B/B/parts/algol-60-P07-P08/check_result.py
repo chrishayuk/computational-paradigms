@@ -6,8 +6,8 @@ from pathlib import Path
 from collections import Counter
 import csv,json
 from fractions import Fraction
-B=Path('/Users/christopherhay/cp-roles/classifier-1B-B')
-O=Path('/Users/christopherhay/cp-roles/classes-1B-B/algol-60-P07-P08')
+B=Path('.')
+O=Path('results/algol-60/classes-1B/B/parts/algol-60-P07-P08')
 r=json.loads((O/'algol-60.json').read_text())
 texts=list(csv.reader((B/'results/algol-60/tokens/TEXTS-1B-P07-P08.tsv').open(),delimiter='\t'))[1:]
 assert set(r['tokens'])=={row[0] for row in texts}
