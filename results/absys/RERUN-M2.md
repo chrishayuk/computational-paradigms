@@ -29,7 +29,8 @@ and the record keeps standard output verbatim. Where a run now reaches
 the full budget, that trace is hundreds of megabytes. Records over 50 MB
 are committed gzip-compressed, as `.json.gz`, after they were validated.
 They are the three P03f cost reruns (400, 185 and 185 MB; 15 to 17 MB
-compressed).
+compressed), the three P05b cost reruns (344 to 602 MB; 58 to 96 MB
+compressed), and two P05b storage reruns (163 and 259 MB; 19 and 31 MB).
 
 ## What the reruns measured
 
@@ -38,7 +39,17 @@ compressed).
 | P03f | absys | cost, storage | safety limit at 60 s and 600 s, nothing measured | budget at 1,000,004 steps; 900 derivations; 2,416,542 term nodes (peak, sampled: the same) |
 | P03f | absys-wake-back | cost, storage | the same | budget at 1,000,004 steps; 900 derivations; 2,416,519 term nodes (peak the same) |
 | P03f | absys-depth-first | cost, storage | the same | budget at 1,000,004 steps; 19 derivations at the budget, peak 107 (sampled); 10,762 term nodes, peak 1,196,434 |
+| P05b | absys, absys-wake-back | cost, storage | safety limit at 60 s and 600 s in both stages, nothing measured (the behaviour run finished both stages, stage 2 on its rerun at 600 s) | budget in both stages. Stage 1: 1,288 derivations; 626,353 term nodes (absys), 502,575 (absys-wake-back). Stage 2: 731 derivations at the budget, peak 2,671 (sampled); 648,715 term nodes, peak 1,224,981 (absys); 401,032, peak 1,100,946 (absys-wake-back) |
+| P05b | absys-depth-first | cost, storage | the same (the behaviour run finished both stages within 60 s) | budget in both stages. Stage 1: 999 derivations, 501,502 term nodes. Stage 2: 4 derivations at the budget, peak 999 (sampled); 1,427 term nodes, peak 501,502 |
 | P04d, P04f | all three | cost, storage | safety limit, nothing measured | **error**: the system's process was killed when the container's memory (4 GB) ran out, within seconds, as in the behaviour run. Steps and store at the budget remain **unavailable** |
+
+**Not rerun: P05a.** Its behaviour runs, in every configuration, reach
+the safety limit at stages 2 and 3, at 60 s and again at 600 s, so the
+stop is the computation's, not the measurement's. Each P05a run takes
+about an hour, and a rerun would end the same way. Its cost and storage
+measurements at those stages stay **unavailable**. (Five of its six cost
+and storage records are also harness faults, `*.INVALID.json`, for the
+restart-cost reason in `results/BATCH-1B.md`.)
 
 For P04d, the store's growth was established separately, by diagnostic
 runs without instrumentation at fixed smaller budgets: peak resident

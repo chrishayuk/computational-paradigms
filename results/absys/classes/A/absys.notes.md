@@ -1,6 +1,6 @@
 # absys, batch 1A (P01-P03): classifier A's notes
 
-Classifier A, a Claude agent (Opus 5.5). Working copy: `/Users/christopherhay/cp-roles/classifier-A` at 628a324, not modified.
+Classifier A, a Claude agent (Opus 5.5). Working copy: `~/cp-roles/classifier-A` at 628a324, not modified.
 Output: `absys.json`, made by `build.py`. Checking scripts, all in this folder:
 
 - `summarise.py`: per-stage facts of a record;
@@ -108,8 +108,8 @@ P03f's run to the budget after its answer is an outcome, not a reformulation.
 
 ## Files read outside the brief's list
 
-- The brief itself, `/Users/christopherhay/cp-roles/briefs/classifier-A-absys.md`, which I was told to read.
-- My harness put the user's auto-memory index (`~/.claude/projects/…/memory/MEMORY.md`, two one-line entries about absys source papers and commit trailers) into my context without my asking. I did not open the files it points to.
+- The brief itself, `~/cp-roles/briefs/classifier-A-absys.md`, which I was told to read.
+- My harness put the user's auto-memory index (`~/.claude/projects/…/memory/MEMORY.md`, [redacted by tools/redact-transcripts.py: what the entries are about]) into my context without my asking. I did not open the files it points to.
 - Two large outputs of my own commands were saved by the tool to `~/.claude/projects/…/tool-results/` and read back from there. They contain only output from permitted files.
 
 I read nothing in `calibration/`, `reviews/`, `variants/`, `programs/absys/README.md`, `programs/AUDIT-1A.md`, other systems' folders, or the web. I did not read `harnesses/record.schema.json`; the records' fields were clear from `harnesses/README.md` section 9.

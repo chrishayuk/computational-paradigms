@@ -2,7 +2,7 @@
 """Make a role's transcript publishable, by fixed rules.
 
     tools/redact-transcripts.py claude SRC.jsonl OUT.jsonl
-    tools/redact-transcripts.py codex  SRC      OUT
+    tools/redact-transcripts.py codex  SRC      OUT   (also any text file)
 
 The agent's own work is kept whole: every prompt it was given, every
 message it wrote, every tool call and every tool result. Only context the
@@ -51,7 +51,7 @@ KINDS = [("MEMORY.md", "the owner's Claude memory index"),
          ("# Environment", "the environment description"),
          ("userEmail", "the owner's account context")]
 SCREEN = re.compile(r"googlemail|@gmail|absys-sources-access|Absys sources access|no-commit-trailers|No commit trailers|"
-                    r"source papers and commit trailers|mcp__|"
+                    r"source papers and commit trailers|Absys(?:\s|\\n)+sources|commit(?:\s|\\n)+trailers|mcp__|"
                     r"claude_ai_|creator-os|chuk-experiments|chuk-train|Google_Drive|Gmail|Canva|"
                     r"userEmail|christopherhay|gh[pousr]_[A-Za-z0-9]{30}|sk-ant-|AGE-SECRET-KEY-1[0-9A-Z]{50}")
 REM = re.compile(r"<system-reminder>(.*?)</system-reminder>", re.S)
@@ -59,7 +59,9 @@ counts = {}
 
 
 def reminder(m):
-    body = m.group(1).strip()
+    body = re.sub(r"^(?:\s|\\n)+", "", m.group(1)).strip()
+    if body.startswith("[redacted by tools/redact-transcripts.py:"):
+        return m.group(0)
     if any(body.startswith(k) or body[:200].find(k) == 0 for k in KEEP) and not SCREEN.search(body):
         return m.group(0)
     kind = next((k for p, k in KINDS if p in body), "other context injected by the tooling")
@@ -67,14 +69,23 @@ def reminder(m):
     return f"<system-reminder>[redacted by tools/redact-transcripts.py: {kind}]</system-reminder>"
 
 
-PARAPHRASE = "two one-line entries about absys source papers and commit trailers"
+# Each agent's own words for what the memory index's entries are about.
+# Words may be split by spaces, line breaks, or an escaped "\\n" in JSON.
+PARAPHRASES = ["two one-line entries about absys source papers and commit trailers",
+               "titles only: one on access to Absys sources, one on commit trailers",
+               "titles on access to Absys sources and on commit trailers",
+               "two titles, about Absys sources and commit trailers",
+               "two lines about commit trailers and Absys sources"]
+SEP = r"(?:\s|\\n)+"
+PARA = re.compile("|".join(SEP.join(re.escape(w) for w in p.split()) for p in PARAPHRASES))
 
 
 def clean(x):
     if isinstance(x, str):
-        if PARAPHRASE in x:
-            counts["an agent's paraphrase of the memory index entries"] = counts.get("an agent's paraphrase of the memory index entries", 0) + 1
-            x = x.replace(PARAPHRASE, "[redacted by tools/redact-transcripts.py: what the entries are about]")
+        n = len(PARA.findall(x))
+        if n:
+            counts["an agent's paraphrase of the memory index entries"] = counts.get("an agent's paraphrase of the memory index entries", 0) + n
+            x = PARA.sub("[redacted by tools/redact-transcripts.py: what the entries are about]", x)
         return REM.sub(reminder, x).replace(HOME_DASH, "-HOME-").replace(HOME, "~").replace(USER, "<owner>")
     if isinstance(x, list):
         return [clean(v) for v in x]
@@ -99,7 +110,7 @@ def main(kind, src, out):
             lines.append(json.dumps({"type": d["type"], "timestamp": d.get("timestamp"),
                                      "message": clean(d.get("message"))}, ensure_ascii=False))
     else:
-        lines = [clean(l.rstrip("\n")) for l in open(src, encoding="utf-8")]
+        lines = [clean(open(src, encoding="utf-8").read().rstrip("\n"))]
     text = "\n".join(lines) + "\n"
     left = sorted(set(SCREEN.findall(text)))
     if left:

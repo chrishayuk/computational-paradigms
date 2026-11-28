@@ -8,3 +8,10 @@ __pycache__/
 *.o
 # records over 50 MB are committed gzip-compressed, as .json.gz (results/absys/RERUN-M2.md)
 results/absys/*/P03/raw-rerun-m2/P03f.cost.*.json
+results/absys/absys/P05/raw-rerun-m2/P05b.storage.20261128T042013Z.json
+results/absys/absys/P05/raw-rerun-m2/P05b.cost.20261128T041949Z.json
+results/absys/absys-depth-first/P05/raw-rerun-m2/P05b.cost.20261128T041837Z.json
+results/absys/absys-wake-back/P05/raw-rerun-m2/P05b.cost.20261128T041909Z.json
+results/absys/absys-wake-back/P05/raw-rerun-m2/P05b.storage.20261128T041928Z.json
+results/absys/absys-wake-back/P05/raw/P05b.behaviour.20261128T020936Z.json
+results/absys/absys/P05/raw/P05b.behaviour.20261128T020349Z.json

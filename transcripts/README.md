@@ -82,3 +82,50 @@ each was screened for them.
 The bookkeeping count includes the entries kept as `queued_command`
 messages: 1 for Absys, 6 for SWI-Prolog, 1 for Python and 4 for ALGOL 60,
 all harness authors.
+
+## Batch 1B
+
+`batch-1B/`, by the same rules and the same script.
+
+| file | role | agent |
+|---|---|---|
+| `implementation-<system>.jsonl` | implementation authors, batch 1B (audit: `programs/AUDIT-1B.md`) | Claude |
+| `harness-absys.jsonl` | the Absys harness author, resumed for the measurement fix (`98baa62`). The file is the agent's whole transcript, so it begins with its batch 1A part, published in `batch-1A/` | Claude |
+| `classifier-A-<system>-<problems>.jsonl` | classifier A, one agent per system and range of problems | Claude |
+| `classifier-B-<system>-<problems>.jsonl` | classifier B (`codex exec --json`) | Codex |
+| `briefs/` | each role's brief, as rendered for it | |
+
+| transcript | bookkeeping entries dropped | paraphrase redacted |
+|---|---|---|
+| `implementation-absys.jsonl` | 60 | 2 |
+| `implementation-swi-prolog.jsonl` | 71 | 0 |
+| `implementation-python.jsonl` | 108 | 0 |
+| `implementation-algol-60.jsonl` | 103 | 0 |
+| `harness-absys.jsonl` | 118 | 0 |
+| `classifier-A-absys-P04-P06-P08.jsonl` | 66 | 0 |
+| `classifier-A-swi-prolog-P04.jsonl` | 49 | 0 |
+| `classifier-A-swi-prolog-P05-P08.jsonl` | 94 | 0 |
+| `classifier-A-python-P04-P06.jsonl` | 73 | 0 |
+| `classifier-A-python-P07.jsonl` | 58 | 0 |
+| `classifier-A-python-P08.jsonl` | 78 | 1 |
+| `classifier-A-algol-60-P04-P06.jsonl` | 76 | 0 |
+| `classifier-A-algol-60-P07-P08.jsonl` | 83 | 0 |
+| Codex logs and briefs | — | — |
+
+As in batch 1A, the Claude agents disclose that the memory index was put
+into their context (six of the thirteen). Those disclosures are kept.
+
+## Correction to the batch 1A redaction
+
+The batch 1A screen looked for one wording of what the memory index's
+entries are about. Agents used others, and two were missed: one in
+`batch-1A/implementation-absys.jsonl`, one in
+`batch-1A/classifier-A-python.jsonl`. The same agents had also written
+them into their notes, which were committed: `programs/absys/README.md`
+(twice, batches 1A and 1B), `results/absys/classes/A/absys.notes.md` and
+`results/python/classes/A/python.notes.md`, and, in batch 1B,
+`results/python/classes-1B/A/parts/python-P08/python.notes.md`. The
+script now lists every wording found and screens for the subject words
+themselves, and each of these files has been redacted with the same
+marker. Nothing else in them was changed. The earlier versions remain in
+the repository's history.

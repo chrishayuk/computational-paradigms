@@ -130,7 +130,7 @@ None of the repository's forbidden files were read. Directory listings
 showed the names `calibration/`, `reviews/`, `results/python/classes/` and
 `programs/python/README.md`; none was opened. The session's environment
 also put the user's auto-memory index (`~/.claude/projects/.../MEMORY.md`,
-two lines about commit trailers and Absys sources) into my context
+[redacted by tools/redact-transcripts.py: what the entries are about]) into my context
 unasked. I read nothing further from it, and it has no bearing on these
 classes. Large command outputs were saved by the tool under
 `~/.claude/projects/.../tool-results/`. Those files are my own outputs of

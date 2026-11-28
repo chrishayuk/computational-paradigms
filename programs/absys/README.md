@@ -183,7 +183,7 @@ succeeded. Read: `README.md`, `docs/decisions.md`, tutorial chapters 3, 4,
 Something outside the brief's list was in the author's context without
 being opened: at the start of the session, its environment supplied the
 two-line index of an auto-memory file under `~/.claude/projects/…`
-(titles only: one on access to Absys sources, one on commit trailers). The
+([redacted by tools/redact-transcripts.py: what the entries are about]). The
 files it points to were not opened. Nothing else outside the brief's list
 was read.
 
@@ -528,5 +528,5 @@ the brief's list and was not opened; rev and conc were taken from batch
 Something outside the brief's list was in the author's context without
 being opened: at the start of the session its environment supplied the
 index of an auto-memory file under `~/.claude/projects/…` (two lines:
-titles on access to Absys sources and on commit trailers). The files it
+[redacted by tools/redact-transcripts.py: what the entries are about]). The files it
 points to were not opened. Nothing else outside the list was read.

@@ -12,3 +12,9 @@ on	exit 0	4.6s
 2026-11-28T00:39:46Z	results/absys/absys/P04/raw/P04d.storage.20261127T230300Z.json	exit 0	9.2s
 2026-11-28T00:39:50Z	results/absys/absys/P04/raw/P04f.cost.20261127T231404Z.json	exit 0	4.0s
 2026-11-28T00:39:58Z	results/absys/absys/P04/raw/P04f.storage.20261127T232505Z.json	exit 0	7.8s
+2026-11-28T04:18:56Z	results/absys/absys-depth-first/P05/raw/P05b.cost.20261128T033310Z.json	exit 0	19.0s
+2026-11-28T04:19:08Z	results/absys/absys-depth-first/P05/raw/P05b.storage.20261128T035515Z.json	exit 0	12.0s
+2026-11-28T04:19:28Z	results/absys/absys-wake-back/P05/raw/P05b.cost.20261128T021340Z.json	exit 0	19.1s
+2026-11-28T04:19:49Z	results/absys/absys-wake-back/P05/raw/P05b.storage.20261128T023545Z.json	exit 0	20.4s
+2026-11-28T04:20:13Z	results/absys/absys/P05/raw/P05b.cost.20261128T020616Z.json	exit 0	23.4s
+2026-11-28T04:20:39Z	results/absys/absys/P05/raw/P05b.storage.20261128T022825Z.json	exit 0	26.2s

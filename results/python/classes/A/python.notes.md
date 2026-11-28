@@ -190,8 +190,7 @@ configurations, so they are classed once, under `core/`.
 - Outside the repository: the brief itself
   (`~/cp-roles/briefs/classifier-A-python.md`), which was my task. The agent
   environment also put an auto-memory index from `~/.claude/projects/...` into
-  my context at the start: two titles, about Absys sources and commit
-  trailers. I did not open it, and it has no bearing on this work. The tool
+  my context at the start: [redacted by tools/redact-transcripts.py: what the entries are about]. I did not open it, and it has no bearing on this work. The tool
   harness saved two of my own long command outputs under `~/.claude/...`
   (tool-results). I did not read them; I read the same files from the clone
   instead.
