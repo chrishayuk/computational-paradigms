@@ -29,7 +29,10 @@ def load(path):
     for e in json.load(open(path))["outcomes"]:
         if e.get("final_attempt") is False:
             continue
-        out[(e["configuration"], e["instance"], e["program"], e["stage"])].append(e)
+        prog = e["program"]
+        if prog.startswith(e["configuration"] + "/"):   # some give the program as <configuration>/<file>
+            prog = prog[len(e["configuration"]) + 1:]
+        out[(e["configuration"], e["instance"], prog, e["stage"])].append(e)
     return out
 
 def per_reading(e, ax):
@@ -42,6 +45,8 @@ def per_reading(e, ax):
         return {f"{x.split('(')[1].split()[0]}: {x.split('(')[0].strip().lower()}" for x in v.split(";")}
     if isinstance(v, dict):
         return {f"{k}: {norm(x)}" for k, x in v.items()}
+    if isinstance(v, str) and ": " in v and ax in ("semantic", "simplification"):   # "open: complete; closed: unsound"
+        return {x.strip().lower() for x in v.split(";")}
     if e.get("reading") and ax in ("semantic", "simplification"):
         return {f"{e['reading']}: {x}" for x in flat(norm(v))}
     return set(flat(norm(v)))
