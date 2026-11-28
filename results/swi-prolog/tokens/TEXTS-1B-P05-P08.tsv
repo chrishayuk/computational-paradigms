@@ -1,0 +1,49 @@
+text	also the text of
+constraints/P05a.pl	session/P05a.pl
+constraints/P05b.pl	session/P05b.pl
+constraints/P05c.pl	coroutines/P05c.pl plain/P05c.pl session/P05c.pl tabling/P05c.pl
+constraints/P06a.pl	coroutines/P06a.pl session/P06a.pl
+constraints/P06b.pl	coroutines/P06b.pl session/P06b.pl
+constraints/P06c.pl	coroutines/P06c.pl session/P06c.pl
+constraints/P06d.pl	coroutines/P06d.pl plain/P06d.pl session/P06d.pl
+constraints/P06e1.pl	coroutines/P06e1.pl plain/P06e1.pl session/P06e1.pl
+constraints/P06e2.pl	coroutines/P06e2.pl plain/P06e2.pl session/P06e2.pl
+constraints/P06e3.pl	coroutines/P06e3.pl plain/P06e3.pl session/P06e3.pl
+constraints/P07a.pl	session/P07a.pl
+constraints/P07b.pl	session/P07b.pl
+constraints/P07c.pl	session/P07c.pl
+constraints/P07d.pl	session/P07d.pl
+constraints/P07e.pl	session/P07e.pl
+constraints/P07f.pl	session/P07f.pl
+constraints/P07g.pl	session/P07g.pl
+constraints/P08a-unknown-fail.pl	coroutines/P08a-unknown-fail.pl plain/P08a-unknown-fail.pl session/P08a-unknown-fail.pl tabling/P08a-unknown-fail.pl
+constraints/P08a.pl	coroutines/P08a.pl plain/P08a.pl session/P08a.pl tabling/P08a.pl
+constraints/P08b-unknown-fail.pl	coroutines/P08b-unknown-fail.pl plain/P08b-unknown-fail.pl session/P08b-unknown-fail.pl tabling/P08b-unknown-fail.pl
+constraints/P08b.pl	coroutines/P08b.pl plain/P08b.pl session/P08b.pl tabling/P08b.pl
+constraints/P08c-unknown-fail.pl	coroutines/P08c-unknown-fail.pl plain/P08c-unknown-fail.pl session/P08c-unknown-fail.pl tabling/P08c-unknown-fail.pl
+constraints/P08c.pl	coroutines/P08c.pl plain/P08c.pl session/P08c.pl tabling/P08c.pl
+coroutines/P05a.pl	
+coroutines/P05b.pl	
+coroutines/P07a.pl	
+coroutines/P07b.pl	
+coroutines/P07c.pl	
+coroutines/P07d.pl	
+coroutines/P07e.pl	
+coroutines/P07f.pl	
+coroutines/P07g.pl	
+plain/P05a.pl	tabling/P05a.pl
+plain/P05b.pl	tabling/P05b.pl
+plain/P06a.pl	tabling/P06a.pl
+plain/P06b.pl	tabling/P06b.pl
+plain/P06c.pl	tabling/P06c.pl
+plain/P07a.pl	tabling/P07a.pl
+plain/P07b.pl	tabling/P07b.pl
+plain/P07c.pl	tabling/P07c.pl
+plain/P07d.pl	tabling/P07d.pl
+plain/P07e.pl	tabling/P07e.pl
+plain/P07f.pl	tabling/P07f.pl
+plain/P07g.pl	tabling/P07g.pl
+tabling/P06d.pl	
+tabling/P06e1.pl	
+tabling/P06e2.pl	
+tabling/P06e3.pl	
