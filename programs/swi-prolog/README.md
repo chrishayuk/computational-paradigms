@@ -1,7 +1,8 @@
-# SWI-Prolog programs, wave 1, batches 1A (P01–P03) and 1B (P04–P08)
+# SWI-Prolog programs, wave 1, batches 1A (P01–P03), 1B (P04–P08) and 1C (P09–P12)
 
 The sections up to "Batch 1B" are batch 1A's, unchanged. Batch 1B's are
-in "Batch 1B (P04–P08)" below.
+in "Batch 1B (P04–P08)" below, and batch 1C's in "Batch 1C (P09–P12)"
+after them.
 
 *Phase 5 (`PROTOCOL.md`, "Implementation"), against `spec-1.0.1` and the
 program contract in `harnesses/swi-prolog/README.md`. Every program here was
@@ -546,3 +547,321 @@ other files.
 - On the host, `python3` was run once with a here-document to list
   `harnesses/stages.json`'s top-level keys (reading the file, executing
   nothing of the study).
+
+---
+
+# Batch 1C (P09–P12)
+
+*Phase 5, against `spec-1.0.1` (repository at `1f291be`). Every program of
+this batch was fixed before any was run. None has been run: the only
+command run on them is the harness's `check`, which executes nothing.
+All 85 files pass it with no errors and no warnings.*
+
+## Author and provenance (1C)
+
+- **Author of every program:** `implementation-swi-prolog`, an agent (Claude
+  Opus 5.5, model id `claude-opus-5-5`), working from the public repository
+  only, with no context from earlier work.
+- **Precursor seen:** no. I had not seen the absys E01–E09 programs, the
+  `research/e07/` programs, the calibration programs, or any other program
+  for P09–P12. The only programs I read were this system's own earlier
+  programs (`plain/P03e.pl`, `tabling/P03e.pl`, `plain/P04a.pl`, the three
+  P05a texts, `plain/P06e1.pl`, and the three P07b texts) and five harness
+  qualification programs (`x02-commit.pl`, `x03-spawn.pl`, `x08-wait.pl`,
+  `x09-count.pl`, `x11-replace.pl`).
+- **Read:** `README.md`, `SPECIFICATION.md`, `METRICS.md`, `PROTOCOL.md`,
+  `AMENDMENTS.md`, `problems/README.md`, the problem files of P09–P12 and
+  of P03, P04 and P05 (for loop, rev, conc and pick),
+  `systems/swi-prolog/README.md` and `measurement.md`,
+  `harnesses/README.md`, `harnesses/stages.json` (P09–P12), and from
+  `harnesses/swi-prolog/`: `README.md`, `QUESTIONS.md`, `S-mechanisms.md`,
+  `S/session-wait.pl`, `check`, and the lines of `lib/harness.pl` and `run`
+  that handle `h_commitment/1` (found by grep). I opened no SWI-Prolog
+  documentation in the image; it is cited from memory, by section name.
+- **S mechanisms used:** none. *session* loads its wait-for-definition code
+  in every run; no program of this batch calls an undefined procedure or
+  `h_wait/0`, so it is loaded and not used.
+
+## Layout (1C)
+
+One file per configuration and sub-problem, at
+`programs/swi-prolog/<configuration>/<id>.pl`, with the contract of 1A.
+The exceptions:
+
+- **P09a**: one file, `P09a.pl`, serves both instances, `P09a.AB` and
+  `P09a.BA`. The spawn order is the harness's (`spawn_order`), and the
+  computations' text does not depend on it, as P07a's one file serves its
+  six orders.
+- **P09a, P09b** define `spawned/4` and `unknowns/2` for computations `'A'`
+  and `'B'`, and no `stage/3` or `query/2` (contract 2.1, 2.2; as
+  `x03-spawn.pl`).
+- **P12a–P12d**: one file per sub-problem serves its six instances (n = 8,
+  12, 16; all, any). n is read with `h_param(n, N)`; the answer mode is the
+  harness's cap. accept's facts depend on n, so the CONSTANTS block holds
+  them for each of the three n, as `accept_fact(N, S)` (ambiguity 6).
+
+## Shared texts (1C)
+
+Copies are byte for byte. **Bold** marks where a text is defined.
+
+| sub-problems | plain | tabling | coroutines | constraints | session |
+|---|---|---|---|---|---|
+| P09a | **M** | **M + table** | M | M | M |
+| P09b | **N** | N | N | N | N |
+| P09c, P09d | **O** | **O + table** | **O + freeze** | **O + freeze, clpfd** | O + freeze, clpfd |
+| P09e | **C** | C | **C + when** | **D** | D |
+| P10a, P10c | **Q** | Q | Q | Q | Q |
+| P10b | **R** | R | **R + freeze** | **R + clpfd** | R + clpfd |
+| P10d | **T** | T | **T + freeze** | **T + clpfd** | T + clpfd |
+| P11a, P11b | **U** | U | **U + freeze** | **U + clpfd** | U + clpfd |
+| P11c, P11d | **V** | V | **V + dif** | V + dif | V + dif |
+| P12a–P12d | **W** | **W + table** | W | W | W |
+
+- **M**: loop/1, conc/3 and rev/2 transcribed as clauses (as P03 and P04),
+  each computation one `spawned/4` clause. **M + table**:
+  `:- table loop/1, conc/3, rev/2.`
+- **N**: two unifications for A, one for B. No relation, so one text.
+- **O**: gen/2 (or genu/2) and sum3/2 as clauses, arithmetic by `is/2` and
+  comparison in the direction used. The producer runs to its end (or for
+  ever) before the consumer is called. **O + table**: gen (genu) and sum3
+  tabled. **O + freeze**: the same clauses, with each application of the
+  producer, the query's and the recursive one, wrapped in
+  `freeze(S, gen(K, S))`: the producer waits for demand. **O + freeze,
+  clpfd**: that, with `#=`, `#>`, `#=<` for the arithmetic.
+- **C, C + when, D**: the sum/3 and diff/3 texts of P07 (1B), x = y + k as
+  `sum(Y, K1, X)` and y = x − k as `diff(X, K2, Y)`; D is `X #= Y + K1,
+  Y #= X - K2`.
+- **Q**: named quantities as dynamic facts `b/1`, `d/1`; "q becomes e"
+  reads the old values, computes e by `is/2`, then `retractall/1` and
+  `assertz/1`. The query reads the current values.
+- **R**: Q's replacements for b; stage 1 asserts the standing relation as
+  a rule, `d_of(B, D) :- D is K * B`; the query reads b (left unknown while
+  b has none) and applies `d_of`. **R + freeze**: the rule's body is
+  `freeze(B, D is K * B)`. **R + clpfd**: `D #= K * B`.
+- **T**: information held in the database so that it can be withdrawn:
+  stage 1 asserts pick's facts, stage 2 asserts `held(Y, Y > K)`, stage 3
+  retracts it; the query is `pick(X), forall(held(X, R), call(R))`.
+  **T + freeze**: the held relation is `freeze(Y, Y > K)`. **T + clpfd**:
+  `Y #> K`.
+- **U**: pick by `member(pick(X), Cs)`, x ≥ k by `>=/2`, `emit(X)`, in the
+  problem's order. **U + freeze**: `freeze(X, X >= K)`. **U + clpfd**:
+  `X #>= K`.
+- **V**: pick and emit; x ≠ k by `\=/2`; the commit stage `( h_commitment(V)
+  -> committed_value(V, X) ; true )`, which on replay reads the verbatim
+  answer with `term_string/3` and calls it. **V + dif**: x ≠ k by `dif/2`.
+- **W**: choice/2 transcribed as clauses, `h_candidate` just before accept,
+  accept as `member(accept_fact(N, S), Cs)`. **W + table**:
+  `:- table choice/2.`
+
+## Per configuration and sub-problem (1C)
+
+Every file is the **primary** for its configuration and sub-problem. There
+are no named variants in this batch. I judged no sub-problem *not
+expressible* in any configuration; P10d (all five) I judge *expressible
+with reformulation*.
+
+### P09 (concurrent goals)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| all but tabling | P09a | text M | expressible. That the two computations cannot run side by side is the configuration's result (harness: `side_by_side: false`), not a reformulation | memberchk/2 |
+| tabling | P09a | M + table | expressible | `:- table`; memberchk/2 |
+| all five | P09b | text N | expressible | memberchk/2 |
+| plain | P09c, P09d | text O | expressible: a transcription in the presentation order. The consumer cannot act before the producer ends; P09d runs to the budget | memberchk/2 |
+| tabling | P09c, P09d | O + table | expressible | `:- table`; memberchk/2 |
+| coroutines | P09c, P09d | O + freeze | expressible. `freeze/2` is C; the definitions' cases and the conjunction's order are unchanged | freeze/2; memberchk/2 |
+| constraints, session | P09c, P09d | O + freeze, clpfd | expressible | freeze/2; library(clpfd); memberchk/2 |
+| plain, tabling | P09e | text C | expressible, under 1A's reading of rule 19 (the `nonvar/1` tests are R). With both places unknown, `is/2` raises an instantiation error | memberchk/2 |
+| coroutines | P09e | C + when | expressible (the same reading) | when/2; memberchk/2 |
+| constraints, session | P09e | text D | expressible: a direct transcription | library(clpfd); memberchk/2 |
+
+Idioms: as in P03 and P04 for loop, conc, rev; separate computations as
+the harness's `spawned/4` (contract 2.1, 2.2); `is/2` and comparison (ISO
+8.6, 8.7); a demand-driven producer by `freeze/2` on the sequence it
+produces (SWI-Prolog manual, "Coroutining"; the freeze of Prolog II,
+Colmerauer 1982; the lazy producers of IC-Prolog, Clark, McCabe and
+Gregory, "IC-PROLOG language features", 1982); clpfd (Triska 2012); the
+P07 relations for P09e.
+
+### P10 (state replacement)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| all five | P10a, P10c | text Q | expressible: replacement is native, by the core's assertz/retract, which the systems file names for replacing state. No time or version index. Earlier values are not kept | `:- dynamic` (rule 11: C, listed; it makes d/1 fail while d has no value in P10c), retractall/1, memberchk/2 |
+| plain, tabling | P10b | text R | expressible. The relation is applied whenever the query reads b; with b unknown (stage 1), `is/2` raises an instantiation error, so plain cannot hold the relation | `:- dynamic`, retractall/1, memberchk/2 |
+| coroutines | P10b | R + freeze | expressible; at stage 1 the relation is held as a freeze goal | freeze/2; as R |
+| constraints, session | P10b | R + clpfd | expressible; at stage 1 the relation is held by clpfd | library(clpfd); as R |
+| plain, tabling | P10d | text T | **expressible with reformulation**: a goal posed in a conjunction cannot be withdrawn, so stage 2's comparison is held as a fact and applied by the query, and pick's facts are asserted and queried. The `held/2` store and its application (`forall/2`, `call/1`) are code the problem does not give (R), and the comparison is moved from its stage to the query (a move) | `:- dynamic`, assertz/1, retract/1, forall/2, member/2, memberchk/2 |
+| coroutines | P10d | T + freeze | the same | freeze/2; as T |
+| constraints, session | P10d | T + clpfd | the same | library(clpfd); as T |
+
+Idioms: assertz/1 and retract/1 "for posing definitions and replacing
+state between stages" (the systems file; ISO 8.9); the harness's
+replacing example (`x11-replace.pl`: retract, assert, a query that reads
+the value); a standing relation as a rule over stored facts, a derived
+relation (Kowalski, *Logic for Problem Solving*, 1979; Gallaire and Minker,
+*Logic and Data Bases*, 1978); if-then-else for a value that may be absent
+(ISO 7.8.8).
+
+### P11 (irreversible effects)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| plain, tabling | P11a, P11b | text U | expressible, in the problem's order, with no deferral of emit | member/2, memberchk/2; emit/1 (H) |
+| coroutines | P11a, P11b | U + freeze | expressible | freeze/2; as U |
+| constraints, session | P11a, P11b | U + clpfd | expressible | library(clpfd); as U |
+| plain, tabling | P11c, P11d | text V | expressible. Commitment is the harness's answers(1) at the commit stage; on replay, x = v | member/2, memberchk/2, term_string/3; emit/1, h_commitment/1 (H) |
+| coroutines, constraints, session | P11c, P11d | V + dif | expressible | dif/2; as V |
+
+Idioms: pick as in P05 (member/2 over the stage's facts); emit/1 and
+h_commitment/1 (contract 2.3); reading the committed answer back with
+`term_string/3` and `variable_names`, as the harness's `x02-commit.pl`;
+`\=/2` (ISO 8.2.3), dif/2, freeze/2, clpfd `#>=` as in P05.
+
+### P12 (large alternative space)
+
+| config | sub-problems | program | expressibility (my view) | mechanisms beyond the core |
+|---|---|---|---|---|
+| plain, coroutines, constraints, session | P12a–P12d | text W | expressible: choice transcribed, searched depth-first by the configuration's own SLD resolution, accept after choice as written | member/2; h_param/2, h_candidate/0 (H) |
+| tabling | P12a–P12d | W + table | expressible; SLG evaluation of choice is tabling's own strategy | `:- table`; as W |
+
+Idioms: clauses in the order written and `;/2` in the order written (ISO
+7.5, 7.8.6); `>/2` and `is/2` for n > 0 and n − 1; a closed world of
+facts by member/2 over the stage's constants, as P05; `:- table`.
+
+## Choices made before any run (rule 4), and alternatives not written (1C)
+
+1. **Tabling tables the relations the problem defines** (as in 1A, 1B):
+   loop, conc, rev (P09a), gen and sum3 (P09c), genu and sum3 (P09d),
+   choice (P12). P09b, P09e, P10 and P11 define no relation to table (pick
+   and accept are facts, given as constants), so tabling uses the plain
+   text.
+2. **The producer in coroutines, constraints and session waits for
+   demand** (`freeze/2` at the producer's two call sites), in P09c as in
+   P09d, so that one text serves both and the consumer acts on s before
+   the producer has finished. Alternatives not written: the plain, eager
+   text in those configurations (its results would be plain's); a
+   data-driven consumer (sum3 waiting on s), which with the conjunction in
+   the order written would not run before an eager producer ends; and,
+   in session, the producer as an engine yielding elements (a changed
+   algorithm, with engines as the program's own scheduler). I wrapped the
+   call sites rather than writing a new wrapper predicate, so that the
+   definitions' cases are unchanged and no case is added.
+3. **P09a and P09b in coroutines, constraints and session** use the plain
+   text: nothing to delay or constrain. A program that ran A and B side
+   by side with engines inside one computation would be a hand-written
+   scheduler (S). It was not written.
+4. **P10's quantities are database facts**, in every configuration, since
+   a logic variable cannot take a second value. Global variables
+   (`b_setval/2`, `nb_setval/2`) are outside the core and were not used.
+   Incremental tabling (`:- table ... as incremental` over `:- dynamic ...
+   incremental`), which maintains a derived relation when facts change, was
+   not written for tabling. In a reposed configuration each stage runs in a
+   fresh process, where it would change nothing observable.
+5. **P10b's standing relation is applied when it is read** (a rule,
+   applied by the query), not pushed on every replacement (a trigger in
+   the replacing code). The replacing stages are the same text as P10a's.
+   In plain the relation is `is/2` in the direction used, d from b, with no
+   guard for b unknown, so stage 1 raises an error, as P02 and P05b do in
+   plain. A guard that applies the relation only when b has a value was
+   not written: it would report nothing at stage 1 rather than the
+   relation. In coroutines the relation waits by `freeze(B, ...)`, not by
+   P07's two-of-three `when/2`: only d from b is ever needed.
+6. **P10's replacement arithmetic is `is/2` in every configuration**,
+   constraints included: a replacing stage computes a new value from known
+   ones and is not a relation. Only P10b's standing relation is a clpfd
+   constraint in constraints and session.
+7. **P10d holds all its information in the database** (pick's facts too),
+   so that every stage is deterministic and the query searches. The
+   alternative, pick by `member/2` at stage 1 as in P05 with only the
+   comparison held, would re-assert stage 2's fact on every backtrack into
+   stage 1, since assertz is not undone. It was not written.
+8. **P11's commit stage adds nothing when first posed**: the selection is
+   the harness's answers(1). Its commitment cannot prune stage 1's
+   alternatives: a cut in `stage/3` is local to that clause, and the
+   stages are separate calls of one conjunction. So in P11d, when stage 3
+   contradicts x = v on replay, backtracking re-enters pick and emit runs
+   again. That is the configuration's behaviour, and I wrote nothing to
+   prevent it. Pruning with `prolog_cut_to/1` and a choicepoint taken at
+   stage 1 would anticipate the commit in stage 1's code (rule 5), and was
+   not written. In session the incremental computation does not receive
+   x = v (h_commitment/1 succeeds only on replay), so there the commit
+   stage holds nothing either.
+9. **No deferral of emit** in P11 (the problem: any deferral is control).
+   Collecting answers before emitting, or posting x ≥ k before pick in
+   constraints (a move), was not written.
+10. **P12 accept after choice**, as written. In coroutines, holding choice
+    until accept binds s (`freeze(S, choice(N, S))`), which the problem
+    names as a way to avoid search, was not written: it would make accept
+    generate s, a change of what each conjunct does, by control chosen for
+    this problem. coroutines, constraints and session therefore search as
+    plain does.
+11. **Counters**: P12 counts candidates with `h_candidate/0`, placed just
+    before accept(s). No program of this batch calls `h_count/1` or
+    `h_held/2`, as in 1A and 1B. P12's partial sequences held are left to
+    the harness's choicepoint count: counting them in the program would
+    need code that computes (a depth, or a record of backtracking), not
+    only counts.
+
+## Ambiguities, and the readings taken (1C)
+
+1. **gen's bound 5** (P09c) is part of gen's definition, not a stage
+   constant: `stages.json` writes only the start as `<k>`. It stays in the
+   clauses. If the verifier varies it, it is not in the block.
+2. **sum3's "for every sequence m"** is `_`, with the encoding carrying the
+   restriction, as 1A's ambiguity 1 for conc.
+3. **P09d1 in coroutines, constraints, session.** The demand-driven
+   producer ends the stage with total = 6, s = ⟨1, 2, 3⟩ ++ m and
+   genu(4, m) held as a freeze goal, state *suspended*. Under the finite
+   reading that held goal has no solution. Whether such an answer is
+   "total = 6 as a finished outcome" is for the classifiers; the program
+   was not shaped by it.
+4. **Named quantities with no value** (P10b's b at stage 1, P10c's d at
+   stage 1) are left as unbound unknowns in the query's answer, read with
+   an if-then-else. I read that if-then-else as part of representing a
+   quantity that has one value at a time, or none yet; it may be classed C
+   or R.
+5. **P10's constants** are tagged inside the entry with their stage
+   (`b_becomes(3, 7)`), because the stage's list holds every earlier
+   stage's entries and P10a's stages 1 and 3 have the same form. The tag is
+   a label, not a constant. "b becomes b + k" and "d becomes k · b" keep
+   their form; only k is a constant. P10d stage 3 brings no constant: it
+   identifies the relation to withdraw by stage 2's constant.
+6. **P12's accept facts** depend on n ("12" read as n), and the block
+   cannot. I wrote the facts literally for each n the problem poses (8, 12,
+   16), `accept_fact(N, S)`, and the program uses those of the instance's
+   n. A variant must give them per n in the same form. An n outside 8, 12,
+   16 has no facts, and accept then has no instances.
+7. **P11's commitment string.** `h_commitment/1` gives the verbatim answer,
+   which may end with a space or with `.` (contract S9). I rely on
+   `term_string/3` reading both. A residual goal in the answer would be
+   called too, which keeps it as information.
+8. **P09a's and P09b's unknowns** are given per computation (`'A'`, `'B'`),
+   with no `main`. P09e's unknowns are integers; in text C and C + when an
+   unknown is not typed, as in 1A's ambiguity 5.
+9. **`:- dynamic` in P10** is listed as C by rule 11 in every
+   configuration. In P10a it changes nothing on any input used; in P10b,
+   P10c and P10d it makes b/1, d/1 and held/2 fail while they have no
+   clauses, which the queries rely on.
+
+## check (1C)
+
+All 85 files of this batch (17 per configuration: P09a–e, P10a–d,
+P11a–d, P12a–d) were checked in their own configuration's folder, in the
+pinned image, with `harnesses/swi-prolog/check <configuration> <file>`.
+Every one reports `check: no errors`, with no warnings; the only other
+lines are notes of `dynamic`, `table` and `use_module(library(clpfd))`
+directives.
+
+## Commands run (1C)
+
+- `harnesses/swi-prolog/check`, in the pinned image: once on
+  `plain/P11d.pl`, then once on every file of this batch. Nothing else in
+  the image.
+- No program, interpreter or Prolog system was run on any program or
+  fragment.
+- On the host, `python3` was run with here-documents to print parts of
+  `harnesses/stages.json`, and to write and copy these files' text and
+  reflow their comments (scripts kept outside the repository). It read
+  and wrote files, and executed nothing of the study. One reflow script
+  looped and was stopped before it wrote anything.
