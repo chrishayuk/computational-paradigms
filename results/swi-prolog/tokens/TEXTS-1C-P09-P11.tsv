@@ -1,0 +1,33 @@
+text	also the text of
+constraints/P09a.pl	coroutines/P09a.pl plain/P09a.pl session/P09a.pl
+constraints/P09b.pl	coroutines/P09b.pl plain/P09b.pl session/P09b.pl tabling/P09b.pl
+constraints/P09c.pl	session/P09c.pl
+constraints/P09d.pl	session/P09d.pl
+constraints/P09e.pl	session/P09e.pl
+constraints/P10a.pl	coroutines/P10a.pl plain/P10a.pl session/P10a.pl tabling/P10a.pl
+constraints/P10b.pl	session/P10b.pl
+constraints/P10c.pl	coroutines/P10c.pl plain/P10c.pl session/P10c.pl tabling/P10c.pl
+constraints/P10d.pl	session/P10d.pl
+constraints/P11a.pl	session/P11a.pl
+constraints/P11b.pl	session/P11b.pl
+constraints/P11c.pl	coroutines/P11c.pl session/P11c.pl
+constraints/P11d.pl	coroutines/P11d.pl session/P11d.pl
+coroutines/P09c.pl	
+coroutines/P09d.pl	
+coroutines/P09e.pl	
+coroutines/P10b.pl	
+coroutines/P10d.pl	
+coroutines/P11a.pl	
+coroutines/P11b.pl	
+plain/P09c.pl	
+plain/P09d.pl	
+plain/P09e.pl	tabling/P09e.pl
+plain/P10b.pl	tabling/P10b.pl
+plain/P10d.pl	tabling/P10d.pl
+plain/P11a.pl	tabling/P11a.pl
+plain/P11b.pl	tabling/P11b.pl
+plain/P11c.pl	tabling/P11c.pl
+plain/P11d.pl	tabling/P11d.pl
+tabling/P09a.pl	
+tabling/P09c.pl	
+tabling/P09d.pl	

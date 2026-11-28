@@ -1,0 +1,9 @@
+text	also the text of
+constraints/P12a.pl	coroutines/P12a.pl plain/P12a.pl session/P12a.pl
+constraints/P12b.pl	coroutines/P12b.pl plain/P12b.pl session/P12b.pl
+constraints/P12c.pl	coroutines/P12c.pl plain/P12c.pl session/P12c.pl
+constraints/P12d.pl	coroutines/P12d.pl plain/P12d.pl session/P12d.pl
+tabling/P12a.pl	
+tabling/P12b.pl	
+tabling/P12c.pl	
+tabling/P12d.pl	
