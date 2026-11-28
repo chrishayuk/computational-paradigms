@@ -4,6 +4,9 @@ measurement the instrumentation could not make.
 
     tools/rerun-measurements.py SYSTEM LABEL PROBLEM...
 
+A PROBLEM may name one instance (P05b): then only that instance's records
+are rerun.
+
 Runs inside the image of the fixed measurement build (for Absys,
 cp-agent-systems:spec-1.0-m2, absys-measure 8a0eefd), from the repository
 root. For every cost or storage record under
@@ -25,11 +28,12 @@ if os.path.exists(f"results/{system}/rerun-m2-log.tsv"):
         f = l.rstrip("\n").split("\t")
         if len(f) > 2 and f[2] == "exit 0":
             done.add(f[1])
-for prob in problems:
+for arg in problems:
+    prob, inst = arg[:3], (arg if len(arg) > 3 else None)
     for rec in sorted(glob.glob(f"results/{system}/*/{prob}/raw/*.json")):
         d = json.load(open(rec))
         run = d["run"]
-        if run["mode"] not in ("cost", "storage") or rec in done:
+        if run["mode"] not in ("cost", "storage") or rec in done or (inst and run["instance"] != inst):
             continue
         hit = any(a.get("safety_limit", {}).get("hit") for s in d["stages"] for a in s["attempts"])
         if not hit:
