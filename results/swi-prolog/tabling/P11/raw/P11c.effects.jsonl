@@ -1,0 +1,5 @@
+{"seq": 1, "entry": "1", "run_id": "P11c.behaviour.20261128T051040Z", "stage": 1, "attempt": 1, "during_replay_of": null, "log": "classification"}
+{"seq": 2, "entry": "1", "run_id": "P11c.behaviour.20261128T051040Z", "stage": 2, "attempt": 1, "during_replay_of": 1, "log": "classification"}
+{"seq": 3, "entry": "2", "run_id": "P11c.behaviour.20261128T051040Z", "stage": 2, "attempt": 1, "during_replay_of": 1, "log": "classification"}
+{"seq": 4, "entry": "1", "run_id": "P11c.behaviour.20261128T051040Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "classification"}
+{"seq": 5, "entry": "2", "run_id": "P11c.behaviour.20261128T051040Z", "stage": 3, "attempt": 1, "during_replay_of": 1, "log": "classification"}

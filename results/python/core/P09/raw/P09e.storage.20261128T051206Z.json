@@ -1,0 +1,216 @@
+{
+ "record_format": "cp-raw-record/1",
+ "run": {
+  "run_id": "P09e.storage.20261128T051206Z",
+  "spec_tag": "spec-1.0",
+  "system": "python",
+  "configuration": "core",
+  "problem": "P09",
+  "subproblem": "P09e",
+  "instance": "P09e",
+  "parameters": {},
+  "mode": "storage",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/python/core/P09e.py",
+   "sha256": "6550e6aec11fa9100b3c42a7b35598435a2d6736da80f4eafdbc78858eccd5d6",
+   "repo_commit": "0f7de92a57f05178a695b9b7c4a937d3ff7b729a"
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": null,
+   "image": null,
+   "binary": "/usr/local/bin/python3",
+   "version_output": "Python 3.13.7 (main, Sep 30 2025, 10:24:57) [GCC 14.2.0]\n",
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/python/run",
+   "commit": "0f7de92a57f05178a695b9b7c4a937d3ff7b729a",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/python/run",
+   "core",
+   "P09",
+   "P09e",
+   "storage",
+   "programs/python/core/P09e.py",
+   "results/python/core/P09/raw/"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-28T05:12:06.299466Z",
+  "ended_utc": "2026-11-28T05:12:06.504765Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "The harness runtime (harnesses/python/runtime.py) runs inside the program's interpreter process. It imports marshal, os, sys, threading and time (and, through threading, _collections, _weakrefset, itertools, types and warnings) before the program starts, so a program's own import of these runs no module code and counts no instructions.",
+   "The program's module is exec'd under three runtime frames, not run as the interpreter's own script: about three fewer frames are available before RecursionError at the default recursion limit (1000, not changed).",
+   "Two runtime threads (control and watcher) run beside the program in every configuration; neither runs program code (except finalizers run by gc.collect() in storage mode) and neither is counted.",
+   "The budget counter is the step meter (sys.monitoring INSTRUCTION) in every mode, behaviour included (harnesses/QUESTIONS.md Q17); a computation is stopped at its budget by pausing its thread inside the monitoring callback, never by an exception.",
+   "The instructions of the program's own H call sites are counted as the program's; those executed inside the H calls are not, nor those of the traceback module while it formats an uncaught exception (instruction events are switched off then if no other computation is running; a thread the program started that is still running is not counted meanwhile).",
+   "Spawned computations run in threads the runtime starts; in core and extended one after another, in stdlib-concurrency side by side.",
+   "The end of a stage is read from the program (its next cp.stage(), its end, its budget, its error) or from quiescence: every running computation alive and executing no instruction for 0.5 s, sampled by wall clock (README.md, section 6).",
+   "Answers are what the program passes to cp.answer(), which prints them as print() would; answers after the cap are printed but not collected.",
+   "observe() reads only the objects the program registered, rendered by an iterative equivalent of repr(); the states alternatives pending and suspended come only from registrations.",
+   "In storage mode tracemalloc (1 frame, started before the program) traces the runtime's own allocations during the stage with the program's, and gc.collect() runs at each stage boundary.",
+   "Standard output and standard error are files; the runtime flushes sys.stdout and sys.stderr at every stage boundary.",
+   "P13's CPU time and maximum resident set size are the whole interpreter process's (resource.getrusage(RUSAGE_SELF)), runtime threads included.",
+   "A thread a program starts with _thread.start_new_thread directly, not through threading.Thread, is not attributed to any computation and its instructions are not counted.",
+   "The program is compiled from its text with the constants block's lines emptied, and its constants are given to it as s.constants with their stage (README.md 3.1); tracebacks show that text, not the file on disk."
+  ],
+  "environment": {
+   "PYTHONHASHSEED": "0"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "suspended"
+        ],
+        "determined": true,
+        "basis": "the program's registered waiting structures hold 2 entries (relations waiting for values: 2)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 287,
+        "restated": 287,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": 287,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's registered pending structures (cp.pending)",
+        "at_boundary": 0,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "none",
+        "by_type": {
+         "suspended generator frames (gc, process-wide)": 0
+        },
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's registered waiting structures (cp.suspended)",
+        "at_boundary": 2,
+        "peak": null,
+        "items": {
+         "relations waiting for values": 2,
+         "suspended coroutines (gc, process-wide)": 0,
+         "suspended async generators (gc, process-wide)": 0
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "main.bindings = {}\nmain.suspended[relations waiting for values] = [('+', ('y', 1, 'x')), ('-', ('x', 1, 'y'))]\nmain.held[relations found not to hold] = []\n",
+      "method": "the harness runtime, in the program's process, at the end of the stage (or at the budget), reads the objects registered with cp.bindings, cp.pending, cp.suspended, cp.held and cp.problem_alternatives, and renders each with an iterative equivalent of repr(); bindings are split from the registered bindings mapping",
+      "taken_on": "this-run",
+      "bindings": {}
+     },
+     "print": "",
+     "store": {
+      "quantities": {
+       "traced_bytes": {
+        "boundary": 17782,
+        "peak": {
+         "value": 17782,
+         "kind": "exact"
+        },
+        "unit": "bytes"
+       },
+       "traced_bytes_at_window_start": {
+        "boundary": 0,
+        "peak": null,
+        "unit": "bytes"
+       },
+       "allocated_blocks": {
+        "boundary": 34490,
+        "peak": null,
+        "unit": "blocks"
+       },
+       "allocated_blocks_at_window_start": {
+        "boundary": 34414,
+        "peak": null,
+        "unit": "blocks"
+       }
+      },
+      "source": "tracemalloc.get_traced_memory() (1 frame, started before the program; peak reset at the start of the stage's budget window, or from the program's start for a stage posed into a new process) and sys.getallocatedblocks(), read at the end of the stage before anything else"
+     },
+     "wall_time_s": 0.195138,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "",
+     "stderr": "",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "stage 1's constants were delivered with it: X_ADDEND, Y_SUBTRAHEND"
+     ]
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": []
+}

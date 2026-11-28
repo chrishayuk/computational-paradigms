@@ -1,0 +1,12 @@
+2026-11-28T05:35:27Z	x1	P10a	P10a.a60	behaviour	exit 0	2.1s
+2026-11-28T05:35:31Z	x1	P10a	P10a.a60	cost	exit 0	3.5s
+2026-11-28T05:35:34Z	x1	P10a	P10a.a60	storage	exit 0	2.7s
+2026-11-28T05:35:37Z	x1	P10b	P10b.a60	behaviour	exit 0	2.9s
+2026-11-28T05:35:41Z	x1	P10b	P10b.a60	cost	exit 0	4.8s
+2026-11-28T05:35:45Z	x1	P10b	P10b.a60	storage	exit 0	3.6s
+2026-11-28T05:35:48Z	x1	P10c	P10c.a60	behaviour	exit 0	2.8s
+2026-11-28T05:35:53Z	x1	P10c	P10c.a60	cost	exit 0	4.6s
+2026-11-28T05:35:56Z	x1	P10c	P10c.a60	storage	exit 0	3.5s
+2026-11-28T05:35:59Z	x1	P10d	P10d.a60	behaviour	exit 0	2.6s
+2026-11-28T05:36:04Z	x1	P10d	P10d.a60	cost	exit 0	5.6s
+2026-11-28T05:36:07Z	x1	P10d	P10d.a60	storage	exit 0	2.9s

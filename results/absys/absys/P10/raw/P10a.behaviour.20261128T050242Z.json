@@ -1,0 +1,422 @@
+{
+ "record_format": "cp-raw-record/1",
+ "made_up": false,
+ "run": {
+  "run_id": "P10a.behaviour.20261128T050242Z",
+  "spec_tag": "spec-1.0",
+  "system": "absys",
+  "configuration": "absys",
+  "problem": "P10",
+  "subproblem": "P10a",
+  "instance": "P10a",
+  "parameters": {},
+  "mode": "behaviour",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/absys/absys/P10a.ab1",
+   "sha256": "5a36a451dbde9f63c9577d5764dfef68db26c6612ff03aa8e35e301438c6e638",
+   "repo_commit": "0f7de92a57f05178a695b9b7c4a937d3ff7b729a"
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": "8a0eefd401cc2e82af9efe445a98763d830bc233",
+   "image": null,
+   "binary": "/usr/local/bin/absys-measure",
+   "version_output": null,
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/absys/run",
+   "commit": "0f7de92a57f05178a695b9b7c4a937d3ff7b729a",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/absys/run",
+   "absys",
+   "P10",
+   "P10a",
+   "behaviour",
+   "programs/absys/absys/P10a.ab1",
+   "results/absys/absys/P10/raw/"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "step",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-28T05:02:42.058Z",
+  "ended_utc": "2026-11-28T05:02:42.261Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "behaviour runs use the instrumented build absys-measure (branch measure; its commit is in system_build.commit) with --full and without --measure, not the baseline absys (efd5203), so that every list and derivation is printed in full (systems/absys/README.md, Output); --full changes only the printer",
+   "in behaviour runs the harness writes each section of the program to `absys-measure repl` on standard input, line by line as the program file has it, and after each section a `.help` line, whose fixed reply marks where the system's output for the section ends; a section that ends inside an unfinished assertion makes the repl read `.help` as its continuation and report a syntax error",
+   "the state is read with the repl's own commands `?` and `? NAME` after a stage (and after each spawned computation's section); they read the state and change nothing",
+   "instance parameters that a program declares (% PARAMETERS) are given to the system as assertions `NAME = VALUE` written by the harness in the program's notation, before the prelude",
+   "a program written in PART sections has part order[k-1] fed at stage k, as the instance's order names it",
+   "spawn(): Absys has one computation per session; a spawned computation's section is accepted into it, after the previous one has run to its end or its budget (side_by_side false), and that computation's answers and state are read right after its section",
+   "the budget is the system's own, --steps, which counts per assertion: a stage of several assertions can take more than the problem's budget in all before the system reports budget",
+   "cost and storage runs read steps and store from --measure, which reports them only for a whole text: each stage k of such a run is a new process on the text of the prelude and stages 1 to k, so those records show reposed stages, with the steps of stages 1 to k-1 as restart cost; the incremental behaviour run does not pay it",
+   "the restart cost of a reposed stage in a behaviour run (after an error or a safety-limit stop) is measured on a separate run of the replayed text with `absys-measure json`, which reports the steps of each assertion without sampling the store",
+   "in P11 runs (and in cost runs with the default budget) the system's trace is switched on (`.trace`, --trace), to read when tout performs an output; printing the trace changes nothing the machine does",
+   "answers(cap) takes the first cap derivations of the system's printed state, in the system's order; every derivation is in observe.raw",
+   "the constants block is never given to the system: the harness replaces each constant's name, in the text of the section that uses it, by its value, when that section is given"
+  ],
+  "environment": {}
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "  derivation #0 (hibernating)\n    b = [10&bt1]\n    bv1 = 10\n    bt1  uninstantiated\n"
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "no derivation is still elaborating, none prints a suspended process, and no error was reported",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "step",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": null,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": null,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "derivation",
+        "at_boundary": 1,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "all-live",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "suspended processes the system prints (waiting on an uninstantiated variable), summed over derivations",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {
+         "susp_equations": 0,
+         "susp_applications": 0,
+         "susp_relations": 0,
+         "susp_negations": 0
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "1 derivation:\n  derivation #0 (hibernating)\n    b = [10&bt1]\n    bv1 = 10\n    bt1  uninstantiated\n#0: b = [10&bt1]\n",
+      "method": "the repl's `?` (every derivation: its status, bindings, suspended processes, outputs), then `? NAME` for each unknown of the sub-problem written as a plain identifier (b), read at the end of the stage",
+      "taken_on": "this-run",
+      "bindings": {
+       "b": "#0: b = [10&bt1]\n"
+      }
+     },
+     "print": "1 derivation:\n  derivation #0 (hibernating)\n    b = [10&bt1]\n    bv1 = 10\n    bt1  uninstantiated\n",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.025,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "Type assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n  derivation #0 (hibernating)\n    b = [10&bt1]\n    bv1 = 10\n    bt1  uninstantiated\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n1 derivation:\n  derivation #0 (hibernating)\n    b = [10&bt1]\n    bv1 = 10\n    bt1  uninstantiated\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n#0: b = [10&bt1]\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": []
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "  derivation #0 (hibernating)\n    b = [10;15&bt2]\n    bv1 = 10\n    bt1 = [15&bt2]\n    bv2 = 15\n    bt2  uninstantiated\n"
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "no derivation is still elaborating, none prints a suspended process, and no error was reported",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "step",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": null,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": null,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "derivation",
+        "at_boundary": 1,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "all-live",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "suspended processes the system prints (waiting on an uninstantiated variable), summed over derivations",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {
+         "susp_equations": 0,
+         "susp_applications": 0,
+         "susp_relations": 0,
+         "susp_negations": 0
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "1 derivation:\n  derivation #0 (hibernating)\n    b = [10;15&bt2]\n    bv1 = 10\n    bt1 = [15&bt2]\n    bv2 = 15\n    bt2  uninstantiated\n#0: b = [10;15&bt2]\n",
+      "method": "the repl's `?` (every derivation: its status, bindings, suspended processes, outputs), then `? NAME` for each unknown of the sub-problem written as a plain identifier (b), read at the end of the stage",
+      "taken_on": "this-run",
+      "bindings": {
+       "b": "#0: b = [10;15&bt2]\n"
+      }
+     },
+     "print": "1 derivation:\n  derivation #0 (hibernating)\n    b = [10;15&bt2]\n    bv1 = 10\n    bt1 = [15&bt2]\n    bv2 = 15\n    bt2  uninstantiated\n",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.001,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "  derivation #0 (hibernating)\n    b = [10;15&bt2]\n    bv1 = 10\n    bt1 = [15&bt2]\n    bv2 = 15\n    bt2  uninstantiated\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n1 derivation:\n  derivation #0 (hibernating)\n    b = [10;15&bt2]\n    bv1 = 10\n    bt1 = [15&bt2]\n    bv2 = 15\n    bt2  uninstantiated\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n#0: b = [10;15&bt2]\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": []
+    }
+   ]
+  },
+  {
+   "stage": 3,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 20,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "  derivation #0 (hibernating)\n    b = [10;15;7&bt3]\n    bv1 = 10\n    bt1 = [15;7&bt3]\n    bv2 = 15\n    bt2 = [7&bt3]\n    bv3 = 7\n    bt3  uninstantiated\n"
+          }
+         ],
+         "ended_by": "exhausted",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "no derivation is still elaborating, none prints a suspended process, and no error was reported",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "step",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": null,
+        "restated": null,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": null,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "derivation",
+        "at_boundary": 1,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "all-live",
+        "by_type": null,
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "suspended processes the system prints (waiting on an uninstantiated variable), summed over derivations",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {
+         "susp_equations": 0,
+         "susp_applications": 0,
+         "susp_relations": 0,
+         "susp_negations": 0
+        }
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "1 derivation:\n  derivation #0 (hibernating)\n    b = [10;15;7&bt3]\n    bv1 = 10\n    bt1 = [15;7&bt3]\n    bv2 = 15\n    bt2 = [7&bt3]\n    bv3 = 7\n    bt3  uninstantiated\n#0: b = [10;15;7&bt3]\n",
+      "method": "the repl's `?` (every derivation: its status, bindings, suspended processes, outputs), then `? NAME` for each unknown of the sub-problem written as a plain identifier (b), read at the end of the stage",
+      "taken_on": "this-run",
+      "bindings": {
+       "b": "#0: b = [10;15;7&bt3]\n"
+      }
+     },
+     "print": "1 derivation:\n  derivation #0 (hibernating)\n    b = [10;15;7&bt3]\n    bv1 = 10\n    bt1 = [15;7&bt3]\n    bv2 = 15\n    bt2 = [7&bt3]\n    bv3 = 7\n    bt3  uninstantiated\n",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.0,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "  derivation #0 (hibernating)\n    b = [10;15;7&bt3]\n    bv1 = 10\n    bt1 = [15;7&bt3]\n    bv2 = 15\n    bt2 = [7&bt3]\n    bv3 = 7\n    bt3  uninstantiated\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n1 derivation:\n  derivation #0 (hibernating)\n    b = [10;15;7&bt3]\n    bv1 = 10\n    bt1 = [15;7&bt3]\n    bv2 = 15\n    bt2 = [7&bt3]\n    bv3 = 7\n    bt3  uninstantiated\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n#0: b = [10;15;7&bt3]\nType assertions; each is added to every derivation, and whatever can be done is done.\n  ?          the state: every derivation, what it knows and what is suspended\n  ? X        the value of X in each derivation\n  .env       the state, with each derivation's whole binding environment\n  .trace     show every step from now on (.trace off to stop)\n  .help      this\n  .quit      end (or end of input)\n",
+     "stderr": "",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": []
+    }
+   ]
+  }
+ ],
+ "effects": null,
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": [
+  "system: absys-measure 8a0eefd401cc2e82af9efe445a98763d830bc233 (branch measure, on the pinned main efd52032934d34359c8bb828d80819d18997be52); absys has no version option, so version_output is null and the commits are from /opt/src/COMMITS",
+  "notation: 1969 (from the program's file name, as the system decides it); flags of the configuration: none"
+ ]
+}

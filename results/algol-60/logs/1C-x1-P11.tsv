@@ -1,0 +1,12 @@
+2026-11-28T05:35:37Z	x1	P11a	P11a.a60	behaviour	exit 0	0.6s
+2026-11-28T05:35:39Z	x1	P11a	P11a.a60	cost	exit 0	1.7s
+2026-11-28T05:35:40Z	x1	P11a	P11a.a60	storage	exit 0	1.3s
+2026-11-28T05:35:40Z	x1	P11b	P11b.a60	behaviour	exit 0	0.5s
+2026-11-28T05:35:42Z	x1	P11b	P11b.a60	cost	exit 0	1.7s
+2026-11-28T05:35:43Z	x1	P11b	P11b.a60	storage	exit 0	1.3s
+2026-11-28T05:35:46Z	x1	P11c	P11c.a60	behaviour	exit 0	2.2s
+2026-11-28T05:35:50Z	x1	P11c	P11c.a60	cost	exit 0	4.2s
+2026-11-28T05:35:53Z	x1	P11c	P11c.a60	storage	exit 0	3.0s
+2026-11-28T05:35:55Z	x1	P11d	P11d.a60	behaviour	exit 0	2.2s
+2026-11-28T05:35:59Z	x1	P11d	P11d.a60	cost	exit 0	3.7s
+2026-11-28T05:36:02Z	x1	P11d	P11d.a60	storage	exit 0	3.0s

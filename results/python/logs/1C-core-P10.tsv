@@ -1,0 +1,12 @@
+2026-11-28T05:12:08Z	core	P10a	P10a.py	behaviour	exit 0	0.9s
+2026-11-28T05:12:09Z	core	P10a	P10a.py	cost	exit 0	0.8s
+2026-11-28T05:12:10Z	core	P10a	P10a.py	storage	exit 0	0.9s
+2026-11-28T05:12:11Z	core	P10b	P10b.py	behaviour	exit 0	0.8s
+2026-11-28T05:12:12Z	core	P10b	P10b.py	cost	exit 0	0.8s
+2026-11-28T05:12:13Z	core	P10b	P10b.py	storage	exit 0	0.9s
+2026-11-28T05:12:13Z	core	P10c	P10c.py	behaviour	exit 0	0.8s
+2026-11-28T05:12:14Z	core	P10c	P10c.py	cost	exit 0	0.8s
+2026-11-28T05:12:15Z	core	P10c	P10c.py	storage	exit 0	0.9s
+2026-11-28T05:12:16Z	core	P10d	P10d.py	behaviour	exit 0	0.8s
+2026-11-28T05:12:17Z	core	P10d	P10d.py	cost	exit 0	0.8s
+2026-11-28T05:12:18Z	core	P10d	P10d.py	storage	exit 0	0.9s

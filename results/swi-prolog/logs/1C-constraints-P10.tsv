@@ -1,0 +1,12 @@
+2026-11-28T05:03:10Z	constraints	P10a	P10a.pl	behaviour	exit 0	1.3s
+2026-11-28T05:03:11Z	constraints	P10a	P10a.pl	cost	exit 0	1.2s
+2026-11-28T05:03:12Z	constraints	P10a	P10a.pl	storage	exit 0	1.2s
+2026-11-28T05:03:14Z	constraints	P10b	P10b.pl	behaviour	exit 0	2.0s
+2026-11-28T05:03:16Z	constraints	P10b	P10b.pl	cost	exit 0	2.0s
+2026-11-28T05:03:18Z	constraints	P10b	P10b.pl	storage	exit 0	2.1s
+2026-11-28T05:03:20Z	constraints	P10c	P10c.pl	behaviour	exit 0	1.5s
+2026-11-28T05:03:21Z	constraints	P10c	P10c.pl	cost	exit 0	1.5s
+2026-11-28T05:03:23Z	constraints	P10c	P10c.pl	storage	exit 0	1.5s
+2026-11-28T05:03:24Z	constraints	P10d	P10d.pl	behaviour	exit 0	1.6s
+2026-11-28T05:03:26Z	constraints	P10d	P10d.pl	cost	exit 0	1.6s
+2026-11-28T05:03:28Z	constraints	P10d	P10d.pl	storage	exit 0	1.6s

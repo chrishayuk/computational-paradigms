@@ -1,0 +1,12 @@
+2026-11-28T05:05:08Z	coroutines	P10a	P10a.pl	behaviour	exit 0	1.2s
+2026-11-28T05:05:09Z	coroutines	P10a	P10a.pl	cost	exit 0	1.0s
+2026-11-28T05:05:10Z	coroutines	P10a	P10a.pl	storage	exit 0	1.0s
+2026-11-28T05:05:11Z	coroutines	P10b	P10b.pl	behaviour	exit 0	1.2s
+2026-11-28T05:05:12Z	coroutines	P10b	P10b.pl	cost	exit 0	1.2s
+2026-11-28T05:05:13Z	coroutines	P10b	P10b.pl	storage	exit 0	1.2s
+2026-11-28T05:05:14Z	coroutines	P10c	P10c.pl	behaviour	exit 0	1.2s
+2026-11-28T05:05:16Z	coroutines	P10c	P10c.pl	cost	exit 0	1.2s
+2026-11-28T05:05:17Z	coroutines	P10c	P10c.pl	storage	exit 0	1.2s
+2026-11-28T05:05:18Z	coroutines	P10d	P10d.pl	behaviour	exit 0	1.0s
+2026-11-28T05:05:19Z	coroutines	P10d	P10d.pl	cost	exit 0	1.0s
+2026-11-28T05:05:20Z	coroutines	P10d	P10d.pl	storage	exit 0	1.0s

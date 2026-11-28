@@ -1,0 +1,15 @@
+2026-11-28T05:02:36Z	absys-depth-first	P10a	P10a.ab1	behaviour	exit 0	0.5s
+2026-11-28T05:02:37Z	absys-depth-first	P10a	P10a.ab1	cost	exit 0	0.5s
+2026-11-28T05:02:37Z	absys-depth-first	P10a	P10a.ab1	storage	exit 0	0.5s
+2026-11-28T05:02:38Z	absys-depth-first	P10b	P10b.ab1	behaviour	exit 0	0.5s
+2026-11-28T05:02:39Z	absys-depth-first	P10b	P10b.ab1	cost	exit 0	0.6s
+2026-11-28T05:02:39Z	absys-depth-first	P10b	P10b.ab1	storage	exit 0	0.6s
+2026-11-28T05:02:40Z	absys-depth-first	P10c	P10c.ab1	behaviour	exit 0	0.5s
+2026-11-28T05:02:40Z	absys-depth-first	P10c	P10c.ab1	cost	exit 0	0.6s
+2026-11-28T05:02:41Z	absys-depth-first	P10c	P10c.ab1	storage	exit 0	0.6s
+2026-11-28T06:24:20Z	absys-depth-first	P10d	P10d.ab1	behaviour	exit 3	4899.3s
+	the record did not validate; kept as results/absys/absys-depth-first/P10/raw/P10d.behaviour.20261128T050241Z.INVALID.json
+2026-11-28T07:32:08Z	absys-depth-first	P10d	P10d.ab1	cost	exit 3	4067.8s
+	the record did not validate; kept as results/absys/absys-depth-first/P10/raw/P10d.cost.20261128T062420Z.INVALID.json
+2026-11-28T08:26:59Z	absys-depth-first	P10d	P10d.ab1	storage	exit 3	3290.9s
+	the record did not validate; kept as results/absys/absys-depth-first/P10/raw/P10d.storage.20261128T073208Z.INVALID.json

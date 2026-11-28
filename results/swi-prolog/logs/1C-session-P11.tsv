@@ -1,0 +1,12 @@
+2026-11-28T05:08:55Z	session	P11a	P11a.pl	behaviour	exit 0	1.0s
+2026-11-28T05:08:56Z	session	P11a	P11a.pl	cost	exit 0	0.8s
+2026-11-28T05:08:57Z	session	P11a	P11a.pl	storage	exit 0	0.8s
+2026-11-28T05:08:58Z	session	P11b	P11b.pl	behaviour	exit 0	0.8s
+2026-11-28T05:08:59Z	session	P11b	P11b.pl	cost	exit 0	0.8s
+2026-11-28T05:08:59Z	session	P11b	P11b.pl	storage	exit 0	0.8s
+2026-11-28T05:09:01Z	session	P11c	P11c.pl	behaviour	exit 0	1.3s
+2026-11-28T05:09:02Z	session	P11c	P11c.pl	cost	exit 0	1.2s
+2026-11-28T05:09:03Z	session	P11c	P11c.pl	storage	exit 0	1.2s
+2026-11-28T05:09:04Z	session	P11d	P11d.pl	behaviour	exit 0	1.2s
+2026-11-28T05:09:05Z	session	P11d	P11d.pl	cost	exit 0	1.2s
+2026-11-28T05:09:07Z	session	P11d	P11d.pl	storage	exit 0	1.2s

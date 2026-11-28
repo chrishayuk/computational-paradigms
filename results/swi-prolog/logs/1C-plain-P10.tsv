@@ -1,0 +1,12 @@
+2026-11-28T05:06:57Z	plain	P10a	P10a.pl	behaviour	exit 0	1.3s
+2026-11-28T05:06:58Z	plain	P10a	P10a.pl	cost	exit 0	1.1s
+2026-11-28T05:06:59Z	plain	P10a	P10a.pl	storage	exit 0	1.2s
+2026-11-28T05:07:00Z	plain	P10b	P10b.pl	behaviour	exit 0	1.4s
+2026-11-28T05:07:02Z	plain	P10b	P10b.pl	cost	exit 0	1.5s
+2026-11-28T05:07:03Z	plain	P10b	P10b.pl	storage	exit 0	1.5s
+2026-11-28T05:07:05Z	plain	P10c	P10c.pl	behaviour	exit 0	1.4s
+2026-11-28T05:07:06Z	plain	P10c	P10c.pl	cost	exit 0	1.3s
+2026-11-28T05:07:07Z	plain	P10c	P10c.pl	storage	exit 0	1.3s
+2026-11-28T05:07:08Z	plain	P10d	P10d.pl	behaviour	exit 0	1.1s
+2026-11-28T05:07:09Z	plain	P10d	P10d.pl	cost	exit 0	1.1s
+2026-11-28T05:07:11Z	plain	P10d	P10d.pl	storage	exit 0	1.1s

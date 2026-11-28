@@ -1,0 +1,12 @@
+2026-11-28T05:30:33Z	report	P11a	P11a.alg	behaviour	exit 0	0.6s
+2026-11-28T05:30:35Z	report	P11a	P11a.alg	cost	exit 0	1.6s
+2026-11-28T05:30:36Z	report	P11a	P11a.alg	storage	exit 0	1.3s
+2026-11-28T05:30:36Z	report	P11b	P11b.alg	behaviour	exit 0	0.5s
+2026-11-28T05:30:38Z	report	P11b	P11b.alg	cost	exit 0	1.6s
+2026-11-28T05:30:39Z	report	P11b	P11b.alg	storage	exit 0	1.3s
+2026-11-28T05:30:41Z	report	P11c	P11c.alg	behaviour	exit 0	2.1s
+2026-11-28T05:30:45Z	report	P11c	P11c.alg	cost	exit 0	3.8s
+2026-11-28T05:30:48Z	report	P11c	P11c.alg	storage	exit 0	2.8s
+2026-11-28T05:30:50Z	report	P11d	P11d.alg	behaviour	exit 0	2.1s
+2026-11-28T05:30:54Z	report	P11d	P11d.alg	cost	exit 0	3.6s
+2026-11-28T05:30:56Z	report	P11d	P11d.alg	storage	exit 0	2.8s

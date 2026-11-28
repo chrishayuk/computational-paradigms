@@ -1,0 +1,15 @@
+2026-11-28T05:02:37Z	absys-wake-back	P10a	P10a.ab1	behaviour	exit 0	0.5s
+2026-11-28T05:02:38Z	absys-wake-back	P10a	P10a.ab1	cost	exit 0	0.6s
+2026-11-28T05:02:38Z	absys-wake-back	P10a	P10a.ab1	storage	exit 0	0.5s
+2026-11-28T05:02:39Z	absys-wake-back	P10b	P10b.ab1	behaviour	exit 0	0.5s
+2026-11-28T05:02:39Z	absys-wake-back	P10b	P10b.ab1	cost	exit 0	0.6s
+2026-11-28T05:02:40Z	absys-wake-back	P10b	P10b.ab1	storage	exit 0	0.6s
+2026-11-28T05:02:40Z	absys-wake-back	P10c	P10c.ab1	behaviour	exit 0	0.5s
+2026-11-28T05:02:41Z	absys-wake-back	P10c	P10c.ab1	cost	exit 0	0.6s
+2026-11-28T05:02:41Z	absys-wake-back	P10c	P10c.ab1	storage	exit 0	0.6s
+2026-11-28T05:50:43Z	absys-wake-back	P10d	P10d.ab1	behaviour	exit 3	2881.9s
+	the record did not validate; kept as results/absys/absys-wake-back/P10/raw/P10d.behaviour.20261128T050242Z.INVALID.json
+2026-11-28T06:36:25Z	absys-wake-back	P10d	P10d.ab1	cost	exit 3	2741.4s
+	the record did not validate; kept as results/absys/absys-wake-back/P10/raw/P10d.cost.20261128T055044Z.INVALID.json
+2026-11-28T07:21:29Z	absys-wake-back	P10d	P10d.ab1	storage	exit 3	2704.5s
+	the record did not validate; kept as results/absys/absys-wake-back/P10/raw/P10d.storage.20261128T063625Z.INVALID.json

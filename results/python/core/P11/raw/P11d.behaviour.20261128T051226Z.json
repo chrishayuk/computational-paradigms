@@ -1,0 +1,437 @@
+{
+ "record_format": "cp-raw-record/1",
+ "run": {
+  "run_id": "P11d.behaviour.20261128T051226Z",
+  "spec_tag": "spec-1.0",
+  "system": "python",
+  "configuration": "core",
+  "problem": "P11",
+  "subproblem": "P11d",
+  "instance": "P11d",
+  "parameters": {},
+  "mode": "behaviour",
+  "purpose": "primary",
+  "program": {
+   "path": "programs/python/core/P11d.py",
+   "sha256": "dbdccec9edbdb4e260892ebdd74aee7b1e5e6c5ca9305ad7fea024abcf6f4f0d",
+   "repo_commit": "0f7de92a57f05178a695b9b7c4a937d3ff7b729a"
+  },
+  "constants": {
+   "how": "block",
+   "input_path": null,
+   "input_sha256": null,
+   "variant": null
+  },
+  "system_build": {
+   "commit": null,
+   "image": null,
+   "binary": "/usr/local/bin/python3",
+   "version_output": "Python 3.13.7 (main, Sep 30 2025, 10:24:57) [GCC 14.2.0]\n",
+   "instrumented": true
+  },
+  "harness": {
+   "path": "harnesses/python/run",
+   "commit": "0f7de92a57f05178a695b9b7c4a937d3ff7b729a",
+   "dirty": false
+  },
+  "command": [
+   "harnesses/python/run",
+   "core",
+   "P11",
+   "P11d",
+   "behaviour",
+   "programs/python/core/P11d.py",
+   "results/python/core/P11/raw/"
+  ],
+  "posing": "incremental",
+  "limits": {
+   "budget_steps": 1000000,
+   "step_unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+   "safety_limit_s": 60,
+   "rerun_limit_s": 600
+  },
+  "started_utc": "2026-11-28T05:12:26.869502Z",
+  "ended_utc": "2026-11-28T05:12:27.000511Z",
+  "complete": true,
+  "incomplete_reason": null,
+  "confounds": [
+   "The harness runtime (harnesses/python/runtime.py) runs inside the program's interpreter process. It imports marshal, os, sys, threading and time (and, through threading, _collections, _weakrefset, itertools, types and warnings) before the program starts, so a program's own import of these runs no module code and counts no instructions.",
+   "The program's module is exec'd under three runtime frames, not run as the interpreter's own script: about three fewer frames are available before RecursionError at the default recursion limit (1000, not changed).",
+   "Two runtime threads (control and watcher) run beside the program in every configuration; neither runs program code (except finalizers run by gc.collect() in storage mode) and neither is counted.",
+   "The budget counter is the step meter (sys.monitoring INSTRUCTION) in every mode, behaviour included (harnesses/QUESTIONS.md Q17); a computation is stopped at its budget by pausing its thread inside the monitoring callback, never by an exception.",
+   "The instructions of the program's own H call sites are counted as the program's; those executed inside the H calls are not, nor those of the traceback module while it formats an uncaught exception (instruction events are switched off then if no other computation is running; a thread the program started that is still running is not counted meanwhile).",
+   "Spawned computations run in threads the runtime starts; in core and extended one after another, in stdlib-concurrency side by side.",
+   "The end of a stage is read from the program (its next cp.stage(), its end, its budget, its error) or from quiescence: every running computation alive and executing no instruction for 0.5 s, sampled by wall clock (README.md, section 6).",
+   "Answers are what the program passes to cp.answer(), which prints them as print() would; answers after the cap are printed but not collected.",
+   "observe() reads only the objects the program registered, rendered by an iterative equivalent of repr(); the states alternatives pending and suspended come only from registrations.",
+   "In storage mode tracemalloc (1 frame, started before the program) traces the runtime's own allocations during the stage with the program's, and gc.collect() runs at each stage boundary.",
+   "Standard output and standard error are files; the runtime flushes sys.stdout and sys.stderr at every stage boundary.",
+   "P13's CPU time and maximum resident set size are the whole interpreter process's (resource.getrusage(RUSAGE_SELF)), runtime threads included.",
+   "A thread a program starts with _thread.start_new_thread directly, not through threading.Thread, is not attributed to any computation and its instructions are not counted.",
+   "The program is compiled from its text with the constants block's lines emptied, and its constants are given to it as s.constants with their stage (README.md 3.1); tracebacks show that text, not the file on disk."
+  ],
+  "environment": {
+   "PYTHONHASHSEED": "0"
+  }
+ },
+ "stages": [
+  {
+   "stage": 1,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "fresh",
+      "reason": "first-stage",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 1,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "x = 1",
+           "steps_at": 145
+          }
+         ],
+         "ended_by": "cap",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "alternatives pending"
+        ],
+        "determined": true,
+        "basis": "the program's registered pending structures hold 1 entries (the conjunction's untried alternatives: 1)",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 151,
+        "restated": 151,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": 145,
+        "between_answers": [],
+        "to_end": 151,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's registered pending structures (cp.pending)",
+        "at_boundary": 1,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "unknown",
+        "by_type": {
+         "the conjunction's untried alternatives": 1
+        },
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's registered waiting structures (cp.suspended)",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {}
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "main.bindings = {'x': 1}\nmain.pending[the conjunction's untried alternatives] = [<generator object conjunction at 0x7ffffed965a0>]\nmain.held[relations on x added after stage 1] = []\n",
+      "method": "the harness runtime, in the program's process, at the end of the stage (or at the budget), reads the objects registered with cp.bindings, cp.pending, cp.suspended, cp.held and cp.problem_alternatives, and renders each with an iterative equivalent of repr(); bindings are split from the registered bindings mapping",
+      "taken_on": "this-run",
+      "bindings": {
+       "x": "1"
+      }
+     },
+     "print": "x = 1\n",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.119193,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "x = 1\n",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [
+      {
+       "seq": 1,
+       "entry": "1",
+       "run_id": "P11d.behaviour.20261128T051226Z",
+       "stage": 1,
+       "attempt": 1,
+       "during_replay_of": null,
+       "log": "classification"
+      }
+     ],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "stage 1's constants were delivered with it: PICK_FACTS"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 1,
+         "answers": [
+          {
+           "index": 1,
+           "verbatim": "x = 1",
+           "steps_at": 125
+          }
+         ],
+         "ended_by": "cap",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "the computation asked for the next stage (cp.stage()), and its registered pending and waiting structures are empty",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 131,
+        "restated": 282,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": 125,
+        "between_answers": [],
+        "to_end": 131,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's registered pending structures (cp.pending)",
+        "at_boundary": 0,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "unknown",
+        "by_type": {
+         "the conjunction's untried alternatives": 0
+        },
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's registered waiting structures (cp.suspended)",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {}
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "main.bindings = {'x': 1}\nmain.pending[the conjunction's untried alternatives] = []\nmain.held[relations on x added after stage 1] = [('=', 1)]\n",
+      "method": "the harness runtime, in the program's process, at the end of the stage (or at the budget), reads the objects registered with cp.bindings, cp.pending, cp.suspended, cp.held and cp.problem_alternatives, and renders each with an iterative equivalent of repr(); bindings are split from the registered bindings mapping",
+      "taken_on": "this-run",
+      "bindings": {
+       "x": "1"
+      }
+     },
+     "print": "x = 1\n",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.00096,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "x = 1\n",
+     "stderr": "",
+     "exit": {
+      "status": null,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": []
+    }
+   ]
+  },
+  {
+   "stage": 3,
+   "attempts": [
+    {
+     "attempt": 1,
+     "limit_s": 60,
+     "posed": {
+      "how": "incremental",
+      "reason": "configuration",
+      "replayed": [],
+      "replayed_commitments": [],
+      "continued_after_budget": false,
+      "instance_parameters_passed": {}
+     },
+     "computations": [
+      {
+       "id": "main",
+       "spawned": false,
+       "spawn_index": null,
+       "side_by_side": null,
+       "queries": [
+        {
+         "id": "q",
+         "cap": 1,
+         "answers": [],
+         "ended_by": "no-enumeration",
+         "collected_on": "this-run"
+        }
+       ],
+       "execution_state": {
+        "states": [
+         "finished"
+        ],
+        "determined": true,
+        "basis": "the computation asked for the next stage (cp.stage()), and its registered pending and waiting structures are empty",
+        "error_verbatim": null
+       },
+       "steps": {
+        "unit": "CPython 3.13.7 bytecode instruction (sys.monitoring INSTRUCTION events)",
+        "budget": 1000000,
+        "budget_exhausted": false,
+        "stage": 134,
+        "restated": 416,
+        "restart_cost": null,
+        "restart_cost_method": null,
+        "restart_cost_source": null,
+        "to_first_answer": null,
+        "between_answers": [],
+        "to_end": 134,
+        "repeated_work": null
+       },
+       "alternatives": {
+        "unit": "entries of the program's registered pending structures (cp.pending)",
+        "at_boundary": 0,
+        "at_budget": null,
+        "peak": null,
+        "held_as": "unknown",
+        "by_type": {
+         "the conjunction's untried alternatives": 0
+        },
+        "problem_defined": null
+       },
+       "suspended": {
+        "unit": "entries of the program's registered waiting structures (cp.suspended)",
+        "at_boundary": 0,
+        "peak": null,
+        "items": {}
+       },
+       "problem_operations": null
+      }
+     ],
+     "observe": {
+      "raw": "main.bindings = {}\nmain.pending[the conjunction's untried alternatives] = []\nmain.held[relations on x added after stage 1] = [('=', 1), ('!=', 1)]\n",
+      "method": "the harness runtime, in the program's process, at the end of the stage (or at the budget), reads the objects registered with cp.bindings, cp.pending, cp.suspended, cp.held and cp.problem_alternatives, and renders each with an iterative equivalent of repr(); bindings are split from the registered bindings mapping",
+      "taken_on": "this-run",
+      "bindings": {}
+     },
+     "print": "no solution: no value of x satisfies the information so far\n",
+     "store": {
+      "quantities": {},
+      "source": null
+     },
+     "wall_time_s": 0.000951,
+     "cpu_time_s": null,
+     "max_rss_kb": null,
+     "stdout": "no solution: no value of x satisfies the information so far\n",
+     "stderr": "",
+     "exit": {
+      "status": 0,
+      "signal": null
+     },
+     "safety_limit": {
+      "hit": false,
+      "action": "none",
+      "how_stopped": null
+     },
+     "effects": [],
+     "manual_actions": [],
+     "separate_run": null,
+     "notes": [
+      "stage 3's constants were delivered with it: DIFFERENT_FROM"
+     ]
+    }
+   ]
+  }
+ ],
+ "effects": {
+  "log_path": "results/python/core/P11/raw/P11d.effects.jsonl",
+  "observation_log_path": "results/python/core/P11/raw/P11d.effects-observation.jsonl",
+  "entries_before_run": 0,
+  "log_after_run": [
+   {
+    "seq": 1,
+    "entry": "1",
+    "run_id": "P11d.behaviour.20261128T051226Z",
+    "stage": 1,
+    "attempt": 1,
+    "during_replay_of": null,
+    "log": "classification"
+   }
+  ]
+ },
+ "manual_actions": [],
+ "harness_faults": [],
+ "notes": []
+}
