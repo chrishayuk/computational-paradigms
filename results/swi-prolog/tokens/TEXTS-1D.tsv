@@ -1,0 +1,49 @@
+text	also the text of
+constraints/P13a.pl	coroutines/P13a.pl plain/P13a.pl session/P13a.pl
+constraints/P13b.pl	coroutines/P13b.pl plain/P13b.pl session/P13b.pl
+constraints/P13c.pl	coroutines/P13c.pl plain/P13c.pl session/P13c.pl
+constraints/P13d.pl	coroutines/P13d.pl plain/P13d.pl session/P13d.pl
+constraints/P13e.pl	coroutines/P13e.pl plain/P13e.pl session/P13e.pl tabling/P13e.pl
+constraints/P13f.pl	coroutines/P13f.pl plain/P13f.pl session/P13f.pl tabling/P13f.pl
+constraints/P14a.pl	coroutines/P14a.pl plain/P14a.pl session/P14a.pl tabling/P14a.pl
+constraints/P14b.pl	coroutines/P14b.pl plain/P14b.pl session/P14b.pl
+constraints/P14c.pl	coroutines/P14c.pl plain/P14c.pl session/P14c.pl tabling/P14c.pl
+constraints/P15a1.pl	coroutines/P15a1.pl session/P15a1.pl
+constraints/P15a2.pl	coroutines/P15a2.pl session/P15a2.pl
+constraints/P15b.pl	coroutines/P15b.pl session/P15b.pl
+constraints/P15b2.pl	coroutines/P15b2.pl session/P15b2.pl
+constraints/P15c-once.pl	coroutines/P15c-once.pl plain/P15c-once.pl session/P15c-once.pl
+constraints/P15c.pl	coroutines/P15c.pl plain/P15c.pl session/P15c.pl
+constraints/P15d.pl	coroutines/P15d.pl plain/P15d.pl session/P15d.pl tabling/P15d.pl
+constraints/P16a.pl	session/P16a.pl
+constraints/P16b.pl	session/P16b.pl
+constraints/P16c.pl	session/P16c.pl
+constraints/P16d.pl	session/P16d.pl
+constraints/P16d2.pl	session/P16d2.pl
+coroutines/P16a.pl	
+coroutines/P16b.pl	
+coroutines/P16c.pl	
+coroutines/P16d.pl	
+coroutines/P16d2.pl	
+plain/P15a1.pl	
+plain/P15a2.pl	
+plain/P15b.pl	
+plain/P15b2.pl	
+plain/P16a.pl	tabling/P16a.pl
+plain/P16b.pl	tabling/P16b.pl
+plain/P16c.pl	tabling/P16c.pl
+plain/P16d.pl	tabling/P16d.pl
+plain/P16d2.pl	tabling/P16d2.pl
+session/P14a-engine.pl	
+session/P14c-engine.pl	
+tabling/P13a.pl	
+tabling/P13b.pl	
+tabling/P13c.pl	
+tabling/P13d.pl	
+tabling/P14b.pl	
+tabling/P15a1.pl	
+tabling/P15a2.pl	
+tabling/P15b.pl	
+tabling/P15b2.pl	
+tabling/P15c-once.pl	
+tabling/P15c.pl	
