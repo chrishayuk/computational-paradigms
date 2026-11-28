@@ -8,7 +8,8 @@ Runs inside the system's pinned image, from the repository root:
 For each configuration of SYSTEM that has a folder under programs/SYSTEM/,
 each instance of each PROBLEM in harnesses/stages.json, and each mode the
 configuration allows, it finds the program (programs/SYSTEM/CONFIG/<instance
-id> or <sub-problem id>, with the system's extension), and calls
+id>, or a dot-prefix of it such as P12a.n8 for P12a.n8.all, or <sub-problem
+id>, with the system's extension), and calls
 
     harnesses/SYSTEM/run CONFIG PROBLEM INSTANCE MODE PROGRAM results/SYSTEM/CONFIG/PROBLEM/raw/
 
@@ -65,7 +66,12 @@ def main():
             for sp in p["subproblems"]:
                 for inst in sp["instances"]:
                     progs = []
-                    for stem in (inst["id"], sp["id"]):
+                    # the instance id, then each shorter dot-prefix of it (P12a.n8 for
+                    # P12a.n8.all: one file serving both answer modes; batch 1C),
+                    # then the sub-problem id
+                    parts = inst["id"].split(".")
+                    stems = [".".join(parts[:k]) for k in range(len(parts), 0, -1)] + [sp["id"]]
+                    for stem in dict.fromkeys(stems):
                         hit = [f for f in files if os.path.splitext(f)[0] == stem and os.path.splitext(f)[1] in EXT[system]]
                         if hit:
                             progs.append(hit[0]); break
