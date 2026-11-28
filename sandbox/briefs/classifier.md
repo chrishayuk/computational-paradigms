@@ -1,7 +1,7 @@
 # Brief: classifier for SYSTEM, __BATCH__ (__PROBLEMRANGE__)
 
 You are one of two independent classifiers (`PROTOCOL.md`, "Roles") for
-SYSTEM in batch 1A of wave 1. The other classifier is of a different
+SYSTEM in __BATCH__ of wave 1, problems __PROBLEMLIST__. The other classifier is of a different
 origin, and you must not look for, or read, its classes. You did not
 write any of the programs. You are working in CLONE, a clone of the public
 repository at commit COMMIT. Do not modify any file in it. Write only to
@@ -19,7 +19,7 @@ OUT.
   and `harnesses/SYSTEMDIR/` in full (the contract, and the S mechanisms
   listed at phase 4);
 - the programs, `programs/SYSTEMDIR/<configuration>/`, except the author's
-  notes (`programs/SYSTEMDIR/README.md` and `programs/AUDIT-1A.md`);
+  notes (`programs/SYSTEMDIR/README.md` and the audits `programs/AUDIT-*.md`);
 - the raw run records of these problems,
   `results/SYSTEMDIR/<configuration>/<problem>/raw/`, the labelled
   measurement reruns beside them (`raw-rerun-m2/`, where there are any),
