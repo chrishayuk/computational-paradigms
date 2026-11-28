@@ -1,7 +1,7 @@
-# Python programs, wave 1, batches 1A (P01-P03), 1B (P04-P08) and 1C (P09-P12)
+# Python programs, wave 1, batches 1A (P01-P03), 1B (P04-P08), 1C (P09-P12) and 1D (P13-P16)
 
-Batches 1B and 1C are in their own sections, after batch 1A's ("Batch 1B
-(P04-P08)", "Batch 1C (P09-P12)").
+Batches 1B, 1C and 1D are in their own sections, after batch 1A's ("Batch 1B
+(P04-P08)", "Batch 1C (P09-P12)", "Batch 1D (P13-P16)").
 
 ## Batch 1A (P01-P03)
 
@@ -779,3 +779,331 @@ keeps. P11's emitted entries are the values of x, rendered by `str()`
   P09d, P11b, P11d and P12b-d from their sibling texts), `cp` (the shared
   texts) and shell loops that print literal tuples; checked only with
   `harnesses/python/check`, which reported no errors for all 51.
+
+## Batch 1D (P13-P16)
+
+*Written by `implementation-python`, an agent (Claude Opus 5.5,
+`claude-opus-5-5`), on 2026-11-28, at `spec-1.0.1` (commit `1cf7c13`), from
+the problem files by the rules of `PROTOCOL.md`, "Writing a program",
+against `harnesses/python/README.md`. The author had seen no precursor
+program (the absys experiments E01-E09) and no other author's program for
+these problems; the only earlier programs it read are this folder's own
+batch-1A to 1C programs. Every program below is the **primary** program of
+its configuration and sub-problem, chosen and fixed before any program was
+run. None has been run: the only thing executed on them was
+`harnesses/python/check`, which reported no errors for all 60 files. No
+named variant was written, and no sub-problem was judged not expressible.*
+
+Layout as for the earlier batches: `programs/python/<configuration>/<sub-problem>.py`,
+every file `# CP-POSING: incremental`, with its `PROVENANCE` block. One
+program serves every instance of its sub-problem: n, and P16's arrival
+order, come from `s.params["n"]` and `s.params["order"]`. Every file has one
+constants block tagged by stage, except P16d2, which has none
+(`constants.how = "none"`; `stages.json` gives it no placeholder).
+
+### Shared texts
+
+- **core, stdlib-concurrency and extended share one text** for **P13e and
+  P13f** (native): Python's own idiom for building and summing or reversing
+  a sequence is its built-ins (`list(range(...))`, `sum`, a slice with step
+  -1); none of extended's S mechanisms or stdlib-concurrency's modules has
+  anything to add (`METRICS.md`, rule 18).
+- **core and stdlib-concurrency share one text** for:
+  - **P13a-P13d**: determinate functions over known inputs; nothing waits;
+  - **P15a1, P15a2**: a query whose inputs are all known when it is posed;
+  - **P16a, P16c, P16d, P16d2**: one computation, nothing run side by side.
+    I did not use batch 1A's thread per relation here: at n = 10⁴ that is
+    10⁴ to 2·10⁴ threads, every binding waking all of them (`notify_all`);
+    see ambiguity 14.
+- **core and extended share one text** for **P15d**: holder and queue are
+  named quantities replaced by assignment, as in P10, and none of S's
+  mechanisms replaces a value (batch 1C, "Shared texts").
+- **Their own text in each configuration**: P14a-c, P15b, P15b2, P15c and
+  P16b; and extended's P13a-d, P15a1, P15a2, P16a, c, d, d2, which use S.
+- **Within a configuration**, the sub-problems of one problem share
+  everything but their stage dispatch, constants block and description:
+  P13a-d (each with only the relations it uses), P14a/P14c (P14c has stages
+  6 and 7 as well) and P14b, P15a1/P15a2, P15b/P15b2 (the arguments of merge
+  swapped), P16a/c/d/d2 (and P16b, with its contributors).
+
+### Per configuration and sub-problem
+
+All 60 programs: **primary**; author `implementation-python` (an agent,
+Claude Opus 5.5); precursor seen: none. Each file's `PROVENANCE` block cites
+its idioms; they are collected after each table.
+
+#### core
+
+| sub-problem | expressibility (as I see it) | how | S |
+|---|---|---|---|
+| P13a | expressible | range as a function, forwards, by its cases in order, over cons cells (`(h, t)`, `()`), so that the tail is taken in constant time. Recursive: at the default recursion limit (1000) expected `RecursionError` (*error*) from n ≈ 10³, the result the problem names | none |
+| P13b | expressible | range and sum, each a function, forwards; sum's conjuncts in order (sum(t, j), then k = h + j). Expected `RecursionError` from n ≈ 10³ | none |
+| P13c | expressible | range, rev and conc, forwards, as batch 1A's P03e transcribes rev and conc, over cons cells. Quadratic; expected `RecursionError` from n ≈ 10³ | none |
+| P13d | expressible | range, revacc and racc, forwards. racc's last call is a call (Python has no tail-call elimination): expected `RecursionError` from n ≈ 10³ | none |
+| P13e | expressible (native) | `list(range(START, n + 1))`, held in `xs` until the answer, summed by `sum` (built-ins in place of the relations: rule 9, listed) | none |
+| P13f | expressible (native) | the same list, reversed into a new one by `xs[::-1]` | none |
+| P14a | expressible | the counter as a process holding its count (the problem allows it: P): the program itself, receiving each stage's message as it arrives; `run(message)` applies run's case for it (case 2, INC; case 3, READ(r), r = the count). r₁ reported from stage 3 on | none |
+| P14b | expressible | the same `run`, applied to each message of the sequence in its order; after the last, case 1 (⟨⟩) | none |
+| P14c | expressible | P14a's text with stages 6 and 7; the program goes on receiving after any stage | none |
+| P15a1 | expressible | merge forwards as a generator of its interleavings, by its four cases in order, depth first (case 3 before case 4); one taken with `next`, the generator left suspended (registered as pending). Expected ⟨1,2,3,4⟩ | none |
+| P15a2 | expressible | the same generator, every solution reported, in the order ⟨1,2,3,4⟩, ⟨1,3,2,4⟩, ⟨1,3,4,2⟩, ⟨3,1,2,4⟩, ⟨3,1,4,2⟩, ⟨3,4,1,2⟩ | none |
+| P15b | expressible with reformulation | the stream reading with streams whose rest is delayed (`(head, function giving the rest)`, `()`): tuples are finite. zeros is `(0, zeros)`; merge gives one interleaving as a stream, its head by the first case that applies in the definition's order, its rest the delayed merge of the case's body; position forwards. With z first, case 3 applies at every element, so merge takes from z for ever and position recurses once per element: expected `RecursionError` (*error*), i never bound, none reported | none |
+| P15b2 | expressible with reformulation | the same text, merge(⟨9⟩, z, m): case 3 takes 9 first; i = 1 answered | none |
+| P15c | expressible | grant as a generator of its two facts, in order; one taken with `next` (g = 'a), the generator left suspended (registered as pending); nothing asks it again | none |
+| P15d | expressible | holder and queue entries of a dict, each stage one replacement by the problem's cases (request, release); B's waiting is its entry in the queue, and stage 3's replacement makes it the holder. A release by one who is not the holder is outside the definition: recorded, "no solution" printed | none |
+| P16a | expressible with reformulation | each relation examined when it arrives by its evaluator (`succ`: b from a, a from b, or a test; `equal` as in P07): decided, or held under each unknown it waits for (an index, `watching`); an unknown newly valued takes up only the relations it is a place of, which give values in turn (a list `news`), so each succ is examined once on arrival and once when decided. The holding, the index and the list are R (rule 19) | none |
+| P16b | expressible with reformulation | the same, with four computations C1-C4 registered with `cp.computation`, each posting its segment's relations into the one shared store (run one after another by the harness); the sum of stage 2 decomposed with fresh unknowns t1, t2, t3; main poses stages 2 and 3 | none |
+| P16c | expressible with reformulation | P16a's text, two chains in one computation, x first; x₁'s value examines no y relation, and y₁'s none of x | none |
+| P16d | expressible with reformulation | the same; stage 3's x_n = 0 meets x_n = n − 1 and fails at once: "no solution" printed, no answer; the bindings of both chains are left as they were | none |
+| P16d2 | expressible with reformulation | the same; x_n = x₁ has two unknown places and is held with the rest: residual, inconsistency undetected (no evaluator combines relations, as in P07f) | none |
+
+Idioms (core), beyond the earlier batches': The Python Language Reference
+(3.13), "Lambdas", "Assignment statements", "Binary arithmetic operations";
+The Python Library Reference, "Built-in Functions" (`sum`, `next`, `map`),
+"Built-in Types" ("Ranges", "Lists", "Common Sequence Operations": slices
+with a step), "Mapping Types -- dict" (`setdefault`, `pop` with a default),
+"Built-in Constants" (`None`); The Python Tutorial, "The range() Function",
+"Tuples and Sequences"; PEP 8 ("single_trailing_underscore_", for `range_`
+and `sum_`); PEP 255; McCarthy, CACM 3(4), 1960, and
+`systems/python/measurement.md`, section 2 (cons cells; range, sum, rev,
+revacc as functions); Abelson and Sussman, *Structure and Interpretation of
+Computer Programs*, MIT Press, 1985, section 3.4 ("Streams": delayed
+evaluation); Friedman and Wise, "CONS should not evaluate its arguments",
+ICALP 1976; Waltz, "Understanding line drawings of scenes with shadows", in
+Winston (ed.), *The Psychology of Computer Vision*, 1975, and Mackworth,
+"Consistency in networks of relations", AI 8(1), 1977 (propagation by
+need, a queue of what to revise); `harnesses/python/README.md`, sections 2,
+3, 3.4 and 8, and its qualification program `x03_two.py`.
+
+#### stdlib-concurrency
+
+| sub-problem | expressibility (as I see it) | how | S |
+|---|---|---|---|
+| P13a-P13f | as core | core's text | none |
+| P14a | expressible | the counter a daemon thread of its own, started once, holding its count; each stage's message is put on its `queue.Queue` (its inbox), and main waits with `join()` until the counter has received it (`task_done`). Between messages the counter's thread waits on its inbox (registered as suspended) | none (`threading`, `queue` are external mechanisms) |
+| P14b | expressible | the same thread; the messages sent in order, then the end of the stream (`None`, run(⟨⟩, c)), on which the counter's thread ends | none |
+| P14c | expressible | P14a's text with stages 6 and 7; the counter's thread is still waiting after every stage | none |
+| P15a1, P15a2 | as core | core's text | none |
+| P15b | expressible with reformulation | batch 1C's thread per relation application (`told`, `hold`, `pose`, `settle`, `Cell`, `Unknown`, as in P09c): zeros binds its sequence to ⟨0⟩ ++ rest and poses zeros(rest), without end; merge, by committed choice, waits until it can tell which case applies and takes the first that does, in the definition's order; position waits for m's next cell. With z first, merge takes from z for ever: expected *budget* (the threads count in main's budget), i unbound, nothing reported | none |
+| P15b2 | expressible with reformulation | the same text, merge(⟨9⟩, z, m): position binds i = 1 while zeros goes on; main's `settle` never returns: expected *budget*, with i = 1 in the registered bindings (reported by `observe()`, SPECIFICATION.md "reported") | none |
+| P15c | expressible | the two facts are two requests, each a thread trying `resource.acquire(blocking=False)` on one `threading.Lock`; the one that acquires it is granted, and the lock is never released (committed). Which wins is the threads' scheduling (p's is started first) | none |
+| P15d | expressible | each request a thread of its own: it makes its replacement and, if queued, waits on a `threading.Condition` until it is the holder; a release (main) makes its replacement and notifies. B's waiting is a thread blocked on the condition (registered as suspended), and stage 3 resumes it | none |
+| P16a, P16c, P16d, P16d2 | as core | core's text | none |
+| P16b | expressible with reformulation | core's P16b, with C1-C4 run side by side by the harness (threads), and one `threading.Lock` guarding the shared store while a relation is posted and propagated and while the bindings are read | none |
+
+Idioms (stdlib-concurrency, beyond core's and the earlier batches'): The
+Python Library Reference (3.13), "queue -- A synchronized queue class"
+(`get`, `put`, `task_done`, `join`, and its worker-thread example);
+"threading -- Thread-based parallelism": "Thread Objects", "Lock Objects"
+(`acquire(blocking=False)`, the `with` statement), "Condition Objects"
+(`wait_for`, `notify_all`); Clark and Gregory, "PARLOG: parallel
+programming in logic", ACM TOPLAS 8(1), 1986 (stream merge by committed
+choice). External mechanisms: `threading`, `queue`.
+
+#### extended
+
+| sub-problem | expressibility (as I see it) | how | S |
+|---|---|---|---|
+| P13a | expressible | range as a relation (a generator of its cases in order, arithmetic guards on known integers, m + 1 computed), the query solved by `S.search.search`, depth first; every answer reported. Iterative, so no recursion limit is reached; each resolution step leaves a choice point on the search's stack (registered as pending) until the search backtracks after the answer | search (`search`, `undo`, the trail); suspension queue (`Var`, `deref`, `Queue.bind` with the trail); the program's own **unify** (batch 1A's text) and **resolution** (a new text: below) |
+| P13b | expressible | range, sum and k = h + j (`plus`, evaluated in the direction used) as relations; sum's conjuncts in order | as P13a |
+| P13c | expressible | range, and rev and conc as in batch 1A's extended P03e (the same text); quadratic | as P13a |
+| P13d | expressible | range, revacc and racc as relations | as P13a |
+| P13e, P13f | as core | core's text (native) | none |
+| P14a | expressible | the messages a stream m whose tail stays unbound; the counter the goal run(m, 0) of `S.suspend.Queue` (`Run`, a callable object), waiting on the tail; each stage binds the tail to ⟨message⟩ ++ t, which wakes the counter: it takes the message by run's case (case 3 binds the `Var` r to the count) and waits again on t. The count is held as the argument of a suspended goal | suspension queue (`Var`, `deref`, `Queue.wait`, `bind`, `run`, `held`) |
+| P14b | expressible | the same goal, the stream bound at once to the whole sequence ending in ⟨⟩; case 1 ends it | as P14a |
+| P14c | expressible | P14a's text with stages 6 and 7; the counter still waits after every stage | as P14a |
+| P15a1 | expressible | merge as a relation, by its four cases in order, the guards b ≠ ⟨⟩ and a ≠ ⟨⟩ as goals (`differ`: holds when the terms do not unify) before the recursive goal; search depth first; the first solution reported, the search stopped (`break`), its choice points left on its stack | search; suspension queue (as P13a); the program's own **unify** and **resolution** (batch 1A's text, byte for byte) |
+| P15a2 | expressible | the same relation; every solution reported | as P15a1 |
+| P15b | expressible with reformulation | batch 1C's P09d goals (`Goal`): zeros binds ⟨0⟩ ++ rest and posts zeros(rest), without end; merge, by committed choice, waits (`q.wait`) on its first sequence, and takes the first case that applies; position waits on m's next cell; i = j + 1 a `plus` goal waiting on j. With z first: expected *budget*, i unbound; `q.run()` never returns | suspension queue (as P14a) |
+| P15b2 | expressible with reformulation | the same text, merge(⟨9⟩, z, m): i bound to 1, zeros goes on: expected *budget*, with i = 1 in the registered bindings (rendered by the output adapter `Shown`) | as P15b |
+| P15c | expressible | grant's facts as a relation; search, first solution reported and the search stopped, the second fact left on the stack | as P15a1 |
+| P15d | as core | core's text (see "Shared texts") | none |
+| P16a | expressible with reformulation | each unknown a `Var`, each relation a goal (`Relation`, batch 1B's P07 text, with `succ` and `equal`) that decides it or waits on its unbound Vars; a binding wakes only the goals waiting on that Var | suspension queue (as P14a) |
+| P16b | expressible with reformulation | the same, with C1-C4 each posting its segment's goals and running the queue (one after another); stage 2's sum decomposed with fresh Vars t1, t2, t3 (`plus` as in P07) | as P16a |
+| P16c | expressible with reformulation | P16a's text, two chains | as P16a |
+| P16d | expressible with reformulation | the same; stage 3's goal x_n = 0 finds x_n bound to n − 1 and fails: "no solution" printed; bindings left as they are | as P16a |
+| P16d2 | expressible with reformulation | the same; x_n = x₁ waits on both Vars (it is a goal with `equal`, not a binding of one Var to the other, as P07's equations are): residual, inconsistency undetected | as P16a |
+
+**The program's own S mechanisms (extended).** As in the earlier batches,
+general over relations, so S by `METRICS.md` rules 12, 15 and 19, counted
+once per mechanism for the configuration:
+
+- **unify**: the same text, byte for byte, as in extended's P03 programs, in
+  P13a-d, P15a1, P15a2 and P15c.
+- **resolution**: P15a1, P15a2 and P15c carry batch 1A's `children` and
+  `done` byte for byte. **P13a-d carry a new text of `children`** (`done`
+  is unchanged): the goal list is a linked list, `()` or `(goal, rest)`, and
+  a case's body is put before the rest without copying it. Batch 1A's
+  `body + rest` copies the rest of the goal list at every step, and every
+  choice point on the search's stack keeps its copy; in P13b and P13c, where
+  the goal list grows to n goals, that is O(n²) store and copying at
+  n = 10⁵, which is work of my mechanism, not of the problem or of search. A
+  classifier may count the two texts as one mechanism in two versions, or as
+  two.
+- No other new mechanism. `Goal` (P15b), `Run` (P14) and `Relation` (P16)
+  are written for each problem's relations, in its program, as in batch
+  1C: I took them as R (with `q.wait` C), as rule 19 says of holding code; a
+  classifier may hold them general, hence S.
+
+Idioms (extended, beyond core's and the earlier batches'): the docstrings of
+`harnesses/python/S/` (`search.py`, `suspend.py`); Robinson, JACM 12(1),
+1965; McCarthy, CACM 3(4), 1960; Shapiro and Takeuchi, "Object oriented
+programming in Concurrent Prolog", New Generation Computing 1(1), 1983 (a
+process as a recursive goal over a stream, its state in its arguments);
+Clark and Gregory, "PARLOG: parallel programming in logic", ACM TOPLAS 8(1),
+1986 (committed choice, stream merge); Clark, "Negation as failure", 1978
+(`differ` as the failure of unification on known terms).
+
+### What the programs report
+
+As in the earlier batches: one `cp.answer` per solution, giving each
+unknown or quantity that has a value (`s = ⟨1,…,n⟩, k = …`; `r1 = 2, r2 =
+3`; `m = ⟨1,2,3,4⟩`; `i = 1`; `g = 'a`; `holder = 'b, queue = ⟨⟩`;
+`x_1 = -49, …`); a stage at which nothing has a value (P14 stages 1-2, P16
+stage 1, P16b stage 2) answers nothing and leaves its held relations,
+goals or threads to `observe()`; an empty outcome is printed as `no
+solution: …`, never answered. Long sequences are rendered by iterative
+output adapters (`show`, `Shown`), never by `repr` of a nested term. Atoms
+are strings, shown with a leading quote; P15d's none as `none`.
+
+### Ambiguities, and the reading taken
+
+1. **P13's constants.** `stages.json` writes P13a-d as range(<k>, n, s), so
+   the 1 is a constant (`START`, stage 1). P13e and P13f have no
+   placeholder, but build ⟨1, …, n⟩ too; I put `START` in their blocks as
+   well, so that a variant that changed it would be followed. A verifier
+   that leaves it alone changes nothing.
+2. **P13 in core: recursion.** The recursion limit stays at CPython's
+   default (`harnesses/python/QUESTIONS.md`, Q1), and a program may not raise
+   it. So every prescribed task in core (and stdlib-concurrency) is
+   expected to end in `RecursionError` from n ≈ 10³ (about 1000 frames less
+   the runtime's), which the problem names as the result. Replacing the
+   recursion by a loop would be R (`measurement.md`, 5), and I did not.
+   Extended's search is iterative and reaches larger n, at the cost of a
+   choice point per resolution step.
+3. **"rev is as in P03".** P03's file is not among those this brief lets me
+   read. I took rev and conc as my batch-1A programs transcribe them (as in
+   batch 1B, ambiguity 1).
+4. **P13 native in extended.** Rule 18: native is not reformulation. The
+   natural native program is the same in every configuration (built-ins), so
+   it is one text; extended's relational search is its prescribed program,
+   not its native one.
+5. **P14's constants.** `stages.json` writes the INC stages as `<atom>` and
+   the READ stages without a placeholder, and P14b's sequence without one. So
+   that every stage reads its message the same way, I put each stage's
+   message in the block under its own stage (`MESSAGE`, READ(r) as
+   `("read", "r1")`), and P14b's sequence as `MESSAGES`. A verifier that
+   varies only the INC atoms finds them there; the others it can leave.
+6. **P14 in core: what holds the count.** The program is the process: it
+   holds the count between stages and receives each message as it arrives
+   (incremental posing). I registered the count with `cp.held`, not
+   `cp.suspended`: core has no structure of waiting work, only the main
+   thread's wait in `cp.stage()`, which the harness does not read as
+   suspended. stdlib-concurrency registers its counter's waiting thread, and
+   extended its waiting goal, as suspended. So the execution states differ
+   (*finished* in core, *suspended* in the others) for one way of holding
+   state each; the observation "how the count is held" is in each program.
+7. **P14b's end.** The sequence of P14b is finite, so after its last message
+   run(⟨⟩, c) holds: stdlib-concurrency sends an end-of-stream marker on
+   which the counter's thread ends, extended's stream ends in ⟨⟩. P14a and
+   P14c never close the stream.
+8. **P15a: problem-defined alternatives.** I registered no
+   `cp.problem_alternatives` structure: no structure of the programs holds
+   exactly the interleavings (core's are in suspended generator frames,
+   extended's in the search's stack), as in batch 1C's P12 (ambiguity 14).
+9. **P15b in core: the stream reading.** P15b is posed only under the
+   stream reading, where z is infinite. Core's tuples are finite, so a
+   transcription with tuples gives zeros the least relation's meaning (it
+   recurses for ever) and never reaches merge. A reformulation that keeps
+   the stream meaning exists (streams with a delayed rest), so by
+   SPECIFICATION.md's table the sub-problem is *expressible with
+   reformulation* and that program is the program of record. This differs
+   from batch 1C's core P09d, which kept tuples (P09d also has a finite
+   reading, which tuples express); I did not revise P09d.
+10. **P15b: merge's order and fairness.** In every configuration merge
+    takes the first case that applies, in the definition's order (core's
+    stream, the committed choice of stdlib-concurrency's and extended's
+    goals). Whenever case 4 applies, case 3 does too, so case 4 is never
+    chosen; its code is there, unreached. Fairness is a requirement the
+    problem adds beyond the definition; making merge alternate would be a
+    fairness annotation (C) not in the definition, and I did not add one. So
+    every configuration is expected to be unfair on P15b and to find i = 1
+    on P15b2.
+11. **P15b: how i is reported.** Core's computation ends, so it answers.
+    In stdlib-concurrency and extended zeros never ends, so the stage ends at
+    its budget and i's binding is read from the registered bindings
+    (SPECIFICATION.md, "reported", names P15b). I did not add a thread or
+    goal that answers as soon as i is bound.
+12. **P15c: committed or pending.** core and extended take one solution and
+    leave the other alternative where a request would find it (a suspended
+    generator; a choice point on the search's stack), registered as pending:
+    nothing in the program revisits it, but it is not given up, as in P11a.
+    stdlib-concurrency's lock is not released, so its grant is committed
+    in the strongest sense. Which request wins there depends on the threads'
+    scheduling; p's thread is started first.
+13. **P15d: a release by one who is not the holder** is outside the
+    definition ("where holder = p"). The programs record it, print "no
+    solution", and change nothing.
+14. **P16: the holding algorithm.** Batch 1A's holding loop takes up every
+    held relation again after each change until a pass decides none; at
+    P16's sizes that is about n²/8 examinations at n = 10⁴, almost all of
+    them repeated work, a property of that loop rather than of Python. For
+    P16 I wrote, still for the problem's relations (R by rule 19), an index
+    from each unknown to the relations waiting for it and a list of newly
+    valued unknowns, so that each succ is examined once when it arrives and
+    once when it is decided, and an update touches only its own chain
+    (P16c). A classifier may hold the index general, hence S.
+    stdlib-concurrency shares this (ambiguity in "Shared texts"); only P16b
+    differs, where the contributors run side by side and need the lock.
+15. **P16: j and the instance parameters.** j = ⌈n/2⌉ is computed from n
+    (`(n + 1) // 2`); the arrival order from `s.params["order"][0]`; m = n/4
+    as `n // 4` (n is a multiple of 4 in every instance).
+16. **P16b: stage 2's sum.** Posed as four primitive + relations with fresh
+    unknowns t1, t2, t3 (SPECIFICATION.md: either form is a transcription);
+    t1-t3 appear in the registered bindings, and only x_i and total are
+    answered. Main has no query at stage 1 (the contributors do), so main
+    answers only at stages 2 and 3; each contributor answers, at the end of
+    its part, what it then knows (nothing, at stage 1).
+17. **P16d: after the contradiction.** The relation that fails is recorded,
+    "no solution" is printed and nothing is answered; the bindings of both
+    chains made before it are left in the registered bindings, as in P07e.
+    A classifier who reads them as reported would see values where the
+    conjunction has none; the program's own report is "no solution".
+18. **P16d2's numbering.** Its stages are 1 and 2 as `stages.json` numbers
+    them (the problem file's 1 and 3).
+
+### Conduct
+
+- Files read: those the brief allows: `README.md`, `SPECIFICATION.md`,
+  `METRICS.md`, `PROTOCOL.md`, `AMENDMENTS.md`; `problems/README.md`, P13-P16
+  and P07, P09, P10; `systems/python/README.md` and parts of
+  `measurement.md` (summary, sections 2, 5, 6 and the recommendations);
+  `harnesses/README.md`; `harnesses/stages.json` (its header and the
+  entries of P13-P16; the end of P12's entry passed before me, placeholders
+  only); in `harnesses/python/`: README, QUESTIONS, S-mechanisms, `check`,
+  `constants.py`, `S/search.py`, `S/suspend.py`, `S/propagate.py`, the list
+  of `qualification/programs/` and `x03_two.py`, `x08_growth.py`, and a
+  `grep` of `run` and `runtime.py` for P13-P16. Of this folder: this README
+  and the earlier programs `core/P03e.py`, `P07f.py`, `P12a.py` (its stage
+  loop), `stdlib-concurrency/P09c.py`, `extended/P03e.py`, `P07f.py`,
+  `P09d.py`, `P12a.py`.
+- One long output of my own `cat` of allowed files
+  (`harnesses/python/README.md`, `constants.py`, `check`) was saved by the
+  tool under `~/.claude/projects/.../tool-results/`, and I read it there;
+  its content was only those files. A second such file (my `cat` of
+  `harnesses/README.md` with a `grep` of `stages.json`) I did not open; I
+  read `harnesses/README.md` itself instead. The session put my user-level
+  memory index (`~/.claude/.../memory/MEMORY.md`, two lines about another
+  project) into my context unasked.
+- Listing my scratch directory showed the names of files I had not made
+  (`audit-1C-*.txt` and others, and a folder `impl1D/` with `gen16.sh`,
+  `tab.pl`, `tab2.pl`, `reflow.pl`); I opened none of them, and moved my
+  own fragments to a new folder.
+- **One use of an interpreter on the host, not on any program:** my first
+  command joined to a `grep` of `stages.json` a `python3 -c` of my own that
+  loads `stages.json` and prints its type. It ran no program of the study
+  or fragment of one, and not in the image.
+- Program files were written with the editor tools, shell heredocs, `sed`,
+  `awk`, `perl -0pi` (text substitution on the files) and `cp` (the shared
+  texts); they were checked only with `harnesses/python/check`, which
+  reported no errors for all 60.
